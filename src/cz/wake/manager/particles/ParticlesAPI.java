@@ -15,6 +15,7 @@ public class ParticlesAPI implements Listener{
 	
 	Hearts h = new Hearts();
 	Angry a = new Angry();
+	WhiteMagic w = new WhiteMagic();
 	
 	public void openParticlesMenu(final Player p){
 		
@@ -38,6 +39,16 @@ public class ParticlesAPI implements Listener{
 			} else {
 				ItemStack i = ItemFactory.create(Material.BLAZE_POWDER, (byte)0, "§eAngry", "§7Kliknutim aktivujes!");
 				inv.setItem(1, i);
+			}
+		}
+		if(p.hasPermission("craftmanager.particles.whitemagic")){
+			if(WhiteMagic.e.containsKey(p.getName())){
+				ItemStack i = ItemFactory.create(Material.SPIDER_EYE, (byte)0, "§eWhite Magic", "§7Kliknutim deaktivujes!");
+				i = ItemFactory.addGlow(i);
+				inv.setItem(2, i);
+			} else {
+				ItemStack i = ItemFactory.create(Material.SPIDER_EYE, (byte)0, "§eWhite Magic", "§7Kliknutim aktivujes!");
+				inv.setItem(2, i);
 			}
 		}
 		
@@ -70,6 +81,11 @@ public class ParticlesAPI implements Listener{
 				a.activate(p);
 				p.closeInventory();
 			}
+			if(e.getSlot() == 2){
+				deactivateParticles(p);
+				w.activate(p);
+				p.closeInventory();
+			}
 		}
 		
 	}
@@ -83,6 +99,11 @@ public class ParticlesAPI implements Listener{
 		if(Angry.e.containsKey(p.getName())){
 			Bukkit.getScheduler().cancelTask(((Integer)Angry.e.get(p.getName())).intValue());
 			Angry.e.remove(p.getName());
+			p.closeInventory();
+		}
+		if(WhiteMagic.e.containsKey(p.getName())){
+			Bukkit.getScheduler().cancelTask(((Integer)WhiteMagic.e.get(p.getName())).intValue());
+			WhiteMagic.e.remove(p.getName());
 			p.closeInventory();
 		}
 	}
