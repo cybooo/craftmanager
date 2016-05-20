@@ -7,8 +7,11 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import cz.wake.manager.Main;
+import cz.wake.manager.particles.ParticlesAPI;
 
 public class JoinListener implements Listener{
+	
+	ParticlesAPI partAPI = new ParticlesAPI();
 	
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e){
@@ -22,6 +25,7 @@ public class JoinListener implements Listener{
 	public void onQuit(PlayerQuitEvent e){
 		final Player p = e.getPlayer();
 		if(Main.getInstance().isVisibleForPlayer(p)){
+			partAPI.deactivateParticles(p);
 			Main.getInstance().removePlayer(p);
 		}
 	}
