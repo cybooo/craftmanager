@@ -24,6 +24,8 @@ public class ParticlesAPI implements Listener{
 	Cloud l = new Cloud();
 	Enchanted e = new Enchanted();
 	EndRod er = new EndRod();
+	Firework k = new Firework();
+	DragonBreath db = new DragonBreath();
 	
 	public void openParticlesMenu(final Player p){
 		
@@ -139,6 +141,26 @@ public class ParticlesAPI implements Listener{
 				inv.setItem(22, i);
 			}
 		}
+		if(p.hasPermission("craftmanager.particles.firework")){
+			if(Firework.e.containsKey(p.getName())){
+				ItemStack i = ItemFactory.create(Material.FIREWORK, (byte)0, "§eFirework", "§7Kliknutim deaktivujes!");
+				i = ItemFactory.addGlow(i);
+				inv.setItem(23, i);
+			} else {
+				ItemStack i = ItemFactory.create(Material.FIREWORK, (byte) 0, "§eFirework", "§7Kliknutim aktivujes!");
+				inv.setItem(23, i);
+			}
+		}
+		if(p.hasPermission("craftmanager.particles.dragonbreath")){
+			if(DragonBreath.e.containsKey(p.getName())){
+				ItemStack i = ItemFactory.create(Material.DRAGONS_BREATH, (byte)0, "§eDragonBreath", "§7Kliknutim deaktivujes!");
+				i = ItemFactory.addGlow(i);
+				inv.setItem(24, i);
+			} else {
+				ItemStack i = ItemFactory.create(Material.DRAGONS_BREATH, (byte) 0, "§eDragonBreath", "§7Kliknutim aktivujes!");
+				inv.setItem(24, i);
+			}
+		}
 		
 		ItemStack g = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte)7, " ");
 		
@@ -220,6 +242,16 @@ public class ParticlesAPI implements Listener{
 				this.er.activate(p);
 				p.closeInventory();
 			}
+			if(e.getSlot() == 23){
+				deactivateParticles(p);
+				this.k.activate(p);
+				p.closeInventory();
+			}
+			if(e.getSlot() == 24){
+				deactivateParticles(p);
+				this.db.activate(p);
+				p.closeInventory();
+			}
 		}
 		
 	}
@@ -278,6 +310,16 @@ public class ParticlesAPI implements Listener{
 		if(EndRod.e.containsKey(p.getName())){
 			Bukkit.getScheduler().cancelTask(((Integer)EndRod.e.get(p.getName())).intValue());
 			EndRod.e.remove(p.getName());
+			p.closeInventory();
+		}
+		if(Firework.e.containsKey(p.getName())){
+			Bukkit.getScheduler().cancelTask(((Integer)Firework.e.get(p.getName())).intValue());
+			Firework.e.remove(p.getName());
+			p.closeInventory();
+		}
+		if(DragonBreath.e.containsKey(p.getName())){
+			Bukkit.getScheduler().cancelTask(((Integer)DragonBreath.e.get(p.getName())).intValue());
+			DragonBreath.e.remove(p.getName());
 			p.closeInventory();
 		}
 	}
