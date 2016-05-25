@@ -18,6 +18,12 @@ public class ParticlesAPI implements Listener{
 	WhiteMagic w = new WhiteMagic();
 	WitchMagic m = new WitchMagic();
 	Slime s = new Slime();
+	Music c = new Music();
+	Flame f = new Flame();
+	Redstone r = new Redstone();
+	Cloud l = new Cloud();
+	Enchanted e = new Enchanted();
+	EndRod er = new EndRod();
 	
 	public void openParticlesMenu(final Player p){
 		
@@ -73,36 +79,72 @@ public class ParticlesAPI implements Listener{
 				inv.setItem(14, i);
 			}
 		}
+		if(p.hasPermission("craftmanager.particles.music")){
+			if(Music.e.containsKey(p.getName())){
+				ItemStack i = ItemFactory.create(Material.RECORD_3, (byte)0, "§eMusic", "§7Kliknutim deaktivujes!");
+				i = ItemFactory.addGlow(i);
+				inv.setItem(15, i);
+			} else {
+				ItemStack i = ItemFactory.create(Material.RECORD_3, (byte)0, "§eMusic", "§7Kliknutim aktivujes!");
+				inv.setItem(15, i);
+			}
+		}
+		if(p.hasPermission("craftmanager.particles.flame")){
+			if(Flame.e.containsKey(p.getName())){
+				ItemStack i = ItemFactory.create(Material.BLAZE_POWDER, (byte)0, "§eFlame", "§7Kliknutim deaktivujes!");
+				i = ItemFactory.addGlow(i);
+				inv.setItem(16, i);
+			} else {
+				ItemStack i = ItemFactory.create(Material.BLAZE_POWDER, (byte) 0, "§eFlame", "§7Kliknutim aktivujes!");
+				inv.setItem(16, i);
+			}
+		}
+		if(p.hasPermission("craftmanager.particles.redstone")){
+			if(Redstone.e.containsKey(p.getName())){
+				ItemStack i = ItemFactory.create(Material.REDSTONE, (byte)0, "§eRedstone", "§7Kliknutim deaktivujes!");
+				i = ItemFactory.addGlow(i);
+				inv.setItem(19, i);
+			} else {
+				ItemStack i = ItemFactory.create(Material.REDSTONE, (byte) 0, "§eRedstone", "§7Kliknutim aktivujes!");
+				inv.setItem(19, i);
+			}
+		}
+		if(p.hasPermission("craftmanager.particles.cloud")){
+			if(Cloud.e.containsKey(p.getName())){
+				ItemStack i = ItemFactory.create(Material.QUARTZ, (byte)0, "§eCloud", "§7Kliknutim deaktivujes!");
+				i = ItemFactory.addGlow(i);
+				inv.setItem(20, i);
+			} else {
+				ItemStack i = ItemFactory.create(Material.QUARTZ, (byte) 0, "§eCloud", "§7Kliknutim aktivujes!");
+				inv.setItem(20, i);
+			}
+		}
+		if(p.hasPermission("craftmanager.particles.enchanted")){
+			if(Enchanted.e.containsKey(p.getName())){
+				ItemStack i = ItemFactory.create(Material.ENCHANTED_BOOK, (byte)0, "§eEnchanted", "§7Kliknutim deaktivujes!");
+				i = ItemFactory.addGlow(i);
+				inv.setItem(21, i);
+			} else {
+				ItemStack i = ItemFactory.create(Material.ENCHANTED_BOOK, (byte) 0, "§eEnchanted", "§7Kliknutim aktivujes!");
+				inv.setItem(21, i);
+			}
+		}
+		if(p.hasPermission("craftmanager.particles.endrod")){
+			if(EndRod.e.containsKey(p.getName())){
+				ItemStack i = ItemFactory.create(Material.END_ROD, (byte)0, "§eEndRod", "§7Kliknutim deaktivujes!");
+				i = ItemFactory.addGlow(i);
+				inv.setItem(22, i);
+			} else {
+				ItemStack i = ItemFactory.create(Material.END_ROD, (byte) 0, "§eEndRod", "§7Kliknutim aktivujes!");
+				inv.setItem(22, i);
+			}
+		}
 		
 		ItemStack g = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte)7, " ");
 		
-		inv.setItem(0, g);
-		inv.setItem(1, g);
-		inv.setItem(2, g);
-		inv.setItem(3, g);
-		inv.setItem(4, g);
-		inv.setItem(5, g);
-		inv.setItem(6, g);
-		inv.setItem(7, g);
-		inv.setItem(8, g);
-		inv.setItem(9, g);
-		inv.setItem(17, g);
-		inv.setItem(18, g);
-		inv.setItem(26, g);
-		inv.setItem(27, g);
-		inv.setItem(35, g);
-		inv.setItem(36, g);
-		inv.setItem(37, g);
-		inv.setItem(38, g);
-		inv.setItem(39, g);
-		inv.setItem(41, g);
-		inv.setItem(42, g);
-		inv.setItem(43, g);
-		inv.setItem(44, g);
-		
 		ItemStack deaktivace = ItemFactory.create(Material.BARRIER, (byte)0, "§c✖ Deaktivace ✖", "§7Kliknutim deaktivujes particles.");
 		inv.setItem(40, deaktivace);
-		
+
 		p.openInventory(inv);
 	}
 	
@@ -125,27 +167,57 @@ public class ParticlesAPI implements Listener{
 			}
 			if(e.getSlot() == 10){
 				deactivateParticles(p);
-				h.activateLove(p);
+				this.h.activateLove(p);
 				p.closeInventory();
 			}
 			if(e.getSlot() == 11){
 				deactivateParticles(p);
-				a.activate(p);
+				this.a.activate(p);
 				p.closeInventory();
 			}
 			if(e.getSlot() == 12){
 				deactivateParticles(p);
-				w.activate(p);
+				this.w.activate(p);
 				p.closeInventory();
 			}
 			if(e.getSlot() == 13){
 				deactivateParticles(p);
-				m.activate(p);
+				this.m.activate(p);
 				p.closeInventory();
 			}
 			if(e.getSlot() == 14){
 				deactivateParticles(p);
-				s.activate(p);
+				this.s.activate(p);
+				p.closeInventory();
+			}
+			if(e.getSlot() == 15){
+				deactivateParticles(p);
+				this.c.activate(p);
+				p.closeInventory();
+			}
+			if(e.getSlot() == 16){
+				deactivateParticles(p);
+				f.activate(p);
+				p.closeInventory();
+			}
+			if(e.getSlot() == 19){
+				deactivateParticles(p);
+				this.r.activate(p);
+				p.closeInventory();
+			}
+			if(e.getSlot() == 20){
+				deactivateParticles(p);
+				this.l.activate(p);
+				p.closeInventory();
+			}
+			if(e.getSlot() == 21){
+				deactivateParticles(p);
+				this.e.activate(p);
+				p.closeInventory();
+			}
+			if(e.getSlot() == 22){
+				deactivateParticles(p);
+				this.er.activate(p);
 				p.closeInventory();
 			}
 		}
@@ -176,6 +248,36 @@ public class ParticlesAPI implements Listener{
 		if(Slime.e.containsKey(p.getName())){
 			Bukkit.getScheduler().cancelTask(((Integer)Slime.e.get(p.getName())).intValue());
 			Slime.e.remove(p.getName());
+			p.closeInventory();
+		}
+		if(Music.e.containsKey(p.getName())){
+			Bukkit.getScheduler().cancelTask(((Integer)Music.e.get(p.getName())).intValue());
+			Music.e.remove(p.getName());
+			p.closeInventory();
+		}
+		if(Flame.e.containsKey(p.getName())){
+			Bukkit.getScheduler().cancelTask(((Integer)Flame.e.get(p.getName())).intValue());
+			Flame.e.remove(p.getName());
+			p.closeInventory();
+		}
+		if(Redstone.e.containsKey(p.getName())){
+			Bukkit.getScheduler().cancelTask(((Integer)Redstone.e.get(p.getName())).intValue());
+			Redstone.e.remove(p.getName());
+			p.closeInventory();
+		}
+		if(Cloud.e.containsKey(p.getName())){
+			Bukkit.getScheduler().cancelTask(((Integer)Cloud.e.get(p.getName())).intValue());
+			Cloud.e.remove(p.getName());
+			p.closeInventory();
+		}
+		if(Enchanted.e.containsKey(p.getName())){
+			Bukkit.getScheduler().cancelTask(((Integer)Enchanted.e.get(p.getName())).intValue());
+			Enchanted.e.remove(p.getName());
+			p.closeInventory();
+		}
+		if(EndRod.e.containsKey(p.getName())){
+			Bukkit.getScheduler().cancelTask(((Integer)EndRod.e.get(p.getName())).intValue());
+			EndRod.e.remove(p.getName());
 			p.closeInventory();
 		}
 	}
