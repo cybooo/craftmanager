@@ -30,6 +30,7 @@ public class ParticlesAPI implements Listener{
 	Portal p = new Portal();
 	Lava la = new Lava();
 	Smoke sm = new Smoke();
+	Happy ha = new Happy();
 	
 	public void openParticlesMenu(final Player p){
 		
@@ -127,11 +128,11 @@ public class ParticlesAPI implements Listener{
 		}
 		if(p.hasPermission("craftmanager.particles.enchanted")){
 			if(Enchanted.e.containsKey(p.getName())){
-				ItemStack i = ItemFactory.create(Material.ENCHANTED_BOOK, (byte)0, "§eEnchanted", "§7Kliknutim deaktivujes!");
+				ItemStack i = ItemFactory.create(Material.BOOK, (byte)0, "§eEnchanted", "§7Kliknutim deaktivujes!");
 				i = ItemFactory.addGlow(i);
 				inv.setItem(21, i);
 			} else {
-				ItemStack i = ItemFactory.create(Material.ENCHANTED_BOOK, (byte) 0, "§eEnchanted", "§7Kliknutim aktivujes!");
+				ItemStack i = ItemFactory.create(Material.BOOK, (byte) 0, "§eEnchanted", "§7Kliknutim aktivujes!");
 				inv.setItem(21, i);
 			}
 		}
@@ -193,6 +194,16 @@ public class ParticlesAPI implements Listener{
 			} else {
 				ItemStack i = ItemFactory.create(Material.COAL, (byte) 0, "§eSmoke", "§7Kliknutim aktivujes!");
 				inv.setItem(29, i);
+			}
+		}
+		if(p.hasPermission("craftmanager.particles.happy")){
+			if(Happy.e.containsKey(p.getName())){
+				ItemStack i = ItemFactory.create(Material.EMERALD, (byte)0, "§eHappy", "§7Kliknutim deaktivujes!");
+				i = ItemFactory.addGlow(i);
+				inv.setItem(30, i);
+			} else {
+				ItemStack i = ItemFactory.create(Material.EMERALD, (byte) 0, "§eHappy", "§7Kliknutim aktivujes!");
+				inv.setItem(30, i);
 			}
 		}
 		
@@ -301,6 +312,11 @@ public class ParticlesAPI implements Listener{
 				this.sm.activate(p);
 				p.closeInventory();
 			}
+			if(e.getSlot() == 30){
+				deactivateParticles(p);
+				this.ha.activate(p);
+				p.closeInventory();
+			}
 		}
 		
 	}
@@ -384,6 +400,11 @@ public class ParticlesAPI implements Listener{
 		if(Smoke.e.containsKey(p.getName())){
 			Bukkit.getScheduler().cancelTask(((Integer)Smoke.e.get(p.getName())).intValue());
 			Smoke.e.remove(p.getName());
+			p.closeInventory();
+		}
+		if(Happy.e.containsKey(p.getName())){
+			Bukkit.getScheduler().cancelTask(((Integer)Happy.e.get(p.getName())).intValue());
+			Happy.e.remove(p.getName());
 			p.closeInventory();
 		}
 	}
