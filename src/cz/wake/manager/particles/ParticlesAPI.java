@@ -1,6 +1,6 @@
 package cz.wake.manager.particles;
 
-import com.sun.jmx.snmp.SnmpUnknownModelException;
+import cz.wake.manager.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -196,9 +196,9 @@ public class ParticlesAPI implements Listener{
 				inv.setItem(29, i);
 			}
 		}
-		if(p.hasPermission("craftmanager.particles.happy")){
-			if(Happy.e.containsKey(p.getName())){
-				ItemStack i = ItemFactory.create(Material.EMERALD, (byte)0, "§eHappy", "§7Kliknutim deaktivujes!");
+		if(p.hasPermission("craftmanager.particles.happy")) {
+			if (Happy.e.containsKey(p.getName())) {
+				ItemStack i = ItemFactory.create(Material.EMERALD, (byte) 0, "§eHappy", "§7Kliknutim deaktivujes!");
 				i = ItemFactory.addGlow(i);
 				inv.setItem(30, i);
 			} else {
@@ -207,10 +207,11 @@ public class ParticlesAPI implements Listener{
 			}
 		}
 		
-		ItemStack g = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte)7, " ");
-		
 		ItemStack deaktivace = ItemFactory.create(Material.BARRIER, (byte)0, "§c✖ Deaktivace ✖", "§7Kliknutim deaktivujes particles.");
 		inv.setItem(49, deaktivace);
+
+		ItemStack zpet = ItemFactory.create(Material.ARROW,(byte)0,"§cZpet do menu");
+		inv.setItem(48,zpet);
 
 		p.openInventory(inv);
 	}
@@ -226,11 +227,11 @@ public class ParticlesAPI implements Listener{
 			if (e.getCurrentItem().getType() == Material.AIR){
             	return;
             }
-			if (e.getCurrentItem().getType() == Material.STAINED_GLASS_PANE){
-            	return;
-            }
 			if(e.getSlot() == 49){
 				deactivateParticles(p);
+			}
+			if(e.getSlot() == 48){
+				Main.getInstance().getMainGUI().openMainManu(p);
 			}
 			if(e.getSlot() == 10){
 				deactivateParticles(p);

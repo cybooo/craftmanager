@@ -1,19 +1,20 @@
 package cz.wake.manager;
 
-import java.awt.List;
 import java.util.ArrayList;
 
+import cz.wake.manager.commads.Menu_command;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import cz.wake.manager.commads.Particles_command;
 import cz.wake.manager.listener.JoinListener;
 import cz.wake.manager.particles.ParticlesAPI;
 
 public class Main extends JavaPlugin{
 	
 	public static ArrayList<Player> players = new ArrayList<Player>();
+	public ParticlesAPI particlesAPI = new ParticlesAPI();
+	public MainGUI gui = new MainGUI();
 	
 	private static Main instance;
 	
@@ -35,10 +36,11 @@ public class Main extends JavaPlugin{
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(new ParticlesAPI(), this);
 		pm.registerEvents(new JoinListener(), this);
+		pm.registerEvents(new MainGUI(), this);
 	}
 	
 	private void loadCommands(){
-		getCommand("part").setExecutor(new Particles_command());
+		getCommand("menu").setExecutor(new Menu_command());
 	}
 	
 	public ArrayList<Player> getPlayers(){
@@ -55,5 +57,13 @@ public class Main extends JavaPlugin{
 	
 	public void removePlayer(Player p){
 		players.remove(p);
+	}
+
+	public ParticlesAPI getParticlesAPI(){
+		return particlesAPI;
+	}
+
+	public MainGUI getMainGUI(){
+		return gui;
 	}
 }
