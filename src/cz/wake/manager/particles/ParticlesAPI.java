@@ -1,5 +1,6 @@
 package cz.wake.manager.particles;
 
+import com.sun.jmx.snmp.SnmpUnknownModelException;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -26,10 +27,13 @@ public class ParticlesAPI implements Listener{
 	EndRod er = new EndRod();
 	Firework k = new Firework();
 	DragonBreath db = new DragonBreath();
+	Portal p = new Portal();
+	Lava la = new Lava();
+	Smoke sm = new Smoke();
 	
 	public void openParticlesMenu(final Player p){
 		
-		Inventory inv = Bukkit.createInventory(null, 45, "§0Particles");
+		Inventory inv = Bukkit.createInventory(null, 54, "§0Particles");
 		
 		if(p.hasPermission("craftmanager.particles.hearts")){
 			if(Hearts.e.containsKey(p.getName())){
@@ -161,11 +165,41 @@ public class ParticlesAPI implements Listener{
 				inv.setItem(24, i);
 			}
 		}
+		if(p.hasPermission("craftmanager.particles.portal")){
+			if(Portal.e.containsKey(p.getName())){
+				ItemStack i = ItemFactory.create(Material.OBSIDIAN, (byte)0, "§ePortal", "§7Kliknutim deaktivujes!");
+				i = ItemFactory.addGlow(i);
+				inv.setItem(25, i);
+			} else {
+				ItemStack i = ItemFactory.create(Material.OBSIDIAN, (byte) 0, "§ePortal", "§7Kliknutim aktivujes!");
+				inv.setItem(25, i);
+			}
+		}
+		if(p.hasPermission("craftmanager.particles.lava")){
+			if(Lava.e.containsKey(p.getName())){
+				ItemStack i = ItemFactory.create(Material.LAVA_BUCKET, (byte)0, "§eLava", "§7Kliknutim deaktivujes!");
+				i = ItemFactory.addGlow(i);
+				inv.setItem(28, i);
+			} else {
+				ItemStack i = ItemFactory.create(Material.LAVA_BUCKET, (byte) 0, "§eLava", "§7Kliknutim aktivujes!");
+				inv.setItem(28, i);
+			}
+		}
+		if(p.hasPermission("craftmanager.particles.smoke")){
+			if(Smoke.e.containsKey(p.getName())){
+				ItemStack i = ItemFactory.create(Material.COAL, (byte)0, "§eSmoke", "§7Kliknutim deaktivujes!");
+				i = ItemFactory.addGlow(i);
+				inv.setItem(29, i);
+			} else {
+				ItemStack i = ItemFactory.create(Material.COAL, (byte) 0, "§eSmoke", "§7Kliknutim aktivujes!");
+				inv.setItem(29, i);
+			}
+		}
 		
 		ItemStack g = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte)7, " ");
 		
 		ItemStack deaktivace = ItemFactory.create(Material.BARRIER, (byte)0, "§c✖ Deaktivace ✖", "§7Kliknutim deaktivujes particles.");
-		inv.setItem(40, deaktivace);
+		inv.setItem(49, deaktivace);
 
 		p.openInventory(inv);
 	}
@@ -184,7 +218,7 @@ public class ParticlesAPI implements Listener{
 			if (e.getCurrentItem().getType() == Material.STAINED_GLASS_PANE){
             	return;
             }
-			if(e.getSlot() == 40){
+			if(e.getSlot() == 49){
 				deactivateParticles(p);
 			}
 			if(e.getSlot() == 10){
@@ -250,6 +284,21 @@ public class ParticlesAPI implements Listener{
 			if(e.getSlot() == 24){
 				deactivateParticles(p);
 				this.db.activate(p);
+				p.closeInventory();
+			}
+			if(e.getSlot() == 25){
+				deactivateParticles(p);
+				this.p.activate(p);
+				p.closeInventory();
+			}
+			if(e.getSlot() == 28){
+				deactivateParticles(p);
+				this.la.activate(p);
+				p.closeInventory();
+			}
+			if(e.getSlot() == 29){
+				deactivateParticles(p);
+				this.sm.activate(p);
 				p.closeInventory();
 			}
 		}
@@ -320,6 +369,21 @@ public class ParticlesAPI implements Listener{
 		if(DragonBreath.e.containsKey(p.getName())){
 			Bukkit.getScheduler().cancelTask(((Integer)DragonBreath.e.get(p.getName())).intValue());
 			DragonBreath.e.remove(p.getName());
+			p.closeInventory();
+		}
+		if(Portal.e.containsKey(p.getName())){
+			Bukkit.getScheduler().cancelTask(((Integer)Portal.e.get(p.getName())).intValue());
+			Portal.e.remove(p.getName());
+			p.closeInventory();
+		}
+		if(Lava.e.containsKey(p.getName())){
+			Bukkit.getScheduler().cancelTask(((Integer)Lava.e.get(p.getName())).intValue());
+			Lava.e.remove(p.getName());
+			p.closeInventory();
+		}
+		if(Smoke.e.containsKey(p.getName())){
+			Bukkit.getScheduler().cancelTask(((Integer)Smoke.e.get(p.getName())).intValue());
+			Smoke.e.remove(p.getName());
 			p.closeInventory();
 		}
 	}
