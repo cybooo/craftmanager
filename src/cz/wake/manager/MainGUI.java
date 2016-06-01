@@ -13,8 +13,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MainGUI implements Listener{
+
+    public static Random random = new Random();
 
     public void openMainMenu(Player p){
 
@@ -37,7 +40,7 @@ public class MainGUI implements Listener{
 
         ItemStack hlasy = ItemFactory.create(Material.GOLD_INGOT,(byte)0,"§e§lOdmeny za hlasovani",
                 "",
-                "§fKazdy hlas: §615 CC §f + §aVote Key",
+                "§fKazdy hlas: §615 CC §f+ §aVote Key",
                 "§f25% sance: §630 CC",
                 "§f5% sance: §650 CC",
                 "§f1% sance: §6100 CC",
@@ -75,6 +78,42 @@ public class MainGUI implements Listener{
         inv.setItem(23, shop);
         inv.setItem(24, vip);
 
+        ItemStack white = ItemFactory.create(Material.STAINED_GLASS_PANE,(byte)0," ");
+        inv.setItem(0,white);
+        inv.setItem(1,white);
+        inv.setItem(7,white);
+        inv.setItem(8,white);
+        inv.setItem(36,white);
+        inv.setItem(37,white);
+        inv.setItem(43,white);
+        inv.setItem(44,white);
+
+        ItemStack colorful = ItemFactory.create(Material.STAINED_GLASS_PANE,randomByte((byte)1,(byte)15)," ");
+        inv.setItem(2,colorful);
+        inv.setItem(3,colorful);
+        inv.setItem(4,colorful);
+        inv.setItem(5,colorful);
+        inv.setItem(6,colorful);
+        inv.setItem(9,colorful);
+        inv.setItem(10,colorful);
+        inv.setItem(11,colorful);
+        inv.setItem(15,colorful);
+        inv.setItem(16,colorful);
+        inv.setItem(17,colorful);
+        inv.setItem(18,colorful);
+        inv.setItem(26,colorful);
+        inv.setItem(27,colorful);
+        inv.setItem(28,colorful);
+        inv.setItem(29,colorful);
+        inv.setItem(33,colorful);
+        inv.setItem(34,colorful);
+        inv.setItem(35,colorful);
+        inv.setItem(38,colorful);
+        inv.setItem(39,colorful);
+        inv.setItem(40,colorful);
+        inv.setItem(41,colorful);
+        inv.setItem(42,colorful);
+
         p.openInventory(inv);
 
     }
@@ -95,5 +134,10 @@ public class MainGUI implements Listener{
             }
 
         }
+    }
+
+    private byte randomByte(byte start, byte end){
+        int cislo = start + random.nextInt(end - start + 1);
+        return (byte)cislo;
     }
 }
