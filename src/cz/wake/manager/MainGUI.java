@@ -90,7 +90,7 @@ public class MainGUI implements Listener{
             if (e.getCurrentItem().getType() == Material.AIR){
                 return;
             }
-            if(e.getSlot() == 20){
+            if(e.getSlot() == 31){
                 Main.getInstance().getParticlesAPI().openParticlesMenu(p);
             }
 
