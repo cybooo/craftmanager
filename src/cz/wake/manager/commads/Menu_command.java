@@ -14,7 +14,7 @@ public class Menu_command implements CommandExecutor{
             Player player = (Player)Sender;
             if((Command.getName().equalsIgnoreCase("menu"))){
                 if(ArrayOfString.length == 0){
-                    Main.getInstance().getMainGUI().openMainManu(player);
+                    Main.getInstance().getMainGUI().openMainMenu(player);
                     return true;
                 }
                 return true;

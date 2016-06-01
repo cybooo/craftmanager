@@ -3,6 +3,7 @@ package cz.wake.manager;
 import java.util.ArrayList;
 
 import cz.wake.manager.commads.Menu_command;
+import cz.wake.manager.votifier.SuperbVote;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -37,6 +38,7 @@ public class Main extends JavaPlugin{
 		pm.registerEvents(new ParticlesAPI(), this);
 		pm.registerEvents(new JoinListener(), this);
 		pm.registerEvents(new MainGUI(), this);
+		pm.registerEvents(new SuperbVote(),this);
 	}
 	
 	private void loadCommands(){

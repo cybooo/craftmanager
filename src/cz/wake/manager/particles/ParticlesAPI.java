@@ -231,7 +231,7 @@ public class ParticlesAPI implements Listener{
 				deactivateParticles(p);
 			}
 			if(e.getSlot() == 48){
-				Main.getInstance().getMainGUI().openMainManu(p);
+				Main.getInstance().getMainGUI().openMainMenu(p);
 			}
 			if(e.getSlot() == 10){
 				deactivateParticles(p);
