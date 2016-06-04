@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import cz.wake.manager.commads.Coinshop_command;
 import cz.wake.manager.commads.Menu_command;
+import cz.wake.manager.commads.Particles_command;
 import cz.wake.manager.shop.ShopAPI;
 import cz.wake.manager.votifier.SuperbVote;
 import org.bukkit.entity.Player;
@@ -48,6 +49,7 @@ public class Main extends JavaPlugin{
 	private void loadCommands(){
 		getCommand("menu").setExecutor(new Menu_command());
 		getCommand("coinshop").setExecutor(new Coinshop_command());
+		getCommand("particles").setExecutor(new Particles_command());
 	}
 	
 	public ArrayList<Player> getPlayers(){

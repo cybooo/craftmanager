@@ -9,3 +9,6 @@ commands:
       description: Zakladni prikaz
     coinshop:
       description: Prikaz na otevreni coinshopu
+    particles:
+      description: Prikaz na otevreni particles menu
+      aliases: [part]
