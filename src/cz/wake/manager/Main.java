@@ -6,6 +6,8 @@ import cz.wake.manager.commads.Coinshop_command;
 import cz.wake.manager.commads.Menu_command;
 import cz.wake.manager.commads.Particles_command;
 import cz.wake.manager.shop.ShopAPI;
+import cz.wake.manager.sql.FetchData;
+import cz.wake.manager.sql.MySQL;
 import cz.wake.manager.votifier.SuperbVote;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
@@ -20,6 +22,8 @@ public class Main extends JavaPlugin{
 	public ParticlesAPI particlesAPI = new ParticlesAPI();
 	public MainGUI gui = new MainGUI();
 	public ShopAPI shop = new ShopAPI();
+	private MySQL mysql = new MySQL();
+	private FetchData fd = new FetchData();
 	
 	private static Main instance;
 	
@@ -27,6 +31,10 @@ public class Main extends JavaPlugin{
 		instance = this;
 		loadListeners();
 		loadCommands();
+
+		//Config
+		getConfig().options().copyDefaults(true);
+		saveDefaultConfig();
 	}
 	
 	public void onDisable(){
@@ -77,4 +85,12 @@ public class Main extends JavaPlugin{
 	}
 
 	public ShopAPI getShopGUI(){ return shop; }
+
+	public MySQL getMySQL(){
+		return mysql;
+	}
+
+	public FetchData getFetchData(){
+		return fd;
+	}
 }

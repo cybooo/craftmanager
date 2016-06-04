@@ -29,11 +29,11 @@ public class MainGUI implements Listener{
         ItemStack head = new ItemStack(Material.SKULL_ITEM, 1, (byte)3);
         ArrayList<String> headLore = new ArrayList<>();
         headLore.add("§7");
-        headLore.add("§6CraftCoins: §fNenalezeno");
+        headLore.add("§6CraftCoins: §f" + Main.getInstance().getFetchData().getPlayerCoins(p.getUniqueId()));
         headLore.add("");
         headLore.add("§eHlasy tento tyden: §f0");
         headLore.add("§eHlasy tento mesic: §f0");
-        headLore.add("§eHlasy celkem: §f0");
+        headLore.add("§eHlasy celkem: §f" + Main.getInstance().getFetchData().getPlayerTotalVotes(p.getUniqueId()));
         headMeta.setLore(headLore);
         head.setItemMeta(headMeta);
         inv.setItem(13, head);
