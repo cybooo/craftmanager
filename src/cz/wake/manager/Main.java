@@ -3,6 +3,7 @@ package cz.wake.manager;
 import java.util.ArrayList;
 
 import cz.wake.manager.commads.Menu_command;
+import cz.wake.manager.shop.ShopAPI;
 import cz.wake.manager.votifier.SuperbVote;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
@@ -16,6 +17,7 @@ public class Main extends JavaPlugin{
 	public static ArrayList<Player> players = new ArrayList<Player>();
 	public ParticlesAPI particlesAPI = new ParticlesAPI();
 	public MainGUI gui = new MainGUI();
+	public ShopAPI shop = new ShopAPI();
 	
 	private static Main instance;
 	
@@ -38,6 +40,7 @@ public class Main extends JavaPlugin{
 		pm.registerEvents(new ParticlesAPI(), this);
 		pm.registerEvents(new JoinListener(), this);
 		pm.registerEvents(new MainGUI(), this);
+		pm.registerEvents(new ShopAPI(),this);
 		pm.registerEvents(new SuperbVote(),this);
 	}
 	
@@ -68,4 +71,6 @@ public class Main extends JavaPlugin{
 	public MainGUI getMainGUI(){
 		return gui;
 	}
+
+	public ShopAPI getShopGUI(){ return shop; }
 }

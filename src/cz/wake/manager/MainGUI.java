@@ -3,7 +3,7 @@ package cz.wake.manager;
 import cz.wake.manager.utils.ItemFactory;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.entity.Item;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -131,6 +131,19 @@ public class MainGUI implements Listener{
             }
             if(e.getSlot() == 31){
                 Main.getInstance().getParticlesAPI().openParticlesMenu(p);
+            }
+            if(e.getSlot() == 21){
+                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING,1.0f,1.0f);
+                p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
+                p.sendMessage("");
+                p.sendMessage("§7K hlasovani klikni na tento odkaz:");
+                p.sendMessage("§chttps://craftmania.cz/hlasovani/");
+                p.sendMessage("");
+                p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
+                p.closeInventory();
+            }
+            if(e.getSlot() == 23){
+                Main.getInstance().getShopGUI().openShopGUI(p);
             }
 
         }
