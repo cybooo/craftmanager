@@ -63,7 +63,7 @@ public class MainGUI implements Listener{
                 "§6#9. §fMrWakeCZ §7(0 hlasu)",
                 "§6#10. §fMrWakeCZ §7(0 hlasu)");
 
-        ItemStack vip = ItemFactory.create(Material.EMERALD,(byte)0,"§a§lVIP","§7Prehled vyhod a SMS k ","§7nakupu VIP na Creativu!","","§eKlikni pro zobrazeni!");
+        ItemStack vip = ItemFactory.create(Material.EMERALD,(byte)0,"§a§lVIP","§7Prehled vyhod a SMS k ","§7nakupu VIP na serveru!","","§eKlikni pro zobrazeni!");
 
         ItemStack shop = ItemFactory.create(Material.NETHER_STAR,(byte)0,"§a§lShop","","§7Zde najdes seznam prikazu,","§7ruznych boosteru a efekty,","§7ktere si muzes zakoupit za CraftCoiny!","","§eKlikni pro zobrazeni!");
 
