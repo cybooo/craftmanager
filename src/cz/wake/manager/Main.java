@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import cz.wake.manager.commads.Coinshop_command;
 import cz.wake.manager.commads.Menu_command;
 import cz.wake.manager.commads.Particles_command;
+import cz.wake.manager.commads.VIP_command;
+import cz.wake.manager.menu.VIP;
 import cz.wake.manager.shop.ShopAPI;
 import cz.wake.manager.sql.FetchData;
 import cz.wake.manager.sql.MySQL;
@@ -24,6 +26,7 @@ public class Main extends JavaPlugin{
 	public ShopAPI shop = new ShopAPI();
 	private MySQL mysql = new MySQL();
 	private FetchData fd = new FetchData();
+	private VIP vip = new VIP();
 	
 	private static Main instance;
 	
@@ -52,12 +55,14 @@ public class Main extends JavaPlugin{
 		pm.registerEvents(new MainGUI(), this);
 		pm.registerEvents(new ShopAPI(),this);
 		pm.registerEvents(new SuperbVote(),this);
+		pm.registerEvents(new VIP(),this);
 	}
 	
 	private void loadCommands(){
 		getCommand("menu").setExecutor(new Menu_command());
 		getCommand("coinshop").setExecutor(new Coinshop_command());
 		getCommand("particles").setExecutor(new Particles_command());
+		getCommand("vip").setExecutor(new VIP_command());
 	}
 	
 	public ArrayList<Player> getPlayers(){
@@ -92,5 +97,9 @@ public class Main extends JavaPlugin{
 
 	public FetchData getFetchData(){
 		return fd;
+	}
+
+	public VIP getVIPMenu(){
+		return vip;
 	}
 }

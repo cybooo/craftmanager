@@ -145,6 +145,9 @@ public class MainGUI implements Listener{
             if(e.getSlot() == 23){
                 Main.getInstance().getShopGUI().openShopGUI(p);
             }
+            if(e.getSlot() == 24){
+                Main.getInstance().getVIPMenu().openVIPMenu(p);
+            }
 
         }
     }
