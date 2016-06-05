@@ -45,6 +45,9 @@ public class ParticlesAPI implements Listener{
 				ItemStack i = ItemFactory.create(Material.APPLE, (byte)0, "§eHearts", "§7Kliknutim aktivujes!");
 				inv.setItem(10, i);
 			}
+		} else {
+			ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§cHearts", "","§7Tento efekt smi aktivovat pouze: §aVIP");
+			inv.setItem(10,i);
 		}
 		if(p.hasPermission("craftmanager.particles.angry")){
 			if(Angry.e.containsKey(p.getName())){
@@ -55,6 +58,9 @@ public class ParticlesAPI implements Listener{
 				ItemStack i = ItemFactory.create(Material.BLAZE_POWDER, (byte)0, "§eAngry", "§7Kliknutim aktivujes!");
 				inv.setItem(11, i);
 			}
+		} else {
+			ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§cAngry", "","§7Tento efekt smi aktivovat pouze: §aVIP");
+			inv.setItem(11,i);
 		}
 		if(p.hasPermission("craftmanager.particles.whitemagic")){
 			if(WhiteMagic.e.containsKey(p.getName())){
@@ -65,6 +71,9 @@ public class ParticlesAPI implements Listener{
 				ItemStack i = ItemFactory.create(Material.BONE, (byte)0, "§eWhite Magic", "§7Kliknutim aktivujes!");
 				inv.setItem(12, i);
 			}
+		} else {
+			ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§cWhite Magic", "","§7Tento efekt smi aktivovat pouze: §aVIP");
+			inv.setItem(12,i);
 		}
 		if(p.hasPermission("craftmanager.particles.witchmagic")){
 			if(WitchMagic.e.containsKey(p.getName())){
@@ -75,6 +84,9 @@ public class ParticlesAPI implements Listener{
 				ItemStack i = ItemFactory.create(Material.FERMENTED_SPIDER_EYE, (byte)0, "§eWitch Magic", "§7Kliknutim aktivujes!");
 				inv.setItem(13, i);
 			}
+		} else {
+			ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§cWitch Magic", "","§7Tento efekt smi aktivovat pouze: §aVIP");
+			inv.setItem(13,i);
 		}
 		if(p.hasPermission("craftmanager.particles.slime")){
 			if(Slime.e.containsKey(p.getName())){
@@ -85,6 +97,9 @@ public class ParticlesAPI implements Listener{
 				ItemStack i = ItemFactory.create(Material.SLIME_BALL, (byte)0, "§eSlime", "§7Kliknutim aktivujes!");
 				inv.setItem(14, i);
 			}
+		} else {
+			ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§cSlime", "","§7Tento efekt smi aktivovat pouze: §aVIP");
+			inv.setItem(14,i);
 		}
 		if(p.hasPermission("craftmanager.particles.snowball")){
 			if(Snowball.e.containsKey(p.getName())){
@@ -95,6 +110,9 @@ public class ParticlesAPI implements Listener{
 				ItemStack i = ItemFactory.create(Material.SNOW_BALL, (byte)0, "§eSnow", "§7Kliknutim aktivujes!");
 				inv.setItem(15, i);
 			}
+		} else {
+			ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§cSnow", "","§7Tento efekt smi aktivovat pouze: §aVIP");
+			inv.setItem(15,i);
 		}
 		if(p.hasPermission("craftmanager.particles.flame")){
 			if(Flame.e.containsKey(p.getName())){
@@ -105,6 +123,9 @@ public class ParticlesAPI implements Listener{
 				ItemStack i = ItemFactory.create(Material.BLAZE_POWDER, (byte) 0, "§eFlame", "§7Kliknutim aktivujes!");
 				inv.setItem(16, i);
 			}
+		} else {
+			ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§cFlame", "","§7Tento efekt smi aktivovat pouze: §aVIP");
+			inv.setItem(16,i);
 		}
 		if(p.hasPermission("craftmanager.particles.redstone")){
 			if(Redstone.e.containsKey(p.getName())){
@@ -115,6 +136,9 @@ public class ParticlesAPI implements Listener{
 				ItemStack i = ItemFactory.create(Material.REDSTONE, (byte) 0, "§eRedstone", "§7Kliknutim aktivujes!");
 				inv.setItem(19, i);
 			}
+		} else {
+			ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§cRedstone", "","§7Tento efekt smi aktivovat pouze: §aVIP");
+			inv.setItem(19,i);
 		}
 		if(p.hasPermission("craftmanager.particles.cloud")){
 			if(Cloud.e.containsKey(p.getName())){
@@ -125,6 +149,9 @@ public class ParticlesAPI implements Listener{
 				ItemStack i = ItemFactory.create(Material.QUARTZ, (byte) 0, "§eCloud", "§7Kliknutim aktivujes!");
 				inv.setItem(20, i);
 			}
+		} else {
+			ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§cCloud", "","§7Tento efekt smi aktivovat pouze: §aVIP");
+			inv.setItem(20,i);
 		}
 		if(p.hasPermission("craftmanager.particles.enchanted")){
 			if(Enchanted.e.containsKey(p.getName())){
@@ -135,6 +162,9 @@ public class ParticlesAPI implements Listener{
 				ItemStack i = ItemFactory.create(Material.BOOK, (byte) 0, "§eEnchanted", "§7Kliknutim aktivujes!");
 				inv.setItem(21, i);
 			}
+		} else {
+			ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§cEnchanted", "","§7Tento efekt smi aktivovat pouze: §aVIP");
+			inv.setItem(21,i);
 		}
 		if(p.hasPermission("craftmanager.particles.endrod")){
 			if(EndRod.e.containsKey(p.getName())){
@@ -145,6 +175,9 @@ public class ParticlesAPI implements Listener{
 				ItemStack i = ItemFactory.create(Material.END_ROD, (byte) 0, "§eEndRod", "§7Kliknutim aktivujes!");
 				inv.setItem(22, i);
 			}
+		} else {
+			ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§cEnd Rod", "","§7Tento efekt smi aktivovat pouze: §aVIP");
+			inv.setItem(22,i);
 		}
 		if(p.hasPermission("craftmanager.particles.firework")){
 			if(Firework.e.containsKey(p.getName())){
@@ -155,6 +188,9 @@ public class ParticlesAPI implements Listener{
 				ItemStack i = ItemFactory.create(Material.FIREWORK, (byte) 0, "§eFirework", "§7Kliknutim aktivujes!");
 				inv.setItem(23, i);
 			}
+		} else {
+			ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§cFirework", "","§7Tento efekt smi aktivovat pouze: §aVIP");
+			inv.setItem(23,i);
 		}
 		if(p.hasPermission("craftmanager.particles.dragonbreath")){
 			if(DragonBreath.e.containsKey(p.getName())){
@@ -165,6 +201,9 @@ public class ParticlesAPI implements Listener{
 				ItemStack i = ItemFactory.create(Material.DRAGONS_BREATH, (byte) 0, "§eDragonBreath", "§7Kliknutim aktivujes!");
 				inv.setItem(24, i);
 			}
+		} else {
+			ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§cDragonBreath", "","§7Tento efekt smi aktivovat pouze: §aVIP");
+			inv.setItem(24,i);
 		}
 		if(p.hasPermission("craftmanager.particles.portal")){
 			if(Portal.e.containsKey(p.getName())){
@@ -175,6 +214,9 @@ public class ParticlesAPI implements Listener{
 				ItemStack i = ItemFactory.create(Material.OBSIDIAN, (byte) 0, "§ePortal", "§7Kliknutim aktivujes!");
 				inv.setItem(25, i);
 			}
+		} else {
+			ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§cPortal", "","§7Tento efekt smi aktivovat pouze: §aVIP");
+			inv.setItem(25,i);
 		}
 		if(p.hasPermission("craftmanager.particles.lava")){
 			if(Lava.e.containsKey(p.getName())){
@@ -185,6 +227,9 @@ public class ParticlesAPI implements Listener{
 				ItemStack i = ItemFactory.create(Material.LAVA_BUCKET, (byte) 0, "§eLava", "§7Kliknutim aktivujes!");
 				inv.setItem(28, i);
 			}
+		} else {
+			ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§cLava", "","§7Tento efekt smi aktivovat pouze: §aVIP");
+			inv.setItem(28,i);
 		}
 		if(p.hasPermission("craftmanager.particles.smoke")){
 			if(Smoke.e.containsKey(p.getName())){
@@ -195,6 +240,9 @@ public class ParticlesAPI implements Listener{
 				ItemStack i = ItemFactory.create(Material.COAL, (byte) 0, "§eSmoke", "§7Kliknutim aktivujes!");
 				inv.setItem(29, i);
 			}
+		} else {
+			ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§cSmoke", "","§7Tento efekt smi aktivovat pouze: §aVIP");
+			inv.setItem(29,i);
 		}
 		if(p.hasPermission("craftmanager.particles.happy")) {
 			if (Happy.e.containsKey(p.getName())) {
@@ -205,6 +253,9 @@ public class ParticlesAPI implements Listener{
 				ItemStack i = ItemFactory.create(Material.EMERALD, (byte) 0, "§eHappy", "§7Kliknutim aktivujes!");
 				inv.setItem(30, i);
 			}
+		} else {
+			ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§cHappy", "","§7Tento efekt smi aktivovat pouze: §aVIP");
+			inv.setItem(30,i);
 		}
 		
 		ItemStack deaktivace = ItemFactory.create(Material.BARRIER, (byte)0, "§c✖ Deaktivace ✖", "§7Kliknutim deaktivujes particles.");
@@ -234,89 +285,174 @@ public class ParticlesAPI implements Listener{
 				Main.getInstance().getMainGUI().openMainMenu(p);
 			}
 			if(e.getSlot() == 10){
-				deactivateParticles(p);
-				this.h.activateLove(p);
-				p.closeInventory();
+				if(p.hasPermission("craftmanager.particles.hearts")){
+					deactivateParticles(p);
+					this.h.activateLove(p);
+					p.closeInventory();
+				} else {
+					p.sendMessage("§cK aktivaci tohoto efektu musis mit VIP!");
+					p.closeInventory();
+				}
 			}
 			if(e.getSlot() == 11){
-				deactivateParticles(p);
-				this.a.activate(p);
-				p.closeInventory();
+				if(p.hasPermission("craftmanager.particles.angry")){
+					deactivateParticles(p);
+					this.a.activate(p);
+					p.closeInventory();
+				} else {
+					p.sendMessage("§cK aktivaci tohoto efektu musis mit VIP!");
+					p.closeInventory();
+				}
 			}
 			if(e.getSlot() == 12){
-				deactivateParticles(p);
-				this.w.activate(p);
-				p.closeInventory();
+				if(p.hasPermission("craftmanager.particles.whitemagic")){
+					deactivateParticles(p);
+					this.w.activate(p);
+					p.closeInventory();
+				} else {
+					p.sendMessage("§cK aktivaci tohoto efektu musis mit VIP!");
+					p.closeInventory();
+				}
 			}
 			if(e.getSlot() == 13){
-				deactivateParticles(p);
-				this.m.activate(p);
-				p.closeInventory();
+				if(p.hasPermission("craftmanager.particles.witchmagic")){
+					deactivateParticles(p);
+					this.m.activate(p);
+					p.closeInventory();
+				} else {
+					p.sendMessage("§cK aktivaci tohoto efektu musis mit VIP!");
+					p.closeInventory();
+				}
 			}
 			if(e.getSlot() == 14){
-				deactivateParticles(p);
-				this.s.activate(p);
-				p.closeInventory();
+				if(p.hasPermission("craftmanager.particles.slime")){
+					deactivateParticles(p);
+					this.s.activate(p);
+					p.closeInventory();
+				} else {
+					p.sendMessage("§cK aktivaci tohoto efektu musis mit VIP!");
+					p.closeInventory();
+				}
 			}
 			if(e.getSlot() == 15){
-				deactivateParticles(p);
-				this.sn.activate(p);
-				p.closeInventory();
+				if(p.hasPermission("craftmanager.particles.snowball")){
+					deactivateParticles(p);
+					this.sn.activate(p);
+					p.closeInventory();
+				} else {
+					p.sendMessage("§cK aktivaci tohoto efektu musis mit VIP!");
+					p.closeInventory();
+				}
 			}
 			if(e.getSlot() == 16){
-				deactivateParticles(p);
-				f.activate(p);
-				p.closeInventory();
+				if(p.hasPermission("craftmanager.particles.flame")){
+					deactivateParticles(p);
+					f.activate(p);
+					p.closeInventory();
+				} else {
+					p.sendMessage("§cK aktivaci tohoto efektu musis mit VIP!");
+					p.closeInventory();
+				}
 			}
 			if(e.getSlot() == 19){
-				deactivateParticles(p);
-				this.r.activate(p);
-				p.closeInventory();
+				if(p.hasPermission("craftmanager.particles.redstone")){
+					deactivateParticles(p);
+					this.r.activate(p);
+					p.closeInventory();
+				} else {
+					p.sendMessage("§cK aktivaci tohoto efektu musis mit VIP!");
+					p.closeInventory();
+				}
 			}
 			if(e.getSlot() == 20){
-				deactivateParticles(p);
-				this.l.activate(p);
-				p.closeInventory();
+				if(p.hasPermission("craftmanager.particles.cloud")){
+					deactivateParticles(p);
+					this.l.activate(p);
+					p.closeInventory();
+				} else {
+					p.sendMessage("§cK aktivaci tohoto efektu musis mit VIP!");
+					p.closeInventory();
+				}
 			}
 			if(e.getSlot() == 21){
-				deactivateParticles(p);
-				this.e.activate(p);
-				p.closeInventory();
+				if(p.hasPermission("craftmanager.particles.enchanted")){
+					deactivateParticles(p);
+					this.e.activate(p);
+					p.closeInventory();
+				} else {
+					p.sendMessage("§cK aktivaci tohoto efektu musis mit VIP!");
+					p.closeInventory();
+				}
 			}
 			if(e.getSlot() == 22){
-				deactivateParticles(p);
-				this.er.activate(p);
-				p.closeInventory();
+				if(p.hasPermission("craftmanager.particles.endrod")){
+					deactivateParticles(p);
+					this.er.activate(p);
+					p.closeInventory();
+				} else {
+					p.sendMessage("§cK aktivaci tohoto efektu musis mit VIP!");
+					p.closeInventory();
+				}
 			}
 			if(e.getSlot() == 23){
-				deactivateParticles(p);
-				this.k.activate(p);
-				p.closeInventory();
+				if(p.hasPermission("craftmanager.particles.firework")){
+					deactivateParticles(p);
+					this.k.activate(p);
+					p.closeInventory();
+				} else {
+					p.sendMessage("§cK aktivaci tohoto efektu musis mit VIP!");
+					p.closeInventory();
+				}
 			}
 			if(e.getSlot() == 24){
-				deactivateParticles(p);
-				this.db.activate(p);
-				p.closeInventory();
+				if(p.hasPermission("craftmanager.particles.dragonbreath")){
+					deactivateParticles(p);
+					this.db.activate(p);
+					p.closeInventory();
+				} else {
+					p.sendMessage("§cK aktivaci tohoto efektu musis mit VIP!");
+					p.closeInventory();
+				}
 			}
 			if(e.getSlot() == 25){
-				deactivateParticles(p);
-				this.p.activate(p);
-				p.closeInventory();
+				if(p.hasPermission("craftmanager.particles.portal")){
+					deactivateParticles(p);
+					this.p.activate(p);
+					p.closeInventory();
+				} else {
+					p.sendMessage("§cK aktivaci tohoto efektu musis mit VIP!");
+					p.closeInventory();
+				}
 			}
 			if(e.getSlot() == 28){
-				deactivateParticles(p);
-				this.la.activate(p);
-				p.closeInventory();
+				if(p.hasPermission("craftmanager.particles.lava")){
+					deactivateParticles(p);
+					this.la.activate(p);
+					p.closeInventory();
+				} else {
+					p.sendMessage("§cK aktivaci tohoto efektu musis mit VIP!");
+					p.closeInventory();
+				}
 			}
 			if(e.getSlot() == 29){
-				deactivateParticles(p);
-				this.sm.activate(p);
-				p.closeInventory();
+				if(p.hasPermission("craftmanager.particles.smoke")){
+					deactivateParticles(p);
+					this.sm.activate(p);
+					p.closeInventory();
+				} else {
+					p.sendMessage("§cK aktivaci tohoto efektu musis mit VIP!");
+					p.closeInventory();
+				}
 			}
 			if(e.getSlot() == 30){
-				deactivateParticles(p);
-				this.ha.activate(p);
-				p.closeInventory();
+				if(p.hasPermission("craftmanager.particles.happy")){
+					deactivateParticles(p);
+					this.ha.activate(p);
+					p.closeInventory();
+				} else {
+					p.sendMessage("§cK aktivaci tohoto efektu musis mit VIP!");
+					p.closeInventory();
+				}
 			}
 		}
 		
