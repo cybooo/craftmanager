@@ -7,6 +7,7 @@ import cz.wake.manager.menu.VIP;
 import cz.wake.manager.shop.ShopAPI;
 import cz.wake.manager.sql.FetchData;
 import cz.wake.manager.sql.MySQL;
+import cz.wake.manager.sql.SetData;
 import cz.wake.manager.votifier.SuperbVote;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
@@ -23,6 +24,7 @@ public class Main extends JavaPlugin{
 	public ShopAPI shop = new ShopAPI();
 	private MySQL mysql = new MySQL();
 	private FetchData fd = new FetchData();
+	private SetData sd = new SetData();
 	private VIP vip = new VIP();
 	
 	private static Main instance;
@@ -95,6 +97,10 @@ public class Main extends JavaPlugin{
 
 	public FetchData getFetchData(){
 		return fd;
+	}
+
+	public SetData getSetData(){
+		return sd;
 	}
 
 	public VIP getVIPMenu(){

@@ -33,4 +33,30 @@ public class FetchData {
         }
         return 0;
     }
+
+    public synchronized int getPlayerWeekVotes(UUID uuid){
+        try{
+            ResultSet localResultSet = Main.getInstance().getMySQL().getCurrentConnection().createStatement().executeQuery("SELECT week FROM votes WHERE uuid = '" + uuid.toString() + "'");
+            if(localResultSet.next()){
+                return localResultSet.getInt("week");
+            }
+            localResultSet.close();
+        } catch(SQLException localSQLException){
+            localSQLException.printStackTrace();
+        }
+        return 0;
+    }
+
+    public synchronized int getPlayerMonthVotes(UUID uuid){
+        try{
+            ResultSet localResultSet = Main.getInstance().getMySQL().getCurrentConnection().createStatement().executeQuery("SELECT month FROM votes WHERE uuid = '" + uuid.toString() + "'");
+            if(localResultSet.next()){
+                return localResultSet.getInt("month");
+            }
+            localResultSet.close();
+        } catch(SQLException localSQLException){
+            localSQLException.printStackTrace();
+        }
+        return 0;
+    }
 }
