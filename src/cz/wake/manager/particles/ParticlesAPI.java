@@ -19,7 +19,6 @@ public class ParticlesAPI implements Listener{
 	WhiteMagic w = new WhiteMagic();
 	WitchMagic m = new WitchMagic();
 	Slime s = new Slime();
-	Music c = new Music();
 	Flame f = new Flame();
 	Redstone r = new Redstone();
 	Cloud l = new Cloud();
@@ -31,6 +30,7 @@ public class ParticlesAPI implements Listener{
 	Lava la = new Lava();
 	Smoke sm = new Smoke();
 	Happy ha = new Happy();
+	Snowball sn = new Snowball();
 	
 	public void openParticlesMenu(final Player p){
 		
@@ -86,13 +86,13 @@ public class ParticlesAPI implements Listener{
 				inv.setItem(14, i);
 			}
 		}
-		if(p.hasPermission("craftmanager.particles.music")){
-			if(Music.e.containsKey(p.getName())){
-				ItemStack i = ItemFactory.create(Material.RECORD_3, (byte)0, "§eMusic", "§7Kliknutim deaktivujes!");
+		if(p.hasPermission("craftmanager.particles.snowball")){
+			if(Snowball.e.containsKey(p.getName())){
+				ItemStack i = ItemFactory.create(Material.SNOW_BALL, (byte)0, "§eSnow", "§7Kliknutim deaktivujes!");
 				i = ItemFactory.addGlow(i);
 				inv.setItem(15, i);
 			} else {
-				ItemStack i = ItemFactory.create(Material.RECORD_3, (byte)0, "§eMusic", "§7Kliknutim aktivujes!");
+				ItemStack i = ItemFactory.create(Material.SNOW_BALL, (byte)0, "§eSnow", "§7Kliknutim aktivujes!");
 				inv.setItem(15, i);
 			}
 		}
@@ -260,7 +260,7 @@ public class ParticlesAPI implements Listener{
 			}
 			if(e.getSlot() == 15){
 				deactivateParticles(p);
-				this.c.activate(p);
+				this.sn.activate(p);
 				p.closeInventory();
 			}
 			if(e.getSlot() == 16){
@@ -348,9 +348,9 @@ public class ParticlesAPI implements Listener{
 			Slime.e.remove(p.getName());
 			p.closeInventory();
 		}
-		if(Music.e.containsKey(p.getName())){
-			Bukkit.getScheduler().cancelTask(((Integer)Music.e.get(p.getName())).intValue());
-			Music.e.remove(p.getName());
+		if(Snowball.e.containsKey(p.getName())){
+			Bukkit.getScheduler().cancelTask(((Integer)Snowball.e.get(p.getName())).intValue());
+			Snowball.e.remove(p.getName());
 			p.closeInventory();
 		}
 		if(Flame.e.containsKey(p.getName())){

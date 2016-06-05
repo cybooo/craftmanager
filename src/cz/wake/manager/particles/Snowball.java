@@ -10,7 +10,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ParticleEffect;
 
-public class Music {
+public class Snowball {
 	
 	public static final HashMap<String, Integer> e = new HashMap();
 	int task;
@@ -22,12 +22,7 @@ public class Music {
 				@Override
 				public void run() {
 					if(e.containsKey(p.getName()) && p.isOnline()){
-						for (int i = 0; i < 12; i++) {
-							Random random = new Random();
-					        int j = random.nextInt(25);
-					        ParticleEffect.ParticleColor pc = new ParticleEffect.NoteColor(j);
-					        ParticleEffect.NOTE.display(pc, p.getLocation(), 16);			         
-						}
+						ParticleEffect.SNOWBALL.display(1.0f, 1.0f, 1.0f, 0.05f, 7, p.getLocation(),Main.getInstance().getPlayers());
 					}
 				}
 		}, 0L, 5L).getTaskId();
