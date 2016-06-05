@@ -100,6 +100,4 @@ public class Main extends JavaPlugin{
 	public VIP getVIPMenu(){
 		return vip;
 	}
-
-	//TEST :D
 }
