@@ -2,10 +2,7 @@ package cz.wake.manager;
 
 import java.util.ArrayList;
 
-import cz.wake.manager.commads.Coinshop_command;
-import cz.wake.manager.commads.Menu_command;
-import cz.wake.manager.commads.Particles_command;
-import cz.wake.manager.commads.VIP_command;
+import cz.wake.manager.commads.*;
 import cz.wake.manager.menu.VIP;
 import cz.wake.manager.shop.ShopAPI;
 import cz.wake.manager.sql.FetchData;
@@ -63,6 +60,7 @@ public class Main extends JavaPlugin{
 		getCommand("coinshop").setExecutor(new Coinshop_command());
 		getCommand("particles").setExecutor(new Particles_command());
 		getCommand("vip").setExecutor(new VIP_command());
+		getCommand("coins").setExecutor(new Coins_command());
 	}
 	
 	public ArrayList<Player> getPlayers(){
