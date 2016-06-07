@@ -9,9 +9,9 @@ import java.sql.SQLException;
 
 public class SetData {
 
-    public final void addPlayerVotes(final Player p, final int week, final int month) {
+    public final void addPlayerVote(final Player p) {
 
-        final String query = "UPDATE votes SET week = ?, month = ? WHERE uuid = '" + p.getUniqueId().toString() + "'";
+        final String query = "UPDATE votes SET votes= ?, week = ?, month = ? WHERE uuid = '" + p.getUniqueId().toString() + "'";
 
         new BukkitRunnable() {
 
@@ -20,8 +20,9 @@ public class SetData {
                 try {
 
                     PreparedStatement sql = Main.getInstance().getMySQL().getCurrentConnection().prepareStatement(query);
-                    sql.setInt(1, week + Main.getInstance().getFetchData().getPlayerWeekVotes(p.getUniqueId()));
-                    sql.setLong(2, month + Main.getInstance().getFetchData().getPlayerMonthVotes(p.getUniqueId()));
+                    sql.setInt(1, 1 + Main.getInstance().getFetchData().getPlayerTotalVotes(p.getUniqueId()));
+                    sql.setInt(2, 1 + Main.getInstance().getFetchData().getPlayerWeekVotes(p.getUniqueId()));
+                    sql.setInt(3, 1 + Main.getInstance().getFetchData().getPlayerMonthVotes(p.getUniqueId()));
                     sql.execute();
                     sql.close();
 
