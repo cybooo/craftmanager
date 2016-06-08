@@ -40,8 +40,8 @@ public class MainGUI implements Listener{
 
         ItemStack hlasy = ItemFactory.create(Material.GOLD_INGOT,(byte)0,"§e§lOdmeny za hlasovani",
                 "",
-                "§fKazdy hlas: §615 CC §f+ §aVote Key",
-                "§f25% sance: §630 CC",
+                "§fKazdy hlas: §610 CC §f+ §aVote Key",
+                "§f25% sance: §625 CC",
                 "§f5% sance: §650 CC",
                 "§f1% sance: §6100 CC",
                 "",
