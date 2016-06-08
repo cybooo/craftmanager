@@ -6,6 +6,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.UUID;
 
 public class SetData {
 
@@ -32,5 +33,28 @@ public class SetData {
 
             }
         }.runTaskAsynchronously(Main.getInstance());
+    }
+
+    public final void addCoins(final UUID uuid, final int amount) {
+
+        final String query = "INSERT INTO CraftCoins (uuid, balance) VALUES (?,?) ON DUPLICATE KEY UPDATE balance = ?;";
+
+        new BukkitRunnable() {
+
+            public void run() {
+
+                try {
+                    PreparedStatement sql = Main.getInstance().getMySQL().getCurrentConnection().prepareStatement(query);
+                    sql.setString(1, uuid.toString());
+                    sql.setInt(2, amount);
+                    sql.setInt(3, amount + Main.getInstance().getFetchData().getPlayerCoins(uuid));
+                    sql.setQueryTimeout(30);
+                    sql.executeUpdate();
+                    sql.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.runTaskAsynchronously(Main.getPlugin(Main.class));
     }
 }
