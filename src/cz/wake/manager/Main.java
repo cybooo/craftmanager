@@ -61,6 +61,7 @@ public class Main extends JavaPlugin{
 		pm.registerEvents(new ShopAPI(),this);
 		pm.registerEvents(new SuperbVote(),this);
 		pm.registerEvents(new VIP(),this);
+		pm.registerEvents(new SuperbVote(),this);
 	}
 	
 	private void loadCommands(){
