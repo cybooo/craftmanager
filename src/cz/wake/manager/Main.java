@@ -8,6 +8,7 @@ import cz.wake.manager.shop.ShopAPI;
 import cz.wake.manager.sql.FetchData;
 import cz.wake.manager.sql.MySQL;
 import cz.wake.manager.sql.SetData;
+import cz.wake.manager.votifier.Reminder;
 import cz.wake.manager.votifier.SuperbVote;
 import cz.wake.manager.votifier.VoteHandler;
 import org.bukkit.entity.Player;
@@ -39,6 +40,9 @@ public class Main extends JavaPlugin{
 		//Config
 		getConfig().options().copyDefaults(true);
 		saveDefaultConfig();
+
+		//Oznameni kazdou hodinu
+		getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 20 * 60, 20 * 60);
 	}
 	
 	public void onDisable(){
