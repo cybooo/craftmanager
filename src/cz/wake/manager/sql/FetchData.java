@@ -1,6 +1,7 @@
 package cz.wake.manager.sql;
 
 import cz.wake.manager.Main;
+import org.bukkit.entity.Player;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -58,5 +59,23 @@ public class FetchData {
             localSQLException.printStackTrace();
         }
         return 0;
+    }
+
+    public final boolean hasData(final Player p) {
+
+        Boolean hasData = Boolean.valueOf(false);
+
+        final String query = "SELECT * FROM votes WHERE uuid = '" + p.getUniqueId().toString() + "';";
+
+        try {
+            ResultSet result = Main.getInstance().getMySQL().getCurrentConnection().createStatement().executeQuery(query);
+            if (result.next()) {
+                hasData = Boolean.valueOf(true);
+            }
+            result.close();
+        } catch (SQLException e) {
+            //Nic
+        }
+        return hasData.booleanValue();
     }
 }

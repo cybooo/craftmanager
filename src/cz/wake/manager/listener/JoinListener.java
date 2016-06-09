@@ -20,15 +20,24 @@ public class JoinListener implements Listener{
 		if(!Main.getInstance().isVisibleForPlayer(p)){
 			Main.getInstance().addPlayer(p);
 		}
+		if(!Main.getInstance().getFetchData().hasData(p)){
 
-		//Celkove hlasy
-		Main.getInstance().getVoteHandler().addTotalVotes(p,Main.getInstance().getFetchData().getPlayerTotalVotes(p.getUniqueId()));
+			Main.getInstance().getSetData().createPlayer(p);
 
-		//Mesicni hlasy
-		Main.getInstance().getVoteHandler().addMonthVotes(p,Main.getInstance().getFetchData().getPlayerMonthVotes(p.getUniqueId()));
+			Main.getInstance().getVoteHandler().addTotalVotes(p,0);
+			Main.getInstance().getVoteHandler().addMonthVotes(p,0);
+			Main.getInstance().getVoteHandler().addWeekVotes(p,0);
 
-		//Tydeni hlasy
-		Main.getInstance().getVoteHandler().addWeekVotes(p,Main.getInstance().getFetchData().getPlayerWeekVotes(p.getUniqueId()));
+		} else {
+			//Celkove hlasy
+			Main.getInstance().getVoteHandler().addTotalVotes(p,Main.getInstance().getFetchData().getPlayerTotalVotes(p.getUniqueId()));
+
+			//Mesicni hlasy
+			Main.getInstance().getVoteHandler().addMonthVotes(p,Main.getInstance().getFetchData().getPlayerMonthVotes(p.getUniqueId()));
+
+			//Tydeni hlasy
+			Main.getInstance().getVoteHandler().addWeekVotes(p,Main.getInstance().getFetchData().getPlayerWeekVotes(p.getUniqueId()));
+		}
 	}
 	
 	@EventHandler

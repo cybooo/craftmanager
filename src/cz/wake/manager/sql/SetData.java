@@ -57,4 +57,33 @@ public class SetData {
             }
         }.runTaskAsynchronously(Main.getPlugin(Main.class));
     }
+
+    public final void createPlayer(final Player p) {
+
+        final String query = "INSERT INTO votes (uuid, last_name, votes, month, week) VALUES (?,?,?,?,?) ON DUPLICATE KEY UPDATE votes = ?;";
+
+        new BukkitRunnable() {
+
+            public void run() {
+
+                try {
+
+                    PreparedStatement sql = Main.getInstance().getMySQL().getCurrentConnection().prepareStatement(query);
+                    sql.setString(1, p.getUniqueId().toString());
+                    sql.setString(2, p.getName());
+                    sql.setInt(3, 0);
+                    sql.setInt(4, 0);
+                    sql.setInt(5, 0);
+                    sql.setInt(6, 0);
+                    sql.setQueryTimeout(30);
+                    sql.execute();
+                    sql.close();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }.runTaskAsynchronously(Main.getInstance());
+    }
 }
