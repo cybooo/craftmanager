@@ -70,6 +70,7 @@ public class Main extends JavaPlugin{
 		getCommand("particles").setExecutor(new Particles_command());
 		getCommand("vip").setExecutor(new VIP_command());
 		getCommand("coins").setExecutor(new Coins_command());
+		getCommand("glow").setExecutor(new Glow_command());
 	}
 	
 	public ArrayList<Player> getPlayers(){
