@@ -11,15 +11,15 @@ public class VoteHandler {
     private HashMap<Player, Integer> weekVotes = new HashMap<>();
 
     public void addWeekVotes(final Player p, final Integer v){
-        weekVotes.put(p,this.getPlayerCachedWeekVotes(p) + v);
+        weekVotes.put(p,v);
     }
 
     public void addMonthVotes(final Player p, final Integer v){
-        monthVotes.put(p,this.getPlayerCachedMonthVotes(p) + v);
+        monthVotes.put(p,v);
     }
 
     public void addTotalVotes(final Player p, final Integer v){
-        totalVotes.put(p, this.getPlayerCachedTotalVotes(p) + v);
+        totalVotes.put(p,v);
     }
 
     public boolean isInTotalVotes(final Player p){

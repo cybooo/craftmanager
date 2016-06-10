@@ -31,9 +31,9 @@ public class MainGUI implements Listener{
         headLore.add("§7");
         headLore.add("§6CraftCoins: §f" + Main.getInstance().getFetchData().getPlayerCoins(p.getUniqueId()));
         headLore.add("");
-        headLore.add("§eHlasy tento tyden: §f0");
-        headLore.add("§eHlasy tento mesic: §f0");
-        headLore.add("§eHlasy celkem: §f" + Main.getInstance().getFetchData().getPlayerTotalVotes(p.getUniqueId()));
+        headLore.add("§eHlasy tento tyden: §f " + Main.getInstance().getVoteHandler().getPlayerCachedWeekVotes(p));
+        headLore.add("§eHlasy tento mesic: §f" + Main.getInstance().getVoteHandler().getPlayerCachedMonthVotes(p));
+        headLore.add("§eHlasy celkem: §f" + Main.getInstance().getVoteHandler().getPlayerCachedTotalVotes(p));
         headMeta.setLore(headLore);
         head.setItemMeta(headMeta);
         inv.setItem(13, head);

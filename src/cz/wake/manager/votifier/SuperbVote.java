@@ -19,9 +19,9 @@ public class SuperbVote implements Listener{
             if(onlinePlayer.isOnline()){
                 //Pridani hlasu
                 Main.getInstance().getSetData().addPlayerVote(onlinePlayer);
-                Main.getInstance().getVoteHandler().addTotalVotes(onlinePlayer,1);
-                Main.getInstance().getVoteHandler().addMonthVotes(onlinePlayer,1);
-                Main.getInstance().getVoteHandler().addWeekVotes(onlinePlayer,1);
+                Main.getInstance().getVoteHandler().addTotalVotes(onlinePlayer,1 + Main.getInstance().getVoteHandler().getPlayerCachedTotalVotes(onlinePlayer));
+                Main.getInstance().getVoteHandler().addMonthVotes(onlinePlayer,1 + Main.getInstance().getVoteHandler().getPlayerCachedMonthVotes(onlinePlayer));
+                Main.getInstance().getVoteHandler().addWeekVotes(onlinePlayer,1 + Main.getInstance().getVoteHandler().getPlayerCachedWeekVotes(onlinePlayer));
 
                 this.giveReward(onlinePlayer);
 
