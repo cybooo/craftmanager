@@ -9,7 +9,8 @@ public class Reminder implements Runnable{
     @Override
     public void run(){
         for(Player p : Bukkit.getOnlinePlayers()){
-            p.sendMessage("§cNezapomen hlasovat! Aktualne mas §f" + Main.getInstance().getVoteHandler().getPlayerCachedTotalVotes(p) + " §chlasu!");
+            p.sendMessage("§cNezapomen hlasovat! Tento mesic mas §f" + Main.getInstance().getVoteHandler().getPlayerCachedMonthVotes(p) + " §chlasu! §8(Celkem: "
+             + Main.getInstance().getVoteHandler().getPlayerCachedTotalVotes(p) + ")");
         }
     }
 }
