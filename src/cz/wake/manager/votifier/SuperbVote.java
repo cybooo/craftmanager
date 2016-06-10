@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Random;
 
@@ -14,27 +15,30 @@ public class SuperbVote implements Listener{
 
     @EventHandler
     public void voteSQL(final VotifierEvent e){
-        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
-            Player onlinePlayer = Bukkit.getPlayerExact(e.getVote().getUsername());
-            if(onlinePlayer.isOnline()){
-                //Pridani hlasu
-                Main.getInstance().getSetData().addPlayerVote(onlinePlayer);
-                Main.getInstance().getVoteHandler().addTotalVotes(onlinePlayer,1 + Main.getInstance().getVoteHandler().getPlayerCachedTotalVotes(onlinePlayer));
-                Main.getInstance().getVoteHandler().addMonthVotes(onlinePlayer,1 + Main.getInstance().getVoteHandler().getPlayerCachedMonthVotes(onlinePlayer));
-                Main.getInstance().getVoteHandler().addWeekVotes(onlinePlayer,1 + Main.getInstance().getVoteHandler().getPlayerCachedWeekVotes(onlinePlayer));
+        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new BukkitRunnable() {
+            @Override
+            public void run() {
+                Player onlinePlayer = Bukkit.getPlayerExact(e.getVote().getUsername());
+                if(onlinePlayer.isOnline()){
+                    //Pridani hlasu
+                    Main.getInstance().getSetData().addPlayerVote(onlinePlayer);
+                    Main.getInstance().getVoteHandler().addTotalVotes(onlinePlayer,1 + Main.getInstance().getVoteHandler().getPlayerCachedTotalVotes(onlinePlayer));
+                    Main.getInstance().getVoteHandler().addMonthVotes(onlinePlayer,1 + Main.getInstance().getVoteHandler().getPlayerCachedMonthVotes(onlinePlayer));
+                    Main.getInstance().getVoteHandler().addWeekVotes(onlinePlayer,1 + Main.getInstance().getVoteHandler().getPlayerCachedWeekVotes(onlinePlayer));
 
-                this.giveReward(onlinePlayer);
+                    giveReward(onlinePlayer);
 
-                Titles.sendFullTitlePlayer(onlinePlayer,10,60,10,"§a§lDekujeme!","§fDostal/a jsi odmenu.");
+                    Titles.sendFullTitlePlayer(onlinePlayer,10,60,10,"§a§lDekujeme!","§fDostal/a jsi odmenu.");
+                    checkMountWin(onlinePlayer);
 
-                this.checkMountWin(onlinePlayer);
-
+                }
             }
         });
     }
 
     private void giveReward(final Player p){
         int sance = randRange(1, 100);
+        System.out.println("Sance: " + sance);
         if(sance == 1){ //1% sance
             this.giveCoins(p,100);
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"cratekeys give" + p.getName() + " Vote 1");
@@ -45,8 +49,8 @@ public class SuperbVote implements Listener{
             this.giveCoins(p,25);
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"cratekeys give" + p.getName() + " Vote 1");
         } else {
-            this.giveCoins(p,10);
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"cratekeys give" + p.getName() + " Vote 1");
+            this.giveCoins(p,10);
         }
     }
 

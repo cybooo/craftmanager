@@ -19,12 +19,11 @@ public class SetData {
             public void run() {
 
                 try {
-
                     PreparedStatement sql = Main.getInstance().getMySQL().getCurrentConnection().prepareStatement(query);
                     sql.setInt(1, 1 + Main.getInstance().getFetchData().getPlayerTotalVotes(p.getUniqueId()));
                     sql.setInt(2, 1 + Main.getInstance().getFetchData().getPlayerWeekVotes(p.getUniqueId()));
                     sql.setInt(3, 1 + Main.getInstance().getFetchData().getPlayerMonthVotes(p.getUniqueId()));
-                    sql.execute();
+                    sql.executeUpdate();
                     sql.close();
 
                 } catch (SQLException e) {
@@ -75,7 +74,6 @@ public class SetData {
                     sql.setInt(4, 0);
                     sql.setInt(5, 0);
                     sql.setInt(6, 0);
-                    sql.setQueryTimeout(30);
                     sql.execute();
                     sql.close();
 
