@@ -18,3 +18,5 @@ commands:
       aliases: [cc]
     glow:
       description: Prikaz pro VIP
+    fakevote:
+      description: Fakevote

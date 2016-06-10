@@ -71,6 +71,7 @@ public class Main extends JavaPlugin{
 		getCommand("vip").setExecutor(new VIP_command());
 		getCommand("coins").setExecutor(new Coins_command());
 		getCommand("glow").setExecutor(new Glow_command());
+		getCommand("fakevote").setExecutor(new Fakevote_command());
 	}
 	
 	public ArrayList<Player> getPlayers(){
