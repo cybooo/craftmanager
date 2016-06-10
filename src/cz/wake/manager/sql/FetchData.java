@@ -5,6 +5,8 @@ import org.bukkit.entity.Player;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class FetchData {
@@ -77,5 +79,33 @@ public class FetchData {
             //Nic
         }
         return hasData.booleanValue();
+    }
+
+    public final List<String> getTopVotersMonth(){
+        List<String> names = new ArrayList<>();
+        try{
+            ResultSet localResultSet = Main.getInstance().getMySQL().getCurrentConnection().createStatement().executeQuery("SELECT last_name FROM votes ORDER BY month DESC LIMIT 10");
+            while(localResultSet.next()){
+                names.add(localResultSet.getString(1));
+            }
+            localResultSet.close();
+        } catch(SQLException localSQLException){
+            localSQLException.printStackTrace();
+        }
+        return names;
+    }
+
+    public final List<String> getTopVotersVotes(){
+        List<String> names = new ArrayList<>();
+        try{
+            ResultSet localResultSet = Main.getInstance().getMySQL().getCurrentConnection().createStatement().executeQuery("SELECT month FROM votes ORDER BY month DESC LIMIT 10");
+            while(localResultSet.next()){
+                names.add(localResultSet.getString(1));
+            }
+            localResultSet.close();
+        } catch(SQLException localSQLException){
+            localSQLException.printStackTrace();
+        }
+        return names;
     }
 }

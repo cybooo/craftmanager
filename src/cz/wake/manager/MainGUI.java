@@ -10,9 +10,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class MainGUI implements Listener{
@@ -49,7 +51,7 @@ public class MainGUI implements Listener{
                 "§f20 hlasu: §6200 CC",
                 "§f40 hlasu: §6300 CC",
                 "§f60 hlasu: §6500 CC");
-
+        /*
         ItemStack top = ItemFactory.create(Material.HOPPER,(byte)0,"§d§lTOP hraci (tento mesic)",
                 "",
                 "§6#1. §bMrWakeCZ §7(0 hlasu)",
@@ -61,7 +63,21 @@ public class MainGUI implements Listener{
                 "§6#7. §fMrWakeCZ §7(0 hlasu)",
                 "§6#8. §fMrWakeCZ §7(0 hlasu)",
                 "§6#9. §fMrWakeCZ §7(0 hlasu)",
-                "§6#10. §fMrWakeCZ §7(0 hlasu)");
+                "§6#10. §fMrWakeCZ §7(0 hlasu)"); */
+
+        List<String> names = Main.getInstance().getFetchData().getTopVotersMonth();
+        List<String> votes = Main.getInstance().getFetchData().getTopVotersVotes();
+
+        ItemStack top = new ItemStack(Material.HOPPER);
+        ItemMeta topMeta = top.getItemMeta();
+        topMeta.setDisplayName("§d§lTOP hraci (tento mesic)");
+        ArrayList<String> topLore = new ArrayList<String>();
+        for(int i = 0; i < names.size(); i++){
+            //String pos = Integer.toString(i + 1);
+            topLore.add("§6" + String.valueOf(i + 1) + ". §7" + names.get(i) + " §8(" + votes.get(i) + " hlasu)");
+        }
+        topMeta.setLore(topLore);
+        top.setItemMeta(topMeta);
 
         ItemStack vip = ItemFactory.create(Material.EMERALD,(byte)0,"§a§lVIP","§7Prehled vyhod a SMS k ","§7nakupu VIP na serveru!","","§eKlikni pro zobrazeni!");
 
