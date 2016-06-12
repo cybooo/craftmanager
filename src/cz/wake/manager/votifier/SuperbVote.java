@@ -29,8 +29,13 @@ public class SuperbVote implements Listener{
                     giveReward(onlinePlayer);
 
                     Titles.sendFullTitlePlayer(onlinePlayer,10,60,10,"§a§lDekujeme!","§fDostal/a jsi odmenu.");
+                    for(Player p : Bukkit.getOnlinePlayers()){
+                        p.sendMessage("§b" + onlinePlayer.getName() + " §ehlasoval a ziskal §aodmenu!");
+                    }
                     checkMountWin(onlinePlayer);
 
+                } else {
+                    return;
                 }
             }
         });
@@ -41,15 +46,15 @@ public class SuperbVote implements Listener{
         System.out.println("Sance: " + sance);
         if(sance == 1){ //1% sance
             this.giveCoins(p,100);
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"cratekeys give" + p.getName() + " Vote 1");
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"cratekeys give " + p.getName() + " Vote 1");
         } else if (sance <= 5 && sance >= 2) { //5% sance
             this.giveCoins(p,50);
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"cratekeys give" + p.getName() + " Vote 1");
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"cratekeys give " + p.getName() + " Vote 1");
         } else if (sance <= 25 && sance >= 6){ //25% sance
             this.giveCoins(p,25);
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"cratekeys give" + p.getName() + " Vote 1");
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"cratekeys give " + p.getName() + " Vote 1");
         } else {
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"cratekeys give" + p.getName() + " Vote 1");
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"cratekeys give " + p.getName() + " Vote 1");
             this.giveCoins(p,10);
         }
     }
