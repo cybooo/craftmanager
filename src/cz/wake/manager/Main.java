@@ -42,7 +42,7 @@ public class Main extends JavaPlugin{
 		saveDefaultConfig();
 
 		//Oznameni kazdou hodinu
-		getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 20 * 60, 20 * 60);
+		getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 2000, 72000);
 	}
 	
 	public void onDisable(){
@@ -59,16 +59,15 @@ public class Main extends JavaPlugin{
 		pm.registerEvents(new JoinListener(), this);
 		pm.registerEvents(new MainGUI(), this);
 		pm.registerEvents(new ShopAPI(),this);
-		pm.registerEvents(new SuperbVote(),this);
 		pm.registerEvents(new VIP(),this);
 		pm.registerEvents(new SuperbVote(),this);
 	}
 	
 	private void loadCommands(){
 		getCommand("menu").setExecutor(new Menu_command());
-		getCommand("coinshop").setExecutor(new Coinshop_command());
+		//getCommand("coinshop").setExecutor(new Coinshop_command());
 		getCommand("particles").setExecutor(new Particles_command());
-		getCommand("vip").setExecutor(new VIP_command());
+		//getCommand("vip").setExecutor(new VIP_command());
 		getCommand("coins").setExecutor(new Coins_command());
 		getCommand("glow").setExecutor(new Glow_command());
 		getCommand("fakevote").setExecutor(new Fakevote_command());

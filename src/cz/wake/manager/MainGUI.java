@@ -50,7 +50,9 @@ public class MainGUI implements Listener{
                 "§bKazdy mesic muzes ziskat tyto bonusy!",
                 "§f20 hlasu: §6200 CC",
                 "§f40 hlasu: §6300 CC",
-                "§f60 hlasu: §6500 CC");
+                "§f60 hlasu: §6500 CC",
+                "",
+                "§8Vote Key neplati pro Creative!");
         /*
         ItemStack top = ItemFactory.create(Material.HOPPER,(byte)0,"§d§lTOP hraci (tento mesic)",
                 "",
@@ -81,7 +83,7 @@ public class MainGUI implements Listener{
 
         ItemStack vip = ItemFactory.create(Material.EMERALD,(byte)0,"§a§lVIP","§7Prehled vyhod a SMS k ","§7nakupu VIP na serveru!","","§eKlikni pro zobrazeni!");
 
-        ItemStack shop = ItemFactory.create(Material.NETHER_STAR,(byte)0,"§a§lShop","","§7Zde najdes seznam prikazu,","§7ruznych boosteru a efekty,","§7ktere si muzes zakoupit za CraftCoiny!","","§eKlikni pro zobrazeni!");
+        ItemStack shop = ItemFactory.create(Material.NETHER_STAR,(byte)0,"§a§lShop","","§7Zde najdes seznam prikazu,","§7ruznych boosteru a efekty,","§7ktere si muzes zakoupit za CraftCoiny!","","§cAktualne nedostupne!");
 
         ItemStack odkaz = ItemFactory.create(Material.PAPER,(byte)0,"§c§lOdkaz na hlasovani","","§fKliknutim zobrazis odkaz,","§fktery te rovnou presmeruje","§fna stranku s hlasovanim.","","§eKlikni pro zobrazeni!");
 
@@ -147,6 +149,7 @@ public class MainGUI implements Listener{
             }
             if(e.getSlot() == 31){
                 Main.getInstance().getParticlesAPI().openParticlesMenu(p);
+                //p.sendMessage("§cAktualne nedostupny!");
             }
             if(e.getSlot() == 21){
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING,1.0f,1.0f);
@@ -159,10 +162,11 @@ public class MainGUI implements Listener{
                 p.closeInventory();
             }
             if(e.getSlot() == 23){
-                Main.getInstance().getShopGUI().openShopGUI(p);
+                //Main.getInstance().getShopGUI().openShopGUI(p);
+                p.sendMessage("§cShop je aktualne nedostupny!");
             }
             if(e.getSlot() == 24){
-                Main.getInstance().getVIPMenu().openVIPMenu(p);
+                p.sendMessage("§cDocasne nefunguje, pouzij /vip");
             }
 
         }

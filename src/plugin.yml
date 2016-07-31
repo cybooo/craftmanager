@@ -11,8 +11,6 @@ commands:
     particles:
       description: Prikaz na otevreni particles menu
       aliases: [part]
-    vip:
-      description: Prikaz na otevreni VIP menu
     coins:
       description: Prikaz na zjisteni craftcoinu
       aliases: [cc]
