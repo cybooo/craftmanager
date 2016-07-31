@@ -67,7 +67,6 @@ public class Main extends JavaPlugin{
 		getCommand("menu").setExecutor(new Menu_command());
 		//getCommand("coinshop").setExecutor(new Coinshop_command());
 		getCommand("particles").setExecutor(new Particles_command());
-		//getCommand("vip").setExecutor(new VIP_command());
 		getCommand("coins").setExecutor(new Coins_command());
 		getCommand("glow").setExecutor(new Glow_command());
 		getCommand("fakevote").setExecutor(new Fakevote_command());
