@@ -17,6 +17,9 @@ public class JoinListener implements Listener{
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e){
 		final Player p = e.getPlayer();
+
+		e.setJoinMessage(null);
+
 		if(!Main.getInstance().isVisibleForPlayer(p)){
 			Main.getInstance().addPlayer(p);
 		}
@@ -43,6 +46,9 @@ public class JoinListener implements Listener{
 	@EventHandler
 	public void onQuit(PlayerQuitEvent e){
 		final Player p = e.getPlayer();
+
+        e.setQuitMessage(null);
+
 		if(Main.getInstance().isVisibleForPlayer(p)){
 			partAPI.deactivateParticles(p);
 			Main.getInstance().removePlayer(p);
