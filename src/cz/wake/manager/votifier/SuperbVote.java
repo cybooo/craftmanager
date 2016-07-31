@@ -19,7 +19,7 @@ public class SuperbVote implements Listener{
             @Override
             public void run() {
                 Player onlinePlayer = Bukkit.getPlayerExact(e.getVote().getUsername());
-                if(onlinePlayer.isOnline()){
+                if(onlinePlayer.isOnline() && onlinePlayer != null){
                     //Pridani hlasu
                     Main.getInstance().getSetData().addPlayerVote(onlinePlayer);
                     Main.getInstance().getVoteHandler().addTotalVotes(onlinePlayer,1 + Main.getInstance().getVoteHandler().getPlayerCachedTotalVotes(onlinePlayer));
@@ -34,8 +34,6 @@ public class SuperbVote implements Listener{
                     }
                     checkMountWin(onlinePlayer);
 
-                } else {
-                    return;
                 }
             }
         });
