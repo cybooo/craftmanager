@@ -1,10 +1,10 @@
 package cz.wake.manager.particles;
 
 import cz.wake.manager.Main;
-import cz.wake.manager.utils.ParticleEffect;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.inventivetalent.particle.ParticleEffect;
 
 import java.util.HashMap;
 
@@ -20,7 +20,7 @@ public class Enchanted {
                 @Override
                 public void run() {
                     if(e.containsKey(p.getName()) && p.isOnline()){
-                        ParticleEffect.ENCHANTMENT_TABLE.display(1.0f, 1.0f, 1.0f, 0.05f, 15, p.getLocation(),Main.getInstance().getPlayers());
+                        ParticleEffect.ENCHANTMENT_TABLE.send(Main.getInstance().getPlayers(),p.getLocation(),1.0f, 1.0f, 1.0f, 0.05f, 15);
                     }
                 }
             }, 0L, 5L).getTaskId();

@@ -4,11 +4,10 @@ import java.util.HashMap;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import cz.wake.manager.Main;
-import cz.wake.manager.utils.ParticleEffect;
+import org.inventivetalent.particle.ParticleEffect;
 
 public class Hearts{
 	
@@ -22,7 +21,7 @@ public class Hearts{
 				@Override
 				public void run() {
 					if(e.containsKey(p.getName()) && p.isOnline()){
-						ParticleEffect.HEART.display(0.7f, 0.7f, 0.7f, 0.05f, 3, p.getLocation(),Main.getInstance().getPlayers());
+						ParticleEffect.HEART.send(Main.getInstance().getPlayers(),p.getLocation(),0.7f, 0.7f, 0.7f, 0.05f, 3);
 					}
 				}
 		}, 0L, 5L).getTaskId();

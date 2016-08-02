@@ -1,14 +1,13 @@
 package cz.wake.manager.particles;
 
 import java.util.HashMap;
-import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import cz.wake.manager.Main;
-import cz.wake.manager.utils.ParticleEffect;
+import org.inventivetalent.particle.ParticleEffect;
 
 public class Snowball {
 	
@@ -22,7 +21,7 @@ public class Snowball {
 				@Override
 				public void run() {
 					if(e.containsKey(p.getName()) && p.isOnline()){
-						ParticleEffect.SNOWBALL.display(1.0f, 1.0f, 1.0f, 0.05f, 7, p.getLocation(),Main.getInstance().getPlayers());
+						ParticleEffect.SNOWBALL.send(Main.getInstance().getPlayers(),p.getLocation(),1.0f, 1.0f, 1.0f, 0.05f, 7);
 					}
 				}
 		}, 0L, 5L).getTaskId();

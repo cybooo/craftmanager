@@ -1,6 +1,7 @@
 name: CraftManager
 main: cz.wake.manager.Main
 authors: [MrWakeCZ]
+depends: [ParticleAPI]
 version: 1.0.2
 
 commands:

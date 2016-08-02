@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import cz.wake.manager.Main;
-import cz.wake.manager.utils.ParticleEffect;
+import org.inventivetalent.particle.ParticleEffect;
 
 public class Angry {
 	
@@ -21,7 +21,7 @@ public class Angry {
 				@Override
 				public void run() {
 					if(e.containsKey(p.getName()) && p.isOnline()){
-						ParticleEffect.VILLAGER_ANGRY.display(0.7f, 0.7f, 0.7f, 0.05f, 2, p.getLocation(),Main.getInstance().getPlayers());
+					    ParticleEffect.VILLAGER_ANGRY.send(Main.getInstance().getPlayers(),p.getLocation(),0.7f, 0.7f, 0.7f, 0.05f, 2);
 					}
 				}
 		}, 0L, 5L).getTaskId();
