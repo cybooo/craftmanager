@@ -2,16 +2,21 @@ package cz.wake.manager.listener;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.HumanEntity;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryDragEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class DetectOpItems implements Listener {
 
+    @EventHandler
     public void onClick(PlayerInteractEvent e){
         final Player p = e.getPlayer();
         final ItemStack i = e.getItem();
@@ -22,24 +27,54 @@ public class DetectOpItems implements Listener {
 
         if(inspectItem(i)){
             p.getInventory().remove(i);
-            System.out.println(ChatColor.YELLOW + "[CraftManager] " + ChatColor.RED + p.getName() + ChatColor.WHITE + " byl detekovan s OP brnenim/nastrojem!");
-            System.out.println(ChatColor.YELLOW + "[CraftManager] " + ChatColor.WHITE + i.getData().getItemType());
+            System.out.println("[CraftManager] " + p.getName() + " byl detekovan s OP brnenim/nastrojem!");
+            System.out.println("[CraftManager] Odebran: " + i.getData().getItemType() + " (" + i.getAmount() + "x).");
+            p.sendMessage("    ");
+            p.sendMessage("§cDetekce nepovoleneho itemu (OP)!");
+            p.sendMessage("§eOdstraneno: §f" + i.getData().getItemType() + " (" + i.getAmount() + "x).");
+            p.sendMessage("    ");
+            p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BASS,1.0f,1.0f);
         }
 
     }
 
-    public void onOpen(InventoryDragEvent e){
-        HumanEntity p = e.getWhoClicked();
-        ItemStack i = e.getCursor();
+    @EventHandler
+    public void onDrop(PlayerDropItemEvent e){
+        final Player p = e.getPlayer();
+        final ItemStack i = e.getItemDrop().getItemStack();
 
         if(i == null || i.getType() == Material.AIR){
             return;
         }
-
         if(inspectItem(i)){
+            p.closeInventory();
             p.getInventory().remove(i);
-            System.out.println(ChatColor.YELLOW + "[CraftManager] " + ChatColor.RED + p.getName() + ChatColor.WHITE + " byl detekovan s OP brnenim/nastrojem!");
-            System.out.println(ChatColor.YELLOW + "[CraftManager] " + ChatColor.WHITE + i.getData().getItemType());
+            System.out.println("[CraftManager] " + p.getName() + " byl detekovan s OP brnenim/nastrojem!");
+            System.out.println("[CraftManager] Odebran: " + i.getData().getItemType() + " (" + i.getAmount() + "x).");
+            p.sendMessage("    ");
+            p.sendMessage("§cDetekce nepovoleneho itemu (OP)!");
+            p.sendMessage("§eOdstraneno: §f" + i.getData().getItemType() + " (" + i.getAmount() + "x).");
+            p.sendMessage("    ");
+        }
+    }
+
+    @EventHandler
+    public void onOpen(InventoryClickEvent e){
+        HumanEntity p = e.getWhoClicked();
+        ItemStack i = e.getCurrentItem();
+
+        if(i == null || i.getType() == Material.AIR){
+            return;
+        }
+        if(inspectItem(i)){
+            p.closeInventory();
+            p.getInventory().remove(i);
+            System.out.println("[CraftManager] " + p.getName() + " byl detekovan s OP brnenim/nastrojem!");
+            System.out.println("[CraftManager] Odebran: " + i.getData().getItemType() + " (" + i.getAmount() + "x).");
+            p.sendMessage("    ");
+            p.sendMessage("§cDetekce nepovoleneho itemu (OP)!");
+            p.sendMessage("§eOdstraneno: §f" + i.getData().getItemType() + " (" + i.getAmount() + "x).");
+            p.sendMessage("    ");
         }
     }
 
