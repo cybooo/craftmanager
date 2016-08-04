@@ -3,6 +3,7 @@ package cz.wake.manager;
 import java.util.ArrayList;
 
 import cz.wake.manager.commads.*;
+import cz.wake.manager.listener.DetectOpItems;
 import cz.wake.manager.menu.VIP;
 import cz.wake.manager.shop.ShopAPI;
 import cz.wake.manager.sql.FetchData;
@@ -61,6 +62,7 @@ public class Main extends JavaPlugin{
 		pm.registerEvents(new ShopAPI(),this);
 		pm.registerEvents(new VIP(),this);
 		pm.registerEvents(new SuperbVote(),this);
+        pm.registerEvents(new DetectOpItems(),this);
 	}
 	
 	private void loadCommands(){
