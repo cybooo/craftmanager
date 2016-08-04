@@ -2,12 +2,12 @@ package cz.wake.manager.particles;
 
 import java.util.HashMap;
 
+import cz.wake.manager.utils.ParticleEffect;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import cz.wake.manager.Main;
-import org.inventivetalent.particle.ParticleEffect;
 
 public class Slime {
 	
@@ -21,7 +21,7 @@ public class Slime {
 				@Override
 				public void run() {
 					if(e.containsKey(p.getName()) && p.isOnline()){
-						ParticleEffect.SLIME.send(Main.getInstance().getPlayers(),p.getLocation(),1.0f, 1.0f, 1.0f, 0.05f, 15);
+						ParticleEffect.SLIME.display(1.0f, 1.0f, 1.0f, 0.05f, 15,p.getLocation(),Main.getInstance().getPlayers());
 					}
 				}
 		}, 0L, 5L).getTaskId();

@@ -2,12 +2,12 @@ package cz.wake.manager.particles;
 
 import java.util.HashMap;
 
+import cz.wake.manager.utils.ParticleEffect;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import cz.wake.manager.Main;
-import org.inventivetalent.particle.ParticleEffect;
 
 public class WitchMagic {
 	
@@ -21,7 +21,7 @@ public class WitchMagic {
 				@Override
 				public void run() {
 					if(e.containsKey(p.getName()) && p.isOnline()){
-						ParticleEffect.SPELL_WITCH.send(Main.getInstance().getPlayers(),p.getLocation(),0.7f, 0.7f, 0.7f, 0.05f, 8);
+						ParticleEffect.SPELL_WITCH.display(0.7f, 0.7f, 0.7f, 0.05f, 8,p.getLocation(),Main.getInstance().getPlayers());
 					}
 				}
 		}, 0L, 5L).getTaskId();
