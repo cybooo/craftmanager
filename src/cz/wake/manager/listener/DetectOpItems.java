@@ -84,6 +84,11 @@ public class DetectOpItems implements Listener {
             return false;
         }
 
+        if(i.getType() == Material.TRIPWIRE_HOOK && i.getItemMeta().getDisplayName().equalsIgnoreCase("§a§lVOTE KEY")
+                || i.getItemMeta().getDisplayName().equalsIgnoreCase("§b§lEVENT KEY") && i.getType() != null){
+            return false;
+        }
+
         //Silktouch (max 3)
         if(i.getEnchantmentLevel(Enchantment.SILK_TOUCH) > 3){
             return true;
