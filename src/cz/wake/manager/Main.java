@@ -62,7 +62,15 @@ public class Main extends JavaPlugin{
 		pm.registerEvents(new ShopAPI(),this);
 		pm.registerEvents(new VIP(),this);
 		pm.registerEvents(new SuperbVote(),this);
-        pm.registerEvents(new DetectOpItems(),this);
+
+        //Detekce OP itemu
+        if(getConfig().getBoolean("detection")){
+            System.out.println("Detekce OP Itemu - zapnuta!");
+            pm.registerEvents(new DetectOpItems(),this);
+        } else {
+            System.out.println("Detekce OP Itemu - vypnuta!");
+        }
+
 	}
 	
 	private void loadCommands(){

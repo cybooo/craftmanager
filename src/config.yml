@@ -4,3 +4,6 @@ port: 3306
 database: dbName
 user: root
 password: password
+
+# Detekce OP itemu
+detection: false
