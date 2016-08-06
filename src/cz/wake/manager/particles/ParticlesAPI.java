@@ -31,6 +31,8 @@ public class ParticlesAPI implements Listener{
 	Smoke sm = new Smoke();
 	Happy ha = new Happy();
 	Snowball sn = new Snowball();
+    BlackHearts bh = new BlackHearts();
+    Void vo = new Void();
 	
 	public void openParticlesMenu(final Player p){
 		
@@ -257,6 +259,32 @@ public class ParticlesAPI implements Listener{
 			ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§cHappy", "","§7Tento efekt smi aktivovat pouze: §aVIP");
 			inv.setItem(30,i);
 		}
+		if(p.hasPermission("craftmanager.particles.blackhearts")){
+		    if(BlackHearts.e.containsKey(p.getName())){
+                ItemStack i = ItemFactory.create(Material.IRON_SWORD, (byte) 0, "§eBlackHearts", "§7Kliknutim deaktivujes!");
+                i = ItemFactory.addGlow(i);
+                inv.setItem(31, i);
+            } else {
+                ItemStack i = ItemFactory.create(Material.IRON_SWORD, (byte) 0, "§eBlackHearts", "§7Kliknutim aktivujes!");
+                inv.setItem(31, i);
+            }
+        } else {
+            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§cBlackHearts", "","§7Tento efekt smi aktivovat pouze: §aVIP");
+            inv.setItem(31,i);
+        }
+        if(p.hasPermission("craftmanager.particles.void")){
+            if(Void.e.containsKey(p.getName())){
+                ItemStack i = ItemFactory.create(Material.BEDROCK, (byte) 0, "§eVoid", "§7Kliknutim deaktivujes!");
+                i = ItemFactory.addGlow(i);
+                inv.setItem(32, i);
+            } else {
+                ItemStack i = ItemFactory.create(Material.BEDROCK, (byte) 0, "§eVoid", "§7Kliknutim aktivujes!");
+                inv.setItem(32, i);
+            }
+        } else {
+            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§cVoid", "","§7Tento efekt smi aktivovat pouze: §aVIP");
+            inv.setItem(32,i);
+        }
 		
 		ItemStack deaktivace = ItemFactory.create(Material.BARRIER, (byte)0, "§c✖ Deaktivace ✖", "§7Kliknutim deaktivujes particles.");
 		inv.setItem(49, deaktivace);
@@ -454,6 +482,26 @@ public class ParticlesAPI implements Listener{
 					p.closeInventory();
 				}
 			}
+			if(e.getSlot() == 31){
+			    if(p.hasPermission("craftmanager.particles.blackhearts")){
+                    deactivateParticles(p);
+                    this.bh.activate(p);
+                    p.closeInventory();
+                } else {
+                    p.sendMessage("§cK aktivaci tohoto efektu musis mit VIP!");
+                    p.closeInventory();
+                }
+            }
+            if(e.getSlot() == 32){
+                if(p.hasPermission("craftmanager.particles.void")){
+                    deactivateParticles(p);
+                    this.vo.activate(p);
+                    p.closeInventory();
+                } else {
+                    p.sendMessage("§cK aktivaci tohoto efektu musis mit VIP!");
+                    p.closeInventory();
+                }
+            }
 		}
 		
 	}
@@ -544,6 +592,16 @@ public class ParticlesAPI implements Listener{
 			Happy.e.remove(p.getName());
 			p.closeInventory();
 		}
+        if(BlackHearts.e.containsKey(p.getName())){
+            Bukkit.getScheduler().cancelTask(((Integer)BlackHearts.e.get(p.getName())).intValue());
+            BlackHearts.e.remove(p.getName());
+            p.closeInventory();
+        }
+        if(Void.e.containsKey(p.getName())){
+            Bukkit.getScheduler().cancelTask(((Integer)Void.e.get(p.getName())).intValue());
+            Void.e.remove(p.getName());
+            p.closeInventory();
+        }
 	}
 
 }
