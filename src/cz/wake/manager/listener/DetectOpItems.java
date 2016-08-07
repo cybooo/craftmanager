@@ -21,7 +21,7 @@ public class DetectOpItems implements Listener {
         final Player p = e.getPlayer();
         final ItemStack i = e.getItem();
 
-        if(i == null || i.getType() == Material.AIR){
+        if(i == null || i.getType() == Material.AIR || e.getClickedBlock() == null){
             return;
         }
 
@@ -43,7 +43,7 @@ public class DetectOpItems implements Listener {
         final Player p = e.getPlayer();
         final ItemStack i = e.getItemDrop().getItemStack();
 
-        if(i == null || i.getType() == Material.AIR){
+        if(i == null || i.getType() == Material.AIR || e.getItemDrop() == null){
             return;
         }
         if(inspectItem(i)){
@@ -63,7 +63,7 @@ public class DetectOpItems implements Listener {
         HumanEntity p = e.getWhoClicked();
         ItemStack i = e.getCurrentItem();
 
-        if(i == null || i.getType() == Material.AIR){
+        if(i == null || i.getType() == Material.AIR || e.getCurrentItem() == null){
             return;
         }
         if(inspectItem(i)){
