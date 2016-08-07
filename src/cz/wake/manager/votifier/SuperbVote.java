@@ -19,21 +19,25 @@ public class SuperbVote implements Listener{
             @Override
             public void run() {
                 Player onlinePlayer = Bukkit.getPlayerExact(e.getVote().getUsername());
-                if(onlinePlayer.isOnline() && onlinePlayer != null){
-                    //Pridani hlasu
-                    Main.getInstance().getSetData().addPlayerVote(onlinePlayer);
-                    Main.getInstance().getVoteHandler().addTotalVotes(onlinePlayer,1 + Main.getInstance().getVoteHandler().getPlayerCachedTotalVotes(onlinePlayer));
-                    Main.getInstance().getVoteHandler().addMonthVotes(onlinePlayer,1 + Main.getInstance().getVoteHandler().getPlayerCachedMonthVotes(onlinePlayer));
-                    Main.getInstance().getVoteHandler().addWeekVotes(onlinePlayer,1 + Main.getInstance().getVoteHandler().getPlayerCachedWeekVotes(onlinePlayer));
+                try {
+                    if(onlinePlayer.isOnline()){
+                        //Pridani hlasu
+                        Main.getInstance().getSetData().addPlayerVote(onlinePlayer);
+                        Main.getInstance().getVoteHandler().addTotalVotes(onlinePlayer,1 + Main.getInstance().getVoteHandler().getPlayerCachedTotalVotes(onlinePlayer));
+                        Main.getInstance().getVoteHandler().addMonthVotes(onlinePlayer,1 + Main.getInstance().getVoteHandler().getPlayerCachedMonthVotes(onlinePlayer));
+                        Main.getInstance().getVoteHandler().addWeekVotes(onlinePlayer,1 + Main.getInstance().getVoteHandler().getPlayerCachedWeekVotes(onlinePlayer));
 
-                    giveReward(onlinePlayer);
+                        giveReward(onlinePlayer);
 
-                    Titles.sendFullTitlePlayer(onlinePlayer,10,60,10,"§a§lDekujeme!","§fDostal/a jsi odmenu.");
-                    for(Player p : Bukkit.getOnlinePlayers()){
-                        p.sendMessage("§b" + onlinePlayer.getName() + " §ehlasoval a ziskal §aodmenu!");
+                        Titles.sendFullTitlePlayer(onlinePlayer,10,60,10,"§a§lDekujeme!","§fDostal/a jsi odmenu.");
+                        for(Player p : Bukkit.getOnlinePlayers()){
+                            p.sendMessage("§b" + onlinePlayer.getName() + " §ehlasoval a ziskal §aodmenu!");
+                        }
+                        checkMountWin(onlinePlayer);
+
                     }
-                    checkMountWin(onlinePlayer);
-
+                } catch (NullPointerException e){
+                    //Nic
                 }
             }
         });
