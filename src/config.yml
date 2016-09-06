@@ -7,3 +7,12 @@ password: password
 
 # Detekce OP itemu
 detection: false
+
+# ProxyJoin Bungee
+# Pouze hraci s touto IP se budou moct pripojit
+proxy-ips:
+ - '0.0.0.1'
+
+# Povolene IP, ktere se mohou pripojit mimo BungeeCord
+disable-ips:
+ - '0.0.0.1'
