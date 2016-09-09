@@ -2,6 +2,7 @@ package cz.wake.manager.listener;
 
 import cz.wake.manager.Main;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 
@@ -9,7 +10,7 @@ import java.util.List;
 
 public class LoginListener implements Listener{
 
-    @EventHandler(ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onLogin(PlayerLoginEvent e){
         String ip = e.getAddress().getHostAddress();
         if ((!isProxyIP(ip)) && (!isDisabledIP(ip))){
