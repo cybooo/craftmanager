@@ -1,11 +1,10 @@
 package cz.wake.manager.listener;
 
-import org.bukkit.ChatColor;
+import cz.wake.manager.Main;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.HumanEntity;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -24,16 +23,20 @@ public class DetectOpItems implements Listener {
         if(i == null || i.getType() == Material.AIR || e.getClickedBlock() == null){
             return;
         }
-
-        if(inspectItem(i)){
-            p.getInventory().remove(i);
-            System.out.println("[CraftManager] " + p.getName() + " byl detekovan s OP brnenim/nastrojem!");
-            System.out.println("[CraftManager] Odebran: " + i.getData().getItemType() + " (" + i.getAmount() + "x).");
-            p.sendMessage("    ");
-            p.sendMessage("§cDetekce nepovoleneho itemu (OP)!");
-            p.sendMessage("§eOdstraneno: §f" + i.getData().getItemType() + " (" + i.getAmount() + "x).");
-            p.sendMessage("    ");
-            p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BASS,1.0f,1.0f);
+        try {
+            if(inspectItem(i)){
+                p.getInventory().remove(i);
+                System.out.println("[CraftManager] " + p.getName() + " byl detekovan s OP brnenim/nastrojem!");
+                System.out.println("[CraftManager] Odebran: " + i.getData().getItemType() + " (" + i.getAmount() + "x).");
+                p.sendMessage("    ");
+                p.sendMessage("§cDetekce nepovoleneho itemu (OP)!");
+                p.sendMessage("§eOdstraneno: §f" + i.getData().getItemType() + " (" + i.getAmount() + "x).");
+                p.sendMessage("    ");
+                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BASS,1.0f,1.0f);
+            }
+        } catch (NullPointerException ed){
+            Main.getInstance().getBugsnag().notify(ed);
+            ed.printStackTrace();
         }
 
     }
@@ -46,15 +49,20 @@ public class DetectOpItems implements Listener {
         if(i == null || i.getType() == Material.AIR || e.getItemDrop() == null){
             return;
         }
-        if(inspectItem(i)){
-            p.closeInventory();
-            p.getInventory().remove(i);
-            System.out.println("[CraftManager] " + p.getName() + " byl detekovan s OP brnenim/nastrojem!");
-            System.out.println("[CraftManager] Odebran: " + i.getData().getItemType() + " (" + i.getAmount() + "x).");
-            p.sendMessage("    ");
-            p.sendMessage("§cDetekce nepovoleneho itemu (OP)!");
-            p.sendMessage("§eOdstraneno: §f" + i.getData().getItemType() + " (" + i.getAmount() + "x).");
-            p.sendMessage("    ");
+        try {
+            if(inspectItem(i)){
+                p.closeInventory();
+                p.getInventory().remove(i);
+                System.out.println("[CraftManager] " + p.getName() + " byl detekovan s OP brnenim/nastrojem!");
+                System.out.println("[CraftManager] Odebran: " + i.getData().getItemType() + " (" + i.getAmount() + "x).");
+                p.sendMessage("    ");
+                p.sendMessage("§cDetekce nepovoleneho itemu (OP)!");
+                p.sendMessage("§eOdstraneno: §f" + i.getData().getItemType() + " (" + i.getAmount() + "x).");
+                p.sendMessage("    ");
+            }
+        } catch (NullPointerException ed){
+            Main.getInstance().getBugsnag().notify(ed);
+            ed.printStackTrace();
         }
     }
 
@@ -66,15 +74,20 @@ public class DetectOpItems implements Listener {
         if(i == null || i.getType() == Material.AIR || e.getCurrentItem() == null){
             return;
         }
-        if(inspectItem(i)){
-            p.closeInventory();
-            p.getInventory().remove(i);
-            System.out.println("[CraftManager] " + p.getName() + " byl detekovan s OP brnenim/nastrojem!");
-            System.out.println("[CraftManager] Odebran: " + i.getData().getItemType() + " (" + i.getAmount() + "x).");
-            p.sendMessage("    ");
-            p.sendMessage("§cDetekce nepovoleneho itemu (OP)!");
-            p.sendMessage("§eOdstraneno: §f" + i.getData().getItemType() + " (" + i.getAmount() + "x).");
-            p.sendMessage("    ");
+        try {
+            if(inspectItem(i)){
+                p.closeInventory();
+                p.getInventory().remove(i);
+                System.out.println("[CraftManager] " + p.getName() + " byl detekovan s OP brnenim/nastrojem!");
+                System.out.println("[CraftManager] Odebran: " + i.getData().getItemType() + " (" + i.getAmount() + "x).");
+                p.sendMessage("    ");
+                p.sendMessage("§cDetekce nepovoleneho itemu (OP)!");
+                p.sendMessage("§eOdstraneno: §f" + i.getData().getItemType() + " (" + i.getAmount() + "x).");
+                p.sendMessage("    ");
+            }
+        } catch (NullPointerException ed){
+            Main.getInstance().getBugsnag().notify(ed);
+            ed.printStackTrace();
         }
     }
 

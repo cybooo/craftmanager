@@ -93,6 +93,11 @@
             <scope>system</scope>
             <systemPath>${pom.basedir}/lib/nuvotifier-universal-2.3.2.2.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>com.bugsnag</groupId>
+            <artifactId>bugsnag</artifactId>
+            <version>LATEST</version>
+        </dependency>
     </dependencies>
 
 

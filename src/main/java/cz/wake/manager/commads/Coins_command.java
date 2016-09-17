@@ -1,6 +1,7 @@
 package cz.wake.manager.commads;
 
 import cz.wake.manager.Main;
+import org.apache.commons.lang.ObjectUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -13,11 +14,16 @@ public class Coins_command implements CommandExecutor {
         if(Sender instanceof Player){
             Player player = (Player)Sender;
             if((Command.getName().equalsIgnoreCase("coins"))){
-                if(ArrayOfString.length == 0){
-                    player.sendMessage("§eAktualne mas §7" + Main.getInstance().getFetchData().getPlayerCoins(player.getUniqueId()) + " §ecoinu!");
+                try {
+                    if(ArrayOfString.length == 0){
+                        player.sendMessage("§eAktualne mas §7" + Main.getInstance().getFetchData().getPlayerCoins(player.getUniqueId()) + " §ecoinu!");
+                        return true;
+                    }
                     return true;
+                } catch(NullPointerException e){
+                    Main.getInstance().getBugsnag().notify(e);
+                    e.printStackTrace();
                 }
-                return true;
             }
         }
         return false;

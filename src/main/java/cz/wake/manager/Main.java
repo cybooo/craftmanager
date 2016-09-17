@@ -2,6 +2,8 @@ package cz.wake.manager;
 
 import java.util.ArrayList;
 
+import com.bugsnag.BeforeNotify;
+import com.bugsnag.Client;
 import cz.wake.manager.commads.*;
 import cz.wake.manager.listener.DetectOpItems;
 import cz.wake.manager.listener.LoginListener;
@@ -13,6 +15,7 @@ import cz.wake.manager.sql.SetData;
 import cz.wake.manager.votifier.Reminder;
 import cz.wake.manager.votifier.SuperbVote;
 import cz.wake.manager.votifier.VoteHandler;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -31,6 +34,7 @@ public class Main extends JavaPlugin{
 	private SetData sd = new SetData();
 	private VIP vip = new VIP();
 	private VoteHandler vh = new VoteHandler();
+    private Client bugsnag;
 	
 	private static Main instance;
 	
@@ -45,6 +49,21 @@ public class Main extends JavaPlugin{
 
 		//Oznameni kazdou hodinu
 		getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 2000, 72000);
+
+        bugsnag = new Client("6ebdc5db26d2e16f31b310dea99a93d6");
+        bugsnag.setAppVersion(this.getDescription().getVersion());
+        bugsnag.setProjectPackages("cz.wake.craftcoins");
+
+        this.bugsnag.addBeforeNotify(new BeforeNotify() {
+            @Override
+            public boolean run(com.bugsnag.Error error) {
+                error.addToTab("Server", "Version Server", Main.getInstance().getServer().getVersion());
+                error.addToTab("Server", "Version Bukkit", Main.getInstance().getServer().getBukkitVersion());
+                error.addToTab("Server", "Plugins", Main.getInstance().getServer().getPluginManager().getPlugins());
+                error.addToTab("Server", "Players", Bukkit.getOnlinePlayers().size());
+                return true;
+            }
+        });
 	}
 	
 	public void onDisable(){
@@ -129,4 +148,8 @@ public class Main extends JavaPlugin{
 	public VoteHandler getVoteHandler(){
 		return vh;
 	}
+
+	public Client getBugsnag(){
+	    return bugsnag;
+    }
 }

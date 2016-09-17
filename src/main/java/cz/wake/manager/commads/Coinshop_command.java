@@ -6,6 +6,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.io.IOException;
+
 public class Coinshop_command implements CommandExecutor {
 
     @Override
@@ -13,11 +15,16 @@ public class Coinshop_command implements CommandExecutor {
         if(Sender instanceof Player){
             Player player = (Player)Sender;
             if((Command.getName().equalsIgnoreCase("coinshop"))){
-                if(ArrayOfString.length == 0){
-                    Main.getInstance().getShopGUI().openShopGUI(player);
+                try {
+                    if(ArrayOfString.length == 0){
+                        Main.getInstance().getShopGUI().openShopGUI(player);
+                        return true;
+                    }
                     return true;
+                } catch (NullPointerException e){
+                    Main.getInstance().getBugsnag().notify(e);
+                    e.printStackTrace();
                 }
-                return true;
             }
         }
         return false;

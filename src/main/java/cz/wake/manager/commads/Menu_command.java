@@ -13,11 +13,16 @@ public class Menu_command implements CommandExecutor{
         if(Sender instanceof Player){
             Player player = (Player)Sender;
             if((Command.getName().equalsIgnoreCase("menu"))){
-                if(ArrayOfString.length == 0){
-                    Main.getInstance().getMainGUI().openMainMenu(player);
+                try {
+                    if(ArrayOfString.length == 0){
+                        Main.getInstance().getMainGUI().openMainMenu(player);
+                        return true;
+                    }
                     return true;
+                } catch (NullPointerException e){
+                    Main.getInstance().getBugsnag().notify(e);
+                    e.printStackTrace();
                 }
-                return true;
             }
         }
         return false;
