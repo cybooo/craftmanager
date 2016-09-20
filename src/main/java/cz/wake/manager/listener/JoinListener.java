@@ -20,6 +20,8 @@ public class JoinListener implements Listener{
 
 		e.setJoinMessage(null);
 
+        p.setGlowing(false); //Oprava pro skoncene VIP hrace
+
 		if(!Main.getInstance().isVisibleForPlayer(p)){
 			Main.getInstance().addPlayer(p);
 		}
