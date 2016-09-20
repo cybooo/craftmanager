@@ -54,7 +54,10 @@ public class Main extends JavaPlugin{
         idServer = getConfig().getString("server");
 
 		// Oznameni kazdou hodinu
-		getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 2000, 72000);
+        if(getConfig().getBoolean("reminder")){
+            getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 2000, 72000);
+            System.out.println("[CraftManager] Aktivace hodinoveho oznamovani o hlasech do chatu.");
+        }
 
         // Update ID stats task
         getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTaskServer(), 2000, 1200);
@@ -90,15 +93,22 @@ public class Main extends JavaPlugin{
 		pm.registerEvents(new MainGUI(), this);
 		pm.registerEvents(new ShopAPI(),this);
 		pm.registerEvents(new VIP(),this);
-		pm.registerEvents(new SuperbVote(),this);
         pm.registerEvents(new LoginListener(), this);
 
-        //Detekce OP itemu
+        // Hlasovani
+        if(getConfig().getBoolean("hlasovani")){
+            pm.registerEvents(new SuperbVote(),this);
+            System.out.println("[CraftManager] Odmeny za hlasovani byly aktivovany!");
+        } else {
+            System.out.println("[CraftManager] Odmeny za hlasovani nejsou aktivni!");
+        }
+
+        // Detekce OP itemu
         if(getConfig().getBoolean("detection")){
-            System.out.println("Detekce OP Itemu - zapnuta!");
+            System.out.println("[CraftManager] Detekce OP Itemu - zapnuta!");
             pm.registerEvents(new DetectOpItems(),this);
         } else {
-            System.out.println("Detekce OP Itemu - vypnuta!");
+            System.out.println("[CraftManager] Detekce OP Itemu - vypnuta!");
         }
 
 	}
@@ -109,7 +119,10 @@ public class Main extends JavaPlugin{
 		getCommand("particles").setExecutor(new Particles_command());
 		getCommand("coins").setExecutor(new Coins_command());
 		getCommand("glow").setExecutor(new Glow_command());
-		getCommand("fakevote").setExecutor(new Fakevote_command());
+
+        if(getConfig().getBoolean("hlasovani")){
+            getCommand("fakevote").setExecutor(new Fakevote_command());
+        }
 	}
 	
 	public ArrayList<Player> getPlayers(){
