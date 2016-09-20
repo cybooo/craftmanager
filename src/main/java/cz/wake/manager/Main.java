@@ -12,6 +12,8 @@ import cz.wake.manager.shop.ShopAPI;
 import cz.wake.manager.sql.FetchData;
 import cz.wake.manager.sql.MySQL;
 import cz.wake.manager.sql.SetData;
+import cz.wake.manager.utils.ServerFactory;
+import cz.wake.manager.utils.UpdateTaskServer;
 import cz.wake.manager.votifier.Reminder;
 import cz.wake.manager.votifier.SuperbVote;
 import cz.wake.manager.votifier.VoteHandler;
@@ -34,7 +36,9 @@ public class Main extends JavaPlugin{
 	private SetData sd = new SetData();
 	private VIP vip = new VIP();
 	private VoteHandler vh = new VoteHandler();
+    private ServerFactory sf = new ServerFactory();
     private Client bugsnag;
+    private String idServer;
 	
 	private static Main instance;
 	
@@ -47,8 +51,13 @@ public class Main extends JavaPlugin{
 		getConfig().options().copyDefaults(true);
 		saveDefaultConfig();
 
-		//Oznameni kazdou hodinu
+        idServer = getConfig().getString("server");
+
+		// Oznameni kazdou hodinu
 		getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 2000, 72000);
+
+        // Update ID stats task
+        getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTaskServer(), 2000, 1200);
 
         bugsnag = new Client("6ebdc5db26d2e16f31b310dea99a93d6");
         bugsnag.setAppVersion(this.getDescription().getVersion());
@@ -151,5 +160,13 @@ public class Main extends JavaPlugin{
 
 	public Client getBugsnag(){
 	    return bugsnag;
+    }
+
+    public String getIdServer(){
+        return idServer;
+    }
+
+    public ServerFactory getServerFactory(){
+        return sf;
     }
 }

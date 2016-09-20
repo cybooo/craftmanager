@@ -84,4 +84,32 @@ public class SetData {
             }
         }.runTaskAsynchronously(Main.getInstance());
     }
+
+    public final void updateServerTask() {
+
+        final String query = "INSERT INTO stav_survival_server (nazev, pocet_hracu, pocet_slotu, verze, pocet_pluginu) VALUES (?,?,?,?,?) ON DUPLICATE KEY UPDATE pocet_hracu = ?;";
+
+        new BukkitRunnable() {
+
+            public void run() {
+
+                try {
+
+                    PreparedStatement sql = Main.getInstance().getMySQL().getCurrentConnection().prepareStatement(query);
+                    sql.setString(1, Main.getInstance().getIdServer());
+                    sql.setInt(2, Main.getInstance().getServerFactory().getOnlinePlayers());
+                    sql.setInt(3, Main.getInstance().getServerFactory().getMaxPlayers());
+                    sql.setString(4, Main.getInstance().getServerFactory().getVersion());
+                    sql.setInt(5, Main.getInstance().getServerFactory().getCountPlugins());
+                    sql.setInt(6, Main.getInstance().getServerFactory().getOnlinePlayers());
+                    sql.execute();
+                    sql.close();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }.runTaskAsynchronously(Main.getInstance());
+    }
 }

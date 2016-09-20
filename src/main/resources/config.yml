@@ -16,3 +16,6 @@ proxy-ips:
 # Povolene IP, ktere se mohou pripojit mimo BungeeCord
 disable-ips:
  - '0.0.0.1'
+
+# ID serveru pro statistiky
+server: Survival
