@@ -35,7 +35,6 @@ public class DetectOpItems implements Listener {
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BASS,1.0f,1.0f);
             }
         } catch (NullPointerException ed){
-            Main.getInstance().getBugsnag().notify(ed);
             ed.printStackTrace();
         }
 
@@ -61,7 +60,6 @@ public class DetectOpItems implements Listener {
                 p.sendMessage("    ");
             }
         } catch (NullPointerException ed){
-            Main.getInstance().getBugsnag().notify(ed);
             ed.printStackTrace();
         }
     }
@@ -86,7 +84,6 @@ public class DetectOpItems implements Listener {
                 p.sendMessage("    ");
             }
         } catch (NullPointerException ed){
-            Main.getInstance().getBugsnag().notify(ed);
             ed.printStackTrace();
         }
     }

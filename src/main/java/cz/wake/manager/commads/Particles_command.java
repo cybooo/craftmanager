@@ -20,7 +20,6 @@ public class Particles_command implements CommandExecutor{
                     }
                     return true;
                 } catch (NullPointerException e){
-                    Main.getInstance().getBugsnag().notify(e);
                     e.printStackTrace();
                 }
             }
