@@ -18,3 +18,5 @@ commands:
       description: Prikaz pro VIP
     fakevote:
       description: Fakevote
+    block:
+      description: Prikaz pro VIP

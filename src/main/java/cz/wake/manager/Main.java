@@ -100,6 +100,7 @@ public class Main extends JavaPlugin{
 		getCommand("particles").setExecutor(new Particles_command());
 		getCommand("coins").setExecutor(new Coins_command());
 		getCommand("glow").setExecutor(new Glow_command());
+        getCommand("block").setExecutor(new Block_command());
 
         if(getConfig().getBoolean("hlasovani")){
             getCommand("fakevote").setExecutor(new Fakevote_command());
