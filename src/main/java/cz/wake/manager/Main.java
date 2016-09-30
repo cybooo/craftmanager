@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import cz.wake.manager.commads.*;
 import cz.wake.manager.listener.DetectOpItems;
 import cz.wake.manager.listener.LoginListener;
-import cz.wake.manager.menu.VIP;
 import cz.wake.manager.shop.ShopAPI;
 import cz.wake.manager.sql.FetchData;
 import cz.wake.manager.sql.MySQL;
@@ -24,14 +23,13 @@ import cz.wake.manager.particles.ParticlesAPI;
 
 public class Main extends JavaPlugin{
 	
-	public static ArrayList<Player> players = new ArrayList<Player>();
-	public ParticlesAPI particlesAPI = new ParticlesAPI();
-	public MainGUI gui = new MainGUI();
-	public ShopAPI shop = new ShopAPI();
+	private static ArrayList<Player> players = new ArrayList<Player>();
+	private ParticlesAPI particlesAPI = new ParticlesAPI();
+	private MainGUI gui = new MainGUI();
+	private ShopAPI shop = new ShopAPI();
 	private MySQL mysql = new MySQL();
 	private FetchData fd = new FetchData();
 	private SetData sd = new SetData();
-	private VIP vip = new VIP();
 	private VoteHandler vh = new VoteHandler();
     private ServerFactory sf = new ServerFactory();
     private String idServer;
@@ -73,7 +71,6 @@ public class Main extends JavaPlugin{
 		pm.registerEvents(new JoinListener(), this);
 		pm.registerEvents(new MainGUI(), this);
 		pm.registerEvents(new ShopAPI(),this);
-		pm.registerEvents(new VIP(),this);
         pm.registerEvents(new LoginListener(), this);
 
         // Hlasovani
@@ -96,7 +93,7 @@ public class Main extends JavaPlugin{
 	
 	private void loadCommands(){
 		getCommand("menu").setExecutor(new Menu_command());
-		//getCommand("coinshop").setExecutor(new Coinshop_command());
+		getCommand("coinshop").setExecutor(new Coinshop_command());
 		getCommand("particles").setExecutor(new Particles_command());
 		getCommand("coins").setExecutor(new Coins_command());
 		getCommand("glow").setExecutor(new Glow_command());
@@ -143,10 +140,6 @@ public class Main extends JavaPlugin{
 
 	public SetData getSetData(){
 		return sd;
-	}
-
-	public VIP getVIPMenu(){
-		return vip;
 	}
 
 	public VoteHandler getVoteHandler(){

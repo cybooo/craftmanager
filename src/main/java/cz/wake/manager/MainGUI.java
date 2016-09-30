@@ -162,8 +162,7 @@ public class MainGUI implements Listener{
                 p.closeInventory();
             }
             if(e.getSlot() == 23){
-                //Main.getInstance().getShopGUI().openShopGUI(p);
-                p.sendMessage("§cShop je aktualne nedostupny!");
+                Main.getInstance().getShopGUI().openShopMainGUI(p);
             }
             if(e.getSlot() == 24){
                 p.sendMessage("§cDocasne nefunguje, pouzij /vip");

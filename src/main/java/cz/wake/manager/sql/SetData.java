@@ -57,6 +57,23 @@ public class SetData {
         }.runTaskAsynchronously(Main.getPlugin(Main.class));
     }
 
+    public final void takeCoins(final Player p, final int coins) {
+        final String query = "UPDATE CraftCoins SET balance = ? WHERE uuid = '" + p.getUniqueId().toString() + "';";
+        new BukkitRunnable() {
+            public void run() {
+                try {
+                    PreparedStatement sql = Main.getInstance().getMySQL().getCurrentConnection().prepareStatement(query);
+                    sql.setInt(1, Main.getInstance().getFetchData().getPlayerCoins(p.getUniqueId()) - coins);
+                    sql.setQueryTimeout(30);
+                    sql.execute();
+                    sql.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.runTaskAsynchronously(Main.getInstance());
+    }
+
     public final void createPlayer(final Player p) {
 
         final String query = "INSERT INTO votes (uuid, last_name, votes, month, week) VALUES (?,?,?,?,?) ON DUPLICATE KEY UPDATE votes = ?;";

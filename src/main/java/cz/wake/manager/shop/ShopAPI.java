@@ -13,131 +13,61 @@ import org.bukkit.inventory.ItemStack;
 
 public class ShopAPI implements Listener{
 
-    public void openShopGUI(final Player p){
+    public void openShopMainGUI(final Player p){
+        if(Main.getInstance().getIdServer().equals("skyblock")) {
+            Inventory inv = Bukkit.createInventory(null, 27, "§0Coinshop");
 
-        Inventory inv = Bukkit.createInventory(null, 27, "§0Shop");
+            ItemStack tags = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§cTags", "§7Zakup si tag pred nick", "§7 a bud IN!");
+            ItemStack keys = ItemFactory.create(Material.TRIPWIRE_HOOK, (byte) 0, "§cKeys", "§7Zakup si legendarni klice", "§7za CraftCoiny!");
+            ItemStack multipliers = ItemFactory.create(Material.BLAZE_POWDER, (byte) 0, "§cMultipliery", "§7Zakup pro cely server multiplier", "§7na urceny cas!");
 
-        ItemStack prikazy = ItemFactory.create(Material.COMMAND,(byte)0,"§ePrikazy","","§7Seznam prikazu, ktere si muzes", "§7zakoupit na serveru za CraftCoiny!");
+            inv.setItem(11, tags);
+            inv.setItem(13, keys);
+            inv.setItem(15, multipliers);
 
-        ItemStack plots =  ItemFactory.create(Material.GRASS,(byte)0,"§ePozemky","","§7Nakup dalsich pozemku","§7za CraftCoiny.","","§cNeni k dispozici, zatim.");
-
-        ItemStack vip = ItemFactory.create(Material.BLAZE_POWDER,(byte)0,"§eVIP","","§7Chces si zakoupit VIP","§7za CraftCoiny?");
-
-        inv.setItem(11,prikazy);
-        inv.setItem(13,plots);
-        inv.setItem(15,vip);
-
-        p.openInventory(inv);
+            p.openInventory(inv);
+        }
     }
 
-    public void openShopCommandsGUI(final Player p){
+    private void openTagsMenu(final Player p){
+        if(Main.getInstance().getIdServer().equals("skyblock")){
+            Inventory inv = Bukkit.createInventory(null, 45, "§0Tagy");
+            this.setupTag(p, "deluxetags.tag.skyqueen", "SkyQueen", inv, 0, 1500);
+            this.setupTag(p, "deluxetags.tag.skyking", "SkyKing", inv, 1, 1500);
+            this.setupTag(p, "deluxetags.tag.thuglife", "ThugLife", inv, 2, 500);
+            this.setupTag(p, "deluxetags.tag.pampersarmy", "PampersArmy", inv, 3, 750);
+            this.setupTag(p, "deluxetags.tag.kappa", "Kappa", inv, 4, 1000);
+            this.setupTag(p, "deluxetags.tag.assassin", "Assassin", inv, 5, 750);
+            this.setupTag(p, "deluxetags.tag.rekt", "Rekt", inv, 6, 500);
+            this.setupTag(p, "deluxetags.tag.nejsemmimino", "NejsemMimino", inv, 7, 1000);
+            this.setupTag(p, "deluxetags.tag.wakefan", "WakeFan", inv, 8, 2000);
+            this.setupTag(p, "deluxetags.tag.kidrider", "KidRider", inv, 9, 1000);
+            this.setupTag(p, "deluxetags.tag.ftefan", "Ftefan", inv, 10, 750);
+            this.setupTag(p, "deluxetags.tag.lord", "Lord", inv, 11, 500);
+            this.setupTag(p, "deluxetags.tag.alfasamec", "AlfaSamec", inv, 12, 750);
+            this.setupTag(p, "deluxetags.tag.skykid", "SkyKid", inv, 13, 1000);
+            this.setupTag(p, "deluxetags.tag.jednorozec", "Jednorozec", inv, 14, 1000);
+            this.setupTag(p, "deluxetags.tag.ktopolak", "KtoPolak", inv, 15, 750);
+            this.setupTag(p, "deluxetags.tag.moneymaster", "MoneyMaster", inv, 16, 1000);
+            this.setupTag(p, "deluxetags.tag.tochcicomu", "ToChciDomu", inv, 17, 500);
+            this.setupTag(p, "deluxetags.tag.pvpnoob", "PvPNoob", inv, 18, 1000);
+            this.setupTag(p, "deluxetags.tag.umymgramatyku", "UmymGramatiku", inv, 19, 1500);
+            this.setupTag(p, "deluxetags.tag.sezerute", "SezeruTe", inv, 20, 500);
 
-        Inventory inv = Bukkit.createInventory(null, 45, "§0Shop - Prikazy");
+            ItemStack zpet = ItemFactory.create(Material.ARROW, (byte)0, "§cZpet");
+            ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte)0, "§aHlavni menu");
 
-        if(p.hasPermission("craftmanager.commands.worldedit")){
-            ItemStack i = ItemFactory.create(Material.WOOD_AXE,(byte)0,"§aWorldEdit Basic","§8Odemknuto","",
-                    "§eMas zakoupene prava na WorldEdit.","§f- //set","§f- //rotate", "§f- //undo", "§f- //redo", "§f- //cut", "§f- //wand","","§aJiz zakoupeno.");
-            inv.setItem(10,i);
-        } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§cWorldEdit Basic","§8Uzamknuto","","§f§lCena: §6150 CC","§7Platnost na 48h","",
-                    "§eZahrunuje prikazy:","§f- //set","§f- //rotate", "§f- //undo", "§f- //redo", "§f- //cut", "§f- //wand", "", "§eKliknutim si prava zakoupis!",
-                    checkerCoins(p,150));
-            inv.setItem(10,i);
-        }
-        if(p.hasPermission("craftmanager.commands.worldedit.extended")){
-            ItemStack i = ItemFactory.create(Material.WOOD_AXE,(byte)0,"§aWorldEdit Extended","§8Odemknuto","",
-                    "§eMas zakoupene prava na WorldEdit.","§f- Vsechny typy Brushers","§f- //rotate", "§f- //flip", "§f- //move", "§f- //replace", "§f- //copy","§f- //paste"
-                    ,"§f- //walls","§f- //smooth","§f- //hollow","§f- //stack","§e+ Vsechny prikazy z WorldEdit Basic","","§aJiz zakoupeno.");
-            inv.setItem(11,i);
-        } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§cWorldEdit Extended","§8Uzamknuto","",
-                    "§f§lCena: §6400 CC","§7Platnost na 24h","","§eZahrunuje prikazy:","§f- Vsechny typy Brushers","§f- //rotate", "§f- //flip", "§f- //move", "§f- //replace", "§f- //copy","§f- //paste"
-                    ,"§f- //walls","§f- //smooth","§f- //hollow","§f- //stack","§e+ Vsechny prikazy z WorldEdit Basic", "", "§eKliknutim si prava zakoupis!",
-                    checkerCoins(p,400));
-            inv.setItem(11,i);
-        }
-        if(p.hasPermission("essentials.back")){
-            ItemStack i = ItemFactory.create(Material.COMMAND,(byte)0,"§a/back","§8Odemknuto","","§fPrikaz, ktery te vrati","§fna posledni pozici","§fpred teleportem.",
-                    "","§aJiz zakoupeno.");
-            inv.setItem(12,i);
-        } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§c/back","§8Uzamknuto","","§f§lCena: §6100 CC","§7Platnost navzdy.","","§fPrikaz, ktery te vrati","§fna posledni pozici","§fpred teleportem.",
-                    "","§eKliknutim si zakoupis prava!",checkerCoins(p,100));
-            inv.setItem(12,i);
-        }
-        if(p.hasPermission("essentials.ptime")){
-            ItemStack i = ItemFactory.create(Material.WATCH,(byte)0,"§a/ptime","§8Odemknuto","","§fPrikaz, se kterym si muzes nastavit","§flibovolny cas pro sebe.",
-                    "","§aJiz zakoupeno.");
-            inv.setItem(13,i);
-        } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§c/ptime","§8Uzamknuto","","§f§lCena: §6200 CC","§7Platnost navzdy.","","§fPrikaz, se kterym si muzes nastavit","§flibovolny cas pro sebe.",
-                    "","§eKliknutim si zakoupis prava!",checkerCoins(p,200));
-            inv.setItem(13,i);
-        }
-        if(p.hasPermission("essentials.top")){
-            ItemStack i = ItemFactory.create(Material.COMMAND,(byte)0,"§a/top","§8Odemknuto","","§fPrikaz, ktery te teleportuje","§fvzdy na nejvyssi bod.",
-                    "","§aJiz zakoupeno.");
-            inv.setItem(14,i);
-        } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§c/top","§8Uzamknuto","","§f§lCena: §6300 CC","§7Platnost navzdy.","","§fPrikaz, ktery te teleportuje","§fvzdy na nejvyssi bod.",
-                    "","§eKliknutim si zakoupis prava!",checkerCoins(p,300));
-            inv.setItem(14,i);
-        }
-        if(p.hasPermission("essentials.near")){
-            ItemStack i = ItemFactory.create(Material.COMMAND,(byte)0,"§a/near","§8Odemknuto","","§fPrikaz, ktery ti vypise seznam,","§fnejblizsich hracu.",
-                    "","§aJiz zakoupeno.");
-            inv.setItem(15,i);
-        } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§c/near","§8Uzamknuto","","§f§lCena: §6300 CC","§7Platnost navzdy.","","§fPrikaz, ktery ti vypise seznam,","§fnejblizsich hracu.",
-                    "","§eKliknutim si zakoupis prava!",checkerCoins(p,300));
-            inv.setItem(15,i);
-        }
-        if(p.hasPermission("essentials.tpahere")){
-            ItemStack i = ItemFactory.create(Material.COMMAND,(byte)0,"§a/tpahere","§8Odemknuto","","§fPrikaz, se ktery teleportuje,","§fvybraneho hrace na tvoji","§fpolohu.",
-                    "","§aJiz zakoupeno.");
-            inv.setItem(16,i);
-        } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§c/tpahere","§8Uzamknuto","","§f§lCena: §6250 CC","§7Platnost navzdy.","","§fPrikaz, se ktery teleportuje,","§fvybraneho hrace na tvoji","§fpolohu.",
-                    "","§eKliknutim si zakoupis prava!",checkerCoins(p,250));
-            inv.setItem(16,i);
-        }
+            inv.setItem(39, zpet);
+            inv.setItem(40, hlavni);
 
-        ItemStack glass = ItemFactory.create(Material.STAINED_GLASS_PANE,(byte)15," ");
-        inv.setItem(0,glass);
-        inv.setItem(1,glass);
-        inv.setItem(2,glass);
-        inv.setItem(3,glass);
-        inv.setItem(4,glass);
-        inv.setItem(5,glass);
-        inv.setItem(6,glass);
-        inv.setItem(7,glass);
-        inv.setItem(8,glass);
-        inv.setItem(9,glass);
-        inv.setItem(17,glass);
-        inv.setItem(18,glass);
-        inv.setItem(26,glass);
-        inv.setItem(27,glass);
-        inv.setItem(35,glass);
-        inv.setItem(36,glass);
-        inv.setItem(37,glass);
-        inv.setItem(38,glass);
-        inv.setItem(39,glass);
-        inv.setItem(41,glass);
-        inv.setItem(42,glass);
-        inv.setItem(43,glass);
-        inv.setItem(44,glass);
-
-
-        ItemStack zpet = ItemFactory.create(Material.ARROW,(byte)0,"§cZpet");
-        inv.setItem(40,zpet);
-
-        p.openInventory(inv);
+            p.openInventory(inv);
+        }
     }
 
     @EventHandler
     private void onClick(InventoryClickEvent e){
         final Player p = (Player) e.getWhoClicked();
-        if(e.getInventory().getTitle().equals("§0Shop")){
+        if(e.getInventory().getTitle().equals("§0Coinshop")){
             e.setCancelled(true);
             if (e.getCurrentItem() == null){
                 return;
@@ -146,10 +76,16 @@ public class ShopAPI implements Listener{
                 return;
             }
             if(e.getSlot() == 11){
-                this.openShopCommandsGUI(p);
+                this.openTagsMenu(p);
+            }
+            if(e.getSlot() == 13){
+                // Open menu s keys
+            }
+            if(e.getSlot() == 15){
+                // Open menu s multipliers
             }
         }
-        if(e.getInventory().getTitle().equals("§0Shop - Prikazy")){
+        if(e.getInventory().getTitle().equals("§0Tagy")){
             e.setCancelled(true);
             if (e.getCurrentItem() == null){
                 return;
@@ -157,18 +93,112 @@ public class ShopAPI implements Listener{
             if (e.getCurrentItem().getType() == Material.AIR){
                 return;
             }
+            if(e.getSlot() == 39){
+                this.openShopMainGUI(p);
+            }
             if(e.getSlot() == 40){
-                this.openShopGUI(p);
+                Main.getInstance().getMainGUI().openMainMenu(p);
+            }
+            if(Main.getInstance().getIdServer().equals("skyblock")){
+                if(e.getSlot() == 0){
+                    this.prepareTag(p, 1500, "deluxetags.tag.skyqueen", "SkyQueen");
+                }
+                if(e.getSlot() == 1){
+                    this.prepareTag(p, 1500, "deluxetags.tag.skyking", "SkyKing");
+                }
+                if(e.getSlot() == 2){
+                    this.prepareTag(p, 500, "deluxetags.tag.thuglife", "ThugLife");
+                }
+                if(e.getSlot() == 3){
+                    this.prepareTag(p, 750, "deluxetags.tag.pampersarmy", "PampersArmy");
+                }
+                if(e.getSlot() == 4){
+                    this.prepareTag(p, 1000, "deluxetags.tag.kappa", "Kappa");
+                }
+                if(e.getSlot() == 5){
+                    this.prepareTag(p, 750, "deluxetags.tag.assassin", "Assassin");
+                }
+                if(e.getSlot() == 6){
+                    this.prepareTag(p, 500, "deluxetags.tag.rekt", "Rekt");
+                }
+                if(e.getSlot() == 7){
+                    this.prepareTag(p, 1000, "deluxetags.tag.nejsemmimino", "NejsemMimono");
+                }
+                if(e.getSlot() == 8){
+                    this.prepareTag(p, 2000, "deluxetags.tag.wakefan", "WakeFan");
+                }
+                if(e.getSlot() == 9){
+                    this.prepareTag(p, 1000, "deluxetags.tag.kidrider", "KidRider");
+                }
+                if(e.getSlot() == 10){
+                    this.prepareTag(p, 750, "deluxetags.tag.ftefan", "Ftefan");
+                }
+                if(e.getSlot() == 11){
+                    this.prepareTag(p, 500, "deluxetags.tag.lord", "Lord");
+                }
+                if(e.getSlot() == 12){
+                    this.prepareTag(p, 750, "deluxetags.tag.alfasamec", "AlfaSamec");
+                }
+                if(e.getSlot() == 13){
+                    this.prepareTag(p, 1000, "deluxetags.tag.skykid", "SkyKid");
+                }
+                if(e.getSlot() == 14){
+                    this.prepareTag(p, 1000, "deluxetags.tag.jednorozec", "Jednorozec");
+                }
+                if(e.getSlot() == 15){
+                    this.prepareTag(p, 750, "deluxetags.tag.ktopolak", "KtoPolak");
+                }
+                if(e.getSlot() == 16){
+                    this.prepareTag(p, 1000, "deluxetags.tag.moneymaster", "MoneyMaster");
+                }
+                if(e.getSlot() == 17){
+                    this.prepareTag(p, 500, "deluxetags.tag.tochcicomu", "ToChciDomu");
+                }
+                if(e.getSlot() == 18){
+                    this.prepareTag(p, 1000, "deluxetags.tag.pvpnoob", "PvPNoob");
+                }
+                if(e.getSlot() == 19){
+                    this.prepareTag(p, 1500, "deluxetags.tag.umymgramatyku", "UmymGramatyku");
+                }
+                if(e.getSlot() == 20){
+                    this.prepareTag(p, 500, "deluxetags.tag.sezerute", "SezeruTe");
+                }
             }
         }
     }
 
     private String checkerCoins(final Player p, int coins){
         int i = Main.getInstance().getFetchData().getPlayerCoins(p.getUniqueId());
-        if(i > coins){
-            return "§aMas dostatek coinu k zakoupeni.";
+        if (i > coins) {
+            return "§eKliknutim provedes nakup za " + coins + " CC.";
         } else {
             return "§cNemas dostatek coinu!";
+        }
+    }
+
+    private void setupTag(Player p, String permiss, String name, Inventory inv, int slot, int price){
+        if(p.hasPermission(permiss)){
+            ItemStack tag = ItemFactory.create(Material.NAME_TAG, (byte)0, "§e" + name, "§7Tento tag jiz vlastnis.");
+            inv.setItem(slot, tag);
+        } else {
+            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte)8, "§b" + name, checkerCoins(p,price));
+            inv.setItem(slot, i);
+        }
+    }
+
+    private void prepareTag(Player p, int price, String perm, String name){
+        if(p.hasPermission(perm)){
+            p.sendMessage("§cTag " + name + " jiz vlastnis!");
+        } else {
+            int i = Main.getInstance().getFetchData().getPlayerCoins(p.getUniqueId());
+            if(i >= price){
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "pex user " + p.getName() + " add " + perm);
+                Main.getInstance().getSetData().takeCoins(p, price);
+                p.sendMessage("§eZakoupil jsi si tag: §f" + name);
+                p.closeInventory();
+            } else {
+                p.sendMessage("§cNemas dostatek coinu k nakupu tohoto tagu!");
+            }
         }
     }
 }

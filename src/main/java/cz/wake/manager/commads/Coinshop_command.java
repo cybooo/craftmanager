@@ -17,7 +17,7 @@ public class Coinshop_command implements CommandExecutor {
             if((Command.getName().equalsIgnoreCase("coinshop"))){
                 try {
                     if(ArrayOfString.length == 0){
-                        Main.getInstance().getShopGUI().openShopGUI(player);
+                        Main.getInstance().getShopGUI().openShopMainGUI(player);
                         return true;
                     }
                     return true;
