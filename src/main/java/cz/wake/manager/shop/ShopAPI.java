@@ -17,7 +17,7 @@ public class ShopAPI implements Listener{
         if(Main.getInstance().getIdServer().equals("skyblock")) {
             Inventory inv = Bukkit.createInventory(null, 27, "§0Coinshop");
 
-            ItemStack tags = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§cTags", "§7Zakup si tag pred nick", "§7 a bud IN!");
+            ItemStack tags = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§cTags", "§7Zakup si tag pred nick", "§7a bud IN!");
             ItemStack keys = ItemFactory.create(Material.TRIPWIRE_HOOK, (byte) 0, "§cKeys", "§7Zakup si legendarni klice", "§7za CraftCoiny!");
             ItemStack multipliers = ItemFactory.create(Material.BLAZE_POWDER, (byte) 0, "§cMultipliery", "§7Zakup pro cely server multiplier", "§7na urceny cas!");
 
