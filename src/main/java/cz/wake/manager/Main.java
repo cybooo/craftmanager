@@ -3,6 +3,7 @@ package cz.wake.manager;
 import java.util.ArrayList;
 
 import cz.wake.manager.commads.*;
+import cz.wake.manager.listener.ChatListener;
 import cz.wake.manager.listener.DetectOpItems;
 import cz.wake.manager.listener.LoginListener;
 import cz.wake.manager.shop.ShopAPI;
@@ -72,6 +73,7 @@ public class Main extends JavaPlugin{
 		pm.registerEvents(new MainGUI(), this);
 		pm.registerEvents(new ShopAPI(),this);
         pm.registerEvents(new LoginListener(), this);
+        pm.registerEvents(new ChatListener(), this);
 
         // Hlasovani
         if(getConfig().getBoolean("hlasovani")){
@@ -98,6 +100,7 @@ public class Main extends JavaPlugin{
 		getCommand("coins").setExecutor(new Coins_command());
 		getCommand("glow").setExecutor(new Glow_command());
         getCommand("block").setExecutor(new Block_command());
+        getCommand("chatcolor").setExecutor(new Chatcolor_command());
 
         if(getConfig().getBoolean("hlasovani")){
             getCommand("fakevote").setExecutor(new Fakevote_command());

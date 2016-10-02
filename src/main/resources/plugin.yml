@@ -20,3 +20,5 @@ commands:
       description: Fakevote
     block:
       description: Prikaz pro VIP
+    chatcolor:
+      description: Zmena barvy

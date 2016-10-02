@@ -1,7 +1,9 @@
 package cz.wake.manager;
 
+import cz.wake.manager.commads.Chatcolor_command;
 import cz.wake.manager.utils.ItemFactory;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -20,6 +22,7 @@ import java.util.Random;
 public class MainGUI implements Listener{
 
     public static Random random = new Random();
+    private Chatcolor_command chatc = new Chatcolor_command();
 
     public void openMainMenu(Player p){
 
@@ -167,8 +170,69 @@ public class MainGUI implements Listener{
             if(e.getSlot() == 24){
                 p.sendMessage("§cDocasne nefunguje, pouzij /vip");
             }
-
         }
+        if(e.getInventory().getTitle().equals("Zmena barvy psani")){
+           e.setCancelled(true);
+           if (e.getCurrentItem() == null){
+               return;
+           }
+           if (e.getCurrentItem().getType() == Material.AIR){
+               return;
+           }
+           if(e.getSlot() == 10){
+               chatc.setColor(p, ChatColor.RED);
+           }
+           if(e.getSlot() == 11){
+               chatc.setColor(p, ChatColor.AQUA);
+           }
+           if(e.getSlot() == 12){
+               chatc.setColor(p, ChatColor.GREEN);
+           }
+           if(e.getSlot() == 13){
+               chatc.setColor(p, ChatColor.LIGHT_PURPLE);
+           }
+           if(e.getSlot() == 14){
+               chatc.setColor(p, ChatColor.GOLD);
+           }
+           if(e.getSlot() == 15){
+               chatc.setColor(p, ChatColor.YELLOW);
+           }
+           if(e.getSlot() == 16){
+               chatc.setColor(p, ChatColor.DARK_PURPLE);
+           }
+           if(e.getSlot() == 19){
+               chatc.setColor(p, ChatColor.GRAY);
+           }
+           if(e.getSlot() == 20){
+               chatc.setColor(p, ChatColor.DARK_GRAY);
+           }
+           if(e.getSlot() == 21){
+               chatc.setColor(p, ChatColor.WHITE);
+           }
+           if(e.getSlot() == 22){
+                chatc.setColor(p, ChatColor.DARK_AQUA);
+           }
+           if(e.getSlot() == 23){
+                chatc.setColor(p, ChatColor.BLACK);
+           }
+           if(e.getSlot() == 24){
+                chatc.setColor(p, ChatColor.DARK_BLUE);
+           }
+           if(e.getSlot() == 25){
+                chatc.setColor(p, ChatColor.BLUE);
+           }
+           if(e.getSlot() == 28){
+               chatc.setColor(p, ChatColor.DARK_GREEN);
+           }
+           if(e.getSlot() == 29){
+               chatc.setColor(p, ChatColor.DARK_RED);
+           }
+           if(e.getSlot() == 40){
+               chatc.removeColor(p);
+           }
+           p.closeInventory();
+        }
+
     }
 
     private byte randomByte(byte start, byte end){
