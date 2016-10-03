@@ -19,19 +19,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class MainGUI implements Listener{
+public class MainGUI implements Listener {
 
     public static Random random = new Random();
     private Chatcolor_command chatc = new Chatcolor_command();
 
-    public void openMainMenu(Player p){
+    public void openMainMenu(Player p) {
 
         Inventory inv = Bukkit.createInventory(null, 45, "§0Menu");
 
-        SkullMeta headMeta = (SkullMeta)Bukkit.getItemFactory().getItemMeta(Material.SKULL_ITEM);
+        SkullMeta headMeta = (SkullMeta) Bukkit.getItemFactory().getItemMeta(Material.SKULL_ITEM);
         headMeta.setOwner(p.getName());
         headMeta.setDisplayName("§9" + p.getName());
-        ItemStack head = new ItemStack(Material.SKULL_ITEM, 1, (byte)3);
+        ItemStack head = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
         ArrayList<String> headLore = new ArrayList<>();
         headLore.add("§7");
         headLore.add("§6CraftCoins: §f" + Main.getInstance().getFetchData().getPlayerCoins(p.getUniqueId()));
@@ -43,7 +43,7 @@ public class MainGUI implements Listener{
         head.setItemMeta(headMeta);
         inv.setItem(13, head);
 
-        ItemStack hlasy = ItemFactory.create(Material.GOLD_INGOT,(byte)0,"§e§lOdmeny za hlasovani",
+        ItemStack hlasy = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§e§lOdmeny za hlasovani",
                 "",
                 "§fKazdy hlas: §610 CC §f+ §aVote Key",
                 "§f25% sance: §625 CC",
@@ -77,20 +77,20 @@ public class MainGUI implements Listener{
         ItemMeta topMeta = top.getItemMeta();
         topMeta.setDisplayName("§d§lTOP hraci (tento mesic)");
         ArrayList<String> topLore = new ArrayList<String>();
-        for(int i = 0; i < names.size(); i++){
+        for (int i = 0; i < names.size(); i++) {
             //String pos = Integer.toString(i + 1);
             topLore.add("§6" + String.valueOf(i + 1) + ". §7" + names.get(i) + " §8(" + votes.get(i) + " hlasu)");
         }
         topMeta.setLore(topLore);
         top.setItemMeta(topMeta);
 
-        ItemStack vip = ItemFactory.create(Material.EMERALD,(byte)0,"§a§lVIP","§7Prehled vyhod a SMS k ","§7nakupu VIP na serveru!","","§eKlikni pro zobrazeni!");
+        ItemStack vip = ItemFactory.create(Material.EMERALD, (byte) 0, "§a§lVIP", "§7Prehled vyhod a SMS k ", "§7nakupu VIP na serveru!", "", "§eKlikni pro zobrazeni!");
 
-        ItemStack shop = ItemFactory.create(Material.NETHER_STAR,(byte)0,"§a§lShop","","§7Zde najdes seznam prikazu,","§7ruznych boosteru a efekty,","§7ktere si muzes zakoupit za CraftCoiny!","","§cAktualne nedostupne!");
+        ItemStack shop = ItemFactory.create(Material.NETHER_STAR, (byte) 0, "§a§lShop", "", "§7Zde najdes seznam prikazu,", "§7ruznych boosteru a efekty,", "§7ktere si muzes zakoupit za CraftCoiny!", "", "§cAktualne nedostupne!");
 
-        ItemStack odkaz = ItemFactory.create(Material.PAPER,(byte)0,"§c§lOdkaz na hlasovani","","§fKliknutim zobrazis odkaz,","§fktery te rovnou presmeruje","§fna stranku s hlasovanim.","","§eKlikni pro zobrazeni!");
+        ItemStack odkaz = ItemFactory.create(Material.PAPER, (byte) 0, "§c§lOdkaz na hlasovani", "", "§fKliknutim zobrazis odkaz,", "§fktery te rovnou presmeruje", "§fna stranku s hlasovanim.", "", "§eKlikni pro zobrazeni!");
 
-        ItemStack particles = ItemFactory.create(Material.DIAMOND, (byte)0, "§b§lParticles", "", "§7Prehled vsech efektu,", "§7ktere vlastnis nebo", "§7nebo si muzes zakoupit.","","§eKlikni pro zobrazeni");
+        ItemStack particles = ItemFactory.create(Material.DIAMOND, (byte) 0, "§b§lParticles", "", "§7Prehled vsech efektu,", "§7ktere vlastnis nebo", "§7nebo si muzes zakoupit.", "", "§eKlikni pro zobrazeni");
 
         inv.setItem(31, particles);
         inv.setItem(20, hlasy);
@@ -99,63 +99,63 @@ public class MainGUI implements Listener{
         inv.setItem(23, shop);
         inv.setItem(24, vip);
 
-        ItemStack white = ItemFactory.create(Material.STAINED_GLASS_PANE,(byte)0," ");
-        inv.setItem(0,white);
-        inv.setItem(1,white);
-        inv.setItem(7,white);
-        inv.setItem(8,white);
-        inv.setItem(36,white);
-        inv.setItem(37,white);
-        inv.setItem(43,white);
-        inv.setItem(44,white);
+        ItemStack white = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte) 0, " ");
+        inv.setItem(0, white);
+        inv.setItem(1, white);
+        inv.setItem(7, white);
+        inv.setItem(8, white);
+        inv.setItem(36, white);
+        inv.setItem(37, white);
+        inv.setItem(43, white);
+        inv.setItem(44, white);
 
-        ItemStack colorful = ItemFactory.create(Material.STAINED_GLASS_PANE,randomByte((byte)1,(byte)15)," ");
-        inv.setItem(2,colorful);
-        inv.setItem(3,colorful);
-        inv.setItem(4,colorful);
-        inv.setItem(5,colorful);
-        inv.setItem(6,colorful);
-        inv.setItem(9,colorful);
-        inv.setItem(10,colorful);
-        inv.setItem(11,colorful);
-        inv.setItem(15,colorful);
-        inv.setItem(16,colorful);
-        inv.setItem(17,colorful);
-        inv.setItem(18,colorful);
-        inv.setItem(26,colorful);
-        inv.setItem(27,colorful);
-        inv.setItem(28,colorful);
-        inv.setItem(29,colorful);
-        inv.setItem(33,colorful);
-        inv.setItem(34,colorful);
-        inv.setItem(35,colorful);
-        inv.setItem(38,colorful);
-        inv.setItem(39,colorful);
-        inv.setItem(40,colorful);
-        inv.setItem(41,colorful);
-        inv.setItem(42,colorful);
+        ItemStack colorful = ItemFactory.create(Material.STAINED_GLASS_PANE, randomByte((byte) 1, (byte) 15), " ");
+        inv.setItem(2, colorful);
+        inv.setItem(3, colorful);
+        inv.setItem(4, colorful);
+        inv.setItem(5, colorful);
+        inv.setItem(6, colorful);
+        inv.setItem(9, colorful);
+        inv.setItem(10, colorful);
+        inv.setItem(11, colorful);
+        inv.setItem(15, colorful);
+        inv.setItem(16, colorful);
+        inv.setItem(17, colorful);
+        inv.setItem(18, colorful);
+        inv.setItem(26, colorful);
+        inv.setItem(27, colorful);
+        inv.setItem(28, colorful);
+        inv.setItem(29, colorful);
+        inv.setItem(33, colorful);
+        inv.setItem(34, colorful);
+        inv.setItem(35, colorful);
+        inv.setItem(38, colorful);
+        inv.setItem(39, colorful);
+        inv.setItem(40, colorful);
+        inv.setItem(41, colorful);
+        inv.setItem(42, colorful);
 
         p.openInventory(inv);
 
     }
 
     @EventHandler
-    private void onClick(InventoryClickEvent e){
+    private void onClick(InventoryClickEvent e) {
         final Player p = (Player) e.getWhoClicked();
-        if(e.getInventory().getTitle().equals("§0Menu")){
+        if (e.getInventory().getTitle().equals("§0Menu")) {
             e.setCancelled(true);
-            if (e.getCurrentItem() == null){
+            if (e.getCurrentItem() == null) {
                 return;
             }
-            if (e.getCurrentItem().getType() == Material.AIR){
+            if (e.getCurrentItem().getType() == Material.AIR) {
                 return;
             }
-            if(e.getSlot() == 31){
+            if (e.getSlot() == 31) {
                 Main.getInstance().getParticlesAPI().openParticlesMenu(p);
                 //p.sendMessage("§cAktualne nedostupny!");
             }
-            if(e.getSlot() == 21){
-                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING,1.0f,1.0f);
+            if (e.getSlot() == 21) {
+                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
                 p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§7K hlasovani klikni na tento odkaz:");
@@ -164,79 +164,79 @@ public class MainGUI implements Listener{
                 p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.closeInventory();
             }
-            if(e.getSlot() == 23){
+            if (e.getSlot() == 23) {
                 Main.getInstance().getShopGUI().openShopMainGUI(p);
             }
-            if(e.getSlot() == 24){
+            if (e.getSlot() == 24) {
                 p.sendMessage("§cDocasne nefunguje, pouzij /vip");
             }
         }
-        if(e.getInventory().getTitle().equals("Zmena barvy psani")){
-           e.setCancelled(true);
-           if (e.getCurrentItem() == null){
-               return;
-           }
-           if (e.getCurrentItem().getType() == Material.AIR){
-               return;
-           }
-           if(e.getSlot() == 10){
-               chatc.setColor(p, ChatColor.RED);
-           }
-           if(e.getSlot() == 11){
-               chatc.setColor(p, ChatColor.AQUA);
-           }
-           if(e.getSlot() == 12){
-               chatc.setColor(p, ChatColor.GREEN);
-           }
-           if(e.getSlot() == 13){
-               chatc.setColor(p, ChatColor.LIGHT_PURPLE);
-           }
-           if(e.getSlot() == 14){
-               chatc.setColor(p, ChatColor.GOLD);
-           }
-           if(e.getSlot() == 15){
-               chatc.setColor(p, ChatColor.YELLOW);
-           }
-           if(e.getSlot() == 16){
-               chatc.setColor(p, ChatColor.DARK_PURPLE);
-           }
-           if(e.getSlot() == 19){
-               chatc.setColor(p, ChatColor.GRAY);
-           }
-           if(e.getSlot() == 20){
-               chatc.setColor(p, ChatColor.DARK_GRAY);
-           }
-           if(e.getSlot() == 21){
-               chatc.setColor(p, ChatColor.WHITE);
-           }
-           if(e.getSlot() == 22){
+        if (e.getInventory().getTitle().equals("Zmena barvy psani")) {
+            e.setCancelled(true);
+            if (e.getCurrentItem() == null) {
+                return;
+            }
+            if (e.getCurrentItem().getType() == Material.AIR) {
+                return;
+            }
+            if (e.getSlot() == 10) {
+                chatc.setColor(p, ChatColor.RED);
+            }
+            if (e.getSlot() == 11) {
+                chatc.setColor(p, ChatColor.AQUA);
+            }
+            if (e.getSlot() == 12) {
+                chatc.setColor(p, ChatColor.GREEN);
+            }
+            if (e.getSlot() == 13) {
+                chatc.setColor(p, ChatColor.LIGHT_PURPLE);
+            }
+            if (e.getSlot() == 14) {
+                chatc.setColor(p, ChatColor.GOLD);
+            }
+            if (e.getSlot() == 15) {
+                chatc.setColor(p, ChatColor.YELLOW);
+            }
+            if (e.getSlot() == 16) {
+                chatc.setColor(p, ChatColor.DARK_PURPLE);
+            }
+            if (e.getSlot() == 19) {
+                chatc.setColor(p, ChatColor.GRAY);
+            }
+            if (e.getSlot() == 20) {
+                chatc.setColor(p, ChatColor.DARK_GRAY);
+            }
+            if (e.getSlot() == 21) {
+                chatc.setColor(p, ChatColor.WHITE);
+            }
+            if (e.getSlot() == 22) {
                 chatc.setColor(p, ChatColor.DARK_AQUA);
-           }
-           if(e.getSlot() == 23){
+            }
+            if (e.getSlot() == 23) {
                 chatc.setColor(p, ChatColor.BLACK);
-           }
-           if(e.getSlot() == 24){
+            }
+            if (e.getSlot() == 24) {
                 chatc.setColor(p, ChatColor.DARK_BLUE);
-           }
-           if(e.getSlot() == 25){
+            }
+            if (e.getSlot() == 25) {
                 chatc.setColor(p, ChatColor.BLUE);
-           }
-           if(e.getSlot() == 28){
-               chatc.setColor(p, ChatColor.DARK_GREEN);
-           }
-           if(e.getSlot() == 29){
-               chatc.setColor(p, ChatColor.DARK_RED);
-           }
-           if(e.getSlot() == 40){
-               chatc.removeColor(p);
-           }
-           p.closeInventory();
+            }
+            if (e.getSlot() == 28) {
+                chatc.setColor(p, ChatColor.DARK_GREEN);
+            }
+            if (e.getSlot() == 29) {
+                chatc.setColor(p, ChatColor.DARK_RED);
+            }
+            if (e.getSlot() == 40) {
+                chatc.removeColor(p);
+            }
+            p.closeInventory();
         }
 
     }
 
-    private byte randomByte(byte start, byte end){
+    private byte randomByte(byte start, byte end) {
         int cislo = start + random.nextInt(end - start + 1);
-        return (byte)cislo;
+        return (byte) cislo;
     }
 }

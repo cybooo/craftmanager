@@ -4,19 +4,19 @@ import org.bukkit.Bukkit;
 
 public class ServerFactory {
 
-    public String getVersion(){
+    public String getVersion() {
         return Bukkit.getVersion();
     }
 
-    public int getOnlinePlayers(){
+    public int getOnlinePlayers() {
         return Bukkit.getOnlinePlayers().size();
     }
 
-    public int getMaxPlayers(){
+    public int getMaxPlayers() {
         return Bukkit.getMaxPlayers();
     }
 
-    public int getCountPlugins(){
+    public int getCountPlugins() {
         return Bukkit.getPluginManager().getPlugins().length;
     }
 }

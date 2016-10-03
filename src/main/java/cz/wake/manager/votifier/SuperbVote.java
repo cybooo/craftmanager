@@ -11,75 +11,75 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Random;
 
-public class SuperbVote implements Listener{
+public class SuperbVote implements Listener {
 
     @EventHandler
-    public void voteSQL(final VotifierEvent e){
+    public void voteSQL(final VotifierEvent e) {
         Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new BukkitRunnable() {
             @Override
             public void run() {
                 Player onlinePlayer = Bukkit.getPlayerExact(e.getVote().getUsername());
                 try {
-                    if(onlinePlayer.isOnline()){
+                    if (onlinePlayer.isOnline()) {
                         //Pridani hlasu
                         Main.getInstance().getSetData().addPlayerVote(onlinePlayer);
-                        Main.getInstance().getVoteHandler().addTotalVotes(onlinePlayer,1 + Main.getInstance().getVoteHandler().getPlayerCachedTotalVotes(onlinePlayer));
-                        Main.getInstance().getVoteHandler().addMonthVotes(onlinePlayer,1 + Main.getInstance().getVoteHandler().getPlayerCachedMonthVotes(onlinePlayer));
-                        Main.getInstance().getVoteHandler().addWeekVotes(onlinePlayer,1 + Main.getInstance().getVoteHandler().getPlayerCachedWeekVotes(onlinePlayer));
+                        Main.getInstance().getVoteHandler().addTotalVotes(onlinePlayer, 1 + Main.getInstance().getVoteHandler().getPlayerCachedTotalVotes(onlinePlayer));
+                        Main.getInstance().getVoteHandler().addMonthVotes(onlinePlayer, 1 + Main.getInstance().getVoteHandler().getPlayerCachedMonthVotes(onlinePlayer));
+                        Main.getInstance().getVoteHandler().addWeekVotes(onlinePlayer, 1 + Main.getInstance().getVoteHandler().getPlayerCachedWeekVotes(onlinePlayer));
 
                         giveReward(onlinePlayer);
 
-                        Titles.sendFullTitlePlayer(onlinePlayer,10,60,10,"§a§lDekujeme!","§fDostal/a jsi odmenu.");
-                        for(Player p : Bukkit.getOnlinePlayers()){
+                        Titles.sendFullTitlePlayer(onlinePlayer, 10, 60, 10, "§a§lDekujeme!", "§fDostal/a jsi odmenu.");
+                        for (Player p : Bukkit.getOnlinePlayers()) {
                             p.sendMessage("§b" + onlinePlayer.getName() + " §ehlasoval a ziskal §aodmenu!");
                         }
                         checkMountWin(onlinePlayer);
 
                     }
-                } catch (NullPointerException e){
+                } catch (NullPointerException e) {
                     //Nic
                 }
             }
         });
     }
 
-    private void giveReward(final Player p){
+    private void giveReward(final Player p) {
         int sance = randRange(1, 100);
         System.out.println("Sance: " + sance);
-        if(sance == 1){ //1% sance
-            this.giveCoins(p,100);
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"cratekeys give " + p.getName() + " Vote 1");
+        if (sance == 1) { //1% sance
+            this.giveCoins(p, 100);
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "cratekeys give " + p.getName() + " Vote 1");
         } else if (sance <= 5 && sance >= 2) { //5% sance
-            this.giveCoins(p,50);
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"cratekeys give " + p.getName() + " Vote 1");
-        } else if (sance <= 25 && sance >= 6){ //25% sance
-            this.giveCoins(p,25);
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"cratekeys give " + p.getName() + " Vote 1");
+            this.giveCoins(p, 50);
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "cratekeys give " + p.getName() + " Vote 1");
+        } else if (sance <= 25 && sance >= 6) { //25% sance
+            this.giveCoins(p, 25);
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "cratekeys give " + p.getName() + " Vote 1");
         } else {
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"cratekeys give " + p.getName() + " Vote 1");
-            this.giveCoins(p,10);
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "cratekeys give " + p.getName() + " Vote 1");
+            this.giveCoins(p, 10);
         }
     }
 
-    private void checkMountWin(final Player p){
+    private void checkMountWin(final Player p) {
         int votes = Main.getInstance().getVoteHandler().getPlayerCachedMonthVotes(p);
-        if(votes == 20){
-            this.giveCoins(p,200);
+        if (votes == 20) {
+            this.giveCoins(p, 200);
         }
-        if(votes == 40){
-            this.giveCoins(p,300);
+        if (votes == 40) {
+            this.giveCoins(p, 300);
         }
-        if(votes == 60){
-            this.giveCoins(p,500);
+        if (votes == 60) {
+            this.giveCoins(p, 500);
         }
     }
 
-    private void giveCoins(final Player p, int coins){
-        Main.getInstance().getSetData().addCoins(p.getUniqueId(),coins);
+    private void giveCoins(final Player p, int coins) {
+        Main.getInstance().getSetData().addCoins(p.getUniqueId(), coins);
         p.sendMessage("§eBylo ti pridano §f" + coins + " §ecoinu.");
     }
 
-    private static int randRange(int min, int max){
+    private static int randRange(int min, int max) {
         Random rand = new Random();
         int randomNum = rand.nextInt(max - min + 1) + min;
         return randomNum;

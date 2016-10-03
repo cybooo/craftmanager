@@ -14,7 +14,7 @@ public class Block_command implements CommandExecutor {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
             if ((Command.getName().equalsIgnoreCase("block"))) {
-                if(player.hasPermission("craftmanager.block")){
+                if (player.hasPermission("craftmanager.block")) {
                     if (ArrayOfString.length == 0) {
                         while (player.getInventory().contains(Material.IRON_INGOT, 9)) {
                             if (player.getInventory().contains(Material.IRON_INGOT, 9)) {

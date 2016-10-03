@@ -11,16 +11,16 @@ import org.bukkit.entity.Player;
 import java.util.Date;
 import java.util.UUID;
 
-public class Fakevote_command implements CommandExecutor{
+public class Fakevote_command implements CommandExecutor {
 
     public static final String FAKE_HOST_NAME_FOR_VOTE = UUID.randomUUID().toString();
 
     @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString){
-        if(Sender instanceof Player){
-            Player player = (Player)Sender;
-            if((Command.getName().equalsIgnoreCase("fakevote"))){
-                if(player.hasPermission("craftmanager.admin")){
+    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
+        if (Sender instanceof Player) {
+            Player player = (Player) Sender;
+            if ((Command.getName().equalsIgnoreCase("fakevote"))) {
+                if (player.hasPermission("craftmanager.admin")) {
                     if (ArrayOfString.length == 0) {
                         player.sendMessage("§ePouziti: §f/fakevote nick test");
                         return true;

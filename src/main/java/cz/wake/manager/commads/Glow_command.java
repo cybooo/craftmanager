@@ -5,16 +5,16 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Glow_command implements CommandExecutor{
+public class Glow_command implements CommandExecutor {
 
     @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString){
-        if(Sender instanceof Player){
-            Player player = (Player)Sender;
-            if((Command.getName().equalsIgnoreCase("glow"))){
-                if(ArrayOfString.length == 0){
-                    if(player.hasPermission("craftmanager.glow")){
-                        if(!player.isGlowing()){
+    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
+        if (Sender instanceof Player) {
+            Player player = (Player) Sender;
+            if ((Command.getName().equalsIgnoreCase("glow"))) {
+                if (ArrayOfString.length == 0) {
+                    if (player.hasPermission("craftmanager.glow")) {
+                        if (!player.isGlowing()) {
                             player.setGlowing(true);
                             player.sendMessage("§bAktivoval jsi efekt §5Glowing!");
                             return true;

@@ -8,12 +8,12 @@ import org.bukkit.event.player.PlayerLoginEvent;
 
 import java.util.List;
 
-public class LoginListener implements Listener{
+public class LoginListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-    public void onLogin(PlayerLoginEvent e){
+    public void onLogin(PlayerLoginEvent e) {
         String ip = e.getAddress().getHostAddress();
-        if ((!isProxyIP(ip)) && (!isDisabledIP(ip))){
+        if ((!isProxyIP(ip)) && (!isDisabledIP(ip))) {
             e.disallow(PlayerLoginEvent.Result.KICK_OTHER, "§ePro pripojeni na server pouzij IP: §cplay.craftmania.cz");
         }
     }
