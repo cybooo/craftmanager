@@ -59,6 +59,7 @@ public class Main extends JavaPlugin {
 
     public void onDisable() {
         instance = null;
+        getMySQL().closeConnection();
     }
 
     public static Main getInstance() {
