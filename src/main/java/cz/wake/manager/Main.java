@@ -101,6 +101,7 @@ public class Main extends JavaPlugin {
         getCommand("glow").setExecutor(new Glow_command());
         getCommand("block").setExecutor(new Block_command());
         getCommand("chatcolor").setExecutor(new Chatcolor_command());
+        getCommand("help").setExecutor(new Help_command());
 
         if (getConfig().getBoolean("hlasovani")) {
             getCommand("fakevote").setExecutor(new Fakevote_command());
