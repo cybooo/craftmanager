@@ -30,29 +30,70 @@ public class ShopAPI implements Listener {
     }
 
     private void openTagsMenu(final Player p) {
-        if (Main.getInstance().getIdServer().equals("skyblock")) {
-            Inventory inv = Bukkit.createInventory(null, 45, "§0Tagy");
-            this.setupTag(p, "deluxetags.tag.skyqueen", "SkyQueen", inv, 0, 1500);
-            this.setupTag(p, "deluxetags.tag.skyking", "SkyKing", inv, 1, 1500);
-            this.setupTag(p, "deluxetags.tag.thuglife", "ThugLife", inv, 2, 500);
-            this.setupTag(p, "deluxetags.tag.pampersarmy", "PampersArmy", inv, 3, 750);
-            this.setupTag(p, "deluxetags.tag.kappa", "Kappa", inv, 4, 1000);
-            this.setupTag(p, "deluxetags.tag.assassin", "Assassin", inv, 5, 750);
-            this.setupTag(p, "deluxetags.tag.rekt", "Rekt", inv, 6, 500);
-            this.setupTag(p, "deluxetags.tag.nejsemmimino", "NejsemMimino", inv, 7, 1000);
-            this.setupTag(p, "deluxetags.tag.wakefan", "WakeFan", inv, 8, 2000);
-            this.setupTag(p, "deluxetags.tag.kidrider", "KidRider", inv, 9, 1000);
-            this.setupTag(p, "deluxetags.tag.ftefan", "Ftefan", inv, 10, 750);
-            this.setupTag(p, "deluxetags.tag.lord", "Lord", inv, 11, 500);
-            this.setupTag(p, "deluxetags.tag.alfasamec", "AlfaSamec", inv, 12, 750);
-            this.setupTag(p, "deluxetags.tag.skykid", "SkyKid", inv, 13, 1000);
-            this.setupTag(p, "deluxetags.tag.jednorozec", "Jednorozec", inv, 14, 1000);
-            this.setupTag(p, "deluxetags.tag.ktopolak", "KtoPolak", inv, 15, 750);
-            this.setupTag(p, "deluxetags.tag.moneymaster", "MoneyMaster", inv, 16, 1000);
-            this.setupTag(p, "deluxetags.tag.tochcicomu", "ToChciDomu", inv, 17, 500);
-            this.setupTag(p, "deluxetags.tag.pvpnoob", "PvPNoob", inv, 18, 1000);
-            this.setupTag(p, "deluxetags.tag.umymgramatyku", "UmymGramatiku", inv, 19, 1500);
-            this.setupTag(p, "deluxetags.tag.sezerute", "SezeruTe", inv, 20, 500);
+        if (Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+            Inventory inv = Bukkit.createInventory(null, 45, "§0Tagy (Skyblock)");
+            this.setupTag(p, "deluxetags.tag.thuglife", "ThugLife", inv, 0, 500);
+            this.setupTag(p, "deluxetags.tag.pampersarmy", "PampersArmy", inv, 1, 750);
+            this.setupTag(p, "deluxetags.tag.kappa", "Kappa", inv, 2, 1000);
+            this.setupTag(p, "deluxetags.tag.assassin", "Assassin", inv, 3, 750);
+            this.setupTag(p, "deluxetags.tag.rekt", "Rekt", inv, 4, 500);
+            this.setupTag(p, "deluxetags.tag.nejsemmimino", "NejsemMimino", inv, 5, 1000);
+            this.setupTag(p, "deluxetags.tag.wakefan", "WakeFan", inv, 6, 2000);
+            this.setupTag(p, "deluxetags.tag.kidrider", "KidRider", inv, 7, 1000);
+            this.setupTag(p, "deluxetags.tag.ftefan", "Ftefan", inv, 8, 750);
+            this.setupTag(p, "deluxetags.tag.lord", "Lord", inv, 9, 500);
+            this.setupTag(p, "deluxetags.tag.alfasamec", "AlfaSamec", inv, 10, 750);
+            this.setupTag(p, "deluxetags.tag.jednorozec", "Jednorozec", inv, 11, 1000);
+            this.setupTag(p, "deluxetags.tag.ktopolak", "KtoPolak", inv, 12, 750);
+            this.setupTag(p, "deluxetags.tag.moneymaster", "MoneyMaster", inv, 13, 1000);
+            this.setupTag(p, "deluxetags.tag.tochcicomu", "ToChciDomu", inv, 14, 500);
+            this.setupTag(p, "deluxetags.tag.pvpnoob", "PvPNoob", inv, 15, 1000);
+            this.setupTag(p, "deluxetags.tag.umymgramatyku", "UmymGramatiku", inv, 16, 1500);
+            this.setupTag(p, "deluxetags.tag.sezerute", "SezeruTe", inv, 17, 500);
+            this.setupTag(p, "deluxetags.tag.veleprd", "VelePrd", inv, 18, 500);
+            this.setupTag(p, "deluxetags.tag.zlobr", "Zlobr", inv, 19, 750);
+            this.setupTag(p, "deluxetags.tag.flafyfan", "FlafyFan", inv, 20, 2000);
+            this.setupTag(p, "deluxetags.tag.forevermeloun", "ForeverMeloun", inv, 21, 1000);
+            this.setupTag(p, "deluxetags.tag.kulisak", "Kulisak", inv, 22, 500);
+
+            // Specialni tagy pro Skyblock
+            this.setupTag(p, "deluxetags.tag.skyqueen", "SkyQueen", inv, 23, 1500);
+            this.setupTag(p, "deluxetags.tag.skyking", "SkyKing", inv, 24, 1500);
+            this.setupTag(p, "deluxetags.tag.skykid", "SkyKid", inv, 25, 1000);
+
+
+            ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
+            ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
+
+            inv.setItem(39, zpet);
+            inv.setItem(40, hlavni);
+
+            p.openInventory(inv);
+        } else {
+            Inventory inv = Bukkit.createInventory(null, 45, "§0Tagy (Skyblock)");
+            this.setupTag(p, "deluxetags.tag.thuglife", "ThugLife", inv, 0, 500);
+            this.setupTag(p, "deluxetags.tag.pampersarmy", "PampersArmy", inv, 1, 750);
+            this.setupTag(p, "deluxetags.tag.kappa", "Kappa", inv, 2, 1000);
+            this.setupTag(p, "deluxetags.tag.assassin", "Assassin", inv, 3, 750);
+            this.setupTag(p, "deluxetags.tag.rekt", "Rekt", inv, 4, 500);
+            this.setupTag(p, "deluxetags.tag.nejsemmimino", "NejsemMimino", inv, 5, 1000);
+            this.setupTag(p, "deluxetags.tag.wakefan", "WakeFan", inv, 6, 2000);
+            this.setupTag(p, "deluxetags.tag.kidrider", "KidRider", inv, 7, 1000);
+            this.setupTag(p, "deluxetags.tag.ftefan", "Ftefan", inv, 8, 750);
+            this.setupTag(p, "deluxetags.tag.lord", "Lord", inv, 9, 500);
+            this.setupTag(p, "deluxetags.tag.alfasamec", "AlfaSamec", inv, 10, 750);
+            this.setupTag(p, "deluxetags.tag.jednorozec", "Jednorozec", inv, 11, 1000);
+            this.setupTag(p, "deluxetags.tag.ktopolak", "KtoPolak", inv, 12, 750);
+            this.setupTag(p, "deluxetags.tag.moneymaster", "MoneyMaster", inv, 13, 1000);
+            this.setupTag(p, "deluxetags.tag.tochcicomu", "ToChciDomu", inv, 14, 500);
+            this.setupTag(p, "deluxetags.tag.pvpnoob", "PvPNoob", inv, 15, 1000);
+            this.setupTag(p, "deluxetags.tag.umymgramatyku", "UmymGramatiku", inv, 16, 1500);
+            this.setupTag(p, "deluxetags.tag.sezerute", "SezeruTe", inv, 17, 500);
+            this.setupTag(p, "deluxetags.tag.veleprd", "VelePrd", inv, 18, 500);
+            this.setupTag(p, "deluxetags.tag.zlobr", "Zlobr", inv, 19, 750);
+            this.setupTag(p, "deluxetags.tag.flafyfan", "FlafyFan", inv, 20, 2000);
+            this.setupTag(p, "deluxetags.tag.forevermeloun", "ForeverMeloun", inv, 21, 1000);
+            this.setupTag(p, "deluxetags.tag.kulisak", "Kulisak", inv, 22, 500);
 
             ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
             ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
@@ -85,7 +126,7 @@ public class ShopAPI implements Listener {
                 // Open menu s multipliers
             }
         }
-        if (e.getInventory().getTitle().equals("§0Tagy")) {
+        if (e.getInventory().getTitle().equals("§0Tagy (Skyblock)")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -101,67 +142,152 @@ public class ShopAPI implements Listener {
             }
             if (Main.getInstance().getIdServer().equals("skyblock")) {
                 if (e.getSlot() == 0) {
-                    this.prepareTag(p, 1500, "deluxetags.tag.skyqueen", "SkyQueen");
-                }
-                if (e.getSlot() == 1) {
-                    this.prepareTag(p, 1500, "deluxetags.tag.skyking", "SkyKing");
-                }
-                if (e.getSlot() == 2) {
                     this.prepareTag(p, 500, "deluxetags.tag.thuglife", "ThugLife");
                 }
-                if (e.getSlot() == 3) {
+                if (e.getSlot() == 1) {
                     this.prepareTag(p, 750, "deluxetags.tag.pampersarmy", "PampersArmy");
                 }
-                if (e.getSlot() == 4) {
+                if (e.getSlot() == 2) {
                     this.prepareTag(p, 1000, "deluxetags.tag.kappa", "Kappa");
                 }
-                if (e.getSlot() == 5) {
+                if (e.getSlot() == 3) {
                     this.prepareTag(p, 750, "deluxetags.tag.assassin", "Assassin");
                 }
-                if (e.getSlot() == 6) {
+                if (e.getSlot() == 4) {
                     this.prepareTag(p, 500, "deluxetags.tag.rekt", "Rekt");
                 }
-                if (e.getSlot() == 7) {
+                if (e.getSlot() == 5) {
                     this.prepareTag(p, 1000, "deluxetags.tag.nejsemmimino", "NejsemMimono");
                 }
-                if (e.getSlot() == 8) {
+                if (e.getSlot() == 6) {
                     this.prepareTag(p, 2000, "deluxetags.tag.wakefan", "WakeFan");
                 }
-                if (e.getSlot() == 9) {
+                if (e.getSlot() == 7) {
                     this.prepareTag(p, 1000, "deluxetags.tag.kidrider", "KidRider");
                 }
-                if (e.getSlot() == 10) {
+                if (e.getSlot() == 8) {
                     this.prepareTag(p, 750, "deluxetags.tag.ftefan", "Ftefan");
                 }
-                if (e.getSlot() == 11) {
+                if (e.getSlot() == 9) {
                     this.prepareTag(p, 500, "deluxetags.tag.lord", "Lord");
                 }
-                if (e.getSlot() == 12) {
+                if (e.getSlot() == 10) {
                     this.prepareTag(p, 750, "deluxetags.tag.alfasamec", "AlfaSamec");
                 }
-                if (e.getSlot() == 13) {
-                    this.prepareTag(p, 1000, "deluxetags.tag.skykid", "SkyKid");
-                }
-                if (e.getSlot() == 14) {
+                if (e.getSlot() == 11) {
                     this.prepareTag(p, 1000, "deluxetags.tag.jednorozec", "Jednorozec");
                 }
-                if (e.getSlot() == 15) {
+                if (e.getSlot() == 12) {
                     this.prepareTag(p, 750, "deluxetags.tag.ktopolak", "KtoPolak");
                 }
-                if (e.getSlot() == 16) {
+                if (e.getSlot() == 13) {
                     this.prepareTag(p, 1000, "deluxetags.tag.moneymaster", "MoneyMaster");
                 }
-                if (e.getSlot() == 17) {
+                if (e.getSlot() == 14) {
                     this.prepareTag(p, 500, "deluxetags.tag.tochcicomu", "ToChciDomu");
                 }
-                if (e.getSlot() == 18) {
+                if (e.getSlot() == 15) {
                     this.prepareTag(p, 1000, "deluxetags.tag.pvpnoob", "PvPNoob");
                 }
-                if (e.getSlot() == 19) {
+                if (e.getSlot() == 16) {
                     this.prepareTag(p, 1500, "deluxetags.tag.umymgramatyku", "UmymGramatyku");
                 }
-                if (e.getSlot() == 20) {
+                if (e.getSlot() == 17) {
                     this.prepareTag(p, 500, "deluxetags.tag.sezerute", "SezeruTe");
+                }
+                if (e.getSlot() == 18) {
+                    this.prepareTag(p, 500, "deluxetags.tag.veleprd", "VelePrd");
+                }
+                if (e.getSlot() == 19) {
+                    this.prepareTag(p, 750, "deluxetags.tag.zlobr", "Zlobr");
+                }
+                if (e.getSlot() == 20) {
+                    this.prepareTag(p, 2000, "deluxetags.tag.flafyfan", "FlafyFan");
+                }
+                if (e.getSlot() == 21) {
+                    this.prepareTag(p, 1000, "deluxetags.tag.forevermeloun", "ForeverMeloun");
+                }
+                if (e.getSlot() == 22) {
+                    this.prepareTag(p, 500, "deluxetags.tag.kulisak", "Kulisak");
+                }
+                if (e.getSlot() == 23) {
+                    this.prepareTag(p, 1500, "deluxetags.tag.skyqueen", "SkyQueen");
+                }
+                if (e.getSlot() == 24) {
+                    this.prepareTag(p, 1500, "deluxetags.tag.skyking", "SkyKing");
+                }
+                if (e.getSlot() == 25) {
+                    this.prepareTag(p, 1000, "deluxetags.tag.skykid", "SkyKid");
+                }
+            } else {
+                if (e.getSlot() == 0) {
+                    this.prepareTag(p, 500, "deluxetags.tag.thuglife", "ThugLife");
+                }
+                if (e.getSlot() == 1) {
+                    this.prepareTag(p, 750, "deluxetags.tag.pampersarmy", "PampersArmy");
+                }
+                if (e.getSlot() == 2) {
+                    this.prepareTag(p, 1000, "deluxetags.tag.kappa", "Kappa");
+                }
+                if (e.getSlot() == 3) {
+                    this.prepareTag(p, 750, "deluxetags.tag.assassin", "Assassin");
+                }
+                if (e.getSlot() == 4) {
+                    this.prepareTag(p, 500, "deluxetags.tag.rekt", "Rekt");
+                }
+                if (e.getSlot() == 5) {
+                    this.prepareTag(p, 1000, "deluxetags.tag.nejsemmimino", "NejsemMimono");
+                }
+                if (e.getSlot() == 6) {
+                    this.prepareTag(p, 2000, "deluxetags.tag.wakefan", "WakeFan");
+                }
+                if (e.getSlot() == 7) {
+                    this.prepareTag(p, 1000, "deluxetags.tag.kidrider", "KidRider");
+                }
+                if (e.getSlot() == 8) {
+                    this.prepareTag(p, 750, "deluxetags.tag.ftefan", "Ftefan");
+                }
+                if (e.getSlot() == 9) {
+                    this.prepareTag(p, 500, "deluxetags.tag.lord", "Lord");
+                }
+                if (e.getSlot() == 10) {
+                    this.prepareTag(p, 750, "deluxetags.tag.alfasamec", "AlfaSamec");
+                }
+                if (e.getSlot() == 11) {
+                    this.prepareTag(p, 1000, "deluxetags.tag.jednorozec", "Jednorozec");
+                }
+                if (e.getSlot() == 12) {
+                    this.prepareTag(p, 750, "deluxetags.tag.ktopolak", "KtoPolak");
+                }
+                if (e.getSlot() == 13) {
+                    this.prepareTag(p, 1000, "deluxetags.tag.moneymaster", "MoneyMaster");
+                }
+                if (e.getSlot() == 14) {
+                    this.prepareTag(p, 500, "deluxetags.tag.tochcicomu", "ToChciDomu");
+                }
+                if (e.getSlot() == 15) {
+                    this.prepareTag(p, 1000, "deluxetags.tag.pvpnoob", "PvPNoob");
+                }
+                if (e.getSlot() == 16) {
+                    this.prepareTag(p, 1500, "deluxetags.tag.umymgramatyku", "UmymGramatyku");
+                }
+                if (e.getSlot() == 17) {
+                    this.prepareTag(p, 500, "deluxetags.tag.sezerute", "SezeruTe");
+                }
+                if (e.getSlot() == 18) {
+                    this.prepareTag(p, 500, "deluxetags.tag.veleprd", "VelePrd");
+                }
+                if (e.getSlot() == 19) {
+                    this.prepareTag(p, 750, "deluxetags.tag.zlobr", "Zlobr");
+                }
+                if (e.getSlot() == 20) {
+                    this.prepareTag(p, 2000, "deluxetags.tag.flafyfan", "FlafyFan");
+                }
+                if (e.getSlot() == 21) {
+                    this.prepareTag(p, 1000, "deluxetags.tag.forevermeloun", "ForeverMeloun");
+                }
+                if (e.getSlot() == 22) {
+                    this.prepareTag(p, 500, "deluxetags.tag.kulisak", "Kulisak");
                 }
             }
         }
