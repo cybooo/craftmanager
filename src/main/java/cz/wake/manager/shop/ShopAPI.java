@@ -14,12 +14,15 @@ import org.bukkit.inventory.ItemStack;
 public class ShopAPI implements Listener {
 
     public void openShopMainGUI(final Player p) {
-        if (Main.getInstance().getIdServer().equals("skyblock")) {
+        if (Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")
+                || Main.getInstance().getIdServer().equalsIgnoreCase("survival")
+                || Main.getInstance().getIdServer().equalsIgnoreCase("creative")
+                || Main.getInstance().getIdServer().equalsIgnoreCase("creative2")) {
             Inventory inv = Bukkit.createInventory(null, 27, "§0Coinshop");
 
             ItemStack tags = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§cTags", "§7Zakup si tag pred nick", "§7a bud IN!");
-            ItemStack keys = ItemFactory.create(Material.TRIPWIRE_HOOK, (byte) 0, "§cKeys", "§7Zakup si legendarni klice", "§7za CraftCoiny!");
-            ItemStack multipliers = ItemFactory.create(Material.BLAZE_POWDER, (byte) 0, "§cMultipliery", "§7Zakup pro cely server multiplier", "§7na urceny cas!");
+            ItemStack keys = ItemFactory.create(Material.TRIPWIRE_HOOK, (byte) 0, "§cKeys", "§7Zakup si legendarni klice", "§7za CraftCoiny!", "", "§cJiz brzy...");
+            ItemStack multipliers = ItemFactory.create(Material.BLAZE_POWDER, (byte) 0, "§cMultipliery", "§7Zakup pro cely server multiplier", "§7na urceny cas!", "", "§cJiz brzy...");
 
             inv.setItem(11, tags);
             inv.setItem(13, keys);
@@ -31,7 +34,7 @@ public class ShopAPI implements Listener {
 
     private void openTagsMenu(final Player p) {
         if (Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
-            Inventory inv = Bukkit.createInventory(null, 45, "§0Tagy (Skyblock)");
+            Inventory inv = Bukkit.createInventory(null, 45, "§0Tagy");
             this.setupTag(p, "deluxetags.tag.thuglife", "ThugLife", inv, 0, 500);
             this.setupTag(p, "deluxetags.tag.pampersarmy", "PampersArmy", inv, 1, 750);
             this.setupTag(p, "deluxetags.tag.kappa", "Kappa", inv, 2, 1000);
@@ -70,7 +73,7 @@ public class ShopAPI implements Listener {
 
             p.openInventory(inv);
         } else {
-            Inventory inv = Bukkit.createInventory(null, 45, "§0Tagy (Skyblock)");
+            Inventory inv = Bukkit.createInventory(null, 45, "§0Tagy");
             this.setupTag(p, "deluxetags.tag.thuglife", "ThugLife", inv, 0, 500);
             this.setupTag(p, "deluxetags.tag.pampersarmy", "PampersArmy", inv, 1, 750);
             this.setupTag(p, "deluxetags.tag.kappa", "Kappa", inv, 2, 1000);
@@ -126,7 +129,7 @@ public class ShopAPI implements Listener {
                 // Open menu s multipliers
             }
         }
-        if (e.getInventory().getTitle().equals("§0Tagy (Skyblock)")) {
+        if (e.getInventory().getTitle().equals("§0Tagy")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;

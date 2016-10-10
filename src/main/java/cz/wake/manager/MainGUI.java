@@ -190,7 +190,7 @@ public class MainGUI implements Listener {
                 p.closeInventory();
             }
             if(e.getSlot() == 32){
-                p.performCommand("vip");
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "chestcommands open vip.yml " + p.getName());
             }
             if(e.getSlot() == 24){
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
@@ -234,7 +234,7 @@ public class MainGUI implements Listener {
                 p.closeInventory();
             }
             if(e.getSlot() == 21){
-                p.performCommand("vip");
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "chestcommands open example.yml " + p.getName());
             }
             if(e.getSlot() == 22){
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
@@ -268,7 +268,7 @@ public class MainGUI implements Listener {
                 return;
             }
             if(e.getSlot() == 32){
-                p.performCommand("vip");
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "chestcommands open vip.yml " + p.getName());
             }
             if(e.getSlot() == 24){
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);

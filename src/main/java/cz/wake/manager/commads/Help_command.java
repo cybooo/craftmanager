@@ -142,6 +142,7 @@ public class Help_command implements CommandExecutor {
                     "", "§e/warp shop §f- §7Teleport do shopu",
                     "§e/warp pvp §f- §7Teleport do PVP",
                     "§e/db §f- §7Vyzvednuti denni odmeny",
+                    "§e/quest §f- §7Seznam Questu",
                     "§e/cc §f- §7Stav CraftCoins",
                     "§e/trade §6" + p.getName() + " §f- §7Obchodovani s hraci",
                     "§e/fr §f- §7Friends a psani si s kamarady pres cely server",
@@ -171,7 +172,8 @@ public class Help_command implements CommandExecutor {
 
             p.openInventory(inv);
         }
-        if(Main.getInstance().getIdServer().equalsIgnoreCase("creative")){
+        if(Main.getInstance().getIdServer().equalsIgnoreCase("creative")
+                || Main.getInstance().getIdServer().equalsIgnoreCase("creative2")){
             Inventory inv = Bukkit.createInventory(null, 45, "Help pro Creative");
 
             ItemStack poz = ItemFactory.create(Material.DIRT, (byte)2, "§a§lZakladni sprava pozemku","",
@@ -366,6 +368,7 @@ public class Help_command implements CommandExecutor {
                     "", "§e/warp shop §f- §7Teleport do shopu",
                     "§e/warp pvp §f- §7Teleport do PVP",
                     "§e/db §f- §7Vyzvednuti denni odmeny",
+                    "§e/quest §f- §7Seznam Questu",
                     "§e/cc §f- §7Stav CraftCoins",
                     "§e/trade §6" + p.getName() + " §f- §7Obchodovani s hraci",
                     "§e/fr §f- §7Friends a psani si s kamarady pres cely server",
