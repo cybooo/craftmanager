@@ -12,6 +12,7 @@ import cz.wake.manager.sql.MySQL;
 import cz.wake.manager.sql.SetData;
 import cz.wake.manager.utils.ServerFactory;
 import cz.wake.manager.utils.UpdateTaskServer;
+import cz.wake.manager.utils.VoteReseter;
 import cz.wake.manager.votifier.Reminder;
 import cz.wake.manager.votifier.SuperbVote;
 import cz.wake.manager.votifier.VoteHandler;
@@ -51,6 +52,9 @@ public class Main extends JavaPlugin {
         if (getConfig().getBoolean("reminder")) {
             getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 2000, 72000);
             System.out.println("[CraftManager] Aktivace hodinoveho oznamovani o hlasech do chatu.");
+
+            // Kontrola restartu hlasu
+            getServer().getScheduler().runTaskAsynchronously(this, new VoteReseter());
         }
 
         // Update ID stats task

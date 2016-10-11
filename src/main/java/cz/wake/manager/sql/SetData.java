@@ -129,4 +129,66 @@ public class SetData {
             }
         }.runTaskAsynchronously(Main.getInstance());
     }
+
+    public final void resetTimeVoteWeek(final long time) {
+        final String query = "UPDATE craftboxer_nextReset SET time = ? WHERE id = 2;";
+        new BukkitRunnable() {
+            public void run() {
+                try {
+                    PreparedStatement sql = Main.getInstance().getMySQL().getCurrentConnection().prepareStatement(query);
+                    sql.setLong(1, time);
+                    sql.execute();
+                    sql.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.runTaskAsynchronously(Main.getInstance());
+    }
+
+    public final void resetTimeVoteMonth(final long time) {
+        final String query = "UPDATE craftboxer_nextReset SET time = ? WHERE id = 3;";
+        new BukkitRunnable() {
+            public void run() {
+                try {
+                    PreparedStatement sql = Main.getInstance().getMySQL().getCurrentConnection().prepareStatement(query);
+                    sql.setLong(1, time);
+                    sql.execute();
+                    sql.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.runTaskAsynchronously(Main.getInstance());
+    }
+
+    public final void resetWeekVotes() {
+        final String query = "UPDATE votes SET week = '0';";
+        new BukkitRunnable() {
+            public void run() {
+                try {
+                    PreparedStatement sql = Main.getInstance().getMySQL().getCurrentConnection().prepareStatement(query);
+                    sql.execute();
+                    sql.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.runTaskAsynchronously(Main.getInstance());
+    }
+
+    public final void resetMonthVotes() {
+        final String query = "UPDATE votes SET month = '0';";
+        new BukkitRunnable() {
+            public void run() {
+                try {
+                    PreparedStatement sql = Main.getInstance().getMySQL().getCurrentConnection().prepareStatement(query);
+                    sql.execute();
+                    sql.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.runTaskAsynchronously(Main.getInstance());
+    }
 }

@@ -108,4 +108,32 @@ public class FetchData {
         }
         return names;
     }
+
+    public final Long getResetTimeWeek() {
+        final String query = "SELECT time FROM craftboxer_nextReset WHERE id = 2;";
+        try {
+            ResultSet result = Main.getInstance().getMySQL().getCurrentConnection().createStatement().executeQuery(query);
+            if (result.next()) {
+                return result.getLong("time");
+            }
+            result.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return (long) 0;
+    }
+
+    public final Long getResetTimeMonth() {
+        final String query = "SELECT time FROM craftboxer_nextReset WHERE id = 3;";
+        try {
+            ResultSet result = Main.getInstance().getMySQL().getCurrentConnection().createStatement().executeQuery(query);
+            if (result.next()) {
+                return result.getLong("time");
+            }
+            result.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return (long) 0;
+    }
 }
