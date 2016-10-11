@@ -13,10 +13,10 @@ public class ChatListener implements Listener {
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
-        Player p = e.getPlayer();
+        final Player p = e.getPlayer();
         String msg = e.getMessage();
         if (chatc.getChatcolorList().containsKey(p)) {
-            colorMessage(e, msg);
+            e.setMessage(chatc.getChatcolorList().get(p).toString() + msg);
         }
     }
 
