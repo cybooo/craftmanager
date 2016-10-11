@@ -86,7 +86,7 @@ public class MainGUI implements Listener {
 
         ItemStack vip = ItemFactory.create(Material.EMERALD, (byte) 0, "§a§lVIP", "§7Prehled vyhod a SMS k ", "§7nakupu VIP na serveru!", "", "§eKlikni pro zobrazeni!");
 
-        ItemStack shop = ItemFactory.create(Material.NETHER_STAR, (byte) 0, "§a§lShop", "", "§7Zde najdes seznam prikazu,", "§7ruznych boosteru a efekty,", "§7ktere si muzes zakoupit za CraftCoiny!", "", "§cAktualne nedostupne!");
+        ItemStack shop = ItemFactory.create(Material.NETHER_STAR, (byte) 0, "§a§lShop", "", "§7Zde najdes seznam prikazu,", "§7ruznych boosteru a efekty,", "§7ktere si muzes zakoupit za CraftCoiny!", "", "§eKlikni pro zobrazeni!");
 
         ItemStack odkaz = ItemFactory.create(Material.PAPER, (byte) 0, "§c§lOdkaz na hlasovani", "", "§fKliknutim zobrazis odkaz,", "§fktery te rovnou presmeruje", "§fna stranku s hlasovanim.", "", "§eKlikni pro zobrazeni!");
 
@@ -207,7 +207,7 @@ public class MainGUI implements Listener {
                 p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§eWeb: §7https://craftmania.cz");
-                p.sendMessage("§eDiscord: §7http://discord.me/craftmania");
+                p.sendMessage("§eDiscord: §7http://discord.gg/craftmania");
                 p.sendMessage("§ePlugDJ: §7https://plug.dj/craftmania-cz");
                 p.sendMessage("§eStatus page: §7http://status.craftmania.cz");
                 p.sendMessage("");
@@ -251,7 +251,7 @@ public class MainGUI implements Listener {
                 p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§eWeb: §7https://craftmania.cz");
-                p.sendMessage("§eDiscord: §7http://discord.me/craftmania");
+                p.sendMessage("§eDiscord: §7http://discord.gg/craftmania");
                 p.sendMessage("§ePlugDJ: §7https://plug.dj/craftmania-cz");
                 p.sendMessage("§eStatus page: §7http://status.craftmania.cz");
                 p.sendMessage("");
@@ -285,7 +285,7 @@ public class MainGUI implements Listener {
                 p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§eWeb: §7https://craftmania.cz");
-                p.sendMessage("§eDiscord: §7http://discord.me/craftmania");
+                p.sendMessage("§eDiscord: §7http://discord.gg/craftmania");
                 p.sendMessage("§ePlugDJ: §7https://plug.dj/craftmania-cz");
                 p.sendMessage("§eStatus page: §7http://status.craftmania.cz");
                 p.sendMessage("");

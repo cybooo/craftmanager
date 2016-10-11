@@ -49,7 +49,7 @@ public class ShopAPI implements Listener {
             this.setupTag(p, "deluxetags.tag.jednorozec", "Jednorozec", inv, 11, 1000);
             this.setupTag(p, "deluxetags.tag.ktopolak", "KtoPolak", inv, 12, 750);
             this.setupTag(p, "deluxetags.tag.moneymaster", "MoneyMaster", inv, 13, 1000);
-            this.setupTag(p, "deluxetags.tag.tochcicomu", "ToChciDomu", inv, 14, 500);
+            this.setupTag(p, "deluxetags.tag.tochcidomu", "ToChciDomu", inv, 14, 500);
             this.setupTag(p, "deluxetags.tag.pvpnoob", "PvPNoob", inv, 15, 1000);
             this.setupTag(p, "deluxetags.tag.umymgramatyku", "UmymGramatiku", inv, 16, 1500);
             this.setupTag(p, "deluxetags.tag.sezerute", "SezeruTe", inv, 17, 500);
@@ -88,7 +88,7 @@ public class ShopAPI implements Listener {
             this.setupTag(p, "deluxetags.tag.jednorozec", "Jednorozec", inv, 11, 1000);
             this.setupTag(p, "deluxetags.tag.ktopolak", "KtoPolak", inv, 12, 750);
             this.setupTag(p, "deluxetags.tag.moneymaster", "MoneyMaster", inv, 13, 1000);
-            this.setupTag(p, "deluxetags.tag.tochcicomu", "ToChciDomu", inv, 14, 500);
+            this.setupTag(p, "deluxetags.tag.tochcidomu", "ToChciDomu", inv, 14, 500);
             this.setupTag(p, "deluxetags.tag.pvpnoob", "PvPNoob", inv, 15, 1000);
             this.setupTag(p, "deluxetags.tag.umymgramatyku", "UmymGramatiku", inv, 16, 1500);
             this.setupTag(p, "deluxetags.tag.sezerute", "SezeruTe", inv, 17, 500);
@@ -187,7 +187,7 @@ public class ShopAPI implements Listener {
                     this.prepareTag(p, 1000, "deluxetags.tag.moneymaster", "MoneyMaster");
                 }
                 if (e.getSlot() == 14) {
-                    this.prepareTag(p, 500, "deluxetags.tag.tochcicomu", "ToChciDomu");
+                    this.prepareTag(p, 500, "deluxetags.tag.tochcidomu", "ToChciDomu");
                 }
                 if (e.getSlot() == 15) {
                     this.prepareTag(p, 1000, "deluxetags.tag.pvpnoob", "PvPNoob");

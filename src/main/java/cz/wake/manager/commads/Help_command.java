@@ -150,7 +150,7 @@ public class Help_command implements CommandExecutor {
 
             ItemStack conn = ItemFactory.create(Material.MAP,(byte)0, "§a§lOdkazy na nase dalsi servery", "",
                     "§eWeb: §7https://craftmania.cz",
-                    "§eDiscord: §7http://discord.me/craftmania",
+                    "§eDiscord: §7http://discord.gg/craftmania",
                     "§eTeamSpeak3 IP: §7ts.craftmania.cz",
                     "§ePlugDJ: §7https://plug.dj/craftmania-cz",
                     "§eStatus page: §7http://status.craftmania.cz", "",
@@ -232,7 +232,7 @@ public class Help_command implements CommandExecutor {
 
             ItemStack conn = ItemFactory.create(Material.MAP,(byte)0, "§a§lOdkazy na nase dalsi servery", "",
                     "§eWeb: §7https://craftmania.cz",
-                    "§eDiscord: §7http://discord.me/craftmania",
+                    "§eDiscord: §7http://discord.gg/craftmania",
                     "§eTeamSpeak3 IP: §7ts.craftmania.cz",
                     "§ePlugDJ: §7https://plug.dj/craftmania-cz",
                     "§eStatus page: §7http://status.craftmania.cz", "",
@@ -376,7 +376,7 @@ public class Help_command implements CommandExecutor {
 
             ItemStack conn = ItemFactory.create(Material.MAP,(byte)0, "§a§lOdkazy na nase dalsi servery", "",
                     "§eWeb: §7https://craftmania.cz",
-                    "§eDiscord: §7http://discord.me/craftmania",
+                    "§eDiscord: §7http://discord.gg/craftmania",
                     "§eTeamSpeak3 IP: §7ts.craftmania.cz",
                     "§ePlugDJ: §7https://plug.dj/craftmania-cz",
                     "§eStatus page: §7http://status.craftmania.cz", "",
