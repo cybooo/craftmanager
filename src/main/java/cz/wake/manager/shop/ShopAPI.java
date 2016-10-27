@@ -301,7 +301,7 @@ public class ShopAPI implements Listener {
         if (i > coins) {
             return "§eKliknutim provedes nakup za " + coins + " CC.";
         } else {
-            return "§cNemas dostatek coinu!";
+            return "§cNemas dostatek coinu (§f" + coins + "§c) k nakupu!";
         }
     }
 
