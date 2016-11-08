@@ -89,12 +89,16 @@ public class DetectOpItems implements Listener {
 
     private boolean inspectItem(ItemStack i) {
 
+        if(i == null || i.getType() == Material.AIR){
+            return false;
+        }
+
         if (i.getEnchantments().isEmpty()) {
             return false;
         }
 
         if (i.getType() == Material.TRIPWIRE_HOOK && i.getItemMeta().getDisplayName().equalsIgnoreCase("§a§lVOTE KEY")
-                || i.getItemMeta().getDisplayName().equalsIgnoreCase("§b§lEVENT KEY") && i.getType() != null) {
+                || i.getItemMeta().getDisplayName().equalsIgnoreCase("§b§lEVENT KEY")) {
             return false;
         }
 
