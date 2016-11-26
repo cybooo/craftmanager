@@ -42,6 +42,9 @@ public class JoinListener implements Listener {
             //Tydeni hlasy
             Main.getInstance().getVoteHandler().addWeekVotes(p, Main.getInstance().getFetchData().getPlayerWeekVotes(p.getUniqueId()));
         }
+
+        // Nastaveni tablistu
+        Main.getInstance().setupTablist(p);
     }
 
     @EventHandler
