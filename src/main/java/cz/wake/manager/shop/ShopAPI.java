@@ -232,7 +232,7 @@ public class ShopAPI implements Listener {
             if (e.getSlot() == 40) {
                 Main.getInstance().getMainGUI().openMainMenu(p);
             }
-            if(e.getSlot() == 41){
+            if (e.getSlot() == 41) {
                 this.openTagsMenu2(p);
             }
             if (Main.getInstance().getIdServer().equals("skyblock")) {
@@ -308,40 +308,40 @@ public class ShopAPI implements Listener {
                 if (e.getSlot() == 23) {
                     this.prepareTag(p, 1000, "deluxetags.tag.ktopolak", "KtoPolak");
                 }
-                if(e.getSlot() == 24) {
+                if (e.getSlot() == 24) {
                     this.prepareTag(p, 600, "deluxetags.tag.mamswag", "MamSWAG");
                 }
-                if(e.getSlot() == 25){
+                if (e.getSlot() == 25) {
                     this.prepareTag(p, 1000, "deluxetags.tag.mamnejtag", "MamNejTag");
                 }
-                if(e.getSlot() == 26){
+                if (e.getSlot() == 26) {
                     this.prepareTag(p, 500, "deluxetags.tag.fanta", "Fanta");
                 }
-                if(e.getSlot() == 27){
+                if (e.getSlot() == 27) {
                     this.prepareTag(p, 1500, "deluxetags.tag.blejuduhu", "BlejuDuhu");
                 }
-                if(e.getSlot() == 28){
+                if (e.getSlot() == 28) {
                     this.prepareTag(p, 800, "deluxetags.tag.cotokamerujes", "CoToKamerujes");
                 }
-                if(e.getSlot() == 29){
+                if (e.getSlot() == 29) {
                     this.prepareTag(p, 1000, "deluxetags.tag.nerd", "Nerd");
                 }
-                if(e.getSlot() == 30){
+                if (e.getSlot() == 30) {
                     this.prepareTag(p, 1000, "deluxetags.tag.fofola", "Fofola");
                 }
-                if(e.getSlot() == 31){
+                if (e.getSlot() == 31) {
                     this.prepareTag(p, 500, "deluxetags.tag.negr", "Negr");
                 }
-                if(e.getSlot() == 32){
+                if (e.getSlot() == 32) {
                     this.prepareTag(p, 1000, "deluxetags.tag.faded", "Faded");
                 }
-                if(e.getSlot() == 33){
+                if (e.getSlot() == 33) {
                     this.prepareTag(p, 750, "deluxetags.tag.jsemtop", "jsemTOP");
                 }
-                if(e.getSlot() == 34){
+                if (e.getSlot() == 34) {
                     this.prepareTag(p, 500, "deluxetags.tag.presnetaak", "PresneTaak");
                 }
-                if(e.getSlot() == 35){
+                if (e.getSlot() == 35) {
                     this.prepareTag(p, 1000, "deluxetags.tag.oksoud", "OkSoud");
                 }
             } else {
@@ -417,40 +417,40 @@ public class ShopAPI implements Listener {
                 if (e.getSlot() == 23) {
                     this.prepareTag(p, 1000, "deluxetags.tag.ktopolak", "KtoPolak");
                 }
-                if(e.getSlot() == 24) {
+                if (e.getSlot() == 24) {
                     this.prepareTag(p, 600, "deluxetags.tag.mamswag", "MamSWAG");
                 }
-                if(e.getSlot() == 25){
+                if (e.getSlot() == 25) {
                     this.prepareTag(p, 1000, "deluxetags.tag.mamnejtag", "MamNejTag");
                 }
-                if(e.getSlot() == 26){
+                if (e.getSlot() == 26) {
                     this.prepareTag(p, 500, "deluxetags.tag.fanta", "Fanta");
                 }
-                if(e.getSlot() == 27){
+                if (e.getSlot() == 27) {
                     this.prepareTag(p, 1500, "deluxetags.tag.blejuduhu", "BlejuDuhu");
                 }
-                if(e.getSlot() == 28){
+                if (e.getSlot() == 28) {
                     this.prepareTag(p, 800, "deluxetags.tag.cotokamerujes", "CoToKamerujes");
                 }
-                if(e.getSlot() == 29){
+                if (e.getSlot() == 29) {
                     this.prepareTag(p, 1000, "deluxetags.tag.nerd", "Nerd");
                 }
-                if(e.getSlot() == 30){
+                if (e.getSlot() == 30) {
                     this.prepareTag(p, 1000, "deluxetags.tag.fofola", "Fofola");
                 }
-                if(e.getSlot() == 31){
+                if (e.getSlot() == 31) {
                     this.prepareTag(p, 500, "deluxetags.tag.negr", "Negr");
                 }
-                if(e.getSlot() == 32){
+                if (e.getSlot() == 32) {
                     this.prepareTag(p, 1000, "deluxetags.tag.faded", "Faded");
                 }
-                if(e.getSlot() == 33){
+                if (e.getSlot() == 33) {
                     this.prepareTag(p, 750, "deluxetags.tag.jsemtop", "jsemTOP");
                 }
-                if(e.getSlot() == 34){
+                if (e.getSlot() == 34) {
                     this.prepareTag(p, 500, "deluxetags.tag.presnetaak", "PresneTaak");
                 }
-                if(e.getSlot() == 35){
+                if (e.getSlot() == 35) {
                     this.prepareTag(p, 1000, "deluxetags.tag.oksoud", "OkSoud");
                 }
             }
@@ -470,58 +470,58 @@ public class ShopAPI implements Listener {
                 Main.getInstance().getMainGUI().openMainMenu(p);
             }
             if (Main.getInstance().getIdServer().equals("skyblock")) {
-                if(e.getSlot() == 0){
+                if (e.getSlot() == 0) {
                     this.prepareTag(p, 600, "deluxetags.tag.plsne", "PlsNe");
                 }
-                if(e.getSlot() == 1){
+                if (e.getSlot() == 1) {
                     this.prepareTag(p, 1500, "deluxetags.tag.pedosaurus", "Pedosaurus");
                 }
-                if(e.getSlot() == 2){
+                if (e.getSlot() == 2) {
                     this.prepareTag(p, 1000, "deluxetags.tag.puddin", "Puddin");
                 }
-                if(e.getSlot() == 3){
+                if (e.getSlot() == 3) {
                     this.prepareTag(p, 1000, "deluxetags.tag.zebrak", "Zebrak");
                 }
-                if(e.getSlot() == 4){
+                if (e.getSlot() == 4) {
                     this.prepareTag(p, 750, "deluxetags.tag.segzy", "Segzy");
                 }
-                if(e.getSlot() == 5){
+                if (e.getSlot() == 5) {
                     this.prepareTag(p, 1000, "deluxetags.tag.jjpls", "JjPls");
                 }
-                if(e.getSlot() == 6){
+                if (e.getSlot() == 6) {
                     this.prepareTag(p, 500, "deluxetags.tag.keepcalm", "KeepCalm");
                 }
-                if(e.getSlot() == 7){
+                if (e.getSlot() == 7) {
                     this.prepareTag(p, 2000, "deluxetags.tag.sexbomba", "SexBomba");
                 }
-                if(e.getSlot() == 8){
+                if (e.getSlot() == 8) {
                     this.prepareTag(p, 750, "deluxetags.tag.rushb", "RushB");
                 }
-                if(e.getSlot() == 9){
+                if (e.getSlot() == 9) {
                     this.prepareTag(p, 600, "deluxetags.tag.skiller", "Skiller");
                 }
-                if(e.getSlot() == 10){
+                if (e.getSlot() == 10) {
                     this.prepareTag(p, 750, "deluxetags.tag.plsdonejt", "PlsDonejt");
                 }
-                if(e.getSlot() == 11){
+                if (e.getSlot() == 11) {
                     this.prepareTag(p, 500, "deluxetags.tag.doctorwho", "DoctorWho");
                 }
-                if(e.getSlot() == 12){
+                if (e.getSlot() == 12) {
                     this.prepareTag(p, 1000, "deluxetags.tag.don", "Don");
                 }
-                if(e.getSlot() == 13){
+                if (e.getSlot() == 13) {
                     this.prepareTag(p, 750, "deluxetags.tag.kmotr", "Kmotr");
                 }
-                if(e.getSlot() == 14){
+                if (e.getSlot() == 14) {
                     this.prepareTag(p, 1000, "deluxetags.tag.soudce", "Soudce");
                 }
-                if(e.getSlot() == 15){
+                if (e.getSlot() == 15) {
                     this.prepareTag(p, 1000, "deluxetags.tag.somcarovny", "SomCarovny");
                 }
-                if(e.getSlot() == 16){
+                if (e.getSlot() == 16) {
                     this.prepareTag(p, 1000, "deluxetags.tag.nejsembankamore", "NejsemBankaMore");
                 }
-                if(e.getSlot() == 17){
+                if (e.getSlot() == 17) {
                     this.prepareTag(p, 700, "deluxetags.tag.lejnochod", "Lejnochod");
                 }
                 if (e.getSlot() == 18) {
@@ -534,58 +534,58 @@ public class ShopAPI implements Listener {
                     this.prepareTag(p, 1000, "deluxetags.tag.skykid", "SkyKid");
                 }
             } else {
-                if(e.getSlot() == 0){
+                if (e.getSlot() == 0) {
                     this.prepareTag(p, 600, "deluxetags.tag.plsne", "PlsNe");
                 }
-                if(e.getSlot() == 1){
+                if (e.getSlot() == 1) {
                     this.prepareTag(p, 1500, "deluxetags.tag.pedosaurus", "Pedosaurus");
                 }
-                if(e.getSlot() == 2){
+                if (e.getSlot() == 2) {
                     this.prepareTag(p, 1000, "deluxetags.tag.puddin", "Puddin");
                 }
-                if(e.getSlot() == 3){
+                if (e.getSlot() == 3) {
                     this.prepareTag(p, 1000, "deluxetags.tag.zebrak", "Zebrak");
                 }
-                if(e.getSlot() == 4){
+                if (e.getSlot() == 4) {
                     this.prepareTag(p, 750, "deluxetags.tag.segzy", "Segzy");
                 }
-                if(e.getSlot() == 5){
+                if (e.getSlot() == 5) {
                     this.prepareTag(p, 1000, "deluxetags.tag.jjpls", "JjPls");
                 }
-                if(e.getSlot() == 6){
+                if (e.getSlot() == 6) {
                     this.prepareTag(p, 500, "deluxetags.tag.keepcalm", "KeepCalm");
                 }
-                if(e.getSlot() == 7){
+                if (e.getSlot() == 7) {
                     this.prepareTag(p, 2000, "deluxetags.tag.sexbomba", "SexBomba");
                 }
-                if(e.getSlot() == 8){
+                if (e.getSlot() == 8) {
                     this.prepareTag(p, 750, "deluxetags.tag.rushb", "RushB");
                 }
-                if(e.getSlot() == 9){
+                if (e.getSlot() == 9) {
                     this.prepareTag(p, 600, "deluxetags.tag.skiller", "Skiller");
                 }
-                if(e.getSlot() == 10){
+                if (e.getSlot() == 10) {
                     this.prepareTag(p, 750, "deluxetags.tag.plsdonejt", "PlsDonejt");
                 }
-                if(e.getSlot() == 11){
+                if (e.getSlot() == 11) {
                     this.prepareTag(p, 500, "deluxetags.tag.doctorwho", "DoctorWho");
                 }
-                if(e.getSlot() == 12){
+                if (e.getSlot() == 12) {
                     this.prepareTag(p, 1000, "deluxetags.tag.don", "Don");
                 }
-                if(e.getSlot() == 13){
+                if (e.getSlot() == 13) {
                     this.prepareTag(p, 750, "deluxetags.tag.kmotr", "Kmotr");
                 }
-                if(e.getSlot() == 14){
+                if (e.getSlot() == 14) {
                     this.prepareTag(p, 1000, "deluxetags.tag.soudce", "Soudce");
                 }
-                if(e.getSlot() == 15){
+                if (e.getSlot() == 15) {
                     this.prepareTag(p, 1000, "deluxetags.tag.somcarovny", "SomCarovny");
                 }
-                if(e.getSlot() == 16){
+                if (e.getSlot() == 16) {
                     this.prepareTag(p, 1000, "deluxetags.tag.nejsembankamore", "NejsemBankaMore");
                 }
-                if(e.getSlot() == 17){
+                if (e.getSlot() == 17) {
                     this.prepareTag(p, 700, "deluxetags.tag.lejnochod", "Lejnochod");
                 }
             }

@@ -12,15 +12,19 @@ import cz.wake.manager.sql.MySQL;
 import cz.wake.manager.sql.SetData;
 import cz.wake.manager.utils.ServerFactory;
 import cz.wake.manager.utils.UpdateTaskServer;
+import cz.wake.manager.utils.UtilTablist;
 import cz.wake.manager.utils.VoteReseter;
 import cz.wake.manager.votifier.Reminder;
 import cz.wake.manager.votifier.SuperbVote;
 import cz.wake.manager.votifier.VoteHandler;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main extends JavaPlugin {
 
@@ -33,6 +37,7 @@ public class Main extends JavaPlugin {
     private SetData sd = new SetData();
     private VoteHandler vh = new VoteHandler();
     private ServerFactory sf = new ServerFactory();
+    private UtilTablist ut = new UtilTablist();
     private String idServer;
 
     private static Main instance;
@@ -51,7 +56,7 @@ public class Main extends JavaPlugin {
         // Oznameni kazdou hodinu
         if (getConfig().getBoolean("reminder")) {
             getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 2000, 72000);
-            System.out.println("[CraftManager] Aktivace hodinoveho oznamovani o hlasech do chatu.");
+            Bukkit.getLogger().log(Level.INFO,"§b[CraftManager] §eAktivace hodinoveho oznamovani o hlasech do chatu.");
 
             // Kontrola restartu hlasu
             getServer().getScheduler().runTaskAsynchronously(this, new VoteReseter());
@@ -82,17 +87,17 @@ public class Main extends JavaPlugin {
         // Hlasovani
         if (getConfig().getBoolean("hlasovani")) {
             pm.registerEvents(new SuperbVote(), this);
-            System.out.println("[CraftManager] Odmeny za hlasovani byly aktivovany!");
+            Bukkit.getLogger().log(Level.INFO,"§b[CraftManager] §eOdmeny za hlasovani byly aktivovany!");
         } else {
-            System.out.println("[CraftManager] Odmeny za hlasovani nejsou aktivni!");
+            Bukkit.getLogger().log(Level.INFO,"§b[CraftManager] §cOdmeny za hlasovani nejsou aktivni!");
         }
 
         // Detekce OP itemu
         if (getConfig().getBoolean("detection")) {
-            System.out.println("[CraftManager] Detekce OP Itemu - zapnuta!");
+            Bukkit.getLogger().log(Level.INFO,"§b[CraftManager] §eDetekce OP Itemu - zapnuta!");
             pm.registerEvents(new DetectOpItems(), this);
         } else {
-            System.out.println("[CraftManager] Detekce OP Itemu - vypnuta!");
+            Bukkit.getLogger().log(Level.INFO,"§b[CraftManager] §cDetekce OP Itemu - vypnuta!");
         }
 
     }
@@ -161,5 +166,15 @@ public class Main extends JavaPlugin {
 
     public ServerFactory getServerFactory() {
         return sf;
+    }
+
+    public void setupTablist(final Player p){
+        if(idServer.equalsIgnoreCase("survival")){
+            ut.setupPrefixInTabSurvival(p);
+        } else if (idServer.equalsIgnoreCase("skyblock")){
+            ut.setupPrefixInTabSkyblock(p);
+        } else if (idServer.equalsIgnoreCase("creative")){
+            ut.setupPrefixInTabCreative(p);
+        }
     }
 }
