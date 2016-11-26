@@ -103,7 +103,6 @@ public class Main extends JavaPlugin {
         getCommand("particles").setExecutor(new Particles_command());
         getCommand("coins").setExecutor(new Coins_command());
         getCommand("glow").setExecutor(new Glow_command());
-        getCommand("block").setExecutor(new Block_command());
         getCommand("chatcolor").setExecutor(new Chatcolor_command());
         getCommand("help").setExecutor(new Help_command());
 
