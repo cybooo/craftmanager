@@ -568,13 +568,13 @@ public class ShopAPI implements Listener {
                     this.prepareTag(p, 750, "deluxetags.tag.plsdonejt", "PlsDonejt");
                 }
                 if (e.getSlot() == 11) {
-                    this.prepareTag(p, 500, "deluxetags.tag.doctorwho", "DoctorWho");
+                    this.prepareTag(p, 750, "deluxetags.tag.doctorwho", "DoctorWho");
                 }
                 if (e.getSlot() == 12) {
                     this.prepareTag(p, 1000, "deluxetags.tag.don", "Don");
                 }
                 if (e.getSlot() == 13) {
-                    this.prepareTag(p, 750, "deluxetags.tag.kmotr", "Kmotr");
+                    this.prepareTag(p, 1000, "deluxetags.tag.kmotr", "Kmotr");
                 }
                 if (e.getSlot() == 14) {
                     this.prepareTag(p, 1000, "deluxetags.tag.soudce", "Soudce");
@@ -586,7 +586,7 @@ public class ShopAPI implements Listener {
                     this.prepareTag(p, 1000, "deluxetags.tag.nejsembankamore", "NejsemBankaMore");
                 }
                 if (e.getSlot() == 17) {
-                    this.prepareTag(p, 700, "deluxetags.tag.lejnochod", "Lejnochod");
+                    this.prepareTag(p, 1000, "deluxetags.tag.lejnochod", "Lejnochod");
                 }
             }
         }
