@@ -1,10 +1,24 @@
 package cz.wake.manager.utils;
 
+import cz.wake.manager.Main;
 import org.bukkit.entity.Player;
 
 public class UtilTablist {
 
-    public void setupPrefixInTabSkyblock(final Player p){
+    public static void setupTablist(final Player p){
+        if(Main.getInstance().getConfig().getString("server").equalsIgnoreCase("creative")
+                || Main.getInstance().getConfig().getString("server").equalsIgnoreCase("creative2")){
+            setupPrefixInTabCreative(p);
+        } else if (Main.getInstance().getConfig().getString("server").equalsIgnoreCase("survival")){
+            setupPrefixInTabSurvival(p);
+        } else if (Main.getInstance().getConfig().getString("server").equalsIgnoreCase("skyblock")){
+            setupPrefixInTabSkyblock(p);
+        } else {
+            // Nic :O
+        }
+    }
+
+    private static void setupPrefixInTabSkyblock(final Player p){
         if(p.hasPermission("craftmanager.prefix.majitel")){
             p.setPlayerListName("§3§lMAJITEL §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.hladmin")){
@@ -28,7 +42,7 @@ public class UtilTablist {
         }
     }
 
-    public void setupPrefixInTabSurvival(final Player p){
+    private static void setupPrefixInTabSurvival(final Player p){
         if(p.hasPermission("craftmanager.prefix.majitel")){
             p.setPlayerListName("§3§lMAJITEL §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.hladmin")){
@@ -54,7 +68,7 @@ public class UtilTablist {
         }
     }
 
-    public void setupPrefixInTabCreative(final Player p){
+    private static void setupPrefixInTabCreative(final Player p){
         if(p.hasPermission("craftmanager.prefix.majitel")){
             p.setPlayerListName("§3§lMAJITEL §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.hladmin")){
@@ -68,9 +82,9 @@ public class UtilTablist {
         } else if (p.hasPermission("craftmanager.prefix.helper")){
             p.setPlayerListName("§2§lHELPER §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.vipplus")){
-            p.setPlayerListName("§6§lVIP+ §f" + p.getName());
+            p.setPlayerListName("§a§lVIP+ §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.vip")){
-            p.setPlayerListName("§a§lVIP §f" + p.getName());
+            p.setPlayerListName("§6§lVIP §f" + p.getName());
         } else {
             p.setPlayerListName("§f" + p.getName());
         }

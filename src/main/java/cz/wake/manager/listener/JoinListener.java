@@ -2,8 +2,10 @@ package cz.wake.manager.listener;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.particles.ParticlesAPI;
+import cz.wake.manager.utils.UtilTablist;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
@@ -13,7 +15,7 @@ public class JoinListener implements Listener {
 
     ParticlesAPI partAPI = new ParticlesAPI();
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true)
     public void onJoin(PlayerJoinEvent e) {
         final Player p = e.getPlayer();
 
@@ -44,7 +46,7 @@ public class JoinListener implements Listener {
         }
 
         // Nastaveni tablistu
-        Main.getInstance().setupTablist(p);
+        UtilTablist.setupTablist(p);
     }
 
     @EventHandler

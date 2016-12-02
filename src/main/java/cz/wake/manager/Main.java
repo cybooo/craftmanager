@@ -37,7 +37,6 @@ public class Main extends JavaPlugin {
     private SetData sd = new SetData();
     private VoteHandler vh = new VoteHandler();
     private ServerFactory sf = new ServerFactory();
-    private UtilTablist ut = new UtilTablist();
     private String idServer;
 
     private static Main instance;
@@ -166,15 +165,5 @@ public class Main extends JavaPlugin {
 
     public ServerFactory getServerFactory() {
         return sf;
-    }
-
-    public void setupTablist(final Player p){
-        if(idServer.equalsIgnoreCase("survival")){
-            ut.setupPrefixInTabSurvival(p);
-        } else if (idServer.equalsIgnoreCase("skyblock")){
-            ut.setupPrefixInTabSkyblock(p);
-        } else if (idServer.equalsIgnoreCase("creative")){
-            ut.setupPrefixInTabCreative(p);
-        }
     }
 }
