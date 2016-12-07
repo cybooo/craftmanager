@@ -21,19 +21,26 @@ public class SuperbVote implements Listener {
                 Player onlinePlayer = Bukkit.getPlayerExact(e.getVote().getUsername());
                 try {
                     if (onlinePlayer.isOnline()) {
-                        //Pridani hlasu
-                        Main.getInstance().getSetData().addPlayerVote(onlinePlayer);
-                        Main.getInstance().getVoteHandler().addTotalVotes(onlinePlayer, 1 + Main.getInstance().getVoteHandler().getPlayerCachedTotalVotes(onlinePlayer));
-                        Main.getInstance().getVoteHandler().addMonthVotes(onlinePlayer, 1 + Main.getInstance().getVoteHandler().getPlayerCachedMonthVotes(onlinePlayer));
-                        Main.getInstance().getVoteHandler().addWeekVotes(onlinePlayer, 1 + Main.getInstance().getVoteHandler().getPlayerCachedWeekVotes(onlinePlayer));
+                        if(Main.getInstance().getFetchData().getLastVote(onlinePlayer) < System.currentTimeMillis()){
 
-                        giveReward(onlinePlayer);
+                            //Pridani hlasu
+                            Main.getInstance().getSetData().addPlayerVote(onlinePlayer);
+                            Main.getInstance().getVoteHandler().addTotalVotes(onlinePlayer, 1 + Main.getInstance().getVoteHandler().getPlayerCachedTotalVotes(onlinePlayer));
+                            Main.getInstance().getVoteHandler().addMonthVotes(onlinePlayer, 1 + Main.getInstance().getVoteHandler().getPlayerCachedMonthVotes(onlinePlayer));
+                            Main.getInstance().getVoteHandler().addWeekVotes(onlinePlayer, 1 + Main.getInstance().getVoteHandler().getPlayerCachedWeekVotes(onlinePlayer));
 
-                        Titles.sendFullTitlePlayer(onlinePlayer, 10, 60, 10, "§a§lDekujeme!", "§fDostal/a jsi odmenu.");
-                        for (Player p : Bukkit.getOnlinePlayers()) {
-                            p.sendMessage("§b" + onlinePlayer.getName() + " §ehlasoval a ziskal §aodmenu!");
+                            Main.getInstance().getSetData().addTimeVotePlayer(onlinePlayer);
+
+                            giveReward(onlinePlayer);
+
+                            Titles.sendFullTitlePlayer(onlinePlayer, 10, 60, 10, "§a§lDekujeme!", "§fDostal/a jsi odmenu.");
+                            for (Player p : Bukkit.getOnlinePlayers()) {
+                                p.sendMessage("§b" + onlinePlayer.getName() + " §ehlasoval a ziskal §aodmenu!");
+                            }
+                            checkMountWin(onlinePlayer);
+                        } else {
+                            System.out.println("[CraftManager] Hraci " + onlinePlayer.getName() + " byl zastaven hlas, jelikoz neprekrocil 2h.");
                         }
-                        checkMountWin(onlinePlayer);
 
                     }
                 } catch (NullPointerException e) {
