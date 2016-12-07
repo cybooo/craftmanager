@@ -191,4 +191,20 @@ public class SetData {
             }
         }.runTaskAsynchronously(Main.getInstance());
     }
+
+    public final void addTimeVotePlayer(final Player p) {
+        final String query = "UPDATE votes SET last_vote = ? WHERE last_name = '" + p.getName() + "';";
+        new BukkitRunnable() {
+            public void run() {
+                try {
+                    PreparedStatement sql = Main.getInstance().getMySQL().getCurrentConnection().prepareStatement(query);
+                    sql.setLong(1, System.currentTimeMillis() + 7200000L);
+                    sql.execute();
+                    sql.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.runTaskAsynchronously(Main.getInstance());
+    }
 }

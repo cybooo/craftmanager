@@ -136,4 +136,18 @@ public class FetchData {
         }
         return (long) 0;
     }
+
+    public final Long getLastVote(final Player p) {
+        final String query = "SELECT last_vote FROM votes WHERE last_name = '" + p.getName() + "';";
+        try {
+            ResultSet result = Main.getInstance().getMySQL().getCurrentConnection().createStatement().executeQuery(query);
+            if (result.next()) {
+                return result.getLong("last_vote");
+            }
+            result.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return (long) 0;
+    }
 }
