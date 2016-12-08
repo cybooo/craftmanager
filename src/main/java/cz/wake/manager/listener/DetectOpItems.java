@@ -15,7 +15,7 @@ import org.bukkit.inventory.ItemStack;
 public class DetectOpItems implements Listener {
 
     @EventHandler
-    public void onClick(PlayerInteractEvent e) {
+    private void onClick(PlayerInteractEvent e) {
         final Player p = e.getPlayer();
         final ItemStack i = e.getItem();
 
@@ -40,7 +40,7 @@ public class DetectOpItems implements Listener {
     }
 
     @EventHandler
-    public void onDrop(PlayerDropItemEvent e) {
+    private void onDrop(PlayerDropItemEvent e) {
         final Player p = e.getPlayer();
         final ItemStack i = e.getItemDrop().getItemStack();
 
@@ -64,7 +64,7 @@ public class DetectOpItems implements Listener {
     }
 
     @EventHandler
-    public void onOpen(InventoryClickEvent e) {
+    private void onOpen(InventoryClickEvent e) {
         HumanEntity p = e.getWhoClicked();
         ItemStack i = e.getCurrentItem();
 
