@@ -21,12 +21,15 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.messaging.PluginMessageListener;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Main extends JavaPlugin {
+public class Main extends JavaPlugin implements PluginMessageListener {
 
     private static ArrayList<Player> players = new ArrayList<Player>();
     private ParticlesAPI particlesAPI = new ParticlesAPI();
@@ -38,6 +41,8 @@ public class Main extends JavaPlugin {
     private VoteHandler vh = new VoteHandler();
     private ServerFactory sf = new ServerFactory();
     private String idServer;
+    private static ByteArrayOutputStream b = new ByteArrayOutputStream();
+    private static DataOutputStream out = new DataOutputStream(b);
 
     private static Main instance;
 
@@ -51,6 +56,9 @@ public class Main extends JavaPlugin {
         saveDefaultConfig();
 
         idServer = getConfig().getString("server");
+
+        Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+        Bukkit.getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
 
         // Oznameni kazdou hodinu
         if (getConfig().getBoolean("reminder")) {
@@ -109,6 +117,13 @@ public class Main extends JavaPlugin {
         getCommand("glow").setExecutor(new Glow_command());
         getCommand("chatcolor").setExecutor(new Chatcolor_command());
         getCommand("help").setExecutor(new Help_command());
+        getCommand("survival").setExecutor(new Server_command());
+        getCommand("skyblock").setExecutor(new Server_command());
+        getCommand("creative").setExecutor(new Server_command());
+        getCommand("creative2").setExecutor(new Server_command());
+        getCommand("prison").setExecutor(new Server_command());
+        getCommand("factions").setExecutor(new Server_command());
+        getCommand("vanilla").setExecutor(new Server_command());
 
         if (getConfig().getBoolean("hlasovani")) {
             getCommand("fakevote").setExecutor(new Fakevote_command());
@@ -165,5 +180,22 @@ public class Main extends JavaPlugin {
 
     public ServerFactory getServerFactory() {
         return sf;
+    }
+
+    @Override
+    public void onPluginMessageReceived(String channel, Player player, byte[] message) {
+        if (!channel.equalsIgnoreCase("BungeeCord")) return;
+    }
+
+    public void sendToServer(Player player, String target) {
+        ByteArrayOutputStream b = new ByteArrayOutputStream();
+        DataOutputStream out = new DataOutputStream(b);
+        try {
+            out.writeUTF("Connect");
+            out.writeUTF(target);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        player.sendPluginMessage(Main.getInstance(), "BungeeCord", b.toByteArray());
     }
 }
