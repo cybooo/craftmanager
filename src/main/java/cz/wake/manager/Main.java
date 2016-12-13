@@ -1,6 +1,7 @@
 package cz.wake.manager;
 
 import cz.wake.manager.commads.*;
+import cz.wake.manager.commads.servers.*;
 import cz.wake.manager.listener.ChatListener;
 import cz.wake.manager.listener.DetectOpItems;
 import cz.wake.manager.listener.JoinListener;
@@ -117,13 +118,13 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("glow").setExecutor(new Glow_command());
         getCommand("chatcolor").setExecutor(new Chatcolor_command());
         getCommand("help").setExecutor(new Help_command());
-        getCommand("survival").setExecutor(new Server_command());
-        getCommand("skyblock").setExecutor(new Server_command());
-        getCommand("creative").setExecutor(new Server_command());
-        getCommand("creative2").setExecutor(new Server_command());
-        getCommand("prison").setExecutor(new Server_command());
-        getCommand("factions").setExecutor(new Server_command());
-        getCommand("vanilla").setExecutor(new Server_command());
+        getCommand("survival").setExecutor(new Survival_command());
+        getCommand("skyblock").setExecutor(new Skyblock_command());
+        getCommand("creative").setExecutor(new Creative_command());
+        getCommand("creative2").setExecutor(new Creative2_command());
+        getCommand("prison").setExecutor(new Prison_command());
+        getCommand("factions").setExecutor(new Factions_command());
+        getCommand("vanilla").setExecutor(new Vanilla_command());
 
         if (getConfig().getBoolean("hlasovani")) {
             getCommand("fakevote").setExecutor(new Fakevote_command());
