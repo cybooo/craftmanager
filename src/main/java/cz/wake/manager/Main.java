@@ -11,6 +11,7 @@ import cz.wake.manager.shop.ShopAPI;
 import cz.wake.manager.sql.FetchData;
 import cz.wake.manager.sql.MySQL;
 import cz.wake.manager.sql.SetData;
+import cz.wake.manager.stats.StatsTask;
 import cz.wake.manager.utils.ServerFactory;
 import cz.wake.manager.utils.UpdateTaskServer;
 import cz.wake.manager.utils.UtilTablist;
@@ -61,7 +62,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         Bukkit.getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
 
-        // Oznameni kazdou hodinu
+        // Oznameni kazdou hodinu (1 hod)
         if (getConfig().getBoolean("reminder")) {
             getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 2000, 72000);
             Bukkit.getLogger().log(Level.INFO,"§b[CraftManager] §eAktivace hodinoveho oznamovani o hlasech do chatu.");
@@ -70,8 +71,13 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             getServer().getScheduler().runTaskAsynchronously(this, new VoteReseter());
         }
 
-        // Update ID stats task
+        // Update ID stats task (1 min)
         getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTaskServer(), 2000, 1200);
+
+        // Stats update (10 min)
+        if(getConfig().getBoolean("stats-tracker")){
+            getServer().getScheduler().runTaskTimerAsynchronously(this, new StatsTask(), 2000, 12000);
+        }
     }
 
     public void onDisable() {

@@ -1,6 +1,7 @@
 package cz.wake.manager.sql;
 
 import cz.wake.manager.Main;
+import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -204,6 +205,52 @@ public class SetData {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
+            }
+        }.runTaskAsynchronously(Main.getInstance());
+    }
+
+    public final void updateStatsPlayer(final Player player) {
+
+        String server = Main.getInstance().getIdServer().toLowerCase();
+
+        final String query = "INSERT INTO " + server + "_stats (nick, player_kills, mob_kills, death, mine_block, craft_item, item_enchanted, trade_villager, animal_breed, fish_caught, time_played) VALUES (?,?,?,?,?,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE player_kills = ?, mob_kills=?, death=?, mine_block=?, craft_item=?, item_enchanted=?, trade_villager=?, animal_breed=?, fish_caught=?, time_played=?;";
+
+        new BukkitRunnable() {
+
+            public void run() {
+
+                try {
+
+                    PreparedStatement sql = Main.getInstance().getMySQL().getCurrentConnection().prepareStatement(query);
+                    sql.setString(1, player.getName());
+                    sql.setInt(2, player.getStatistic(Statistic.PLAYER_KILLS));
+                    sql.setInt(3, player.getStatistic(Statistic.MOB_KILLS));
+                    sql.setInt(4, player.getStatistic(Statistic.DEATHS));
+                    sql.setInt(5, player.getStatistic(Statistic.MINE_BLOCK));
+                    sql.setInt(6, player.getStatistic(Statistic.CRAFT_ITEM));
+                    sql.setInt(7, player.getStatistic(Statistic.ITEM_ENCHANTED));
+                    sql.setInt(8, player.getStatistic(Statistic.TRADED_WITH_VILLAGER));
+                    sql.setInt(9, player.getStatistic(Statistic.ANIMALS_BRED));
+                    sql.setInt(10, player.getStatistic(Statistic.FISH_CAUGHT));
+                    sql.setInt(11, player.getStatistic(Statistic.PLAY_ONE_TICK));
+                    //
+                    sql.setInt(12, player.getStatistic(Statistic.PLAYER_KILLS));
+                    sql.setInt(13, player.getStatistic(Statistic.MOB_KILLS));
+                    sql.setInt(14, player.getStatistic(Statistic.DEATHS));
+                    sql.setInt(15, player.getStatistic(Statistic.MINE_BLOCK));
+                    sql.setInt(16, player.getStatistic(Statistic.CRAFT_ITEM));
+                    sql.setInt(17, player.getStatistic(Statistic.ITEM_ENCHANTED));
+                    sql.setInt(18, player.getStatistic(Statistic.TRADED_WITH_VILLAGER));
+                    sql.setInt(19, player.getStatistic(Statistic.ANIMALS_BRED));
+                    sql.setInt(20, player.getStatistic(Statistic.FISH_CAUGHT));
+                    sql.setInt(21, player.getStatistic(Statistic.PLAY_ONE_TICK));
+                    sql.execute();
+                    sql.close();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
             }
         }.runTaskAsynchronously(Main.getInstance());
     }
