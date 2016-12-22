@@ -14,7 +14,7 @@ public class Skyblock_command implements CommandExecutor {
             Player player = (Player) Sender;
             if ((Command.getName().equalsIgnoreCase("skyblock"))) {
                 try {
-                    player.sendMessage("§eTeleportu ji na server §fSkyblock");
+                    player.sendMessage("§eTeleportuji na server §fSkyblock");
                     Main.getInstance().sendToServer(player,"skyblock");
                 } catch(Exception e){
                     e.printStackTrace();

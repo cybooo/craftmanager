@@ -14,7 +14,7 @@ public class Survival_command implements CommandExecutor {
             Player player = (Player) Sender;
             if ((Command.getName().equalsIgnoreCase("survival"))) {
                 try {
-                    player.sendMessage("§eTeleportu ji na server §fSurvival");
+                    player.sendMessage("§eTeleportuji na server §fSurvival");
                     Main.getInstance().sendToServer(player,"survival");
                 } catch(Exception e){
                     e.printStackTrace();

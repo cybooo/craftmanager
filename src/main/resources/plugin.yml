@@ -36,3 +36,5 @@ commands:
       description: Server teleport
     vanilla:
       description: Server teleport
+    factions:
+      description: Server teleport

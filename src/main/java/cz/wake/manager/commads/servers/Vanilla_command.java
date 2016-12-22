@@ -14,7 +14,7 @@ public class Vanilla_command implements CommandExecutor {
             Player player = (Player) Sender;
             if ((Command.getName().equalsIgnoreCase("vanilla"))) {
                 try {
-                    player.sendMessage("§eTeleportu ji na server §fVanilla");
+                    player.sendMessage("§eTeleportuji na server §fVanilla");
                     Main.getInstance().sendToServer(player,"vanilla");
                 } catch(Exception e){
                     e.printStackTrace();
