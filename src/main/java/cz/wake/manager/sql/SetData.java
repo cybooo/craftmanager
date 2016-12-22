@@ -1,6 +1,7 @@
 package cz.wake.manager.sql;
 
 import cz.wake.manager.Main;
+import cz.wake.manager.stats.StatsUtils;
 import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -10,6 +11,8 @@ import java.sql.SQLException;
 import java.util.UUID;
 
 public class SetData {
+
+    private StatsUtils su = new StatsUtils();
 
     public final void addPlayerVote(final Player p) {
 
@@ -212,6 +215,8 @@ public class SetData {
     public final void updateStatsPlayer(final Player player) {
 
         String server = Main.getInstance().getIdServer().toLowerCase();
+        int blocks = su.countBlockStats(player, Statistic.MINE_BLOCK);
+        int enchanted = su.countItemStats(player, Statistic.ITEM_ENCHANTED);
 
         final String query = "INSERT INTO " + server + "_stats (nick, player_kills, mob_kills, death, mine_block, craft_item, item_enchanted, trade_villager, animal_breed, fish_caught, time_played) VALUES (?,?,?,?,?,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE player_kills = ?, mob_kills=?, death=?, mine_block=?, craft_item=?, item_enchanted=?, trade_villager=?, animal_breed=?, fish_caught=?, time_played=?;";
 
@@ -226,9 +231,9 @@ public class SetData {
                     sql.setInt(2, player.getStatistic(Statistic.PLAYER_KILLS));
                     sql.setInt(3, player.getStatistic(Statistic.MOB_KILLS));
                     sql.setInt(4, player.getStatistic(Statistic.DEATHS));
-                    sql.setInt(5, player.getStatistic(Statistic.MINE_BLOCK));
+                    sql.setInt(5, blocks);
                     sql.setInt(6, player.getStatistic(Statistic.CRAFT_ITEM));
-                    sql.setInt(7, player.getStatistic(Statistic.ITEM_ENCHANTED));
+                    sql.setInt(7, enchanted);
                     sql.setInt(8, player.getStatistic(Statistic.TRADED_WITH_VILLAGER));
                     sql.setInt(9, player.getStatistic(Statistic.ANIMALS_BRED));
                     sql.setInt(10, player.getStatistic(Statistic.FISH_CAUGHT));
@@ -237,9 +242,9 @@ public class SetData {
                     sql.setInt(12, player.getStatistic(Statistic.PLAYER_KILLS));
                     sql.setInt(13, player.getStatistic(Statistic.MOB_KILLS));
                     sql.setInt(14, player.getStatistic(Statistic.DEATHS));
-                    sql.setInt(15, player.getStatistic(Statistic.MINE_BLOCK));
+                    sql.setInt(15, blocks);
                     sql.setInt(16, player.getStatistic(Statistic.CRAFT_ITEM));
-                    sql.setInt(17, player.getStatistic(Statistic.ITEM_ENCHANTED));
+                    sql.setInt(17, enchanted);
                     sql.setInt(18, player.getStatistic(Statistic.TRADED_WITH_VILLAGER));
                     sql.setInt(19, player.getStatistic(Statistic.ANIMALS_BRED));
                     sql.setInt(20, player.getStatistic(Statistic.FISH_CAUGHT));
