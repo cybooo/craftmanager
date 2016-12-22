@@ -3,7 +3,6 @@ package cz.wake.manager;
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
 import cz.wake.manager.listener.ChatListener;
-import cz.wake.manager.listener.DetectOpItems;
 import cz.wake.manager.listener.JoinListener;
 import cz.wake.manager.listener.LoginListener;
 import cz.wake.manager.particles.ParticlesAPI;
@@ -14,7 +13,6 @@ import cz.wake.manager.sql.SetData;
 import cz.wake.manager.stats.StatsTask;
 import cz.wake.manager.utils.ServerFactory;
 import cz.wake.manager.utils.UpdateTaskServer;
-import cz.wake.manager.utils.UtilTablist;
 import cz.wake.manager.utils.VoteReseter;
 import cz.wake.manager.votifier.Reminder;
 import cz.wake.manager.votifier.SuperbVote;
@@ -29,7 +27,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Main extends JavaPlugin implements PluginMessageListener {
 
@@ -104,14 +101,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             Bukkit.getLogger().log(Level.INFO,"§b[CraftManager] §eOdmeny za hlasovani byly aktivovany!");
         } else {
             Bukkit.getLogger().log(Level.INFO,"§b[CraftManager] §cOdmeny za hlasovani nejsou aktivni!");
-        }
-
-        // Detekce OP itemu
-        if (getConfig().getBoolean("detection")) {
-            Bukkit.getLogger().log(Level.INFO,"§b[CraftManager] §eDetekce OP Itemu - zapnuta!");
-            pm.registerEvents(new DetectOpItems(), this);
-        } else {
-            Bukkit.getLogger().log(Level.INFO,"§b[CraftManager] §cDetekce OP Itemu - vypnuta!");
         }
 
     }
