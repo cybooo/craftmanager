@@ -10,7 +10,8 @@ public class StatsUtils {
     public int countBlockStats(final Player p, final Statistic s){
         int count = 0;
         for(Material b : Material.values()){
-            if(b.isBlock()){
+            if(b.isSolid() && !blockedBlocks(b)){
+                System.out.println(b);
                 int blocks = p.getStatistic(s, b);
                 count += blocks;
             }
@@ -22,7 +23,7 @@ public class StatsUtils {
         int count = 0;
         for (Material i : Material.values()){
             if(!i.isBlock()){
-                int blocks = p.getStatistic(s, i);
+                int blocks = p.getStatistic(s);
                 count += blocks;
             }
         }
@@ -36,5 +37,14 @@ public class StatsUtils {
             count += ent;
         }
         return count;
+    }
+
+    private boolean blockedBlocks(Material m){
+        if(m == Material.BEDROCK || m == Material.AIR || m == Material.BED_BLOCK
+                || m == Material.PISTON_EXTENSION || m == Material.PISTON_MOVING_PIECE){
+            return true;
+        } else {
+            return false;
+        }
     }
 }
