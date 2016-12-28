@@ -29,6 +29,8 @@ public class UtilTablist {
             p.setPlayerListName("§c§lADMIN §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.builder")){
             p.setPlayerListName("§5§lBUILDER §f" + p.getName());
+        } else if (p.hasPermission("craftmanager.prefix.helperka")){
+            p.setPlayerListName("§2§lHELPERKA §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.helper")){
             p.setPlayerListName("§2§lHELPER §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.dvip")){
@@ -36,7 +38,7 @@ public class UtilTablist {
         } else if (p.hasPermission("craftmanager.prefix.gvip")){
             p.setPlayerListName("§6§lGOLD §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.ivip")){
-            p.setPlayerListName("§8§lIRON §f" + p.getName());
+            p.setPlayerListName("§7§lIRON §f" + p.getName());
         } else {
             p.setPlayerListName("§f" + p.getName());
         }
@@ -53,6 +55,8 @@ public class UtilTablist {
             p.setPlayerListName("§c§lADMIN §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.builder")){
             p.setPlayerListName("§5§lBUILDER §f" + p.getName());
+        } else if (p.hasPermission("craftmanager.prefix.helperka")){
+            p.setPlayerListName("§2§lHELPERKA §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.helper")){
             p.setPlayerListName("§2§lHELPER §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.dvip")){
@@ -79,6 +83,8 @@ public class UtilTablist {
             p.setPlayerListName("§c§lADMIN §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.builder")){
             p.setPlayerListName("§5§lBUILDER §f" + p.getName());
+        } else if (p.hasPermission("craftmanager.prefix.helperka")){
+            p.setPlayerListName("§2§lHELPERKA §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.helper")){
             p.setPlayerListName("§2§lHELPER §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.vipplus")){
