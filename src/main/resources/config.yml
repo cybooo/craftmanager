@@ -25,3 +25,6 @@ reminder: true
 
 # Hlasovani
 hlasovani: true
+
+# Statistiky do SQL
+stats-tracker: true

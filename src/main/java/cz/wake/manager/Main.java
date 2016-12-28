@@ -1,8 +1,8 @@
 package cz.wake.manager;
 
 import cz.wake.manager.commads.*;
+import cz.wake.manager.commads.servers.*;
 import cz.wake.manager.listener.ChatListener;
-import cz.wake.manager.listener.DetectOpItems;
 import cz.wake.manager.listener.JoinListener;
 import cz.wake.manager.listener.LoginListener;
 import cz.wake.manager.particles.ParticlesAPI;
@@ -10,9 +10,9 @@ import cz.wake.manager.shop.ShopAPI;
 import cz.wake.manager.sql.FetchData;
 import cz.wake.manager.sql.MySQL;
 import cz.wake.manager.sql.SetData;
+import cz.wake.manager.stats.StatsTask;
 import cz.wake.manager.utils.ServerFactory;
 import cz.wake.manager.utils.UpdateTaskServer;
-import cz.wake.manager.utils.UtilTablist;
 import cz.wake.manager.utils.VoteReseter;
 import cz.wake.manager.votifier.Reminder;
 import cz.wake.manager.votifier.SuperbVote;
@@ -21,12 +21,14 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.messaging.PluginMessageListener;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class Main extends JavaPlugin {
+public class Main extends JavaPlugin implements PluginMessageListener {
 
     private static ArrayList<Player> players = new ArrayList<Player>();
     private ParticlesAPI particlesAPI = new ParticlesAPI();
@@ -38,6 +40,8 @@ public class Main extends JavaPlugin {
     private VoteHandler vh = new VoteHandler();
     private ServerFactory sf = new ServerFactory();
     private String idServer;
+    private static ByteArrayOutputStream b = new ByteArrayOutputStream();
+    private static DataOutputStream out = new DataOutputStream(b);
 
     private static Main instance;
 
@@ -52,7 +56,10 @@ public class Main extends JavaPlugin {
 
         idServer = getConfig().getString("server");
 
-        // Oznameni kazdou hodinu
+        Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+        Bukkit.getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
+
+        // Oznameni kazdou hodinu (1 hod)
         if (getConfig().getBoolean("reminder")) {
             getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 2000, 72000);
             Bukkit.getLogger().log(Level.INFO,"§b[CraftManager] §eAktivace hodinoveho oznamovani o hlasech do chatu.");
@@ -61,8 +68,13 @@ public class Main extends JavaPlugin {
             getServer().getScheduler().runTaskAsynchronously(this, new VoteReseter());
         }
 
-        // Update ID stats task
+        // Update ID stats task (1 min)
         getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTaskServer(), 2000, 1200);
+
+        // Stats update (10 min)
+        if(getConfig().getBoolean("stats-tracker")){
+            getServer().getScheduler().runTaskTimerAsynchronously(this, new StatsTask(), 2000, 12000);
+        }
     }
 
     public void onDisable() {
@@ -91,14 +103,6 @@ public class Main extends JavaPlugin {
             Bukkit.getLogger().log(Level.INFO,"§b[CraftManager] §cOdmeny za hlasovani nejsou aktivni!");
         }
 
-        // Detekce OP itemu
-        if (getConfig().getBoolean("detection")) {
-            Bukkit.getLogger().log(Level.INFO,"§b[CraftManager] §eDetekce OP Itemu - zapnuta!");
-            pm.registerEvents(new DetectOpItems(), this);
-        } else {
-            Bukkit.getLogger().log(Level.INFO,"§b[CraftManager] §cDetekce OP Itemu - vypnuta!");
-        }
-
     }
 
     private void loadCommands() {
@@ -109,6 +113,13 @@ public class Main extends JavaPlugin {
         getCommand("glow").setExecutor(new Glow_command());
         getCommand("chatcolor").setExecutor(new Chatcolor_command());
         getCommand("help").setExecutor(new Help_command());
+        getCommand("survival").setExecutor(new Survival_command());
+        getCommand("skyblock").setExecutor(new Skyblock_command());
+        getCommand("creative").setExecutor(new Creative_command());
+        getCommand("creative2").setExecutor(new Creative2_command());
+        getCommand("prison").setExecutor(new Prison_command());
+        getCommand("factions").setExecutor(new Factions_command());
+        getCommand("vanilla").setExecutor(new Vanilla_command());
 
         if (getConfig().getBoolean("hlasovani")) {
             getCommand("fakevote").setExecutor(new Fakevote_command());
@@ -165,5 +176,22 @@ public class Main extends JavaPlugin {
 
     public ServerFactory getServerFactory() {
         return sf;
+    }
+
+    @Override
+    public void onPluginMessageReceived(String channel, Player player, byte[] message) {
+        if (!channel.equalsIgnoreCase("BungeeCord")) return;
+    }
+
+    public void sendToServer(Player player, String target) {
+        ByteArrayOutputStream b = new ByteArrayOutputStream();
+        DataOutputStream out = new DataOutputStream(b);
+        try {
+            out.writeUTF("Connect");
+            out.writeUTF(target);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        player.sendPluginMessage(Main.getInstance(), "BungeeCord", b.toByteArray());
     }
 }
