@@ -58,7 +58,7 @@ public class ShopAPI implements Listener {
             this.setupTag(p, "deluxetags.tag.flafyfan", "FlafyFan", inv, 20, 2000);
             this.setupTag(p, "deluxetags.tag.forevermeloun", "ForeverMeloun", inv, 21, 1000);
             this.setupTag(p, "deluxetags.tag.kulisak", "Kulisak", inv, 22, 500);
-            this.setupTag(p, "deluxetags.tag.ktopolak", "KtoPolak", inv, 23, 1000);
+            this.setupTag(p, "deluxetags.tag.lejnochod", "Lejnochod", inv, 23, 700);
             this.setupTag(p, "deluxetags.tag.mamswag", "MamSWAG", inv, 24, 600);
             this.setupTag(p, "deluxetags.tag.mamnejtag", "MamNejTag", inv, 25, 1000);
             this.setupTag(p, "deluxetags.tag.fanta", "Fanta", inv, 26, 500);
@@ -106,7 +106,7 @@ public class ShopAPI implements Listener {
             this.setupTag(p, "deluxetags.tag.flafyfan", "FlafyFan", inv, 20, 2000);
             this.setupTag(p, "deluxetags.tag.forevermeloun", "ForeverMeloun", inv, 21, 1000);
             this.setupTag(p, "deluxetags.tag.kulisak", "Kulisak", inv, 22, 500);
-            this.setupTag(p, "deluxetags.tag.ktopolak", "KtoPolak", inv, 23, 1000);
+            this.setupTag(p, "deluxetags.tag.lejnochod", "Lejnochod", inv, 23, 700);
             this.setupTag(p, "deluxetags.tag.mamswag", "MamSWAG", inv, 24, 600);
             this.setupTag(p, "deluxetags.tag.mamnejtag", "MamNejTag", inv, 25, 1000);
             this.setupTag(p, "deluxetags.tag.fanta", "Fanta", inv, 26, 500);
@@ -152,12 +152,11 @@ public class ShopAPI implements Listener {
             this.setupTag(p, "deluxetags.tag.soudce", "Soudce", inv, 14, 1000);
             this.setupTag(p, "deluxetags.tag.somcarovny", "SomCarovny", inv, 15, 1000);
             this.setupTag(p, "deluxetags.tag.nejsembankamore", "NejsemBankaMore", inv, 16, 1000);
-            this.setupTag(p, "deluxetags.tag.lejnochod", "Lejnochod", inv, 17, 700);
 
             // Specialni tagy pro Skyblock
-            this.setupTag(p, "deluxetags.tag.skyqueen", "SkyQueen", inv, 18, 1500);
-            this.setupTag(p, "deluxetags.tag.skyking", "SkyKing", inv, 19, 1500);
-            this.setupTag(p, "deluxetags.tag.skykid", "SkyKid", inv, 20, 1000);
+            this.setupTag(p, "deluxetags.tag.skyqueen", "SkyQueen", inv, 17, 1500);
+            this.setupTag(p, "deluxetags.tag.skyking", "SkyKing", inv, 18, 1500);
+            this.setupTag(p, "deluxetags.tag.skykid", "SkyKid", inv, 19, 1000);
 
             ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
             ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
@@ -185,7 +184,6 @@ public class ShopAPI implements Listener {
             this.setupTag(p, "deluxetags.tag.soudce", "Soudce", inv, 14, 1000);
             this.setupTag(p, "deluxetags.tag.somcarovny", "SomCarovny", inv, 15, 1000);
             this.setupTag(p, "deluxetags.tag.nejsembankamore", "NejsemBankaMore", inv, 16, 1000);
-            this.setupTag(p, "deluxetags.tag.lejnochod", "Lejnochod", inv, 17, 700);
 
             ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
             ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
@@ -306,7 +304,7 @@ public class ShopAPI implements Listener {
                     this.prepareTag(p, 500, "deluxetags.tag.kulisak", "Kulisak");
                 }
                 if (e.getSlot() == 23) {
-                    this.prepareTag(p, 1000, "deluxetags.tag.ktopolak", "KtoPolak");
+                    this.prepareTag(p, 700, "deluxetags.tag.lejnochod", "Lejnochod");
                 }
                 if (e.getSlot() == 24) {
                     this.prepareTag(p, 600, "deluxetags.tag.mamswag", "MamSWAG");
@@ -415,7 +413,7 @@ public class ShopAPI implements Listener {
                     this.prepareTag(p, 500, "deluxetags.tag.kulisak", "Kulisak");
                 }
                 if (e.getSlot() == 23) {
-                    this.prepareTag(p, 1000, "deluxetags.tag.ktopolak", "KtoPolak");
+                    this.prepareTag(p, 700, "deluxetags.tag.lejnochod", "Lejnochod");
                 }
                 if (e.getSlot() == 24) {
                     this.prepareTag(p, 600, "deluxetags.tag.mamswag", "MamSWAG");
@@ -522,15 +520,12 @@ public class ShopAPI implements Listener {
                     this.prepareTag(p, 1000, "deluxetags.tag.nejsembankamore", "NejsemBankaMore");
                 }
                 if (e.getSlot() == 17) {
-                    this.prepareTag(p, 700, "deluxetags.tag.lejnochod", "Lejnochod");
-                }
-                if (e.getSlot() == 18) {
                     this.prepareTag(p, 1500, "deluxetags.tag.skyqueen", "SkyQueen");
                 }
-                if (e.getSlot() == 19) {
+                if (e.getSlot() == 18) {
                     this.prepareTag(p, 1500, "deluxetags.tag.skyking", "SkyKing");
                 }
-                if (e.getSlot() == 10) {
+                if (e.getSlot() == 19) {
                     this.prepareTag(p, 1000, "deluxetags.tag.skykid", "SkyKid");
                 }
             } else {
@@ -584,9 +579,6 @@ public class ShopAPI implements Listener {
                 }
                 if (e.getSlot() == 16) {
                     this.prepareTag(p, 1000, "deluxetags.tag.nejsembankamore", "NejsemBankaMore");
-                }
-                if (e.getSlot() == 17) {
-                    this.prepareTag(p, 1000, "deluxetags.tag.lejnochod", "Lejnochod");
                 }
             }
         }
