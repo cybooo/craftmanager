@@ -207,7 +207,7 @@ public class MainGUI implements Listener {
                 p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§eWeb: §7https://craftmania.cz");
-                p.sendMessage("§eDiscord: §7http://discord.gg/craftmania");
+                p.sendMessage("§eDiscord: §7https://discord.gg/craftmania");
                 p.sendMessage("§ePlugDJ: §7https://plug.dj/craftmania-cz");
                 p.sendMessage("§eStatus page: §7http://status.craftmania.cz");
                 p.sendMessage("");
@@ -251,7 +251,7 @@ public class MainGUI implements Listener {
                 p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§eWeb: §7https://craftmania.cz");
-                p.sendMessage("§eDiscord: §7http://discord.gg/craftmania");
+                p.sendMessage("§eDiscord: §7https://discord.gg/craftmania");
                 p.sendMessage("§ePlugDJ: §7https://plug.dj/craftmania-cz");
                 p.sendMessage("§eStatus page: §7http://status.craftmania.cz");
                 p.sendMessage("");
@@ -285,7 +285,7 @@ public class MainGUI implements Listener {
                 p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§eWeb: §7https://craftmania.cz");
-                p.sendMessage("§eDiscord: §7http://discord.gg/craftmania");
+                p.sendMessage("§eDiscord: §7https://discord.gg/craftmania");
                 p.sendMessage("§ePlugDJ: §7https://plug.dj/craftmania-cz");
                 p.sendMessage("§eStatus page: §7http://status.craftmania.cz");
                 p.sendMessage("");

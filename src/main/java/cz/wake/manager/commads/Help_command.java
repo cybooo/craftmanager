@@ -150,7 +150,7 @@ public class Help_command implements CommandExecutor {
 
             ItemStack conn = ItemFactory.create(Material.MAP,(byte)0, "§a§lOdkazy na nase dalsi servery", "",
                     "§eWeb: §7https://craftmania.cz",
-                    "§eDiscord: §7http://discord.gg/craftmania",
+                    "§eDiscord: §7https://discord.gg/craftmania",
                     "§eTeamSpeak3 IP: §7ts.craftmania.cz",
                     "§ePlugDJ: §7https://plug.dj/craftmania-cz",
                     "§eStatus page: §7http://status.craftmania.cz", "",
@@ -232,7 +232,7 @@ public class Help_command implements CommandExecutor {
 
             ItemStack conn = ItemFactory.create(Material.MAP,(byte)0, "§a§lOdkazy na nase dalsi servery", "",
                     "§eWeb: §7https://craftmania.cz",
-                    "§eDiscord: §7http://discord.gg/craftmania",
+                    "§eDiscord: §7https://discord.gg/craftmania",
                     "§eTeamSpeak3 IP: §7ts.craftmania.cz",
                     "§ePlugDJ: §7https://plug.dj/craftmania-cz",
                     "§eStatus page: §7http://status.craftmania.cz", "",
@@ -334,7 +334,8 @@ public class Help_command implements CommandExecutor {
                     "§eKliknutim zobrazis odkaz na hlasovani!");
 
             ItemStack spawner = ItemFactory.create(Material.MOB_SPAWNER, (byte)0, "§a§lSpawnery a zmeny", "",
-                    "§6Na kazdem ostrove smi byt maximalne 60 spawneru!",
+                    "§6Pocet vsech spawneru smi byt maximalne 60!",
+                    "§6Spawnery se scitaji na hrace ve vsech residencich.",
                     "§6Prekroceni tohoto limitu se tresta banem!",
                     "",
                     "§cZmena spawneru:", "§7Kazdy spawner lze libolne zmenit pomoci prikazu",
@@ -376,7 +377,7 @@ public class Help_command implements CommandExecutor {
 
             ItemStack conn = ItemFactory.create(Material.MAP,(byte)0, "§a§lOdkazy na nase dalsi servery", "",
                     "§eWeb: §7https://craftmania.cz",
-                    "§eDiscord: §7http://discord.gg/craftmania",
+                    "§eDiscord: §7https://discord.gg/craftmania",
                     "§eTeamSpeak3 IP: §7ts.craftmania.cz",
                     "§ePlugDJ: §7https://plug.dj/craftmania-cz",
                     "§eStatus page: §7http://status.craftmania.cz", "",
