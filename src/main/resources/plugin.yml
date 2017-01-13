@@ -1,7 +1,7 @@
 name: CraftManager
 main: cz.wake.manager.Main
 authors: [MrWakeCZ]
-version: 1.0.65
+version: 1.6.0
 
 commands:
     menu:
