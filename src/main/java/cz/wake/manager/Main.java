@@ -12,6 +12,7 @@ import cz.wake.manager.sql.MySQL;
 import cz.wake.manager.sql.SetData;
 import cz.wake.manager.stats.StatsTask;
 import cz.wake.manager.utils.ServerFactory;
+import cz.wake.manager.utils.UpdateTablistTask;
 import cz.wake.manager.utils.UpdateTaskServer;
 import cz.wake.manager.utils.VoteReseter;
 import cz.wake.manager.votifier.Reminder;
@@ -74,6 +75,11 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Stats update (10 min)
         if(getConfig().getBoolean("stats-tracker")){
             getServer().getScheduler().runTaskTimerAsynchronously(this, new StatsTask(), 2000, 12000);
+        }
+
+        // Update tablistu (5s)
+        if(getConfig().getBoolean("tablist-update")){
+            getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTablistTask(), 0, 100L);
         }
     }
 
