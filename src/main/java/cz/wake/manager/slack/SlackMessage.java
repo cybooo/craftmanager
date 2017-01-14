@@ -129,8 +129,7 @@ public class SlackMessage {
     /**
      * See more icons in http://www.emoji-cheat-sheet.com/
      *
-     * @param icon
-     *            Avatar
+     * @param icon Avatar
      * @return SlackMessage
      */
     public SlackMessage setIcon(String icon) {

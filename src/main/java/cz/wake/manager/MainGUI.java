@@ -179,7 +179,7 @@ public class MainGUI implements Listener {
             if (e.getCurrentItem().getType() == Material.AIR) {
                 return;
             }
-            if((e.getSlot() == 12) || (e.getSlot() == 13) || (e.getSlot() == 14)){
+            if ((e.getSlot() == 12) || (e.getSlot() == 13) || (e.getSlot() == 14)) {
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
                 p.sendMessage("§6▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
@@ -189,10 +189,10 @@ public class MainGUI implements Listener {
                 p.sendMessage("§6▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.closeInventory();
             }
-            if(e.getSlot() == 32){
+            if (e.getSlot() == 32) {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "chestcommands open vip.yml " + p.getName());
             }
-            if(e.getSlot() == 24){
+            if (e.getSlot() == 24) {
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
                 p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
@@ -202,7 +202,7 @@ public class MainGUI implements Listener {
                 p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.closeInventory();
             }
-            if(e.getSlot() == 31){
+            if (e.getSlot() == 31) {
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
                 p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
@@ -223,7 +223,7 @@ public class MainGUI implements Listener {
             if (e.getCurrentItem().getType() == Material.AIR) {
                 return;
             }
-            if((e.getSlot() == 12) || (e.getSlot() == 13) || (e.getSlot() == 14)){
+            if ((e.getSlot() == 12) || (e.getSlot() == 13) || (e.getSlot() == 14)) {
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
                 p.sendMessage("§6▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
@@ -233,10 +233,10 @@ public class MainGUI implements Listener {
                 p.sendMessage("§6▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.closeInventory();
             }
-            if(e.getSlot() == 21){
+            if (e.getSlot() == 21) {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "chestcommands open example.yml " + p.getName());
             }
-            if(e.getSlot() == 22){
+            if (e.getSlot() == 22) {
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
                 p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
@@ -246,7 +246,7 @@ public class MainGUI implements Listener {
                 p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.closeInventory();
             }
-            if(e.getSlot() == 31){
+            if (e.getSlot() == 31) {
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
                 p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
@@ -267,10 +267,10 @@ public class MainGUI implements Listener {
             if (e.getCurrentItem().getType() == Material.AIR) {
                 return;
             }
-            if(e.getSlot() == 32){
+            if (e.getSlot() == 32) {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "chestcommands open vip.yml " + p.getName());
             }
-            if(e.getSlot() == 24){
+            if (e.getSlot() == 24) {
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
                 p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
@@ -280,7 +280,7 @@ public class MainGUI implements Listener {
                 p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.closeInventory();
             }
-            if(e.getSlot() == 31){
+            if (e.getSlot() == 31) {
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
                 p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");

@@ -8,7 +8,7 @@ public class StatsTask implements Runnable {
 
     @Override
     public void run() {
-        for(Player p : Bukkit.getOnlinePlayers()){
+        for (Player p : Bukkit.getOnlinePlayers()) {
             Main.getInstance().getSetData().updateStatsPlayer(p);
         }
     }

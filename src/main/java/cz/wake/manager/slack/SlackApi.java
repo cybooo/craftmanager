@@ -44,7 +44,7 @@ public class SlackApi {
                     "Missing WebHook URL Configuration @ SlackApi");
         }
 
-        if(proxy == null) {
+        if (proxy == null) {
             this.proxy = Proxy.NO_PROXY;
         } else {
             this.proxy = proxy;

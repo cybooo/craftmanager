@@ -14,17 +14,17 @@ public class EndRod {
     int task;
 
     @SuppressWarnings("deprecation")
-    public void activate(Player p){
-        if(!e.containsKey(p.getName())){
-            task = Bukkit.getScheduler().runTaskTimer(Main.getInstance(), new BukkitRunnable(){
+    public void activate(Player p) {
+        if (!e.containsKey(p.getName())) {
+            task = Bukkit.getScheduler().runTaskTimer(Main.getInstance(), new BukkitRunnable() {
                 @Override
                 public void run() {
-                    if(e.containsKey(p.getName()) && p.isOnline()){
-                        ParticleEffect.END_ROD.display(1.0f, 1.0f, 1.0f, 0.05f, 10,p.getLocation(),Main.getInstance().getPlayers());
+                    if (e.containsKey(p.getName()) && p.isOnline()) {
+                        ParticleEffect.END_ROD.display(1.0f, 1.0f, 1.0f, 0.05f, 10, p.getLocation(), Main.getInstance().getPlayers());
                     }
                 }
             }, 0L, 5L).getTaskId();
-            e.put(p.getName(),Integer.valueOf(task));
+            e.put(p.getName(), Integer.valueOf(task));
         }
     }
 }

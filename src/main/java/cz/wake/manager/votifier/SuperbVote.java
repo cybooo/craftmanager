@@ -21,7 +21,7 @@ public class SuperbVote implements Listener {
                 Player onlinePlayer = Bukkit.getPlayerExact(e.getVote().getUsername());
                 try {
                     if (onlinePlayer.isOnline()) {
-                        if(Main.getInstance().getFetchData().getLastVote(onlinePlayer) < System.currentTimeMillis()){
+                        if (Main.getInstance().getFetchData().getLastVote(onlinePlayer) < System.currentTimeMillis()) {
 
                             //Pridani hlasu
                             Main.getInstance().getSetData().addPlayerVote(onlinePlayer);

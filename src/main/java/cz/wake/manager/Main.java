@@ -63,7 +63,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Oznameni kazdou hodinu (1 hod)
         if (getConfig().getBoolean("reminder")) {
             getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 2000, 72000);
-            Bukkit.getLogger().log(Level.INFO,"§b[CraftManager] §eAktivace hodinoveho oznamovani o hlasech do chatu.");
+            Bukkit.getLogger().log(Level.INFO, "§b[CraftManager] §eAktivace hodinoveho oznamovani o hlasech do chatu.");
 
             // Kontrola restartu hlasu
             getServer().getScheduler().runTaskAsynchronously(this, new VoteReseter());
@@ -73,12 +73,12 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTaskServer(), 2000, 1200);
 
         // Stats update (10 min)
-        if(getConfig().getBoolean("stats-tracker")){
+        if (getConfig().getBoolean("stats-tracker")) {
             getServer().getScheduler().runTaskTimerAsynchronously(this, new StatsTask(), 2000, 12000);
         }
 
         // Update tablistu (5s)
-        if(getConfig().getBoolean("tablist-update")){
+        if (getConfig().getBoolean("tablist-update")) {
             getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTablistTask(), 0, 100L);
         }
     }
@@ -104,9 +104,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Hlasovani
         if (getConfig().getBoolean("hlasovani")) {
             pm.registerEvents(new SuperbVote(), this);
-            Bukkit.getLogger().log(Level.INFO,"§b[CraftManager] §eOdmeny za hlasovani byly aktivovany!");
+            Bukkit.getLogger().log(Level.INFO, "§b[CraftManager] §eOdmeny za hlasovani byly aktivovany!");
         } else {
-            Bukkit.getLogger().log(Level.INFO,"§b[CraftManager] §cOdmeny za hlasovani nejsou aktivni!");
+            Bukkit.getLogger().log(Level.INFO, "§b[CraftManager] §cOdmeny za hlasovani nejsou aktivni!");
         }
 
     }

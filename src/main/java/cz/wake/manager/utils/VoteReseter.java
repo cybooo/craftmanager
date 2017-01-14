@@ -7,7 +7,7 @@ public class VoteReseter implements Runnable {
     @Override
     public void run() {
         System.out.println("[CraftManager] Kontrola resetu hlasu.");
-        if(Main.getInstance().getFetchData().getResetTimeWeek() < System.currentTimeMillis()){
+        if (Main.getInstance().getFetchData().getResetTimeWeek() < System.currentTimeMillis()) {
             System.out.println("[CraftManager] Byl detekovan reset Week hlasu.");
             System.out.println("[CraftManager] Probehne reset...");
             Main.getInstance().getSetData().resetWeekVotes();
@@ -19,7 +19,7 @@ public class VoteReseter implements Runnable {
             System.out.println("[CraftManager] Restart Week hlasu byl zrusen, nenastal cas.");
         }
 
-        if(Main.getInstance().getFetchData().getResetTimeMonth() < System.currentTimeMillis()){
+        if (Main.getInstance().getFetchData().getResetTimeMonth() < System.currentTimeMillis()) {
             System.out.println("[CraftManager] Byl detekovan reset Month hlasu.");
             System.out.println("[CraftManager] Probehne reset...");
             Main.getInstance().getSetData().resetMonthVotes();

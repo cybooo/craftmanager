@@ -15,8 +15,8 @@ public class Factions_command implements CommandExecutor {
             if ((Command.getName().equalsIgnoreCase("factions"))) {
                 try {
                     player.sendMessage("§eTeleportuji na server §fFactions");
-                    Main.getInstance().sendToServer(player,"factions");
-                } catch(Exception e){
+                    Main.getInstance().sendToServer(player, "factions");
+                } catch (Exception e) {
                     e.printStackTrace();
                     player.sendMessage("§cTeleport na server §fFactions §cse nezdaril!");
                 }
