@@ -41,7 +41,11 @@ public class StatsUtils {
 
     private boolean blockedBlocks(Material m) {
         if (m == Material.BEDROCK || m == Material.AIR || m == Material.BED_BLOCK
-                || m == Material.PISTON_EXTENSION || m == Material.PISTON_MOVING_PIECE) {
+                || m == Material.PISTON_EXTENSION || m == Material.PISTON_MOVING_PIECE
+                || m == Material.MOB_SPAWNER || m == Material.SIGN_POST || m == Material.WOODEN_DOOR
+                || m == Material.ACACIA_DOOR || m == Material.BIRCH_DOOR || m == Material.DARK_OAK_DOOR
+                || m == Material.IRON_DOOR || m == Material.JUNGLE_DOOR || m == Material.SPRUCE_DOOR
+                || m == Material.WALL_SIGN) {
             return true;
         } else {
             return false;
