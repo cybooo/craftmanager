@@ -154,4 +154,42 @@ public class FetchData {
         }
         return (long) 0;
     }
+
+    public final boolean hasDataChecker(final Player p) {
+
+        Boolean hasData = Boolean.valueOf(false);
+        String server = Main.getInstance().getIdServer().toLowerCase();
+
+        final String query = "SELECT * FROM " + server + "_players WHERE sname = '" + p.getName().toLowerCase() + "';";
+
+        try {
+            ResultSet result = Main.getInstance().getMySQL().getCurrentConnection().createStatement().executeQuery(query);
+            if (result.next()) {
+                hasData = Boolean.valueOf(true);
+            }
+            result.close();
+        } catch (Exception e) {
+            log.error("", e);
+        }
+        return hasData.booleanValue();
+    }
+
+    public final String getNormalNameChecked(final Player p) {
+
+        String server = Main.getInstance().getIdServer().toLowerCase();
+        final String query = "SELECT nname FROM " + server + "_players WHERE sname = '" + p.getName().toLowerCase() + "';";
+
+        try {
+            ResultSet result = Main.getInstance().getMySQL().getCurrentConnection().createStatement().executeQuery(query);
+            if (result.next()) {
+                return result.getString("nname");
+            }
+            result.close();
+        } catch (Exception e) {
+            log.error("", e);
+        }
+        return "";
+    }
+
+
 }

@@ -261,6 +261,27 @@ public class SetData {
             }
         }.runTaskAsynchronously(Main.getInstance());
     }
+
+    public final void createPlayerCheck(final Player p) {
+
+        String server = Main.getInstance().getIdServer().toLowerCase();
+
+        final String query = "INSERT INTO " + server + "_players (nname,sname) VALUES (?,?);";
+
+        new BukkitRunnable() {
+
+            public void run() {
+
+                try {
+
+                    PreparedStatement sql = Main.getInstance().getMySQL().getCurrentConnection().prepareStatement(query);
+                    sql.setString(1, p.getName());
+                    sql.setString(2, p.getName().toLowerCase());
+                    sql.execute();
+                    sql.close();
+
+                } catch (Exception e) {
+                    log.error("", e);
                 }
 
             }
