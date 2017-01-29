@@ -8,10 +8,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Random;
 
 public class SuperbVote implements Listener {
+
+    static final Logger log = LoggerFactory.getLogger(VoteHandler.class);
 
     @EventHandler
     public void voteSQL(final VotifierEvent e) {
@@ -43,8 +47,8 @@ public class SuperbVote implements Listener {
                         }
 
                     }
-                } catch (NullPointerException e) {
-                    //Nic
+                } catch (Exception e) {
+                    log.error("", e);
                 }
             }
         });

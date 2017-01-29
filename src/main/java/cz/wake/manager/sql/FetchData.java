@@ -2,6 +2,8 @@ package cz.wake.manager.sql;
 
 import cz.wake.manager.Main;
 import org.bukkit.entity.Player;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,6 +13,8 @@ import java.util.UUID;
 
 public class FetchData {
 
+    static final Logger log = LoggerFactory.getLogger(FetchData.class);
+
     public synchronized int getPlayerTotalVotes(UUID uuid) {
         try {
             ResultSet localResultSet = Main.getInstance().getMySQL().getCurrentConnection().createStatement().executeQuery("SELECT votes FROM votes WHERE uuid = '" + uuid.toString() + "'");
@@ -18,8 +22,8 @@ public class FetchData {
                 return localResultSet.getInt("votes");
             }
             localResultSet.close();
-        } catch (SQLException localSQLException) {
-            localSQLException.printStackTrace();
+        } catch (Exception e) {
+            log.error("", e);
         }
         return 0;
     }
@@ -31,8 +35,8 @@ public class FetchData {
                 return localResultSet.getInt("balance");
             }
             localResultSet.close();
-        } catch (SQLException localSQLException) {
-            localSQLException.printStackTrace();
+        } catch (Exception e) {
+            log.error("", e);
         }
         return 0;
     }
@@ -44,8 +48,8 @@ public class FetchData {
                 return localResultSet.getInt("week");
             }
             localResultSet.close();
-        } catch (SQLException localSQLException) {
-            localSQLException.printStackTrace();
+        } catch (Exception e) {
+            log.error("", e);
         }
         return 0;
     }
@@ -57,8 +61,8 @@ public class FetchData {
                 return localResultSet.getInt("month");
             }
             localResultSet.close();
-        } catch (SQLException localSQLException) {
-            localSQLException.printStackTrace();
+        } catch (Exception e) {
+            log.error("", e);
         }
         return 0;
     }
@@ -75,8 +79,8 @@ public class FetchData {
                 hasData = Boolean.valueOf(true);
             }
             result.close();
-        } catch (SQLException e) {
-            //Nic
+        } catch (Exception e) {
+            log.error("", e);
         }
         return hasData.booleanValue();
     }
@@ -89,8 +93,8 @@ public class FetchData {
                 names.add(localResultSet.getString(1));
             }
             localResultSet.close();
-        } catch (SQLException localSQLException) {
-            localSQLException.printStackTrace();
+        } catch (Exception e) {
+            log.error("", e);
         }
         return names;
     }
@@ -103,8 +107,8 @@ public class FetchData {
                 names.add(localResultSet.getString(1));
             }
             localResultSet.close();
-        } catch (SQLException localSQLException) {
-            localSQLException.printStackTrace();
+        } catch (Exception e) {
+            log.error("", e);
         }
         return names;
     }
@@ -117,8 +121,8 @@ public class FetchData {
                 return result.getLong("time");
             }
             result.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            log.error("", e);
         }
         return (long) 0;
     }
@@ -131,8 +135,8 @@ public class FetchData {
                 return result.getLong("time");
             }
             result.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            log.error("", e);
         }
         return (long) 0;
     }
@@ -145,8 +149,8 @@ public class FetchData {
                 return result.getLong("last_vote");
             }
             result.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            log.error("", e);
         }
         return (long) 0;
     }

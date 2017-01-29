@@ -1,13 +1,15 @@
 package cz.wake.manager.sql;
 
-
 import cz.wake.manager.Main;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class MySQL {
+
+    static final Logger log = LoggerFactory.getLogger(MySQL.class);
 
     private Connection con;
 
@@ -16,8 +18,8 @@ public class MySQL {
             if ((this.con == null) || (this.con.isClosed())) {
                 this.con = DriverManager.getConnection("jdbc:mysql://" + Main.getInstance().getConfig().getString("host") + ":" + Main.getInstance().getConfig().getString("port") + "/" + Main.getInstance().getConfig().getString("database"), Main.getInstance().getConfig().getString("user"), Main.getInstance().getConfig().getString("password"));
             }
-        } catch (SQLException localSQLException) {
-            localSQLException.printStackTrace();
+        } catch (Exception e) {
+            log.error("", e);
         }
         return this.con;
     }
@@ -27,8 +29,8 @@ public class MySQL {
             if ((!this.con.isClosed()) || (this.con != null)) {
                 this.con.close();
             }
-        } catch (SQLException localSQLException) {
-            localSQLException.printStackTrace();
+        } catch (Exception e) {
+            log.error("", e);
         }
     }
 }

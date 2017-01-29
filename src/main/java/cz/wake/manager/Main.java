@@ -11,10 +11,7 @@ import cz.wake.manager.sql.FetchData;
 import cz.wake.manager.sql.MySQL;
 import cz.wake.manager.sql.SetData;
 import cz.wake.manager.stats.StatsTask;
-import cz.wake.manager.utils.ServerFactory;
-import cz.wake.manager.utils.UpdateTablistTask;
-import cz.wake.manager.utils.UpdateTaskServer;
-import cz.wake.manager.utils.VoteReseter;
+import cz.wake.manager.utils.*;
 import cz.wake.manager.votifier.Reminder;
 import cz.wake.manager.votifier.SuperbVote;
 import cz.wake.manager.votifier.VoteHandler;
@@ -28,6 +25,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
 public class Main extends JavaPlugin implements PluginMessageListener {
 
@@ -43,11 +44,13 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private String idServer;
     private static ByteArrayOutputStream b = new ByteArrayOutputStream();
     private static DataOutputStream out = new DataOutputStream(b);
+    static final Logger log = LoggerFactory.getLogger(Main.class);
 
     private static Main instance;
 
     public void onEnable() {
         instance = this;
+
         loadListeners();
         loadCommands();
 
@@ -55,8 +58,18 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getConfig().options().copyDefaults(true);
         saveDefaultConfig();
 
+        // Bungee ID z configu
         idServer = getConfig().getString("server");
 
+        // MDC tagy pro Sentry
+        MDC.put("server", idServer);
+        MDC.put("players", String.valueOf(Bukkit.getOnlinePlayers().size()));
+        MDC.put("version", Bukkit.getBukkitVersion());
+
+        // Zachytavac unhandled exceptions
+        ExceptionHandler.enable(instance);
+
+        // Bungee channels
         Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         Bukkit.getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
 
@@ -84,8 +97,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     }
 
     public void onDisable() {
-        instance = null;
+        ExceptionHandler.disable(instance);
         getMySQL().closeConnection();
+        instance = null;
     }
 
     public static Main getInstance() {
@@ -196,7 +210,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             out.writeUTF("Connect");
             out.writeUTF(target);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("", e);
         }
         player.sendPluginMessage(Main.getInstance(), "BungeeCord", b.toByteArray());
     }
