@@ -5,6 +5,8 @@ import cz.wake.manager.stats.StatsUtils;
 import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -13,6 +15,7 @@ import java.util.UUID;
 public class SetData {
 
     private StatsUtils su = new StatsUtils();
+    static final Logger log = LoggerFactory.getLogger(SetData.class);
 
     public final void addPlayerVote(final Player p) {
 
@@ -30,8 +33,8 @@ public class SetData {
                     sql.executeUpdate();
                     sql.close();
 
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                } catch (Exception e) {
+                    log.error("", e);
                 }
 
             }
@@ -54,8 +57,8 @@ public class SetData {
                     sql.setQueryTimeout(30);
                     sql.executeUpdate();
                     sql.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                } catch (Exception e) {
+                    log.error("", e);
                 }
             }
         }.runTaskAsynchronously(Main.getPlugin(Main.class));
@@ -71,8 +74,8 @@ public class SetData {
                     sql.setQueryTimeout(30);
                     sql.execute();
                     sql.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                } catch (Exception e) {
+                    log.error("", e);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
@@ -97,9 +100,8 @@ public class SetData {
                     sql.setInt(6, 0);
                     sql.execute();
                     sql.close();
-
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                } catch (Exception e) {
+                    log.error("", e);
                 }
 
             }
@@ -126,8 +128,8 @@ public class SetData {
                     sql.execute();
                     sql.close();
 
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                } catch (Exception e) {
+                    log.error("", e);
                 }
 
             }
@@ -159,8 +161,8 @@ public class SetData {
                     sql.setLong(1, time);
                     sql.execute();
                     sql.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                } catch (Exception e) {
+                    log.error("", e);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
@@ -174,8 +176,8 @@ public class SetData {
                     PreparedStatement sql = Main.getInstance().getMySQL().getCurrentConnection().prepareStatement(query);
                     sql.execute();
                     sql.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                } catch (Exception e) {
+                    log.error("", e);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
@@ -205,8 +207,8 @@ public class SetData {
                     sql.setLong(1, System.currentTimeMillis() + 5400000L);
                     sql.execute();
                     sql.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                } catch (Exception e) {
+                    log.error("", e);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
@@ -252,8 +254,34 @@ public class SetData {
                     sql.execute();
                     sql.close();
 
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                } catch (Exception e) {
+                    log.error("", e);
+                }
+
+            }
+        }.runTaskAsynchronously(Main.getInstance());
+    }
+
+    public final void createPlayerCheck(final Player p) {
+
+        String server = Main.getInstance().getIdServer().toLowerCase();
+
+        final String query = "INSERT INTO " + server + "_players (nname,sname) VALUES (?,?);";
+
+        new BukkitRunnable() {
+
+            public void run() {
+
+                try {
+
+                    PreparedStatement sql = Main.getInstance().getMySQL().getCurrentConnection().prepareStatement(query);
+                    sql.setString(1, p.getName());
+                    sql.setString(2, p.getName().toLowerCase());
+                    sql.execute();
+                    sql.close();
+
+                } catch (Exception e) {
+                    log.error("", e);
                 }
 
             }

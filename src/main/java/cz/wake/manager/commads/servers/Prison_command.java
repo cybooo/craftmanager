@@ -15,8 +15,8 @@ public class Prison_command implements CommandExecutor {
             if ((Command.getName().equalsIgnoreCase("prison"))) {
                 try {
                     player.sendMessage("§eTeleportuji na server §fPrison");
-                    Main.getInstance().sendToServer(player,"prison");
-                } catch(Exception e){
+                    Main.getInstance().sendToServer(player, "prison");
+                } catch (Exception e) {
                     e.printStackTrace();
                     player.sendMessage("§cTeleport na server §fPrison §cse nezdaril!");
                 }

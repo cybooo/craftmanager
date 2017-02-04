@@ -1,34 +1,43 @@
 package cz.wake.manager.utils;
 
-import net.minecraft.server.v1_10_R1.NBTTagCompound;
-import net.minecraft.server.v1_10_R1.NBTTagList;
+import net.minecraft.server.v1_11_R1.NBTTagCompound;
+import net.minecraft.server.v1_11_R1.NBTTagList;
 import org.bukkit.Color;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_10_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_11_R1.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.material.MaterialData;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ItemFactory {
 
+    static final Logger log = LoggerFactory.getLogger(ItemFactory.class);
+
     public static ItemStack create(Material material, byte data, String displayName, String... lore) {
-        ItemStack itemStack = new MaterialData(material, data).toItemStack(1);
-        ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.setDisplayName(displayName);
-        if (lore != null) {
-            List<String> finalLore = new ArrayList<>();
-            for (String s : lore)
-                finalLore.add(s);
-            itemMeta.setLore(finalLore);
+        try {
+            ItemStack itemStack = new MaterialData(material, data).toItemStack(1);
+            ItemMeta itemMeta = itemStack.getItemMeta();
+            itemMeta.setDisplayName(displayName);
+            if (lore != null) {
+                List<String> finalLore = new ArrayList<>();
+                for (String s : lore)
+                    finalLore.add(s);
+                itemMeta.setLore(finalLore);
+            }
+            itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+            itemStack.setItemMeta(itemMeta);
+            return itemStack;
+        } catch (Exception e) {
+            log.error("", e);
         }
-        itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        itemStack.setItemMeta(itemMeta);
-        return itemStack;
+        return null;
     }
 
     public static ItemStack create(Material material, byte data, String displayName) {
@@ -36,7 +45,7 @@ public class ItemFactory {
     }
 
     public static org.bukkit.inventory.ItemStack createHead(String name, String uuid, String textureData) {
-        net.minecraft.server.v1_10_R1.ItemStack sHead = CraftItemStack.asNMSCopy(new org.bukkit.inventory.ItemStack(Material.SKULL_ITEM, 1, (short) 3));
+        net.minecraft.server.v1_11_R1.ItemStack sHead = CraftItemStack.asNMSCopy(new org.bukkit.inventory.ItemStack(Material.SKULL_ITEM, 1, (short) 3));
 
         NBTTagCompound tag = new NBTTagCompound();
         NBTTagCompound skullOwnerTag = new NBTTagCompound();
@@ -76,16 +85,21 @@ public class ItemFactory {
     }
 
     public static ItemStack addGlow(ItemStack item) {
-        net.minecraft.server.v1_10_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(item);
-        NBTTagCompound tag = null;
-        if (!nmsStack.hasTag()) {
-            tag = new NBTTagCompound();
+        try {
+            net.minecraft.server.v1_11_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(item);
+            NBTTagCompound tag = null;
+            if (!nmsStack.hasTag()) {
+                tag = new NBTTagCompound();
+                nmsStack.setTag(tag);
+            }
+            if (tag == null) tag = nmsStack.getTag();
+            NBTTagList ench = new NBTTagList();
+            tag.set("ench", ench);
             nmsStack.setTag(tag);
+            return CraftItemStack.asCraftMirror(nmsStack);
+        } catch (Exception e) {
+            log.error("", e);
         }
-        if (tag == null) tag = nmsStack.getTag();
-        NBTTagList ench = new NBTTagList();
-        tag.set("ench", ench);
-        nmsStack.setTag(tag);
-        return CraftItemStack.asCraftMirror(nmsStack);
+        return item;
     }
 }

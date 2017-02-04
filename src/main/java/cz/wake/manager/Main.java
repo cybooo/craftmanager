@@ -11,9 +11,7 @@ import cz.wake.manager.sql.FetchData;
 import cz.wake.manager.sql.MySQL;
 import cz.wake.manager.sql.SetData;
 import cz.wake.manager.stats.StatsTask;
-import cz.wake.manager.utils.ServerFactory;
-import cz.wake.manager.utils.UpdateTaskServer;
-import cz.wake.manager.utils.VoteReseter;
+import cz.wake.manager.utils.*;
 import cz.wake.manager.votifier.Reminder;
 import cz.wake.manager.votifier.SuperbVote;
 import cz.wake.manager.votifier.VoteHandler;
@@ -27,6 +25,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
 public class Main extends JavaPlugin implements PluginMessageListener {
 
@@ -42,11 +44,13 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private String idServer;
     private static ByteArrayOutputStream b = new ByteArrayOutputStream();
     private static DataOutputStream out = new DataOutputStream(b);
+    static final Logger log = LoggerFactory.getLogger(Main.class);
 
     private static Main instance;
 
     public void onEnable() {
         instance = this;
+
         loadListeners();
         loadCommands();
 
@@ -54,15 +58,25 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getConfig().options().copyDefaults(true);
         saveDefaultConfig();
 
+        // Bungee ID z configu
         idServer = getConfig().getString("server");
 
+        // MDC tagy pro Sentry
+        MDC.put("server", idServer);
+        MDC.put("players", String.valueOf(Bukkit.getOnlinePlayers().size()));
+        MDC.put("version", Bukkit.getBukkitVersion());
+
+        // Zachytavac unhandled exceptions
+        ExceptionHandler.enable(instance);
+
+        // Bungee channels
         Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         Bukkit.getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
 
         // Oznameni kazdou hodinu (1 hod)
         if (getConfig().getBoolean("reminder")) {
             getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 2000, 72000);
-            Bukkit.getLogger().log(Level.INFO,"§b[CraftManager] §eAktivace hodinoveho oznamovani o hlasech do chatu.");
+            Bukkit.getLogger().log(Level.INFO, "§b[CraftManager] §eAktivace hodinoveho oznamovani o hlasech do chatu.");
 
             // Kontrola restartu hlasu
             getServer().getScheduler().runTaskAsynchronously(this, new VoteReseter());
@@ -72,14 +86,20 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTaskServer(), 2000, 1200);
 
         // Stats update (10 min)
-        if(getConfig().getBoolean("stats-tracker")){
+        if (getConfig().getBoolean("stats-tracker")) {
             getServer().getScheduler().runTaskTimerAsynchronously(this, new StatsTask(), 2000, 12000);
+        }
+
+        // Update tablistu (5s)
+        if (getConfig().getBoolean("tablist-update")) {
+            getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTablistTask(), 0, 100L);
         }
     }
 
     public void onDisable() {
-        instance = null;
+        ExceptionHandler.disable(instance);
         getMySQL().closeConnection();
+        instance = null;
     }
 
     public static Main getInstance() {
@@ -98,9 +118,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Hlasovani
         if (getConfig().getBoolean("hlasovani")) {
             pm.registerEvents(new SuperbVote(), this);
-            Bukkit.getLogger().log(Level.INFO,"§b[CraftManager] §eOdmeny za hlasovani byly aktivovany!");
+            Bukkit.getLogger().log(Level.INFO, "§b[CraftManager] §eOdmeny za hlasovani byly aktivovany!");
         } else {
-            Bukkit.getLogger().log(Level.INFO,"§b[CraftManager] §cOdmeny za hlasovani nejsou aktivni!");
+            Bukkit.getLogger().log(Level.INFO, "§b[CraftManager] §cOdmeny za hlasovani nejsou aktivni!");
         }
 
     }
@@ -190,7 +210,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             out.writeUTF("Connect");
             out.writeUTF(target);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("", e);
         }
         player.sendPluginMessage(Main.getInstance(), "BungeeCord", b.toByteArray());
     }

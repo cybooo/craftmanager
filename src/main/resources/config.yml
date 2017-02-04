@@ -28,3 +28,6 @@ hlasovani: true
 
 # Statistiky do SQL
 stats-tracker: true
+
+# Update tablist task
+tablist-update: false

@@ -6,7 +6,7 @@
 
     <groupId>cz.wake.manager</groupId>
     <artifactId>CraftManager</artifactId>
-    <version>1.5</version>
+    <version>1.1</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -74,15 +74,15 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.10-R0.1-SNAPSHOT</version>
+            <version>1.11-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>net.minecraft</groupId>
-            <artifactId>minecraft-server-1-10-0</artifactId>
-            <version>1.10</version>
+            <artifactId>minecraft-server-1-11-0</artifactId>
+            <version>1.11</version>
             <scope>system</scope>
-            <systemPath>${pom.basedir}/lib/spigot-1.10.2-R0.1.2-SNAPSHOT-latest.jar</systemPath>
+            <systemPath>${pom.basedir}/lib/spigot-1.11.2-R0.1-SNAPSHOT.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>io.minimum.minecraft.superbvote</groupId>
@@ -97,6 +97,33 @@
             <version>2.3.2.2</version>
             <scope>system</scope>
             <systemPath>${pom.basedir}/lib/nuvotifier-universal-2.3.2.2.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.getsentry.raven</groupId>
+            <artifactId>raven-logback</artifactId>
+            <version>7.8.1</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.1.9</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.1.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <version>1.7.21</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.21</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
