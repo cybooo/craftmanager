@@ -105,24 +105,11 @@ public class Help_command implements CommandExecutor {
                     "",
                     "§eKliknutim zobrazis odkaz na hlasovani!");
 
-            ItemStack spawner = ItemFactory.create(Material.MOB_SPAWNER, (byte) 0, "§a§lSpawnery a zmeny", "",
-                    "§6Na kazdem ostrove smi byt maximalne 60 spawneru!",
-                    "§6Prekroceni tohoto limitu se tresta banem!",
+            ItemStack spawner = ItemFactory.create(Material.BOOK, (byte) 0, "§a§lNavody §f(Jiz brzy)", "",
+                    "§7Prehled vsech dostupnych navodu pro Skyblock",
+                    "§7na nasi hlavni WIKI!",
                     "",
-                    "§cZmena spawneru:", "§7Kazdy spawner lze libolne zmenit pomoci prikazu",
-                    "§e/ss change typMoba", "",
-                    "§cCeny zmeny spawneru:",
-                    "§7Zakladni zvirata - §8zdarma",
-                    "§7Squid - §8500$ §7Wolf - §82500$",
-                    "§7Mooshroom - §83000$ §7Snowgolem - §83000$",
-                    "§7Ocelot - §83500$ §7IronGolem - §86000$",
-                    "§7Villager - §810000$ §7Rabbit - §82500$",
-                    "§7Creeper - §82000$ §7Skeleton - §83500$",
-                    "§7Spider - §81500$ §7Giant - §85000$",
-                    "§7Zombie - §83500$ §7Slime - §82000$",
-                    "§7Enderman - §82500$ §7CaveSpier - §85000$",
-                    "§7Blaze - §86000$ §7MagmaCube - §87000$",
-                    "§7Witch - §86000$ §7Guardian - §83000$");
+                    "§eKliknutim zobrazis prehled");
 
             ItemStack lwc = ItemFactory.create(Material.CHEST, (byte) 0, "§a§lNastaveni truhel a prava", "",
                     "§7Kazdou truhlu, kterou polozis na serveru",
@@ -331,25 +318,11 @@ public class Help_command implements CommandExecutor {
                     "",
                     "§eKliknutim zobrazis odkaz na hlasovani!");
 
-            ItemStack spawner = ItemFactory.create(Material.MOB_SPAWNER, (byte) 0, "§a§lSpawnery a zmeny", "",
-                    "§6Pocet vsech spawneru smi byt maximalne 60!",
-                    "§6Spawnery se scitaji na hrace ve vsech residencich.",
-                    "§6Prekroceni tohoto limitu se tresta banem!",
+            ItemStack spawner = ItemFactory.create(Material.BOOK, (byte) 0, "§a§lNavody §f(Jiz brzy)", "",
+                    "§7Prehled vsech dostupnych navodu pro Survival",
+                    "§7na nasi hlavni WIKI!",
                     "",
-                    "§cZmena spawneru:", "§7Kazdy spawner lze libolne zmenit pomoci prikazu",
-                    "§e/ss change typMoba", "",
-                    "§cCeny zmeny spawneru:",
-                    "§7Zakladni zvirata - §8zdarma",
-                    "§7Squid - §8500$ §7Wolf - §82500$",
-                    "§7Mooshroom - §83000$ §7Snowgolem - §83000$",
-                    "§7Ocelot - §83500$ §7IronGolem - §86000$",
-                    "§7Villager - §810000$ §7Rabbit - §82500$",
-                    "§7Creeper - §82000$ §7Skeleton - §83500$",
-                    "§7Spider - §81500$ §7Giant - §85000$",
-                    "§7Zombie - §83500$ §7Slime - §82000$",
-                    "§7Enderman - §82500$ §7CaveSpier - §85000$",
-                    "§7Blaze - §86000$ §7MagmaCube - §87000$",
-                    "§7Witch - §86000$ §7Guardian - §83000$");
+                    "§eKliknutim zobrazis prehled");
 
             ItemStack lwc = ItemFactory.create(Material.CHEST, (byte) 0, "§a§lNastaveni truhel a prava", "",
                     "§7Kazdou truhlu, kterou polozis na serveru",

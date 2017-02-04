@@ -21,6 +21,7 @@ public class LoginListener implements Listener {
             e.disallow(PlayerLoginEvent.Result.KICK_OTHER, "§ePro pripojeni na server pouzij IP: §cplay.craftmania.cz");
         }
 
+        /*
         if(!Main.getInstance().getFetchData().hasDataChecker(p)){ // mrwakecz = mrwakecz
             Main.getInstance().getSetData().createPlayerCheck(p);
 
@@ -30,7 +31,7 @@ public class LoginListener implements Listener {
             } else {
                 e.disallow(PlayerLoginEvent.Result.KICK_OTHER, "§cPodobny nick jiz hraje na serveru, nelze se pripojit.");
             }
-        }
+        } */
 
     }
 
