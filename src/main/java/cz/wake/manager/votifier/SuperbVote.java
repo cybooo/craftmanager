@@ -45,7 +45,8 @@ public class SuperbVote implements Listener {
                         } else {
                             System.out.println("[CraftManager] Hraci " + onlinePlayer.getName() + " byl zastaven hlas, jelikoz neprekrocil 2h.");
                         }
-
+                    } else {
+                        System.out.println("[CraftManager] Hrac " + onlinePlayer.getName() + " neni online, hlas vyl vyrusen.");
                     }
                 } catch (Exception e) {
                     log.error("", e);
