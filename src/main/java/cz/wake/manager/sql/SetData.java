@@ -204,7 +204,7 @@ public class SetData {
             public void run() {
                 try {
                     PreparedStatement sql = Main.getInstance().getMySQL().getCurrentConnection().prepareStatement(query);
-                    sql.setLong(1, System.currentTimeMillis() + 5400000L);
+                    sql.setLong(1, System.currentTimeMillis() + 3600000L);
                     sql.execute();
                     sql.close();
                 } catch (Exception e) {
