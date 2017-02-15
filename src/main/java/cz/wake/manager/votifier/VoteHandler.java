@@ -22,18 +22,6 @@ public class VoteHandler {
         totalVotes.put(p, v);
     }
 
-    public boolean isInTotalVotes(final Player p) {
-        return totalVotes.containsKey(p);
-    }
-
-    public boolean isInMonthVotes(final Player p) {
-        return monthVotes.containsKey(p);
-    }
-
-    public boolean isInWeekVotes(final Player p) {
-        return weekVotes.containsKey(p);
-    }
-
     public Integer getPlayerCachedTotalVotes(final Player p) {
         return totalVotes.get(p);
     }
