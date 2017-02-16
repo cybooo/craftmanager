@@ -124,10 +124,7 @@ public class Help_command implements CommandExecutor {
                     "§7tak aby ji mohl pouzivat redstone, ne hraci.");
 
             ItemStack ser = ItemFactory.create(Material.DIAMOND, (byte) 0, "§a§lPrikazy a teleportace na serveru",
-                    "", "§e/warp shop §f- §7Teleport do shopu",
-                    "§e/warp pvp §f- §7Teleport do PVP",
-                    "§e/db §f- §7Vyzvednuti denni odmeny",
-                    "§e/quest §f- §7Seznam Questu",
+                    "", "§e/shop §f- §7Teleport do shopu",
                     "§e/cc §f- §7Stav CraftCoins",
                     "§e/trade §6" + p.getName() + " §f- §7Obchodovani s hraci",
                     "§e/fr §f- §7Friends a psani si s kamarady pres cely server",
@@ -260,7 +257,7 @@ public class Help_command implements CommandExecutor {
                     "§euse §f- §7Pouzivani tlacitek, pacek atd.",
                     "§emonsters §f- §7Spawn monster",
                     "§eanimals §f- §7Spawn zvirat",
-                    "§eignite §f- §7Pouzovani zapalovace",
+                    "§eignite §f- §7Pouzivani zapalovace",
                     "§efirespread §f- §7Horeni bloku",
                     "",
                     "§bKliknutim zobrazis odkaz na cely navod!");
@@ -337,10 +334,7 @@ public class Help_command implements CommandExecutor {
                     "§7tak aby ji mohl pouzivat redstone, ne hraci.");
 
             ItemStack ser = ItemFactory.create(Material.DIAMOND, (byte) 0, "§a§lPrikazy a teleportace na serveru",
-                    "", "§e/warp shop §f- §7Teleport do shopu",
-                    "§e/warp pvp §f- §7Teleport do PVP",
-                    "§e/db §f- §7Vyzvednuti denni odmeny",
-                    "§e/quest §f- §7Seznam Questu",
+                    "", "§e/shop §f- §7Teleport do shopu",
                     "§e/cc §f- §7Stav CraftCoins",
                     "§e/trade §6" + p.getName() + " §f- §7Obchodovani s hraci",
                     "§e/fr §f- §7Friends a psani si s kamarady pres cely server",

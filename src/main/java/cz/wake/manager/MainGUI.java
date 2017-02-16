@@ -56,19 +56,6 @@ public class MainGUI implements Listener {
                 "§f60 hlasu: §6500 CC",
                 "",
                 "§8Vote Key neplati pro Creative!");
-        /*
-        ItemStack top = ItemFactory.create(Material.HOPPER,(byte)0,"§d§lTOP hraci (tento mesic)",
-                "",
-                "§6#1. §bMrWakeCZ §7(0 hlasu)",
-                "§6#2. §eMrWakeCZ §7(0 hlasu)",
-                "§6#3. §eMrWakeCZ §7(0 hlasu)",
-                "§6#4. §eMrWakeCZ §7(0 hlasu)",
-                "§6#5. §fMrWakeCZ §7(0 hlasu)",
-                "§6#6. §fMrWakeCZ §7(0 hlasu)",
-                "§6#7. §fMrWakeCZ §7(0 hlasu)",
-                "§6#8. §fMrWakeCZ §7(0 hlasu)",
-                "§6#9. §fMrWakeCZ §7(0 hlasu)",
-                "§6#10. §fMrWakeCZ §7(0 hlasu)"); */
 
         List<String> names = Main.getInstance().getFetchData().getTopVotersMonth();
         List<String> votes = Main.getInstance().getFetchData().getTopVotersVotes();
@@ -209,7 +196,7 @@ public class MainGUI implements Listener {
                 p.sendMessage("§eWeb: §7https://craftmania.cz");
                 p.sendMessage("§eDiscord: §7https://discord.gg/craftmania");
                 p.sendMessage("§ePlugDJ: §7https://plug.dj/craftmania-cz");
-                p.sendMessage("§eStatus page: §7http://status.craftmania.cz");
+                p.sendMessage("§eStatus page: §7https://status.craftmania.cz");
                 p.sendMessage("");
                 p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.closeInventory();
@@ -253,7 +240,7 @@ public class MainGUI implements Listener {
                 p.sendMessage("§eWeb: §7https://craftmania.cz");
                 p.sendMessage("§eDiscord: §7https://discord.gg/craftmania");
                 p.sendMessage("§ePlugDJ: §7https://plug.dj/craftmania-cz");
-                p.sendMessage("§eStatus page: §7http://status.craftmania.cz");
+                p.sendMessage("§eStatus page: §7https://status.craftmania.cz");
                 p.sendMessage("");
                 p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.closeInventory();
@@ -287,7 +274,7 @@ public class MainGUI implements Listener {
                 p.sendMessage("§eWeb: §7https://craftmania.cz");
                 p.sendMessage("§eDiscord: §7https://discord.gg/craftmania");
                 p.sendMessage("§ePlugDJ: §7https://plug.dj/craftmania-cz");
-                p.sendMessage("§eStatus page: §7http://status.craftmania.cz");
+                p.sendMessage("§eStatus page: §7https://status.craftmania.cz");
                 p.sendMessage("");
                 p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.closeInventory();
