@@ -255,7 +255,7 @@ public class SetData {
                     sql.close();
 
                 } catch (Exception e) {
-                    log.error("", e);
+                    e.printStackTrace();
                 }
 
             }
@@ -284,6 +284,91 @@ public class SetData {
                     log.error("", e);
                 }
 
+            }
+        }.runTaskAsynchronously(Main.getInstance());
+    }
+
+    public final void updateAtLastActive(Player p, long time) {
+        String name = "";
+        if(Main.getInstance().getIdServer().equalsIgnoreCase("survival")){
+            name = "surv";
+        } else if (Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")){
+            name  = "sky";
+        } else if ((Main.getInstance().getIdServer().equalsIgnoreCase("creative")) || Main.getInstance().getIdServer().equalsIgnoreCase("creative2")){
+            name = "crea";
+        } else if (Main.getInstance().getIdServer().equalsIgnoreCase("prison")){
+            name = "prison";
+        } else if (Main.getInstance().getIdServer().equalsIgnoreCase("vanilla")){
+            name = "vanilla";
+        }
+        final String query = "UPDATE at_table SET " + name + "_pos_aktivita = '" + time + "' WHERE nick = " + p.getName() + ";";
+        new BukkitRunnable() {
+            public void run() {
+                try {
+                    PreparedStatement sql = Main.getInstance().getMySQL().getCurrentConnection().prepareStatement(query);
+                    sql.execute();
+                    sql.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.runTaskAsynchronously(Main.getInstance());
+    }
+
+    public final void updateAtPlayerTime(Player p) {
+        String name = "";
+        if(Main.getInstance().getIdServer().equalsIgnoreCase("survival")){
+            name = "surv";
+        } else if (Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")){
+            name  = "sky";
+        } else if ((Main.getInstance().getIdServer().equalsIgnoreCase("creative")) || Main.getInstance().getIdServer().equalsIgnoreCase("creative2")){
+            name = "crea";
+        } else if (Main.getInstance().getIdServer().equalsIgnoreCase("prison")){
+            name = "prison";
+        } else if (Main.getInstance().getIdServer().equalsIgnoreCase("vanilla")){
+            name = "vanilla";
+        }
+        int cas = Main.getInstance().getFetchData().getAtPlayerTime(p, name + "_played_time");
+        cas++;
+        final String query = "UPDATE at_table SET " + name + "_played_time = '" + cas + "' WHERE nick = " + p.getName() + ";";
+        new BukkitRunnable() {
+            public void run() {
+                try {
+                    PreparedStatement sql = Main.getInstance().getMySQL().getCurrentConnection().prepareStatement(query);
+                    sql.execute();
+                    sql.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.runTaskAsynchronously(Main.getInstance());
+    }
+
+    public final void updateAtPoints(Player p) {
+        String name = "";
+        if(Main.getInstance().getIdServer().equalsIgnoreCase("survival")){
+            name = "surv";
+        } else if (Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")){
+            name  = "sky";
+        } else if ((Main.getInstance().getIdServer().equalsIgnoreCase("creative")) || Main.getInstance().getIdServer().equalsIgnoreCase("creative2")){
+            name = "crea";
+        } else if (Main.getInstance().getIdServer().equalsIgnoreCase("prison")){
+            name = "prison";
+        } else if (Main.getInstance().getIdServer().equalsIgnoreCase("vanilla")){
+            name = "vanilla";
+        }
+        int cas = Main.getInstance().getFetchData().getAtPlayerTime(p, name + "_chat_body");
+        cas++;
+        final String query = "UPDATE at_table SET " + name + "_chat_body = '" + cas + "' WHERE nick = " + p.getName() + ";";
+        new BukkitRunnable() {
+            public void run() {
+                try {
+                    PreparedStatement sql = Main.getInstance().getMySQL().getCurrentConnection().prepareStatement(query);
+                    sql.execute();
+                    sql.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }.runTaskAsynchronously(Main.getInstance());
     }

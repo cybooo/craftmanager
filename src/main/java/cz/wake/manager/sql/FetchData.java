@@ -191,5 +191,36 @@ public class FetchData {
         return "";
     }
 
+    public synchronized int getAtPlayerTime(Player p, String table) {
+        try {
+            ResultSet localResultSet = Main.getInstance().getMySQL().getCurrentConnection().createStatement().executeQuery("SELECT " + table + " FROM at_table WHERE nick = '" + p.getName() + "'");
+            if (localResultSet.next()) {
+                return localResultSet.getInt("table");
+            }
+            localResultSet.close();
+        } catch (Exception e) {
+            log.error("", e);
+        }
+        return 0;
+    }
+
+    public final boolean isAT(Player p) {
+
+        Boolean hasData = Boolean.valueOf(false);
+
+        final String query = "SELECT * FROM at_table WHERE nick = '" + p.getName() + "';";
+
+        try {
+            ResultSet result = Main.getInstance().getMySQL().getCurrentConnection().createStatement().executeQuery(query);
+            if (result.next()) {
+                hasData = Boolean.valueOf(true);
+            }
+            result.close();
+        } catch (Exception e) {
+            log.error("", e);
+        }
+        return hasData.booleanValue();
+    }
+
 
 }

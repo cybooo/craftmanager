@@ -33,6 +33,7 @@ import org.slf4j.MDC;
 public class Main extends JavaPlugin implements PluginMessageListener {
 
     private static ArrayList<Player> players = new ArrayList<Player>();
+    public ArrayList<Player> at_list = new ArrayList<>();
     private ParticlesAPI particlesAPI = new ParticlesAPI();
     private MainGUI gui = new MainGUI();
     private ShopAPI shop = new ShopAPI();
@@ -76,19 +77,17 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Oznameni kazdou hodinu (1 hod)
         if (getConfig().getBoolean("reminder")) {
             getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 2000, 72000);
-            Bukkit.getLogger().log(Level.INFO, "§b[CraftManager] §eAktivace hodinoveho oznamovani o hlasech do chatu.");
+            Bukkit.getLogger().log(Level.INFO, "[CraftManager] Aktivace hodinoveho oznamovani o hlasech do chatu.");
 
             // Kontrola restartu hlasu
             getServer().getScheduler().runTaskAsynchronously(this, new VoteReseter());
         }
 
         // Update ID stats task (1 min)
-        getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTaskServer(), 2000, 1200);
+        getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTaskServer(), 200, 1200);
 
-        // Stats update (10 min)
-        if (getConfig().getBoolean("stats-tracker")) {
-            getServer().getScheduler().runTaskTimerAsynchronously(this, new StatsTask(), 2000, 12000);
-        }
+        // Update AT time
+        getServer().getScheduler().runTaskTimerAsynchronously(this, new ATChecker(), 200, 1200);
 
         // Update tablistu (5s)
         if (getConfig().getBoolean("tablist-update")) {
@@ -118,9 +117,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Hlasovani
         if (getConfig().getBoolean("hlasovani")) {
             pm.registerEvents(new SuperbVote(), this);
-            Bukkit.getLogger().log(Level.INFO, "§b[CraftManager] §eOdmeny za hlasovani byly aktivovany!");
+            Bukkit.getLogger().log(Level.INFO, "[CraftManager] Odmeny za hlasovani byly aktivovany!");
         } else {
-            Bukkit.getLogger().log(Level.INFO, "§b[CraftManager] §cOdmeny za hlasovani nejsou aktivni!");
+            Bukkit.getLogger().log(Level.INFO, "[CraftManager] Odmeny za hlasovani nejsou aktivni!");
         }
 
     }
