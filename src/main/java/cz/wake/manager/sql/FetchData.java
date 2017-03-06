@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -195,11 +194,11 @@ public class FetchData {
         try {
             ResultSet localResultSet = Main.getInstance().getMySQL().getCurrentConnection().createStatement().executeQuery("SELECT " + table + " FROM at_table WHERE nick = '" + p.getName() + "'");
             if (localResultSet.next()) {
-                return localResultSet.getInt("table");
+                return localResultSet.getInt(table);
             }
             localResultSet.close();
         } catch (Exception e) {
-            log.error("", e);
+            e.printStackTrace();
         }
         return 0;
     }
@@ -217,7 +216,7 @@ public class FetchData {
             }
             result.close();
         } catch (Exception e) {
-            log.error("", e);
+            e.printStackTrace();
         }
         return hasData.booleanValue();
     }

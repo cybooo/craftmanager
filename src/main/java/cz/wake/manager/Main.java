@@ -87,7 +87,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTaskServer(), 200, 1200);
 
         // Update AT time
-        getServer().getScheduler().runTaskTimerAsynchronously(this, new ATChecker(), 200, 1200);
+        if (!idServer.equalsIgnoreCase("factions")){
+            getServer().getScheduler().runTaskTimerAsynchronously(this, new ATChecker(), 200, 1200);
+        }
 
         // Update tablistu (5s)
         if (getConfig().getBoolean("tablist-update")) {

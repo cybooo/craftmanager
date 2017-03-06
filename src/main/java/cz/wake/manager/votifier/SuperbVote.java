@@ -4,15 +4,14 @@ import com.vexsoftware.votifier.model.VotifierEvent;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.Titles;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Random;
-import java.util.logging.Level;
 
 public class SuperbVote implements Listener {
 
@@ -20,36 +19,37 @@ public class SuperbVote implements Listener {
 
     @EventHandler
     public void voteSQL(final VotifierEvent e) {
+        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new BukkitRunnable() {
+            @Override
+            public void run() {
+                Player onlinePlayer = Bukkit.getPlayerExact(e.getVote().getUsername());
+                try {
+                    if (onlinePlayer.isOnline()) {
+                        if (Main.getInstance().getFetchData().getLastVote(onlinePlayer) < System.currentTimeMillis()) {
 
-        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
-            Player player = Bukkit.getPlayerExact(e.getVote().getUsername());
-            try {
-                if (player != null) {
-                    if (Main.getInstance().getFetchData().getLastVote(player) < System.currentTimeMillis()) {
+                            //Pridani hlasu
+                            Main.getInstance().getSetData().addPlayerVote(onlinePlayer);
+                            Main.getInstance().getVoteHandler().addTotalVotes(onlinePlayer, 1 + Main.getInstance().getVoteHandler().getPlayerCachedTotalVotes(onlinePlayer));
+                            Main.getInstance().getVoteHandler().addMonthVotes(onlinePlayer, 1 + Main.getInstance().getVoteHandler().getPlayerCachedMonthVotes(onlinePlayer));
+                            Main.getInstance().getVoteHandler().addWeekVotes(onlinePlayer, 1 + Main.getInstance().getVoteHandler().getPlayerCachedWeekVotes(onlinePlayer));
 
-                        //Pridani hlasu
-                        Main.getInstance().getSetData().addPlayerVote(player);
-                        Main.getInstance().getVoteHandler().addTotalVotes(player, 1 + Main.getInstance().getVoteHandler().getPlayerCachedTotalVotes(player));
-                        Main.getInstance().getVoteHandler().addMonthVotes(player, 1 + Main.getInstance().getVoteHandler().getPlayerCachedMonthVotes(player));
-                        Main.getInstance().getVoteHandler().addWeekVotes(player, 1 + Main.getInstance().getVoteHandler().getPlayerCachedWeekVotes(player));
+                            Main.getInstance().getSetData().addTimeVotePlayer(onlinePlayer);
 
-                        Main.getInstance().getSetData().addTimeVotePlayer(player);
+                            giveReward(onlinePlayer);
 
-                        giveReward(player);
-
-                        Titles.sendFullTitlePlayer(player, 10, 60, 10, "§a§lDekujeme!", "§fDostal/a jsi odmenu.");
-                        for (Player p : Bukkit.getOnlinePlayers()) {
-                            p.sendMessage("§b" + p.getName() + " §ehlasoval a ziskal §aodmenu!");
+                            Titles.sendFullTitlePlayer(onlinePlayer, 10, 60, 10, "§a§lDekujeme!", "§fDostal/a jsi odmenu.");
+                            for (Player p : Bukkit.getOnlinePlayers()) {
+                                p.sendMessage("§b" + onlinePlayer.getName() + " §ehlasoval a ziskal §aodmenu!");
+                            }
+                            checkMountWin(onlinePlayer);
+                        } else {
+                            System.out.println("[CraftManager] Hraci " + onlinePlayer.getName() + " byl zastaven hlas, jelikoz neprekrocil 2h.");
                         }
-                        checkMountWin(player);
-                    } else {
-                        System.out.println("[CraftManager] Hraci " + player.getName() + " byl zastaven hlas, jelikoz neprekrocil 2h.");
+
                     }
-                } else {
-                    Bukkit.getLogger().log(Level.INFO, ChatColor.BLUE + "[CraftManager] " + ChatColor.YELLOW +  " Hrac " + player.getName() + " neni online, hlas vyl vyrusen.");
+                } catch (Exception e) {
+                    log.error("", e);
                 }
-            } catch (Exception e1) {
-                log.error("", e1);
             }
         });
     }
@@ -57,14 +57,17 @@ public class SuperbVote implements Listener {
     private void giveReward(final Player p) {
         int sance = randRange(1, 100);
         System.out.println("Sance: " + sance);
-        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "cratekeys give " + p.getName() + " Vote 1");
         if (sance == 1) { //1% sance
             this.giveCoins(p, 100);
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "cratekeys give " + p.getName() + " Vote 1");
         } else if (sance <= 5 && sance >= 2) { //5% sance
             this.giveCoins(p, 50);
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "cratekeys give " + p.getName() + " Vote 1");
         } else if (sance <= 25 && sance >= 6) { //25% sance
             this.giveCoins(p, 25);
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "cratekeys give " + p.getName() + " Vote 1");
         } else {
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "cratekeys give " + p.getName() + " Vote 1");
             this.giveCoins(p, 10);
         }
     }
