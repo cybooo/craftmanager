@@ -609,7 +609,7 @@ public class ShopAPI implements Listener {
         } else {
             int i = Main.getInstance().getFetchData().getPlayerCoins(p.getUniqueId());
             if (i >= price) {
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "pex user " + p.getName() + " add " + perm);
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "pp user " + p.getName() + " add " + perm);
                 Main.getInstance().getSetData().takeCoins(p, price);
                 p.sendMessage("§eZakoupil jsi si tag: §f" + name);
                 p.closeInventory();
