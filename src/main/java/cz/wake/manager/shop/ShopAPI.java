@@ -123,9 +123,11 @@ public class ShopAPI implements Listener {
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
         ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
+        ItemStack dalsi = ItemFactory.create(Material.ARROW, (byte) 0, "§cDalsi stranka");
 
         inv.setItem(39, zpet);
         inv.setItem(40, hlavni);
+        inv.setItem(41, dalsi);
 
         p.openInventory(inv);
     }
@@ -172,9 +174,11 @@ public class ShopAPI implements Listener {
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
         ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
+        ItemStack dalsi = ItemFactory.create(Material.ARROW, (byte) 0, "§cDalsi stranka");
 
         inv.setItem(39, zpet);
         inv.setItem(40, hlavni);
+        inv.setItem(41, dalsi);
 
         p.openInventory(inv);
 
@@ -221,9 +225,11 @@ public class ShopAPI implements Listener {
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
         ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
+        ItemStack dalsi = ItemFactory.create(Material.ARROW, (byte) 0, "§cDalsi stranka");
 
         inv.setItem(39, zpet);
         inv.setItem(40, hlavni);
+        inv.setItem(41, dalsi);
 
         p.openInventory(inv);
     }
