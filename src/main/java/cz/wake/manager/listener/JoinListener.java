@@ -3,9 +3,12 @@ package cz.wake.manager.listener;
 import cz.wake.manager.Main;
 import cz.wake.manager.particles.ParticlesAPI;
 import cz.wake.manager.utils.UtilTablist;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -76,6 +79,7 @@ public class JoinListener implements Listener {
     @EventHandler
     public void onKick(PlayerKickEvent e) {
         final Player p = e.getPlayer();
+
         if (Main.getInstance().isVisibleForPlayer(p)) {
             partAPI.deactivateParticles(p);
             Main.getInstance().removePlayer(p);
@@ -87,6 +91,22 @@ public class JoinListener implements Listener {
         //AT
         if (Main.getInstance().at_list.contains(p)) {
             Main.getInstance().at_list.remove(p);
+        }
+    }
+
+    @EventHandler(ignoreCancelled = true)
+    public void onDamage(EntityDamageByEntityEvent e) {
+        String damager = e.getDamager().toString();
+
+        // Blokace fireworku - damage na hrace
+        if ((e.getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) && (damager.equalsIgnoreCase("CraftFirework"))) {
+            e.setCancelled(true);
+        }
+
+        // Blokace sipu na ArmorStandy
+        if ((e.getCause() == EntityDamageEvent.DamageCause.PROJECTILE)
+                && (e.getDamager().getType() == EntityType.PLAYER) && (e.getEntity().getType() == EntityType.ARMOR_STAND)) {
+            e.setCancelled(true);
         }
     }
 
