@@ -24,7 +24,7 @@ public class SuperbVote implements Listener {
             public void run() {
                 Player onlinePlayer = Bukkit.getPlayerExact(e.getVote().getUsername());
                 try {
-                    if (onlinePlayer.isOnline()) {
+                    if (onlinePlayer != null) {
                         if (Main.getInstance().getFetchData().getLastVote(onlinePlayer) < System.currentTimeMillis()) {
 
                             //Pridani hlasu
@@ -45,7 +45,6 @@ public class SuperbVote implements Listener {
                         } else {
                             System.out.println("[CraftManager] Hraci " + onlinePlayer.getName() + " byl zastaven hlas, jelikoz neprekrocil 2h.");
                         }
-
                     }
                 } catch (Exception e) {
                     log.error("", e);
