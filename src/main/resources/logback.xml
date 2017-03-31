@@ -1,12 +1,18 @@
 <configuration packagingData="true">
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
     <appender name="Sentry" class="com.getsentry.raven.logback.SentryAppender">
         <dsn>http://5b7e66f2543d4033aa80180f111cd761:141ce350972c4f39a0b5114b57518af3@sentry.craftmania.cz/2?options</dsn>
         <tags></tags>
-        <extraTags>version,players,server</extraTags>
+        <extraTags>server,players,version</extraTags>
         <!-- Optional, allows to select the ravenFactory -->
         <ravenFactory>com.getsentry.raven.DefaultRavenFactory</ravenFactory>
     </appender>
     <root level="info">
+        <appender-ref ref="Console" />
         <appender-ref ref="Sentry"/>
     </root>
     <DynamicThresholdFilter key="trace-logging-enabled" onMatch="ACCEPT" onMismatch="NEUTRAL">
