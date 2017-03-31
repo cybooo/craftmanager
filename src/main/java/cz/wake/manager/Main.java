@@ -16,6 +16,7 @@ import cz.wake.manager.votifier.Reminder;
 import cz.wake.manager.votifier.SuperbVote;
 import cz.wake.manager.votifier.VoteHandler;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -24,6 +25,7 @@ import org.bukkit.plugin.messaging.PluginMessageListener;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 import org.slf4j.Logger;
@@ -35,6 +37,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private static ArrayList<Player> players = new ArrayList<Player>();
     public ArrayList<Player> at_list = new ArrayList<>();
     private ParticlesAPI particlesAPI = new ParticlesAPI();
+    public List<Material> durabilityWarnerList = new ArrayList<>();
     private MainGUI gui = new MainGUI();
     private ShopAPI shop = new ShopAPI();
     private MySQL mysql = new MySQL();
@@ -95,6 +98,14 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         if (getConfig().getBoolean("tablist-update")) {
             getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTablistTask(), 0, 100L);
         }
+
+        // Nastaveni DurabilityWarner
+        for (String s : getConfig().getStringList("materials")) {
+            Material material = Material.valueOf(s);
+            if (isValidMaterial(material)) {
+                durabilityWarnerList.add(material);
+            }
+        }
     }
 
     public void onDisable() {
@@ -115,6 +126,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new ShopAPI(), this);
         pm.registerEvents(new LoginListener(), this);
         pm.registerEvents(new ChatListener(), this);
+        pm.registerEvents(new DurabilityWarner(), this);
 
         // Hlasovani
         if (getConfig().getBoolean("hlasovani")) {
@@ -214,5 +226,13 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             log.error("", e);
         }
         player.sendPluginMessage(Main.getInstance(), "BungeeCord", b.toByteArray());
+    }
+
+    private boolean isValidMaterial(Material material) {
+        String name = String.valueOf(material);
+        return name.endsWith("_AXE") || name.endsWith("_PICKAXE") || name.endsWith("_SPADE") || name.endsWith("_SWORD")
+                || name.endsWith("_HELMET") || name.endsWith("_CHESTPLATE") || name.endsWith("_LEGGINGS") || name.endsWith("_BOOTS")
+                || name.equalsIgnoreCase("FISHING_ROD") || name.equalsIgnoreCase("FLINT_AND_STEEL") || name.equalsIgnoreCase("BOW") || name.equalsIgnoreCase("CARROT_STICK")
+                || name.equalsIgnoreCase("SHIELD") || name.equalsIgnoreCase("SHEARS");
     }
 }

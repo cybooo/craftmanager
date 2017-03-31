@@ -31,3 +31,26 @@ stats-tracker: true
 
 # Update tablist task
 tablist-update: false
+
+# Materialy pro DurabilityWarner
+# Funkce pro VIP
+materials:
+  - 'IRON_SPADE'
+  - 'IRON_AXE'
+  - 'IRON_PICKAXE'
+  - 'IRON_SWORD'
+  - 'DIAMOND_SPADE'
+  - 'DIAMOND_AXE'
+  - 'DIAMOND_SWORD'
+  - 'DIAMOND_PICKAXE'
+  - 'IRON_HELMET'
+  - 'IRON_CHESTPLATE'
+  - 'IRON_LEGGINGS'
+  - 'IRON_BOOTS'
+  - 'DIAMOND_HELMET'
+  - 'DIAMOND_CHESTPLATE'
+  - 'DIAMOND_LEGGINGS'
+  - 'DIAMOND_BOOTS'
+  - 'FLINT_AND_STEEL'
+  - 'BOW'
+  - 'SHIELD'
