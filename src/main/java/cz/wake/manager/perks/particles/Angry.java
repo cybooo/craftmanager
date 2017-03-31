@@ -1,4 +1,4 @@
-package cz.wake.manager.particles;
+package cz.wake.manager.perks.particles;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ParticleEffect;
@@ -8,7 +8,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
 
-public class Portal {
+public class Angry {
 
     public static final HashMap<String, Integer> e = new HashMap();
     int task;
@@ -20,11 +20,12 @@ public class Portal {
                 @Override
                 public void run() {
                     if (e.containsKey(p.getName()) && p.isOnline()) {
-                        ParticleEffect.PORTAL.display(0.7f, 0.7f, 0.7f, 0.05f, 5, p.getLocation(), Main.getInstance().getPlayers());
+                        ParticleEffect.VILLAGER_ANGRY.display(0.7f, 0.7f, 0.7f, 0.05f, 2, p.getLocation(), Main.getInstance().getPlayers());
                     }
                 }
             }, 0L, 5L).getTaskId();
             e.put(p.getName(), Integer.valueOf(task));
         }
     }
+
 }

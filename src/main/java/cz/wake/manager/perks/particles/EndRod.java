@@ -1,4 +1,4 @@
-package cz.wake.manager.particles;
+package cz.wake.manager.perks.particles;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ParticleEffect;
@@ -8,7 +8,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
 
-public class Smoke {
+public class EndRod {
 
     public static final HashMap<String, Integer> e = new HashMap();
     int task;
@@ -20,7 +20,7 @@ public class Smoke {
                 @Override
                 public void run() {
                     if (e.containsKey(p.getName()) && p.isOnline()) {
-                        ParticleEffect.SMOKE_NORMAL.display(1.0f, 1.0f, 1.0f, 0.05f, 7, p.getLocation(), Main.getInstance().getPlayers());
+                        ParticleEffect.END_ROD.display(1.0f, 1.0f, 1.0f, 0.05f, 10, p.getLocation(), Main.getInstance().getPlayers());
                     }
                 }
             }, 0L, 5L).getTaskId();

@@ -1,7 +1,6 @@
 package cz.wake.manager.listener;
 
 import cz.wake.manager.Main;
-import cz.wake.manager.particles.ParticlesAPI;
 import cz.wake.manager.utils.UtilTablist;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
