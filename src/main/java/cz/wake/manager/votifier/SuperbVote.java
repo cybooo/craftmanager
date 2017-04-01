@@ -25,15 +25,15 @@ public class SuperbVote implements Listener {
                 Player onlinePlayer = Bukkit.getPlayerExact(e.getVote().getUsername());
                 try {
                     if (onlinePlayer != null) {
-                        if (Main.getInstance().getFetchData().getLastVote(onlinePlayer) < System.currentTimeMillis()) {
+                        if (Main.getInstance().getMySQL().getLastVote(onlinePlayer) < System.currentTimeMillis()) {
 
                             //Pridani hlasu
-                            Main.getInstance().getSetData().addPlayerVote(onlinePlayer);
+                            Main.getInstance().getMySQL().addPlayerVote(onlinePlayer);
                             Main.getInstance().getVoteHandler().addTotalVotes(onlinePlayer, 1 + Main.getInstance().getVoteHandler().getPlayerCachedTotalVotes(onlinePlayer));
                             Main.getInstance().getVoteHandler().addMonthVotes(onlinePlayer, 1 + Main.getInstance().getVoteHandler().getPlayerCachedMonthVotes(onlinePlayer));
                             Main.getInstance().getVoteHandler().addWeekVotes(onlinePlayer, 1 + Main.getInstance().getVoteHandler().getPlayerCachedWeekVotes(onlinePlayer));
 
-                            Main.getInstance().getSetData().addTimeVotePlayer(onlinePlayer);
+                            Main.getInstance().getMySQL().addTimeVotePlayer(onlinePlayer);
 
                             giveReward(onlinePlayer);
 
@@ -85,7 +85,7 @@ public class SuperbVote implements Listener {
     }
 
     private void giveCoins(final Player p, int coins) {
-        Main.getInstance().getSetData().addCoins(p.getUniqueId(), coins);
+        Main.getInstance().getMySQL().addCoins(p.getUniqueId(), coins);
         p.sendMessage("§eBylo ti pridano §f" + coins + " §ecoinu.");
     }
 

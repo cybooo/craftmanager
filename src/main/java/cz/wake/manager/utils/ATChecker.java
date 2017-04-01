@@ -10,7 +10,7 @@ public class ATChecker implements Runnable {
     public void run() {
         for(Player p : Bukkit.getOnlinePlayers()){
             if(Main.getInstance().at_list.contains(p)){
-                Main.getInstance().getSetData().updateAtPlayerTime(p);
+                Main.getInstance().getMySQL().updateAtPlayerTime(p);
             }
         }
     }

@@ -22,36 +22,33 @@ public class JoinListener implements Listener {
         final Player p = e.getPlayer();
 
         e.setJoinMessage(null);
-
         p.setGlowing(false); //Oprava pro skoncene VIP hrace
 
         if (!Main.getInstance().isVisibleForPlayer(p)) {
             Main.getInstance().addPlayer(p);
         }
-        if (!Main.getInstance().getFetchData().hasData(p)) {
 
-            Main.getInstance().getSetData().createPlayer(p);
-
+        if (!Main.getInstance().getMySQL().hasVoteData(p)) {
+            Main.getInstance().getMySQL().createPlayer(p);
             Main.getInstance().getVoteHandler().addTotalVotes(p, 0);
             Main.getInstance().getVoteHandler().addMonthVotes(p, 0);
             Main.getInstance().getVoteHandler().addWeekVotes(p, 0);
-
         } else {
             //Celkove hlasy
-            Main.getInstance().getVoteHandler().addTotalVotes(p, Main.getInstance().getFetchData().getPlayerTotalVotes(p.getUniqueId()));
+            Main.getInstance().getVoteHandler().addTotalVotes(p, Main.getInstance().getMySQL().getPlayerVotes(p.getUniqueId(), "votes"));
 
             //Mesicni hlasy
-            Main.getInstance().getVoteHandler().addMonthVotes(p, Main.getInstance().getFetchData().getPlayerMonthVotes(p.getUniqueId()));
+            Main.getInstance().getVoteHandler().addMonthVotes(p, Main.getInstance().getMySQL().getPlayerVotes(p.getUniqueId(), "month"));
 
             //Tydeni hlasy
-            Main.getInstance().getVoteHandler().addWeekVotes(p, Main.getInstance().getFetchData().getPlayerWeekVotes(p.getUniqueId()));
+            Main.getInstance().getVoteHandler().addWeekVotes(p, Main.getInstance().getMySQL().getPlayerVotes(p.getUniqueId(), "week"));
         }
 
         // Nastaveni tablistu
         UtilTablist.setupTablist(p);
 
         //AT
-        if (Main.getInstance().getFetchData().isAT(p)) {
+        if (Main.getInstance().getMySQL().isAT(p)) {
             Main.getInstance().at_list.add(p);
         }
     }

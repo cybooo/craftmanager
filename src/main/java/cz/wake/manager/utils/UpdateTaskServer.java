@@ -6,6 +6,6 @@ public class UpdateTaskServer implements Runnable {
 
     @Override
     public void run() {
-        Main.getInstance().getSetData().updateServerTask();
+        Main.getInstance().getMySQL().updateServerTask();
     }
 }

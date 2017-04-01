@@ -813,7 +813,7 @@ public class ShopAPI implements Listener {
     }
 
     private String checkerCoins(final Player p, int coins) {
-        int i = Main.getInstance().getFetchData().getPlayerCoins(p.getUniqueId());
+        int i = Main.getInstance().getMySQL().getPlayerCoins(p.getUniqueId());
         if (i > coins) {
             return "§eKliknutim provedes nakup za " + coins + " CC.";
         } else {
@@ -835,10 +835,10 @@ public class ShopAPI implements Listener {
         if (p.hasPermission(perm)) {
             p.sendMessage("§cTag " + name + " jiz vlastnis!");
         } else {
-            int i = Main.getInstance().getFetchData().getPlayerCoins(p.getUniqueId());
+            int i = Main.getInstance().getMySQL().getPlayerCoins(p.getUniqueId());
             if (i >= price) {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "pp user " + p.getName() + " add " + perm);
-                Main.getInstance().getSetData().takeCoins(p, price);
+                Main.getInstance().getMySQL().takeCoins(p, price);
                 p.sendMessage("§eZakoupil jsi si tag: §f" + name);
                 p.closeInventory();
             } else {

@@ -8,9 +8,7 @@ import cz.wake.manager.listener.LoginListener;
 import cz.wake.manager.perks.general.DurabilityWarner;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.shop.ShopAPI;
-import cz.wake.manager.sql.FetchData;
-import cz.wake.manager.sql.MySQL;
-import cz.wake.manager.sql.SetData;
+import cz.wake.manager.sql.SQLManager;
 import cz.wake.manager.utils.*;
 import cz.wake.manager.votifier.Reminder;
 import cz.wake.manager.votifier.SuperbVote;
@@ -40,15 +38,13 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     public List<Material> durabilityWarnerList = new ArrayList<>();
     private MainGUI gui = new MainGUI();
     private ShopAPI shop = new ShopAPI();
-    private MySQL mysql = new MySQL();
-    private FetchData fd = new FetchData();
-    private SetData sd = new SetData();
     private VoteHandler vh = new VoteHandler();
     private ServerFactory sf = new ServerFactory();
     private String idServer;
     private static ByteArrayOutputStream b = new ByteArrayOutputStream();
     private static DataOutputStream out = new DataOutputStream(b);
     static final Logger log = LoggerFactory.getLogger(Main.class);
+    private SQLManager sql;
 
     private static Main instance;
 
@@ -64,6 +60,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Bungee ID z configu
         idServer = getConfig().getString("server");
+
+        // HikariCP
+        initDatabase();
 
         // MDC tagy pro Sentry
         MDC.put("server", idServer);
@@ -109,8 +108,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     }
 
     public void onDisable() {
+        sql.onDisable();
         ExceptionHandler.disable(instance);
-        getMySQL().closeConnection();
         instance = null;
     }
 
@@ -187,16 +186,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         return shop;
     }
 
-    public MySQL getMySQL() {
-        return mysql;
-    }
-
-    public FetchData getFetchData() {
-        return fd;
-    }
-
-    public SetData getSetData() {
-        return sd;
+    public SQLManager getMySQL() {
+        return sql;
     }
 
     public VoteHandler getVoteHandler() {
@@ -234,5 +225,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
                 || name.endsWith("_HELMET") || name.endsWith("_CHESTPLATE") || name.endsWith("_LEGGINGS") || name.endsWith("_BOOTS")
                 || name.equalsIgnoreCase("FISHING_ROD") || name.equalsIgnoreCase("FLINT_AND_STEEL") || name.equalsIgnoreCase("BOW") || name.equalsIgnoreCase("CARROT_STICK")
                 || name.equalsIgnoreCase("SHIELD") || name.equalsIgnoreCase("SHEARS");
+    }
+
+    private void initDatabase() {
+        sql = new SQLManager(this);
     }
 }

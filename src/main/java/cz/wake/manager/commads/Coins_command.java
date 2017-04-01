@@ -15,7 +15,7 @@ public class Coins_command implements CommandExecutor {
             if ((Command.getName().equalsIgnoreCase("coins"))) {
                 try {
                     if (ArrayOfString.length == 0) {
-                        player.sendMessage("§eAktualne mas §7" + Main.getInstance().getFetchData().getPlayerCoins(player.getUniqueId()) + " §ecoinu!");
+                        player.sendMessage("§eAktualne mas §7" + Main.getInstance().getMySQL().getPlayerCoins(player.getUniqueId()) + " §ecoinu!");
                         return true;
                     }
                     return true;
