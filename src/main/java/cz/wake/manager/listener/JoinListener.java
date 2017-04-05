@@ -35,13 +35,13 @@ public class JoinListener implements Listener {
             Main.getInstance().getVoteHandler().addWeekVotes(p, 0);
         } else {
             //Celkove hlasy
-            Main.getInstance().getVoteHandler().addTotalVotes(p, Main.getInstance().getMySQL().getPlayerVotes(p.getUniqueId(), "votes"));
+            Main.getInstance().getVoteHandler().addTotalVotes(p, Main.getInstance().getMySQL().getPlayerTotalVotes(p.getUniqueId()));
 
             //Mesicni hlasy
-            Main.getInstance().getVoteHandler().addMonthVotes(p, Main.getInstance().getMySQL().getPlayerVotes(p.getUniqueId(), "month"));
+            Main.getInstance().getVoteHandler().addMonthVotes(p, Main.getInstance().getMySQL().getPlayerTotalMonth(p.getUniqueId()));
 
             //Tydeni hlasy
-            Main.getInstance().getVoteHandler().addWeekVotes(p, Main.getInstance().getMySQL().getPlayerVotes(p.getUniqueId(), "week"));
+            Main.getInstance().getVoteHandler().addWeekVotes(p, Main.getInstance().getMySQL().getPlayerTotalWeek(p.getUniqueId()));
         }
 
         // Nastaveni tablistu

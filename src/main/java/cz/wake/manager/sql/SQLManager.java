@@ -51,17 +51,51 @@ public class SQLManager {
         return 0;
     }
 
-    public final int getPlayerVotes(final UUID uuid, final String table) {
+    public final int getPlayerTotalVotes(final UUID uuid) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = pool.getConnection();
-            ps = conn.prepareStatement("SELECT ? FROM votes WHERE uuid = ?;");
-            ps.setString(1, table);
-            ps.setString(2, uuid.toString());
+            ps = conn.prepareStatement("SELECT votes FROM votes WHERE uuid = '" + uuid.toString() + "';");
             ps.executeQuery();
             if (ps.getResultSet().next()) {
-                return ps.getResultSet().getInt("balance");
+                return ps.getResultSet().getInt("votes");
+            }
+        } catch (Exception e) {
+            log.error("", e);
+        } finally {
+            pool.close(conn, ps, null);
+        }
+        return 0;
+    }
+
+    public final int getPlayerTotalMonth(final UUID uuid) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = pool.getConnection();
+            ps = conn.prepareStatement("SELECT month FROM votes WHERE uuid = '" + uuid.toString() + "';");
+            ps.executeQuery();
+            if (ps.getResultSet().next()) {
+                return ps.getResultSet().getInt("month");
+            }
+        } catch (Exception e) {
+            log.error("", e);
+        } finally {
+            pool.close(conn, ps, null);
+        }
+        return 0;
+    }
+
+    public final int getPlayerTotalWeek(final UUID uuid) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = pool.getConnection();
+            ps = conn.prepareStatement("SELECT week FROM votes WHERE uuid = '" + uuid.toString() + "';");
+            ps.executeQuery();
+            if (ps.getResultSet().next()) {
+                return ps.getResultSet().getInt("week");
             }
         } catch (Exception e) {
             log.error("", e);
@@ -264,9 +298,9 @@ public class SQLManager {
                 try {
                     conn = pool.getConnection();
                     ps = conn.prepareStatement("UPDATE votes SET votes= ?, week = ?, month = ? WHERE uuid = '" + p.getUniqueId().toString() + "';");
-                    ps.setInt(1, 1 + getPlayerVotes(p.getUniqueId(), "votes"));
-                    ps.setInt(2, 1 + getPlayerVotes(p.getUniqueId(), "week"));
-                    ps.setInt(3, 1 + getPlayerVotes(p.getUniqueId(), "month"));
+                    ps.setInt(1, 1 + getPlayerTotalVotes(p.getUniqueId()));
+                    ps.setInt(2, 1 + getPlayerTotalWeek(p.getUniqueId()));
+                    ps.setInt(3, 1 + getPlayerTotalMonth(p.getUniqueId()));
                     ps.executeUpdate();
                 } catch (Exception e) {
                     log.error("", e);
