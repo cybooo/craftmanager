@@ -589,7 +589,7 @@ public class SQLManager {
         }.runTaskAsynchronously(Main.getInstance());
     }
 
-    private String getServerName(){
+    private String getServerName() {
         String name = "";
         if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
             name = "surv";
@@ -633,7 +633,7 @@ public class SQLManager {
         try {
             conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT end FROM craftmanager_boosters WHERE type = '" + booster + "' AND name = ?;");
-            ps.setString(1,p.getName());
+            ps.setString(1, p.getName());
             ps.executeQuery();
             if (ps.getResultSet().next()) {
                 return ps.getResultSet().getInt("end");

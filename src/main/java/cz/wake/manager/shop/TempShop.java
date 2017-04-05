@@ -65,7 +65,7 @@ public class TempShop implements Listener {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "pp user " + p.getName() + " add " + permission + " ALL ALL " + time);
                 Main.getInstance().getMySQL().takeCoins(p, coin);
                 p.sendMessage("§eZakoupil jsi si §a" + name + " §eza §6" + coin + " CC.");
-                Main.getInstance().getMySQL().createBoosterLog(p,type,System.currentTimeMillis() + 10800000L);
+                Main.getInstance().getMySQL().createBoosterLog(p, type, System.currentTimeMillis() + 10800000L);
                 p.closeInventory();
             }
             if (e.getSlot() == 32) {

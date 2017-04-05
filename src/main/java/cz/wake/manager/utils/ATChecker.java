@@ -8,8 +8,8 @@ public class ATChecker implements Runnable {
 
     @Override
     public void run() {
-        for(Player p : Bukkit.getOnlinePlayers()){
-            if(Main.getInstance().at_list.contains(p)){
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            if (Main.getInstance().at_list.contains(p)) {
                 Main.getInstance().getMySQL().updateAtPlayerTime(p);
             }
         }

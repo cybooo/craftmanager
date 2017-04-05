@@ -10,14 +10,14 @@ public enum TimeUnit {
     MIN("m", 60, 'm'),
     HOUR("h", 3600, 'h'),
     DAY("d", 86400, 'd'),
-    WEEK("w", 604800,'w');
+    WEEK("w", 604800, 'w');
 
     private final String name;
     private final long ms;
     private final char unit;
 
     private static final Map<Character, Long> convertion = new HashMap<Character, Long>();
-    private static final TimeUnit[] order = new TimeUnit[] { WEEK, DAY, HOUR, MIN, SEC };
+    private static final TimeUnit[] order = new TimeUnit[]{WEEK, DAY, HOUR, MIN, SEC};
     private static final Pattern isLong = Pattern.compile("[0-9]+");
 
     static {

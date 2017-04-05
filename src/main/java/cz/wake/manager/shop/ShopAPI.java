@@ -272,17 +272,17 @@ public class ShopAPI implements Listener {
             ItemFactory.addGlow(hasFly);
             inv.setItem(10, hasFly);
         } else {
-            if(Main.getInstance().getMySQL().hasBoosterInSQL(p,"fly")){
+            if (Main.getInstance().getMySQL().hasBoosterInSQL(p, "fly")) {
                 Main.getInstance().getMySQL().deleteBooster(p, "fly");
             }
-            ItemStack noFly = ItemFactory.create(Material.ELYTRA, (byte) 0, "§cPovoleni na FLY", "§7Zakoupenim budes moct", "§7litat POUZE na svem ostrove!", "", "§eCena: 1k CC na 3h", "", "§aKliknutim zakoupis");
+            ItemStack noFly = ItemFactory.create(Material.ELYTRA, (byte) 0, "§cPovoleni na FLY", "§7Zakoupenim budes moct", "§7litat POUZE na svem ostrove!", "", "§eCena: §f1k CC na 3h", "", "§aKliknutim zakoupis");
             inv.setItem(10, noFly);
         }
         if (p.hasPermission("jobs.boost.all.exp.0.25")) {
             ItemStack jobsExp = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§aJobs Booster EXP (+25%)", "§7Jiz mas aktivovano", "§eKonec: §f" + TimeUnit.toString(Main.getInstance().getMySQL().getBoostedPlayer(p, "exp25")));
             inv.setItem(12, jobsExp);
         } else {
-            if(Main.getInstance().getMySQL().hasBoosterInSQL(p,"exp25")){
+            if (Main.getInstance().getMySQL().hasBoosterInSQL(p, "exp25")) {
                 Main.getInstance().getMySQL().deleteBooster(p, "exp25");
             }
             ItemStack noJobsExp = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§cJobs Booster EXP (+25%)", "§7Zakoupenim ziskas booster na Jobs,", "§7ktery ti da o 25% vic expu", "§7na levlovani prace!", "", "§eCena: §f500 CC na 3h", "", "§aKliknutim zakoupis");
@@ -292,7 +292,7 @@ public class ShopAPI implements Listener {
             ItemStack jobsExp = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§aJobs Booster EXP (+50%)", "§7Jiz mas aktivovano", "§eKonec: §f" + TimeUnit.toString(Main.getInstance().getMySQL().getBoostedPlayer(p, "exp50")));
             inv.setItem(13, jobsExp);
         } else {
-            if(Main.getInstance().getMySQL().hasBoosterInSQL(p,"exp50")){
+            if (Main.getInstance().getMySQL().hasBoosterInSQL(p, "exp50")) {
                 Main.getInstance().getMySQL().deleteBooster(p, "exp50");
             }
             ItemStack noJobsExp = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§cJobs Booster EXP (+50%)", "§7Zakoupenim ziskas booster na Jobs,", "§7ktery ti da o 50% vic expu", "§7na levlovani prace!", "", "§eCena: §f800 CC na 3h", "", "§aKliknutim zakoupis");
@@ -302,7 +302,7 @@ public class ShopAPI implements Listener {
             ItemStack jobsExp = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§aJobs Booster Money (+10%)", "§7Jiz mas aktivovano", "§eKonec: §f" + TimeUnit.toString(Main.getInstance().getMySQL().getBoostedPlayer(p, "money10")));
             inv.setItem(14, jobsExp);
         } else {
-            if(Main.getInstance().getMySQL().hasBoosterInSQL(p,"money10")){
+            if (Main.getInstance().getMySQL().hasBoosterInSQL(p, "money10")) {
                 Main.getInstance().getMySQL().deleteBooster(p, "money10");
             }
             ItemStack noJobsExp = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§cJobs Booster Money (+10%)", "§7Zakoupenim ziskas booster na Jobs,", "§7ktery ti da 10% vic penez", "§7za praci v Jobs!", "", "§eCena: §f400 CC na 3h", "", "§aKliknutim zakoupis");
@@ -312,7 +312,7 @@ public class ShopAPI implements Listener {
             ItemStack jobsExp = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§aJobs Booster Money (+20%)", "§7Jiz mas aktivovano", "§eKonec: §f" + TimeUnit.toString(Main.getInstance().getMySQL().getBoostedPlayer(p, "money20")));
             inv.setItem(15, jobsExp);
         } else {
-            if(Main.getInstance().getMySQL().hasBoosterInSQL(p,"money20")){
+            if (Main.getInstance().getMySQL().hasBoosterInSQL(p, "money20")) {
                 Main.getInstance().getMySQL().deleteBooster(p, "money20");
             }
             ItemStack noJobsExp = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§cJobs Booster Money (+20%)", "§7Zakoupenim ziskas booster na Jobs,", "§7ktery ti da 20% vic penez", "§7za praci v Jobs!", "", "§eCena: §f600 CC na 3h", "", "§aKliknutim zakoupis");
