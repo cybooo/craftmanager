@@ -604,4 +604,84 @@ public class SQLManager {
         }
         return name;
     }
+
+    public final void createBoosterLog(final Player p, final String booster, final long end) {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                Connection conn = null;
+                PreparedStatement ps = null;
+                try {
+                    conn = pool.getConnection();
+                    ps = conn.prepareStatement("INSERT INTO craftmanager_boosters (name,type,end) VALUES (?,?,?);");
+                    ps.setString(1, p.getName());
+                    ps.setString(2, booster);
+                    ps.setLong(3, end);
+                    ps.executeUpdate();
+                } catch (Exception e) {
+                    log.error("", e);
+                } finally {
+                    pool.close(conn, ps, null);
+                }
+            }
+        }.runTaskAsynchronously(Main.getInstance());
+    }
+
+    public final long getBoostedPlayer(final Player p, final String booster) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = pool.getConnection();
+            ps = conn.prepareStatement("SELECT end FROM craftmanager_boosters WHERE type = '" + booster + "' AND name = ?;");
+            ps.setString(1,p.getName());
+            ps.executeQuery();
+            if (ps.getResultSet().next()) {
+                return ps.getResultSet().getInt("end");
+            }
+        } catch (Exception e) {
+            log.error("", e);
+        } finally {
+            pool.close(conn, ps, null);
+        }
+        return 0L;
+    }
+
+    public final void deleteBooster(final Player p, final String booster) {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                Connection conn = null;
+                PreparedStatement ps = null;
+                try {
+                    conn = pool.getConnection();
+                    ps = conn.prepareStatement("DELETE FROM craftmanager_boosters WHERE name = ? AND type = ?;");
+                    ps.setString(1, p.getName());
+                    ps.setString(2, booster);
+                    ps.executeUpdate();
+                } catch (Exception e) {
+                    log.error("", e);
+                } finally {
+                    pool.close(conn, ps, null);
+                }
+            }
+        }.runTaskAsynchronously(Main.getInstance());
+    }
+
+    public final boolean hasBoosterInSQL(Player p, String type) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = pool.getConnection();
+            ps = conn.prepareStatement("SELECT * FROM craftmanager_boosters WHERE name = ? AND type = ?;");
+            ps.setString(1, p.getName());
+            ps.setString(2, type);
+            ps.executeQuery();
+            return ps.getResultSet().next();
+        } catch (Exception e) {
+            log.error("", e);
+            return false;
+        } finally {
+            pool.close(conn, ps, null);
+        }
+    }
 }

@@ -8,6 +8,7 @@ import cz.wake.manager.listener.LoginListener;
 import cz.wake.manager.perks.general.DurabilityWarner;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.shop.ShopAPI;
+import cz.wake.manager.shop.TempShop;
 import cz.wake.manager.sql.SQLManager;
 import cz.wake.manager.utils.*;
 import cz.wake.manager.votifier.Reminder;
@@ -86,7 +87,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         }
 
         // Update ID stats task (1 min)
-        getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTaskServer(), 200, 1200);
+        //getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTaskServer(), 200, 1200);
 
         // Update AT time
         if (!idServer.equalsIgnoreCase("factions")){
@@ -126,6 +127,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new LoginListener(), this);
         pm.registerEvents(new ChatListener(), this);
         pm.registerEvents(new DurabilityWarner(), this);
+        pm.registerEvents(new TempShop(), this);
 
         // Hlasovani
         if (getConfig().getBoolean("hlasovani")) {

@@ -2,6 +2,7 @@ package cz.wake.manager.shop;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
+import cz.wake.manager.utils.TimeUnit;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -20,15 +21,22 @@ public class ShopAPI implements Listener {
                 || Main.getInstance().getIdServer().equalsIgnoreCase("creative2")) {
             Inventory inv = Bukkit.createInventory(null, 27, "§0Coinshop");
 
-            ItemStack tags = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§cTags", "§7Zakup si tag pred nick", "§7a bud IN!");
+            ItemStack tags = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§aTags", "§7Zakup si tag pred nick", "§7a bud IN!");
             ItemStack keys = ItemFactory.create(Material.TRIPWIRE_HOOK, (byte) 0, "§cKeys", "§7Zakup si legendarni klice", "§7za CraftCoiny!", "", "§cJiz brzy...");
-            ItemStack multipliers = ItemFactory.create(Material.BLAZE_POWDER, (byte) 0, "§cMultipliery", "§7Zakup pro cely server multiplier", "§7na urceny cas!", "", "§cJiz brzy...");
+
+            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+                ItemStack multipliers = ItemFactory.create(Material.BLAZE_POWDER, (byte) 0, "§aBoostery", "§7Zakup pro sebe nebo cely server", "§7booster na urceny cas!");
+                inv.setItem(15, multipliers);
+            } else {
+                ItemStack i = ItemFactory.create(Material.BARRIER, (byte) 0, "§cBoostery", "§8Na tomto serveru jsou deaktivovany.");
+                inv.setItem(15, i);
+            }
 
             inv.setItem(11, tags);
             inv.setItem(13, keys);
-            inv.setItem(15, multipliers);
-
             p.openInventory(inv);
+        } else {
+            p.sendMessage("§cNa tomto serveru je CoinShop deaktivovany.");
         }
     }
 
@@ -109,7 +117,7 @@ public class ShopAPI implements Listener {
         this.setupTag(p, "deluxetags.tag.jsemsvujfan", "JsemSvujFan", inv, 22, 800);
         this.setupTag(p, "deluxetags.tag.chciadmyna", "ChciAdmyna", inv, 23, 1000);
         this.setupTag(p, "deluxetags.tag.nerobto", "NerobTo", inv, 24, 500);
-        this.setupTag(p, "deluxetags.tag.plsvloztetrubku", "PlsVlozteTrublu",inv, 25, 1000);
+        this.setupTag(p, "deluxetags.tag.plsvloztetrubku", "PlsVlozteTrublu", inv, 25, 1000);
         this.setupTag(p, "deluxetags.tag.feelsbadman", "FeelsBadMan", inv, 26, 800);
         this.setupTag(p, "deluxetags.tag.egodown", "EgoDown", inv, 27, 800);
         this.setupTag(p, "deluxetags.tag.temnahmota", "TemnaHmota", inv, 28, 600);
@@ -252,6 +260,71 @@ public class ShopAPI implements Listener {
         p.openInventory(inv);
     }
 
+    private void openBoostersMenu(Player p) {
+        Inventory inv = Bukkit.createInventory(null, 45, "Boostery");
+
+        if (p.hasPermission("askyblock.islandfly")) {
+            ItemStack hasFly = ItemFactory.create(Material.ELYTRA, (byte) 0, "§aPovoleni na FLY", "§7Jiz mas aktivovano.", "§eKonec: §f" + TimeUnit.toString(Main.getInstance().getMySQL().getBoostedPlayer(p, "fly")));
+            ItemFactory.addGlow(hasFly);
+            inv.setItem(10, hasFly);
+        } else if (p.hasPermission("essentials.fly")) {
+            ItemStack hasFly = ItemFactory.create(Material.ELYTRA, (byte) 0, "§aPovoleni na FLY", "§7Jiz mas aktivovano.");
+            ItemFactory.addGlow(hasFly);
+            inv.setItem(10, hasFly);
+        } else {
+            if(Main.getInstance().getMySQL().hasBoosterInSQL(p,"fly")){
+                Main.getInstance().getMySQL().deleteBooster(p, "fly");
+            }
+            ItemStack noFly = ItemFactory.create(Material.ELYTRA, (byte) 0, "§cPovoleni na FLY", "§7Zakoupenim budes moct", "§7litat POUZE na svem ostrove!", "", "§eCena: 1k CC na 3h", "", "§aKliknutim zakoupis");
+            inv.setItem(10, noFly);
+        }
+        if (p.hasPermission("jobs.boost.all.exp.0.25")) {
+            ItemStack jobsExp = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§aJobs Booster EXP (+25%)", "§7Jiz mas aktivovano", "§eKonec: §f" + TimeUnit.toString(Main.getInstance().getMySQL().getBoostedPlayer(p, "exp25")));
+            inv.setItem(12, jobsExp);
+        } else {
+            if(Main.getInstance().getMySQL().hasBoosterInSQL(p,"exp25")){
+                Main.getInstance().getMySQL().deleteBooster(p, "exp25");
+            }
+            ItemStack noJobsExp = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§cJobs Booster EXP (+25%)", "§7Zakoupenim ziskas booster na Jobs,", "§7ktery ti da o 25% vic expu", "§7na levlovani prace!", "", "§eCena: §f500 CC na 3h", "", "§aKliknutim zakoupis");
+            inv.setItem(12, noJobsExp);
+        }
+        if (p.hasPermission("jobs.boost.all.exp.0.50")) {
+            ItemStack jobsExp = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§aJobs Booster EXP (+50%)", "§7Jiz mas aktivovano", "§eKonec: §f" + TimeUnit.toString(Main.getInstance().getMySQL().getBoostedPlayer(p, "exp50")));
+            inv.setItem(13, jobsExp);
+        } else {
+            if(Main.getInstance().getMySQL().hasBoosterInSQL(p,"exp50")){
+                Main.getInstance().getMySQL().deleteBooster(p, "exp50");
+            }
+            ItemStack noJobsExp = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§cJobs Booster EXP (+50%)", "§7Zakoupenim ziskas booster na Jobs,", "§7ktery ti da o 50% vic expu", "§7na levlovani prace!", "", "§eCena: §f800 CC na 3h", "", "§aKliknutim zakoupis");
+            inv.setItem(13, noJobsExp);
+        }
+        if (p.hasPermission("jobs.boost.all.money.0.10")) {
+            ItemStack jobsExp = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§aJobs Booster Money (+10%)", "§7Jiz mas aktivovano", "§eKonec: §f" + TimeUnit.toString(Main.getInstance().getMySQL().getBoostedPlayer(p, "money10")));
+            inv.setItem(14, jobsExp);
+        } else {
+            if(Main.getInstance().getMySQL().hasBoosterInSQL(p,"money10")){
+                Main.getInstance().getMySQL().deleteBooster(p, "money10");
+            }
+            ItemStack noJobsExp = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§cJobs Booster Money (+10%)", "§7Zakoupenim ziskas booster na Jobs,", "§7ktery ti da 10% vic penez", "§7za praci v Jobs!", "", "§eCena: §f400 CC na 3h", "", "§aKliknutim zakoupis");
+            inv.setItem(14, noJobsExp);
+        }
+        if (p.hasPermission("jobs.boost.all.money.0.20")) {
+            ItemStack jobsExp = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§aJobs Booster Money (+20%)", "§7Jiz mas aktivovano", "§eKonec: §f" + TimeUnit.toString(Main.getInstance().getMySQL().getBoostedPlayer(p, "money20")));
+            inv.setItem(15, jobsExp);
+        } else {
+            if(Main.getInstance().getMySQL().hasBoosterInSQL(p,"money20")){
+                Main.getInstance().getMySQL().deleteBooster(p, "money20");
+            }
+            ItemStack noJobsExp = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§cJobs Booster Money (+20%)", "§7Zakoupenim ziskas booster na Jobs,", "§7ktery ti da 20% vic penez", "§7za praci v Jobs!", "", "§eCena: §f600 CC na 3h", "", "§aKliknutim zakoupis");
+            inv.setItem(15, noJobsExp);
+        }
+
+        ItemStack arrow = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
+        inv.setItem(40, arrow);
+
+        p.openInventory(inv);
+    }
+
     @EventHandler
     private void onClick(InventoryClickEvent e) {
         final Player p = (Player) e.getWhoClicked();
@@ -266,11 +339,64 @@ public class ShopAPI implements Listener {
             if (e.getSlot() == 11) {
                 this.openTagsMenu(p);
             }
+            if (e.getSlot() == 15) {
+                if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+                    openBoostersMenu(p);
+                } else {
+                    p.sendMessage("§cNa tomto serveru nelze pouzivat boostery.");
+                }
+            }
+        }
+        if (e.getInventory().getTitle().equals("Boostery")) {
+            e.setCancelled(true);
+            if (e.getCurrentItem() == null) {
+                return;
+            }
+            if (e.getCurrentItem().getType() == Material.AIR) {
+                return;
+            }
+            if (e.getSlot() == 40) {
+                openShopMainGUI(p);
+            }
+            if (e.getSlot() == 10) {
+                if (!p.hasPermission("askyblock.islandfly") && !p.hasPermission("essentials.fly")) {
+                    ItemStack i = ItemFactory.create(Material.ELYTRA, (byte) 0, "§aPovoleni na FLY");
+                    TempShop.open(p, "Povoleni na FLY", "askyblock.islandfly", i, "3h", 1000, "fly");
+                } else {
+                    p.sendMessage("§cJiz mas aktivovane Fly!");
+                }
+            }
+            if (e.getSlot() == 12) {
+                if (!p.hasPermission("jobs.boost.all.exp.0.25")) {
+                    ItemStack i = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§aJobs Booster EXP (+25%)");
+                    TempShop.open(p, "Jobs Booster EXP (+25%)", "jobs.boost.all.exp.0.25", i, "3h", 500, "exp25");
+                } else {
+                    p.sendMessage("§cTento Booster mas jiz aktivovany!");
+                }
+            }
             if (e.getSlot() == 13) {
-                // Open menu s keys
+                if (!p.hasPermission("jobs.boost.all.exp.0.50")) {
+                    ItemStack i = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§aJobs Booster EXP (+50%)");
+                    TempShop.open(p, "Jobs Booster EXP (+50%)", "jobs.boost.all.exp.0.50", i, "3h", 800, "exp50");
+                } else {
+                    p.sendMessage("§cTento Booster mas jiz aktivovany!");
+                }
+            }
+            if (e.getSlot() == 14) {
+                if (!p.hasPermission("jobs.boost.all.money.0.10")) {
+                    ItemStack i = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§aJobs Booster Money (+10%)");
+                    TempShop.open(p, "Jobs Booster Money (+10%)", "jobs.boost.all.money.0.10", i, "3h", 400, "money10");
+                } else {
+                    p.sendMessage("§cTento Booster mas jiz aktivovany!");
+                }
             }
             if (e.getSlot() == 15) {
-                // Open menu s multipliers
+                if (!p.hasPermission("jobs.boost.all.money.0.20")) {
+                    ItemStack i = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§aJobs Booster Money (+20%)");
+                    TempShop.open(p, "Jobs Booster Money (+20%)", "jobs.boost.all.money.0.20", i, "3h", 600, "money20");
+                } else {
+                    p.sendMessage("§cTento Booster mas jiz aktivovany!");
+                }
             }
         }
         if (e.getInventory().getTitle().equals("§0Tagy (1/5)")) {
@@ -467,61 +593,61 @@ public class ShopAPI implements Listener {
             if (e.getSlot() == 16) {
                 this.prepareTag(p, 1000, "deluxetags.tag.nejsembankamore", "NejsemBankaMore");
             }
-            if (e.getSlot() == 17){
+            if (e.getSlot() == 17) {
                 this.prepareTag(p, 600, "deluxetags.tag.masban", "MasBan");
             }
-            if (e.getSlot() == 18){
-                this.prepareTag(p, 500,"deluxetags.tag.notlegit", "NotLegit");
+            if (e.getSlot() == 18) {
+                this.prepareTag(p, 500, "deluxetags.tag.notlegit", "NotLegit");
             }
-            if (e.getSlot() == 19){
+            if (e.getSlot() == 19) {
                 this.prepareTag(p, 500, "deluxetags.tag.panda", "Panda");
             }
-            if (e.getSlot() == 20){
+            if (e.getSlot() == 20) {
                 this.prepareTag(p, 1000, "deluxetags.tag.uchylak", "Uchylak");
             }
-            if (e.getSlot() == 21){
+            if (e.getSlot() == 21) {
                 this.prepareTag(p, 500, "deluxetags.tag.panvicka", "Panvicka");
             }
-            if (e.getSlot() == 22){
+            if (e.getSlot() == 22) {
                 this.prepareTag(p, 800, "deluxetags.tag.jsemsvujfan", "JsemSvujFan");
             }
-            if (e.getSlot() == 23){
+            if (e.getSlot() == 23) {
                 this.prepareTag(p, 1000, "deluxetags.tag.chciadmyna", "ChciAdmyna");
             }
-            if (e.getSlot() == 24){
+            if (e.getSlot() == 24) {
                 this.prepareTag(p, 500, "deluxetags.tag.nerobto", "NerobTo");
             }
-            if(e.getSlot() == 25){
+            if (e.getSlot() == 25) {
                 this.prepareTag(p, 1000, "deluxetags.tag.plsvloztetrubku", "PlsVlozteTrubku");
             }
-            if(e.getSlot() == 26){
+            if (e.getSlot() == 26) {
                 this.prepareTag(p, 800, "deluxetags.tag.feelsbadman", "FeelsBadMan");
             }
-            if(e.getSlot() == 27){
-                this.prepareTag(p, 800,"deluxetags.tag.egodown", "EgoDown");
+            if (e.getSlot() == 27) {
+                this.prepareTag(p, 800, "deluxetags.tag.egodown", "EgoDown");
             }
-            if(e.getSlot() == 28){
+            if (e.getSlot() == 28) {
                 this.prepareTag(p, 600, "deluxetags.tag.temnahmota", "TemnaHmota");
             }
-            if(e.getSlot() == 29){
+            if (e.getSlot() == 29) {
                 this.prepareTag(p, 400, "deluxetags.tag.vosa", "Vosa");
             }
-            if(e.getSlot() == 30){
+            if (e.getSlot() == 30) {
                 this.prepareTag(p, 600, "deluxetags.tag.vyplodfantazie", "VyplodFantazie");
             }
-            if(e.getSlot() == 31){
+            if (e.getSlot() == 31) {
                 this.prepareTag(p, 400, "deluxetags.tag.atomovka", "Atomovka");
             }
-            if(e.getSlot() == 32){
+            if (e.getSlot() == 32) {
                 this.prepareTag(p, 800, "deluxetags.tag.seniorklub", "SeniorKlub");
             }
-            if(e.getSlot() == 33){
+            if (e.getSlot() == 33) {
                 this.prepareTag(p, 500, "deluxetags.tag.branimcesko", "BranimCesko");
             }
-            if(e.getSlot() == 34){
+            if (e.getSlot() == 34) {
                 this.prepareTag(p, 700, "deluxetags.tag.mammalotagu", "MamMaloTagu");
             }
-            if(e.getSlot() == 35){
+            if (e.getSlot() == 35) {
                 this.prepareTag(p, 1500, "deluxetags.tag.craftmaniak", "Craftmaniak");
             }
         }
@@ -542,112 +668,112 @@ public class ShopAPI implements Listener {
             if (e.getSlot() == 41) {
                 this.openTagsMenu4(p);
             }
-            if(e.getSlot() == 0){
+            if (e.getSlot() == 0) {
                 this.prepareTag(p, 500, "deluxetags.tag.gaylife", "GayLife");
             }
-            if(e.getSlot() == 1){
+            if (e.getSlot() == 1) {
                 this.prepareTag(p, 800, "deluxetags.tag.okhladomor", "OkHladomor");
             }
-            if(e.getSlot() == 2){
+            if (e.getSlot() == 2) {
                 this.prepareTag(p, 600, "deluxetags.tag.vypnumatrix", "VypnuMatrix");
             }
-            if(e.getSlot() == 3){
+            if (e.getSlot() == 3) {
                 this.prepareTag(p, 600, "deluxetags.tag.cochces", "CoChces");
             }
-            if(e.getSlot() == 4){
+            if (e.getSlot() == 4) {
                 this.prepareTag(p, 800, "deluxetags.tag.jsembohac", "JsemBohac");
             }
-            if(e.getSlot() == 5){
+            if (e.getSlot() == 5) {
                 this.prepareTag(p, 500, "deluxetags.tag.milujusurvival", "MilujuSurvival");
             }
-            if(e.getSlot() == 6){
+            if (e.getSlot() == 6) {
                 this.prepareTag(p, 500, "deluxetags.tag.milujuskyblock", "MilujuSkyblock");
             }
-            if(e.getSlot() == 7){
+            if (e.getSlot() == 7) {
                 this.prepareTag(p, 500, "deluxetags.tag.milujucreative", "MilujuCreative");
             }
-            if(e.getSlot() == 8){
+            if (e.getSlot() == 8) {
                 this.prepareTag(p, 500, "deluxetags.tag.milujubedwars", "MilujuBedWars");
             }
-            if(e.getSlot() == 9){
+            if (e.getSlot() == 9) {
                 this.prepareTag(p, 500, "deluxetags.tag.milujuskywars", "MilujuSkyWars");
             }
-            if(e.getSlot() == 10){
+            if (e.getSlot() == 10) {
                 this.prepareTag(p, 500, "deluxetags.tag.milujuprison", "MilujuPrison");
             }
-            if(e.getSlot() == 11){
+            if (e.getSlot() == 11) {
                 this.prepareTag(p, 500, "deluxetags.tag.milujuanni", "MilujuAnni");
             }
-            if(e.getSlot() == 12){
+            if (e.getSlot() == 12) {
                 this.prepareTag(p, 800, "deluxetags.tag.pvpmaster", "PvPMaster");
             }
-            if(e.getSlot() == 13){
+            if (e.getSlot() == 13) {
                 this.prepareTag(p, 1300, "deluxetags.tag.jsemprincezna", "JsemPrincezna");
             }
-            if(e.getSlot() == 14){
+            if (e.getSlot() == 14) {
                 this.prepareTag(p, 700, "deluxetags.tag.najenise", "NaJenise");
             }
-            if(e.getSlot() == 15){
+            if (e.getSlot() == 15) {
                 this.prepareTag(p, 900, "deluxetags.tag.skillaura", "SkillAura");
             }
-            if(e.getSlot() == 16){
+            if (e.getSlot() == 16) {
                 this.prepareTag(p, 700, "deluxetags.tag.spamuju", "Spamuju");
             }
-            if(e.getSlot() == 17){
+            if (e.getSlot() == 17) {
                 this.prepareTag(p, 900, "deluxetags.tag.dassifofolu", "DasSiFofolu");
             }
-            if(e.getSlot() == 18){
+            if (e.getSlot() == 18) {
                 this.prepareTag(p, 1000, "deluxetags.tag.tlustoprd", "TlustoPrd");
             }
-            if(e.getSlot() == 19){
+            if (e.getSlot() == 19) {
                 this.prepareTag(p, 1000, "deluxetags.tag.bytstalemlad", "BytStaleMlad");
             }
-            if(e.getSlot() == 20){
+            if (e.getSlot() == 20) {
                 this.prepareTag(p, 1500, "deluxetags.tag.krostafan", "KrostaFan");
             }
-            if(e.getSlot() == 21){
+            if (e.getSlot() == 21) {
                 this.prepareTag(p, 800, "deluxetags.tag.cotokamerujes", "CoToKamerujes");
             }
-            if(e.getSlot() == 22){
+            if (e.getSlot() == 22) {
                 this.prepareTag(p, 600, "deluxetags.tag.medvidek", "Medvidek");
             }
-            if(e.getSlot() == 23){
+            if (e.getSlot() == 23) {
                 this.prepareTag(p, 700, "deluxetags.tag.plsmany", "PlsMany");
             }
-            if(e.getSlot() == 24){
+            if (e.getSlot() == 24) {
                 this.prepareTag(p, 800, "deluxetags.tag.jsemchudej", "JsemChudej");
             }
-            if(e.getSlot() == 25){
+            if (e.getSlot() == 25) {
                 this.prepareTag(p, 1000, "deluxetags.tag.jsemnej", "JsemNej");
             }
-            if(e.getSlot() == 26){
+            if (e.getSlot() == 26) {
                 this.prepareTag(p, 1000, "deluxetags.tag.jutuber", "Jutuber");
             }
-            if(e.getSlot() == 27){
+            if (e.getSlot() == 27) {
                 this.prepareTag(p, 600, "deluxetags.tag.hejty", "HejTy");
             }
-            if(e.getSlot() == 28){
+            if (e.getSlot() == 28) {
                 this.prepareTag(p, 800, "deluxetags.tag.jinejpan", "JinejPan");
             }
-            if(e.getSlot() == 29){
+            if (e.getSlot() == 29) {
                 this.prepareTag(p, 800, "deluxetags.tag.jsempsychopat", "JsemPsychopat");
             }
-            if(e.getSlot() == 30){
+            if (e.getSlot() == 30) {
                 this.prepareTag(p, 800, "deluxetags.tag.bachamamzbran", "BachaMamZbran");
             }
-            if(e.getSlot() == 31){
+            if (e.getSlot() == 31) {
                 this.prepareTag(p, 1200, "deluxetags.tag.fakeeventer", "FakeEventer");
             }
-            if(e.getSlot() == 32){
+            if (e.getSlot() == 32) {
                 this.prepareTag(p, 1200, "deluxetags.tag.fakeadmyn", "FakeAdmyn");
             }
-            if(e.getSlot() == 33){
+            if (e.getSlot() == 33) {
                 this.prepareTag(p, 1000, "deluxetags.tag.zwejk", "Zwejk");
             }
-            if(e.getSlot() == 34){
+            if (e.getSlot() == 34) {
                 this.prepareTag(p, 800, "deluxetags.tag.fakevip", "FakeVIP");
             }
-            if(e.getSlot() == 35){
+            if (e.getSlot() == 35) {
                 this.prepareTag(p, 600, "deluxetags.tag.jachcumoney", "JaChcuMoney");
             }
         }
@@ -668,112 +794,112 @@ public class ShopAPI implements Listener {
             if (e.getSlot() == 41) {
                 this.openTagsMenu5(p);
             }
-            if(e.getSlot() == 0){
+            if (e.getSlot() == 0) {
                 this.prepareTag(p, 800, "deluxetags.tag.nerusitspim", "NerusitSpim");
             }
-            if(e.getSlot() == 1){
+            if (e.getSlot() == 1) {
                 this.prepareTag(p, 800, "deluxetags.tag.sakrablbytag", "SakraBlbyTag");
             }
-            if(e.getSlot() == 2){
+            if (e.getSlot() == 2) {
                 this.prepareTag(p, 800, "deluxetags.tag.jsomzebraklol", "JsemZebralLoL");
             }
-            if(e.getSlot() == 3){
+            if (e.getSlot() == 3) {
                 this.prepareTag(p, 800, "deluxetags.tag.jsemnovorozenec", "JsemJednorozec");
             }
-            if(e.getSlot() == 4){
+            if (e.getSlot() == 4) {
                 this.prepareTag(p, 800, "deluxetags.tag.mamrodynu", "MamRodynu");
             }
-            if(e.getSlot() == 5){
+            if (e.getSlot() == 5) {
                 this.prepareTag(p, 800, "deluxetags.tag.chcuevent", "ChcuEvent");
             }
-            if(e.getSlot() == 6){
+            if (e.getSlot() == 6) {
                 this.prepareTag(p, 500, "deluxetags.tag.potsem", "PotSem");
             }
-            if(e.getSlot() == 7){
+            if (e.getSlot() == 7) {
                 this.prepareTag(p, 900, "deluxetags.tag.mujbratrjeadminka", "MujBratrJeAdminka");
             }
-            if(e.getSlot() == 8){
+            if (e.getSlot() == 8) {
                 this.prepareTag(p, 500, "deluxetags.tag.bumbum", "BumBum");
             }
-            if(e.getSlot() == 9){
+            if (e.getSlot() == 9) {
                 this.prepareTag(p, 1000, "deluxetags.tag.weednation", "WeedNation");
             }
-            if(e.getSlot() == 10){
+            if (e.getSlot() == 10) {
                 this.prepareTag(p, 800, "deluxetags.tag.nawejka", "NaWejka");
             }
-            if(e.getSlot() == 11){
+            if (e.getSlot() == 11) {
                 this.prepareTag(p, 700, "deluxetags.tag.papambambus", "PapamBambus");
             }
-            if(e.getSlot() == 12){
+            if (e.getSlot() == 12) {
                 this.prepareTag(p, 600, "deluxetags.tag.mamnokii", "MamNokii");
             }
-            if(e.getSlot() == 13){
+            if (e.getSlot() == 13) {
                 this.prepareTag(p, 300, "deluxetags.tag.lovec", "Lovec");
             }
-            if(e.getSlot() == 14){
+            if (e.getSlot() == 14) {
                 this.prepareTag(p, 700, "deluxetags.tag.jsemmeme", "JsemMeme");
             }
-            if(e.getSlot() == 15){
+            if (e.getSlot() == 15) {
                 this.prepareTag(p, 500, "deluxetags.tag.toxic", "Toxic");
             }
-            if(e.getSlot() == 16){
+            if (e.getSlot() == 16) {
                 this.prepareTag(p, 600, "deluxetags.tag.stalker", "Stalker");
             }
-            if(e.getSlot() == 17){
+            if (e.getSlot() == 17) {
                 this.prepareTag(p, 500, "deluxetags.tag.32bit", "32bit");
             }
-            if(e.getSlot() == 18){
+            if (e.getSlot() == 18) {
                 this.prepareTag(p, 500, "deluxetags.tag.64bit", "64bit");
             }
-            if(e.getSlot() == 19){
+            if (e.getSlot() == 19) {
                 this.prepareTag(p, 600, "deluxetags.tag.semgramatyk", "SemGramatyk");
             }
-            if(e.getSlot() == 20){
+            if (e.getSlot() == 20) {
                 this.prepareTag(p, 800, "deluxetags.tag.dostanesban", "DostanesBAN");
             }
-            if(e.getSlot() == 21){
+            if (e.getSlot() == 21) {
                 this.prepareTag(p, 800, "deluxetags.tag.pohodajahoda", "PohodaJahoda");
             }
-            if(e.getSlot() == 22){
+            if (e.getSlot() == 22) {
                 this.prepareTag(p, 700, "deluxetags.tag.masreport", "MasReport");
             }
-            if(e.getSlot() == 23){
+            if (e.getSlot() == 23) {
                 this.prepareTag(p, 600, "deluxetags.tag.rushb", "RushB");
             }
-            if(e.getSlot() == 24){
+            if (e.getSlot() == 24) {
                 this.prepareTag(p, 800, "deluxetags.tag.darklord", "DarkLord");
             }
-            if(e.getSlot() == 25){
+            if (e.getSlot() == 25) {
                 this.prepareTag(p, 500, "deluxetags.tag.xxD", "xxD");
             }
-            if(e.getSlot() == 26){
+            if (e.getSlot() == 26) {
                 this.prepareTag(p, 800, "deluxetags.tag.velkejsef", "VelkejSef");
             }
-            if(e.getSlot() == 27){
+            if (e.getSlot() == 27) {
                 this.prepareTag(p, 900, "deluxetags.tag.sorryjako", "SorryJako");
             }
-            if(e.getSlot() == 28){
+            if (e.getSlot() == 28) {
                 this.prepareTag(p, 200, "deluxetags.tag.mujprvnitag", "MujPrvniTag");
             }
-            if(e.getSlot() == 29){
+            if (e.getSlot() == 29) {
                 this.prepareTag(p, 600, "deluxetags.tag.memesaurus", "Memesaurus");
             }
-            if(e.getSlot() == 30){
+            if (e.getSlot() == 30) {
                 this.prepareTag(p, 700, "deluxetags.tag.globalelite", "GlobalElite");
             }
-            if(e.getSlot() == 31){
+            if (e.getSlot() == 31) {
                 this.prepareTag(p, 500, "deluxetags.tag.mirplz", "MirPLZ");
             }
-            if(e.getSlot() == 32){
+            if (e.getSlot() == 32) {
                 this.prepareTag(p, 600, "deluxetags.tag.inkvizitor", "Inkvizitor");
             }
-            if(e.getSlot() == 33){
+            if (e.getSlot() == 33) {
                 this.prepareTag(p, 300, "deluxetags.tag.hexii", "Hexii");
             }
-            if(e.getSlot() == 34){
+            if (e.getSlot() == 34) {
                 this.prepareTag(p, 800, "deluxetags.tag.soudkynebarbara", "SoudkyneBarbara");
             }
-            if(e.getSlot() == 35){
+            if (e.getSlot() == 35) {
                 this.prepareTag(p, 1000, "deluxetags.tag.autista", "Autista");
             }
         }
@@ -791,22 +917,22 @@ public class ShopAPI implements Listener {
             if (e.getSlot() == 40) {
                 Main.getInstance().getMainGUI().openMainMenu(p);
             }
-            if(e.getSlot() == 0){
+            if (e.getSlot() == 0) {
                 this.prepareTag(p, 700, "deluxetags.tag.opjakprase", "OPJakPrase");
             }
-            if(e.getSlot() == 1){
+            if (e.getSlot() == 1) {
                 this.prepareTag(p, 700, "deluxetags.tag.craaaazy", "Craaaazy");
             }
-            if(e.getSlot() == 2){
+            if (e.getSlot() == 2) {
                 this.prepareTag(p, 700, "deluxetags.tag.hlhrac", "Hl.Hrac");
             }
-            if(e.getSlot() == 3){
+            if (e.getSlot() == 3) {
                 this.prepareTag(p, 700, "deluxetags.tag.baxcus", "BaxCus");
             }
-            if(e.getSlot() == 4){
+            if (e.getSlot() == 4) {
                 this.prepareTag(p, 700, "deluxetags.tag.neasi", "NeAsi");
             }
-            if(e.getSlot() == 5){
+            if (e.getSlot() == 5) {
                 this.prepareTag(p, 700, "deluxetags.tag.novipnofriend", "NoVipNoFriend");
             }
         }
