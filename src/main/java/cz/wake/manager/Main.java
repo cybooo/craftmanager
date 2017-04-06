@@ -153,6 +153,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("prison").setExecutor(new Prison_command());
         getCommand("factions").setExecutor(new Factions_command());
         getCommand("vanilla").setExecutor(new Vanilla_command());
+        getCommand("bedwars").setExecutor(new Bedwars_command());
+        getCommand("skywars").setExecutor(new SkyWars_command());
+        getCommand("arcade").setExecutor(new Arcade_command());
+        getCommand("skygiants").setExecutor(new SkyGiants_command());
 
         if (getConfig().getBoolean("hlasovani")) {
             getCommand("fakevote").setExecutor(new Fakevote_command());

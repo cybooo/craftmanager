@@ -18,8 +18,6 @@ commands:
       description: Prikaz pro VIP
     fakevote:
       description: Fakevote
-    block:
-      description: Prikaz pro VIP
     chatcolor:
       description: Zmena barvy
     help:
@@ -37,4 +35,12 @@ commands:
     vanilla:
       description: Server teleport
     factions:
+      description: Server teleport
+    bedwars:
+      description: Server teleport
+    skywars:
+      description: Server teleport
+    arcade:
+      description: Server teleport
+    skygiants:
       description: Server teleport
