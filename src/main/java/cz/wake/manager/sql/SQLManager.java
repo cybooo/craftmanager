@@ -320,7 +320,7 @@ public class SQLManager {
                 try {
                     conn = pool.getConnection();
                     ps = conn.prepareStatement("INSERT INTO CraftCoins (uuid, balance) VALUES (?,?) ON DUPLICATE KEY UPDATE balance = ?;");
-                    ps.setString(1, 1 + uuid.toString());
+                    ps.setString(1, uuid.toString());
                     ps.setInt(2, amount);
                     ps.setInt(3, amount + getPlayerCoins(uuid));
                     ps.executeUpdate();
