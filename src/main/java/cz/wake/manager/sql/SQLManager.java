@@ -636,7 +636,7 @@ public class SQLManager {
             ps.setString(1, p.getName());
             ps.executeQuery();
             if (ps.getResultSet().next()) {
-                return ps.getResultSet().getInt("end");
+                return ps.getResultSet().getLong("end");
             }
         } catch (Exception e) {
             log.error("", e);

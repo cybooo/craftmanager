@@ -86,7 +86,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         }
 
         // Update ID stats task (1 min)
-        //getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTaskServer(), 200, 1200);
+        getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTaskServer(), 200, 1200);
 
         // Update AT time
         if (!idServer.equalsIgnoreCase("factions")){
