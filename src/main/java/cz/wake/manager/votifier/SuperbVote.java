@@ -22,7 +22,7 @@ public class SuperbVote implements Listener {
         Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new BukkitRunnable() {
             @Override
             public void run() {
-                Player onlinePlayer = Bukkit.getPlayerExact(e.getVote().getUsername());
+                Player onlinePlayer = Bukkit.getPlayer(e.getVote().getUsername());
                 try {
                     if (onlinePlayer != null) {
                         if (Main.getInstance().getMySQL().getLastVote(onlinePlayer) < System.currentTimeMillis()) {
