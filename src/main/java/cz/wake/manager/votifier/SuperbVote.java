@@ -59,20 +59,24 @@ public class SuperbVote implements Listener {
 
     private void giveReward(final Player p) {
         int sance = randRange(1, 100);
-        System.out.println("Sance: " + sance);
-        if (sance == 1) { //1% sance
-            this.giveCoins(p, 100);
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "cratekeys give " + p.getName() + " Vote 1");
-        } else if (sance <= 5 && sance >= 2) { //5% sance
-            this.giveCoins(p, 50);
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "cratekeys give " + p.getName() + " Vote 1");
-        } else if (sance <= 25 && sance >= 6) { //25% sance
-            this.giveCoins(p, 25);
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "cratekeys give " + p.getName() + " Vote 1");
-        } else {
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "cratekeys give " + p.getName() + " Vote 1");
-            this.giveCoins(p, 10);
-        }
+        Bukkit.getScheduler().runTask(Main.getInstance(), new Runnable() {
+            @Override
+            public void run() {
+                if (sance == 1) { //1% sance
+                    giveCoins(p, 100);
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "cratekeys give " + p.getName() + " Vote 1");
+                } else if (sance <= 5 && sance >= 2) { //5% sance
+                    giveCoins(p, 50);
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "cratekeys give " + p.getName() + " Vote 1");
+                } else if (sance <= 25 && sance >= 6) { //25% sance
+                    giveCoins(p, 25);
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "cratekeys give " + p.getName() + " Vote 1");
+                } else {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "cratekeys give " + p.getName() + " Vote 1");
+                    giveCoins(p, 10);
+                }
+            }
+        });
     }
 
     private void checkMountWin(final Player p) {
