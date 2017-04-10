@@ -37,7 +37,11 @@ public class SuperbVote implements Listener {
 
                             giveReward(onlinePlayer);
 
-                            Titles.sendFullTitlePlayer(onlinePlayer, 10, 60, 10, "§a§lDekujeme!", "§fDostal/a jsi odmenu.");
+                            if(!Main.getInstance().getIdServer().equalsIgnoreCase("prison")){
+                                Titles.sendFullTitlePlayer(onlinePlayer, 10, 60, 10, "§a§lDekujeme!", "§fDostal/a jsi odmenu.");
+                            } else {
+                                onlinePlayer.sendMessage("§aDekujeme za hlas! §eDostal jsi odmenu.");
+                            }
                             for (Player p : Bukkit.getOnlinePlayers()) {
                                 p.sendMessage("§b" + onlinePlayer.getName() + " §ehlasoval a ziskal §aodmenu!");
                             }
