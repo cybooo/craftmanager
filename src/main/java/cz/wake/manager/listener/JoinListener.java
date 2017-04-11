@@ -22,12 +22,22 @@ public class JoinListener implements Listener {
         final Player p = e.getPlayer();
 
         e.setJoinMessage(null);
-        p.setGlowing(false); //Oprava pro skoncene VIP hrace
 
+        //Oprava pro skoncene VIP hrace s Glowing
+        p.setGlowing(false);
+
+        //Efekty
         if (!Main.getInstance().isVisibleForPlayer(p)) {
             Main.getInstance().addPlayer(p);
         }
 
+        //Oprava pro skonceni fly
+        if ((!p.hasPermission("askyblock.islandfly")) && p.getAllowFlight()){
+            p.setAllowFlight(false);
+            p.setFlying(false);
+        }
+
+        //Votes
         if (!Main.getInstance().getMySQL().hasVoteData(p)) {
             Main.getInstance().getMySQL().createPlayer(p);
             Main.getInstance().getVoteHandler().addTotalVotes(p, 0);
