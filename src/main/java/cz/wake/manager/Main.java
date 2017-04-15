@@ -15,6 +15,7 @@ import cz.wake.manager.votifier.Reminder;
 import cz.wake.manager.votifier.SuperbVote;
 import cz.wake.manager.votifier.VoteHandler;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
@@ -51,15 +52,16 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     public void onEnable() {
         instance = this;
 
-        loadListeners();
-        loadCommands();
-
         //Config
         getConfig().options().copyDefaults(true);
         saveDefaultConfig();
 
         // Bungee ID z configu
         idServer = getConfig().getString("server");
+
+        // Register eventu a prikazu
+        loadListeners();
+        loadCommands();
 
         // HikariCP
         initDatabase();
@@ -79,23 +81,26 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Oznameni kazdou hodinu (1 hod)
         if (getConfig().getBoolean("reminder")) {
             getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 2000, 72000);
-            Bukkit.getLogger().log(Level.INFO, "[CraftManager] Aktivace hodinoveho oznamovani o hlasech do chatu.");
+            Log.withPrefix("Aktivace hodinoveho oznamovani o hlasech do chatu.");
 
             // Kontrola restartu hlasu
             getServer().getScheduler().runTaskAsynchronously(this, new VoteReseter());
+            Log.withPrefix("Aktivace kontroly restartu hlasu.");
         }
 
         // Update ID stats task (1 min)
         getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTaskServer(), 200, 1200);
+        Log.withPrefix("Aktivace update serveru kazdych 60 vterin.");
 
-        // Update AT time
-        if (!idServer.equalsIgnoreCase("factions")){
-            getServer().getScheduler().runTaskTimerAsynchronously(this, new ATChecker(), 200, 1200);
-        }
+        getServer().getScheduler().runTaskTimerAsynchronously(this, new ATChecker(), 200, 1200);
+        Log.withPrefix("Aktivace AT-Stalkeru");
 
         // Update tablistu (5s)
         if (getConfig().getBoolean("tablist-update")) {
             getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTablistTask(), 0, 100L);
+            Log.withPrefix("Aktivace synchronizace prefixu v tablistu");
+        } else {
+            Log.withPrefix(ChatColor.RED + "Tablist synchronizace je vypnuta!");
         }
 
         // Nastaveni DurabilityWarner
@@ -131,14 +136,15 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Hlasovani
         if (getConfig().getBoolean("hlasovani")) {
             pm.registerEvents(new SuperbVote(), this);
-            Bukkit.getLogger().log(Level.INFO, "[CraftManager] Odmeny za hlasovani byly aktivovany!");
+            Log.withPrefix("Odmeny za hlasovani byly aktivovany!");
         } else {
-            Bukkit.getLogger().log(Level.INFO, "[CraftManager] Odmeny za hlasovani nejsou aktivni!");
+            Log.withPrefix(ChatColor.RED + "Odmeny za hlasovani nejsou aktivni!");
         }
 
         // Skyblock Skull fix
         if (idServer.equalsIgnoreCase("skyblock")){
             pm.registerEvents(new SkyblockHeadFix(), this);
+            Log.withPrefix("Aktivace opravy SkullFix");
         }
 
     }
