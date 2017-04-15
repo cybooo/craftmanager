@@ -576,7 +576,7 @@ public class ShopAPI implements Listener {
                 this.prepareTag(p, 750, "deluxetags.tag.plsdonejt", "PlsDonejt");
             }
             if (e.getSlot() == 11) {
-                this.prepareTag(p, 750, "deluxetags.tag.doctorwho", "DoctorWho");
+                this.prepareTag(p, 500, "deluxetags.tag.doctorwho", "DoctorWho");
             }
             if (e.getSlot() == 12) {
                 this.prepareTag(p, 1000, "deluxetags.tag.don", "Don");
