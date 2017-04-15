@@ -29,6 +29,8 @@ public class UtilTablist {
             p.setPlayerListName("§c§lHL.ADMIN §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.adminka")) {
             p.setPlayerListName("§c§lADMINKA §f" + p.getName());
+        } else if (p.hasPermission("craftmanager.prefix.eventer")) {
+            p.setPlayerListName("§e§lEVENTER §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.admin")) {
             p.setPlayerListName("§c§lADMIN §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.builder")) {
@@ -55,6 +57,8 @@ public class UtilTablist {
             p.setPlayerListName("§c§lHL.ADMIN §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.adminka")) {
             p.setPlayerListName("§c§lADMINKA §f" + p.getName());
+        } else if (p.hasPermission("craftmanager.prefix.eventer")) {
+            p.setPlayerListName("§e§lEVENTER §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.admin")) {
             p.setPlayerListName("§c§lADMIN §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.builder")) {
@@ -83,6 +87,8 @@ public class UtilTablist {
             p.setPlayerListName("§c§lHL.ADMIN §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.adminka")) {
             p.setPlayerListName("§c§lADMINKA §f" + p.getName());
+        } else if (p.hasPermission("craftmanager.prefix.eventer")) {
+            p.setPlayerListName("§e§lEVENTER §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.admin")) {
             p.setPlayerListName("§c§lADMIN §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.builder")) {
@@ -107,6 +113,8 @@ public class UtilTablist {
             p.setPlayerListName("§c§lHL.ADMIN §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.adminka")) {
             p.setPlayerListName("§c§lADMINKA §f" + p.getName());
+        } else if (p.hasPermission("craftmanager.prefix.eventer")) {
+            p.setPlayerListName("§e§lEVENTER §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.admin")) {
             p.setPlayerListName("§c§lADMIN §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.builder")) {
@@ -127,6 +135,8 @@ public class UtilTablist {
             p.setPlayerListName("§c§lHL.ADMIN §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.adminka")) {
             p.setPlayerListName("§c§lADMINKA §f" + p.getName());
+        } else if (p.hasPermission("craftmanager.prefix.eventer")) {
+            p.setPlayerListName("§e§lEVENTER §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.admin")) {
             p.setPlayerListName("§c§lADMIN §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.builder")) {
