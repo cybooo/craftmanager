@@ -32,11 +32,9 @@ public class JoinListener implements Listener {
         }
 
         //Oprava pro skonceni fly
-        if(!p.hasPermission("essentials.fly")){
-            if ((!p.hasPermission("askyblock.islandfly")) && p.getAllowFlight()){
-                p.setAllowFlight(false);
-                p.setFlying(false);
-            }
+        if ((!p.hasPermission("askyblock.islandfly")) && p.getAllowFlight()){
+            p.setAllowFlight(false);
+            p.setFlying(false);
         }
 
         //Votes
