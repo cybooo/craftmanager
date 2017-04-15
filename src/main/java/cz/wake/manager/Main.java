@@ -136,6 +136,11 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             Bukkit.getLogger().log(Level.INFO, "[CraftManager] Odmeny za hlasovani nejsou aktivni!");
         }
 
+        // Skyblock Skull fix
+        if (idServer.equalsIgnoreCase("skyblock")){
+            pm.registerEvents(new SkyblockHeadFix(), this);
+        }
+
     }
 
     private void loadCommands() {

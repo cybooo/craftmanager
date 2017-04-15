@@ -68,6 +68,11 @@
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
+        <repository>
+            <id>bintray-tastybento-maven-repo</id>
+            <name>bintray</name>
+            <url>http://dl.bintray.com/tastybento/maven-repo</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -130,6 +135,11 @@
             <artifactId>HikariCP</artifactId>
             <version>2.6.1</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.wasteofplastic</groupId>
+            <artifactId>askyblock</artifactId>
+            <version>3.0.6.2</version>
         </dependency>
     </dependencies>
 
