@@ -90,13 +90,6 @@
             <systemPath>${pom.basedir}/lib/spigot-1.11.2-R0.1-SNAPSHOT.jar</systemPath>
         </dependency>
         <dependency>
-            <groupId>io.minimum.minecraft.superbvote</groupId>
-            <artifactId>superbvote</artifactId>
-            <version>0.3.1</version>
-            <scope>system</scope>
-            <systemPath>${pom.basedir}/lib/SuperbVote-0.3.1.jar</systemPath>
-        </dependency>
-        <dependency>
             <groupId>com.voxelsoftware.votifier</groupId>
             <artifactId>NuVotifier</artifactId>
             <version>2.3.2.2</version>
@@ -140,6 +133,7 @@
             <groupId>com.wasteofplastic</groupId>
             <artifactId>askyblock</artifactId>
             <version>3.0.6.2</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
