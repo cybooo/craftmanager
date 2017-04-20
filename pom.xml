@@ -76,18 +76,19 @@
     </repositories>
 
     <dependencies>
+        <!--Spigot API-->
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.11-R0.1-SNAPSHOT</version>
+            <version>1.11.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+        <!--Bukkit API-->
         <dependency>
-            <groupId>net.minecraft</groupId>
-            <artifactId>minecraft-server-1-11-0</artifactId>
-            <version>1.11</version>
-            <scope>system</scope>
-            <systemPath>${pom.basedir}/lib/spigot-1.11.2-R0.1-SNAPSHOT.jar</systemPath>
+            <groupId>org.bukkit</groupId>
+            <artifactId>bukkit</artifactId>
+            <version>1.11.2-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.voxelsoftware.votifier</groupId>
@@ -96,11 +97,13 @@
             <scope>system</scope>
             <systemPath>${pom.basedir}/lib/nuvotifier-universal-2.3.2.2.jar</systemPath>
         </dependency>
+        <!--Sentry API-->
         <dependency>
             <groupId>com.getsentry.raven</groupId>
             <artifactId>raven-logback</artifactId>
             <version>7.8.6</version>
         </dependency>
+        <!--Logback Core-->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
