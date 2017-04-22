@@ -11,6 +11,10 @@ import cz.wake.manager.shop.ShopAPI;
 import cz.wake.manager.shop.TempShop;
 import cz.wake.manager.sql.SQLManager;
 import cz.wake.manager.utils.*;
+import cz.wake.manager.utils.tasks.ATCheckerTask;
+import cz.wake.manager.utils.tasks.UpdateTablistTask;
+import cz.wake.manager.utils.tasks.UpdateServerTask;
+import cz.wake.manager.utils.tasks.VoteReseterTask;
 import cz.wake.manager.votifier.Reminder;
 import cz.wake.manager.votifier.SuperbVote;
 import cz.wake.manager.votifier.VoteHandler;
@@ -29,7 +33,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 
 public class Main extends JavaPlugin implements PluginMessageListener {
 
@@ -84,15 +87,15 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             Log.withPrefix("Aktivace hodinoveho oznamovani o hlasech do chatu.");
 
             // Kontrola restartu hlasu
-            getServer().getScheduler().runTaskAsynchronously(this, new VoteReseter());
+            getServer().getScheduler().runTaskAsynchronously(this, new VoteReseterTask());
             Log.withPrefix("Aktivace kontroly restartu hlasu.");
         }
 
         // Update ID stats task (1 min)
-        getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTaskServer(), 200, 1200);
+        getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateServerTask(), 200, 1200);
         Log.withPrefix("Aktivace update serveru kazdych 60 vterin.");
 
-        getServer().getScheduler().runTaskTimerAsynchronously(this, new ATChecker(), 200, 1200);
+        getServer().getScheduler().runTaskTimerAsynchronously(this, new ATCheckerTask(), 200, 1200);
         Log.withPrefix("Aktivace AT-Stalkeru");
 
         // Update tablistu (5s)

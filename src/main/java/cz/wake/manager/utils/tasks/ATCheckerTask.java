@@ -1,10 +1,10 @@
-package cz.wake.manager.utils;
+package cz.wake.manager.utils.tasks;
 
 import cz.wake.manager.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-public class ATChecker implements Runnable {
+public class ATCheckerTask implements Runnable {
 
     @Override
     public void run() {

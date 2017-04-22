@@ -1,5 +1,6 @@
-package cz.wake.manager.utils;
+package cz.wake.manager.utils.tasks;
 
+import cz.wake.manager.utils.UtilTablist;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 

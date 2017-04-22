@@ -1,8 +1,8 @@
-package cz.wake.manager.utils;
+package cz.wake.manager.utils.tasks;
 
 import cz.wake.manager.Main;
 
-public class UpdateTaskServer implements Runnable {
+public class UpdateServerTask implements Runnable {
 
     @Override
     public void run() {

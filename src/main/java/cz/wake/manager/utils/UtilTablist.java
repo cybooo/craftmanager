@@ -15,10 +15,8 @@ public class UtilTablist {
             setupPrefixInTabSkyblock(p);
         } else if (Main.getInstance().getConfig().getString("server").equalsIgnoreCase("vanilla")) {
             setupPrefixInTabVanilla(p);
-        } else if (Main.getInstance().getConfig().getString("server").equalsIgnoreCase("factions")) {
-            setupPrefixInTabFactions(p);
         } else {
-            // Nic :O
+            setupPrefixInTabSurvival(p); //Default
         }
     }
 
@@ -107,28 +105,6 @@ public class UtilTablist {
     }
 
     private static void setupPrefixInTabVanilla(final Player p) {
-        if (p.hasPermission("craftmanager.prefix.majitel")) {
-            p.setPlayerListName("§3§lMAJITEL §f" + p.getName());
-        } else if (p.hasPermission("craftmanager.prefix.hladmin")) {
-            p.setPlayerListName("§c§lHL.ADMIN §f" + p.getName());
-        } else if (p.hasPermission("craftmanager.prefix.adminka")) {
-            p.setPlayerListName("§c§lADMINKA §f" + p.getName());
-        } else if (p.hasPermission("craftmanager.prefix.eventer")) {
-            p.setPlayerListName("§d§lEVENTER §f" + p.getName());
-        } else if (p.hasPermission("craftmanager.prefix.admin")) {
-            p.setPlayerListName("§c§lADMIN §f" + p.getName());
-        } else if (p.hasPermission("craftmanager.prefix.builder")) {
-            p.setPlayerListName("§5§lBUILDER §f" + p.getName());
-        } else if (p.hasPermission("craftmanager.prefix.helperka")) {
-            p.setPlayerListName("§2§lHELPERKA §f" + p.getName());
-        } else if (p.hasPermission("craftmanager.prefix.helper")) {
-            p.setPlayerListName("§2§lHELPER §f" + p.getName());
-        } else {
-            p.setPlayerListName("§f" + p.getName());
-        }
-    }
-
-    private static void setupPrefixInTabFactions(final Player p) {
         if (p.hasPermission("craftmanager.prefix.majitel")) {
             p.setPlayerListName("§3§lMAJITEL §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.hladmin")) {
