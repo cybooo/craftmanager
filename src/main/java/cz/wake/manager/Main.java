@@ -10,10 +10,15 @@ import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.shop.ShopAPI;
 import cz.wake.manager.shop.TempShop;
 import cz.wake.manager.sql.SQLManager;
-import cz.wake.manager.utils.*;
+import cz.wake.manager.utils.ExceptionHandler;
+import cz.wake.manager.utils.Log;
+import cz.wake.manager.utils.ServerFactory;
+import cz.wake.manager.utils.SkyblockHeadFix;
+import cz.wake.manager.utils.prometheus.MetricsController;
+import cz.wake.manager.utils.prometheus.TpsPollerTask;
 import cz.wake.manager.utils.tasks.ATCheckerTask;
-import cz.wake.manager.utils.tasks.UpdateTablistTask;
 import cz.wake.manager.utils.tasks.UpdateServerTask;
+import cz.wake.manager.utils.tasks.UpdateTablistTask;
 import cz.wake.manager.utils.tasks.VoteReseterTask;
 import cz.wake.manager.votifier.Reminder;
 import cz.wake.manager.votifier.SuperbVote;
@@ -25,6 +30,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
+import org.eclipse.jetty.server.Server;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -48,7 +54,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private static ByteArrayOutputStream b = new ByteArrayOutputStream();
     private static DataOutputStream out = new DataOutputStream(b);
     static final Logger log = LoggerFactory.getLogger(Main.class);
+    private TpsPollerTask tps = new TpsPollerTask();
     private SQLManager sql;
+    private Server server;
 
     private static Main instance;
 
@@ -113,11 +121,41 @@ public class Main extends JavaPlugin implements PluginMessageListener {
                 durabilityWarnerList.add(material);
             }
         }
+
+        // Nastaveni Prometheus serveru
+        if (getConfig().getBoolean("prometheus.state")) {
+            Log.withPrefix("Probehne aktivace Prometheus endpointu a TPS detekce!");
+            getServer().getScheduler().scheduleSyncRepeatingTask(Main.getInstance(), new TpsPollerTask(), 0, 40);
+            int port = getConfig().getInt("prometheus.port");
+            server = new Server(port);
+            server.setHandler(new MetricsController(this));
+            try {
+                server.start();
+                Log.withPrefix("Spusten Prometheus endpoint na portu " + port);
+            } catch (Exception e) {
+                log.error("", e);
+                Log.withPrefix("Nelze spustit Jetty Endpoint pro Prometheus.");
+            }
+        }
     }
 
     public void onDisable() {
+
+        // Deaktivace MySQL
         sql.onDisable();
+
+        // Deaktivace detekce chyb
         ExceptionHandler.disable(instance);
+
+        // Deaktivace Jetty portu
+        if (server != null) {
+            try {
+                server.stop();
+            } catch (Exception e) {
+                log.error("", e);
+            }
+        }
+
         instance = null;
     }
 
@@ -145,7 +183,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         }
 
         // Skyblock Skull fix
-        if (idServer.equalsIgnoreCase("skyblock")){
+        if (idServer.equalsIgnoreCase("skyblock")) {
             pm.registerEvents(new SkyblockHeadFix(), this);
             Log.withPrefix("Aktivace opravy SkullFix");
         }
@@ -248,5 +286,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     private void initDatabase() {
         sql = new SQLManager(this);
+    }
+
+    public float getAverageTPS() {
+        return tps.getAverageTPS();
     }
 }

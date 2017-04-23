@@ -39,6 +39,11 @@ stats-tracker: true
 # Update tablist task
 tablist-update: false
 
+# Prometheus statistiky
+prometheus:
+ state: false
+ port: 9225
+
 # Materialy pro DurabilityWarner
 # Funkce pro VIP
 materials:
