@@ -77,6 +77,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // HikariCP
         initDatabase();
 
+        //Detekce TPS
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new TpsPollerTask(), 100L, 1L);
+
         // MDC tagy pro Sentry
         MDC.put("server", idServer);
         MDC.put("players", String.valueOf(Bukkit.getOnlinePlayers().size()));
@@ -286,9 +289,5 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     private void initDatabase() {
         sql = new SQLManager(this);
-    }
-
-    public float getAverageTPS() {
-        return tps.getAverageTPS();
     }
 }

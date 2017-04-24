@@ -1,54 +1,37 @@
 package cz.wake.manager.utils.prometheus;
 
-import java.util.LinkedList;
-
 public class TpsPollerTask implements Runnable {
 
-    /**
-     * Max amount of ticks that should happen per second
-     */
-    static final int TICKS_PER_SECOND = 20;
-    /**
-     * Every 40 ticks (2s ideally) the server will be polled
-     */
-    static final int POLL_INTERVAL = 40;
-    /**
-     * The amount of TPS values to keep for calculating the average
-     */
-    static final int TPS_QUEUE_SIZE = 10;
+    public static int TICK_COUNT = 0;
+    public static long[] TICKS = new long[600];
+    public static long LAST_TICK = 0L;
 
-    private long lastPoll = System.currentTimeMillis();
-    private LinkedList<Float> tpsQueue = new LinkedList<>();
+    public static double getTPS() {
+        return getTPS(100);
+    }
 
-    @Override
+    public static double getTPS(int ticks) {
+        if (TICK_COUNT < ticks) {
+            return 20.0D;
+        }
+        int target = (TICK_COUNT - 1 - ticks) % TICKS.length;
+        long elapsed = System.currentTimeMillis() - TICKS[target];
+
+        return ticks / (elapsed / 1000.0D);
+    }
+
+    public static long getElapsed(int tickID) {
+        if (TICK_COUNT - tickID >= TICKS.length) {
+        }
+
+        long time = TICKS[(tickID % TICKS.length)];
+        return System.currentTimeMillis() - time;
+    }
+
     public void run() {
-        final long now = System.currentTimeMillis();
-        long timeSpent = (now - this.lastPoll) / 1000;
-        timeSpent = timeSpent == 0 ? 1 : timeSpent;
+        TICKS[(TICK_COUNT % TICKS.length)] = System.currentTimeMillis();
 
-        final float tps = (float) POLL_INTERVAL / (float) timeSpent;
-
-        log(tps > TICKS_PER_SECOND ? TICKS_PER_SECOND : tps);
-
-        this.lastPoll = now;
+        TICK_COUNT += 1;
     }
 
-    private void log(float tps) {
-        tpsQueue.add(tps);
-        if (tpsQueue.size() > TPS_QUEUE_SIZE) {
-            tpsQueue.poll();
-        }
-    }
-
-    public float getAverageTPS() {
-        if (tpsQueue.size() < TPS_QUEUE_SIZE) {
-            return 20;
-        }
-
-        float sum = 0F;
-        for (Float f : tpsQueue) {
-            sum += f;
-        }
-        return sum / tpsQueue.size();
-    }
 }

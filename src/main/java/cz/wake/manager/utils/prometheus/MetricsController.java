@@ -42,7 +42,7 @@ public class MetricsController extends AbstractHandler {
             return;
         }
 
-        tps.set(Main.getInstance().getAverageTPS());
+        tps.set(TpsPollerTask.getTPS());
 
         Future<Object> future = Main.getInstance().getServer().getScheduler().callSyncMethod(Main.getInstance(), new Callable<Object>() {
             public Object call() throws Exception {
