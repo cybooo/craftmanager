@@ -14,6 +14,11 @@ public class TpsPollerTask implements Runnable {
         if (TICK_COUNT < ticks) {
             return 20.0D;
         }
+
+        if (TICK_COUNT > 20.0D){
+            return 20.0D;
+        }
+
         int target = (TICK_COUNT - 1 - ticks) % TICKS.length;
         long elapsed = System.currentTimeMillis() - TICKS[target];
 
