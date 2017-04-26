@@ -105,7 +105,7 @@
         <dependency>
             <groupId>com.getsentry.raven</groupId>
             <artifactId>raven-logback</artifactId>
-            <version>7.8.6</version>
+            <version>8.0.2</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -147,7 +147,7 @@
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
-            <version>9.4.2.v20170220</version>
+            <version>9.4.4.v20170414</version>
         </dependency>
         <!-- Prometheus Simple Client -->
         <dependency>
