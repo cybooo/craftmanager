@@ -67,7 +67,8 @@ public class MetricsController extends AbstractHandler {
             future.get();
 
             response.setStatus(HttpServletResponse.SC_OK);
-            response.setContentType(TextFormat.CONTENT_TYPE_004);
+            response.setContentType("text/html;charset=utf-8");
+
 
             TextFormat.write004(response.getWriter(), CollectorRegistry.defaultRegistry.metricFamilySamples());
 
