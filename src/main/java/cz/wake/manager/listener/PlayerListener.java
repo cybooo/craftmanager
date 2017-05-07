@@ -3,17 +3,19 @@ package cz.wake.manager.listener;
 import cz.wake.manager.Main;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.utils.UtilTablist;
+import org.bukkit.GameMode;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.player.PlayerGameModeChangeEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-public class JoinListener implements Listener {
+public class PlayerListener implements Listener {
 
     ParticlesAPI partAPI = new ParticlesAPI();
 
@@ -116,6 +118,19 @@ public class JoinListener implements Listener {
         if ((e.getCause() == EntityDamageEvent.DamageCause.PROJECTILE)
                 && (e.getDamager().getType() == EntityType.PLAYER) && (e.getEntity().getType() == EntityType.ARMOR_STAND)) {
             e.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onGamemode(PlayerGameModeChangeEvent e){
+        Player p = e.getPlayer();
+
+        // Deaktivace Spectatoru na Creativu
+        if(Main.getInstance().getIdServer().equalsIgnoreCase("creative") || Main.getInstance().getIdServer().equalsIgnoreCase("creative2")){
+            if(e.getNewGameMode() == GameMode.SPECTATOR){
+                e.setCancelled(true);
+                p.sendMessage("§cNelze si zmenit GM na Spectatora!");
+            }
         }
     }
 
