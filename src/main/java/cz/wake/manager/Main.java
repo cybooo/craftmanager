@@ -5,6 +5,7 @@ import cz.wake.manager.commads.servers.*;
 import cz.wake.manager.listener.ChatListener;
 import cz.wake.manager.listener.JoinListener;
 import cz.wake.manager.listener.LoginListener;
+import cz.wake.manager.perks.general.Disenchant;
 import cz.wake.manager.perks.general.DurabilityWarner;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.shop.ShopAPI;
@@ -212,6 +213,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("skywars").setExecutor(new SkyWars_command());
         getCommand("arcade").setExecutor(new Arcade_command());
         getCommand("skygiants").setExecutor(new SkyGiants_command());
+        getCommand("disenchant").setExecutor(new Disenchant());
 
         if (getConfig().getBoolean("hlasovani")) {
             getCommand("fakevote").setExecutor(new Fakevote_command());
