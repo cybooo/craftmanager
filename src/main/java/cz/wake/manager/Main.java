@@ -3,7 +3,7 @@ package cz.wake.manager;
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
 import cz.wake.manager.listener.ChatListener;
-import cz.wake.manager.listener.JoinListener;
+import cz.wake.manager.listener.PlayerListener;
 import cz.wake.manager.listener.LoginListener;
 import cz.wake.manager.perks.general.Disenchant;
 import cz.wake.manager.perks.general.DurabilityWarner;
@@ -170,7 +170,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private void loadListeners() {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new ParticlesAPI(), this);
-        pm.registerEvents(new JoinListener(), this);
+        pm.registerEvents(new PlayerListener(), this);
         pm.registerEvents(new MainGUI(), this);
         pm.registerEvents(new ShopAPI(), this);
         pm.registerEvents(new LoginListener(), this);
