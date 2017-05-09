@@ -22,13 +22,15 @@ public class LoginListener implements Listener {
             e.disallow(PlayerLoginEvent.Result.KICK_OTHER, "§ePro pripojeni na server pouzij IP: §cplay.craftmania.cz");
         }
 
-        if (!Main.getInstance().getMySQL().hasDataChecker(p)) { // mrwakecz = mrwakecz
-            Main.getInstance().getMySQL().createPlayerCheck(p);
-        } else {
-            if (p.getName().equals(Main.getInstance().getMySQL().getNormalNameChecked(p))) { // MrWakeCZ == MrWakeCZ
-                Log.withPrefix("Hrac " + p.getName() + " prosel uspesne kontrolou nicku.");
+        if (Main.getInstance().isEconomyFix()) {
+            if (!Main.getInstance().getMySQL().hasDataChecker(p)) { // mrwakecz = mrwakecz
+                Main.getInstance().getMySQL().createPlayerCheck(p);
             } else {
-                e.disallow(PlayerLoginEvent.Result.KICK_OTHER, "§fPodobny nick jiz hraje na serveru, nelze se pripojit.");
+                if (p.getName().equals(Main.getInstance().getMySQL().getNormalNameChecked(p))) { // MrWakeCZ == MrWakeCZ
+                    Log.withPrefix("Hrac " + p.getName() + " prosel uspesne kontrolou nicku.");
+                } else {
+                    e.disallow(PlayerLoginEvent.Result.KICK_OTHER, "§fPodobny nick jiz hraje na serveru, nelze se pripojit.");
+                }
             }
         }
 

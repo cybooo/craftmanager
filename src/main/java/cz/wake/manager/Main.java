@@ -58,6 +58,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private TpsPollerTask tps = new TpsPollerTask();
     private SQLManager sql;
     private Server server;
+    public boolean economyFix = false;
 
     private static Main instance;
 
@@ -88,6 +89,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Zachytavac unhandled exceptions
         ExceptionHandler.enable(instance);
+
+        // EconomyFix UUID
+        economyFix = Main.getInstance().getConfig().getBoolean("economyfix");
 
         // Bungee channels
         Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
@@ -291,5 +295,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     private void initDatabase() {
         sql = new SQLManager(this);
+    }
+
+    public boolean isEconomyFix(){
+        return economyFix;
     }
 }

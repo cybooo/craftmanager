@@ -39,6 +39,9 @@ stats-tracker: true
 # Update tablist task
 tablist-update: false
 
+# Zakazani podobnych nicku MrWakeCZ & mrwakecz (UUID bug)
+economyfix: false
+
 # Prometheus statistiky
 prometheus:
  state: false
