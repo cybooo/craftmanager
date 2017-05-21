@@ -11,9 +11,16 @@ import org.bukkit.World;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 
+import javax.management.Attribute;
+import javax.management.AttributeList;
+import javax.management.MBeanServer;
+import javax.management.ObjectName;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
+import java.lang.management.ManagementFactory;
+import java.text.DecimalFormat;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -29,6 +36,8 @@ public class MetricsController extends AbstractHandler {
     private Gauge livingEntities = Gauge.build().name(Main.getInstance().getIdServer() + "_living_entities_total").help("Living entities loaded per world").labelNames("world").create().register();
     private Gauge memory = Gauge.build().name(Main.getInstance().getIdServer() + "_jvm_memory").help("JVM memory usage").labelNames("type").create().register();
     private Gauge tps = Gauge.build().name(Main.getInstance().getIdServer() + "_tps").help("Server TPS (ticks per second)").create().register();
+    private Gauge disk = Gauge.build().name(Main.getInstance().getIdServer() + "_disk").help("Space of disk").create().register();
+    private Gauge cpu = Gauge.build().name(Main.getInstance().getIdServer() + "_cpu").help("Processor").create().register();
 
     public MetricsController(Main exporter) {
         this.plugin = exporter;
@@ -42,12 +51,14 @@ public class MetricsController extends AbstractHandler {
             return;
         }
 
-        tps.set(TpsPollerTask.getTPS());
-
         Future<Object> future = Main.getInstance().getServer().getScheduler().callSyncMethod(Main.getInstance(), new Callable<Object>() {
             public Object call() throws Exception {
                 players.labels("online").set(Bukkit.getOnlinePlayers().size());
                 players.labels("offline").set(Bukkit.getOfflinePlayers().length);
+
+                double TPS = TpsPollerTask.getTPS();
+                DecimalFormat TpsFormat = new DecimalFormat("#.###");
+                tps.set(Integer.valueOf(TpsFormat.format(TPS)));
 
                 for (World world : Bukkit.getWorlds()) {
                     loadedChunks.labels(world.getName()).set(world.getLoadedChunks().length);
@@ -56,8 +67,14 @@ public class MetricsController extends AbstractHandler {
                     livingEntities.labels(world.getName()).set(world.getLivingEntities().size());
                 }
 
-                memory.labels("max").set(Runtime.getRuntime().maxMemory());
+                memory.labels("max").set(Runtime.getRuntime().totalMemory());
                 memory.labels("free").set(Runtime.getRuntime().freeMemory());
+                memory.labels("used").set(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory());
+
+                disk.labels("max").set(new File("/").getTotalSpace());
+                disk.labels("used").set((new File("/").getTotalSpace()) - (new File("/").getUsableSpace()));
+
+                cpu.set(getProcessCpuLoad());
 
                 return null;
             }
@@ -78,5 +95,22 @@ public class MetricsController extends AbstractHandler {
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
+    }
+
+    public static double getProcessCpuLoad() throws Exception {
+
+        MBeanServer mbs    = ManagementFactory.getPlatformMBeanServer();
+        ObjectName name    = ObjectName.getInstance("java.lang:type=OperatingSystem");
+        AttributeList list = mbs.getAttributes(name, new String[]{ "ProcessCpuLoad" });
+
+        if (list.isEmpty())     return Double.NaN;
+
+        Attribute att = (Attribute)list.get(0);
+        Double value  = (Double)att.getValue();
+
+        // usually takes a couple of seconds before we get real values
+        if (value == -1.0)      return Double.NaN;
+        // returns a percentage value with 1 decimal point precision
+        return ((int)(value * 1000) / 10.0);
     }
 }
