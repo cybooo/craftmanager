@@ -36,7 +36,7 @@ public class MetricsController extends AbstractHandler {
     private Gauge livingEntities = Gauge.build().name(Main.getInstance().getIdServer() + "_living_entities_total").help("Living entities loaded per world").labelNames("world").create().register();
     private Gauge memory = Gauge.build().name(Main.getInstance().getIdServer() + "_jvm_memory").help("JVM memory usage").labelNames("type").create().register();
     private Gauge tps = Gauge.build().name(Main.getInstance().getIdServer() + "_tps").help("Server TPS (ticks per second)").create().register();
-    private Gauge disk = Gauge.build().name(Main.getInstance().getIdServer() + "_disk").help("Space of disk").create().register();
+    private Gauge disk = Gauge.build().name(Main.getInstance().getIdServer() + "_disk").help("Space of disk").labelNames("type").create().register();
     private Gauge cpu = Gauge.build().name(Main.getInstance().getIdServer() + "_cpu").help("Processor").create().register();
 
     public MetricsController(Main exporter) {
@@ -58,7 +58,7 @@ public class MetricsController extends AbstractHandler {
 
                 double TPS = TpsPollerTask.getTPS();
                 DecimalFormat TpsFormat = new DecimalFormat("#.###");
-                tps.set(Integer.valueOf(TpsFormat.format(TPS)));
+                tps.set(Double.valueOf(TpsFormat.format(TPS)));
 
                 for (World world : Bukkit.getWorlds()) {
                     loadedChunks.labels(world.getName()).set(world.getLoadedChunks().length);
