@@ -3,8 +3,8 @@ package cz.wake.manager;
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
 import cz.wake.manager.listener.ChatListener;
-import cz.wake.manager.listener.PlayerListener;
 import cz.wake.manager.listener.LoginListener;
+import cz.wake.manager.listener.PlayerListener;
 import cz.wake.manager.perks.general.Disenchant;
 import cz.wake.manager.perks.general.DurabilityWarner;
 import cz.wake.manager.perks.particles.ParticlesAPI;
@@ -290,7 +290,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         sql = new SQLManager(this);
     }
 
-    public boolean isEconomyFix(){
+    public boolean isEconomyFix() {
         return economyFix;
     }
 }

@@ -12,9 +12,6 @@ settings:
  maximumConnections: 5
  timeout: 30000
 
-# Detekce OP itemu
-detection: false
-
 # ProxyJoin Bungee
 # Pouze hraci s touto IP se budou moct pripojit
 proxy-ips:

@@ -275,11 +275,11 @@ public class ShopAPI implements Listener {
             if (Main.getInstance().getMySQL().hasBoosterInSQL(p, "fly")) {
                 Main.getInstance().getMySQL().deleteBooster(p, "fly");
             }
-            ItemStack noFly = ItemFactory.create(Material.ELYTRA, (byte) 0, "§cPovoleni na FLY", "§7Zakoupenim budes moct", "§7litat POUZE na svem ostrove!","§cPo nakupu je potreba jit","§cdo /lobby a zpet!", "", "§eCena: §f1k CC na 3h", "", "§aKliknutim zakoupis");
+            ItemStack noFly = ItemFactory.create(Material.ELYTRA, (byte) 0, "§cPovoleni na FLY", "§7Zakoupenim budes moct", "§7litat POUZE na svem ostrove!", "§cPo nakupu je potreba jit", "§cdo /lobby a zpet!", "", "§eCena: §f1k CC na 3h", "", "§aKliknutim zakoupis");
             inv.setItem(10, noFly);
         }
         if (p.hasPermission("jobs.boost.all.exp.0.25")) {
-            ItemStack jobsExp = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§aJobs Booster EXP (+25%)", "§7Jiz mas aktivovano", "§eKonec: §f" + TimeUnit.toString((Main.getInstance().getMySQL().getBoostedPlayer(p, "exp25"))/1000));
+            ItemStack jobsExp = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§aJobs Booster EXP (+25%)", "§7Jiz mas aktivovano", "§eKonec: §f" + TimeUnit.toString((Main.getInstance().getMySQL().getBoostedPlayer(p, "exp25")) / 1000));
             inv.setItem(12, jobsExp);
         } else {
             if (Main.getInstance().getMySQL().hasBoosterInSQL(p, "exp25")) {
@@ -289,7 +289,7 @@ public class ShopAPI implements Listener {
             inv.setItem(12, noJobsExp);
         }
         if (p.hasPermission("jobs.boost.all.exp.0.50")) {
-            ItemStack jobsExp = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§aJobs Booster EXP (+50%)", "§7Jiz mas aktivovano", "§eKonec: §f" + TimeUnit.toString((Main.getInstance().getMySQL().getBoostedPlayer(p, "exp50"))/1000));
+            ItemStack jobsExp = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§aJobs Booster EXP (+50%)", "§7Jiz mas aktivovano", "§eKonec: §f" + TimeUnit.toString((Main.getInstance().getMySQL().getBoostedPlayer(p, "exp50")) / 1000));
             inv.setItem(13, jobsExp);
         } else {
             if (Main.getInstance().getMySQL().hasBoosterInSQL(p, "exp50")) {
@@ -299,7 +299,7 @@ public class ShopAPI implements Listener {
             inv.setItem(13, noJobsExp);
         }
         if (p.hasPermission("jobs.boost.all.money.0.10")) {
-            ItemStack jobsExp = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§aJobs Booster Money (+10%)", "§7Jiz mas aktivovano", "§eKonec: §f" + TimeUnit.toString((Main.getInstance().getMySQL().getBoostedPlayer(p, "money10"))/1000));
+            ItemStack jobsExp = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§aJobs Booster Money (+10%)", "§7Jiz mas aktivovano", "§eKonec: §f" + TimeUnit.toString((Main.getInstance().getMySQL().getBoostedPlayer(p, "money10")) / 1000));
             inv.setItem(14, jobsExp);
         } else {
             if (Main.getInstance().getMySQL().hasBoosterInSQL(p, "money10")) {
@@ -309,7 +309,7 @@ public class ShopAPI implements Listener {
             inv.setItem(14, noJobsExp);
         }
         if (p.hasPermission("jobs.boost.all.money.0.20")) {
-            ItemStack jobsExp = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§aJobs Booster Money (+20%)", "§7Jiz mas aktivovano", "§eKonec: §f" + TimeUnit.toString((Main.getInstance().getMySQL().getBoostedPlayer(p, "money20"))/1000));
+            ItemStack jobsExp = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§aJobs Booster Money (+20%)", "§7Jiz mas aktivovano", "§eKonec: §f" + TimeUnit.toString((Main.getInstance().getMySQL().getBoostedPlayer(p, "money20")) / 1000));
             inv.setItem(15, jobsExp);
         } else {
             if (Main.getInstance().getMySQL().hasBoosterInSQL(p, "money20")) {

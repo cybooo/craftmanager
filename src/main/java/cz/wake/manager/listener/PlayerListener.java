@@ -122,12 +122,12 @@ public class PlayerListener implements Listener {
     }
 
     @EventHandler
-    public void onGamemode(PlayerGameModeChangeEvent e){
+    public void onGamemode(PlayerGameModeChangeEvent e) {
         Player p = e.getPlayer();
 
         // Deaktivace Spectatoru na Creativu
-        if(Main.getInstance().getIdServer().equalsIgnoreCase("creative") || Main.getInstance().getIdServer().equalsIgnoreCase("creative2")){
-            if(e.getNewGameMode() == GameMode.SPECTATOR){
+        if (Main.getInstance().getIdServer().equalsIgnoreCase("creative") || Main.getInstance().getIdServer().equalsIgnoreCase("creative2")) {
+            if (e.getNewGameMode() == GameMode.SPECTATOR) {
                 e.setCancelled(true);
                 p.sendMessage("§cNelze si zmenit GM na Spectatora!");
             }
