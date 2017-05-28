@@ -3,6 +3,7 @@ package cz.wake.manager;
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
 import cz.wake.manager.listener.ChatListener;
+import cz.wake.manager.listener.DeathListener;
 import cz.wake.manager.listener.LoginListener;
 import cz.wake.manager.listener.PlayerListener;
 import cz.wake.manager.perks.general.Disenchant;
@@ -174,6 +175,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new ChatListener(), this);
         pm.registerEvents(new DurabilityWarner(), this);
         pm.registerEvents(new TempShop(), this);
+        pm.registerEvents(new DeathListener(), this);
 
         // Hlasovani
         if (getConfig().getBoolean("hlasovani")) {
