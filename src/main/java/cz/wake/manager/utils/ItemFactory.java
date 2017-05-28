@@ -10,15 +10,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.material.MaterialData;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ItemFactory {
-
-    static final Logger log = LoggerFactory.getLogger(ItemFactory.class);
 
     public static ItemStack create(Material material, byte data, String displayName, String... lore) {
         try {
@@ -35,7 +31,7 @@ public class ItemFactory {
             itemStack.setItemMeta(itemMeta);
             return itemStack;
         } catch (Exception e) {
-            log.error("", e);
+            e.printStackTrace();
         }
         return null;
     }
@@ -98,7 +94,7 @@ public class ItemFactory {
             nmsStack.setTag(tag);
             return CraftItemStack.asCraftMirror(nmsStack);
         } catch (Exception e) {
-            log.error("", e);
+            e.printStackTrace();
         }
         return item;
     }

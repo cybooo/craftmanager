@@ -15,8 +15,6 @@ import java.util.Random;
 
 public class SuperbVote implements Listener {
 
-    static final Logger log = LoggerFactory.getLogger(VoteHandler.class);
-
     @EventHandler
     public void voteSQL(final VotifierEvent e) {
         Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new BukkitRunnable() {
@@ -51,7 +49,7 @@ public class SuperbVote implements Listener {
                         }
                     }
                 } catch (Exception e) {
-                    log.error("", e);
+                    e.printStackTrace();
                 }
             }
         });

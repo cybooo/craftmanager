@@ -11,7 +11,6 @@ import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.shop.ShopAPI;
 import cz.wake.manager.shop.TempShop;
 import cz.wake.manager.sql.SQLManager;
-import cz.wake.manager.utils.ExceptionHandler;
 import cz.wake.manager.utils.Log;
 import cz.wake.manager.utils.ServerFactory;
 import cz.wake.manager.utils.SkyblockHeadFix;
@@ -87,9 +86,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         MDC.put("players", String.valueOf(Bukkit.getOnlinePlayers().size()));
         MDC.put("version", Bukkit.getBukkitVersion());
 
-        // Zachytavac unhandled exceptions
-        ExceptionHandler.enable(instance);
-
         // EconomyFix UUID
         economyFix = Main.getInstance().getConfig().getBoolean("economyfix");
 
@@ -151,9 +147,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Deaktivace MySQL
         sql.onDisable();
-
-        // Deaktivace detekce chyb
-        ExceptionHandler.disable(instance);
 
         // Deaktivace Jetty portu
         if (server != null) {

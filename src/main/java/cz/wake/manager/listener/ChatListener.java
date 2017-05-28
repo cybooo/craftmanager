@@ -7,15 +7,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 
 public class ChatListener implements Listener {
 
     private Chatcolor_command chatc = new Chatcolor_command();
-    static final Logger log = LoggerFactory.getLogger(ChatListener.class);
     private HashMap<Player, Double> _time = new HashMap();
     HashMap<Player, BukkitRunnable> _cdRunnable = new HashMap();
 
@@ -46,7 +43,7 @@ public class ChatListener implements Listener {
             try {
                 e.setMessage(chatc.getChatcolorList().get(p).toString() + msg);
             } catch (Exception ex) {
-                log.error("", ex);
+                ex.printStackTrace();
             }
         }
     }
