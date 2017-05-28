@@ -5,6 +5,7 @@ import cz.wake.manager.utils.Log;
 import io.prometheus.client.CollectorRegistry;
 import io.prometheus.client.Gauge;
 import io.prometheus.client.exporter.common.TextFormat;
+import net.minecraft.server.v1_11_R1.MinecraftServer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
@@ -56,9 +57,9 @@ public class MetricsController extends AbstractHandler {
                 players.labels("online").set(Bukkit.getOnlinePlayers().size());
                 players.labels("offline").set(Bukkit.getOfflinePlayers().length);
 
-                double TPS = TpsPollerTask.getTPS();
-                DecimalFormat TpsFormat = new DecimalFormat("#.###");
-                tps.set(Double.valueOf(TpsFormat.format(TPS)));
+                // TPS
+                double d = MinecraftServer.getServer().recentTps[0];
+                tps.set(d);
 
                 for (World world : Bukkit.getWorlds()) {
                     loadedChunks.labels(world.getName()).set(world.getLoadedChunks().length);
