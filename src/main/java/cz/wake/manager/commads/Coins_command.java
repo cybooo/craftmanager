@@ -12,7 +12,7 @@ public class Coins_command implements CommandExecutor {
     public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("coins"))) {
+            if ((Command.getName().equalsIgnoreCase("coins")) || (Command.getName().equalsIgnoreCase("cc"))) {
                 try {
                     if (ArrayOfString.length == 0) {
                         player.sendMessage("§eAktualne mas §7" + Main.getInstance().getMySQL().getPlayerCoins(player.getUniqueId()) + " §ecoinu!");

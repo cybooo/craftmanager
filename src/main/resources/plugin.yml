@@ -13,7 +13,6 @@ commands:
       aliases: [part]
     coins:
       description: Prikaz na zjisteni craftcoinu
-      aliases: [cc]
     glow:
       description: Prikaz pro VIP
     fakevote:

@@ -38,10 +38,11 @@ public class Help_command implements CommandExecutor {
                     "§e/is top §f- §7Zobrazi TOP 10 hracu s nejvetsimy ostrovy",
                     "§e/is lock §f- §7Uzamkne ostrov a nikdo krome AT,",
                     "§7se k tobe nedostane.",
-                    "§e/is setwarp §f- §7Nastavi polohu teleportu",
                     "§7pri pouziti Warp prikazu",
                     "§e/is restart §f- §7Restartuje ostrov. §c§lSMAZE VSE!",
-                    "§e/is leave §f- §7Opustis ostrov... :(");
+                    "§e/is leave §f- §7Opustis ostrov... :(",
+                    "§eK nastaveni Warpu poloz cedulku a na prvni radek",
+                    "§enapis: §f[welcome]");
 
             ItemStack isTeam = ItemFactory.create(Material.MAGMA, (byte) 0, "§a§lPridani a odebrani hracu na ostrove", "",
                     "§e/is invite §6" + p.getName() + " §f- §7Prida hrace na tvuj ostrov",
