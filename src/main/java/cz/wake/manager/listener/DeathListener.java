@@ -1,45 +1,90 @@
 package cz.wake.manager.listener;
 
+import cz.wake.manager.Main;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.inventory.ItemStack;
 
 public class DeathListener implements Listener {
 
     @EventHandler
-    public void onDeath(PlayerDeathEvent e){
+    public void onDeath(PlayerDeathEvent e) {
 
-        final Entity ent = e.getEntity();
-        final Entity killer = e.getEntity().getKiller();
+        Player p = e.getEntity();
+        Entity killer = e.getEntity().getKiller();
 
-        //TODO: Dodelat do nastaveni uctu
-        //TODO: Interactive message
-        //TODO: Zobrazeni inventare pri kliknuti?
-        //TODO: Vic random zprav
+        // Preventivni deaktivace death zprav
+        e.setDeathMessage(null);
 
-        if (ent instanceof Player){
-
-            // Preventivni deaktivace death zprav
-            e.setDeathMessage(null);
-
-            if (killer instanceof Player){
-
-                ItemStack i = ((Player) killer).getItemInHand();
-
-                if(i == null || i.getItemMeta().getDisplayName() == null){
-                    for (Player p : Bukkit.getOnlinePlayers()){
-                        p.sendMessage("§c" + ent.getName() + " §ebyl zabit hracem §6" + killer);
-                    }
-                } else {
-                    for (Player p : Bukkit.getOnlinePlayers()){
-                        p.sendMessage("§c" + ent.getName() + " §ebyl zabit hracem §6" + killer + " §es " + i.getItemMeta().getDisplayName());
-                    }
+        if (killer instanceof Player) {
+            for (Player p2 : Bukkit.getOnlinePlayers()) {
+                if (Main.getInstance().death_messages.contains(p)) {
+                    p2.sendMessage("§c" + p.getName() + " §ebyl zabit hracem §6" + killer.getName());
+                }
+            }
+        } else {
+            for (Player p2 : Bukkit.getOnlinePlayers()) {
+                if (Main.getInstance().death_messages.contains(p)) {
+                    p2.sendMessage("§c" + p.getName() + " §ebyl zabit §c" + getBetterName(killer));
                 }
             }
         }
+    }
+
+    private String getBetterName(Entity e) {
+        if (e instanceof Creeper) {
+            return "Creeper";
+        } else if (e instanceof Skeleton) {
+            return "Skeleton";
+        } else if (e instanceof Spider) {
+            return "Spider";
+        } else if (e instanceof Enderman) {
+            return "Enderman";
+        } else if (e instanceof PolarBear) {
+            return "Polar Bear";
+        } else if (e instanceof PigZombie) {
+            return "Zombie Pigman";
+        } else if (e instanceof Blaze) {
+            return "Blaze";
+        } else if (e instanceof ElderGuardian) {
+            return "Elder Guardian";
+        } else if (e instanceof Guardian) {
+            return "Guardian";
+        } else if (e instanceof Endermite) {
+            return "Endermite";
+        } else if (e instanceof Evoker) {
+            return "Evoker";
+        } else if (e instanceof Ghast) {
+            return "Ghast";
+        } else if (e instanceof Husk) {
+            return "Zombie Husk";
+        } else if (e instanceof MagmaCube) {
+            return "MagmaCube";
+        } else if (e instanceof Shulker) {
+            return "Shulker";
+        } else if (e instanceof Silverfish) {
+            return "Silverfish";
+        } else if (e instanceof Slime) {
+            return "Slime";
+        } else if (e instanceof Vex) {
+            return "Vex";
+        } else if (e instanceof Vindicator) {
+            return "Vindicator";
+        } else if (e instanceof Witch) {
+            return "Witch";
+        } else if (e instanceof Zombie) {
+            return "Zombie";
+        } else if (e instanceof IronGolem) {
+            return "Iron Golem";
+        } else if (e instanceof Snowman) {
+            return "Snowman";
+        } else if (e instanceof EnderDragon) {
+            return "Dragon";
+        } else if (e instanceof Wither) {
+            return "Wither";
+        }
+        return e.getName();
     }
 }

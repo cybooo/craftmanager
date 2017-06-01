@@ -45,6 +45,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     private static ArrayList<Player> players = new ArrayList<Player>();
     public ArrayList<Player> at_list = new ArrayList<>();
+    public ArrayList<Player> death_messages = new ArrayList<>();
     private ParticlesAPI particlesAPI = new ParticlesAPI();
     public List<Material> durabilityWarnerList = new ArrayList<>();
     private MainGUI gui = new MainGUI();
