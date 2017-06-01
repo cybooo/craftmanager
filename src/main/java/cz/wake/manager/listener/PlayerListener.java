@@ -65,6 +65,11 @@ public class PlayerListener implements Listener {
         if (Main.getInstance().getMySQL().isAT(p)) {
             Main.getInstance().at_list.add(p);
         }
+
+        //Death messages
+        if (Main.getInstance().getMySQL().getSettings(p, "death_messages") == 1) {
+            Main.getInstance().death_messages.add(p);
+        }
     }
 
     @EventHandler
@@ -85,6 +90,11 @@ public class PlayerListener implements Listener {
         if (Main.getInstance().at_list.contains(p)) {
             Main.getInstance().at_list.remove(p);
         }
+
+        //Death messages
+        if (Main.getInstance().death_messages.contains(p)) {
+            Main.getInstance().death_messages.remove(p);
+        }
     }
 
     @EventHandler
@@ -102,6 +112,11 @@ public class PlayerListener implements Listener {
         //AT
         if (Main.getInstance().at_list.contains(p)) {
             Main.getInstance().at_list.remove(p);
+        }
+
+        //Death messages
+        if (Main.getInstance().death_messages.contains(p)) {
+            Main.getInstance().death_messages.remove(p);
         }
     }
 
