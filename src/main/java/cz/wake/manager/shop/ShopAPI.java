@@ -18,7 +18,8 @@ public class ShopAPI implements Listener {
         if (Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")
                 || Main.getInstance().getIdServer().equalsIgnoreCase("survival")
                 || Main.getInstance().getIdServer().equalsIgnoreCase("creative")
-                || Main.getInstance().getIdServer().equalsIgnoreCase("creative2")) {
+                || Main.getInstance().getIdServer().equalsIgnoreCase("creative2")
+                || Main.getInstance().getIdServer().equalsIgnoreCase("vanillasb")) {
             Inventory inv = Bukkit.createInventory(null, 27, "§0Coinshop");
 
             ItemStack tags = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§aTags", "§7Zakup si tag pred nick", "§7a bud IN!");
@@ -963,7 +964,11 @@ public class ShopAPI implements Listener {
         } else {
             int i = Main.getInstance().getMySQL().getPlayerCoins(p.getUniqueId());
             if (i >= price) {
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "pp user " + p.getName() + " add " + perm);
+                if(Main.getInstance().getIdServer().equalsIgnoreCase("vanillasb")){
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set " + perm + " true");
+                } else {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "pp user " + p.getName() + " add " + perm);
+                }
                 Main.getInstance().getMySQL().takeCoins(p, price);
                 p.sendMessage("§eZakoupil jsi si tag: §f" + name);
                 p.closeInventory();

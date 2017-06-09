@@ -598,6 +598,8 @@ public class SQLManager {
             name = "prison";
         } else if (Main.getInstance().getIdServer().equalsIgnoreCase("vanilla")) {
             name = "vanilla";
+        } else if (Main.getInstance().getIdServer().equalsIgnoreCase("vanillasb")) {
+            name = "vanillasb";
         }
         return name;
     }
