@@ -49,3 +49,5 @@ commands:
       description: Server teleport
     disenchant:
       description: Prikaz pro VIP
+    vote:
+      description: Prikaz na zobrazeni odkazu k hlasovani
