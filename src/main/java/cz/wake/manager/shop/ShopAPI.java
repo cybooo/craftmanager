@@ -221,7 +221,7 @@ public class ShopAPI implements Listener {
         this.setupTag(p, "deluxetags.tag.dostanesban", "DostanesBAN", inv, 20, 800);
         this.setupTag(p, "deluxetags.tag.pohodajahoda", "PohodaJahoda", inv, 21, 800);
         this.setupTag(p, "deluxetags.tag.masreport", "MasReport", inv, 22, 700);
-        this.setupTag(p, "deluxetags.tag.rushb", "RushB", inv, 23, 600);
+        this.setupTag(p, "deluxetags.tag.novipnofriend", "NoVipNoFriend", inv, 23, 700);
         this.setupTag(p, "deluxetags.tag.darklord", "DarkLord", inv, 24, 800);
         this.setupTag(p, "deluxetags.tag.xxD", "xxD", inv, 25, 500);
         this.setupTag(p, "deluxetags.tag.velkejsef", "VelkejSef", inv, 26, 800);
@@ -253,7 +253,6 @@ public class ShopAPI implements Listener {
         this.setupTag(p, "deluxetags.tag.hlhrac", "Hl.Hrac", inv, 2, 700);
         this.setupTag(p, "deluxetags.tag.baxcus", "BaxCus", inv, 3, 700);
         this.setupTag(p, "deluxetags.tag.neasi", "Neasi", inv, 4, 700);
-        this.setupTag(p, "deluxetags.tag.novipnofriend", "NoVipNoFriend", inv, 5, 700);
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
         ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
@@ -870,7 +869,7 @@ public class ShopAPI implements Listener {
                 this.prepareTag(p, 700, "deluxetags.tag.masreport", "MasReport");
             }
             if (e.getSlot() == 23) {
-                this.prepareTag(p, 600, "deluxetags.tag.rushb", "RushB");
+                this.prepareTag(p, 700, "deluxetags.tag.novipnofriend", "NoVipNoFriend");
             }
             if (e.getSlot() == 24) {
                 this.prepareTag(p, 800, "deluxetags.tag.darklord", "DarkLord");
@@ -937,9 +936,6 @@ public class ShopAPI implements Listener {
             }
             if (e.getSlot() == 4) {
                 this.prepareTag(p, 700, "deluxetags.tag.neasi", "NeAsi");
-            }
-            if (e.getSlot() == 5) {
-                this.prepareTag(p, 700, "deluxetags.tag.novipnofriend", "NoVipNoFriend");
             }
         }
     }
