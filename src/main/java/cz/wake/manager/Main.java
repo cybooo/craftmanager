@@ -9,6 +9,7 @@ import cz.wake.manager.listener.PlayerListener;
 import cz.wake.manager.perks.general.Disenchant;
 import cz.wake.manager.perks.general.DurabilityWarner;
 import cz.wake.manager.perks.particles.ParticlesAPI;
+import cz.wake.manager.perks.twerking.TwerkEvent;
 import cz.wake.manager.shop.ShopAPI;
 import cz.wake.manager.shop.TempShop;
 import cz.wake.manager.sql.SQLManager;
@@ -177,6 +178,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new DurabilityWarner(), this);
         pm.registerEvents(new TempShop(), this);
         pm.registerEvents(new DeathListener(), this);
+        pm.registerEvents(new TwerkEvent(), this);
 
         // Hlasovani
         if (getConfig().getBoolean("hlasovani")) {
