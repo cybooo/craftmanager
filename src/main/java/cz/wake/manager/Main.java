@@ -215,6 +215,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("arcade").setExecutor(new Arcade_command());
         getCommand("skygiants").setExecutor(new SkyGiants_command());
         getCommand("disenchant").setExecutor(new Disenchant());
+        getCommand("vanillasb").setExecutor(new VanillaSb_command());
 
         if (getConfig().getBoolean("hlasovani")) {
             getCommand("fakevote").setExecutor(new Fakevote_command());

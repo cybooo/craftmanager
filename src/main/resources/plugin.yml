@@ -45,5 +45,7 @@ commands:
       description: Server teleport
     skygiants:
       description: Server teleport
+    vanillasb:
+      description: Server teleport
     disenchant:
       description: Prikaz pro VIP
