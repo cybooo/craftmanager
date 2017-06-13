@@ -12,6 +12,9 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class ShopAPI implements Listener {
 
     public void openShopMainGUI(final Player p) {
@@ -261,11 +264,13 @@ public class ShopAPI implements Listener {
         p.openInventory(inv);
     }
 
+    //TODO: Dodelat pro servery zvlast
+
     private void openBoostersMenu(Player p) {
         Inventory inv = Bukkit.createInventory(null, 45, "Boostery");
 
         if (p.hasPermission("askyblock.islandfly")) {
-            ItemStack hasFly = ItemFactory.create(Material.ELYTRA, (byte) 0, "§aPovoleni na FLY", "§7Jiz mas aktivovano.", "§eKonec: §f" + TimeUnit.toString(Main.getInstance().getMySQL().getBoostedPlayer(p, "fly")));
+            ItemStack hasFly = ItemFactory.create(Material.ELYTRA, (byte) 0, "§aPovoleni na FLY", "§7Jiz mas aktivovano.", "§eKonec: §f" + getDate(Main.getInstance().getMySQL().getBoostedPlayer(p, "fly")));
             ItemFactory.addGlow(hasFly);
             inv.setItem(10, hasFly);
         } else if (p.hasPermission("essentials.fly")) {
@@ -280,7 +285,7 @@ public class ShopAPI implements Listener {
             inv.setItem(10, noFly);
         }
         if (p.hasPermission("jobs.boost.all.exp.0.25")) {
-            ItemStack jobsExp = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§aJobs Booster EXP (+25%)", "§7Jiz mas aktivovano", "§eKonec: §f" + TimeUnit.toString((Main.getInstance().getMySQL().getBoostedPlayer(p, "exp25")) / 1000));
+            ItemStack jobsExp = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§aJobs Booster EXP (+25%)", "§7Jiz mas aktivovano", "§eKonec: §f" + getDate((Main.getInstance().getMySQL().getBoostedPlayer(p, "exp25")) / 1000));
             inv.setItem(12, jobsExp);
         } else {
             if (Main.getInstance().getMySQL().hasBoosterInSQL(p, "exp25")) {
@@ -290,7 +295,7 @@ public class ShopAPI implements Listener {
             inv.setItem(12, noJobsExp);
         }
         if (p.hasPermission("jobs.boost.all.exp.0.50")) {
-            ItemStack jobsExp = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§aJobs Booster EXP (+50%)", "§7Jiz mas aktivovano", "§eKonec: §f" + TimeUnit.toString((Main.getInstance().getMySQL().getBoostedPlayer(p, "exp50")) / 1000));
+            ItemStack jobsExp = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§aJobs Booster EXP (+50%)", "§7Jiz mas aktivovano", "§eKonec: §f" + getDate((Main.getInstance().getMySQL().getBoostedPlayer(p, "exp50")) / 1000));
             inv.setItem(13, jobsExp);
         } else {
             if (Main.getInstance().getMySQL().hasBoosterInSQL(p, "exp50")) {
@@ -300,7 +305,7 @@ public class ShopAPI implements Listener {
             inv.setItem(13, noJobsExp);
         }
         if (p.hasPermission("jobs.boost.all.money.0.10")) {
-            ItemStack jobsExp = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§aJobs Booster Money (+10%)", "§7Jiz mas aktivovano", "§eKonec: §f" + TimeUnit.toString((Main.getInstance().getMySQL().getBoostedPlayer(p, "money10")) / 1000));
+            ItemStack jobsExp = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§aJobs Booster Money (+10%)", "§7Jiz mas aktivovano", "§eKonec: §f" + getDate((Main.getInstance().getMySQL().getBoostedPlayer(p, "money10")) / 1000));
             inv.setItem(14, jobsExp);
         } else {
             if (Main.getInstance().getMySQL().hasBoosterInSQL(p, "money10")) {
@@ -310,7 +315,7 @@ public class ShopAPI implements Listener {
             inv.setItem(14, noJobsExp);
         }
         if (p.hasPermission("jobs.boost.all.money.0.20")) {
-            ItemStack jobsExp = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§aJobs Booster Money (+20%)", "§7Jiz mas aktivovano", "§eKonec: §f" + TimeUnit.toString((Main.getInstance().getMySQL().getBoostedPlayer(p, "money20")) / 1000));
+            ItemStack jobsExp = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§aJobs Booster Money (+20%)", "§7Jiz mas aktivovano", "§eKonec: §f" + getDate((Main.getInstance().getMySQL().getBoostedPlayer(p, "money20")) / 1000));
             inv.setItem(15, jobsExp);
         } else {
             if (Main.getInstance().getMySQL().hasBoosterInSQL(p, "money20")) {
@@ -977,4 +982,12 @@ public class ShopAPI implements Listener {
             }
         }
     }
+
+    private String getDate(long time) {
+        final Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(time);
+        final String timeString = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(cal.getTime());
+        return timeString;
+    }
+
 }
