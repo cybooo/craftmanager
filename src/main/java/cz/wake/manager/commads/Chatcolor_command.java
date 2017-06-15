@@ -17,6 +17,25 @@ public class Chatcolor_command implements CommandExecutor {
 
     private static HashMap<Player, ChatColor> cc = new HashMap<>();
 
+    /*
+        0 - cerna §0
+        1 - modra §1
+        2 - zelena §2
+        3 - tmave-tyrkysova §3
+        4 - tmave-cervena §4
+        5 - fialova §5
+        6 - zlata §6
+        7 - seda §7
+        8 - tmave-seda §8
+        9 - modra §9
+        a - lime §a (10)
+        b - svetle-modra §b (11)
+        c - cervena §c (12)
+        d - ruzova §d (13)
+        e - zluta §e (14) - AT
+        f - bila §f (15 - default)
+     */
+
     @Override
     public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
         if (Sender instanceof Player) {
@@ -42,7 +61,6 @@ public class Chatcolor_command implements CommandExecutor {
         ItemStack lightBlue = ItemFactory.create(Material.INK_SACK, (byte) 12, "§b§lSvetle modra");
         ItemStack cyan = ItemFactory.create(Material.INK_SACK, (byte) 6, "§3§lTyrkysova");
         ItemStack gold = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§6§lZlata");
-        ItemStack yellow = ItemFactory.create(Material.INK_SACK, (byte) 11, "§6§lZluta");
         ItemStack purple = ItemFactory.create(Material.INK_SACK, (byte) 5, "§5§lFialova");
         ItemStack white = ItemFactory.create(Material.INK_SACK, (byte) 15, "§f§lBila");
         ItemStack darkGreen = ItemFactory.create(Material.INK_SACK, (byte) 2, "§2§lTmave zelena");
@@ -60,19 +78,18 @@ public class Chatcolor_command implements CommandExecutor {
         inv.setItem(12, green);
         inv.setItem(13, pink);
         inv.setItem(14, gold);
-        inv.setItem(15, yellow);
-        inv.setItem(16, purple);
+        inv.setItem(15, purple);
 
-        inv.setItem(19, gray);
-        inv.setItem(20, darkGray);
-        inv.setItem(21, white);
-        inv.setItem(22, blue);
-        inv.setItem(23, black);
-        inv.setItem(24, darkBlue);
-        inv.setItem(25, lightBlue);
+        inv.setItem(16, gray);
+        inv.setItem(19, darkGray);
+        inv.setItem(20, white);
+        inv.setItem(21, blue);
+        inv.setItem(22, black);
+        inv.setItem(23, darkBlue);
+        inv.setItem(24, lightBlue);
 
-        inv.setItem(28, darkGreen);
-        inv.setItem(29, darkRed);
+        inv.setItem(25, darkGreen);
+        inv.setItem(28, darkRed);
 
         inv.setItem(40, deaktivace);
 

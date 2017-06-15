@@ -1,8 +1,10 @@
 package cz.wake.manager.listener;
 
 import cz.wake.manager.Main;
+import cz.wake.manager.commads.Chatcolor_command;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.utils.UtilTablist;
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -18,6 +20,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 public class PlayerListener implements Listener {
 
     ParticlesAPI partAPI = new ParticlesAPI();
+    private Chatcolor_command chc = new Chatcolor_command();
 
     @EventHandler(ignoreCancelled = true)
     public void onJoin(PlayerJoinEvent e) {
@@ -69,6 +72,11 @@ public class PlayerListener implements Listener {
         //Death messages
         if (Main.getInstance().getMySQL().getSettings(p, "death_messages") == 1) {
             Main.getInstance().death_messages.add(p);
+        }
+
+        //ChatColor
+        if (p.hasPermission("craftmanager.chatcolor")){
+            setupChatColor(p);
         }
     }
 
@@ -146,6 +154,60 @@ public class PlayerListener implements Listener {
                 e.setCancelled(true);
                 p.sendMessage("§cNelze si zmenit GM na Spectatora!");
             }
+        }
+    }
+
+    private void setupChatColor(Player p){
+        int setting = Main.getInstance().getMySQL().getSettings(p, "chatcolor");
+        switch (setting){
+            case 0:
+                chc.setColor(p,ChatColor.BLACK);
+                break;
+            case 1:
+                chc.setColor(p, ChatColor.DARK_BLUE);
+                break;
+            case 2:
+                chc.setColor(p, ChatColor.DARK_GREEN);
+                break;
+            case 3:
+                chc.setColor(p, ChatColor.AQUA);
+                break;
+            case 4:
+                chc.setColor(p, ChatColor.DARK_RED);
+                break;
+            case 5:
+                chc.setColor(p, ChatColor.DARK_PURPLE);
+                break;
+            case 6:
+                chc.setColor(p, ChatColor.GOLD);
+                break;
+            case 7:
+                chc.setColor(p, ChatColor.GRAY);
+                break;
+            case 8:
+                chc.setColor(p, ChatColor.DARK_GRAY);
+                break;
+            case 9:
+                chc.setColor(p, ChatColor.DARK_AQUA);
+                break;
+            case 10:
+                chc.setColor(p, ChatColor.GREEN);
+                break;
+            case 11:
+                chc.setColor(p, ChatColor.BLUE);
+                break;
+            case 12:
+                chc.setColor(p, ChatColor.RED);
+                break;
+            case 13:
+                chc.setColor(p, ChatColor.LIGHT_PURPLE);
+                break;
+            case 14:case 15:
+                chc.setColor(p, ChatColor.WHITE);
+                break;
+            default:
+                chc.setColor(p, ChatColor.WHITE);
+                break;
         }
     }
 
