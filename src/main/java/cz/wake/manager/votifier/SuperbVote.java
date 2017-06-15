@@ -41,7 +41,7 @@ public class SuperbVote implements Listener {
                                 onlinePlayer.sendMessage("§aDekujeme za hlas! §eDostal jsi odmenu.");
                             }
                             for (Player p : Bukkit.getOnlinePlayers()) {
-                                p.sendMessage("§b" + onlinePlayer.getName() + " §ehlasoval a ziskal §aodmenu! §a/vote");
+                                p.sendMessage("§b" + onlinePlayer.getName() + " §ehlasoval a ziskal §aodmenu! §c/vote");
                             }
                             checkMountWin(onlinePlayer);
                         } else {

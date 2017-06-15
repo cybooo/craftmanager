@@ -1,6 +1,8 @@
 package cz.wake.manager;
 
 import cz.wake.manager.commads.Chatcolor_command;
+import cz.wake.manager.commads.Profil_command;
+import cz.wake.manager.listener.SettingsListener;
 import cz.wake.manager.utils.ItemFactory;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -23,6 +25,8 @@ public class MainGUI implements Listener {
 
     public static Random random = new Random();
     private Chatcolor_command chatc = new Chatcolor_command();
+    private Profil_command profil = new Profil_command();
+    private SettingsListener settings = new SettingsListener();
 
     public void openMainMenu(Player p) {
 
@@ -139,7 +143,6 @@ public class MainGUI implements Listener {
             }
             if (e.getSlot() == 31) {
                 Main.getInstance().getParticlesAPI().openParticlesMenu(p);
-                //p.sendMessage("§cAktualne nedostupny!");
             }
             if (e.getSlot() == 21) {
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
@@ -341,6 +344,50 @@ public class MainGUI implements Listener {
             }
             p.closeInventory();
         }
+        if (e.getInventory().getTitle().equals("Profil")) {
+            e.setCancelled(true);
+            if (e.getCurrentItem() == null) {
+                return;
+            }
+            if (e.getCurrentItem().getType() == Material.AIR) {
+                return;
+            }
+            if (e.getSlot() == 10) {
+                //this.statistics.openMinigamesMenu(player);
+            }
+            if (e.getSlot() == 31) {
+                settings.openSettingsMenu(p);
+            }
+            if (e.getSlot() == 33){
+                profil.openLanguageMenu(p);
+            }
+        }
+        if (e.getInventory().getTitle().equals("Nastaveni jazyka")) {
+            e.setCancelled(true);
+            if (e.getCurrentItem() == null) {
+                return;
+            }
+            if (e.getCurrentItem().getType() == Material.AIR) {
+                return;
+            }
+            if (e.getSlot() == 40){
+                profil.openMenu(p);
+            }
+            if (e.getSlot() == 36){
+                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BASS, 13.0F, 1.0F);
+                p.sendMessage("");
+                p.sendMessage("§d▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
+                p.sendMessage("");
+                p.sendMessage("");
+                p.sendMessage("§eOdkaz na nas Crowdin projekt:");
+                p.sendMessage("§bhttps://crowdin.com/project/craftmaniacz");
+                p.sendMessage("");
+                p.sendMessage("§d▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
+                p.sendMessage("");
+                p.closeInventory();
+            }
+        }
+
 
     }
 

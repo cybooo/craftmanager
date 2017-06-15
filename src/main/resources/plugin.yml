@@ -51,3 +51,7 @@ commands:
       description: Prikaz pro VIP
     vote:
       description: Prikaz na zobrazeni odkazu k hlasovani
+    skull:
+      description: Prikaz pro hrace na ziskani svoji hlavy
+    profil:
+      description: Nastaveni uctu

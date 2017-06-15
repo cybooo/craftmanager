@@ -2,12 +2,10 @@ package cz.wake.manager;
 
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
-import cz.wake.manager.listener.ChatListener;
-import cz.wake.manager.listener.DeathListener;
-import cz.wake.manager.listener.LoginListener;
-import cz.wake.manager.listener.PlayerListener;
+import cz.wake.manager.listener.*;
 import cz.wake.manager.perks.general.Disenchant;
 import cz.wake.manager.perks.general.DurabilityWarner;
+import cz.wake.manager.perks.general.SkullCommand;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.perks.twerking.TwerkEvent;
 import cz.wake.manager.shop.ShopAPI;
@@ -179,6 +177,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new TempShop(), this);
         pm.registerEvents(new DeathListener(), this);
         pm.registerEvents(new TwerkEvent(), this);
+        pm.registerEvents(new SettingsListener(), this);
 
         // Hlasovani
         if (getConfig().getBoolean("hlasovani")) {
@@ -219,6 +218,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("disenchant").setExecutor(new Disenchant());
         getCommand("vanillasb").setExecutor(new VanillaSb_command());
         getCommand("vote").setExecutor(new Vote_command());
+        getCommand("skull").setExecutor(new SkullCommand());
+        getCommand("profil").setExecutor(new Profil_command());
 
         if (getConfig().getBoolean("hlasovani")) {
             getCommand("fakevote").setExecutor(new Fakevote_command());
