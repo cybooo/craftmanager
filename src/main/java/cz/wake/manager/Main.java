@@ -179,6 +179,13 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new TwerkEvent(), this);
         pm.registerEvents(new SettingsListener(), this);
 
+        if(idServer.equalsIgnoreCase("skyblock")){
+            pm.registerEvents(new SkyblockPVPListener(), this);
+        }
+        if(idServer.equalsIgnoreCase("survival")){
+            pm.registerEvents(new SurvivalPVPListener(), this);
+        }
+
         // Hlasovani
         if (getConfig().getBoolean("hlasovani")) {
             pm.registerEvents(new SuperbVote(), this);
