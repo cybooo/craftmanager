@@ -20,13 +20,13 @@ public class DeathListener implements Listener {
 
         if (killer instanceof Player) {
             for (Player p2 : Bukkit.getOnlinePlayers()) {
-                if (Main.getInstance().death_messages.contains(p)) {
+                if (Main.getInstance().death_messages.contains(p2)) {
                     p2.sendMessage("§c" + p.getName() + " §ebyl zabit hracem §6" + killer.getName());
                 }
             }
         } else {
             for (Player p2 : Bukkit.getOnlinePlayers()) {
-                if (Main.getInstance().death_messages.contains(p)) {
+                if (Main.getInstance().death_messages.contains(p2)) {
                     p2.sendMessage("§c" + p.getName() + " §ebyl zabit §c" + getBetterName(killer));
                 }
             }
