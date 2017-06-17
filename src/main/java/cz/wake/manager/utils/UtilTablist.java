@@ -15,6 +15,8 @@ public class UtilTablist {
             setupPrefixInTabSkyblock(p);
         } else if (Main.getInstance().getConfig().getString("server").equalsIgnoreCase("vanilla")) {
             setupPrefixInTabVanilla(p);
+        } else if (Main.getInstance().getConfig().getString("server").equalsIgnoreCase("vanillasb")) {
+            setupPrefixInTabCreative(p);
         } else {
             setupPrefixInTabSurvival(p); //Default
         }
