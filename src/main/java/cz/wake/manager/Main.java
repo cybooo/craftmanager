@@ -167,6 +167,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     private void loadListeners() {
         PluginManager pm = getServer().getPluginManager();
+        pm.registerEvents(new InventoryListener(), this);
         pm.registerEvents(new ParticlesAPI(), this);
         pm.registerEvents(new PlayerListener(), this);
         pm.registerEvents(new MainGUI(), this);
