@@ -75,7 +75,7 @@ public class PlayerListener implements Listener {
         }
 
         //ChatColor
-        if (p.hasPermission("craftmanager.chatcolor")){
+        if (p.hasPermission("craftmanager.chatcolor") && !p.hasPermission("craftmanager.chatcolor.at")){
             setupChatColor(p);
         }
     }
