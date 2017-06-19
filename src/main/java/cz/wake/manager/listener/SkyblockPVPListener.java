@@ -4,6 +4,7 @@ import cz.wake.manager.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -36,7 +37,17 @@ public class SkyblockPVPListener implements Listener {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "spawn " + p.getName());
                 }
                 if(b.getLocation().equals(new Location(Bukkit.getWorld("pvp"), 448.0, 33.0, -703.0))) { //Teleport do areny
+                    if(p.getInventory().contains(Material.ELYTRA)){
+                        p.sendMessage("§cNelze vstoupit do PvP s Elytrou!");
+                        return;
+                    } else if ((p.getInventory().contains(Material.GOLDEN_APPLE))){
+                        p.sendMessage("§cNelze vstoupit do PvP s Golden Apple!");
+                        return;
+                    }
                     teleportToArena(p);
+                    sendMessage(p);
+                    p.setAllowFlight(false);
+                    p.setFlying(false);
                 }
                 if(b.getLocation().equals(new Location(Bukkit.getWorld("pvp"), 450.0, 14.0, -700.0))) { //Teleport na spawn
                     if(!queue.equals(p)){
@@ -72,6 +83,14 @@ public class SkyblockPVPListener implements Listener {
                 p.teleport(new Location(Bukkit.getWorld("pvp"), 440, 13, -705, -12, 0));
                 break;
         }
+    }
+
+    private void sendMessage(Player p){
+        p.playSound(p.getLocation(), Sound.BLOCK_ANVIL_BREAK,1f,1f);
+        p.sendMessage("   ");
+        p.sendMessage("§c§lUpozorneni pro PvP:");
+        p.sendMessage("§eTeamy v PVP jsou zakazany, poruseni se tresta banem!");
+        p.sendMessage("   ");
     }
 
     private static int randRange(int min, int max) {
