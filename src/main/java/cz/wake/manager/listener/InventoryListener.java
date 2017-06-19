@@ -185,7 +185,7 @@ public class InventoryListener implements Listener {
                 p.sendMessage("§eBarva psani nastavena na: §cCervena");
             }
             if (e.getSlot() == 11) {
-                chatc.setColor(p, ChatColor.AQUA);
+                chatc.setColor(p, ChatColor.DARK_AQUA);
                 Main.getInstance().getMySQL().updateSettings(p,"chatcolor", 3);
                 p.sendMessage("§eBarva psani nastavena na: §3Tyrkysova");
             }
@@ -225,7 +225,7 @@ public class InventoryListener implements Listener {
                 p.sendMessage("§eBarva psani nastavena na: §fBila");
             }
             if (e.getSlot() == 21) {
-                chatc.setColor(p, ChatColor.DARK_AQUA);
+                chatc.setColor(p, ChatColor.BLUE);
                 Main.getInstance().getMySQL().updateSettings(p,"chatcolor", 9);
                 p.sendMessage("§eBarva psani nastavena na: §9Modra");
             }
@@ -240,7 +240,7 @@ public class InventoryListener implements Listener {
                 p.sendMessage("§eBarva psani nastavena na: §1Tmave-modra");
             }
             if (e.getSlot() == 24) {
-                chatc.setColor(p, ChatColor.BLUE);
+                chatc.setColor(p, ChatColor.AQUA);
                 Main.getInstance().getMySQL().updateSettings(p,"chatcolor", 11);
                 p.sendMessage("§eBarva psani nastavena na: §bSvetle-modra");
             }
