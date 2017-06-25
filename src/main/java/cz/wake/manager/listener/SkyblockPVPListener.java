@@ -43,6 +43,9 @@ public class SkyblockPVPListener implements Listener {
                     } else if ((p.getInventory().contains(Material.GOLDEN_APPLE))){
                         p.sendMessage("§cNelze vstoupit do PvP s Golden Apple!");
                         return;
+                    } else if ((p.getInventory().contains(Material.TOTEM))){
+                        p.sendMessage("§cNelze vstoupit do PvP s Totemem!");
+                        return;
                     }
                     teleportToArena(p);
                     sendMessage(p);
