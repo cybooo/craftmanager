@@ -1,8 +1,10 @@
 package cz.wake.manager.utils;
 
-import org.bukkit.Bukkit;
+import net.minecraft.server.v1_11_R1.NBTTagCompound;
+import net.minecraft.server.v1_11_R1.NBTTagList;
 import org.bukkit.Color;
 import org.bukkit.Material;
+import org.bukkit.craftbukkit.v1_11_R1.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -39,68 +41,35 @@ public class ItemFactory {
     }
 
     public static org.bukkit.inventory.ItemStack createHead(String name, String uuid, String textureData) {
-        if(Bukkit.getVersion().contains("v1_11_R1")){
-            net.minecraft.server.v1_11_R1.ItemStack sHead = org.bukkit.craftbukkit.v1_11_R1.inventory.CraftItemStack.asNMSCopy(new org.bukkit.inventory.ItemStack(Material.SKULL_ITEM, 1, (short) 3));
+        net.minecraft.server.v1_11_R1.ItemStack sHead = CraftItemStack.asNMSCopy(new org.bukkit.inventory.ItemStack(Material.SKULL_ITEM, 1, (short) 3));
 
-            net.minecraft.server.v1_11_R1.NBTTagCompound tag = new net.minecraft.server.v1_11_R1.NBTTagCompound();
-            net.minecraft.server.v1_11_R1.NBTTagCompound skullOwnerTag = new net.minecraft.server.v1_11_R1.NBTTagCompound();
-            net.minecraft.server.v1_11_R1.NBTTagCompound displayTag = new net.minecraft.server.v1_11_R1.NBTTagCompound();
-            net.minecraft.server.v1_11_R1.NBTTagCompound propertiesTag = new net.minecraft.server.v1_11_R1.NBTTagCompound();
+        NBTTagCompound tag = new NBTTagCompound();
+        NBTTagCompound skullOwnerTag = new NBTTagCompound();
+        NBTTagCompound displayTag = new NBTTagCompound();
+        NBTTagCompound propertiesTag = new NBTTagCompound();
 
-            net.minecraft.server.v1_11_R1.NBTTagList tagList = new net.minecraft.server.v1_11_R1.NBTTagList();
+        NBTTagList tagList = new NBTTagList();
 
-            net.minecraft.server.v1_11_R1.NBTTagCompound valueTag = new net.minecraft.server.v1_11_R1.NBTTagCompound();
-            valueTag.setString("Value", textureData);
+        NBTTagCompound valueTag = new NBTTagCompound();
+        valueTag.setString("Value", textureData);
 
-            tagList.add(valueTag);
+        tagList.add(valueTag);
 
-            propertiesTag.set("textures", tagList);
+        propertiesTag.set("textures", tagList);
 
-            skullOwnerTag.setString("Id", uuid);
-            skullOwnerTag.setString("Name", name);
+        skullOwnerTag.setString("Id", uuid);
+        skullOwnerTag.setString("Name", name);
 
-            skullOwnerTag.set("Properties", propertiesTag);
+        skullOwnerTag.set("Properties", propertiesTag);
 
-            displayTag.setString("Name", name);
+        displayTag.setString("Name", name);
 
-            tag.set("SkullOwner", skullOwnerTag);
+        tag.set("SkullOwner", skullOwnerTag);
 
-            tag.set("display", displayTag);
+        tag.set("display", displayTag);
 
-            sHead.setTag(tag);
-            return org.bukkit.craftbukkit.v1_11_R1.inventory.CraftItemStack.asBukkitCopy(sHead);
-        } else if (Bukkit.getVersion().contains("v1_12_R1")) {
-            net.minecraft.server.v1_12_R1.ItemStack sHead = org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack.asNMSCopy(new org.bukkit.inventory.ItemStack(Material.SKULL_ITEM, 1, (short) 3));
-
-            net.minecraft.server.v1_12_R1.NBTTagCompound tag = new net.minecraft.server.v1_12_R1.NBTTagCompound();
-            net.minecraft.server.v1_12_R1.NBTTagCompound skullOwnerTag = new net.minecraft.server.v1_12_R1.NBTTagCompound();
-            net.minecraft.server.v1_12_R1.NBTTagCompound displayTag = new net.minecraft.server.v1_12_R1.NBTTagCompound();
-            net.minecraft.server.v1_12_R1.NBTTagCompound propertiesTag = new net.minecraft.server.v1_12_R1.NBTTagCompound();
-
-            net.minecraft.server.v1_12_R1.NBTTagList tagList = new net.minecraft.server.v1_12_R1.NBTTagList();
-
-            net.minecraft.server.v1_12_R1.NBTTagCompound valueTag = new net.minecraft.server.v1_12_R1.NBTTagCompound();
-            valueTag.setString("Value", textureData);
-
-            tagList.add(valueTag);
-
-            propertiesTag.set("textures", tagList);
-
-            skullOwnerTag.setString("Id", uuid);
-            skullOwnerTag.setString("Name", name);
-
-            skullOwnerTag.set("Properties", propertiesTag);
-
-            displayTag.setString("Name", name);
-
-            tag.set("SkullOwner", skullOwnerTag);
-
-            tag.set("display", displayTag);
-
-            sHead.setTag(tag);
-            return org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack.asBukkitCopy(sHead);
-        }
-        return null;
+        sHead.setTag(tag);
+        return CraftItemStack.asBukkitCopy(sHead);
     }
 
     public static ItemStack createColouredLeather(Material armourPart, int red, int green, int blue) {
@@ -113,31 +82,17 @@ public class ItemFactory {
 
     public static ItemStack addGlow(ItemStack item) {
         try {
-            if(Bukkit.getVersion().contains("v1_11_R1")){
-                net.minecraft.server.v1_11_R1.ItemStack nmsStack = org.bukkit.craftbukkit.v1_11_R1.inventory.CraftItemStack.asNMSCopy(item);
-                net.minecraft.server.v1_11_R1.NBTTagCompound tag = null;
-                if (!nmsStack.hasTag()) {
-                    tag = new net.minecraft.server.v1_11_R1.NBTTagCompound();
-                    nmsStack.setTag(tag);
-                }
-                if (tag == null) tag = nmsStack.getTag();
-                net.minecraft.server.v1_11_R1.NBTTagList ench = new net.minecraft.server.v1_11_R1.NBTTagList();
-                tag.set("ench", ench);
+            net.minecraft.server.v1_11_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(item);
+            NBTTagCompound tag = null;
+            if (!nmsStack.hasTag()) {
+                tag = new NBTTagCompound();
                 nmsStack.setTag(tag);
-                return org.bukkit.craftbukkit.v1_11_R1.inventory.CraftItemStack.asCraftMirror(nmsStack);
-            } else if (Bukkit.getVersion().contains("v1_12_R1")) {
-                net.minecraft.server.v1_12_R1.ItemStack nmsStack = org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack.asNMSCopy(item);
-                net.minecraft.server.v1_12_R1.NBTTagCompound tag = null;
-                if (!nmsStack.hasTag()) {
-                    tag = new net.minecraft.server.v1_12_R1.NBTTagCompound();
-                    nmsStack.setTag(tag);
-                }
-                if (tag == null) tag = nmsStack.getTag();
-                net.minecraft.server.v1_12_R1.NBTTagList ench = new net.minecraft.server.v1_12_R1.NBTTagList();
-                tag.set("ench", ench);
-                nmsStack.setTag(tag);
-                return org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack.asCraftMirror(nmsStack);
             }
+            if (tag == null) tag = nmsStack.getTag();
+            NBTTagList ench = new NBTTagList();
+            tag.set("ench", ench);
+            nmsStack.setTag(tag);
+            return CraftItemStack.asCraftMirror(nmsStack);
         } catch (Exception e) {
             e.printStackTrace();
         }

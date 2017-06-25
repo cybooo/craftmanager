@@ -78,13 +78,6 @@ public class PlayerListener implements Listener {
         if (p.hasPermission("craftmanager.chatcolor") && !p.hasPermission("craftmanager.chatcolor.at")){
             setupChatColor(p);
         }
-
-        // Server statistics
-        if(Main.getInstance().getConfig().getBoolean("stats-tracker")){
-            if (!Main.getInstance().getMySQL().hasStats(p)){
-                Main.getInstance().getMySQL().registerPlayerStatistis(p);
-            }
-        }
     }
 
     @EventHandler

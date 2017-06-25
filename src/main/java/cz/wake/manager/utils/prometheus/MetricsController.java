@@ -5,6 +5,7 @@ import cz.wake.manager.utils.Log;
 import io.prometheus.client.CollectorRegistry;
 import io.prometheus.client.Gauge;
 import io.prometheus.client.exporter.common.TextFormat;
+import net.minecraft.server.v1_11_R1.MinecraftServer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
+import java.text.DecimalFormat;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -56,13 +58,8 @@ public class MetricsController extends AbstractHandler {
                 players.labels("offline").set(Bukkit.getOfflinePlayers().length);
 
                 // TPS
-                if(Bukkit.getVersion().contains("v1_11_R1")){
-                    double d = net.minecraft.server.v1_11_R1.MinecraftServer.getServer().recentTps[0];
-                    tps.set(d);
-                } else if (Bukkit.getVersion().contains("v1_12_R1")) {
-                    double d = net.minecraft.server.v1_12_R1.MinecraftServer.getServer().recentTps[0];
-                    tps.set(d);
-                }
+                double d = MinecraftServer.getServer().recentTps[0];
+                tps.set(d);
 
                 for (World world : Bukkit.getWorlds()) {
                     loadedChunks.labels(world.getName()).set(world.getLoadedChunks().length);
