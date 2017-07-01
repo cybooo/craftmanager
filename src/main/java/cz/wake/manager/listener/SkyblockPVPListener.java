@@ -18,7 +18,7 @@ import java.util.Random;
 
 public class SkyblockPVPListener implements Listener {
 
-    private ArrayList<Player> queue = new ArrayList<>();
+    public static ArrayList<Player> queue = new ArrayList<>();
 
     @EventHandler
     public void onClick(PlayerInteractEvent e){
