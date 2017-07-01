@@ -37,13 +37,13 @@ public class SkyblockPVPListener implements Listener {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "spawn " + p.getName());
                 }
                 if(b.getLocation().equals(new Location(Bukkit.getWorld("pvp"), 448.0, 33.0, -703.0))) { //Teleport do areny
-                    if(p.getInventory().contains(Material.ELYTRA)){
+                    if(p.getInventory().contains(Material.ELYTRA) || (p.getInventory().getItemInOffHand().getType().equals(Material.ELYTRA))){
                         p.sendMessage("§cNelze vstoupit do PvP s Elytrou!");
                         return;
-                    } else if ((p.getInventory().contains(Material.GOLDEN_APPLE))){
+                    } else if ((p.getInventory().contains(Material.GOLDEN_APPLE)) || (p.getInventory().getItemInOffHand().getType().equals(Material.GOLDEN_APPLE))){
                         p.sendMessage("§cNelze vstoupit do PvP s Golden Apple!");
                         return;
-                    } else if ((p.getInventory().contains(Material.TOTEM))){
+                    } else if ((p.getInventory().contains(Material.TOTEM)) || (p.getInventory().getItemInOffHand().getType().equals(Material.TOTEM))){
                         p.sendMessage("§cNelze vstoupit do PvP s Totemem!");
                         return;
                     }
