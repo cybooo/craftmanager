@@ -20,14 +20,5 @@ public class VoteReseterTask implements Runnable {
         } else {
             Log.withPrefix("Restart Week hlasu byl zrusen, nenastal cas.");
         }
-
-        if (Main.getInstance().getMySQL().getResetTimeMonth() < System.currentTimeMillis()) {
-            Log.withPrefix("Byl detekovan reset Month hlasu.");
-            Log.withPrefix("Probehne reset...");
-            Main.getInstance().getMySQL().resetMonthVotes();
-            Log.withPrefix(ChatColor.GREEN + "Hlasy za 30 dni vyresetovany.");
-        } else {
-            Log.withPrefix("Restart Month hlasu byl zrusen, nenastal cas.");
-        }
     }
 }
