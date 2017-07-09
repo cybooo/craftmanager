@@ -68,7 +68,6 @@ public class Chatcolor_command implements CommandExecutor {
         ItemStack gray = ItemFactory.create(Material.INK_SACK, (byte) 7, "§7§lSvetle seda");
         ItemStack darkGray = ItemFactory.create(Material.INK_SACK, (byte) 8, "§8§lTmave seda");
         ItemStack blue = ItemFactory.create(Material.DRAGON_EGG, (byte) 0, "§9§lModra");
-        ItemStack black = ItemFactory.create(Material.COAL, (byte) 0, "§0§lCerna");
         ItemStack pink = ItemFactory.create(Material.INK_SACK, (byte) 9, "§d§lRuzova");
 
         ItemStack deaktivace = ItemFactory.create(Material.BARRIER, (byte) 0, "§cDeaktivace");
@@ -84,12 +83,11 @@ public class Chatcolor_command implements CommandExecutor {
         inv.setItem(19, darkGray);
         inv.setItem(20, white);
         inv.setItem(21, blue);
-        inv.setItem(22, black);
-        inv.setItem(23, darkBlue);
-        inv.setItem(24, lightBlue);
+        inv.setItem(22, darkBlue);
+        inv.setItem(23, lightBlue);
 
-        inv.setItem(25, darkGreen);
-        inv.setItem(28, darkRed);
+        inv.setItem(24, darkGreen);
+        inv.setItem(25, darkRed);
 
         inv.setItem(40, deaktivace);
 

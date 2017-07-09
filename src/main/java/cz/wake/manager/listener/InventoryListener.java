@@ -230,26 +230,21 @@ public class InventoryListener implements Listener {
                 p.sendMessage("§eBarva psani nastavena na: §9Modra");
             }
             if (e.getSlot() == 22) {
-                chatc.setColor(p, ChatColor.BLACK);
-                Main.getInstance().getMySQL().updateSettings(p,"chatcolor", 0);
-                p.sendMessage("§eBarva psani nastavena na: §0Cerna");
-            }
-            if (e.getSlot() == 23) {
                 chatc.setColor(p, ChatColor.DARK_BLUE);
                 Main.getInstance().getMySQL().updateSettings(p,"chatcolor", 1);
                 p.sendMessage("§eBarva psani nastavena na: §1Tmave-modra");
             }
-            if (e.getSlot() == 24) {
+            if (e.getSlot() == 23) {
                 chatc.setColor(p, ChatColor.AQUA);
                 Main.getInstance().getMySQL().updateSettings(p,"chatcolor", 11);
                 p.sendMessage("§eBarva psani nastavena na: §bSvetle-modra");
             }
-            if (e.getSlot() == 25) {
+            if (e.getSlot() == 24) {
                 chatc.setColor(p, ChatColor.DARK_GREEN);
                 Main.getInstance().getMySQL().updateSettings(p,"chatcolor", 2);
                 p.sendMessage("§eBarva psani nastavena na: §2Tmave-zelena");
             }
-            if (e.getSlot() == 28) {
+            if (e.getSlot() == 25) {
                 chatc.setColor(p, ChatColor.DARK_RED);
                 Main.getInstance().getMySQL().updateSettings(p,"chatcolor", 4);
                 p.sendMessage("§eBarva psani nastavena na: §4Tmave-cervena");

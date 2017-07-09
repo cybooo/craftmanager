@@ -160,9 +160,6 @@ public class PlayerListener implements Listener {
     private void setupChatColor(Player p){
         int setting = Main.getInstance().getMySQL().getSettings(p, "chatcolor");
         switch (setting){
-            case 0:
-                chc.setColor(p,ChatColor.BLACK);
-                break;
             case 1:
                 chc.setColor(p, ChatColor.DARK_BLUE);
                 break;
