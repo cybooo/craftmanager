@@ -170,7 +170,7 @@ public class PlayerListener implements Listener {
                 chc.setColor(p, ChatColor.DARK_GREEN);
                 break;
             case 3:
-                chc.setColor(p, ChatColor.AQUA);
+                chc.setColor(p, ChatColor.DARK_AQUA);
                 break;
             case 4:
                 chc.setColor(p, ChatColor.DARK_RED);
@@ -188,13 +188,13 @@ public class PlayerListener implements Listener {
                 chc.setColor(p, ChatColor.DARK_GRAY);
                 break;
             case 9:
-                chc.setColor(p, ChatColor.DARK_AQUA);
+                chc.setColor(p, ChatColor.BLUE);
                 break;
             case 10:
                 chc.setColor(p, ChatColor.GREEN);
                 break;
             case 11:
-                chc.setColor(p, ChatColor.BLUE);
+                chc.setColor(p, ChatColor.AQUA);
                 break;
             case 12:
                 chc.setColor(p, ChatColor.RED);
