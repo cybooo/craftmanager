@@ -134,9 +134,8 @@ public class Help_command implements CommandExecutor {
             ItemStack conn = ItemFactory.create(Material.MAP, (byte) 0, "§a§lOdkazy na nase dalsi servery", "",
                     "§eWeb: §7https://craftmania.cz",
                     "§eDiscord: §7https://discord.gg/craftmania",
-                    "§eTeamSpeak3 IP: §7ts.craftmania.cz",
                     "§ePlugDJ: §7https://plug.dj/craftmania-cz",
-                    "§eStatus page: §7http://status.craftmania.cz", "",
+                    "§eStatus page: §cNedostupny...", "",
                     "§bKliknutim ti zobrazime klikaci odkazy v chatu!");
 
             inv.setItem(12, is);
@@ -216,9 +215,8 @@ public class Help_command implements CommandExecutor {
             ItemStack conn = ItemFactory.create(Material.MAP, (byte) 0, "§a§lOdkazy na nase dalsi servery", "",
                     "§eWeb: §7https://craftmania.cz",
                     "§eDiscord: §7https://discord.gg/craftmania",
-                    "§eTeamSpeak3 IP: §7ts.craftmania.cz",
                     "§ePlugDJ: §7https://plug.dj/craftmania-cz",
-                    "§eStatus page: §7http://status.craftmania.cz", "",
+                    "§eStatus page: §cNedostupny...", "",
                     "§bKliknutim ti zobrazime klikaci odkazy v chatu!");
 
             inv.setItem(12, poz);
@@ -344,9 +342,8 @@ public class Help_command implements CommandExecutor {
             ItemStack conn = ItemFactory.create(Material.MAP, (byte) 0, "§a§lOdkazy na nase dalsi servery", "",
                     "§eWeb: §7https://craftmania.cz",
                     "§eDiscord: §7https://discord.gg/craftmania",
-                    "§eTeamSpeak3 IP: §7ts.craftmania.cz",
                     "§ePlugDJ: §7https://plug.dj/craftmania-cz",
-                    "§eStatus page: §7http://status.craftmania.cz", "",
+                    "§eStatus page: §cNedostupny...", "",
                     "§bKliknutim ti zobrazime klikaci odkazy v chatu!");
 
             inv.setItem(12, res);

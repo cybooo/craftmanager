@@ -8,6 +8,7 @@ public class VoteReseterTask implements Runnable {
 
     @Override
     public void run() {
+        //TODO: Zjednodusit
         Log.withPrefix("Kontrola resetu hlasu.");
         if (Main.getInstance().getMySQL().getResetTimeWeek() < System.currentTimeMillis()) {
             Log.withPrefix("Byl detekovan reset Week hlasu.");
