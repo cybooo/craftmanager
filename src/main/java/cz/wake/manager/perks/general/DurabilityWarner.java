@@ -23,9 +23,10 @@ public class DurabilityWarner implements Listener {
             return;
         }
 
+        //TODO: FIX 1.12
         if (Main.getInstance().durabilityWarnerList.contains(material)) {
             if (durability <= 35) {
-                Titles.sendActionBarPlayer(player, "§c§lVAROVANI! §a" + getBetterName(material) + " §ese brzo znici! (" + durability + "/" + material.getMaxDurability() + ")");
+                //Titles.sendActionBarPlayer(player, "§c§lVAROVANI! §a" + getBetterName(material) + " §ese brzo znici! (" + durability + "/" + material.getMaxDurability() + ")");
             }
         }
     }

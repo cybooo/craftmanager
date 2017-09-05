@@ -1,18 +1,18 @@
 package cz.wake.manager.utils;
 
-import net.minecraft.server.v1_11_R1.IChatBaseComponent;
-import net.minecraft.server.v1_11_R1.IChatBaseComponent.ChatSerializer;
-import net.minecraft.server.v1_11_R1.PacketPlayOutChat;
-import net.minecraft.server.v1_11_R1.PacketPlayOutTitle;
-import net.minecraft.server.v1_11_R1.PlayerConnection;
+import net.minecraft.server.v1_12_R1.IChatBaseComponent;
+import net.minecraft.server.v1_12_R1.IChatBaseComponent.ChatSerializer;
+import net.minecraft.server.v1_12_R1.PacketPlayOutChat;
+import net.minecraft.server.v1_12_R1.PacketPlayOutTitle;
+import net.minecraft.server.v1_12_R1.PlayerConnection;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 public class Titles {
 
-    private static void sendAnnouncement(Player p, String msg) {
+    /*private static void sendAnnouncement(Player p, String msg) {
         String s = ChatColor.translateAlternateColorCodes('&', msg);
 
         IChatBaseComponent icbc = ChatSerializer.a("{\"text\": \"" + s + "\"}");
@@ -28,7 +28,7 @@ public class Titles {
         for (Player p : Bukkit.getServer().getOnlinePlayers()) {
             Titles.sendAnnouncement(p, msg);
         }
-    }
+    }*/
 
     public static void sendTitlePlayer(Player player, Integer fadeIn, Integer stay, Integer fadeOut, String message) {
         sendTitle(player, fadeIn, stay, fadeOut, message, null);

@@ -358,16 +358,15 @@ public class SQLManager {
                 PreparedStatement ps = null;
                 try {
                     conn = pool.getConnection();
-                    ps = conn.prepareStatement("INSERT INTO votes (uuid, last_name, votes, month, week) VALUES (?,?,?,?,?) ON DUPLICATE KEY UPDATE votes = ?;");
+                    ps = conn.prepareStatement("INSERT INTO votes (uuid, last_name, votes, month, week) VALUES (?,?,?,?,?);");
                     ps.setString(1, p.getUniqueId().toString());
                     ps.setString(2, p.getName());
                     ps.setInt(3, 0);
                     ps.setInt(4, 0);
                     ps.setInt(5, 0);
-                    ps.setInt(6, 0);
                     ps.executeUpdate();
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    //e.printStackTrace();
                 } finally {
                     pool.close(conn, ps, null);
                 }
