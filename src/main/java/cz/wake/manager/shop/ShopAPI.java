@@ -965,12 +965,7 @@ public class ShopAPI implements Listener {
         } else {
             int i = Main.getInstance().getMySQL().getPlayerCoins(p.getUniqueId());
             if (i >= price) {
-                if(Main.getInstance().getIdServer().equalsIgnoreCase("vanillasb") || Main.getInstance().getIdServer().equalsIgnoreCase("creative")
-                        || Main.getInstance().getIdServer().equalsIgnoreCase("creative2") || Main.getInstance().getIdServer().equalsIgnoreCase("survival")){
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set " + perm + " true");
-                } else {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "pp user " + p.getName() + " add " + perm);
-                }
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set " + perm + " true");
                 Main.getInstance().getMySQL().takeCoins(p, price);
                 p.sendMessage("§eZakoupil jsi si tag: §f" + name);
                 p.closeInventory();
