@@ -10,3 +10,6 @@ jdk:
 cache:
   directories:
     - $HOME/.m2/repository
+
+notifications:
+  webhooks: http://internal.craftmania.cz/travis-ci.php
