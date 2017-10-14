@@ -22,11 +22,13 @@ public class ShopAPI implements Listener {
                 || Main.getInstance().getIdServer().equalsIgnoreCase("survival")
                 || Main.getInstance().getIdServer().equalsIgnoreCase("creative")
                 || Main.getInstance().getIdServer().equalsIgnoreCase("creative2")
-                || Main.getInstance().getIdServer().equalsIgnoreCase("vanillasb")) {
-            Inventory inv = Bukkit.createInventory(null, 27, "§0Coinshop");
+                || Main.getInstance().getIdServer().equalsIgnoreCase("vanillasb")
+                || Main.getInstance().getIdServer().equalsIgnoreCase("test")) {
+            Inventory inv = Bukkit.createInventory(null, 45, "§0Coinshop");
 
-            ItemStack tags = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§aTags", "§7Zakup si tag pred nick", "§7a bud IN!");
+            ItemStack tags = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§aTags (za CraftCoiny)", "§7Zakup si tag pred nick", "§7a bud IN!", "", "§eKlikni pro zobrazeni");
             ItemStack keys = ItemFactory.create(Material.TRIPWIRE_HOOK, (byte) 0, "§cKeys", "§7Zakup si legendarni klice", "§7za CraftCoiny!", "", "§cJiz brzy...");
+            ItemStack tagsTokens = ItemFactory.create(Material.NAME_TAG, (byte)0, "§bTags (za CraftTokeny)", "§7Vytvor si vlastni tag", "§7podle svych predstav,", "§7limit prakticky neexistuje!","","§aAktualne mas §f" + Main.getInstance().getMySQL().getPlayerTokens(p.getUniqueId()) + "§a CT", "", "§eKlikni k otevreni editoru");
 
             if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
                 ItemStack multipliers = ItemFactory.create(Material.BLAZE_POWDER, (byte) 0, "§aBoostery", "§7Zakup pro sebe nebo cely server", "§7booster na urceny cas!");
@@ -38,6 +40,7 @@ public class ShopAPI implements Listener {
 
             inv.setItem(11, tags);
             inv.setItem(13, keys);
+            inv.setItem(31, tagsTokens);
             p.openInventory(inv);
         } else {
             p.sendMessage("§cNa tomto serveru je CoinShop deaktivovany.");
@@ -350,6 +353,9 @@ public class ShopAPI implements Listener {
                 } else {
                     p.sendMessage("§cNa tomto serveru nelze pouzivat boostery.");
                 }
+            }
+            if (e.getSlot() == 31){
+                TagsEditor.createTagEditor(p);
             }
         }
         if (e.getInventory().getTitle().equals("Boostery")) {

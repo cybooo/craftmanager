@@ -9,6 +9,7 @@ import cz.wake.manager.perks.general.SkullCommand;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.perks.twerking.TwerkEvent;
 import cz.wake.manager.shop.ShopAPI;
+import cz.wake.manager.shop.TagsEditor;
 import cz.wake.manager.shop.TempShop;
 import cz.wake.manager.sql.SQLManager;
 import cz.wake.manager.utils.CustomCrafting;
@@ -48,6 +49,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     public ArrayList<Player> death_messages = new ArrayList<>();
     private ParticlesAPI particlesAPI = new ParticlesAPI();
     public List<Material> durabilityWarnerList = new ArrayList<>();
+    public List<String> blockedTags = new ArrayList<>();
     private MainGUI gui = new MainGUI();
     private ShopAPI shop = new ShopAPI();
     private VoteHandler vh = new VoteHandler();
@@ -128,6 +130,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             }
         }
 
+        // Nastaveni blokovanych tagu
+        blockedTags.addAll(getConfig().getStringList("blocked-tags"));
+
         // Nastaveni Prometheus serveru
         if (getConfig().getBoolean("prometheus.state")) {
             Log.withPrefix("Probehne aktivace Prometheus endpointu a TPS detekce!");
@@ -182,6 +187,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new DeathListener(), this);
         pm.registerEvents(new TwerkEvent(), this);
         pm.registerEvents(new SettingsListener(), this);
+        pm.registerEvents(new TagsEditor(), this);
 
         if(idServer.equalsIgnoreCase("skyblock")){
             pm.registerEvents(new SkyblockPVPListener(), this);
