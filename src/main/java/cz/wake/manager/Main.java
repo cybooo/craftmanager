@@ -11,6 +11,7 @@ import cz.wake.manager.perks.twerking.TwerkEvent;
 import cz.wake.manager.shop.ShopAPI;
 import cz.wake.manager.shop.TempShop;
 import cz.wake.manager.sql.SQLManager;
+import cz.wake.manager.utils.CustomCrafting;
 import cz.wake.manager.utils.Log;
 import cz.wake.manager.utils.ServerFactory;
 import cz.wake.manager.utils.SkyblockHeadFix;
@@ -142,6 +143,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
                 Log.withPrefix("Nelze spustit Jetty Endpoint pro Prometheus.");
             }
         }
+
+        CustomCrafting.addPackedIce(this);
     }
 
     public void onDisable() {
