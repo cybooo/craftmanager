@@ -355,7 +355,11 @@ public class ShopAPI implements Listener {
                 }
             }
             if (e.getSlot() == 31){
-                TagsEditor.createTagEditor(p);
+                if(Main.getInstance().getMySQL().getPlayerTokens(p.getUniqueId()) > 0){
+                    TagsEditor.createTagEditor(p);
+                } else {
+                    p.sendMessage("§cNemas dostatek CraftTokenu k provedeni teto akce.");
+                }
             }
         }
         if (e.getInventory().getTitle().equals("Boostery")) {
