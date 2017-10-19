@@ -77,7 +77,7 @@ public class TagsEditor implements Listener {
                 }
                 Main.getInstance().getMySQL().takeTokens(p, 1);
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tags create " + m + " " + m + " &8▏");
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getPlayer().toString() + " permission set deluxetags.tag." + m + " true");
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getPlayer().getName() + " permission set deluxetags.tag." + m + " true");
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tags reload");
                 p.sendMessage("");
                 p.sendMessage("§aTvuj tag §f" + m + " §abyl uspesne vytvoren! Nyni si ho aktivuj v §e/tags");
