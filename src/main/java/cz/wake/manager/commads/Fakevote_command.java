@@ -13,7 +13,7 @@ import java.util.UUID;
 
 public class Fakevote_command implements CommandExecutor {
 
-    public static final String FAKE_HOST_NAME_FOR_VOTE = UUID.randomUUID().toString();
+    private static final String FAKE_HOST_NAME_FOR_VOTE = UUID.randomUUID().toString();
 
     @Override
     public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {

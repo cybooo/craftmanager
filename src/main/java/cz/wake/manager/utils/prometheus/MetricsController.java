@@ -5,7 +5,7 @@ import cz.wake.manager.utils.Log;
 import io.prometheus.client.CollectorRegistry;
 import io.prometheus.client.Gauge;
 import io.prometheus.client.exporter.common.TextFormat;
-import net.minecraft.server.v1_11_R1.MinecraftServer;
+import net.minecraft.server.v1_12_R1.MinecraftServer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
