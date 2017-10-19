@@ -11,6 +11,8 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import java.util.HashSet;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TagsEditor implements Listener {
 
@@ -52,24 +54,30 @@ public class TagsEditor implements Listener {
                 p.sendMessage("§eVytvareni tagu bylo zruseno, nyni muzes normalne psat!");
                 p.sendMessage("");
             } else {
-                if(m.length() > 8){
+                if(m.length() > 10){
                     p.sendMessage("");
                     p.sendMessage("§cTag nemuze byt delsi nez 10 znaku!");
                     p.sendMessage("");
+                    return;
                 }
                 if(m.contains(" ")){
                     p.sendMessage("");
                     p.sendMessage("§cNelze vytvorit tag, ktery obsahuje mezeru!");
                     p.sendMessage("");
+                    return;
                 }
-                if(Main.getInstance().blockedTags.toString().matches(m)){
-                    p.sendMessage("");
-                    p.sendMessage("§cNelze vytvorit tag s sprostym nazvem!");
-                    p.sendMessage("");
+                for(Pattern pattern : Main.getInstance().blockedTags){
+                    Matcher matcher = pattern.matcher(m);
+                    if(matcher.find()){
+                        p.sendMessage("");
+                        p.sendMessage("§cNelze vytvorit tag s sprostym nazvem!");
+                        p.sendMessage("");
+                        return;
+                    }
                 }
                 Main.getInstance().getMySQL().takeTokens(p, 1);
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tags create " + m + " " + m + " &8▏");
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getPlayer() + " permission set deluxetags.tag." + m + " true");
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getPlayer().toString() + " permission set deluxetags.tag." + m + " true");
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tags reload");
                 p.sendMessage("");
                 p.sendMessage("§aTvuj tag §f" + m + " §abyl uspesne vytvoren! Nyni si ho aktivuj v §e/tags");

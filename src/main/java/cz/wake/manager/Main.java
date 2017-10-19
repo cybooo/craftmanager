@@ -41,6 +41,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Main extends JavaPlugin implements PluginMessageListener {
 
@@ -49,7 +50,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     public ArrayList<Player> death_messages = new ArrayList<>();
     private ParticlesAPI particlesAPI = new ParticlesAPI();
     public List<Material> durabilityWarnerList = new ArrayList<>();
-    public List<String> blockedTags = new ArrayList<>();
+    public List<Pattern> blockedTags = new ArrayList<Pattern>();
     private MainGUI gui = new MainGUI();
     private ShopAPI shop = new ShopAPI();
     private VoteHandler vh = new VoteHandler();
@@ -131,7 +132,11 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         }
 
         // Nastaveni blokovanych tagu
-        blockedTags.addAll(getConfig().getStringList("blocked-tags"));
+        for(String s : getConfig().getStringList("blocked-tags")){
+            Pattern p = Pattern.compile(s);
+            blockedTags.add(p);
+        }
+
 
         // Nastaveni Prometheus serveru
         if (getConfig().getBoolean("prometheus.state")) {
@@ -319,4 +324,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     public boolean isEconomyFix() {
         return economyFix;
     }
+
+
 }
