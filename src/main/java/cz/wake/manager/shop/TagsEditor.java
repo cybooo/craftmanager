@@ -19,14 +19,6 @@ public class TagsEditor implements Listener {
     private static HashSet<Player> list = new HashSet<Player>();
 
     public static void createTagEditor(final Player p){
-
-        //odeslani do chatu info
-        //hrac napise pozadovany tag
-        //server schvali
-        //pokud je vse OK, odebere token a vytvori tag
-        //odebere hrace z listu
-        //zrusi se editor
-
         list.add(p);
         p.closeInventory();
         p.sendMessage("");
@@ -38,14 +30,12 @@ public class TagsEditor implements Listener {
         p.sendMessage("§cPokud chces kdykoliv opustit editor napis -> exit");
         p.sendMessage("");
         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BASS, 1.0f, 1.0f);
-
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
     public void onChat(AsyncPlayerChatEvent e){
         Player p = e.getPlayer();
         String m = e.getMessage();
-
         if(list.contains(p)){
             e.setCancelled(true);
             if(m.equalsIgnoreCase("exit")){
@@ -67,7 +57,8 @@ public class TagsEditor implements Listener {
                     return;
                 }
                 for(Pattern pattern : Main.getInstance().blockedTags){
-                    Matcher matcher = pattern.matcher(m);
+                    String editedMessage = m.toLowerCase();
+                    Matcher matcher = pattern.matcher(editedMessage);
                     if(matcher.find()){
                         p.sendMessage("");
                         p.sendMessage("§cNelze vytvorit tag s sprostym nazvem!");
