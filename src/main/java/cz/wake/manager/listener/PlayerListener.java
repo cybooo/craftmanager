@@ -65,9 +65,9 @@ public class PlayerListener implements Listener {
         UtilTablist.setupTablist(p);
 
         //AT
-        //if (Main.getInstance().getMySQL().isAT(p)) {
-        //    Main.getInstance().at_list.add(p);
-        //}
+        if (Main.getInstance().getMySQL().isAT(p)) {
+            Main.getInstance().at_list.add(p);
+        }
 
         //Death messages
         if (Main.getInstance().getMySQL().getSettings(p, "death_messages") == 1) {
