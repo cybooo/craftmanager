@@ -56,12 +56,18 @@ public class TagsEditor implements Listener {
                     p.sendMessage("");
                     return;
                 }
+                if(m.contains("&")){
+                    p.sendMessage("");
+                    p.sendMessage("§cNelze vytvorit tag, ktery obsahuje prefix pro barvy!");
+                    p.sendMessage("");
+                    return;
+                }
                 for(Pattern pattern : Main.getInstance().blockedTags){
                     String editedMessage = m.toLowerCase();
                     Matcher matcher = pattern.matcher(editedMessage);
                     if(matcher.find()){
                         p.sendMessage("");
-                        p.sendMessage("§cNelze vytvorit tag s sprostym nazvem!");
+                        p.sendMessage("§cTento tag je blokovany, nelze ho vytvorit!");
                         p.sendMessage("");
                         return;
                     }
