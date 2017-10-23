@@ -16,8 +16,6 @@ import cz.wake.manager.utils.CustomCrafting;
 import cz.wake.manager.utils.Log;
 import cz.wake.manager.utils.ServerFactory;
 import cz.wake.manager.utils.SkyblockHeadFix;
-import cz.wake.manager.utils.prometheus.MetricsController;
-import cz.wake.manager.utils.prometheus.TpsPollerTask;
 import cz.wake.manager.utils.tasks.ATCheckerTask;
 import cz.wake.manager.utils.tasks.UpdateServerTask;
 import cz.wake.manager.utils.tasks.UpdateTablistTask;
@@ -32,9 +30,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
-import org.eclipse.jetty.server.Server;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
 import java.io.ByteArrayOutputStream;
@@ -58,10 +53,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private String idServer;
     private static ByteArrayOutputStream b = new ByteArrayOutputStream();
     private static DataOutputStream out = new DataOutputStream(b);
-    static final Logger log = LoggerFactory.getLogger(Main.class);
-    private TpsPollerTask tps = new TpsPollerTask();
     private SQLManager sql;
-    private Server server;
     public boolean economyFix = false;
 
     private static Main instance;
@@ -82,9 +74,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // HikariCP
         initDatabase();
-
-        //Detekce TPS
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new TpsPollerTask(), 100L, 1L);
 
         // MDC tagy pro Sentry
         MDC.put("server", idServer);
@@ -132,28 +121,12 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         }
 
         // Nastaveni blokovanych tagu
-        for(String s : getConfig().getStringList("blocked-tags")){
+        for (String s : getConfig().getStringList("blocked-tags")) {
             Pattern p = Pattern.compile(s);
             blockedTags.add(p);
         }
 
-
-        // Nastaveni Prometheus serveru
-        if (getConfig().getBoolean("prometheus.state")) {
-            Log.withPrefix("Probehne aktivace Prometheus endpointu a TPS detekce!");
-            getServer().getScheduler().scheduleSyncRepeatingTask(Main.getInstance(), new TpsPollerTask(), 0, 40);
-            int port = getConfig().getInt("prometheus.port");
-            server = new Server(port);
-            server.setHandler(new MetricsController(this));
-            try {
-                server.start();
-                Log.withPrefix("Spusten Prometheus endpoint na portu " + port);
-            } catch (Exception e) {
-                log.error("", e);
-                Log.withPrefix("Nelze spustit Jetty Endpoint pro Prometheus.");
-            }
-        }
-
+        // Custom crafting recepty
         CustomCrafting.addPackedIce(this);
     }
 
@@ -161,15 +134,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Deaktivace MySQL
         sql.onDisable();
-
-        // Deaktivace Jetty portu
-        if (server != null) {
-            try {
-                server.stop();
-            } catch (Exception e) {
-                log.error("", e);
-            }
-        }
 
         instance = null;
     }
@@ -194,10 +158,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new SettingsListener(), this);
         pm.registerEvents(new TagsEditor(), this);
 
-        if(idServer.equalsIgnoreCase("skyblock")){
+        if (idServer.equalsIgnoreCase("skyblock")) {
             pm.registerEvents(new SkyblockPVPListener(), this);
         }
-        if(idServer.equalsIgnoreCase("survival")){
+        if (idServer.equalsIgnoreCase("survival")) {
             pm.registerEvents(new SurvivalPVPListener(), this);
         }
 
@@ -304,7 +268,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             out.writeUTF("Connect");
             out.writeUTF(target);
         } catch (Exception e) {
-            log.error("", e);
+            e.printStackTrace();
         }
         player.sendPluginMessage(Main.getInstance(), "BungeeCord", b.toByteArray());
     }

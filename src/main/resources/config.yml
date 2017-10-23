@@ -39,11 +39,6 @@ tablist-update: false
 # Zakazani podobnych nicku MrWakeCZ & mrwakecz (UUID bug)
 economyfix: false
 
-# Prometheus statistiky
-prometheus:
- state: false
- port: 9225
-
 # Materialy pro DurabilityWarner
 # Funkce pro VIP
 materials:
