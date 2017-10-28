@@ -39,6 +39,12 @@ tablist-update: false
 # Zakazani podobnych nicku MrWakeCZ & mrwakecz (UUID bug)
 economyfix: false
 
+# Detekce prikazu psanych AT
+ats-commands:
+  enabled: true
+  ignored-commands:
+   - /msg
+
 # Materialy pro DurabilityWarner
 # Funkce pro VIP
 materials:

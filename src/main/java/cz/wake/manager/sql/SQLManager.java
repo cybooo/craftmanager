@@ -665,6 +665,29 @@ public class SQLManager {
         }.runTaskAsynchronously(Main.getInstance());
     }
 
+    public final void atsCommandLog(final Player p, final String command) {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                Connection conn = null;
+                PreparedStatement ps = null;
+                try {
+                    conn = pool.getConnection();
+                    ps = conn.prepareStatement("INSERT INTO at_commands (nick,server,command,time) VALUES (?,?,?,?);");
+                    ps.setString(1, p.getName());
+                    ps.setString(2, Main.getInstance().getIdServer());
+                    ps.setString(3, command);
+                    ps.setLong(4, System.currentTimeMillis());
+                    ps.executeUpdate();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    pool.close(conn, ps, null);
+                }
+            }
+        }.runTaskAsynchronously(Main.getInstance());
+    }
+
     public final long getBoostedPlayer(final Player p, final String booster) {
         Connection conn = null;
         PreparedStatement ps = null;

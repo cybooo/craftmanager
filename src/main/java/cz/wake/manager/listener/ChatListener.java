@@ -6,8 +6,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 public class ChatListener implements Listener {
@@ -28,15 +30,15 @@ public class ChatListener implements Listener {
                 this._cdRunnable.put(p, new BukkitRunnable() {
                     @Override
                     public void run() {
-                        ChatListener.this._time.put(p, Double.valueOf(((Double) ChatListener.this._time.get(p)).doubleValue() - 0.1D));
-                        if (((Double) ChatListener.this._time.get(p)).doubleValue() < 0.01D) {
+                        ChatListener.this._time.put(p, (ChatListener.this._time.get(p)) - 0.1D);
+                        if ((ChatListener.this._time.get(p)) < 0.01D) {
                             ChatListener.this._time.remove(p);
                             ChatListener.this._cdRunnable.remove(p);
                             cancel();
                         }
                     }
                 });
-                ((BukkitRunnable) this._cdRunnable.get(p)).runTaskTimer(Main.getInstance(), 2L, 2L);
+                (this._cdRunnable.get(p)).runTaskTimer(Main.getInstance(), 2L, 2L);
             }
         }
         if (chatc.getChatcolorList().containsKey(p)) {
@@ -47,4 +49,24 @@ public class ChatListener implements Listener {
             }
         }
     }
+
+    @EventHandler(ignoreCancelled = true)
+    public void ChatEvent(final PlayerCommandPreprocessEvent e) throws IOException {
+        if(!Main.getInstance().getConfig().getBoolean("ats-commands.enabled")){
+            return;
+        }
+        if(!Main.getInstance().at_list.contains(e.getPlayer())){
+            return;
+        }
+        String[] split;
+        for (int length = (split = e.getMessage().split(" ")).length, i = 0; i < length; ++i) {
+            final String word = split[i];
+            if (Main.getInstance().getConfig().getStringList("ats-commands.ignored-commands").contains(word)) {
+                return;
+            }
+        }
+        Main.getInstance().getMySQL().atsCommandLog(e.getPlayer(), e.getMessage());
+    }
+
+
 }
