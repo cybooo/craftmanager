@@ -40,7 +40,7 @@ public class AnvilContainer extends ContainerAnvil {
         localInventory.setItem(0, getItem(Material.PAPER, "Prejmenuj me", 0));
     }
 
-    public static org.bukkit.inventory.ItemStack getItem(Material material, String name, int data, String... paramVarArgs) {
+    public static ItemStack getItem(Material material, String name, int data, String... paramVarArgs) {
         ArrayList localArrayList = new ArrayList();
         String[] arrayOfString;
         int j = (arrayOfString = paramVarArgs).length;
@@ -48,11 +48,11 @@ public class AnvilContainer extends ContainerAnvil {
             Object localObject = arrayOfString[i];
             localArrayList.add(localObject);
         }
-        Object localObject = new org.bukkit.inventory.ItemStack(material, 1, (short) data);
-        ItemMeta localItemMeta = ((org.bukkit.inventory.ItemStack) localObject).getItemMeta();
+        Object localObject = new ItemStack(material, 1, (short) data);
+        ItemMeta localItemMeta = ((ItemStack) localObject).getItemMeta();
         localItemMeta.setDisplayName(name);
         localItemMeta.setLore(localArrayList);
-        ((org.bukkit.inventory.ItemStack) localObject).setItemMeta(localItemMeta);
+        ((ItemStack) localObject).setItemMeta(localItemMeta);
         return (ItemStack) localObject;
     }
 }

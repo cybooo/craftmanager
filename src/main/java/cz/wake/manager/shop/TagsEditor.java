@@ -14,7 +14,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.inventory.AnvilInventory;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryView;
@@ -66,7 +65,7 @@ public class TagsEditor implements Listener {
             Inventory inv = e.getInventory();
             if (inv instanceof AnvilInventory) {
                 InventoryView inventoryView = e.getView();
-                net.minecraft.server.v1_12_R1.EntityPlayer localEntityPlayer = ((org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer) player).getHandle();
+                EntityPlayer localEntityPlayer = ((CraftPlayer) player).getHandle();
                 if ((!localEntityPlayer.activeContainer.checkReachable) &&
                         (list.contains(player))) {
                     int i = e.getRawSlot();
