@@ -2,7 +2,6 @@ package cz.wake.manager.shop;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
-import cz.wake.manager.utils.TimeUnit;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -28,7 +27,7 @@ public class ShopAPI implements Listener {
 
             ItemStack tags = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§aTags (za CraftCoiny)", "§7Zakup si tag pred nick", "§7a bud IN!", "", "§eKlikni pro zobrazeni");
             ItemStack keys = ItemFactory.create(Material.TRIPWIRE_HOOK, (byte) 0, "§cKeys", "§7Zakup si legendarni klice", "§7za CraftCoiny!", "", "§cJiz brzy...");
-            ItemStack tagsTokens = ItemFactory.create(Material.NAME_TAG, (byte)0, "§bTags (za CraftTokeny)", "§7Vytvor si vlastni tag", "§7podle svych predstav,", "§7limit prakticky neexistuje!","","§aAktualne mas §f" + Main.getInstance().getMySQL().getPlayerTokens(p.getUniqueId()) + "§a CT", "", "§eKlikni k otevreni editoru");
+            ItemStack tagsTokens = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§bTags (za CraftTokeny)", "§7Vytvor si vlastni tag", "§7podle svych predstav,", "§7limit prakticky neexistuje!", "", "§aAktualne mas §f" + Main.getInstance().getMySQL().getPlayerTokens(p.getUniqueId()) + "§a CT", "", "§eKlikni k otevreni editoru");
 
             if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
                 ItemStack multipliers = ItemFactory.create(Material.BLAZE_POWDER, (byte) 0, "§aBoostery", "§7Zakup pro sebe nebo cely server", "§7booster na urceny cas!");
@@ -354,8 +353,8 @@ public class ShopAPI implements Listener {
                     p.sendMessage("§cNa tomto serveru nelze pouzivat boostery.");
                 }
             }
-            if (e.getSlot() == 31){
-                if(Main.getInstance().getMySQL().getPlayerTokens(p.getUniqueId()) > 0){
+            if (e.getSlot() == 31) {
+                if (Main.getInstance().getMySQL().getPlayerTokens(p.getUniqueId()) > 0) {
                     TagsEditor.createTagEditor(p);
                 } else {
                     p.sendMessage("§cNemas dostatek CraftTokenu k provedeni teto akce.");

@@ -1,6 +1,5 @@
 package cz.wake.manager.commads;
 
-import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -41,13 +40,13 @@ public class Profil_command implements CommandExecutor {
         headItemMeta.setLore(headLore);
         headItem.setItemMeta(headItemMeta);
 
-        ItemStack statistics = ItemFactory.create(Material.BARRIER,(byte)0, "§cStatistiky","§8Planovano...");
+        ItemStack statistics = ItemFactory.create(Material.BARRIER, (byte) 0, "§cStatistiky", "§8Planovano...");
 
-        ItemStack achievements = ItemFactory.create(Material.BARRIER, (byte)0, "§cAchievementy", "§8Planovano...");
+        ItemStack achievements = ItemFactory.create(Material.BARRIER, (byte) 0, "§cAchievementy", "§8Planovano...");
 
-        ItemStack nastaveni = ItemFactory.create(Material.REDSTONE_COMPARATOR, (byte)0, "§aNastaveni uctu","§7Diky nastaveni si muzes", "§7prispusobit lobby/hry podle sebe.", "", "§eKlikni pro zobrazeni/nastaveni");
+        ItemStack nastaveni = ItemFactory.create(Material.REDSTONE_COMPARATOR, (byte) 0, "§aNastaveni uctu", "§7Diky nastaveni si muzes", "§7prispusobit lobby/hry podle sebe.", "", "§eKlikni pro zobrazeni/nastaveni");
 
-        ItemStack multiplier = ItemFactory.create(Material.BARRIER,(byte)0, "§cMultipliers","§8Planovano...");
+        ItemStack multiplier = ItemFactory.create(Material.BARRIER, (byte) 0, "§cMultipliers", "§8Planovano...");
 
         ItemStack jazyk = ItemFactory.createHead("§aNastaveni jazyka", "0ceac85e-159d-4f9d-a1c2-c8acde792f23", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjFkZDRmZTRhNDI5YWJkNjY1ZGZkYjNlMjEzMjFkNmVmYTZhNmI1ZTdiOTU2ZGI5YzVkNTljOWVmYWIyNSJ9fX0=");
         ItemMeta bhMeta = jazyk.getItemMeta();
@@ -73,7 +72,7 @@ public class Profil_command implements CommandExecutor {
         p.openInventory(menu);
     }
 
-    public void openLanguageMenu(Player p){
+    public void openLanguageMenu(Player p) {
 
         Inventory inv = Bukkit.createInventory(null, 45, "Nastaveni jazyka");
 
@@ -113,8 +112,8 @@ public class Profil_command implements CommandExecutor {
         bhMeta3.setLore(bhLore3);
         jazyk3.setItemMeta(bhMeta3);
 
-        ItemStack zpet = ItemFactory.create(Material.ARROW, (byte)0, "§eZpet");
-        ItemStack help = ItemFactory.create(Material.BOOK, (byte)0, "§aPomoc s prekladem","§7Chces nam pomoct s prekladem?", "§7Neni nic jednodussiho nez si", "§7pozadat o pristup v nasem","§7projektu na Crowdinu!","","§eKliknutim zobrazis odkaz na projekt");
+        ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§eZpet");
+        ItemStack help = ItemFactory.create(Material.BOOK, (byte) 0, "§aPomoc s prekladem", "§7Chces nam pomoct s prekladem?", "§7Neni nic jednodussiho nez si", "§7pozadat o pristup v nasem", "§7projektu na Crowdinu!", "", "§eKliknutim zobrazis odkaz na projekt");
 
         inv.setItem(11, jazyk);
         inv.setItem(13, jazyk2);

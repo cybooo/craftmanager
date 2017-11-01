@@ -75,7 +75,7 @@ public class PlayerListener implements Listener {
         }
 
         //ChatColor
-        if (p.hasPermission("craftmanager.chatcolor") && !p.hasPermission("craftmanager.chatcolor.at")){
+        if (p.hasPermission("craftmanager.chatcolor") && !p.hasPermission("craftmanager.chatcolor.at")) {
             setupChatColor(p);
         }
     }
@@ -149,17 +149,17 @@ public class PlayerListener implements Listener {
         Player p = e.getPlayer();
 
         // Deaktivace Spectatoru na Creativu
-        if (Main.getInstance().getIdServer().equalsIgnoreCase("creative") || Main.getInstance().getIdServer().equalsIgnoreCase("creative2")) {
-            if (e.getNewGameMode() == GameMode.SPECTATOR) {
-                e.setCancelled(true);
-                p.sendMessage("§cNelze si zmenit GM na Spectatora!");
-            }
+        if (Main.getInstance().getIdServer().equalsIgnoreCase("creative")
+                || Main.getInstance().getIdServer().equalsIgnoreCase("creative2")
+                && e.getNewGameMode() == GameMode.SPECTATOR) {
+            e.setCancelled(true);
+            p.sendMessage("§cNelze si zmenit GM na Spectatora!");
         }
     }
 
-    private void setupChatColor(Player p){
+    private void setupChatColor(Player p) {
         int setting = Main.getInstance().getMySQL().getSettings(p, "chatcolor");
-        switch (setting){
+        switch (setting) {
             case 1:
                 chc.setColor(p, ChatColor.DARK_BLUE);
                 break;
@@ -199,7 +199,8 @@ public class PlayerListener implements Listener {
             case 13:
                 chc.setColor(p, ChatColor.LIGHT_PURPLE);
                 break;
-            case 14:case 15:
+            case 14:
+            case 15:
                 chc.setColor(p, ChatColor.WHITE);
                 break;
             default:

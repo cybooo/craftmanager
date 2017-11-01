@@ -10,7 +10,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import java.util.HashSet;
-import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,7 +17,7 @@ public class TagsEditor implements Listener {
 
     private static HashSet<Player> list = new HashSet<Player>();
 
-    public static void createTagEditor(final Player p){
+    public static void createTagEditor(final Player p) {
         list.add(p);
         p.closeInventory();
         p.sendMessage("");
@@ -33,39 +32,39 @@ public class TagsEditor implements Listener {
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
-    public void onChat(AsyncPlayerChatEvent e){
+    public void onChat(AsyncPlayerChatEvent e) {
         Player p = e.getPlayer();
         String m = e.getMessage();
-        if(list.contains(p)){
+        if (list.contains(p)) {
             e.setCancelled(true);
-            if(m.equalsIgnoreCase("exit")){
+            if (m.equalsIgnoreCase("exit")) {
                 list.remove(p);
                 p.sendMessage("");
                 p.sendMessage("§eVytvareni tagu bylo zruseno, nyni muzes normalne psat!");
                 p.sendMessage("");
             } else {
-                if(m.length() > 10){
+                if (m.length() > 10) {
                     p.sendMessage("");
                     p.sendMessage("§cTag nemuze byt delsi nez 10 znaku!");
                     p.sendMessage("");
                     return;
                 }
-                if(m.contains(" ")){
+                if (m.contains(" ")) {
                     p.sendMessage("");
                     p.sendMessage("§cNelze vytvorit tag, ktery obsahuje mezeru!");
                     p.sendMessage("");
                     return;
                 }
-                if(m.contains("&")){
+                if (m.contains("&")) {
                     p.sendMessage("");
                     p.sendMessage("§cNelze vytvorit tag, ktery obsahuje prefix pro barvy!");
                     p.sendMessage("");
                     return;
                 }
-                for(Pattern pattern : Main.getInstance().blockedTags){
+                for (Pattern pattern : Main.getInstance().blockedTags) {
                     String editedMessage = m.toLowerCase();
                     Matcher matcher = pattern.matcher(editedMessage);
-                    if(matcher.find()){
+                    if (matcher.find()) {
                         p.sendMessage("");
                         p.sendMessage("§cTento tag je blokovany, nelze ho vytvorit!");
                         p.sendMessage("");

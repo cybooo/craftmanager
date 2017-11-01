@@ -24,7 +24,7 @@ public class PlayerProfile {
 
     }
 
-    private void loadCoins(){
+    private void loadCoins() {
         Connection conn = null;
         PreparedStatement ps = null;
         int c = 0;

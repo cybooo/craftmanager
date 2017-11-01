@@ -5,11 +5,11 @@ import org.bukkit.ChatColor;
 
 public class Log {
 
-    public static void withPrefix(String s){
+    public static void withPrefix(String s) {
         Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "[CraftManager] " + ChatColor.WHITE + s);
     }
 
-    public static void normalMessage(String s){
+    public static void normalMessage(String s) {
         Bukkit.getConsoleSender().sendMessage(s);
     }
 

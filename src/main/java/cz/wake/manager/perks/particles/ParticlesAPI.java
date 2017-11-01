@@ -13,25 +13,25 @@ import org.bukkit.inventory.ItemStack;
 
 public class ParticlesAPI implements Listener {
 
-    Hearts h = new Hearts();
-    Angry a = new Angry();
-    WhiteMagic w = new WhiteMagic();
-    WitchMagic m = new WitchMagic();
-    Slime s = new Slime();
-    Flame f = new Flame();
-    Redstone r = new Redstone();
-    Cloud l = new Cloud();
-    Enchanted e = new Enchanted();
-    EndRod er = new EndRod();
-    Firework k = new Firework();
-    DragonBreath db = new DragonBreath();
-    Portal p = new Portal();
-    Lava la = new Lava();
-    Smoke sm = new Smoke();
-    Happy ha = new Happy();
-    Snowball sn = new Snowball();
-    BlackHearts bh = new BlackHearts();
-    Void vo = new Void();
+    private Hearts h = new Hearts();
+    private Angry a = new Angry();
+    private WhiteMagic w = new WhiteMagic();
+    private WitchMagic m = new WitchMagic();
+    private Slime s = new Slime();
+    private Flame f = new Flame();
+    private Redstone r = new Redstone();
+    private Cloud l = new Cloud();
+    private Enchanted e = new Enchanted();
+    private EndRod er = new EndRod();
+    private Firework k = new Firework();
+    private DragonBreath db = new DragonBreath();
+    private Portal p = new Portal();
+    private Lava la = new Lava();
+    private Smoke sm = new Smoke();
+    private Happy ha = new Happy();
+    private Snowball sn = new Snowball();
+    private BlackHearts bh = new BlackHearts();
+    private Void vo = new Void();
 
     public void openParticlesMenu(final Player p) {
 

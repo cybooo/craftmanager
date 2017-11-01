@@ -16,7 +16,7 @@ public class ChatListener implements Listener {
 
     private Chatcolor_command chatc = new Chatcolor_command();
     private HashMap<Player, Double> _time = new HashMap();
-    HashMap<Player, BukkitRunnable> _cdRunnable = new HashMap();
+    private HashMap<Player, BukkitRunnable> _cdRunnable = new HashMap();
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
@@ -51,15 +51,15 @@ public class ChatListener implements Listener {
     }
 
     @EventHandler(ignoreCancelled = true)
-    public void ChatEvent(final PlayerCommandPreprocessEvent e) throws IOException {
-        if(!Main.getInstance().getConfig().getBoolean("ats-commands.enabled")){
+    public void chatEvent(final PlayerCommandPreprocessEvent e) throws IOException {
+        if (!Main.getInstance().getConfig().getBoolean("ats-commands.enabled")) {
             return;
         }
-        if(!Main.getInstance().at_list.contains(e.getPlayer())){
+        if (!Main.getInstance().at_list.contains(e.getPlayer())) {
             return;
         }
-        String[] split;
-        for (int length = (split = e.getMessage().split(" ")).length, i = 0; i < length; ++i) {
+        String[] split = e.getMessage().split(" ");
+        for (int length = split.length, i = 0; i < length; ++i) {
             final String word = split[i];
             if (Main.getInstance().getConfig().getStringList("ats-commands.ignored-commands").contains(word)) {
                 return;
