@@ -15,7 +15,7 @@ import java.util.Random;
 public class TwerkEvent implements Listener {
 
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
-    public void onToggleSneak(final PlayerToggleSneakEvent e) {
+    public void onToggleSneak(PlayerToggleSneakEvent e) {
         if (e.isCancelled() || !e.isSneaking()) {
             return;
         }

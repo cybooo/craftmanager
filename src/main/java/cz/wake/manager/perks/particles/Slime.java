@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class Slime {
 
     public static final HashMap<String, Integer> e = new HashMap();
-    int task;
+    private int task;
 
     @SuppressWarnings("deprecation")
     public void activate(Player p) {

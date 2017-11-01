@@ -1,7 +1,6 @@
 package cz.wake.manager.perks.general;
 
 import cz.wake.manager.Main;
-import cz.wake.manager.utils.Titles;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

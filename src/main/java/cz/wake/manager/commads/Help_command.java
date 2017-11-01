@@ -17,10 +17,9 @@ public class Help_command implements CommandExecutor {
     public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("help"))) {
-                if (ArrayOfString.length == 0) {
-                    openHelpMenu(player);
-                }
+            if ((Command.getName().equalsIgnoreCase("help"))
+                    && (ArrayOfString.length == 0)) {
+                openHelpMenu(player);
             }
         }
         return false;

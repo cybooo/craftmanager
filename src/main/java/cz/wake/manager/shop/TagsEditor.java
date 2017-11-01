@@ -28,7 +28,7 @@ public class TagsEditor implements Listener {
 
     private static HashSet<Player> list = new HashSet<Player>();
 
-    public static void createTagEditor(final Player p){
+    public static void createTagEditor(final Player p) {
         list.add(p);
         p.closeInventory();
         AnvilContainer.openAnvil(p);
