@@ -56,15 +56,15 @@ public class SuperbVote implements Listener {
             public void run() {
                 if (sance == 1) { //1% sance
                     giveCoins(p, 100);
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "cratekeys give " + p.getName() + " Vote 1");
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "packages give " + p.getName() + " votecrate");
                 } else if (sance <= 5 && sance >= 2) { //5% sance
                     giveCoins(p, 50);
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "cratekeys give " + p.getName() + " Vote 1");
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "packages give " + p.getName() + " votecrate");
                 } else if (sance <= 25 && sance >= 6) { //25% sance
                     giveCoins(p, 25);
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "cratekeys give " + p.getName() + " Vote 1");
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "packages give " + p.getName() + " votecrate");
                 } else {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "cratekeys give " + p.getName() + " Vote 1");
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "packages give " + p.getName() + " votecrate");
                     giveCoins(p, 10);
                 }
             }
