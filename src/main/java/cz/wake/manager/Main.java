@@ -1,6 +1,5 @@
 package cz.wake.manager;
 
-import cz.wake.craftcore.sql.SQLManager;
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
 import cz.wake.manager.listener.*;
@@ -270,7 +269,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         return economyFix;
     }
 
-    public SQLRequests getMySQL(){
+    public SQLRequests getMySQL() {
         return sql;
     }
 
