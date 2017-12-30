@@ -31,6 +31,8 @@ public class UtilTablist {
             p.setPlayerListName("§c§lADMINKA §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.eventer")) {
             p.setPlayerListName("§d§lEVENTER §f" + p.getName());
+        } else if (p.hasPermission("craftmanager.prefix.developer")) {
+            p.setPlayerListName("§e§lDEVELOPER §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.admin")) {
             p.setPlayerListName("§c§lADMIN §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.builder")) {
@@ -59,6 +61,8 @@ public class UtilTablist {
             p.setPlayerListName("§c§lADMINKA §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.eventer")) {
             p.setPlayerListName("§d§lEVENTER §f" + p.getName());
+        } else if (p.hasPermission("craftmanager.prefix.developer")) {
+            p.setPlayerListName("§e§lDEVELOPER §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.admin")) {
             p.setPlayerListName("§c§lADMIN §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.builder")) {
@@ -89,6 +93,8 @@ public class UtilTablist {
             p.setPlayerListName("§c§lADMINKA §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.eventer")) {
             p.setPlayerListName("§d§lEVENTER §f" + p.getName());
+        } else if (p.hasPermission("craftmanager.prefix.developer")) {
+            p.setPlayerListName("§e§lDEVELOPER §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.admin")) {
             p.setPlayerListName("§c§lADMIN §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.builder")) {
@@ -115,6 +121,8 @@ public class UtilTablist {
             p.setPlayerListName("§c§lADMINKA §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.eventer")) {
             p.setPlayerListName("§d§lEVENTER §f" + p.getName());
+        } else if (p.hasPermission("craftmanager.prefix.developer")) {
+            p.setPlayerListName("§e§lDEVELOPER §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.admin")) {
             p.setPlayerListName("§c§lADMIN §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.builder")) {
