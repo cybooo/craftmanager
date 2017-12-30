@@ -11,7 +11,7 @@ import cz.wake.manager.perks.twerking.TwerkEvent;
 import cz.wake.manager.shop.ShopAPI;
 import cz.wake.manager.shop.TagsEditor;
 import cz.wake.manager.shop.TempShop;
-import cz.wake.manager.sql.SQLManager;
+import cz.wake.manager.sql.SQLRequests;
 import cz.wake.manager.utils.CustomCrafting;
 import cz.wake.manager.utils.Log;
 import cz.wake.manager.utils.ServerFactory;
@@ -30,7 +30,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
-import org.slf4j.MDC;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -53,7 +52,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private String idServer;
     private static ByteArrayOutputStream b = new ByteArrayOutputStream();
     private static DataOutputStream out = new DataOutputStream(b);
-    private SQLManager sql;
+    private SQLRequests sql;
     public boolean economyFix = false;
 
     private static Main instance;
@@ -71,14 +70,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Register eventu a prikazu
         loadListeners();
         loadCommands();
-
-        // HikariCP
-        initDatabase();
-
-        // MDC tagy pro Sentry
-        MDC.put("server", idServer);
-        MDC.put("players", String.valueOf(Bukkit.getOnlinePlayers().size()));
-        MDC.put("version", Bukkit.getBukkitVersion());
 
         // EconomyFix UUID
         economyFix = Main.getInstance().getConfig().getBoolean("economyfix");
@@ -131,9 +122,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     }
 
     public void onDisable() {
-
-        // Deaktivace MySQL
-        sql.onDisable();
 
         instance = null;
     }
@@ -240,10 +228,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         return shop;
     }
 
-    public SQLManager getMySQL() {
-        return sql;
-    }
-
     public VoteHandler getVoteHandler() {
         return vh;
     }
@@ -281,13 +265,12 @@ public class Main extends JavaPlugin implements PluginMessageListener {
                 || name.equalsIgnoreCase("SHIELD") || name.equalsIgnoreCase("SHEARS");
     }
 
-    private void initDatabase() {
-        sql = new SQLManager(this);
-    }
-
     public boolean isEconomyFix() {
         return economyFix;
     }
 
+    public SQLRequests getMySQL() {
+        return sql;
+    }
 
 }
