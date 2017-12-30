@@ -52,7 +52,28 @@ commands:
       description: Prikaz pro VIP
     vote:
       description: Prikaz na zobrazeni odkazu k hlasovani
+      aliases: [hlasovani]
     skull:
       description: Prikaz pro hrace na ziskani svoji hlavy
     profil:
       description: Nastaveni uctu
+
+permissions:
+    craftmanager.*:
+      description: Kompletni pristup k pluginu
+    craftmanager.coloranvils.*:
+      description: Povoleni hraci menit libovolne text itemu v kovadline
+    craftmanager.vip.disenchant:
+      description: Povoleni VIP k pouziti prikazu /disenchant
+    craftmanager.vip.durabilitywarner:
+      description: Povoleni VIP oznamenu o brzkem zniceni itemu
+    craftmanager.develop:
+      description: Pravo pro prikazy k testovacim ucelum
+    craftmanager.particles.*:
+      description: Pravo na aktivace vsech Particles v /part
+    craftmanager.vip.twerking:
+      description: Tweking pro VIP na Vanilla-Skyblock
+    craftmanager.chatcolor:
+      description: Povoleni hraci zmeny barvy psani v /chatcolor
+    craftmanager.chatcolor.at:
+      description: Nastaveni zlute barvy pro AT
