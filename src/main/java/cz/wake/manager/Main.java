@@ -3,6 +3,7 @@ package cz.wake.manager;
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
 import cz.wake.manager.listener.*;
+import cz.wake.manager.perks.coloranvil.AnvilListener;
 import cz.wake.manager.perks.general.Disenchant;
 import cz.wake.manager.perks.general.DurabilityWarner;
 import cz.wake.manager.perks.general.SkullCommand;
@@ -53,7 +54,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private static ByteArrayOutputStream b = new ByteArrayOutputStream();
     private static DataOutputStream out = new DataOutputStream(b);
     private SQLRequests sql;
-    public boolean economyFix = false;
+    private boolean economyFix = false;
 
     private static Main instance;
 
@@ -122,7 +123,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     }
 
     public void onDisable() {
-
         instance = null;
     }
 
@@ -146,9 +146,12 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new SettingsListener(), this);
         pm.registerEvents(new TagsEditor(), this);
 
+        // Skyblock PVP listener
         if (idServer.equalsIgnoreCase("skyblock")) {
             pm.registerEvents(new SkyblockPVPListener(), this);
         }
+
+        // Survival PVP listener
         if (idServer.equalsIgnoreCase("survival")) {
             pm.registerEvents(new SurvivalPVPListener(), this);
         }
@@ -165,6 +168,12 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         if (idServer.equalsIgnoreCase("skyblock") && idServer.equalsIgnoreCase("vanillasb")) {
             pm.registerEvents(new SkyblockHeadFix(), this);
             Log.withPrefix("Aktivace opravy SkullFix");
+        }
+
+        // Colored Anvils (VIP vyhoda)
+        if (getConfig().getBoolean("coloredanvils")) {
+            pm.registerEvents(new AnvilListener(), this);
+            Log.withPrefix("Aktivace barevneho psani v kovadline.");
         }
 
     }
@@ -195,6 +204,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("skull").setExecutor(new SkullCommand());
         getCommand("profil").setExecutor(new Profil_command());
 
+        // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {
             getCommand("fakevote").setExecutor(new Fakevote_command());
         }

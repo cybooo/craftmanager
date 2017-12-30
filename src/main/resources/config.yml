@@ -36,6 +36,9 @@ stats-tracker: true
 # Update tablist task
 tablist-update: false
 
+# Barevne psani v kovadline
+coloredanvils: false
+
 # Zakazani podobnych nicku MrWakeCZ & mrwakecz (UUID bug)
 economyfix: false
 
