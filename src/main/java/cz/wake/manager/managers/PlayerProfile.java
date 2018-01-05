@@ -1,6 +1,5 @@
 package cz.wake.manager.managers;
 
-import cz.wake.craftcore.api.CoreAPI;
 import cz.wake.manager.Main;
 import org.bukkit.entity.Player;
 
@@ -30,7 +29,7 @@ public class PlayerProfile {
         PreparedStatement ps = null;
         int c = 0;
         try {
-            conn = CoreAPI.getSQL().getPool().getConnection();
+            conn = Main.getInstance().getMySQL().getPool().getConnection();
             ps = conn.prepareStatement("SELECT * FROM CraftCoins WHERE uuid = '" + this.p.getUniqueId().toString() + "'");
             ps.executeQuery();
             if (ps.getResultSet().next()) {
@@ -39,7 +38,7 @@ public class PlayerProfile {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            CoreAPI.getSQL().getPool().close(conn, ps, null);
+            Main.getInstance().getMySQL().getPool().close(conn, ps, null);
         }
         this.craftcoins = c;
     }

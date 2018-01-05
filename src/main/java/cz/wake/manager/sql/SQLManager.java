@@ -1,6 +1,6 @@
 package cz.wake.manager.sql;
 
-import cz.wake.craftcore.api.CoreAPI;
+import com.zaxxer.hikari.HikariDataSource;
 import cz.wake.manager.Main;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -11,13 +11,32 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class SQLRequests {
+public class SQLManager {
+
+    private final Main plugin;
+    private final ConnectionPoolManager pool;
+    private HikariDataSource dataSource;
+
+    public SQLManager(Main plugin) {
+        this.plugin = plugin;
+        pool = new ConnectionPoolManager(plugin);
+    }
+
+    public void onDisable() {
+        pool.closePool();
+    }
+
+    public ConnectionPoolManager getPool() {
+        return pool;
+    }
+
+    //todo: zjednodušit...
 
     public final int getPlayerCoins(final UUID uuid) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = CoreAPI.getSQL().getPool().getConnection();
+            conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT balance FROM CraftCoins WHERE uuid = '" + uuid.toString() + "';");
             ps.executeQuery();
             if (ps.getResultSet().next()) {
@@ -26,7 +45,7 @@ public class SQLRequests {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            CoreAPI.getSQL().getPool().close(conn, ps, null);
+            pool.close(conn, ps, null);
         }
         return 0;
     }
@@ -35,7 +54,7 @@ public class SQLRequests {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = CoreAPI.getSQL().getPool().getConnection();
+            conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT tokens FROM CraftCoins WHERE uuid = '" + uuid.toString() + "';");
             ps.executeQuery();
             if (ps.getResultSet().next()) {
@@ -44,7 +63,7 @@ public class SQLRequests {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            CoreAPI.getSQL().getPool().close(conn, ps, null);
+            pool.close(conn, ps, null);
         }
         return 0;
     }
@@ -53,7 +72,7 @@ public class SQLRequests {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = CoreAPI.getSQL().getPool().getConnection();
+            conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT votes FROM votes WHERE uuid = '" + uuid.toString() + "';");
             ps.executeQuery();
             if (ps.getResultSet().next()) {
@@ -62,7 +81,7 @@ public class SQLRequests {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            CoreAPI.getSQL().getPool().close(conn, ps, null);
+            pool.close(conn, ps, null);
         }
         return 0;
     }
@@ -71,7 +90,7 @@ public class SQLRequests {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = CoreAPI.getSQL().getPool().getConnection();
+            conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT month FROM votes WHERE uuid = '" + uuid.toString() + "';");
             ps.executeQuery();
             if (ps.getResultSet().next()) {
@@ -80,7 +99,7 @@ public class SQLRequests {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            CoreAPI.getSQL().getPool().close(conn, ps, null);
+            pool.close(conn, ps, null);
         }
         return 0;
     }
@@ -89,7 +108,7 @@ public class SQLRequests {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = CoreAPI.getSQL().getPool().getConnection();
+            conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT week FROM votes WHERE uuid = '" + uuid.toString() + "';");
             ps.executeQuery();
             if (ps.getResultSet().next()) {
@@ -98,7 +117,7 @@ public class SQLRequests {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            CoreAPI.getSQL().getPool().close(conn, ps, null);
+            pool.close(conn, ps, null);
         }
         return 0;
     }
@@ -107,7 +126,7 @@ public class SQLRequests {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = CoreAPI.getSQL().getPool().getConnection();
+            conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT * FROM votes WHERE uuid = ?;");
             ps.setString(1, p.getUniqueId().toString());
             ps.executeQuery();
@@ -116,7 +135,7 @@ public class SQLRequests {
             e.printStackTrace();
             return false;
         } finally {
-            CoreAPI.getSQL().getPool().close(conn, ps, null);
+            pool.close(conn, ps, null);
         }
     }
 
@@ -125,7 +144,7 @@ public class SQLRequests {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = CoreAPI.getSQL().getPool().getConnection();
+            conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT last_name FROM votes ORDER BY month DESC LIMIT 10;");
             ps.executeQuery();
             while (ps.getResultSet().next()) {
@@ -134,7 +153,7 @@ public class SQLRequests {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            CoreAPI.getSQL().getPool().close(conn, ps, null);
+            pool.close(conn, ps, null);
         }
         return names;
     }
@@ -144,7 +163,7 @@ public class SQLRequests {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = CoreAPI.getSQL().getPool().getConnection();
+            conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT month FROM votes ORDER BY month DESC LIMIT 10;");
             ps.executeQuery();
             while (ps.getResultSet().next()) {
@@ -153,7 +172,7 @@ public class SQLRequests {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            CoreAPI.getSQL().getPool().close(conn, ps, null);
+            pool.close(conn, ps, null);
         }
         return names;
     }
@@ -162,7 +181,7 @@ public class SQLRequests {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = CoreAPI.getSQL().getPool().getConnection();
+            conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT time FROM craftboxer_nextReset WHERE id = 2;");
             ps.executeQuery();
             if (ps.getResultSet().next()) {
@@ -171,17 +190,16 @@ public class SQLRequests {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            CoreAPI.getSQL().getPool().close(conn, ps, null);
+            pool.close(conn, ps, null);
         }
         return 0L;
     }
 
-    @Deprecated
     public final long getResetTimeMonth() {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = CoreAPI.getSQL().getPool().getConnection();
+            conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT time FROM craftboxer_nextReset WHERE id = 3;");
             ps.executeQuery();
             if (ps.getResultSet().next()) {
@@ -190,7 +208,7 @@ public class SQLRequests {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            CoreAPI.getSQL().getPool().close(conn, ps, null);
+            pool.close(conn, ps, null);
         }
         return 0L;
     }
@@ -199,7 +217,7 @@ public class SQLRequests {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = CoreAPI.getSQL().getPool().getConnection();
+            conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT last_vote FROM votes WHERE last_name = ?;");
             ps.setString(1, p.getName());
             ps.executeQuery();
@@ -209,7 +227,7 @@ public class SQLRequests {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            CoreAPI.getSQL().getPool().close(conn, ps, null);
+            pool.close(conn, ps, null);
         }
         return 0L;
     }
@@ -219,7 +237,7 @@ public class SQLRequests {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = CoreAPI.getSQL().getPool().getConnection();
+            conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT * FROM " + server + "_players WHERE sname = ?;");
             ps.setString(1, p.getName().toLowerCase());
             ps.executeQuery();
@@ -228,7 +246,7 @@ public class SQLRequests {
             e.printStackTrace();
             return false;
         } finally {
-            CoreAPI.getSQL().getPool().close(conn, ps, null);
+            pool.close(conn, ps, null);
         }
     }
 
@@ -237,7 +255,7 @@ public class SQLRequests {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = CoreAPI.getSQL().getPool().getConnection();
+            conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT nname FROM " + server + "_players WHERE sname = ?;");
             ps.setString(1, p.getName().toLowerCase());
             ps.executeQuery();
@@ -247,7 +265,7 @@ public class SQLRequests {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            CoreAPI.getSQL().getPool().close(conn, ps, null);
+            pool.close(conn, ps, null);
         }
         return "";
     }
@@ -256,7 +274,7 @@ public class SQLRequests {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = CoreAPI.getSQL().getPool().getConnection();
+            conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT " + table + " FROM at_table WHERE nick = ?;");
             ps.setString(1, p.getName());
             ps.executeQuery();
@@ -266,7 +284,7 @@ public class SQLRequests {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            CoreAPI.getSQL().getPool().close(conn, ps, null);
+            pool.close(conn, ps, null);
         }
         return 0;
     }
@@ -275,7 +293,7 @@ public class SQLRequests {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = CoreAPI.getSQL().getPool().getConnection();
+            conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT * FROM at_table WHERE nick = ?;");
             ps.setString(1, p.getName());
             ps.executeQuery();
@@ -284,7 +302,7 @@ public class SQLRequests {
             e.printStackTrace();
             return false;
         } finally {
-            CoreAPI.getSQL().getPool().close(conn, ps, null);
+            pool.close(conn, ps, null);
         }
     }
 
@@ -295,7 +313,7 @@ public class SQLRequests {
                 Connection conn = null;
                 PreparedStatement ps = null;
                 try {
-                    conn = CoreAPI.getSQL().getPool().getConnection();
+                    conn = pool.getConnection();
                     ps = conn.prepareStatement("UPDATE votes SET votes= ?, week = ?, month = ? WHERE uuid = '" + p.getUniqueId().toString() + "';");
                     ps.setInt(1, 1 + getPlayerTotalVotes(p.getUniqueId()));
                     ps.setInt(2, 1 + getPlayerTotalWeek(p.getUniqueId()));
@@ -304,7 +322,7 @@ public class SQLRequests {
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    CoreAPI.getSQL().getPool().close(conn, ps, null);
+                    pool.close(conn, ps, null);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
@@ -317,7 +335,7 @@ public class SQLRequests {
                 Connection conn = null;
                 PreparedStatement ps = null;
                 try {
-                    conn = CoreAPI.getSQL().getPool().getConnection();
+                    conn = pool.getConnection();
                     ps = conn.prepareStatement("INSERT INTO CraftCoins (uuid, balance) VALUES (?,?) ON DUPLICATE KEY UPDATE balance = ?;");
                     ps.setString(1, uuid.toString());
                     ps.setInt(2, amount);
@@ -326,7 +344,7 @@ public class SQLRequests {
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    CoreAPI.getSQL().getPool().close(conn, ps, null);
+                    pool.close(conn, ps, null);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
@@ -339,14 +357,14 @@ public class SQLRequests {
                 Connection conn = null;
                 PreparedStatement ps = null;
                 try {
-                    conn = CoreAPI.getSQL().getPool().getConnection();
+                    conn = pool.getConnection();
                     ps = conn.prepareStatement("UPDATE CraftCoins SET balance = ? WHERE uuid = '" + p.getUniqueId().toString() + "';");
                     ps.setInt(1, getPlayerCoins(p.getUniqueId()) - coins);
                     ps.executeUpdate();
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    CoreAPI.getSQL().getPool().close(conn, ps, null);
+                    pool.close(conn, ps, null);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
@@ -359,14 +377,14 @@ public class SQLRequests {
                 Connection conn = null;
                 PreparedStatement ps = null;
                 try {
-                    conn = CoreAPI.getSQL().getPool().getConnection();
+                    conn = pool.getConnection();
                     ps = conn.prepareStatement("UPDATE CraftCoins SET tokens = ? WHERE uuid = '" + p.getUniqueId().toString() + "';");
                     ps.setInt(1, getPlayerTokens(p.getUniqueId()) - tokens);
                     ps.executeUpdate();
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    CoreAPI.getSQL().getPool().close(conn, ps, null);
+                    pool.close(conn, ps, null);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
@@ -379,7 +397,7 @@ public class SQLRequests {
                 Connection conn = null;
                 PreparedStatement ps = null;
                 try {
-                    conn = CoreAPI.getSQL().getPool().getConnection();
+                    conn = pool.getConnection();
                     ps = conn.prepareStatement("INSERT INTO votes (uuid, last_name, votes, month, week) VALUES (?,?,?,?,?);");
                     ps.setString(1, p.getUniqueId().toString());
                     ps.setString(2, p.getName());
@@ -388,9 +406,9 @@ public class SQLRequests {
                     ps.setInt(5, 0);
                     ps.executeUpdate();
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    //e.printStackTrace();
                 } finally {
-                    CoreAPI.getSQL().getPool().close(conn, ps, null);
+                    pool.close(conn, ps, null);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
@@ -403,7 +421,7 @@ public class SQLRequests {
                 Connection conn = null;
                 PreparedStatement ps = null;
                 try {
-                    conn = CoreAPI.getSQL().getPool().getConnection();
+                    conn = pool.getConnection();
                     ps = conn.prepareStatement("INSERT INTO stav_survival_server (nazev, pocet_hracu, pocet_slotu, verze, pocet_pluginu) VALUES (?,?,?,?,?) ON DUPLICATE KEY UPDATE pocet_hracu = ?;");
                     ps.setString(1, Main.getInstance().getIdServer());
                     ps.setInt(2, Main.getInstance().getServerFactory().getOnlinePlayers());
@@ -415,7 +433,7 @@ public class SQLRequests {
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    CoreAPI.getSQL().getPool().close(conn, ps, null);
+                    pool.close(conn, ps, null);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
@@ -428,20 +446,19 @@ public class SQLRequests {
                 Connection conn = null;
                 PreparedStatement ps = null;
                 try {
-                    conn = CoreAPI.getSQL().getPool().getConnection();
+                    conn = pool.getConnection();
                     ps = conn.prepareStatement("UPDATE craftboxer_nextReset SET time = ? WHERE id = 2;");
                     ps.setLong(1, time);
                     ps.executeUpdate();
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    CoreAPI.getSQL().getPool().close(conn, ps, null);
+                    pool.close(conn, ps, null);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
     }
 
-    @Deprecated
     public final void resetTimeVoteMonth(final long time) {
         new BukkitRunnable() {
             @Override
@@ -449,14 +466,14 @@ public class SQLRequests {
                 Connection conn = null;
                 PreparedStatement ps = null;
                 try {
-                    conn = CoreAPI.getSQL().getPool().getConnection();
+                    conn = pool.getConnection();
                     ps = conn.prepareStatement("UPDATE craftboxer_nextReset SET time = ? WHERE id = 3;");
                     ps.setLong(1, time);
                     ps.executeUpdate();
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    CoreAPI.getSQL().getPool().close(conn, ps, null);
+                    pool.close(conn, ps, null);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
@@ -469,19 +486,18 @@ public class SQLRequests {
                 Connection conn = null;
                 PreparedStatement ps = null;
                 try {
-                    conn = CoreAPI.getSQL().getPool().getConnection();
+                    conn = pool.getConnection();
                     ps = conn.prepareStatement("UPDATE votes SET week = '0';");
                     ps.executeUpdate();
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    CoreAPI.getSQL().getPool().close(conn, ps, null);
+                    pool.close(conn, ps, null);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
     }
 
-    @Deprecated
     public final void resetMonthVotes() {
         new BukkitRunnable() {
             @Override
@@ -489,13 +505,13 @@ public class SQLRequests {
                 Connection conn = null;
                 PreparedStatement ps = null;
                 try {
-                    conn = CoreAPI.getSQL().getPool().getConnection();
+                    conn = pool.getConnection();
                     ps = conn.prepareStatement("UPDATE votes SET month = '0';");
                     ps.executeUpdate();
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    CoreAPI.getSQL().getPool().close(conn, ps, null);
+                    pool.close(conn, ps, null);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
@@ -508,7 +524,7 @@ public class SQLRequests {
                 Connection conn = null;
                 PreparedStatement ps = null;
                 try {
-                    conn = CoreAPI.getSQL().getPool().getConnection();
+                    conn = pool.getConnection();
                     ps = conn.prepareStatement("UPDATE votes SET last_vote = ? WHERE last_name = ?;");
                     ps.setLong(1, System.currentTimeMillis() + 3600000L);
                     ps.setString(2, p.getName());
@@ -516,7 +532,7 @@ public class SQLRequests {
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    CoreAPI.getSQL().getPool().close(conn, ps, null);
+                    pool.close(conn, ps, null);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
@@ -530,7 +546,7 @@ public class SQLRequests {
                 Connection conn = null;
                 PreparedStatement ps = null;
                 try {
-                    conn = CoreAPI.getSQL().getPool().getConnection();
+                    conn = pool.getConnection();
                     ps = conn.prepareStatement("INSERT INTO " + server + "_players (nname,sname) VALUES (?,?);");
                     ps.setString(1, p.getName());
                     ps.setString(2, p.getName().toLowerCase());
@@ -538,7 +554,7 @@ public class SQLRequests {
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    CoreAPI.getSQL().getPool().close(conn, ps, null);
+                    pool.close(conn, ps, null);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
@@ -552,14 +568,14 @@ public class SQLRequests {
                 Connection conn = null;
                 PreparedStatement ps = null;
                 try {
-                    conn = CoreAPI.getSQL().getPool().getConnection();
+                    conn = pool.getConnection();
                     ps = conn.prepareStatement("UPDATE at_table SET " + server + "_pos_aktivita = '" + time + "' WHERE nick = ?;");
                     ps.setString(1, p.getName());
                     ps.executeUpdate();
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    CoreAPI.getSQL().getPool().close(conn, ps, null);
+                    pool.close(conn, ps, null);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
@@ -573,7 +589,7 @@ public class SQLRequests {
                 Connection conn = null;
                 PreparedStatement ps = null;
                 try {
-                    conn = CoreAPI.getSQL().getPool().getConnection();
+                    conn = pool.getConnection();
                     ps = conn.prepareStatement("UPDATE at_table SET " + server + "_played_time = ? WHERE nick = ?;");
                     ps.setInt(1, 1 + getAtPlayedTime(p, server + "_played_time"));
                     ps.setString(2, p.getName());
@@ -581,7 +597,7 @@ public class SQLRequests {
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    CoreAPI.getSQL().getPool().close(conn, ps, null);
+                    pool.close(conn, ps, null);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
@@ -595,7 +611,7 @@ public class SQLRequests {
                 Connection conn = null;
                 PreparedStatement ps = null;
                 try {
-                    conn = CoreAPI.getSQL().getPool().getConnection();
+                    conn = pool.getConnection();
                     ps = conn.prepareStatement("UPDATE at_table SET " + server + "_chat_body = ? WHERE nick = ?;");
                     ps.setInt(1, 1 + getAtPlayedTime(p, server + "_chat_body"));
                     ps.setString(2, p.getName());
@@ -603,7 +619,7 @@ public class SQLRequests {
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    CoreAPI.getSQL().getPool().close(conn, ps, null);
+                    pool.close(conn, ps, null);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
@@ -634,7 +650,7 @@ public class SQLRequests {
                 Connection conn = null;
                 PreparedStatement ps = null;
                 try {
-                    conn = CoreAPI.getSQL().getPool().getConnection();
+                    conn = pool.getConnection();
                     ps = conn.prepareStatement("INSERT INTO craftmanager_boosters (name,type,end) VALUES (?,?,?);");
                     ps.setString(1, p.getName());
                     ps.setString(2, booster);
@@ -643,7 +659,7 @@ public class SQLRequests {
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    CoreAPI.getSQL().getPool().close(conn, ps, null);
+                    pool.close(conn, ps, null);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
@@ -656,7 +672,7 @@ public class SQLRequests {
                 Connection conn = null;
                 PreparedStatement ps = null;
                 try {
-                    conn = CoreAPI.getSQL().getPool().getConnection();
+                    conn = pool.getConnection();
                     ps = conn.prepareStatement("INSERT INTO at_commands (nick,server,command,time) VALUES (?,?,?,?);");
                     ps.setString(1, p.getName());
                     ps.setString(2, Main.getInstance().getIdServer());
@@ -666,7 +682,7 @@ public class SQLRequests {
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    CoreAPI.getSQL().getPool().close(conn, ps, null);
+                    pool.close(conn, ps, null);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
@@ -676,7 +692,7 @@ public class SQLRequests {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = CoreAPI.getSQL().getPool().getConnection();
+            conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT end FROM craftmanager_boosters WHERE type = '" + booster + "' AND name = ?;");
             ps.setString(1, p.getName());
             ps.executeQuery();
@@ -686,7 +702,7 @@ public class SQLRequests {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            CoreAPI.getSQL().getPool().close(conn, ps, null);
+            pool.close(conn, ps, null);
         }
         return 0L;
     }
@@ -698,7 +714,7 @@ public class SQLRequests {
                 Connection conn = null;
                 PreparedStatement ps = null;
                 try {
-                    conn = CoreAPI.getSQL().getPool().getConnection();
+                    conn = pool.getConnection();
                     ps = conn.prepareStatement("DELETE FROM craftmanager_boosters WHERE name = ? AND type = ?;");
                     ps.setString(1, p.getName());
                     ps.setString(2, booster);
@@ -706,7 +722,7 @@ public class SQLRequests {
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    CoreAPI.getSQL().getPool().close(conn, ps, null);
+                    pool.close(conn, ps, null);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
@@ -716,7 +732,7 @@ public class SQLRequests {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = CoreAPI.getSQL().getPool().getConnection();
+            conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT * FROM craftmanager_boosters WHERE name = ? AND type = ?;");
             ps.setString(1, p.getName());
             ps.setString(2, type);
@@ -726,7 +742,7 @@ public class SQLRequests {
             e.printStackTrace();
             return false;
         } finally {
-            CoreAPI.getSQL().getPool().close(conn, ps, null);
+            pool.close(conn, ps, null);
         }
     }
 
@@ -734,7 +750,7 @@ public class SQLRequests {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = CoreAPI.getSQL().getPool().getConnection();
+            conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT " + settings + " FROM player_settings WHERE nick = '" + p.getName() + "'");
             ps.executeQuery();
             if (ps.getResultSet().next()) {
@@ -743,7 +759,7 @@ public class SQLRequests {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            CoreAPI.getSQL().getPool().close(conn, ps, null);
+            pool.close(conn, ps, null);
         }
         return 0;
     }
@@ -755,14 +771,14 @@ public class SQLRequests {
                 Connection conn = null;
                 PreparedStatement ps = null;
                 try {
-                    conn = CoreAPI.getSQL().getPool().getConnection();
+                    conn = pool.getConnection();
                     ps = conn.prepareStatement("UPDATE player_settings SET " + settings + " = " + value + " WHERE nick = ?;");
                     ps.setString(1, p.getName());
                     ps.executeUpdate();
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    CoreAPI.getSQL().getPool().close(conn, ps, null);
+                    pool.close(conn, ps, null);
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
