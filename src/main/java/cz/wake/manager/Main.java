@@ -56,6 +56,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private static DataOutputStream out = new DataOutputStream(b);
     private SQLManager sql;
     private boolean economyFix = false;
+    private boolean testing = false;
 
     private static Main instance;
 
@@ -78,13 +79,14 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // EconomyFix UUID
         economyFix = Main.getInstance().getConfig().getBoolean("economyfix");
+        testing = Main.getInstance().getConfig().getBoolean("testing");
 
         // Bungee channels
         Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         Bukkit.getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
 
         // Oznameni kazdou hodinu (1 hod)
-        if (getConfig().getBoolean("reminder")) {
+        if (getConfig().getBoolean("reminder") && !testing) {
             getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 2000, 72000);
             Log.withPrefix("Aktivace hodinoveho oznamovani o hlasech do chatu.");
 
@@ -94,11 +96,13 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         }
 
         // Update ID stats task (1 min)
-        getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateServerTask(), 200, 1200);
-        Log.withPrefix("Aktivace update serveru kazdych 60 vterin.");
+        if(!testing){
+            getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateServerTask(), 200, 1200);
+            Log.withPrefix("Aktivace update serveru kazdych 60 vterin.");
 
-        getServer().getScheduler().runTaskTimerAsynchronously(this, new ATCheckerTask(), 200, 1200);
-        Log.withPrefix("Aktivace AT-Stalkeru");
+            getServer().getScheduler().runTaskTimerAsynchronously(this, new ATCheckerTask(), 200, 1200);
+            Log.withPrefix("Aktivace AT-Stalkeru");
+        }
 
         // Update tablistu (5s)
         if (getConfig().getBoolean("tablist-update")) {
@@ -165,7 +169,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         }
 
         // Hlasovani
-        if (getConfig().getBoolean("hlasovani")) {
+        if (getConfig().getBoolean("hlasovani") && !testing) {
             pm.registerEvents(new SuperbVote(), this);
             Log.withPrefix("Odmeny za hlasovani byly aktivovany!");
         } else {
@@ -211,6 +215,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("vote").setExecutor(new Vote_command());
         getCommand("skull").setExecutor(new SkullCommand());
         getCommand("profil").setExecutor(new Profil_command());
+        getCommand("navody").setExecutor(new Navody_command());
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {

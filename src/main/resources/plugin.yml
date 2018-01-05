@@ -56,6 +56,8 @@ commands:
       description: Prikaz pro hrace na ziskani svoji hlavy
     profil:
       description: Nastaveni uctu
+    navody:
+      description: Navody pro hrace
 
 permissions:
     craftmanager.*:

@@ -21,6 +21,9 @@ proxy-ips:
 disable-ips:
  - '0.0.0.1'
 
+# Zda-li je server pouze na testy!
+testing: false
+
 # ID serveru pro statistiky
 server: Survival
 

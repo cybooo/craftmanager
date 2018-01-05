@@ -21,7 +21,6 @@ public class PlayerProfile {
     public PlayerProfile(Player p) {
         this.p = p;
         loadCoins();
-
     }
 
     private void loadCoins() {

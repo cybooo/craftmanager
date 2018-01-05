@@ -3,6 +3,7 @@ package cz.wake.manager.listener;
 import cz.wake.manager.Main;
 import cz.wake.manager.commads.Chatcolor_command;
 import cz.wake.manager.commads.Profil_command;
+import cz.wake.manager.managers.MenuManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -29,8 +30,11 @@ public class InventoryListener implements Listener {
             if (e.getCurrentItem().getType() == Material.AIR) {
                 return;
             }
-            if (e.getSlot() == 31) {
+            if (e.getSlot() == 30) {
                 Main.getInstance().getParticlesAPI().openParticlesMenu(p);
+            }
+            if (e.getSlot() == 32) {
+                MenuManager.openNavody(p);
             }
             if (e.getSlot() == 21) {
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
@@ -49,6 +53,61 @@ public class InventoryListener implements Listener {
                 p.performCommand("vip");
             }
         }
+        if (e.getInventory().getTitle().equals("§0Seznam dostupnych navodu")) {
+            e.setCancelled(true);
+            if(e.getSlot() == 0){
+                MenuManager.prepareNavodLink(p, "Pravidla", "https://wiki.craftmania.cz/zakladni-informace/pravidla");
+            }
+            if (e.getSlot() == 1){
+                MenuManager.prepareNavodLink(p, "Povolene/zakazane mody", "https://wiki.craftmania.cz/zakladni-informace/povolene-zakazane-mody");
+            }
+            if(e.getSlot() == 2){
+                MenuManager.prepareNavodLink(p, "Prevody uctu", "https://wiki.craftmania.cz/zakladni-informace/prevody-uctu");
+            }
+            if(e.getSlot() == 3){
+                MenuManager.prepareNavodLink(p, "Residence", "https://wiki.craftmania.cz/navody/residence");
+            }
+            if(e.getSlot() == 4){
+                MenuManager.prepareNavodLink(p, "LWC", "https://wiki.craftmania.cz/navody/lwc");
+            }
+            if(e.getSlot() == 5){
+                MenuManager.prepareNavodLink(p, "Trade", "https://wiki.craftmania.cz/navody/trade");
+            }
+            if(e.getSlot() == 6){
+                MenuManager.prepareNavodLink(p, "Jobs", "https://wiki.craftmania.cz/navody/jobs");
+            }
+            if(e.getSlot() == 7){
+                MenuManager.prepareNavodLink(p, "ChestShop", "https://wiki.craftmania.cz/navody/chestshop");
+            }
+            if(e.getSlot() == 8){
+                MenuManager.prepareNavodLink(p, "ArmorStand Editor", "https://wiki.craftmania.cz/navody/armorstandeditor");
+            }
+            if(e.getSlot() == 9){
+                MenuManager.prepareNavodLink(p, "BannerBuilder", "https://wiki.craftmania.cz/navody/bannerbuilder");
+            }
+            if(e.getSlot() == 10){
+                MenuManager.prepareNavodLink(p, "ArtMap", "https://wiki.craftmania.cz/navody/artmap");
+            }
+            if(e.getSlot() == 11){
+                MenuManager.prepareNavodLink(p, "Psani barevne", "https://wiki.craftmania.cz/navody/psanibarevne");
+            }
+            if(e.getSlot() == 12){
+                MenuManager.prepareNavodLink(p ,"Pozemky", "https://wiki.craftmania.cz/navody/pozemky");
+            }
+            if(e.getSlot() == 13){
+                MenuManager.prepareNavodLink(p, "Ostrovy", "https://wiki.craftmania.cz/navody/askyblock");
+            }
+            if(e.getSlot() == 15){
+                MenuManager.prepareNavodLink(p, "Vytah", "https://wiki.craftmania.cz/navody/lift");
+            }
+            if(e.getSlot() == 14){
+                MenuManager.prepareNavodLink(p, "WorldEdit", "https://wiki.craftmania.cz/navody/worldedit");
+            }
+            if(e.getSlot() == 31){
+                Main.getInstance().getMainGUI().openMainMenu(p);
+            }
+
+        }
         if (e.getInventory().getTitle().equals("Help pro Survival")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
@@ -62,13 +121,16 @@ public class InventoryListener implements Listener {
                 p.sendMessage("§6▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§eOdkaz na plny navod Residence:");
-                p.sendMessage("§7https://craftmania.cz/tema/residence-kompletni-navod-2016.10346/");
+                p.sendMessage("§7https://wiki.craftmania.cz/navody/residence");
                 p.sendMessage("");
                 p.sendMessage("§6▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.closeInventory();
             }
             if (e.getSlot() == 32) {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "chestcommands open vip.yml " + p.getName());
+            }
+            if(e.getSlot() == 23){
+                MenuManager.openNavody(p);
             }
             if (e.getSlot() == 24) {
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
@@ -86,7 +148,6 @@ public class InventoryListener implements Listener {
                 p.sendMessage("");
                 p.sendMessage("§eWeb: §7https://craftmania.cz");
                 p.sendMessage("§eDiscord: §7https://discord.gg/craftmania");
-                p.sendMessage("§ePlugDJ: §7https://plug.dj/craftmania-cz");
                 p.sendMessage("§eStatus page: §7https://status.craftmania.cz");
                 p.sendMessage("");
                 p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
@@ -101,12 +162,15 @@ public class InventoryListener implements Listener {
             if (e.getCurrentItem().getType() == Material.AIR) {
                 return;
             }
+            if(e.getSlot() == 30){
+                MenuManager.openNavody(p);
+            }
             if ((e.getSlot() == 12) || (e.getSlot() == 13) || (e.getSlot() == 14)) {
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
                 p.sendMessage("§6▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§eOdkaz na plny navod Pozemky:");
-                p.sendMessage("§7https://craftmania.cz/tema/creative-prison-pozemky.4544/");
+                p.sendMessage("§7https://wiki.craftmania.cz/navody/pozemky");
                 p.sendMessage("");
                 p.sendMessage("§6▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.closeInventory();
@@ -130,7 +194,6 @@ public class InventoryListener implements Listener {
                 p.sendMessage("");
                 p.sendMessage("§eWeb: §7https://craftmania.cz");
                 p.sendMessage("§eDiscord: §7https://discord.gg/craftmania");
-                p.sendMessage("§ePlugDJ: §7https://plug.dj/craftmania-cz");
                 p.sendMessage("§eStatus page: §7https://status.craftmania.cz");
                 p.sendMessage("");
                 p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
@@ -148,6 +211,9 @@ public class InventoryListener implements Listener {
             if (e.getSlot() == 32) {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "chestcommands open vip.yml " + p.getName());
             }
+            if(e.getSlot() == 23){
+                MenuManager.openNavody(p);
+            }
             if (e.getSlot() == 24) {
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
                 p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
@@ -164,7 +230,6 @@ public class InventoryListener implements Listener {
                 p.sendMessage("");
                 p.sendMessage("§eWeb: §7https://craftmania.cz");
                 p.sendMessage("§eDiscord: §7https://discord.gg/craftmania");
-                p.sendMessage("§ePlugDJ: §7https://plug.dj/craftmania-cz");
                 p.sendMessage("§eStatus page: §7https://status.craftmania.cz");
                 p.sendMessage("");
                 p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
@@ -292,7 +357,8 @@ public class InventoryListener implements Listener {
                 p.sendMessage("");
                 p.sendMessage("");
                 p.sendMessage("§eOdkaz na nas Crowdin projekt:");
-                p.sendMessage("§bhttps://crowdin.com/project/craftmaniacz");
+                //p.sendMessage("§bhttps://crowdin.com/project/craftmaniacz");
+                p.sendMessage("§cAktualne pozastaveno!");
                 p.sendMessage("");
                 p.sendMessage("§d▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");

@@ -93,7 +93,7 @@ public class Help_command implements CommandExecutor {
             ItemStack hlasovani = ItemFactory.create(Material.PAPER, (byte) 0, "§a§lHlasovani", "",
                     "§cHlasovat muze kazdy 1x za 2 hodiny!",
                     "",
-                    "§fKazdy hlas: §610 CC §f+ §aVote Key",
+                    "§fKazdy hlas: §610 CC §f+ §aVoteCrate",
                     "§f25% sance: §625 CC",
                     "§f5% sance: §650 CC",
                     "§f1% sance: §6100 CC",
@@ -105,8 +105,8 @@ public class Help_command implements CommandExecutor {
                     "",
                     "§eKliknutim zobrazis odkaz na hlasovani!");
 
-            ItemStack spawner = ItemFactory.create(Material.BOOK, (byte) 0, "§a§lNavody §f(Jiz brzy)", "",
-                    "§7Prehled vsech dostupnych navodu pro Skyblock",
+            ItemStack spawner = ItemFactory.create(Material.BOOK, (byte) 0, "§a§lNavody", "",
+                    "§7Prehled vsech dostupnych navodu",
                     "§7na nasi hlavni WIKI!",
                     "",
                     "§eKliknutim zobrazis prehled");
@@ -133,8 +133,7 @@ public class Help_command implements CommandExecutor {
             ItemStack conn = ItemFactory.create(Material.MAP, (byte) 0, "§a§lOdkazy na nase dalsi servery", "",
                     "§eWeb: §7https://craftmania.cz",
                     "§eDiscord: §7https://discord.gg/craftmania",
-                    "§ePlugDJ: §7https://plug.dj/craftmania-cz",
-                    "§eStatus page: §cNedostupny...", "",
+                    "§eStatus page: §7https://status.craftmania.cz", "",
                     "§bKliknutim ti zobrazime klikaci odkazy v chatu!");
 
             inv.setItem(12, is);
@@ -214,9 +213,14 @@ public class Help_command implements CommandExecutor {
             ItemStack conn = ItemFactory.create(Material.MAP, (byte) 0, "§a§lOdkazy na nase dalsi servery", "",
                     "§eWeb: §7https://craftmania.cz",
                     "§eDiscord: §7https://discord.gg/craftmania",
-                    "§ePlugDJ: §7https://plug.dj/craftmania-cz",
-                    "§eStatus page: §cNedostupny...", "",
+                    "§eStatus page: §7https://status.craftmania.cz", "",
                     "§bKliknutim ti zobrazime klikaci odkazy v chatu!");
+
+            ItemStack navody = ItemFactory.create(Material.BOOK, (byte) 0, "§a§lNavody", "",
+                    "§7Prehled vsech dostupnych navodu",
+                    "§7na nasi hlavni WIKI!",
+                    "",
+                    "§eKliknutim zobrazis prehled");
 
             inv.setItem(12, poz);
             inv.setItem(13, pozH);
@@ -226,6 +230,7 @@ public class Help_command implements CommandExecutor {
             inv.setItem(22, hlasovani);
             inv.setItem(23, ser);
 
+            inv.setItem(30, navody);
             inv.setItem(31, conn);
 
             p.openInventory(inv);
@@ -301,7 +306,7 @@ public class Help_command implements CommandExecutor {
             ItemStack hlasovani = ItemFactory.create(Material.PAPER, (byte) 0, "§a§lHlasovani", "",
                     "§cHlasovat muze kazdy 1x za 2 hodiny!",
                     "",
-                    "§fKazdy hlas: §610 CC §f+ §aVote Key",
+                    "§fKazdy hlas: §610 CC §f+ §aVoteCrate",
                     "§f25% sance: §625 CC",
                     "§f5% sance: §650 CC",
                     "§f1% sance: §6100 CC",
@@ -313,8 +318,8 @@ public class Help_command implements CommandExecutor {
                     "",
                     "§eKliknutim zobrazis odkaz na hlasovani!");
 
-            ItemStack spawner = ItemFactory.create(Material.BOOK, (byte) 0, "§a§lNavody §f(Jiz brzy)", "",
-                    "§7Prehled vsech dostupnych navodu pro Survival",
+            ItemStack spawner = ItemFactory.create(Material.BOOK, (byte) 0, "§a§lNavody", "",
+                    "§7Prehled vsech dostupnych navodu",
                     "§7na nasi hlavni WIKI!",
                     "",
                     "§eKliknutim zobrazis prehled");
@@ -341,8 +346,7 @@ public class Help_command implements CommandExecutor {
             ItemStack conn = ItemFactory.create(Material.MAP, (byte) 0, "§a§lOdkazy na nase dalsi servery", "",
                     "§eWeb: §7https://craftmania.cz",
                     "§eDiscord: §7https://discord.gg/craftmania",
-                    "§ePlugDJ: §7https://plug.dj/craftmania-cz",
-                    "§eStatus page: §cNedostupny...", "",
+                    "§eStatus page: §7https://status.craftmania.cz", "",
                     "§bKliknutim ti zobrazime klikaci odkazy v chatu!");
 
             inv.setItem(12, res);
