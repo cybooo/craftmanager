@@ -1,7 +1,6 @@
 name: CraftManager
 main: cz.wake.manager.Main
 authors: [MrWakeCZ]
-depend: [CraftCore]
 version: 1.2
 
 commands:
