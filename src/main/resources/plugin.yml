@@ -58,6 +58,8 @@ commands:
       description: Nastaveni uctu
     navody:
       description: Navody pro hrace
+    checkfly:
+      description: Kontrola zakoupeneho fly
 
 permissions:
     craftmanager.*:
@@ -78,3 +80,5 @@ permissions:
       description: Povoleni hraci zmeny barvy psani v /chatcolor
     craftmanager.chatcolor.at:
       description: Nastaveni zlute barvy pro AT
+    craftmanager.checkfly:
+      description: Kontrola pro AT, zda ma hrac zakoupene FLY na Skyblocku (nebo jinde)

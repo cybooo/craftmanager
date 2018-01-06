@@ -216,6 +216,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("skull").setExecutor(new SkullCommand());
         getCommand("profil").setExecutor(new Profil_command());
         getCommand("navody").setExecutor(new Navody_command());
+        getCommand("checkfly").setExecutor(new Checkfly_command());
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {
