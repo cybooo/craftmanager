@@ -77,7 +77,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // HikariCP
         initDatabase();
 
-        // EconomyFix UUID
+        // Nastaveni hodnot
         economyFix = Main.getInstance().getConfig().getBoolean("economyfix");
         testing = Main.getInstance().getConfig().getBoolean("testing");
 
