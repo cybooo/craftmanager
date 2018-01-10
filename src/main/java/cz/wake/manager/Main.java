@@ -3,6 +3,7 @@ package cz.wake.manager;
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
 import cz.wake.manager.listener.*;
+import cz.wake.manager.managers.TablistManager;
 import cz.wake.manager.perks.coloranvil.AnvilListener;
 import cz.wake.manager.perks.general.Disenchant;
 import cz.wake.manager.perks.general.DurabilityWarner;
@@ -31,6 +32,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Scoreboard;
 import org.slf4j.MDC;
 
 import java.io.ByteArrayOutputStream;
@@ -57,6 +60,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private SQLManager sql;
     private boolean economyFix = false;
     private boolean testing = false;
+    private TablistManager tb = new TablistManager();
+    private boolean tablist = false;
+    private boolean reminder = false;
 
     private static Main instance;
 
@@ -78,15 +84,17 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         initDatabase();
 
         // Nastaveni hodnot
-        economyFix = Main.getInstance().getConfig().getBoolean("economyfix");
-        testing = Main.getInstance().getConfig().getBoolean("testing");
+        economyFix = getConfig().getBoolean("economyfix");
+        testing = getConfig().getBoolean("testing");
+        tablist = getConfig().getBoolean("tablist-update");
+        reminder = getConfig().getBoolean("reminder");
 
         // Bungee channels
         Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         Bukkit.getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
 
         // Oznameni kazdou hodinu (1 hod)
-        if (getConfig().getBoolean("reminder") && !testing) {
+        if (reminder && !testing) {
             getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 2000, 72000);
             Log.withPrefix("Aktivace hodinoveho oznamovani o hlasech do chatu.");
 
@@ -105,11 +113,12 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         }
 
         // Update tablistu (5s)
-        if (getConfig().getBoolean("tablist-update")) {
+        if (tablist) {
+            tb.createRanks();
             getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTablistTask(), 0, 100L);
             Log.withPrefix("Aktivace synchronizace prefixu v tablistu");
         } else {
-            Log.withPrefix(ChatColor.RED + "Tablist synchronizace je vypnuta!");
+            Log.withPrefix(ChatColor.RED + "Tablist ranky a synchronizace je vypnuta!");
         }
 
         // Nastaveni DurabilityWarner
@@ -301,5 +310,19 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         return economyFix;
     }
 
+    public TablistManager getTablistManager() {
+        return tb;
+    }
 
+    public boolean isTestingServer() {
+        return testing;
+    }
+
+    public boolean isTablistEnabled() {
+        return tablist;
+    }
+
+    public boolean isReminderEnabled() {
+        return reminder;
+    }
 }

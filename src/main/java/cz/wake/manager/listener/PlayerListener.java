@@ -2,6 +2,7 @@ package cz.wake.manager.listener;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.commads.Chatcolor_command;
+import cz.wake.manager.managers.TablistManager;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.utils.UtilTablist;
 import org.bukkit.ChatColor;
@@ -19,7 +20,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class PlayerListener implements Listener {
 
-    ParticlesAPI partAPI = new ParticlesAPI();
+    private ParticlesAPI partAPI = new ParticlesAPI();
     private Chatcolor_command chc = new Chatcolor_command();
 
     @EventHandler(ignoreCancelled = true)
@@ -62,7 +63,8 @@ public class PlayerListener implements Listener {
         }
 
         // Nastaveni tablistu
-        UtilTablist.setupTablist(p);
+        if (Main.getInstance().isTablistEnabled())
+        Main.getInstance().getTablistManager().setRank(p);
 
         //AT
         if (Main.getInstance().getMySQL().isAT(p)) {
