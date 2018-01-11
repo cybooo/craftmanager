@@ -16,11 +16,11 @@ public class Glow_command implements CommandExecutor {
                     if (player.hasPermission("craftmanager.glow")) {
                         if (!player.isGlowing()) {
                             player.setGlowing(true);
-                            player.sendMessage("§bAktivoval jsi efekt §5Glowing!");
+                            player.sendMessage("§eAktivoval jsi efekt §5Glowing!");
                             return true;
                         } else {
                             player.setGlowing(false);
-                            player.sendMessage("§bDeaktivoval jsi efekt §5Glowing!");
+                            player.sendMessage("§eDeaktivoval jsi efekt §5Glowing!");
                             return true;
                         }
                     } else {

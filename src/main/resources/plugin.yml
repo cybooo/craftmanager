@@ -60,6 +60,8 @@ commands:
       description: Navody pro hrace
     checkfly:
       description: Kontrola zakoupeneho fly
+    nv:
+      description: NightVision pro HERO VIP
 
 permissions:
     craftmanager.*:

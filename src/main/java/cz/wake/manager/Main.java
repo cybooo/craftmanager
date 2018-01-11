@@ -4,6 +4,7 @@ import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
 import cz.wake.manager.commads.vip.Chatcolor_command;
 import cz.wake.manager.commads.vip.Glow_command;
+import cz.wake.manager.commads.vip.NightVision_command;
 import cz.wake.manager.commads.vip.Particles_command;
 import cz.wake.manager.listener.*;
 import cz.wake.manager.managers.TablistManager;
@@ -228,6 +229,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("profil").setExecutor(new Profil_command());
         getCommand("navody").setExecutor(new Navody_command());
         getCommand("checkfly").setExecutor(new Checkfly_command());
+        getCommand("nv").setExecutor(new NightVision_command());
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {
