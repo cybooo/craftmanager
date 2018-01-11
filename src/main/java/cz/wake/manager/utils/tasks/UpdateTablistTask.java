@@ -13,8 +13,8 @@ public class UpdateTablistTask implements Runnable {
     @Override
     public void run() {
         for (Player p : Bukkit.getOnlinePlayers()) {
-            //UtilTablist.setupTablist(p);
-            tb.setRank(p);
+            UtilTablist.setupTablist(p);
+            //tb.setRank(p);
         }
     }
 }

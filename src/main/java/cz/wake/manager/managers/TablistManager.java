@@ -4,11 +4,15 @@ import cz.wake.manager.utils.Log;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.bukkit.scoreboard.DisplaySlot;
+import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 
 public class TablistManager {
 
     public static Scoreboard sb;
+
+    //TODO: Pro kazdy server vlastni scoreboard (ten vpravo)
 
     public void createRanks() {
         sb = Bukkit.getScoreboardManager().getNewScoreboard();

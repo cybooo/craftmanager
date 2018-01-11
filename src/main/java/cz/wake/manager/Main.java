@@ -114,7 +114,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Update tablistu (5s)
         if (tablist) {
-            tb.createRanks();
+            //tb.createRanks();
             getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTablistTask(), 0, 100L);
             Log.withPrefix("Aktivace synchronizace prefixu v tablistu");
         } else {
