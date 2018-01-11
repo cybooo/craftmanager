@@ -1,8 +1,7 @@
 package cz.wake.manager.listener;
 
 import cz.wake.manager.Main;
-import cz.wake.manager.commads.Chatcolor_command;
-import cz.wake.manager.managers.TablistManager;
+import cz.wake.manager.commads.vip.Chatcolor_command;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.utils.UtilTablist;
 import org.bukkit.ChatColor;

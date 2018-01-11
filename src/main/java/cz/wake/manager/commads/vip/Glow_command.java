@@ -1,4 +1,4 @@
-package cz.wake.manager.commads;
+package cz.wake.manager.commads.vip;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

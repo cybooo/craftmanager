@@ -1,7 +1,7 @@
 package cz.wake.manager.listener;
 
 import cz.wake.manager.Main;
-import cz.wake.manager.commads.Chatcolor_command;
+import cz.wake.manager.commads.vip.Chatcolor_command;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

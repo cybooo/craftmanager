@@ -2,6 +2,9 @@ package cz.wake.manager;
 
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
+import cz.wake.manager.commads.vip.Chatcolor_command;
+import cz.wake.manager.commads.vip.Glow_command;
+import cz.wake.manager.commads.vip.Particles_command;
 import cz.wake.manager.listener.*;
 import cz.wake.manager.managers.TablistManager;
 import cz.wake.manager.perks.chat.Replacements;
@@ -33,9 +36,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
-import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.Scoreboard;
-import org.slf4j.MDC;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;

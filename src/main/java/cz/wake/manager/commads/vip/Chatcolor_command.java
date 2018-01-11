@@ -1,4 +1,4 @@
-package cz.wake.manager.commads;
+package cz.wake.manager.commads.vip;
 
 import cz.wake.manager.utils.ItemFactory;
 import org.bukkit.Bukkit;

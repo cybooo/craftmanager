@@ -1,7 +1,7 @@
 package cz.wake.manager.listener;
 
 import cz.wake.manager.Main;
-import cz.wake.manager.commads.Chatcolor_command;
+import cz.wake.manager.commads.vip.Chatcolor_command;
 import cz.wake.manager.commads.Profil_command;
 import cz.wake.manager.managers.MenuManager;
 import org.bukkit.Bukkit;
