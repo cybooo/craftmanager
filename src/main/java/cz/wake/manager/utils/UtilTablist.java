@@ -27,6 +27,8 @@ public class UtilTablist {
             p.setPlayerListName("§3§lMAJITEL §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.hladmin")) {
             p.setPlayerListName("§c§lHL.ADMIN §f" + p.getName());
+        } else if (p.hasPermission("craftmanager.prefix.hlbuilder")) {
+            p.setPlayerListName("§1§lHL.BUILDER §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.adminka")) {
             p.setPlayerListName("§c§lADMINKA §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.eventer")) {
@@ -36,11 +38,13 @@ public class UtilTablist {
         } else if (p.hasPermission("craftmanager.prefix.admin")) {
             p.setPlayerListName("§c§lADMIN §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.builder")) {
-            p.setPlayerListName("§5§lBUILDER §f" + p.getName());
+            p.setPlayerListName("§1§lBUILDER §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.helperka")) {
             p.setPlayerListName("§2§lHELPERKA §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.helper")) {
             p.setPlayerListName("§2§lHELPER §f" + p.getName());
+        } else if (p.hasPermission("craftmanager.prefix.hero")) {
+            p.setPlayerListName("§5§lHERO §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.dvip")) {
             p.setPlayerListName("§b§lDIAMOND §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.gvip")) {
@@ -57,6 +61,8 @@ public class UtilTablist {
             p.setPlayerListName("§3§lMAJITEL §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.hladmin")) {
             p.setPlayerListName("§c§lHL.ADMIN §f" + p.getName());
+        } else if (p.hasPermission("craftmanager.prefix.hlbuilder")) {
+            p.setPlayerListName("§1§lHL.BUILDER §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.adminka")) {
             p.setPlayerListName("§c§lADMINKA §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.eventer")) {
@@ -66,11 +72,13 @@ public class UtilTablist {
         } else if (p.hasPermission("craftmanager.prefix.admin")) {
             p.setPlayerListName("§c§lADMIN §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.builder")) {
-            p.setPlayerListName("§5§lBUILDER §f" + p.getName());
+            p.setPlayerListName("§1§lBUILDER §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.helperka")) {
             p.setPlayerListName("§2§lHELPERKA §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.helper")) {
             p.setPlayerListName("§2§lHELPER §f" + p.getName());
+        } else if (p.hasPermission("craftmanager.prefix.hero")) {
+            p.setPlayerListName("§5§lHERO §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.dvip")) {
             p.setPlayerListName("§9§lOBSIDIAN §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.ovip")) {
@@ -89,6 +97,8 @@ public class UtilTablist {
             p.setPlayerListName("§3§lMAJITEL §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.hladmin")) {
             p.setPlayerListName("§c§lHL.ADMIN §f" + p.getName());
+        } else if (p.hasPermission("craftmanager.prefix.hlbuilder")) {
+            p.setPlayerListName("§1§lHL.BUILDER §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.adminka")) {
             p.setPlayerListName("§c§lADMINKA §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.eventer")) {
@@ -98,11 +108,13 @@ public class UtilTablist {
         } else if (p.hasPermission("craftmanager.prefix.admin")) {
             p.setPlayerListName("§c§lADMIN §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.builder")) {
-            p.setPlayerListName("§5§lBUILDER §f" + p.getName());
+            p.setPlayerListName("§1§lBUILDER §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.helperka")) {
             p.setPlayerListName("§2§lHELPERKA §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.helper")) {
             p.setPlayerListName("§2§lHELPER §f" + p.getName());
+        } else if (p.hasPermission("craftmanager.prefix.hero")) {
+            p.setPlayerListName("§5§lHERO §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.vipplus")) {
             p.setPlayerListName("§a§lVIP+ §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.vip")) {
@@ -117,6 +129,8 @@ public class UtilTablist {
             p.setPlayerListName("§3§lMAJITEL §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.hladmin")) {
             p.setPlayerListName("§c§lHL.ADMIN §f" + p.getName());
+        } else if (p.hasPermission("craftmanager.prefix.hlbuilder")) {
+            p.setPlayerListName("§1§lHL.BUILDER §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.adminka")) {
             p.setPlayerListName("§c§lADMINKA §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.eventer")) {
@@ -126,7 +140,7 @@ public class UtilTablist {
         } else if (p.hasPermission("craftmanager.prefix.admin")) {
             p.setPlayerListName("§c§lADMIN §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.builder")) {
-            p.setPlayerListName("§5§lBUILDER §f" + p.getName());
+            p.setPlayerListName("§1§lBUILDER §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.helperka")) {
             p.setPlayerListName("§2§lHELPERKA §f" + p.getName());
         } else if (p.hasPermission("craftmanager.prefix.helper")) {
