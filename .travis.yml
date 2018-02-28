@@ -12,4 +12,4 @@ cache:
     - $HOME/.m2/repository
 
 notifications:
-  webhooks: http://internal.craftmania.cz/travis-ci.php
+  webhooks: http://banlist.craftmania.cz/travis-ci.php
