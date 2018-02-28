@@ -4,12 +4,12 @@ import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
 import cz.wake.manager.commads.vip.Chatcolor_command;
 import cz.wake.manager.commads.vip.Glow_command;
-import cz.wake.manager.commads.vip.NightVision_command;
 import cz.wake.manager.commads.vip.Particles_command;
 import cz.wake.manager.listener.*;
 import cz.wake.manager.managers.TablistManager;
 import cz.wake.manager.perks.chat.Replacements;
 import cz.wake.manager.perks.coloranvil.AnvilListener;
+import cz.wake.manager.perks.general.BeaconCommand;
 import cz.wake.manager.perks.general.Disenchant;
 import cz.wake.manager.perks.general.DurabilityWarner;
 import cz.wake.manager.perks.general.SkullCommand;
@@ -169,6 +169,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new SettingsListener(), this);
         pm.registerEvents(new TagsEditor(), this);
         pm.registerEvents(new Replacements(), this);
+        pm.registerEvents(new BeaconCommand(), this);
 
         // Skyblock PVP listener
         if (idServer.equalsIgnoreCase("skyblock")) {
@@ -229,7 +230,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("profil").setExecutor(new Profil_command());
         getCommand("navody").setExecutor(new Navody_command());
         getCommand("checkfly").setExecutor(new Checkfly_command());
-        getCommand("nv").setExecutor(new NightVision_command());
+        getCommand("beacon").setExecutor(new BeaconCommand());
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {
