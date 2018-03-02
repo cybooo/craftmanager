@@ -6,19 +6,19 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class SkyGiants_command implements CommandExecutor {
+public class Murder_command implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("skygiants"))) {
+            if ((Command.getName().equalsIgnoreCase("murder"))) {
                 try {
-                    player.sendMessage("§eTeleportuji na lobby §fSkyGiants");
-                    Main.getInstance().sendToServer(player, "globby");
+                    player.sendMessage("§eTeleportuji na lobby §fMurder");
+                    Main.getInstance().sendToServer(player, "mlobby");
                 } catch (Exception e) {
                     e.printStackTrace();
-                    player.sendMessage("§cTeleport na lobby §fSkyGiants §cse nezdaril!");
+                    player.sendMessage("§cTeleport na lobby §fMurder §cse nezdaril!");
                 }
             }
         }

@@ -43,7 +43,7 @@ commands:
       description: Server teleport
     arcade:
       description: Server teleport
-    skygiants:
+    murder:
       description: Server teleport
     vanillasb:
       description: Server teleport
