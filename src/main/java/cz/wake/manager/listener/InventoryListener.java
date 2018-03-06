@@ -103,6 +103,18 @@ public class InventoryListener implements Listener {
             if(e.getSlot() == 14){
                 MenuManager.prepareNavodLink(p, "WorldEdit", "https://wiki.craftmania.cz/navody/worldedit");
             }
+            if(e.getSlot() == 16){
+                MenuManager.prepareNavodLink(p, "GhostBlocks", "https://wiki.craftmania.cz/navody/ghost-blocks");
+            }
+            if(e.getSlot() == 17){
+                MenuManager.prepareNavodLink(p, "Warpy", "https://wiki.craftmania.cz/navody/warpy");
+            }
+            if(e.getSlot() == 18){
+                MenuManager.prepareNavodLink(p, "Hologramy", "https://wiki.craftmania.cz/navody/hologramy");
+            }
+            if(e.getSlot() == 19){
+                MenuManager.prepareNavodLink(p, "Replacementy", "https://wiki.craftmania.cz/navody/replacementy");
+            }
             if(e.getSlot() == 31){
                 Main.getInstance().getMainGUI().openMainMenu(p);
             }

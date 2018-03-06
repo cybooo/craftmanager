@@ -30,6 +30,10 @@ public class MenuManager {
         ItemStack ostrov = ItemFactory.create(Material.PAPER, (byte)0, "§e§lOstrov", "§7Nevis jak neco nastavit", "§7na svem ostrove?", "", "§fVhodne pro: §bSky, VSB, Prison");
         ItemStack worldedit = ItemFactory.create(Material.PAPER, (byte)0, "§e§lWorldEdit", "§7Jednoduchy navod pro", "§7vsechny, co chteji stavet", "§7pomoci WorldEditu.", "", "§fVhodne pro: §bCreative");
         ItemStack lift = ItemFactory.create(Material.PAPER, (byte)0, "§e§lVytah", "§7Chces si postavit vytah?","§7Ale nevis jak na to?", "", "§fVhodne pro: §bSurv, Skyb");
+        ItemStack ghostBlocks = ItemFactory.create(Material.PAPER, (byte)0, "§e§lGhostBlocks", "§7Chces si vycraftit", "§7mizejici bloky?", "", "§fVhodne pro: §bSurv, Sky, Crea");
+        ItemStack warps = ItemFactory.create(Material.PAPER, (byte)0, "§e§lVlastni warpy", "§7Vlastni warp kamkoliv?", "", "§fVhodne pro: §bSurv, Sky, Crea");
+        ItemStack holo = ItemFactory.create(Material.PAPER, (byte)0, "§e§lHologramy", "§7Chces si vytvorit vlastni", "§7hologram s efekty?", "", "§fVhodne pro: §bSurv, Sky, Crea");
+        ItemStack repl = ItemFactory.create(Material.PAPER, (byte)0, "§e§lReplacementy", "§7Jak na Emoji v chatu", "", "§fVhodne pro: §bSurv, Sky, Crea");
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte)0, "§cZpet");
 
@@ -49,6 +53,10 @@ public class MenuManager {
         inv.setItem(13, ostrov);
         inv.setItem(14, worldedit);
         inv.setItem(15, lift);
+        inv.setItem(16, ghostBlocks);
+        inv.setItem(17, warps);
+        inv.setItem(18, holo);
+        inv.setItem(19, repl);
         inv.setItem(31, zpet);
 
         p.openInventory(inv);
