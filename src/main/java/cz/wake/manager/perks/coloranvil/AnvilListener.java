@@ -3,6 +3,7 @@ package cz.wake.manager.perks.coloranvil;
 import cz.wake.manager.utils.tasks.AnvilTask;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -30,12 +31,15 @@ public class AnvilListener implements Listener {
 
             // Blokace prejmenovani spawneru + crates
             if (event.getCurrentItem().getType() == Material.MOB_SPAWNER || event.getCursor().getType() == Material.MOB_SPAWNER
-                    || event.getCurrentItem().getType() == Material.CHEST) {
+                    || event.getCurrentItem().getType() == Material.CHEST || event.getCursor().getType() == Material.CHEST) {
                 event.setCancelled(true);
             }
 
             if (event.getRawSlot() == 2) {
                 final ItemStack translatedItem = ColorHandler.getTranslatedItem(player, inv, task);
+                if(translatedItem.getType() == Material.CHEST || translatedItem.getType() == Material.TRAPPED_CHEST){
+                    event.setCurrentItem(new ItemStack(Material.POISONOUS_POTATO));
+                }
                 event.setCurrentItem(translatedItem);
                 //TODO: Detekce sprostych slov
             }
