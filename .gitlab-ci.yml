@@ -3,7 +3,7 @@ image: maven:3.3.9-jdk-8
 stages:
 - validate
 - build
-#- review
+- review
 #- deploy
 
 variables:
@@ -34,8 +34,8 @@ build:
     paths:
       - target/*.jar
 
-# codacy:
-#  stage: build
-#  script:
-#    - curl https://api.codacy.com/events/push/fc0963071383483fb51cb3b3432dc939
-#  allow_failure: false
+codacy:
+  stage: review
+  script:
+    - curl https://api.codacy.com/events/push/e0a9dbdc9c18463f94930022edfd6436
+  allow_failure: false
