@@ -91,6 +91,10 @@
             <id>bintray</id>
             <url>https://dl.bintray.com/nuvotifier/maven/</url>
         </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -128,6 +132,11 @@
             <artifactId>askyblock</artifactId>
             <version>3.0.6.2</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.craftmania-cz</groupId>
+            <artifactId>craftcore</artifactId>
+            <version>07f5881249</version>
         </dependency>
     </dependencies>
 </project>

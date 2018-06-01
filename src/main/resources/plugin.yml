@@ -1,6 +1,7 @@
 name: CraftManager
 main: cz.wake.manager.Main
 authors: [MrWakeCZ]
+depend: [CraftCore]
 version: 1.2-${git.commit.id.abbrev} # v1.2-a977d1a
 
 commands:
@@ -62,6 +63,8 @@ commands:
       description: Kontrola zakoupeneho fly
     beacon:
       description: Beacon pro HERO VIP
+    vyzvednout:
+      description: Vyzvedne kramy z SQL
 
 permissions:
     craftmanager.*:

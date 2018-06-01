@@ -784,5 +784,103 @@ public class SQLManager {
         }.runTaskAsynchronously(Main.getInstance());
     }
 
+    public final boolean hasActiveReward(String p) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = pool.getConnection();
+            ps = conn.prepareStatement("SELECT * FROM vybery_dotaznik WHERE nick = '" + p + "';");
+            ps.executeQuery();
+            return ps.getResultSet().next();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            pool.close(conn, ps, null);
+        }
+    }
+
+    public final int getCraftCoins(final UUID uuid) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = pool.getConnection();
+            ps = conn.prepareStatement("SELECT balance FROM CraftCoins WHERE uuid = '" + uuid.toString() + "';");
+            ps.executeQuery();
+            if (ps.getResultSet().next()) {
+                return ps.getResultSet().getInt("balance");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            pool.close(conn, ps, null);
+        }
+        return 0;
+    }
+
+    public final int getRewardState(final Player p) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = pool.getConnection();
+            ps = conn.prepareStatement("SELECT vybrano FROM vybery_dotaznik WHERE nick = '" + p.getName() + "';");
+            ps.executeQuery();
+            if (ps.getResultSet().next()) {
+                return ps.getResultSet().getInt("vybrano");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            pool.close(conn, ps, null);
+        }
+        return 1;
+    }
+
+    public final void addCoins(final Player p, final int coins) {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                Connection conn = null;
+                PreparedStatement ps = null;
+                try {
+                    conn = pool.getConnection();
+                    ps = conn.prepareStatement("UPDATE CraftCoins SET balance = ? WHERE uuid = '" + p.getUniqueId().toString() + "';");
+                    ps.setInt(1, getCraftCoins(p.getUniqueId()) + coins);
+                    ps.executeUpdate();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    pool.close(conn, ps, null);
+                }
+            }
+        }.runTaskAsynchronously(Main.getInstance());
+        p.sendMessage("§eDostal jsi " + coins + "CC.");
+    }
+
+    public final void updateReward(final Player p) {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                Connection conn = null;
+                PreparedStatement ps = null;
+                try {
+                    conn = pool.getConnection();
+                    ps = conn.prepareStatement("UPDATE vybery_dotaznik SET vybrano = ?, server = ?, time = ? WHERE nick = '" + p.getName() + "';");
+                    ps.setInt(1, 1);
+                    ps.setString(2, Main.getInstance().getIdServer());
+                    ps.setLong(3, System.currentTimeMillis());
+                    ps.executeUpdate();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    pool.close(conn, ps, null);
+                }
+            }
+        }.runTaskAsynchronously(Main.getInstance());
+    }
+
+
+
+
 
 }
