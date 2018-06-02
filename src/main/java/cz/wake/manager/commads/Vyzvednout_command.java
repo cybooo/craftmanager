@@ -22,18 +22,16 @@ public class Vyzvednout_command implements CommandExecutor, Listener {
         if (sender instanceof Player) {
             Player player = (Player) sender;
             if (command.getName().equalsIgnoreCase("vyzvednout")) {
-
-                if(Main.getInstance().getMySQL().getRewardState(player) == 1){
-                    player.sendMessage("§c§l(!) §cOdmenu jsi si jiz vybral/a!");
-                    return false;
-                }
-
                 if(!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock"))){
                     player.sendMessage("§c§l(!) §cTento prikaz lze pouzit pouze na Survivalu nebo Skyblocku.");
                     return false;
                 } else {
                     //Kdyz je v SQL
                     if(Main.getInstance().getMySQL().hasActiveReward(player.getName())){
+                        if(Main.getInstance().getMySQL().getRewardState(player) == 1){
+                            player.sendMessage("§c§l(!) §cOdmenu jsi si jiz vybral/a!");
+                            return false;
+                        }
                         if(isInventoryFull(player)){
                             player.sendMessage("§c§l(!) §cMas plny inventar, uvolni si jedno misto pro Epic Crate!");
                             return false;
