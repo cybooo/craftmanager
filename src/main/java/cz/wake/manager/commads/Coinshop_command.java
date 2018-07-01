@@ -15,7 +15,8 @@ public class Coinshop_command implements CommandExecutor {
             if ((Command.getName().equalsIgnoreCase("coinshop"))) {
                 try {
                     if (ArrayOfString.length == 0) {
-                        Main.getInstance().getShopGUI().openShopMainGUI(player);
+                        player.sendMessage("§c§l(!) §cCoinshop je docasne vypnuty. Brzo se spusti! :)");
+                        //Main.getInstance().getShopGUI().openShopMainGUI(player);
                         return true;
                     }
                     return true;
