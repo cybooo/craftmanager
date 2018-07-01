@@ -4,26 +4,22 @@ stages:
 - validate
 - build
 - review
-#- deploy
 
 variables:
-  # This will supress any download for dependencies and plugins or upload messages which would clutter the console log.
-  # `showDateTime` will show the passed time in milliseconds. You need to specify `--batch-mode` to make this work.
-  MAVEN_OPTS: "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN -Dorg.slf4j.simpleLogger.showDateTime=true -Djava.awt.headless=true"
-  # As of Maven 3.3.0 instead of this you may define these options in `.mvn/maven.config` so the same config is used
-  # when running from the command line.
-  # `installAtEnd` and `deployAtEnd`are only effective with recent version of the corresponding plugins.
-  MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true"
+  MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
 
 # Cache downloaded dependencies and plugins between builds.
 cache:
   paths:
     - /root/.m2/repository/
+    - .m2/repository/
+    - target/
 
 validate:
   stage: validate
   script:
-    - 'mvn $MAVEN_CLI_OPTS validate'
+    - 'mvn validate'
 
 build:
   stage: build
@@ -34,8 +30,7 @@ build:
     paths:
       - target/*.jar
 
-codacy:
+sonar:
   stage: review
   script:
-    - curl https://api.codacy.com/events/push/e0a9dbdc9c18463f94930022edfd6436
-  allow_failure: false
+    - 'mvn $MAVEN_CLI_OPTS sonar:sonar'
