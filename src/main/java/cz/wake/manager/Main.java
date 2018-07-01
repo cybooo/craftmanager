@@ -208,8 +208,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("menu").setExecutor(new Menu_command());
         getCommand("coinshop").setExecutor(new Coinshop_command());
         getCommand("particles").setExecutor(new Particles_command());
-        getCommand("coins").setExecutor(new Coins_command());
-        getCommand("cc").setExecutor(new Coins_command());
         getCommand("glow").setExecutor(new Glow_command());
         getCommand("chatcolor").setExecutor(new Chatcolor_command());
         getCommand("help").setExecutor(new Help_command());

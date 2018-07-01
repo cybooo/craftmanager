@@ -12,10 +12,6 @@ commands:
     particles:
       description: Prikaz na otevreni particles menu
       aliases: [part]
-    coins:
-      description: Prikaz na zjisteni craftcoinu
-    cc:
-      description: Prikaz pro zjisteni craftcoinu
     glow:
       description: Prikaz pro VIP
     fakevote:
