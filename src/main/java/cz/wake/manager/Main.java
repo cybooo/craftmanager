@@ -160,7 +160,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new PlayerListener(), this);
         pm.registerEvents(new MainGUI(), this);
         pm.registerEvents(new ShopAPI(), this);
-        pm.registerEvents(new LoginListener(), this);
         pm.registerEvents(new ChatListener(), this);
         pm.registerEvents(new DurabilityWarner(), this);
         pm.registerEvents(new TempShop(), this);
