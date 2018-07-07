@@ -85,7 +85,7 @@ public class SuperbVote implements Listener {
     }
 
     private void giveCoins(final Player p, int coins) {
-        Main.getInstance().getMySQL().addCoins(p.getUniqueId(), coins);
+        //Main.getInstance().getMySQL().addCoins(p.getUniqueId(), coins);
         p.sendMessage("§eBylo ti pridano §f" + coins + " §ecoinu.");
     }
 

@@ -60,8 +60,6 @@ commands:
       description: Kontrola zakoupeneho fly
     beacon:
       description: Beacon pro HERO VIP
-    vyzvednout:
-      description: Vyzvedne kramy z SQL
 
 permissions:
     craftmanager.*:

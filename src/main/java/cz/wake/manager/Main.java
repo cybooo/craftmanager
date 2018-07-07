@@ -169,7 +169,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new TagsEditor(), this);
         pm.registerEvents(new Replacements(), this);
         pm.registerEvents(new BeaconCommand(), this);
-        pm.registerEvents(new Vyzvednout_command(), this);
 
         // Skyblock PVP listener
         if (idServer.equalsIgnoreCase("skyblock")) {
@@ -229,7 +228,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("navody").setExecutor(new Navody_command());
         getCommand("checkfly").setExecutor(new Checkfly_command());
         getCommand("beacon").setExecutor(new BeaconCommand());
-        getCommand("vyzvednout").setExecutor(new Vyzvednout_command());
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {

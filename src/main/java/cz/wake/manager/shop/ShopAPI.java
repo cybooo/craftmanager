@@ -3,6 +3,7 @@ package cz.wake.manager.shop;
 import cz.wake.craftcore.utils.items.ItemBuilder;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
+import net.nifheim.beelzebu.coins.CoinsAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -62,7 +63,7 @@ public class ShopAPI implements Listener {
             inv.setItem(7, vyber_prison);
 
             ItemStack tags = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§6Tags (za CraftCoiny)", "§7Zakup si tag pred nick", "§7a bud IN!", "", "§eKlikni pro zobrazeni");
-            ItemStack tagsTokens = ItemFactory.create(Material.ANVIL, (byte) 0, "§bTags (za CraftTokeny)", "§7Vytvor si vlastni tag", "§7podle svych predstav,", "§7limit prakticky neexistuje!", "", "§aAktualne mas §f" + Main.getInstance().getMySQL().getPlayerTokens(p.getUniqueId()) + "§a CT", "", "§eKlikni k otevreni editoru");
+            ItemStack tagsTokens = ItemFactory.create(Material.ANVIL, (byte) 0, "§bTags (za CraftTokeny)", "§7Vytvor si vlastni tag", "§7podle svych predstav,", "§7limit prakticky neexistuje!", "", "§aAktualne mas §f" + Main.getInstance().getMySQL().getPlayerTokens(p) + "§a CT", "", "§eKlikni k otevreni editoru");
 
             ItemStack prava = new ItemBuilder(Material.BOOK, (short) 0)
                     .setName("§6Prava (za CraftCoiny)").setLore("§7Nakup si dalsi prava", "§7a ziskej tak dostatecnou", "§7vyhodu oproti ostatnim", "§7hracum na serveru.", "", "§eKlikni pro zobrazeni").build();
@@ -313,7 +314,7 @@ public class ShopAPI implements Listener {
                 this.openTagsMenu(p);
             }
             if (e.getSlot() == 30) {
-                if (Main.getInstance().getMySQL().getPlayerTokens(p.getUniqueId()) > 0) {
+                if (CoinsAPI.getCoins(p.getUniqueId()) > 0) {
                     TagsEditor.createTagEditor(p);
                 } else {
                     p.sendMessage("§cNemas dostatek CraftTokenu k provedeni teto akce.");
@@ -909,7 +910,7 @@ public class ShopAPI implements Listener {
     }
 
     private String checkerCoins(final Player p, int coins) {
-        int i = Main.getInstance().getMySQL().getPlayerCoins(p.getUniqueId());
+        int i = (int)CoinsAPI.getCoins(p.getUniqueId());
         if (i > coins) {
             return "§eKliknutim provedes nakup za " + coins + " CC.";
         } else {
@@ -931,10 +932,10 @@ public class ShopAPI implements Listener {
         if (p.hasPermission(perm)) {
             p.sendMessage("§cTag " + name + " jiz vlastnis!");
         } else {
-            int i = Main.getInstance().getMySQL().getPlayerCoins(p.getUniqueId());
+            int i = (int)CoinsAPI.getCoins(p.getUniqueId());
             if (i >= price) {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set " + perm + " true");
-                Main.getInstance().getMySQL().takeCoins(p, price);
+                CoinsAPI.takeCoins(p.getUniqueId(), price);
                 p.sendMessage("§eZakoupil jsi si tag: §f" + name);
                 p.closeInventory();
             } else {

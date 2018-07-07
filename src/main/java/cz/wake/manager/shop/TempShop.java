@@ -2,6 +2,7 @@ package cz.wake.manager.shop;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
+import net.nifheim.beelzebu.coins.CoinsAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -63,9 +64,9 @@ public class TempShop implements Listener {
             }
             if (e.getSlot() == 30) {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp " + permission + " true " + time);
-                Main.getInstance().getMySQL().takeCoins(p, coin);
+                CoinsAPI.takeCoins(p.getUniqueId(), coin);
                 p.sendMessage("§eZakoupil jsi si §a" + name + " §eza §6" + coin + " CC.");
-                Main.getInstance().getMySQL().createBoosterLog(p, type, System.currentTimeMillis() + 10800000L);
+                //Main.getInstance().getMySQL().createBoosterLog(p, type, System.currentTimeMillis() + 10800000L);
                 p.closeInventory();
             }
             if (e.getSlot() == 32) {
