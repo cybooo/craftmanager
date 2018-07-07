@@ -1,6 +1,7 @@
 package cz.wake.manager;
 
 import cz.wake.manager.utils.ItemFactory;
+import net.nifheim.beelzebu.coins.CoinsAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -25,7 +26,7 @@ public class MainGUI implements Listener {
         ItemStack head = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
         ArrayList<String> headLore = new ArrayList<>();
         headLore.add("§7");
-        headLore.add("§6CraftCoins: §f" + Main.getInstance().getMySQL().getPlayerCoins(p.getUniqueId()));
+        headLore.add("§6CraftCoins: §f" + CoinsAPI.getCoins(p.getUniqueId()));
         headLore.add("");
         headLore.add("§eHlasy tento tyden: §f" + Main.getInstance().getVoteHandler().getPlayerCachedWeekVotes(p));
         headLore.add("§eHlasy tento mesic: §f" + Main.getInstance().getVoteHandler().getPlayerCachedMonthVotes(p));

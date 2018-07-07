@@ -24,7 +24,7 @@ public class TempShop implements Listener {
 
     public static void open(final Player p, final String names, final String permissions, final ItemStack i, final String times, final int coins, final String types) {
 
-        if (Main.getInstance().getMySQL().getPlayerCoins((p.getUniqueId())) >= coins) {
+        if (CoinsAPI.getCoins(p.getUniqueId()) >= coins) {
             coin = coins;
             player = p;
             permission = permissions;
