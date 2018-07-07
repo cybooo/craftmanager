@@ -85,8 +85,7 @@ public class SuperbVote implements Listener {
     }
 
     private void giveCoins(final Player p, int coins) {
-        Main.getInstance().getMySQL().addCoins(p.getUniqueId(), coins);
-        p.sendMessage("§eBylo ti pridano §f" + coins + " §ecoinu.");
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "coins give " + p.getName() + " " + coins);
     }
 
     private static int randRange(int min, int max) {
