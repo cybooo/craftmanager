@@ -1,5 +1,6 @@
 package cz.wake.manager.shop;
 
+import cz.wake.craftcore.utils.items.ItemBuilder;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
 import org.bukkit.Bukkit;
@@ -20,26 +21,58 @@ public class ShopAPI implements Listener {
         if (Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")
                 || Main.getInstance().getIdServer().equalsIgnoreCase("survival")
                 || Main.getInstance().getIdServer().equalsIgnoreCase("creative")
-                || Main.getInstance().getIdServer().equalsIgnoreCase("creative2")
                 || Main.getInstance().getIdServer().equalsIgnoreCase("vanillasb")
                 || Main.getInstance().getIdServer().equalsIgnoreCase("test")) {
-            Inventory inv = Bukkit.createInventory(null, 45, "§0Coinshop");
+            Inventory inv = Bukkit.createInventory(null, 54, "§0Coinshop");
 
-            ItemStack tags = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§aTags (za CraftCoiny)", "§7Zakup si tag pred nick", "§7a bud IN!", "", "§eKlikni pro zobrazeni");
-            ItemStack keys = ItemFactory.create(Material.TRIPWIRE_HOOK, (byte) 0, "§cKeys", "§7Zakup si legendarni klice", "§7za CraftCoiny!", "", "§cJiz brzy...");
-            ItemStack tagsTokens = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§bTags (za CraftTokeny)", "§7Vytvor si vlastni tag", "§7podle svych predstav,", "§7limit prakticky neexistuje!", "", "§aAktualne mas §f" + Main.getInstance().getMySQL().getPlayerTokens(p.getUniqueId()) + "§a CT", "", "§eKlikni k otevreni editoru");
+            ItemStack head = new ItemBuilder(Material.SKULL_ITEM, (short)3)
+                    .setName("§bTvoje bohatstvi").setLore("§7CraftCoins: §f0 CC", "§7CraftTokens: §f0 CT", "§7VoteTokens: §f0 VT", "", "§eKliknutim zobrazis vysvetleni").setSkullOwner(p.getName()).build();
+            inv.setItem(1, head);
 
-            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
-                ItemStack multipliers = ItemFactory.create(Material.BLAZE_POWDER, (byte) 0, "§aBoostery", "§7Zakup pro sebe nebo cely server", "§7booster na urceny cas!");
-                inv.setItem(15, multipliers);
-            } else {
-                ItemStack i = ItemFactory.create(Material.BARRIER, (byte) 0, "§cBoostery", "§8Na tomto serveru jsou deaktivovany.");
-                inv.setItem(15, i);
-            }
+            ItemStack log = new ItemBuilder(Material.PAPER, (short)0)
+                    .setName("§bLog uctu").setLore("§7Pripravujeme...").build();
+            inv.setItem(2, log);
 
-            inv.setItem(11, tags);
-            inv.setItem(13, keys);
-            inv.setItem(31, tagsTokens);
+            ItemStack vyber_survival = new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 14)
+                    .setName("§cSurvival").setLore("§7Server v tomto menu", "§7nelze zvolit.").build();
+
+            ItemStack vyber_skyblock = new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 14)
+                    .setName("§cSkyblock").setLore("§7Server v tomto menu", "§7nelze zvolit.").build();
+
+            ItemStack vyber_creative = new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 14)
+                    .setName("§cCreative").setLore("§7Server v tomto menu", "§7nelze zvolit.").build();
+
+            ItemStack vyber_prison = new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 14)
+                    .setName("§cPrison").setLore("§7Server v tomto menu", "§7nelze zvolit.").build();
+
+            ItemStack footer = new ItemBuilder(Material.STAINED_GLASS_PANE, (short)15).setName("§c").build();
+            inv.setItem(53, footer);
+            inv.setItem(52, footer);
+            inv.setItem(51, footer);
+            inv.setItem(50, footer);
+            inv.setItem(49, footer);
+            inv.setItem(48, footer);
+            inv.setItem(47, footer);
+            inv.setItem(46, footer);
+            inv.setItem(45, footer);
+
+            inv.setItem(4, vyber_survival);
+            inv.setItem(5, vyber_skyblock);
+            inv.setItem(6, vyber_creative);
+            inv.setItem(7, vyber_prison);
+
+            ItemStack tags = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§6Tags (za CraftCoiny)", "§7Zakup si tag pred nick", "§7a bud IN!", "", "§eKlikni pro zobrazeni");
+            ItemStack tagsTokens = ItemFactory.create(Material.ANVIL, (byte) 0, "§bTags (za CraftTokeny)", "§7Vytvor si vlastni tag", "§7podle svych predstav,", "§7limit prakticky neexistuje!", "", "§aAktualne mas §f" + Main.getInstance().getMySQL().getPlayerTokens(p.getUniqueId()) + "§a CT", "", "§eKlikni k otevreni editoru");
+
+            ItemStack prava = new ItemBuilder(Material.BOOK, (short) 0)
+                    .setName("§6Prava (za CraftCoiny)").setLore("§7Nakup si dalsi prava", "§7a ziskej tak dostatecnou", "§7vyhodu oproti ostatnim", "§7hracum na serveru.", "", "§eKlikni pro zobrazeni").build();
+            inv.setItem(23, prava);
+
+            ItemStack voteShop = new ItemBuilder(Material.EMERALD, (short)0).setName("§aOdmeny (za VoteTokeny)").setLore("§7Vyber si odmenu", "§7za hlasovani podle sebe!", "", "§eKliknutim zobrazis").build();
+            inv.setItem(34, voteShop);
+
+            inv.setItem(19, tags);
+            inv.setItem(30, tagsTokens);
             p.openInventory(inv);
         } else {
             p.sendMessage("§cNa tomto serveru je CoinShop deaktivovany.");
@@ -265,73 +298,6 @@ public class ShopAPI implements Listener {
         p.openInventory(inv);
     }
 
-    //TODO: Dodelat pro servery zvlast
-
-    private void openBoostersMenu(Player p) {
-        Inventory inv = Bukkit.createInventory(null, 45, "Boostery");
-
-        if (p.hasPermission("askyblock.islandfly")) {
-            ItemStack hasFly = ItemFactory.create(Material.ELYTRA, (byte) 0, "§aPovoleni na FLY", "§7Jiz mas aktivovano.", "§eKonec: §f" + getDate(Main.getInstance().getMySQL().getBoostedPlayer(p, "fly")));
-            ItemFactory.addGlow(hasFly);
-            inv.setItem(10, hasFly);
-        } else if (p.hasPermission("essentials.fly")) {
-            ItemStack hasFly = ItemFactory.create(Material.ELYTRA, (byte) 0, "§aPovoleni na FLY", "§7Jiz mas aktivovano.");
-            ItemFactory.addGlow(hasFly);
-            inv.setItem(10, hasFly);
-        } else {
-            if (Main.getInstance().getMySQL().hasBoosterInSQL(p, "fly")) {
-                Main.getInstance().getMySQL().deleteBooster(p, "fly");
-            }
-            ItemStack noFly = ItemFactory.create(Material.ELYTRA, (byte) 0, "§cPovoleni na FLY", "§7Zakoupenim budes moct", "§7litat POUZE na svem ostrove!", "§cPo nakupu je potreba jit", "§cdo /lobby a zpet!", "", "§eCena: §f1k CC na 3h", "", "§aKliknutim zakoupis");
-            inv.setItem(10, noFly);
-        }
-        if (p.hasPermission("jobs.boost.all.exp.0.25")) {
-            ItemStack jobsExp = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§aJobs Booster EXP (+25%)", "§7Jiz mas aktivovano", "§eKonec: §f" + getDate((Main.getInstance().getMySQL().getBoostedPlayer(p, "exp25")) / 1000));
-            inv.setItem(12, jobsExp);
-        } else {
-            if (Main.getInstance().getMySQL().hasBoosterInSQL(p, "exp25")) {
-                Main.getInstance().getMySQL().deleteBooster(p, "exp25");
-            }
-            ItemStack noJobsExp = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§cJobs Booster EXP (+25%)", "§7Zakoupenim ziskas booster na Jobs,", "§7ktery ti da o 25% vic expu", "§7na levlovani prace!", "", "§eCena: §f500 CC na 3h", "", "§aKliknutim zakoupis");
-            inv.setItem(12, noJobsExp);
-        }
-        if (p.hasPermission("jobs.boost.all.exp.0.50")) {
-            ItemStack jobsExp = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§aJobs Booster EXP (+50%)", "§7Jiz mas aktivovano", "§eKonec: §f" + getDate((Main.getInstance().getMySQL().getBoostedPlayer(p, "exp50")) / 1000));
-            inv.setItem(13, jobsExp);
-        } else {
-            if (Main.getInstance().getMySQL().hasBoosterInSQL(p, "exp50")) {
-                Main.getInstance().getMySQL().deleteBooster(p, "exp50");
-            }
-            ItemStack noJobsExp = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§cJobs Booster EXP (+50%)", "§7Zakoupenim ziskas booster na Jobs,", "§7ktery ti da o 50% vic expu", "§7na levlovani prace!", "", "§eCena: §f800 CC na 3h", "", "§aKliknutim zakoupis");
-            inv.setItem(13, noJobsExp);
-        }
-        if (p.hasPermission("jobs.boost.all.money.0.10")) {
-            ItemStack jobsExp = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§aJobs Booster Money (+10%)", "§7Jiz mas aktivovano", "§eKonec: §f" + getDate((Main.getInstance().getMySQL().getBoostedPlayer(p, "money10")) / 1000));
-            inv.setItem(14, jobsExp);
-        } else {
-            if (Main.getInstance().getMySQL().hasBoosterInSQL(p, "money10")) {
-                Main.getInstance().getMySQL().deleteBooster(p, "money10");
-            }
-            ItemStack noJobsExp = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§cJobs Booster Money (+10%)", "§7Zakoupenim ziskas booster na Jobs,", "§7ktery ti da 10% vic penez", "§7za praci v Jobs!", "", "§eCena: §f400 CC na 3h", "", "§aKliknutim zakoupis");
-            inv.setItem(14, noJobsExp);
-        }
-        if (p.hasPermission("jobs.boost.all.money.0.20")) {
-            ItemStack jobsExp = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§aJobs Booster Money (+20%)", "§7Jiz mas aktivovano", "§eKonec: §f" + getDate((Main.getInstance().getMySQL().getBoostedPlayer(p, "money20")) / 1000));
-            inv.setItem(15, jobsExp);
-        } else {
-            if (Main.getInstance().getMySQL().hasBoosterInSQL(p, "money20")) {
-                Main.getInstance().getMySQL().deleteBooster(p, "money20");
-            }
-            ItemStack noJobsExp = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§cJobs Booster Money (+20%)", "§7Zakoupenim ziskas booster na Jobs,", "§7ktery ti da 20% vic penez", "§7za praci v Jobs!", "", "§eCena: §f600 CC na 3h", "", "§aKliknutim zakoupis");
-            inv.setItem(15, noJobsExp);
-        }
-
-        ItemStack arrow = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
-        inv.setItem(40, arrow);
-
-        p.openInventory(inv);
-    }
-
     @EventHandler
     private void onClick(InventoryClickEvent e) {
         final Player p = (Player) e.getWhoClicked();
@@ -343,17 +309,10 @@ public class ShopAPI implements Listener {
             if (e.getCurrentItem().getType() == Material.AIR) {
                 return;
             }
-            if (e.getSlot() == 11) {
+            if (e.getSlot() == 19) {
                 this.openTagsMenu(p);
             }
-            if (e.getSlot() == 15) {
-                if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
-                    openBoostersMenu(p);
-                } else {
-                    p.sendMessage("§cNa tomto serveru nelze pouzivat boostery.");
-                }
-            }
-            if (e.getSlot() == 31) {
+            if (e.getSlot() == 30) {
                 if (Main.getInstance().getMySQL().getPlayerTokens(p.getUniqueId()) > 0) {
                     TagsEditor.createTagEditor(p);
                 } else {
