@@ -31,8 +31,7 @@ public class AnvilListener implements Listener {
 
             // Blokace prejmenovani spawneru + crates
             if (event.getCurrentItem().getType() == Material.MOB_SPAWNER || event.getCursor().getType() == Material.MOB_SPAWNER
-                    || event.getCurrentItem().getType() == Material.CHEST || event.getCursor().getType() == Material.CHEST
-                    || event.getCurrentItem().getType() == Material.ENCHANTED_BOOK) {
+                    || event.getCurrentItem().getType() == Material.CHEST || event.getCursor().getType() == Material.CHEST) {
                 event.setCancelled(true);
             }
 
@@ -42,7 +41,6 @@ public class AnvilListener implements Listener {
                     event.setCurrentItem(new ItemStack(Material.POISONOUS_POTATO));
                 }
                 event.setCurrentItem(translatedItem);
-                //TODO: Detekce sprostych slov
             }
         }
     }
