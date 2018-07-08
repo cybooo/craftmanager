@@ -84,17 +84,17 @@ public class TempShop implements Listener {
             }
             if (e.getSlot() == 30) {
                 if(type == MoneyType.CRAFTCOIN) {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp " + permission + " true " + time);
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp " + permission + " true " + time + " " + Main.getInstance().getIdServer());
                     CoinsAPI.takeCoins(p.getUniqueId(), coin);
                     p.sendMessage("§eZakoupil jsi si §a" + name + " §eza §6" + coin + " CC.");
                     p.closeInventory();
                 } else if (type == MoneyType.CRAFTTOKEN) {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp " + permission + " true " + time);
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp " + permission + " true " + time + " " + Main.getInstance().getIdServer());
                     Main.getInstance().getMySQL().takeCraftToken(player, coin);
                     p.sendMessage("§eZakoupil jsi si §a" + name + " §eza §6" + coin + " CT.");
                     p.closeInventory();
                 } else {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp " + permission + " true " + time);
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp " + permission + " true " + time + " " + Main.getInstance().getIdServer());
                     Main.getInstance().getMySQL().takeVoteToken(p, coin);
                     p.sendMessage("§eZakoupil jsi si §a" + name + " §eza §6" + coin + " VT.");
                     p.closeInventory();

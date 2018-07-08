@@ -27,7 +27,7 @@ public class ShopAPI implements Listener {
             Inventory inv = Bukkit.createInventory(null, 54, "§0Coinshop");
 
             ItemStack head = new ItemBuilder(Material.SKULL_ITEM, (short)3)
-                    .setName("§bTvoje bohatstvi").setLore("§7CraftCoins: §f0 CC", "§7CraftTokens: §f0 CT", "§7VoteTokens: §f0 VT", "", "§eKliknutim zobrazis vysvetleni").setSkullOwner(p.getName()).build();
+                    .setName("§bTvoje bohatstvi").setLore("§7CraftCoins: §f" + CoinsAPI.getCoins(p.getUniqueId()) + " CC", "§7CraftTokens: §f" + Main.getInstance().getMySQL().getPlayerCraftTokens(p) + " CT", "§7VoteTokens: §f" + Main.getInstance().getMySQL().getPlayerVoteTokens(p) + " VT", "", "§eKliknutim zobrazis vysvetleni").setSkullOwner(p.getName()).build();
             inv.setItem(1, head);
 
             ItemStack log = new ItemBuilder(Material.PAPER, (short)0)
@@ -63,7 +63,7 @@ public class ShopAPI implements Listener {
             inv.setItem(7, vyber_prison);
 
             ItemStack tags = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§6Tags (za CraftCoiny)", "§7Zakup si tag pred nick", "§7a bud IN!", "", "§eKlikni pro zobrazeni");
-            ItemStack tagsTokens = ItemFactory.create(Material.ANVIL, (byte) 0, "§bTags (za CraftTokeny)", "§7Vytvor si vlastni tag", "§7podle svych predstav,", "§7limit prakticky neexistuje!", "", "§aAktualne mas §f" + Main.getInstance().getMySQL().getPlayerCraftTokens(p) + "§a CT", "", "§eKlikni k otevreni editoru");
+            ItemStack tagsTokens = ItemFactory.create(Material.ANVIL, (byte) 0, "§bTags (za CraftTokeny)", "§7Vytvor si vlastni tag", "§7podle svych predstav,", "§7limit prakticky neexistuje!", "", "§eKlikni k otevreni editoru");
 
             ItemStack prava = new ItemBuilder(Material.BOOK, (short) 0)
                     .setName("§6Prava (za CraftCoiny)").setLore("§7Nakup si dalsi prava", "§7a ziskej tak dostatecnou", "§7vyhodu oproti ostatnim", "§7hracum na serveru.", "", "§eKlikni pro zobrazeni").build();
@@ -314,7 +314,7 @@ public class ShopAPI implements Listener {
                 this.openTagsMenu(p);
             }
             if (e.getSlot() == 30) {
-                if (CoinsAPI.getCoins(p.getUniqueId()) > 0) {
+                if (Main.getInstance().getMySQL().getPlayerCraftTokens(p) > 0) {
                     TagsEditor.createTagEditor(p);
                 } else {
                     p.sendMessage("§cNemas dostatek CraftTokenu k provedeni teto akce.");
