@@ -30,7 +30,7 @@ public class SQLManager {
         return pool;
     }
 
-    public final int getPlayerTokens(final Player player) {
+    public final int getPlayerCraftTokens(final Player player) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
@@ -39,6 +39,24 @@ public class SQLManager {
             ps.executeQuery();
             if (ps.getResultSet().next()) {
                 return ps.getResultSet().getInt("crafttoken");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            pool.close(conn, ps, null);
+        }
+        return 0;
+    }
+
+    public final int getPlayerVoteTokens(final Player player) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = pool.getConnection();
+            ps = conn.prepareStatement("SELECT votetoken FROM craftmoney_data WHERE uuid = '" + player.getUniqueId().toString() + "';");
+            ps.executeQuery();
+            if (ps.getResultSet().next()) {
+                return ps.getResultSet().getInt("votetoken");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -252,7 +270,7 @@ public class SQLManager {
         }.runTaskAsynchronously(Main.getInstance());
     }
 
-    public final void takeTokens(final Player p, final int tokens) {
+    public final void takeCraftToken(final Player p, final int tokens) {
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -261,7 +279,27 @@ public class SQLManager {
                 try {
                     conn = pool.getConnection();
                     ps = conn.prepareStatement("UPDATE craftmoney_data SET crafttoken = ? WHERE uuid = '" + p.getUniqueId().toString() + "';");
-                    ps.setInt(1, getPlayerTokens(p) - tokens);
+                    ps.setInt(1, getPlayerCraftTokens(p) - tokens);
+                    ps.executeUpdate();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    pool.close(conn, ps, null);
+                }
+            }
+        }.runTaskAsynchronously(Main.getInstance());
+    }
+
+    public final void takeVoteToken(final Player p, final int tokens) {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                Connection conn = null;
+                PreparedStatement ps = null;
+                try {
+                    conn = pool.getConnection();
+                    ps = conn.prepareStatement("UPDATE craftmoney_data SET votetoken = ? WHERE uuid = '" + p.getUniqueId().toString() + "';");
+                    ps.setInt(1, getPlayerVoteTokens(p) - tokens);
                     ps.executeUpdate();
                 } catch (Exception e) {
                     e.printStackTrace();

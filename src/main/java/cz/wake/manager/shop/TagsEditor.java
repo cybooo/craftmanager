@@ -113,7 +113,7 @@ public class TagsEditor implements Listener {
                                         return;
                                     }
                                 }
-                                Main.getInstance().getMySQL().takeTokens(player, 1);
+                                Main.getInstance().getMySQL().takeCraftToken(player, 1);
                                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tags create " + tag + " " + tag + " &8▏");
                                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission set deluxetags.tag." + tag + " true");
                                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tags reload");
