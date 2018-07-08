@@ -63,7 +63,7 @@ public class ShopAPI implements Listener {
             inv.setItem(7, vyber_prison);
 
             ItemStack tags = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§6Tags (za CraftCoiny)", "§7Zakup si tag pred nick", "§7a bud IN!", "", "§eKlikni pro zobrazeni");
-            ItemStack tagsTokens = ItemFactory.create(Material.ANVIL, (byte) 0, "§bTags (za CraftTokeny)", "§7Vytvor si vlastni tag", "§7podle svych predstav,", "§7limit prakticky neexistuje!", "", "§aAktualne mas §f" + Main.getInstance().getMySQL().getPlayerTokens(p) + "§a CT", "", "§eKlikni k otevreni editoru");
+            ItemStack tagsTokens = ItemFactory.create(Material.ANVIL, (byte) 0, "§bTags (za CraftTokeny)", "§7Vytvor si vlastni tag", "§7podle svych predstav,", "§7limit prakticky neexistuje!", "", "§aAktualne mas §f" + Main.getInstance().getMySQL().getPlayerCraftTokens(p) + "§a CT", "", "§eKlikni k otevreni editoru");
 
             ItemStack prava = new ItemBuilder(Material.BOOK, (short) 0)
                     .setName("§6Prava (za CraftCoiny)").setLore("§7Nakup si dalsi prava", "§7a ziskej tak dostatecnou", "§7vyhodu oproti ostatnim", "§7hracum na serveru.", "", "§eKlikni pro zobrazeni").build();
@@ -318,58 +318,6 @@ public class ShopAPI implements Listener {
                     TagsEditor.createTagEditor(p);
                 } else {
                     p.sendMessage("§cNemas dostatek CraftTokenu k provedeni teto akce.");
-                }
-            }
-        }
-        if (e.getInventory().getTitle().equals("Boostery")) {
-            e.setCancelled(true);
-            if (e.getCurrentItem() == null) {
-                return;
-            }
-            if (e.getCurrentItem().getType() == Material.AIR) {
-                return;
-            }
-            if (e.getSlot() == 40) {
-                openShopMainGUI(p);
-            }
-            if (e.getSlot() == 10) {
-                if (!p.hasPermission("askyblock.islandfly") && !p.hasPermission("essentials.fly")) {
-                    ItemStack i = ItemFactory.create(Material.ELYTRA, (byte) 0, "§aPovoleni na FLY");
-                    TempShop.open(p, "Povoleni na FLY", "askyblock.islandfly", i, "3h", 1000, "fly");
-                } else {
-                    p.sendMessage("§cJiz mas aktivovane Fly!");
-                }
-            }
-            if (e.getSlot() == 12) {
-                if (!p.hasPermission("jobs.boost.all.exp.0.25")) {
-                    ItemStack i = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§aJobs Booster EXP (+25%)");
-                    TempShop.open(p, "Jobs Booster EXP (+25%)", "jobs.boost.all.exp.0.25", i, "3h", 500, "exp25");
-                } else {
-                    p.sendMessage("§cTento Booster mas jiz aktivovany!");
-                }
-            }
-            if (e.getSlot() == 13) {
-                if (!p.hasPermission("jobs.boost.all.exp.0.50")) {
-                    ItemStack i = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§aJobs Booster EXP (+50%)");
-                    TempShop.open(p, "Jobs Booster EXP (+50%)", "jobs.boost.all.exp.0.50", i, "3h", 800, "exp50");
-                } else {
-                    p.sendMessage("§cTento Booster mas jiz aktivovany!");
-                }
-            }
-            if (e.getSlot() == 14) {
-                if (!p.hasPermission("jobs.boost.all.money.0.10")) {
-                    ItemStack i = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§aJobs Booster Money (+10%)");
-                    TempShop.open(p, "Jobs Booster Money (+10%)", "jobs.boost.all.money.0.10", i, "3h", 400, "money10");
-                } else {
-                    p.sendMessage("§cTento Booster mas jiz aktivovany!");
-                }
-            }
-            if (e.getSlot() == 15) {
-                if (!p.hasPermission("jobs.boost.all.money.0.20")) {
-                    ItemStack i = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§aJobs Booster Money (+20%)");
-                    TempShop.open(p, "Jobs Booster Money (+20%)", "jobs.boost.all.money.0.20", i, "3h", 600, "money20");
-                } else {
-                    p.sendMessage("§cTento Booster mas jiz aktivovany!");
                 }
             }
         }

@@ -29,7 +29,6 @@ import cz.wake.manager.utils.tasks.UpdateTablistTask;
 import cz.wake.manager.utils.tasks.VoteReseterTask;
 import cz.wake.manager.votifier.ForwardVote;
 import cz.wake.manager.votifier.Reminder;
-import cz.wake.manager.votifier.SuperbVote;
 import cz.wake.manager.votifier.VoteHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -216,7 +215,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("survival").setExecutor(new Survival_command());
         getCommand("skyblock").setExecutor(new Skyblock_command());
         getCommand("creative").setExecutor(new Creative_command());
-        getCommand("creative2").setExecutor(new Creative2_command());
         getCommand("prison").setExecutor(new Prison_command());
         getCommand("factions").setExecutor(new Factions_command());
         getCommand("vanilla").setExecutor(new Vanilla_command());
