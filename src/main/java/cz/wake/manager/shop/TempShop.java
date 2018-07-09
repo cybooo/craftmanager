@@ -2,6 +2,7 @@ package cz.wake.manager.shop;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
+import net.nifheim.beelzebu.coins.CoinsAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -19,39 +20,59 @@ public class TempShop implements Listener {
     private static int coin;
     private static String name;
     private static String time;
-    private static String type;
+    private static MoneyType type;
 
-    public static void open(final Player p, final String names, final String permissions, final ItemStack i, final String times, final int coins, final String types) {
+    public static void open(final Player p, final String names, final String permissions, final ItemStack i, final String times, final int coins, final MoneyType types) {
 
-        if (Main.getInstance().getMySQL().getPlayerCoins((p.getUniqueId())) >= coins) {
-            coin = coins;
-            player = p;
-            permission = permissions;
-            item = i;
-            name = names;
-            time = times;
-            type = types;
+        coin = coins;
+        player = p;
+        permission = permissions;
+        item = i;
+        name = names;
+        time = times;
+        type = types;
 
-            Inventory inv = Bukkit.createInventory(null, 45, "[S] Nakup za coiny");
+        Inventory inv;
+        ItemStack nakup;
 
-            inv.setItem(13, item);
-
-            ItemStack nakup = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte) 5, "§a§lZakoupit", "§7Zakoupis za §e" + coin + " CC.");
-            ItemStack zamitnout = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte) 14, "§c§lZrusit", "§7Zpet do menu");
-
-            inv.setItem(30, nakup);
-            inv.setItem(32, zamitnout);
-
-            player.openInventory(inv);
+        if(types == MoneyType.VOTETOKEN) {
+            if(!(Main.getInstance().getMySQL().getPlayerVoteTokens(player) >= coins)) {
+                p.sendMessage("§cNedostatek tokenu k nakupu: §f" + coins + " VT");
+                return;
+            }
+            inv = Bukkit.createInventory(null, 45, "[S] Nakup za VoteTokeny");
+            nakup = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte) 5, "§a§lZakoupit", "§7Zakoupis za §e" + coin + " VT.");
+        } else if (types == MoneyType.CRAFTTOKEN) {
+            if(!(Main.getInstance().getMySQL().getPlayerCraftTokens(player) >= coins)) {
+                p.sendMessage("§cNedostatek tokenu k nakupu: §f" + coins + " CT");
+                return;
+            }
+            inv = Bukkit.createInventory(null, 45, "[S] Nakup za CraftTokeny");
+            nakup = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte) 5, "§a§lZakoupit", "§7Zakoupis za §e" + coin + " CT.");
         } else {
-            p.sendMessage("§cNedostatek coinu k nakupu: §f" + coins + " CC");
+            if(!(CoinsAPI.getCoins(p.getUniqueId()) >= coins)){
+                p.sendMessage("§cNedostatek coinu k nakupu: §f" + coins + " CC");
+                return;
+            }
+            inv = Bukkit.createInventory(null, 45, "[S] Nakup za CraftCoiny");
+            nakup = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte) 5, "§a§lZakoupit", "§7Zakoupis za §e" + coin + " CC.");
         }
+
+        inv.setItem(13, item);
+        ItemStack zamitnout = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte) 14, "§c§lZrusit", "§7Zpet do menu");
+
+        inv.setItem(30, nakup);
+        inv.setItem(32, zamitnout);
+
+        player.openInventory(inv);
     }
 
     @EventHandler
     private void onClick(InventoryClickEvent e) {
         final Player p = (Player) e.getWhoClicked();
-        if (e.getInventory().getTitle().equals("[S] Nakup za coiny")) {
+        if (e.getInventory().getTitle().equals("[S] Nakup za CraftTokeny")
+                || e.getInventory().getTitle().equalsIgnoreCase("[S] Nakup za VoteTokeny")
+                || e.getInventory().getTitle().equalsIgnoreCase("[S] Nakup za CraftCoiny")) {
             if (e.getCurrentItem() == null) {
                 return;
             }
@@ -62,11 +83,22 @@ public class TempShop implements Listener {
                 e.setCancelled(true);
             }
             if (e.getSlot() == 30) {
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp " + permission + " true " + time);
-                Main.getInstance().getMySQL().takeCoins(p, coin);
-                p.sendMessage("§eZakoupil jsi si §a" + name + " §eza §6" + coin + " CC.");
-                Main.getInstance().getMySQL().createBoosterLog(p, type, System.currentTimeMillis() + 10800000L);
-                p.closeInventory();
+                if(type == MoneyType.CRAFTCOIN) {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp " + permission + " true " + time + " " + Main.getInstance().getIdServer());
+                    CoinsAPI.takeCoins(p.getUniqueId(), coin);
+                    p.sendMessage("§eZakoupil jsi si §a" + name + " §eza §6" + coin + " CC.");
+                    p.closeInventory();
+                } else if (type == MoneyType.CRAFTTOKEN) {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp " + permission + " true " + time + " " + Main.getInstance().getIdServer());
+                    Main.getInstance().getMySQL().takeCraftToken(player, coin);
+                    p.sendMessage("§eZakoupil jsi si §a" + name + " §eza §6" + coin + " CT.");
+                    p.closeInventory();
+                } else {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp " + permission + " true " + time + " " + Main.getInstance().getIdServer());
+                    Main.getInstance().getMySQL().takeVoteToken(p, coin);
+                    p.sendMessage("§eZakoupil jsi si §a" + name + " §eza §6" + coin + " VT.");
+                    p.closeInventory();
+                }
             }
             if (e.getSlot() == 32) {
                 p.closeInventory();

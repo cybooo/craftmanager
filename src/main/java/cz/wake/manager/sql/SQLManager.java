@@ -30,17 +30,15 @@ public class SQLManager {
         return pool;
     }
 
-    //todo: zjednodušit...
-
-    public final int getPlayerCoins(final UUID uuid) {
+    public final int getPlayerCraftTokens(final Player player) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = pool.getConnection();
-            ps = conn.prepareStatement("SELECT balance FROM CraftCoins WHERE uuid = '" + uuid.toString() + "';");
+            ps = conn.prepareStatement("SELECT crafttoken FROM craftmoney_data WHERE uuid = '" + player.getUniqueId().toString() + "';");
             ps.executeQuery();
             if (ps.getResultSet().next()) {
-                return ps.getResultSet().getInt("balance");
+                return ps.getResultSet().getInt("crafttoken");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -50,15 +48,15 @@ public class SQLManager {
         return 0;
     }
 
-    public final int getPlayerTokens(final UUID uuid) {
+    public final int getPlayerVoteTokens(final Player player) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = pool.getConnection();
-            ps = conn.prepareStatement("SELECT tokens FROM CraftCoins WHERE uuid = '" + uuid.toString() + "';");
+            ps = conn.prepareStatement("SELECT votetoken FROM craftmoney_data WHERE uuid = '" + player.getUniqueId().toString() + "';");
             ps.executeQuery();
             if (ps.getResultSet().next()) {
-                return ps.getResultSet().getInt("tokens");
+                return ps.getResultSet().getInt("votetoken");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -195,24 +193,6 @@ public class SQLManager {
         return 0L;
     }
 
-    public final long getResetTimeMonth() {
-        Connection conn = null;
-        PreparedStatement ps = null;
-        try {
-            conn = pool.getConnection();
-            ps = conn.prepareStatement("SELECT time FROM craftboxer_nextReset WHERE id = 3;");
-            ps.executeQuery();
-            if (ps.getResultSet().next()) {
-                return ps.getResultSet().getLong("time");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            pool.close(conn, ps, null);
-        }
-        return 0L;
-    }
-
     public final long getLastVote(final Player p) {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -230,44 +210,6 @@ public class SQLManager {
             pool.close(conn, ps, null);
         }
         return 0L;
-    }
-
-    public final boolean hasDataChecker(final Player p) {
-        String server = Main.getInstance().getIdServer().toLowerCase();
-        Connection conn = null;
-        PreparedStatement ps = null;
-        try {
-            conn = pool.getConnection();
-            ps = conn.prepareStatement("SELECT * FROM " + server + "_players WHERE sname = ?;");
-            ps.setString(1, p.getName().toLowerCase());
-            ps.executeQuery();
-            return ps.getResultSet().next();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        } finally {
-            pool.close(conn, ps, null);
-        }
-    }
-
-    public final String getNormalNameChecked(final Player p) {
-        String server = Main.getInstance().getIdServer().toLowerCase();
-        Connection conn = null;
-        PreparedStatement ps = null;
-        try {
-            conn = pool.getConnection();
-            ps = conn.prepareStatement("SELECT nname FROM " + server + "_players WHERE sname = ?;");
-            ps.setString(1, p.getName().toLowerCase());
-            ps.executeQuery();
-            if (ps.getResultSet().next()) {
-                return ps.getResultSet().getString("nname");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            pool.close(conn, ps, null);
-        }
-        return "";
     }
 
     public final int getAtPlayedTime(Player p, String table) {
@@ -328,7 +270,7 @@ public class SQLManager {
         }.runTaskAsynchronously(Main.getInstance());
     }
 
-    public final void addCoins(final UUID uuid, final int amount) {
+    public final void takeCraftToken(final Player p, final int tokens) {
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -336,10 +278,8 @@ public class SQLManager {
                 PreparedStatement ps = null;
                 try {
                     conn = pool.getConnection();
-                    ps = conn.prepareStatement("INSERT INTO CraftCoins (uuid, balance) VALUES (?,?) ON DUPLICATE KEY UPDATE balance = ?;");
-                    ps.setString(1, uuid.toString());
-                    ps.setInt(2, amount);
-                    ps.setInt(3, amount + getPlayerCoins(uuid));
+                    ps = conn.prepareStatement("UPDATE craftmoney_data SET crafttoken = ? WHERE uuid = '" + p.getUniqueId().toString() + "';");
+                    ps.setInt(1, getPlayerCraftTokens(p) - tokens);
                     ps.executeUpdate();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -350,7 +290,7 @@ public class SQLManager {
         }.runTaskAsynchronously(Main.getInstance());
     }
 
-    public final void takeCoins(final Player p, final int coins) {
+    public final void takeVoteToken(final Player p, final int tokens) {
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -358,28 +298,8 @@ public class SQLManager {
                 PreparedStatement ps = null;
                 try {
                     conn = pool.getConnection();
-                    ps = conn.prepareStatement("UPDATE CraftCoins SET balance = ? WHERE uuid = '" + p.getUniqueId().toString() + "';");
-                    ps.setInt(1, getPlayerCoins(p.getUniqueId()) - coins);
-                    ps.executeUpdate();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    pool.close(conn, ps, null);
-                }
-            }
-        }.runTaskAsynchronously(Main.getInstance());
-    }
-
-    public final void takeTokens(final Player p, final int tokens) {
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                Connection conn = null;
-                PreparedStatement ps = null;
-                try {
-                    conn = pool.getConnection();
-                    ps = conn.prepareStatement("UPDATE CraftCoins SET tokens = ? WHERE uuid = '" + p.getUniqueId().toString() + "';");
-                    ps.setInt(1, getPlayerTokens(p.getUniqueId()) - tokens);
+                    ps = conn.prepareStatement("UPDATE craftmoney_data SET votetoken = ? WHERE uuid = '" + p.getUniqueId().toString() + "';");
+                    ps.setInt(1, getPlayerVoteTokens(p) - tokens);
                     ps.executeUpdate();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -498,25 +418,6 @@ public class SQLManager {
         }.runTaskAsynchronously(Main.getInstance());
     }
 
-    public final void resetMonthVotes() {
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                Connection conn = null;
-                PreparedStatement ps = null;
-                try {
-                    conn = pool.getConnection();
-                    ps = conn.prepareStatement("UPDATE votes SET month = '0';");
-                    ps.executeUpdate();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    pool.close(conn, ps, null);
-                }
-            }
-        }.runTaskAsynchronously(Main.getInstance());
-    }
-
     public final void addTimeVotePlayer(final Player p) {
         new BukkitRunnable() {
             @Override
@@ -528,28 +429,6 @@ public class SQLManager {
                     ps = conn.prepareStatement("UPDATE votes SET last_vote = ? WHERE last_name = ?;");
                     ps.setLong(1, System.currentTimeMillis() + 3600000L);
                     ps.setString(2, p.getName());
-                    ps.executeUpdate();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    pool.close(conn, ps, null);
-                }
-            }
-        }.runTaskAsynchronously(Main.getInstance());
-    }
-
-    public final void createPlayerCheck(final Player p) {
-        String server = Main.getInstance().getIdServer().toLowerCase();
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                Connection conn = null;
-                PreparedStatement ps = null;
-                try {
-                    conn = pool.getConnection();
-                    ps = conn.prepareStatement("INSERT INTO " + server + "_players (nname,sname) VALUES (?,?);");
-                    ps.setString(1, p.getName());
-                    ps.setString(2, p.getName().toLowerCase());
                     ps.executeUpdate();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -643,28 +522,6 @@ public class SQLManager {
         return name;
     }
 
-    public final void createBoosterLog(final Player p, final String booster, final long end) {
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                Connection conn = null;
-                PreparedStatement ps = null;
-                try {
-                    conn = pool.getConnection();
-                    ps = conn.prepareStatement("INSERT INTO craftmanager_boosters (name,type,end) VALUES (?,?,?);");
-                    ps.setString(1, p.getName());
-                    ps.setString(2, booster);
-                    ps.setLong(3, end);
-                    ps.executeUpdate();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    pool.close(conn, ps, null);
-                }
-            }
-        }.runTaskAsynchronously(Main.getInstance());
-    }
-
     public final void atsCommandLog(final Player p, final String command) {
         new BukkitRunnable() {
             @Override
@@ -686,64 +543,6 @@ public class SQLManager {
                 }
             }
         }.runTaskAsynchronously(Main.getInstance());
-    }
-
-    public final long getBoostedPlayer(final Player p, final String booster) {
-        Connection conn = null;
-        PreparedStatement ps = null;
-        try {
-            conn = pool.getConnection();
-            ps = conn.prepareStatement("SELECT end FROM craftmanager_boosters WHERE type = '" + booster + "' AND name = ?;");
-            ps.setString(1, p.getName());
-            ps.executeQuery();
-            if (ps.getResultSet().next()) {
-                return ps.getResultSet().getLong("end");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            pool.close(conn, ps, null);
-        }
-        return 0L;
-    }
-
-    public final void deleteBooster(final Player p, final String booster) {
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                Connection conn = null;
-                PreparedStatement ps = null;
-                try {
-                    conn = pool.getConnection();
-                    ps = conn.prepareStatement("DELETE FROM craftmanager_boosters WHERE name = ? AND type = ?;");
-                    ps.setString(1, p.getName());
-                    ps.setString(2, booster);
-                    ps.executeUpdate();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    pool.close(conn, ps, null);
-                }
-            }
-        }.runTaskAsynchronously(Main.getInstance());
-    }
-
-    public final boolean hasBoosterInSQL(Player p, String type) {
-        Connection conn = null;
-        PreparedStatement ps = null;
-        try {
-            conn = pool.getConnection();
-            ps = conn.prepareStatement("SELECT * FROM craftmanager_boosters WHERE name = ? AND type = ?;");
-            ps.setString(1, p.getName());
-            ps.setString(2, type);
-            ps.executeQuery();
-            return ps.getResultSet().next();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        } finally {
-            pool.close(conn, ps, null);
-        }
     }
 
     public final int getSettings(final Player p, final String settings) {
@@ -774,101 +573,6 @@ public class SQLManager {
                     conn = pool.getConnection();
                     ps = conn.prepareStatement("UPDATE player_settings SET " + settings + " = " + value + " WHERE nick = ?;");
                     ps.setString(1, p.getName());
-                    ps.executeUpdate();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    pool.close(conn, ps, null);
-                }
-            }
-        }.runTaskAsynchronously(Main.getInstance());
-    }
-
-    public final boolean hasActiveReward(String p) {
-        Connection conn = null;
-        PreparedStatement ps = null;
-        try {
-            conn = pool.getConnection();
-            ps = conn.prepareStatement("SELECT * FROM vybery_dotaznik WHERE nick = '" + p + "';");
-            ps.executeQuery();
-            return ps.getResultSet().next();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        } finally {
-            pool.close(conn, ps, null);
-        }
-    }
-
-    public final int getCraftCoins(final UUID uuid) {
-        Connection conn = null;
-        PreparedStatement ps = null;
-        try {
-            conn = pool.getConnection();
-            ps = conn.prepareStatement("SELECT balance FROM CraftCoins WHERE uuid = '" + uuid.toString() + "';");
-            ps.executeQuery();
-            if (ps.getResultSet().next()) {
-                return ps.getResultSet().getInt("balance");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            pool.close(conn, ps, null);
-        }
-        return 0;
-    }
-
-    public final int getRewardState(final Player p) {
-        Connection conn = null;
-        PreparedStatement ps = null;
-        try {
-            conn = pool.getConnection();
-            ps = conn.prepareStatement("SELECT vybrano FROM vybery_dotaznik WHERE nick = '" + p.getName() + "';");
-            ps.executeQuery();
-            if (ps.getResultSet().next()) {
-                return ps.getResultSet().getInt("vybrano");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            pool.close(conn, ps, null);
-        }
-        return 1;
-    }
-
-    public final void addCoins(final Player p, final int coins) {
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                Connection conn = null;
-                PreparedStatement ps = null;
-                try {
-                    conn = pool.getConnection();
-                    ps = conn.prepareStatement("UPDATE CraftCoins SET balance = ? WHERE uuid = '" + p.getUniqueId().toString() + "';");
-                    ps.setInt(1, getCraftCoins(p.getUniqueId()) + coins);
-                    ps.executeUpdate();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    pool.close(conn, ps, null);
-                }
-            }
-        }.runTaskAsynchronously(Main.getInstance());
-        p.sendMessage("§eDostal jsi " + coins + "CC.");
-    }
-
-    public final void updateReward(final Player p) {
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                Connection conn = null;
-                PreparedStatement ps = null;
-                try {
-                    conn = pool.getConnection();
-                    ps = conn.prepareStatement("UPDATE vybery_dotaznik SET vybrano = ?, server = ?, time = ? WHERE nick = '" + p.getName() + "';");
-                    ps.setInt(1, 1);
-                    ps.setString(2, Main.getInstance().getIdServer());
-                    ps.setLong(3, System.currentTimeMillis());
                     ps.executeUpdate();
                 } catch (Exception e) {
                     e.printStackTrace();

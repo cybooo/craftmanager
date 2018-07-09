@@ -1,7 +1,7 @@
 name: CraftManager
 main: cz.wake.manager.Main
 authors: [MrWakeCZ]
-depend: [CraftCore]
+depend: [CraftCore,Coins]
 version: 1.2-${git.commit.id.abbrev} # v1.2-a977d1a
 
 commands:
@@ -9,6 +9,7 @@ commands:
       description: Zakladni prikaz
     coinshop:
       description: Prikaz na otevreni coinshopu
+      aliases: [cshop]
     particles:
       description: Prikaz na otevreni particles menu
       aliases: [part]
@@ -59,8 +60,6 @@ commands:
       description: Kontrola zakoupeneho fly
     beacon:
       description: Beacon pro HERO VIP
-    vyzvednout:
-      description: Vyzvedne kramy z SQL
 
 permissions:
     craftmanager.*:

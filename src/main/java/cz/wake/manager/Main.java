@@ -27,8 +27,8 @@ import cz.wake.manager.utils.tasks.ATCheckerTask;
 import cz.wake.manager.utils.tasks.UpdateServerTask;
 import cz.wake.manager.utils.tasks.UpdateTablistTask;
 import cz.wake.manager.utils.tasks.VoteReseterTask;
+import cz.wake.manager.votifier.ForwardVote;
 import cz.wake.manager.votifier.Reminder;
-import cz.wake.manager.votifier.SuperbVote;
 import cz.wake.manager.votifier.VoteHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -38,7 +38,9 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -94,6 +96,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Bungee channels
         Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         Bukkit.getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
+        Bukkit.getMessenger().registerIncomingPluginChannel(this, "craftbungee", this);
 
         // Oznameni kazdou hodinu (1 hod)
         if (reminder && !testing) {
@@ -169,7 +172,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new TagsEditor(), this);
         pm.registerEvents(new Replacements(), this);
         pm.registerEvents(new BeaconCommand(), this);
-        pm.registerEvents(new Vyzvednout_command(), this);
 
         // Skyblock PVP listener
         if (idServer.equalsIgnoreCase("skyblock")) {
@@ -183,7 +185,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Hlasovani
         if (getConfig().getBoolean("hlasovani") && !testing) {
-            pm.registerEvents(new SuperbVote(), this);
+            //pm.registerEvents(new SuperbVote(), this);
             Log.withPrefix("Odmeny za hlasovani byly aktivovany!");
         } else {
             Log.withPrefix(ChatColor.RED + "Odmeny za hlasovani nejsou aktivni!");
@@ -213,7 +215,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("survival").setExecutor(new Survival_command());
         getCommand("skyblock").setExecutor(new Skyblock_command());
         getCommand("creative").setExecutor(new Creative_command());
-        getCommand("creative2").setExecutor(new Creative2_command());
         getCommand("prison").setExecutor(new Prison_command());
         getCommand("factions").setExecutor(new Factions_command());
         getCommand("vanilla").setExecutor(new Vanilla_command());
@@ -229,7 +230,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("navody").setExecutor(new Navody_command());
         getCommand("checkfly").setExecutor(new Checkfly_command());
         getCommand("beacon").setExecutor(new BeaconCommand());
-        getCommand("vyzvednout").setExecutor(new Vyzvednout_command());
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {
@@ -283,7 +283,19 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     @Override
     public void onPluginMessageReceived(String channel, Player player, byte[] message) {
-        if (!channel.equalsIgnoreCase("BungeeCord")) return;
+        DataInputStream in = new DataInputStream(new ByteArrayInputStream(message));
+        System.out.println("Plugin message...");
+        try {
+            String sub = in.readUTF();
+            if (sub.equals("vote")) {
+                System.out.println("Vote message...");
+                String nick = in.readUTF();
+                String coins = in.readUTF();
+                ForwardVote.vote(nick, null, coins); //TODO: UUID
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void sendToServer(Player player, String target) {

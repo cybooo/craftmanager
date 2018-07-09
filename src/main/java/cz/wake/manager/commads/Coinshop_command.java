@@ -12,11 +12,10 @@ public class Coinshop_command implements CommandExecutor {
     public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("coinshop"))) {
+            if ((Command.getName().equalsIgnoreCase("coinshop")) || Command.getName().equalsIgnoreCase("cshop")) {
                 try {
                     if (ArrayOfString.length == 0) {
-                        player.sendMessage("§c§l(!) §cCoinshop je docasne vypnuty. Brzo se spusti! :)");
-                        //Main.getInstance().getShopGUI().openShopMainGUI(player);
+                        Main.getInstance().getShopGUI().openShopMainGUI(player);
                         return true;
                     }
                     return true;
