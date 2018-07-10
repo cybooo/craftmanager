@@ -284,11 +284,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     @Override
     public void onPluginMessageReceived(String channel, Player player, byte[] message) {
         DataInputStream in = new DataInputStream(new ByteArrayInputStream(message));
-        System.out.println("Plugin message...");
         try {
             String sub = in.readUTF();
             if (sub.equals("vote")) {
-                System.out.println("Vote message...");
                 String nick = in.readUTF();
                 String coins = in.readUTF();
                 ForwardVote.vote(nick, null, coins); //TODO: UUID
