@@ -480,6 +480,21 @@ public class ShopAPI implements Listener {
             if (e.getSlot() == 23) {
                 this.openPermsMenu(p);
             }
+        }
+        if (e.getInventory().getTitle().equals("§0Prava za CraftCoins")) {
+            e.setCancelled(true);
+            if (e.getCurrentItem() == null) {
+                return;
+            }
+            if (e.getCurrentItem().getType() == Material.AIR) {
+                return;
+            }
+            if (e.getSlot() == 39) {
+                this.openShopMainGUI(p);
+            }
+            if (e.getSlot() == 40) {
+                Main.getInstance().getMainGUI().openMainMenu(p);
+            }
             if (e.getSlot() == 0) {
                 if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
@@ -515,21 +530,6 @@ public class ShopAPI implements Listener {
                 } else {
                     p.sendMessage("§c§l(!) §cJiz mas tento bonus zakoupeny.");
                 }
-            }
-        }
-        if (e.getInventory().getTitle().equals("§0Prava za CraftCoins")) {
-            e.setCancelled(true);
-            if (e.getCurrentItem() == null) {
-                return;
-            }
-            if (e.getCurrentItem().getType() == Material.AIR) {
-                return;
-            }
-            if (e.getSlot() == 39) {
-                this.openShopMainGUI(p);
-            }
-            if (e.getSlot() == 40) {
-                Main.getInstance().getMainGUI().openMainMenu(p);
             }
 
         }
