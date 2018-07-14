@@ -383,7 +383,7 @@ public class ShopAPI implements Listener {
                 inv.setItem(1, item);
             } else {
                 ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cWorldEdit (1h)")
-                        .setLore("§7Nelze zakoupit na tomto serveru.").build();
+                        .setLore("§7Nelze zakoupit na tomto serveru.").hideAllFlags().build();
                 inv.setItem(1, nedostupny);
             }
         } else {
@@ -433,7 +433,7 @@ public class ShopAPI implements Listener {
 
         if (voteTokens >= 3) {
             if (Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
-                ItemStack item = new ItemBuilder(Material.WOOD_AXE).setName("§aFly na ostrove (1h)").setLore("§7Cena: §f2 VT").build();
+                ItemStack item = new ItemBuilder(Material.ELYTRA).setName("§aFly na ostrove (1h)").setLore("§7Cena: §f2 VT").hideAllFlags().build();
                 inv.setItem(5, item);
             } else {
                 ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cFly na ostrove (1h)")
