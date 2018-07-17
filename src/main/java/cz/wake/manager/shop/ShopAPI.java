@@ -23,7 +23,8 @@ public class ShopAPI implements Listener {
                 || Main.getInstance().getIdServer().equalsIgnoreCase("survival")
                 || Main.getInstance().getIdServer().equalsIgnoreCase("creative")
                 || Main.getInstance().getIdServer().equalsIgnoreCase("vanillasb")
-                || Main.getInstance().getIdServer().equalsIgnoreCase("test")) {
+                || Main.getInstance().getIdServer().equalsIgnoreCase("test")
+                || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
             Inventory inv = Bukkit.createInventory(null, 54, "§0Coinshop [Beta]");
 
             ItemStack head = new ItemBuilder(Material.SKULL_ITEM, (short) 3)
