@@ -44,23 +44,6 @@ public class PlayerListener implements Listener {
             }
         }
 
-        //Votes
-        if (!Main.getInstance().getMySQL().hasVoteData(p)) {
-            Main.getInstance().getMySQL().createPlayer(p);
-            Main.getInstance().getVoteHandler().addTotalVotes(p, 0);
-            Main.getInstance().getVoteHandler().addMonthVotes(p, 0);
-            Main.getInstance().getVoteHandler().addWeekVotes(p, 0);
-        } else {
-            //Celkove hlasy
-            Main.getInstance().getVoteHandler().addTotalVotes(p, Main.getInstance().getMySQL().getPlayerTotalVotes(p.getUniqueId()));
-
-            //Mesicni hlasy
-            Main.getInstance().getVoteHandler().addMonthVotes(p, Main.getInstance().getMySQL().getPlayerTotalMonth(p.getUniqueId()));
-
-            //Tydeni hlasy
-            Main.getInstance().getVoteHandler().addWeekVotes(p, Main.getInstance().getMySQL().getPlayerTotalWeek(p.getUniqueId()));
-        }
-
         // Nastaveni tablistu
         //if (Main.getInstance().isTablistEnabled())
         //Main.getInstance().getTablistManager().setRank(p);
