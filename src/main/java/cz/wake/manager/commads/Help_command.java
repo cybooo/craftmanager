@@ -19,7 +19,11 @@ public class Help_command implements CommandExecutor {
             Player player = (Player) Sender;
             if ((Command.getName().equalsIgnoreCase("help"))
                     && (ArrayOfString.length == 0)) {
-                openHelpMenu(player);
+                if (Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
+                    player.performCommand("tutorial");
+                } else {
+                    openHelpMenu(player);
+                }
             }
         }
         return false;
