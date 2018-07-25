@@ -364,7 +364,7 @@ public class ShopAPI implements Listener {
         ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
 
         if (voteTokens >= 1) {
-            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
                 ItemStack voteCrate = new ItemBuilder(Material.PISTON_BASE).setName("§a1x VoteCrate").setLore("§7Cena: §f1 VT").build();
                 inv.setItem(0, voteCrate);
             } else {
@@ -403,7 +403,7 @@ public class ShopAPI implements Listener {
         }
 
         if (voteTokens >= 3) {
-            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
                 ItemStack headCreate = new ItemBuilder(Material.PISTON_BASE).setName("§d1x HeadCrate").setLore("§7Cena: §f3 VT").build();
                 inv.setItem(3, headCreate);
             } else {
@@ -418,7 +418,7 @@ public class ShopAPI implements Listener {
         }
 
         if (voteTokens >= 5) {
-            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
                 ItemStack headCreate = new ItemBuilder(Material.PISTON_BASE).setName("§91x EpicCrate").setLore("§7Cena: §f5 VT").build();
                 inv.setItem(4, headCreate);
             } else {
@@ -433,7 +433,7 @@ public class ShopAPI implements Listener {
         }
 
         if (voteTokens >= 3) {
-            if (Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+            if (Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
                 ItemStack item = new ItemBuilder(Material.ELYTRA).setName("§aFly na ostrove (1h)").setLore("§7Cena: §f2 VT").hideAllFlags().build();
                 inv.setItem(5, item);
             } else {
@@ -549,7 +549,7 @@ public class ShopAPI implements Listener {
                 Main.getInstance().getMainGUI().openMainMenu(p);
             }
             if (e.getSlot() == 0) {
-                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock"))) {
+                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
                     p.sendMessage("§c§l(!) Na tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
@@ -596,7 +596,7 @@ public class ShopAPI implements Listener {
                 }
             }
             if (e.getSlot() == 3) {
-                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock"))) {
+                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
                     p.sendMessage("§c§l(!) Na tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
@@ -610,21 +610,21 @@ public class ShopAPI implements Listener {
                 }
             }
             if (e.getSlot() == 4) {
-                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock"))) {
+                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
                     p.sendMessage("§c§l(!) Na tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
                 if (Main.getInstance().getMySQL().getPlayerVoteTokens(p) >= 5) {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " epiccrate 1");
                     Main.getInstance().getMySQL().takeVoteToken(p, 5);
-                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x HeadCrate §eza §a5 VT.");
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x EpicCrate §eza §a5 VT.");
                     p.closeInventory();
                 } else {
                     p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (5)!");
                 }
             }
             if (e.getSlot() == 5) {
-                if (!Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+                if (!Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
                     p.sendMessage("§c§l(!) Na tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
@@ -632,7 +632,7 @@ public class ShopAPI implements Listener {
                     p.sendMessage("§e§l(*) §eJiz mas zakoupeny Fly na ostrove! Pockej az skonci...");
                 } else {
                     if (Main.getInstance().getMySQL().getPlayerVoteTokens(p) >= 3) {
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp askyblock.islandfly true 1h skyblock");
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp askyblock.islandfly true 1h " + Main.getInstance().getIdServer().toLowerCase());
                         Main.getInstance().getMySQL().takeVoteToken(p, 3);
                         p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x Fly na ostrove na 1h §eza §a1 VT.");
                         p.sendMessage("§c§l(!) §cNekdy Fly nefunguje hned, zkus jit na spawn a zpatky, pokud nepujde. :)");
