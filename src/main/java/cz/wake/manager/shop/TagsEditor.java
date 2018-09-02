@@ -115,7 +115,7 @@ public class TagsEditor implements Listener {
                                 }
                                 if (!tag.matches("[a-zA-Z]+")) {
                                     player.sendMessage("");
-                                    player.sendMessage("§cNelze vytvorit tag, ktery obsahuje znaky nebo diakritiku.");
+                                    player.sendMessage("§cNelze vytvorit tag, ktery obsahuje specialni znaky!");
                                     player.sendMessage("");
                                     player.closeInventory();
                                     return;
