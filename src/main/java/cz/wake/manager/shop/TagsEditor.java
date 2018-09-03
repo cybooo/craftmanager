@@ -113,6 +113,13 @@ public class TagsEditor implements Listener {
                                         return;
                                     }
                                 }
+                                if (!tag.matches("[a-zA-Z]+")) {
+                                    player.sendMessage("");
+                                    player.sendMessage("§cNelze vytvorit tag, ktery obsahuje specialni znaky!");
+                                    player.sendMessage("");
+                                    player.closeInventory();
+                                    return;
+                                }
                                 Main.getInstance().getMySQL().takeCraftToken(player, 1);
                                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tags create " + tag + " " + tag + " &8▏");
                                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission set deluxetags.tag." + tag + " true");
