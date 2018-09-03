@@ -550,7 +550,7 @@ public class ShopAPI implements Listener {
             }
             if (e.getSlot() == 0) {
                 if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
-                    p.sendMessage("§c§l(!) Na tomto serveru tuto vyhodu nelze zakoupit.");
+                    p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
                 if (Main.getInstance().getMySQL().getPlayerVoteTokens(p) >= 1) {
@@ -564,7 +564,7 @@ public class ShopAPI implements Listener {
             }
             if (e.getSlot() == 1) {
                 if (!(Main.getInstance().getIdServer().equalsIgnoreCase("creative"))) {
-                    p.sendMessage("§c§l(!) Na tomto serveru tuto vyhodu nelze zakoupit.");
+                    p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
                 if (p.hasPermission("worldedit.wand")) {
@@ -597,7 +597,7 @@ public class ShopAPI implements Listener {
             }
             if (e.getSlot() == 3) {
                 if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
-                    p.sendMessage("§c§l(!) Na tomto serveru tuto vyhodu nelze zakoupit.");
+                    p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
                 if (Main.getInstance().getMySQL().getPlayerVoteTokens(p) >= 3) {
@@ -611,7 +611,7 @@ public class ShopAPI implements Listener {
             }
             if (e.getSlot() == 4) {
                 if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
-                    p.sendMessage("§c§l(!) Na tomto serveru tuto vyhodu nelze zakoupit.");
+                    p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
                 if (Main.getInstance().getMySQL().getPlayerVoteTokens(p) >= 5) {
@@ -624,8 +624,8 @@ public class ShopAPI implements Listener {
                 }
             }
             if (e.getSlot() == 5) {
-                if (!Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
-                    p.sendMessage("§c§l(!) Na tomto serveru tuto vyhodu nelze zakoupit.");
+                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
                 if (p.hasPermission("askyblock.islandfly")) {
