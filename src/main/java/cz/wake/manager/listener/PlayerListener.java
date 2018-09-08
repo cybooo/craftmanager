@@ -2,6 +2,8 @@ package cz.wake.manager.listener;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.commads.vip.Chatcolor_command;
+import cz.wake.manager.managers.RecipeManager;
+import cz.wake.manager.managers.RecipePlayer;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.utils.UtilTablist;
 import org.bukkit.ChatColor;
@@ -63,6 +65,9 @@ public class PlayerListener implements Listener {
         if (p.hasPermission("craftmanager.chatcolor") && !p.hasPermission("craftmanager.chatcolor.at")) {
             setupChatColor(p);
         }
+
+        //Register Recipe Player
+        RecipeManager.registerRecipePlayer(new RecipePlayer(p));
     }
 
     @EventHandler
@@ -88,6 +93,9 @@ public class PlayerListener implements Listener {
         if (Main.getInstance().death_messages.contains(p)) {
             Main.getInstance().death_messages.remove(p);
         }
+
+        //Unregister RecipePlayeru
+        RecipeManager.unregisterRecipePlayer(RecipeManager.getRecipePlayer(p));
     }
 
     @EventHandler
@@ -111,6 +119,9 @@ public class PlayerListener implements Listener {
         if (Main.getInstance().death_messages.contains(p)) {
             Main.getInstance().death_messages.remove(p);
         }
+
+        //Unregister RecipePlayeru
+        RecipeManager.unregisterRecipePlayer(RecipeManager.getRecipePlayer(p));
     }
 
     @EventHandler(ignoreCancelled = true)
