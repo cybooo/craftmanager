@@ -24,11 +24,6 @@ public class ItemDB{
     public ItemDB(final Main ess) {
         this.ess = ess;
         file = new ManagedFile("items.yml", ess);
-        /*try {
-            itemsFile.save(file);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
     }
 
     public void reloadConfig() {

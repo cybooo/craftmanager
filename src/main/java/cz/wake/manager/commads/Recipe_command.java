@@ -60,7 +60,6 @@ public class Recipe_command implements CommandExecutor {
 
 
         final Recipe selectedRecipe = recipesOfType.get(recipeNo);
-        //commandSender.sendMessage(tl("recipe", getMaterialName(itemType), recipeNo + 1, recipesOfType.size()));
 
         if (selectedRecipe instanceof FurnaceRecipe) {
             furnaceRecipe(commandSender, (FurnaceRecipe) selectedRecipe);
@@ -79,14 +78,11 @@ public class Recipe_command implements CommandExecutor {
         }
 
         if (recipesOfType.size() > 1 && args.length == 1) {
-            //commandSender.sendMessage(tl("recipeMore", s, args[0], getMaterialName(itemType)));
-            //p.sendMessage("§cPouzij /recipe " + args[0] + " ");
         }
         return false;
     }
 
     public void furnaceRecipe(final CommandSender sender, final FurnaceRecipe recipe) {
-        //sender.sendMessage(tl("recipeFurnace", getMaterialName(recipe.getInput())));
     }
 
     public void shapedRecipe(final CommandSender sender, final ShapedRecipe recipe, final boolean showWindow) {
@@ -127,15 +123,9 @@ public class Recipe_command implements CommandExecutor {
                     materials[j][k] = item == null ? null : item.getType();
                 }
             }
-            /*sender.sendMessage(tl("recipeGrid", colorMap.get(materials[0][0]), colorMap.get(materials[0][1]), colorMap.get(materials[0][2])));
-            sender.sendMessage(tl("recipeGrid", colorMap.get(materials[1][0]), colorMap.get(materials[1][1]), colorMap.get(materials[1][2])));
-            sender.sendMessage(tl("recipeGrid", colorMap.get(materials[2][0]), colorMap.get(materials[2][1]), colorMap.get(materials[2][2])));
-*/
             StringBuilder s = new StringBuilder();
             for (Material items : colorMap.keySet().toArray(new Material[colorMap.size()])) {
-                //s.append(tl("recipeGridItem", colorMap.get(items), getMaterialName(items)));
             }
-            //sender.sendMessage(tl("recipeWhere", s.toString()));
         }
     }
 
@@ -162,7 +152,6 @@ public class Recipe_command implements CommandExecutor {
                 }
                 s.append(" ");
             }
-            //sender.sendMessage(tl("recipeShapeless", s.toString()));
         }
     }
 
