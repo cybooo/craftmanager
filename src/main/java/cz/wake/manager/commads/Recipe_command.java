@@ -1,19 +1,17 @@
 package cz.wake.manager.commads;
 
+import cz.wake.manager.Main;
 import cz.wake.manager.managers.RecipeManager;
 import cz.wake.manager.utils.IntegerUtil;
 import org.bukkit.Material;
-import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.*;
 import org.bukkit.plugin.Plugin;
-import sun.applet.Main;
 
 import java.util.HashMap;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -24,10 +22,10 @@ public class Recipe_command implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         ItemStack itemType = null;
-        Plugin pl = cz.wake.manager.Main.getInstance();
+        Plugin pl = Main.getInstance().getInstance();
         Player p = (Player) commandSender;
         try {
-            itemType = cz.wake.manager.Main.getInstance().getItemDb().get(args[0]);
+            itemType = Main.getInstance().getItemDb().get(args[0]);
         } catch (Exception e) {
 
         }
