@@ -19,7 +19,10 @@ import cz.wake.manager.shop.ShopAPI;
 import cz.wake.manager.shop.TagsEditor;
 import cz.wake.manager.shop.TempShop;
 import cz.wake.manager.sql.SQLManager;
-import cz.wake.manager.utils.*;
+import cz.wake.manager.utils.CustomCrafting;
+import cz.wake.manager.utils.Log;
+import cz.wake.manager.utils.ServerFactory;
+import cz.wake.manager.utils.SkyblockHeadFix;
 import cz.wake.manager.utils.tasks.ATCheckerTask;
 import cz.wake.manager.utils.tasks.UpdateServerTask;
 import cz.wake.manager.utils.tasks.UpdateTablistTask;
@@ -64,7 +67,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private TablistManager tb = new TablistManager();
     private boolean tablist = false;
     private boolean reminder = false;
-    private ItemDB itemdb;
 
     private static Main instance;
 
@@ -90,7 +92,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         testing = getConfig().getBoolean("testing");
         tablist = getConfig().getBoolean("tablist-update");
         reminder = getConfig().getBoolean("reminder");
-        itemdb = new ItemDB(this);
 
         // Bungee channels
         Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
@@ -171,6 +172,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new TagsEditor(), this);
         pm.registerEvents(new Replacements(), this);
         pm.registerEvents(new BeaconCommand(), this);
+        pm.registerEvents(new PlayerSwapListener(), this);
 
         // Skyblock PVP listener
         if (idServer.equalsIgnoreCase("skyblock")) {
@@ -229,7 +231,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("navody").setExecutor(new Navody_command());
         getCommand("checkfly").setExecutor(new Checkfly_command());
         getCommand("beacon").setExecutor(new BeaconCommand());
-        getCommand("recipe").setExecutor(new Recipe_command());
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {
@@ -279,10 +280,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public ServerFactory getServerFactory() {
         return sf;
-    }
-
-    public ItemDB getItemDb() {
-        return itemdb;
     }
 
     @Override
