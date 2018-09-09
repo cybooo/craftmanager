@@ -25,9 +25,9 @@ public class Recipe_command implements CommandExecutor {
         Plugin pl = Main.getInstance().getInstance();
         Player p = (Player) commandSender;
         try {
-            itemType = Main.getInstance().getItemDb().get(args[0]);
+            itemType = Main.getInstance().getItemdb().get(args[0]);
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
         int recipeNo = 0;
 
