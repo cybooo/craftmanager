@@ -60,6 +60,8 @@ commands:
       description: Kontrola zakoupeneho fly
     beacon:
       description: Beacon pro HERO VIP
+    recipe:
+      description: Recipe prikaz
 
 permissions:
     craftmanager.*:
