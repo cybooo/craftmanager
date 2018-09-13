@@ -73,7 +73,12 @@ public class SettingsListener implements Listener {
         } else {
             inv.setItem(25, disabled);
         }
-        inv.setItem(26, nedostupne);
+        //26 notify
+        if (Main.getInstance().getMySQL().getSettings(p, "mention_notify") == 1) {
+            inv.setItem(26, enabled);
+        } else {
+            inv.setItem(26, disabled);
+        }
         inv.setItem(24, nedostupne);
         inv.setItem(20, nedostupne);
         inv.setItem(18, pouzeLobby);
@@ -151,6 +156,17 @@ public class SettingsListener implements Listener {
                     Main.getInstance().getMySQL().updateSettings(p, "death_messages", 1);
                     p.sendMessage("§aNyni uvidis v chatu zpravy o smrti hracu!");
                     Main.getInstance().death_messages.add(p);
+                    p.closeInventory();
+                }
+            }
+            if (e.getSlot() == 26) {
+                if (Main.getInstance().getMySQL().getSettings(p, "mention_notify") == 1) {
+                    Main.getInstance().getMySQL().updateSettings(p, "mention_notify", 0);
+                        p.sendMessage("§cNyni ti oznaceni nebude cinkat!");
+                    p.closeInventory();
+                } else {
+                    Main.getInstance().getMySQL().updateSettings(p, "mention_notify", 1);
+                    p.sendMessage("§aZapnul jsi cinkani pri oznaceni v chatu!");
                     p.closeInventory();
                 }
             }

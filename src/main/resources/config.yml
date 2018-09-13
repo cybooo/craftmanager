@@ -51,6 +51,11 @@ ats-commands:
   ignored-commands:
    - /msg
 
+# Nastaveni oznacovani
+mentions:
+  prefix: "@"
+
+
 # Materialy pro DurabilityWarner
 # Funkce pro VIP
 materials:
