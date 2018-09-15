@@ -85,12 +85,77 @@ public class SettingsListener implements Listener {
 
         inv.setItem(40, zpet);
 
+        //mention sound
+        if (Main.getInstance().getMySQL().getSettingsString(p, "mention_sound") == null) {
+            Main.getInstance().getMySQL().updateSettings(p, "mention_sound", "ENTITY_EXPERIENCE_ORB_PICKUP");
+        }
+
         p.openInventory(inv);
+    }
+
+
+    public void openSoundsMenu(final Player p) {
+        Main.getInstance().getMySQL().updateSettings(p, "mention_sound", "xd");
+        Inventory inv = Bukkit.createInventory(null, 27, "Nastaveni zvuku");
+
+        ItemStack experience = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§e§lEXP ORB PICKUP", "§f", "§7Tento zvuk slysis, kdyz", "§7seberes EXP orb.");
+        inv.setItem(11, experience); //ENTITY_EXPERIENCE_ORB_PICKUP
+
+        ItemStack anvil = ItemFactory.create(Material.ANVIL, (byte) 0, "§e§lANVIL FALL", "§f", "§7Tento zvuk slysis, kdyz", "§7kdyz anvilka dopadne na zem.");
+        inv.setItem(12, anvil); //BLOCK_ANVIL_FALL
+
+        ItemStack glass = ItemFactory.create(Material.GLASS, (byte) 0, "§e§lGLASS BREAK", "§f", "§7Tento zvuk slysis, kdyz", "§7rozbijes sklo.");
+        inv.setItem(13, glass); //BLOCK_GLASS_BREAK
+
+        ItemStack itempickup = ItemFactory.create(Material.IRON_PICKAXE, (byte) 0, "§e§lITEM PICKUP", "§f", "§7Tento zvuk slysis, kdyz", "§7seberes nejaky item.");
+        inv.setItem(14, itempickup); //ENTITY_ITEM_PICKUP
+
+        ItemStack zombie = ItemFactory.create(Material.ROTTEN_FLESH, (byte) 0, "§e§lZOMBIE HURT", "§f", "§7Tento zvuk slysis, kdyz", "§7ublizis zombie.");
+        inv.setItem(15, zombie); //ENTITY_ZOMBIE_HURT
     }
 
     @EventHandler
     private void onInventoryClick(InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
+        if (e.getInventory().getTitle().equals("Nastaveni zvuku")) { //todo
+            e.setCancelled(true);
+            if (e.getCurrentItem() == null) {
+                return;
+            }
+            if (e.getCurrentItem().getType() == Material.AIR) {
+                return;
+            }
+            if (e.getSlot() == 11) {
+                p.closeInventory();
+                p.sendMessage("§aZvuk oznacovani byl nastaven na §2§lEXP ORB PICKUP§a.");
+                Main.getInstance().getMySQL().updateSettings(p, "mention_sound", "ENTITY_EXPERIENCE_ORB_PICKUP");
+                return;
+            }
+            if (e.getSlot() == 12) {
+                p.closeInventory();
+                p.sendMessage("§aZvuk oznacovani byl nastaven na §2§lANVIL FALL§a.");
+                Main.getInstance().getMySQL().updateSettings(p, "mention_sound", "BLOCK_ANVIL_FALL");
+                return;
+            }
+            if (e.getSlot() == 13) {
+                p.closeInventory();
+                p.sendMessage("§aZvuk oznacovani byl nastaven na §2§lGLASS BREAK§a.");
+                Main.getInstance().getMySQL().updateSettings(p, "mention_sound", "BLOCK_GLASS_BREAK");
+                return;
+            }
+            if (e.getSlot() == 14) {
+                p.closeInventory();
+                p.sendMessage("§aZvuk oznacovani byl nastaven na §2§lITEM PICKUP§a.");
+                Main.getInstance().getMySQL().updateSettings(p, "mention_sound", "ENTITY_ITEM_PICKUP");
+                return;
+            }
+            if (e.getSlot() == 15) {
+                p.closeInventory();
+                p.sendMessage("§aZvuk oznacovani byl nastaven na §2§lZOMBIE HURT§a.");
+                Main.getInstance().getMySQL().updateSettings(p, "mention_sound", "ENTITY_ZOMBIE_HURT");
+                return;
+            }
+        }
         if (e.getInventory().getTitle().equals("Osobni nastaveni")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
@@ -101,6 +166,15 @@ public class SettingsListener implements Listener {
             }
             if (e.getSlot() == 40) {
                 profil.openMenu(p);
+            }
+            if (e.getSlot() == 17) {
+                if (!p.hasPermission("craftmanager.mentions.editsounds")) {
+                    p.sendMessage("§cMoznost volitelnych zvuku ma jenom VIP!");
+                    return;
+                } else {
+                    openSoundsMenu(p);
+                    return;
+                }
             }
             if (e.getSlot() == 19) {
                 if (Main.getInstance().getMySQL().getSettings(p, "lobby_players") == 1) {
