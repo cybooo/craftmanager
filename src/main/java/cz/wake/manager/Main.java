@@ -230,6 +230,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("navody").setExecutor(new Navody_command());
         getCommand("checkfly").setExecutor(new Checkfly_command());
         getCommand("beacon").setExecutor(new BeaconCommand());
+        getCommand("recipe").setExecutor(new Recipe_command());
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {

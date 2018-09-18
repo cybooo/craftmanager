@@ -2,12 +2,9 @@ package cz.wake.manager.utils;
 
 import cz.wake.manager.Main;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.*;
 import java.math.BigInteger;
-import java.security.DigestInputStream;
 import java.security.DigestOutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -17,22 +14,61 @@ import java.util.List;
 import java.util.logging.Level;
 
 
-
 public class ManagedFile {
     private static final int BUFFERSIZE = 1024 * 8;
     private File file;
-    private FileConfiguration itemsFile;
 
     public ManagedFile(final String filename, final Main ess) {
         file = new File(ess.getDataFolder(), filename);
-        itemsFile = YamlConfiguration.loadConfiguration(file);
 
         if (!file.exists()) {
             try {
-                itemsFile.save(file);
+                copyResourceAscii("/" + filename, file);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
+        }
+    }
+
+    public static void copyResourceAscii(final String resourceName, final File file) throws IOException {
+        final InputStreamReader reader = new InputStreamReader(ManagedFile.class.getResourceAsStream(resourceName));
+        try {
+            final MessageDigest digest = getDigest();
+            final DigestOutputStream digestStream = new DigestOutputStream(new FileOutputStream(file), digest);
+            try {
+                final OutputStreamWriter writer = new OutputStreamWriter(digestStream);
+                try {
+                    final char[] buffer = new char[BUFFERSIZE];
+                    do {
+                        final int length = reader.read(buffer);
+                        if (length >= 0) {
+                            writer.write(buffer, 0, length);
+                        } else {
+                            break;
+                        }
+                    } while (true);
+                    writer.write("\n");
+                    writer.flush();
+                    final BigInteger hashInt = new BigInteger(1, digest.digest());
+                    digestStream.on(false);
+                    digestStream.write('#');
+                    digestStream.write(hashInt.toString(16).getBytes());
+                } finally {
+                    writer.close();
+                }
+            } finally {
+                digestStream.close();
+            }
+        } finally {
+            reader.close();
+        }
+    }
+
+    public static MessageDigest getDigest() throws IOException {
+        try {
+            return MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException ex) {
+            throw new IOException(ex);
         }
     }
 

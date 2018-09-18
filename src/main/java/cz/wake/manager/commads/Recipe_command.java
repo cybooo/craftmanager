@@ -22,7 +22,7 @@ public class Recipe_command implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         ItemStack itemType = null;
-        Plugin pl = Main.getInstance().getInstance();
+        Plugin pl = Main.getInstance();
         Player p = (Player) commandSender;
         try {
             itemType = Main.getInstance().getItemdb().get(args[0]);
@@ -31,7 +31,7 @@ public class Recipe_command implements CommandExecutor {
         }
         int recipeNo = 0;
 
-        if(args.length == 0) {
+        if(args.length <= 0) {
             p.sendMessage("§cPouzij /recipe <item> nebo /recipe <id>");
             return false;
         }

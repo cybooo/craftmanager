@@ -10,7 +10,8 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ItemDB{
+public class ItemDB {
+
     private final transient Main ess;
     private final transient Map<String, Integer> items = new HashMap<>();
     private final transient Map<ItemData, List<String>> names = new HashMap<>();
@@ -23,7 +24,7 @@ public class ItemDB{
 
     public ItemDB(final Main ess) {
         this.ess = ess;
-        file = new ManagedFile("items.yml", ess);
+        file = new ManagedFile("items.csv", ess);
     }
 
     public void reloadConfig() {
