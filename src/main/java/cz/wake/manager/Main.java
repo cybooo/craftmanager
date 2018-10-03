@@ -192,7 +192,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         }
 
         // Skyblock Skull fix
-        if (idServer.equalsIgnoreCase("skyblock") && idServer.equalsIgnoreCase("vanillasb")) {
+        if (idServer.equalsIgnoreCase("skyblock") || idServer.equalsIgnoreCase("vanillasb")) {
             pm.registerEvents(new SkyblockHeadFix(), this);
             Log.withPrefix("Aktivace opravy SkullFix");
         }
