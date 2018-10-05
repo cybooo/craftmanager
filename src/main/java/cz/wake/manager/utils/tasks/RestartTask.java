@@ -48,7 +48,6 @@ public class RestartTask implements Runnable {
         }
 
         bb.setProgress((double) Math.round(((remaining.doubleValue() / 6000) / Double.valueOf(RestartManager_command.min) / 10)* 1000d )/ 1000d);
-        System.out.print((double) Math.round(((remaining.doubleValue() / 6000) / Double.valueOf(RestartManager_command.min) / 10)* 1000d )/ 1000d);
 
 
     }
