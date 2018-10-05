@@ -52,7 +52,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private ParticlesAPI particlesAPI = new ParticlesAPI();
     public List<Material> durabilityWarnerList = new ArrayList<>();
     public List<Pattern> blockedTags = new ArrayList<Pattern>();
-    public static HashMap<Long, String> restarts = new HashMap<>();
+    public static Long restartTime;
+    public static String restartReason;
     private MainGUI gui = new MainGUI();
     private ShopAPI shop = new ShopAPI();
     private VoteHandler vh = new VoteHandler();
@@ -101,7 +102,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Oznameni kazdou hodinu (1 hod)
         if (reminder && !testing) {
-            getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 2000, 72000);
+                getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 2000, 72000);
             Log.withPrefix("Aktivace hodinoveho oznamovani o hlasech do chatu.");
 
             // Kontrola restartu hlasu
