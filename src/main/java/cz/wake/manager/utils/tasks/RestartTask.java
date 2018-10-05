@@ -39,10 +39,10 @@ public class RestartTask implements Runnable {
           bb.setColor("RED");
         }
         else if (remaining <= 1000) {
-          /*for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+          for (Player p : Bukkit.getServer().getOnlinePlayers()) {
             Main.getInstance().sendToServer(p, "lobby");
-          }*/
-          //todo: restart thing
+          }
+          Bukkit.shutdown();
           bb.hide();
           return;
         }
