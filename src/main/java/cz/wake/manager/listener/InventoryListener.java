@@ -76,9 +76,6 @@ public class InventoryListener implements Listener {
             if(e.getSlot() == 4){
                 MenuManager.prepareNavodLink(p, "Trade", "https://wiki.craftmania.cz/navody/trade");
             }
-            if(e.getSlot() == 5){
-                MenuManager.prepareNavodLink(p, "Jobs", "https://wiki.craftmania.cz/navody/jobs");
-            }
             if(e.getSlot() == 6){
                 MenuManager.prepareNavodLink(p, "ChestShop", "https://wiki.craftmania.cz/navody/chestshop");
             }

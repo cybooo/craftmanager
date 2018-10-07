@@ -279,16 +279,6 @@ public class Help_command implements CommandExecutor {
                     "",
                     "§bKliknutim zobrazis odkaz na cely navod!");
 
-            ItemStack jobs = ItemFactory.create(Material.IRON_PICKAXE, (byte) 0, "§a§lJobs", "",
-                    "§cKazdy hrac smi mit maximalne 3 aktivni prace!",
-                    "§e/jobs §f- §7Zakladni prikaz k ziskani napovedy",
-                    "§e/jobs browse §f- §7Seznam vsech dostupnych praci",
-                    "§e/jobs join §6nazevPrace §f- §7Pripojeni do prace",
-                    "§e/jobs leave §6nazevPrace §f §7Odstoupeni z prace",
-                    "§7(neztratis uroven prace)",
-                    "§e/jobs stats §6" + p.getName() + " §f- §7Informace o hraci/sobe",
-                    "§e/jobs gtop §f- §7Zobrazi TOP hrace v Jobs na serveru");
-
             ItemStack vip = ItemFactory.create(Material.EMERALD, (byte) 0, "§a§lNakup VIP", "",
                     "§7Pokud si chces zakoupit VIP,", "§7tak kliknutim zde se ti zobrazi prehled",
                     "§7vsech dostupnych VIP na tomto serveru.", "", "§bKlikni pro zobrazeni");
@@ -328,18 +318,6 @@ public class Help_command implements CommandExecutor {
                     "",
                     "§eKliknutim zobrazis prehled");
 
-            ItemStack lwc = ItemFactory.create(Material.CHEST, (byte) 0, "§a§lNastaveni truhel a prava", "",
-                    "§7Kazdou truhlu, kterou polozis na serveru",
-                    "§7se automaticky uzakmne pro tebe!",
-                    "", "§cPrikazy k zmene prav:",
-                    "§e/cprivate §f- §7Uzamkne truhlu pouze pro tebe.",
-                    "§e/unlock §f §7Kompletne odemkne truhlu,",
-                    "§7kdokoliv se do ni bude moct podivat.",
-                    "§e/cmodify §6" + p.getName() + " §f- §7Prideli prava hraci",
-                    "§7k pouzivani na danou chestku.",
-                    "§e/chopper on §f- §7Odemkne truhlu,",
-                    "§7tak aby ji mohl pouzivat redstone, ne hraci.");
-
             ItemStack ser = ItemFactory.create(Material.DIAMOND, (byte) 0, "§a§lPrikazy a teleportace na serveru",
                     "", "§e/shop §f- §7Teleport do shopu",
                     "§e/cc §f- §7Stav CraftCoins",
@@ -357,9 +335,9 @@ public class Help_command implements CommandExecutor {
             inv.setItem(13, resV);
             inv.setItem(14, resF);
 
-            inv.setItem(20, jobs);
+            //inv.setItem(20, jobs);
             inv.setItem(21, aukce);
-            inv.setItem(22, lwc);
+            //inv.setItem(22, lwc);
             inv.setItem(23, spawner);
             inv.setItem(24, hlasovani);
 
