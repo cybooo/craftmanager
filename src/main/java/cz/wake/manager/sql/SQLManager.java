@@ -609,7 +609,7 @@ public class SQLManager {
                 PreparedStatement ps = null;
                 try {
                     conn = pool.getConnection();
-                    ps = conn.prepareStatement("UPDATE player_settings SET " + settings + " = " + string + " WHERE nick = ?;");
+                    ps = conn.prepareStatement("UPDATE player_settings SET " + settings + " = '" + string + "' WHERE nick = ?;");
                     ps.setString(1, p.getName());
                     ps.executeUpdate();
                 } catch (Exception e) {

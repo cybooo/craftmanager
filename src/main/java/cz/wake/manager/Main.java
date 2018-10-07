@@ -65,6 +65,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private boolean tablist = false;
     private boolean reminder = false;
     private ItemDB itemdb;
+    private static String mentionPrefix;
 
     private static Main instance;
 
@@ -141,6 +142,13 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Custom crafting recepty
         CustomCrafting.addPackedIce(this);
+
+        // Nastaveni mention prefixu
+        mentionPrefix = Main.getInstance().getConfig().getString("mentions.prefix");
+        if(mentionPrefix == null) {
+            mentionPrefix = "@";
+        }
+        Log.withPrefix("Mention prefix nastaven na: " + mentionPrefix);
     }
 
     public void onDisable() {
@@ -343,5 +351,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public boolean isReminderEnabled() {
         return reminder;
+    }
+
+    public static String getMentionPrefix() {
+        return mentionPrefix;
     }
 }
