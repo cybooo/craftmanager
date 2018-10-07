@@ -62,55 +62,58 @@ public class InventoryListener implements Listener {
         if (e.getInventory().getTitle().equals("§0Seznam dostupnych navodu")) {
             e.setCancelled(true);
             if(e.getSlot() == 0){
-                MenuManager.prepareNavodLink(p, "Pravidla", "https://wiki.craftmania.cz/zakladni-informace/pravidla");
+                MenuManager.prepareNavodLink(p, "Pravidla", "https://wiki.craftmania.cz/#/zakladni-informace/pravidla/");
             }
             if (e.getSlot() == 1){
-                MenuManager.prepareNavodLink(p, "Povolene/zakazane mody", "https://wiki.craftmania.cz/zakladni-informace/povolene-zakazane-mody");
+                MenuManager.prepareNavodLink(p, "Povolene/zakazane mody", "https://wiki.craftmania.cz/#/zakladni-informace/povolene-a-zakazane-mody/");
             }
             if(e.getSlot() == 2){
-                MenuManager.prepareNavodLink(p, "Prevody uctu", "https://wiki.craftmania.cz/zakladni-informace/prevody-uctu");
+                MenuManager.prepareNavodLink(p, "Prevody uctu", "https://wiki.craftmania.cz/#/zakladni-informace/prevody-uctu/");
             }
             if(e.getSlot() == 3){
-                MenuManager.prepareNavodLink(p, "Residence", "https://wiki.craftmania.cz/navody/residence");
+                MenuManager.prepareNavodLink(p, "Residence", "https://wiki.craftmania.cz/#/navody/residence/");
             }
             if(e.getSlot() == 4){
-                MenuManager.prepareNavodLink(p, "Trade", "https://wiki.craftmania.cz/navody/trade");
+                MenuManager.prepareNavodLink(p, "Trade", "https://wiki.craftmania.cz/#/navody/trade/");
+            }
+            if(e.getSlot() == 5){
+                MenuManager.prepareNavodLink(p, "Jobs", "https://wiki.craftmania.cz/#/navody/jobs/");
             }
             if(e.getSlot() == 6){
-                MenuManager.prepareNavodLink(p, "ChestShop", "https://wiki.craftmania.cz/navody/chestshop");
+                MenuManager.prepareNavodLink(p, "ChestShop", "https://wiki.craftmania.cz/#/navody/chestshop/");
             }
             if(e.getSlot() == 7){
-                MenuManager.prepareNavodLink(p, "ArmorStand Editor", "https://wiki.craftmania.cz/navody/armorstandeditor");
+                MenuManager.prepareNavodLink(p, "ArmorStand Editor", "https://wiki.craftmania.cz/#/navody/armorstandeditor/");
             }
             if(e.getSlot() == 8){
-                MenuManager.prepareNavodLink(p, "BannerBuilder", "https://wiki.craftmania.cz/navody/bannerbuilder");
+                MenuManager.prepareNavodLink(p, "BannerBuilder", "https://wiki.craftmania.cz/#/navody/bannerbuilder/");
             }
             if(e.getSlot() == 9){
-                MenuManager.prepareNavodLink(p, "ArtMap", "https://wiki.craftmania.cz/navody/artmap");
+                MenuManager.prepareNavodLink(p, "ArtMap", "https://wiki.craftmania.cz/#/navody/artmap/");
             }
             if(e.getSlot() == 10){
-                MenuManager.prepareNavodLink(p, "Psani barevne", "https://wiki.craftmania.cz/navody/psanibarevne");
+                MenuManager.prepareNavodLink(p, "Psani barevne", "https://wiki.craftmania.cz/#/navody/psanibarevne/");
             }
             if(e.getSlot() == 11){
-                MenuManager.prepareNavodLink(p ,"Pozemky", "https://wiki.craftmania.cz/navody/pozemky");
+                MenuManager.prepareNavodLink(p ,"Pozemky", "https://wiki.craftmania.cz/#/navody/pozemky/");
             }
             if(e.getSlot() == 12){
-                MenuManager.prepareNavodLink(p, "Ostrovy", "https://wiki.craftmania.cz/navody/askyblock");
+                MenuManager.prepareNavodLink(p, "Ostrovy", "https://wiki.craftmania.cz/#/navody/askyblock/");
             }
             if(e.getSlot() == 13){
-                MenuManager.prepareNavodLink(p, "WorldEdit", "https://wiki.craftmania.cz/navody/worldedit");
+                MenuManager.prepareNavodLink(p, "WorldEdit", "https://wiki.craftmania.cz/#/navody/worldedit/");
             }
             if(e.getSlot() == 14){
-                MenuManager.prepareNavodLink(p, "GhostBlocks", "https://wiki.craftmania.cz/navody/ghost-blocks");
+                MenuManager.prepareNavodLink(p, "GhostBlocks", "https://wiki.craftmania.cz/#/navody/ghost-blocks/");
             }
             if(e.getSlot() == 15){
-                MenuManager.prepareNavodLink(p, "Warpy", "https://wiki.craftmania.cz/navody/warpy");
+                MenuManager.prepareNavodLink(p, "Warpy", "https://wiki.craftmania.cz/#/navody/warpy/");
             }
             if(e.getSlot() == 16){
-                MenuManager.prepareNavodLink(p, "Hologramy", "https://wiki.craftmania.cz/navody/hologramy");
+                MenuManager.prepareNavodLink(p, "Hologramy", "https://wiki.craftmania.cz/#/navody/hologramy/");
             }
             if(e.getSlot() == 17){
-                MenuManager.prepareNavodLink(p, "Replacementy", "https://wiki.craftmania.cz/navody/replacementy");
+                MenuManager.prepareNavodLink(p, "Replacementy", "https://wiki.craftmania.cz/#/navody/replacementy/");
             }
             if(e.getSlot() == 31){
                 Main.getInstance().getMainGUI().openMainMenu(p);
@@ -130,18 +133,31 @@ public class InventoryListener implements Listener {
                 p.sendMessage("§6▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§eOdkaz na plny navod Residence:");
-                p.sendMessage("§7https://wiki.craftmania.cz/navody/residence");
+                p.sendMessage("§7https://wiki.craftmania.cz/#/navody/residence/");
                 p.sendMessage("");
                 p.sendMessage("§6▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.closeInventory();
             }
-            if (e.getSlot() == 32) {
+            if (e.getSlot() == 21) {
+                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
+                p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
+                p.sendMessage("");
+                p.sendMessage("§7odkaz na podrobny navod o Custom Enchantech");
+                p.sendMessage("§fhttps://wiki.craftmania.cz/#/navody/custom-enchants/");
+                p.sendMessage("");
+                p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
+                p.closeInventory();
+            }
+            if (e.getSlot() == 33) {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "chestcommands open vip.yml " + p.getName());
             }
-            if(e.getSlot() == 23){
+            if (e.getSlot() == 23) {
+                p.performCommand("quests");
+            }
+            if(e.getSlot() == 24){
                 MenuManager.openNavody(p);
             }
-            if (e.getSlot() == 24) {
+            if (e.getSlot() == 29) {
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
                 p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
@@ -151,7 +167,7 @@ public class InventoryListener implements Listener {
                 p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.closeInventory();
             }
-            if (e.getSlot() == 31) {
+            if (e.getSlot() == 32) {
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
                 p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
@@ -179,7 +195,7 @@ public class InventoryListener implements Listener {
                 p.sendMessage("§6▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§eOdkaz na plny navod Pozemky:");
-                p.sendMessage("§7https://wiki.craftmania.cz/navody/pozemky");
+                p.sendMessage("§7https://wiki.craftmania.cz/#/navody/pozemky/");
                 p.sendMessage("");
                 p.sendMessage("§6▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.closeInventory();

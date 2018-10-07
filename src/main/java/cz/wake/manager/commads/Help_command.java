@@ -92,12 +92,12 @@ public class Help_command implements CommandExecutor {
                     "§6min.nabHrace §f- §7Je minimalni castka, ",
                     "§7kterou hrac muze pridat do aukce",
                     "§6cas §f- §7Urcuje konec aukce pr. 1m/1h/1d ",
-                    "§7(lze i kompinovat 1d12h)");
+                    "§7(lze i kombinovat 1d12h)");
 
             ItemStack hlasovani = ItemFactory.create(Material.PAPER, (byte) 0, "§a§lHlasovani", "",
                     "§cHlasovat muze kazdy 1x za 2 hodiny!",
                     "",
-                    "§fKazdy hlas: §610 CC §f+ §aVoteCrate",
+                    "§fKazdy hlas: §610 CC §f+ §aVoteToken",
                     "§f25% sance: §625 CC",
                     "§f5% sance: §650 CC",
                     "§f1% sance: §6100 CC",
@@ -109,30 +109,19 @@ public class Help_command implements CommandExecutor {
                     "",
                     "§eKliknutim zobrazis odkaz na hlasovani!");
 
-            ItemStack spawner = ItemFactory.create(Material.BOOK, (byte) 0, "§a§lNavody", "",
+            ItemStack guides = ItemFactory.create(Material.BOOK, (byte) 0, "§a§lNavody", "",
                     "§7Prehled vsech dostupnych navodu",
                     "§7na nasi hlavni WIKI!",
                     "",
                     "§eKliknutim zobrazis prehled");
 
-            ItemStack lwc = ItemFactory.create(Material.CHEST, (byte) 0, "§a§lNastaveni truhel a prava", "",
-                    "§7Kazdou truhlu, kterou polozis na serveru",
-                    "§7se automaticky uzakmne pro tebe!",
-                    "", "§cPrikazy k zmene prav:",
-                    "§e/cprivate §f- §7Uzamkne truhlu pouze pro tebe.",
-                    "§e/unlock §f §7Kompletne odemkne truhlu,",
-                    "§7kdokoliv se do ni bude moct podivat.",
-                    "§e/cmodify §6" + p.getName() + " §f- §7Prideli prava hraci",
-                    "§7k pouzivani na danou chestku.",
-                    "§e/chopper on §f- §7Odemkne truhlu,",
-                    "§7tak aby ji mohl pouzivat redstone, ne hraci.");
-
             ItemStack ser = ItemFactory.create(Material.DIAMOND, (byte) 0, "§a§lPrikazy a teleportace na serveru",
-                    "", "§e/shop §f- §7Teleport do shopu",
+                    "", "§e/shop §f- §7Otevre menu s Shopem",
+                    "§e/cshop §f- §7Otevre Coinshop",
                     "§e/cc §f- §7Stav CraftCoins",
                     "§e/trade §6" + p.getName() + " §f- §7Obchodovani s hraci",
                     "§e/fr §f- §7Friends a psani si s kamarady pres cely server",
-                    "§e/lobby §7nebo §e/hub §f- §7Teleport do lobby");
+                    "§e/lobby §7nebo §e/hub §f- §7Teleport na lobby");
 
             ItemStack conn = ItemFactory.create(Material.MAP, (byte) 0, "§a§lOdkazy na nase dalsi servery", "",
                     "§eWeb: §7https://craftmania.cz",
@@ -146,8 +135,7 @@ public class Help_command implements CommandExecutor {
 
             inv.setItem(20, jobs);
             inv.setItem(21, aukce);
-            inv.setItem(22, lwc);
-            inv.setItem(23, spawner);
+            inv.setItem(23, guides);
             inv.setItem(24, hlasovani);
 
             inv.setItem(30, ser);
@@ -196,7 +184,7 @@ public class Help_command implements CommandExecutor {
             ItemStack hlasovani = ItemFactory.create(Material.PAPER, (byte) 0, "§a§lHlasovani", "",
                     "§cHlasovat muze kazdy 1x za 2 hodiny!",
                     "",
-                    "§fKazdy hlas: §610 CC",
+                    "§fKazdy hlas: §610 CC §f+ §aVoteToken",
                     "§f25% sance: §625 CC",
                     "§f5% sance: §650 CC",
                     "§f1% sance: §6100 CC",
@@ -209,10 +197,10 @@ public class Help_command implements CommandExecutor {
                     "§eKliknutim zobrazis odkaz na hlasovani!");
 
             ItemStack ser = ItemFactory.create(Material.DIAMOND, (byte) 0, "§a§lPrikazy a teleportace na serveru",
-                    "",
+                    "§e/cshop §f- §7Otevre Coinshop",
                     "§e/cc §f- §7Stav CraftCoins",
                     "§e/fr §f- §7Friends a psani si s kamarady pres cely server",
-                    "§e/lobby §7nebo §e/hub §f- §7Teleport do lobby");
+                    "§e/lobby §7nebo §e/hub §f- §7Teleport na lobby");
 
             ItemStack conn = ItemFactory.create(Material.MAP, (byte) 0, "§a§lOdkazy na nase dalsi servery", "",
                     "§eWeb: §7https://craftmania.cz",
@@ -220,7 +208,7 @@ public class Help_command implements CommandExecutor {
                     "§eStatus page: §7https://status.craftmania.cz", "",
                     "§bKliknutim ti zobrazime klikaci odkazy v chatu!");
 
-            ItemStack navody = ItemFactory.create(Material.BOOK, (byte) 0, "§a§lNavody", "",
+            ItemStack guides = ItemFactory.create(Material.BOOK, (byte) 0, "§a§lNavody", "",
                     "§7Prehled vsech dostupnych navodu",
                     "§7na nasi hlavni WIKI!",
                     "",
@@ -234,7 +222,7 @@ public class Help_command implements CommandExecutor {
             inv.setItem(22, hlasovani);
             inv.setItem(23, ser);
 
-            inv.setItem(30, navody);
+            inv.setItem(30, guides);
             inv.setItem(31, conn);
 
             p.openInventory(inv);
@@ -283,6 +271,18 @@ public class Help_command implements CommandExecutor {
                     "§7Pokud si chces zakoupit VIP,", "§7tak kliknutim zde se ti zobrazi prehled",
                     "§7vsech dostupnych VIP na tomto serveru.", "", "§bKlikni pro zobrazeni");
 
+            ItemStack aech = ItemFactory.create(Material.ENCHANTED_BOOK, (byte) 0, "§a§lCustom enchanty", "",
+                    "§7Na nasem serveru jsou k dispozici", "§7custom enchanty, ktere se",
+                    "§7normalne v Minecraftu nevyskytuji.", "");
+
+            ItemStack aechC = ItemFactory.create(Material.SUGAR, (byte) 0, "§a§lCustom enchanty", "",
+                    "§7Existuji dva zakladni prikazy",
+                    "§b/enchanter §7- Levy klik nakup, pravy klik seznam",
+                    "§b/tinker §7- Premena knihy na prasek",
+                    "§fMagic Dust §7- Po kliknuti na custom",
+                    "§7enchant se zvysi uspesnost aplikace enchantu", "",
+                    "", "§bKlikni pro zobrazeni vice informaci");
+
             ItemStack aukce = ItemFactory.create(Material.CAKE, (byte) 0, "§a§lAukce", "",
                     "§7Pomoci aukci muzes prodavat hracum", "§7nepotrebne itemy/bloky.", "",
                     "§cVytvoreni aukce:", "§7K vytvoreni aukce uchop item co chces", "§7prodat a napis tento prikaz:",
@@ -295,12 +295,21 @@ public class Help_command implements CommandExecutor {
                     "§6min.nabHrace §f- §7Je minimalni castka, ",
                     "§7kterou hrac muze pridat do aukce",
                     "§6cas §f- §7Urcuje konec aukce pr. 1m/1h/1d ",
-                    "§7(lze i kompinovat 1d12h)");
+                    "§7(lze i kombinovat 1d12h)");
+
+            ItemStack questy = ItemFactory.create(Material.NETHER_STAR, (byte) 0, "§a§lQuesty", "",
+                    "§7Chces plnit i nejake Questy (ukoly)?",
+                    "§7Staci dat §b/quest §7a muzes zacit!",
+                    "§7Pro splneni nekterych Questu je potreba",
+                    "§7zjistit o jaky predmet se jedna",
+                    "§7a chvili jej drzet v ruce.",
+                    "",
+                    "§eKliknutim zobrazis dostupne questy");
 
             ItemStack hlasovani = ItemFactory.create(Material.PAPER, (byte) 0, "§a§lHlasovani", "",
                     "§cHlasovat muze kazdy 1x za 2 hodiny!",
                     "",
-                    "§fKazdy hlas: §610 CC §f+ §aVoteCrate",
+                    "§fKazdy hlas: §610 CC §f+ §aVoteToken",
                     "§f25% sance: §625 CC",
                     "§f5% sance: §650 CC",
                     "§f1% sance: §6100 CC",
@@ -312,18 +321,19 @@ public class Help_command implements CommandExecutor {
                     "",
                     "§eKliknutim zobrazis odkaz na hlasovani!");
 
-            ItemStack spawner = ItemFactory.create(Material.BOOK, (byte) 0, "§a§lNavody", "",
+            ItemStack guides = ItemFactory.create(Material.BOOK, (byte) 0, "§a§lNavody", "",
                     "§7Prehled vsech dostupnych navodu",
                     "§7na nasi hlavni WIKI!",
                     "",
                     "§eKliknutim zobrazis prehled");
 
             ItemStack ser = ItemFactory.create(Material.DIAMOND, (byte) 0, "§a§lPrikazy a teleportace na serveru",
-                    "", "§e/shop §f- §7Teleport do shopu",
+                    "", "§e/shop §f- §7Otevre menu s Shopem",
+                    "§e/cshop §f- §7Otevre Coinshop",
                     "§e/cc §f- §7Stav CraftCoins",
                     "§e/trade §6" + p.getName() + " §f- §7Obchodovani s hraci",
                     "§e/fr §f- §7Friends a psani si s kamarady pres cely server",
-                    "§e/lobby §7nebo §e/hub §f- §7Teleport do lobby");
+                    "§e/lobby §7nebo §e/hub §f- §7Teleport na lobby");
 
             ItemStack conn = ItemFactory.create(Material.MAP, (byte) 0, "§a§lOdkazy na nase dalsi servery", "",
                     "§eWeb: §7https://craftmania.cz",
@@ -335,15 +345,16 @@ public class Help_command implements CommandExecutor {
             inv.setItem(13, resV);
             inv.setItem(14, resF);
 
-            //inv.setItem(20, jobs);
-            inv.setItem(21, aukce);
-            //inv.setItem(22, lwc);
-            inv.setItem(23, spawner);
-            inv.setItem(24, hlasovani);
+            inv.setItem(20, aech);
+            inv.setItem(21, aechC);
+            inv.setItem(22, aukce);
+            inv.setItem(23, questy);
+            inv.setItem(24, guides);
 
+            inv.setItem(29, hlasovani);
             inv.setItem(30, ser);
-            inv.setItem(31, conn);
-            inv.setItem(32, vip);
+            inv.setItem(32, conn);
+            inv.setItem(33, vip);
 
             p.openInventory(inv);
         }
