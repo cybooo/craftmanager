@@ -277,7 +277,8 @@ public class Help_command implements CommandExecutor {
 
             ItemStack aech = ItemFactory.create(Material.ENCHANTED_BOOK, (byte) 0, "§a§lCustom enchanty", "",
                     "§7Na nasem serveru jsou k dispozici", "§7custom enchanty, ktere se",
-                    "§7normalne v Minecraftu nevyskytuji.", "");
+                    "§7normalne v Minecraftu nevyskytuji.", "",
+                    "§eKliknutim zobrazis navod");
 
             ItemStack aukce = ItemFactory.create(Material.CAKE, (byte) 0, "§a§lAukce", "",
                     "§7Pomoci aukci muzes prodavat hracum", "§7nepotrebne itemy/bloky.", "",
