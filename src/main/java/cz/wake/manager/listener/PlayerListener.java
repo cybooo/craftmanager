@@ -8,6 +8,7 @@ import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.utils.UtilTablist;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
+import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -64,6 +65,11 @@ public class PlayerListener implements Listener {
         //ChatColor
         if (p.hasPermission("craftmanager.chatcolor") && !p.hasPermission("craftmanager.chatcolor.at")) {
             setupChatColor(p);
+        }
+
+        //Mentions
+        if (Main.getInstance().getMySQL().getSettingsString(p, "mention_sound") == null && Main.getInstance().getMySQL().getSettingsString(p, "mention_sound").equals("")) {
+            Main.getInstance().getMySQL().updateSettings(p, "mention_sound", "ENTITY_EXPERIENCE_ORB_PICKUP");
         }
 
         //Register Recipe Player
