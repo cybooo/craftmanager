@@ -62,6 +62,9 @@ commands:
       description: Beacon pro HERO VIP
     recipe:
       description: Recipe prikaz
+    restartmanager:
+      description: Restart manager
+      aliases: [rm]
 
 permissions:
     craftmanager.*:

@@ -1,6 +1,6 @@
 package cz.wake.manager.shop;
 
-import cz.wake.craftcore.utils.items.ItemBuilder;
+import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
 import net.nifheim.beelzebu.coins.CoinsAPI;
@@ -442,7 +442,7 @@ public class ShopAPI implements Listener {
                 inv.setItem(5, nedostupny);
             }
         } else {
-            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§8Fly na ostrove (1h)")
+            ItemStack noMoney = new ItemBuilder (Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§8Fly na ostrove (1h)")
                     .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f3 VT").build();
             inv.setItem(5, noMoney);
         }

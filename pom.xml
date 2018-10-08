@@ -136,7 +136,8 @@
         <dependency>
             <groupId>com.github.craftmania-cz</groupId>
             <artifactId>craftcore</artifactId>
-            <version>07f5881249</version>
+            <version>v2.0.0</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>net.nifheim.beelzebu</groupId>

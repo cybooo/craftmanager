@@ -40,6 +40,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -51,6 +52,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private ParticlesAPI particlesAPI = new ParticlesAPI();
     public List<Material> durabilityWarnerList = new ArrayList<>();
     public List<Pattern> blockedTags = new ArrayList<Pattern>();
+    public static Long restartTime;
+    public static String restartReason;
     private MainGUI gui = new MainGUI();
     private ShopAPI shop = new ShopAPI();
     private VoteHandler vh = new VoteHandler();
@@ -100,7 +103,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Oznameni kazdou hodinu (1 hod)
         if (reminder && !testing) {
-            getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 2000, 72000);
+                getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 2000, 72000);
             Log.withPrefix("Aktivace hodinoveho oznamovani o hlasech do chatu.");
 
             // Kontrola restartu hlasu
@@ -240,6 +243,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("checkfly").setExecutor(new Checkfly_command());
         getCommand("beacon").setExecutor(new BeaconCommand());
         getCommand("recipe").setExecutor(new Recipe_command());
+        getCommand("restartmanager").setExecutor(new RestartManager_command());
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {
