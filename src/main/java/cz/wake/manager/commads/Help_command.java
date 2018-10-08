@@ -264,7 +264,11 @@ public class Help_command implements CommandExecutor {
                     "§e/res tp §6nazev §f- §7Teleport na residenci",
                     "§e/res tpset §f- §7Nastaveni teleportu",
                     "§e/res give §6nazev nick §f- §7Daruje residenci vybranemu hraci",
-                    "",
+                    "§7Existuji dva zakladni prikazy",
+                    "§b/enchanter §7- Levy klik nakup, pravy klik seznam",
+                    "§b/tinker §7- Premena knihy na prasek",
+                    "§fMagic Dust §7- Po kliknuti na custom",
+                    "§7enchant se zvysi uspesnost aplikace enchantu", "",
                     "§bKliknutim zobrazis odkaz na cely navod!");
 
             ItemStack vip = ItemFactory.create(Material.EMERALD, (byte) 0, "§a§lNakup VIP", "",
@@ -274,14 +278,6 @@ public class Help_command implements CommandExecutor {
             ItemStack aech = ItemFactory.create(Material.ENCHANTED_BOOK, (byte) 0, "§a§lCustom enchanty", "",
                     "§7Na nasem serveru jsou k dispozici", "§7custom enchanty, ktere se",
                     "§7normalne v Minecraftu nevyskytuji.", "");
-
-            ItemStack aechC = ItemFactory.create(Material.SUGAR, (byte) 0, "§a§lCustom enchanty", "",
-                    "§7Existuji dva zakladni prikazy",
-                    "§b/enchanter §7- Levy klik nakup, pravy klik seznam",
-                    "§b/tinker §7- Premena knihy na prasek",
-                    "§fMagic Dust §7- Po kliknuti na custom",
-                    "§7enchant se zvysi uspesnost aplikace enchantu", "",
-                    "", "§bKlikni pro zobrazeni vice informaci");
 
             ItemStack aukce = ItemFactory.create(Material.CAKE, (byte) 0, "§a§lAukce", "",
                     "§7Pomoci aukci muzes prodavat hracum", "§7nepotrebne itemy/bloky.", "",
@@ -346,15 +342,14 @@ public class Help_command implements CommandExecutor {
             inv.setItem(14, resF);
 
             inv.setItem(20, aech);
-            inv.setItem(21, aechC);
-            inv.setItem(22, aukce);
-            inv.setItem(23, questy);
-            inv.setItem(24, guides);
+            inv.setItem(21, aukce);
+            inv.setItem(22, questy);
+            inv.setItem(23, guides);
+            inv.setItem(24, hlasovani);
 
-            inv.setItem(29, hlasovani);
             inv.setItem(30, ser);
-            inv.setItem(32, conn);
-            inv.setItem(33, vip);
+            inv.setItem(31, conn);
+            inv.setItem(32, vip);
 
             p.openInventory(inv);
         }

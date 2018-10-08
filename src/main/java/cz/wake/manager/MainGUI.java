@@ -22,7 +22,7 @@ public class MainGUI implements Listener {
 
         SkullMeta headMeta = (SkullMeta) Bukkit.getItemFactory().getItemMeta(Material.SKULL_ITEM);
         headMeta.setOwner(p.getName());
-        headMeta.setDisplayName("§9" + p.getName());
+        headMeta.setDisplayName("§9§l" + p.getName());
         ItemStack head = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
         ArrayList<String> headLore = new ArrayList<>();
         headLore.add("§7");
