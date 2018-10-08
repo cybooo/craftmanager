@@ -23,9 +23,7 @@ import cz.wake.manager.utils.*;
 import cz.wake.manager.utils.tasks.ATCheckerTask;
 import cz.wake.manager.utils.tasks.UpdateServerTask;
 import cz.wake.manager.utils.tasks.UpdateTablistTask;
-import cz.wake.manager.utils.tasks.VoteReseterTask;
 import cz.wake.manager.votifier.ForwardVote;
-import cz.wake.manager.votifier.Reminder;
 import cz.wake.manager.votifier.VoteHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -40,7 +38,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -103,12 +100,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Oznameni kazdou hodinu (1 hod)
         if (reminder && !testing) {
-                getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 2000, 72000);
+            //getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 2000, 72000);
             Log.withPrefix("Aktivace hodinoveho oznamovani o hlasech do chatu.");
-
-            // Kontrola restartu hlasu
-            getServer().getScheduler().runTaskAsynchronously(this, new VoteReseterTask());
-            Log.withPrefix("Aktivace kontroly restartu hlasu.");
         }
 
         // Update ID stats task (1 min)
@@ -193,14 +186,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Survival PVP listener
         if (idServer.equalsIgnoreCase("survival")) {
             pm.registerEvents(new SurvivalPVPListener(), this);
-        }
-
-        // Hlasovani
-        if (getConfig().getBoolean("hlasovani") && !testing) {
-            //pm.registerEvents(new SuperbVote(), this);
-            Log.withPrefix("Odmeny za hlasovani byly aktivovany!");
-        } else {
-            Log.withPrefix(ChatColor.RED + "Odmeny za hlasovani nejsou aktivni!");
         }
 
         // Skyblock Skull fix
