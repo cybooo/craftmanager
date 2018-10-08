@@ -1,6 +1,7 @@
 package cz.wake.manager.listener;
 
 import cz.wake.manager.Main;
+import cz.wake.manager.commads.RestartManager_command;
 import cz.wake.manager.commads.vip.Chatcolor_command;
 import cz.wake.manager.managers.RecipeManager;
 import cz.wake.manager.managers.RecipePlayer;
@@ -32,6 +33,11 @@ public class PlayerListener implements Listener {
 
         //Oprava pro skoncene VIP hrace s Glowing
         p.setGlowing(false);
+
+        //RestartManager
+        if (Main.restartTime != null) {
+            RestartManager_command.bb.addPlayer(p);
+        }
 
         //Efekty
         if (!Main.getInstance().isVisibleForPlayer(p)) {
@@ -68,6 +74,8 @@ public class PlayerListener implements Listener {
 
         //Register Recipe Player
         RecipeManager.registerRecipePlayer(new RecipePlayer(p));
+
+
     }
 
     @EventHandler
@@ -96,6 +104,9 @@ public class PlayerListener implements Listener {
 
         //Unregister RecipePlayeru
         RecipeManager.unregisterRecipePlayer(RecipeManager.getRecipePlayer(p));
+
+        //RestartManager
+        RestartManager_command.bb.removePlayer(p);
     }
 
     @EventHandler
