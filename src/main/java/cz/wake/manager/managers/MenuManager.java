@@ -20,7 +20,7 @@ public class MenuManager {
         ItemStack residence = ItemFactory.create(Material.PAPER, (byte)0, "§e§lResidence", "§7Navod pro vsechny", "§7co chceji plnohodnotne", "§7ovladnout residence","","§fVhodne pro: §bSurvival");
         //ItemStack lwc = ItemFactory.create(Material.PAPER, (byte)0, "§e§lLWC", "§7Dodatecne zabezpeceni", "§7truhel s podrobnym navodem.", "", "§fVhodne pro: §bSur, Skyb, Van-SB");
         ItemStack trade = ItemFactory.create(Material.PAPER, (byte)0, "§e§lTrade", "§7Jak obchodovat s hraci", "§7a co je potreba znat.", "", "§fVhodne pro: §bVsechny survivaly");
-        ItemStack jobs = ItemFactory.create(Material.PAPER, (byte)0, "§e§lJobs", "§7Jak si vydelavat penize", "§7na nasich serverech?", "", "§fVhodne pro: §bSurv, Sky");
+        ItemStack jobs = ItemFactory.create(Material.PAPER, (byte)0, "§e§lJobs", "§7Jak si vydelavat penize", "§7na nasich serverech?", "", "§fVhodne pro: §bSkyblock");
         ItemStack shop = ItemFactory.create(Material.PAPER, (byte)0, "§e§lChestShop", "§7Jak vytvorit shop", "§7a jak vykupovat itemy.", "", "§fVhodnoce pro: §bSurv, Sky");
         ItemStack armorstand = ItemFactory.create(Material.PAPER, (byte)0, "§e§lArmorStand Editor", "§7Uprava vsech armorstandu", "§7podle vlastni potreby.", "", "§fVhodne pro §cVsude");
         ItemStack artmap = ItemFactory.create(Material.PAPER, (byte)0, "§e§lArtMap", "§7Jak kreslit na mapy", "§7co s nimi dal?", "", "§fVhodne pro: §bSurv, Sky, Crea");
