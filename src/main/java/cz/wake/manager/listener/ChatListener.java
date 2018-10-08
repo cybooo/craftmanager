@@ -1,7 +1,7 @@
 package cz.wake.manager.listener;
 
-import cz.wake.craftcore.messages.Advancement;
-import cz.wake.craftcore.messages.handler.AdvancementManager;
+import cz.craftmania.craftcore.spigot.messages.Advancement;
+import cz.craftmania.craftcore.spigot.messages.handler.AdvancementManager;
 import cz.wake.manager.Main;
 import cz.wake.manager.commads.vip.Chatcolor_command;
 import org.bukkit.Bukkit;
