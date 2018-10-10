@@ -263,12 +263,7 @@ public class Help_command implements CommandExecutor {
                     "§e/res limits §f- §7Zobrazi limity pro zabrani uzemi",
                     "§e/res tp §6nazev §f- §7Teleport na residenci",
                     "§e/res tpset §f- §7Nastaveni teleportu",
-                    "§e/res give §6nazev nick §f- §7Daruje residenci vybranemu hraci",
-                    "§7Existuji dva zakladni prikazy",
-                    "§b/enchanter §7- Levy klik nakup, pravy klik seznam",
-                    "§b/tinker §7- Premena knihy na prasek",
-                    "§fMagic Dust §7- Po kliknuti na custom",
-                    "§7enchant se zvysi uspesnost aplikace enchantu", "",
+                    "§e/res give §6nazev nick §f- §7Daruje residenci vybranemu hraci", "",
                     "§bKliknutim zobrazis odkaz na cely navod!");
 
             ItemStack vip = ItemFactory.create(Material.EMERALD, (byte) 0, "§a§lNakup VIP", "",
@@ -277,8 +272,13 @@ public class Help_command implements CommandExecutor {
 
             ItemStack aech = ItemFactory.create(Material.ENCHANTED_BOOK, (byte) 0, "§a§lCustom enchanty", "",
                     "§7Na nasem serveru jsou k dispozici", "§7custom enchanty, ktere se",
-                    "§7normalne v Minecraftu nevyskytuji.", "",
-                    "§eKliknutim zobrazis navod");
+                    "§7normalne v Minecraftu nevyskytuji.",
+                    "§7Existuji dva zakladni prikazy",
+                    "§b/enchanter §7- Levy klik nakup, pravy klik seznam",
+                    "§b/tinker §7- Premena knihy na prasek",
+                    "§fMagic Dust §7- Po kliknuti na custom",
+                    "§7enchant se zvysi uspesnost aplikace enchantu", "",
+                    "§bKliknutim zobrazis odkaz na cely navod!");
 
             ItemStack aukce = ItemFactory.create(Material.CAKE, (byte) 0, "§a§lAukce", "",
                     "§7Pomoci aukci muzes prodavat hracum", "§7nepotrebne itemy/bloky.", "",

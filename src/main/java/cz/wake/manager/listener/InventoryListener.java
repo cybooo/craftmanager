@@ -142,22 +142,19 @@ public class InventoryListener implements Listener {
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
                 p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
-                p.sendMessage("§7Odkaz na podrobny navod o Custom Enchantech");
-                p.sendMessage("§fhttps://wiki.craftmania.cz/navody/custom-enchanty.html");
+                p.sendMessage("§eOdkaz na podrobny navod o Custom Enchantech");
+                p.sendMessage("§7https://wiki.craftmania.cz/navody/custom-enchanty.html");
                 p.sendMessage("");
                 p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.closeInventory();
             }
-            if (e.getSlot() == 32) {
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "chestcommands open vip.yml " + p.getName());
-            }
-            if (e.getSlot() == 23) {
+            if (e.getSlot() == 22) {
                 p.performCommand("quests");
             }
-            if(e.getSlot() == 24){
+            if(e.getSlot() == 23){
                 MenuManager.openNavody(p);
             }
-            if (e.getSlot() == 25) {
+            if (e.getSlot() == 24) {
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
                 p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
@@ -177,6 +174,9 @@ public class InventoryListener implements Listener {
                 p.sendMessage("");
                 p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.closeInventory();
+            }
+            if (e.getSlot() == 32) {
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "chestcommands open vip.yml " + p.getName());
             }
         }
         if (e.getInventory().getTitle().equals("Help pro Creative")) {
