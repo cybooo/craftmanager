@@ -121,9 +121,8 @@ public class TagsEditor implements Listener {
                                     return;
                                 }
                                 Main.getInstance().getMySQL().takeCraftToken(player, 1);
-                                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tags create " + tag + " " + tag + " &8▏");
-                                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission set deluxetags.tag." + tag + " true");
-                                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tags reload");
+                                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tags create " + tag);
+                                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission set craftchat.format." + tag + " true");
                                 player.sendMessage("");
                                 player.sendMessage("§aTvuj tag §f" + tag + " §abyl uspesne vytvoren! Nyni si ho aktivuj v §e/tags");
                                 player.sendMessage("");
