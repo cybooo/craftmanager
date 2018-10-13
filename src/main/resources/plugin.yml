@@ -5,6 +5,9 @@ depend: [CraftCore,Coins]
 version: 1.2-${git.commit.id.abbrev} # v1.2-a977d1a
 
 commands:
+    cm:
+      description: Reload pluginu
+      aliases: [craftmanager]
     menu:
       description: Zakladni prikaz
     coinshop:
