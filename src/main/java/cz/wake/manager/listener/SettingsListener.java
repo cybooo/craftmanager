@@ -31,7 +31,12 @@ public class SettingsListener implements Listener {
         ItemStack novinky = ItemFactory.create(Material.MAP, (byte) 0, "§e§lReklama", "§7Nastavuje zobrazovani reklamy", "§7na VIP na MiniGames.", "", "§cVyzaduje MiniGames VIP!");
         ItemStack deathMessages = ItemFactory.create(Material.BLAZE_POWDER, (byte) 0, "§e§lDeath zpravy", "§7Nastavuje zobrazeni smrti", "§7hracu.", "", "§cFunguje pouze na Survival serverech");
         ItemStack notify = ItemFactory.create(Material.JUKEBOX, (byte) 0, "§e§lOznameni o oznaceni", "§7Pokud te nekdo oznaci", "§7v chatu, server te", "§7upozorni cinknutim.", "",
-                "§eNastaveno: §8" + Main.getInstance().getMySQL().getSettingsString(p, "mention_sound"), "", "§bKliknutim si vyber zvuk");
+                "§eNastaveno: §8" + Main.getInstance().getMySQL().getSettingsString(p, "mention_sound")
+                        .replace("ENTITY_EXPERIENCE_ORB_PICKUP", "EXP ORB PICKUP")
+                        .replace("BLOCK_ANVIL_FALL", "ANVIL FALL")
+                        .replace("BLOCK_GLASS_BREAK", "GLASS BREAK")
+                        .replace("ENTITY_ITEM_PICKUP", "ITEM PICKUP")
+                        .replace("ENTITY_ZOMBIE_HURT", "ZOMBIE HURT"), "", "§bKliknutim si vyber zvuk");
 
         ItemStack enabled = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte) 5, "§a§lZapnuto");
         ItemStack disabled = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte) 14, "§c§lVypnuto");
@@ -125,35 +130,35 @@ public class SettingsListener implements Listener {
             }
             if (e.getSlot() == 11) {
                 p.closeInventory();
-                p.sendMessage("§eZvuk oznacovani byl nastaven na §2§lEXP ORB PICKUP§a.");
+                p.sendMessage("§eZvuk oznacovani byl nastaven na §2§lEXP ORB PICKUP§e.");
                 p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
                 Main.getInstance().getMySQL().updateSettings(p, "mention_sound", "ENTITY_EXPERIENCE_ORB_PICKUP");
                 return;
             }
             if (e.getSlot() == 12) {
                 p.closeInventory();
-                p.sendMessage("§eZvuk oznacovani byl nastaven na §2§lANVIL FALL§a.");
+                p.sendMessage("§eZvuk oznacovani byl nastaven na §2§lANVIL FALL§e.");
                 p.playSound(p.getLocation(), Sound.BLOCK_ANVIL_FALL, 1.0f, 1.0f);
                 Main.getInstance().getMySQL().updateSettings(p, "mention_sound", "BLOCK_ANVIL_FALL");
                 return;
             }
             if (e.getSlot() == 13) {
                 p.closeInventory();
-                p.sendMessage("§eZvuk oznacovani byl nastaven na §2§lGLASS BREAK§a.");
+                p.sendMessage("§eZvuk oznacovani byl nastaven na §2§lGLASS BREAK§e.");
                 p.playSound(p.getLocation(), Sound.BLOCK_GLASS_BREAK, 1.0f, 1.0f);
                 Main.getInstance().getMySQL().updateSettings(p, "mention_sound", "BLOCK_GLASS_BREAK");
                 return;
             }
             if (e.getSlot() == 14) {
                 p.closeInventory();
-                p.sendMessage("§eZvuk oznacovani byl nastaven na §2§lITEM PICKUP§a.");
+                p.sendMessage("§eZvuk oznacovani byl nastaven na §2§lITEM PICKUP§e.");
                 p.playSound(p.getLocation(), Sound.ENTITY_ITEM_PICKUP, 1.0f, 1.0f);
                 Main.getInstance().getMySQL().updateSettings(p, "mention_sound", "ENTITY_ITEM_PICKUP");
                 return;
             }
             if (e.getSlot() == 15) {
                 p.closeInventory();
-                p.sendMessage("§eZvuk oznacovani byl nastaven na §2§lZOMBIE HURT§a.");
+                p.sendMessage("§eZvuk oznacovani byl nastaven na §2§lZOMBIE HURT§e.");
                 p.playSound(p.getLocation(), Sound.ENTITY_ZOMBIE_HURT, 1.0f, 1.0f);
                 Main.getInstance().getMySQL().updateSettings(p, "mention_sound", "ENTITY_ZOMBIE_HURT");
                 return;
