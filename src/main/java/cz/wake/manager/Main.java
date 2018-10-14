@@ -20,6 +20,7 @@ import cz.wake.manager.shop.TagsEditor;
 import cz.wake.manager.shop.TempShop;
 import cz.wake.manager.sql.SQLManager;
 import cz.wake.manager.utils.*;
+import cz.wake.manager.utils.tasks.ATAfkTask;
 import cz.wake.manager.utils.tasks.ATCheckerTask;
 import cz.wake.manager.utils.tasks.UpdateServerTask;
 import cz.wake.manager.utils.tasks.UpdateTablistTask;
@@ -38,6 +39,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -45,6 +47,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     private static ArrayList<Player> players = new ArrayList<Player>();
     public ArrayList<Player> at_list = new ArrayList<>();
+    public HashMap<Player, Integer> at_afk = new HashMap<>();
     public ArrayList<Player> death_messages = new ArrayList<>();
     private ParticlesAPI particlesAPI = new ParticlesAPI();
     public List<Material> durabilityWarnerList = new ArrayList<>();
@@ -111,6 +114,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
             getServer().getScheduler().runTaskTimerAsynchronously(this, new ATCheckerTask(), 200, 1200);
             Log.withPrefix("Aktivace AT-Stalkeru");
+
+            getServer().getScheduler().runTaskTimer(this, new ATAfkTask(), 200, 1200);
+            Log.withPrefix("Aktivace AT-Afk checkeru");
         }
 
         // Update tablistu (5s)

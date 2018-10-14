@@ -16,10 +16,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.player.PlayerGameModeChangeEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerKickEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.*;
 
 public class PlayerListener implements Listener {
 
@@ -61,6 +58,7 @@ public class PlayerListener implements Listener {
         //AT
         if (Main.getInstance().getMySQL().isAT(p)) {
             Main.getInstance().at_list.add(p);
+            Main.getInstance().at_afk.put(p, 0);
         }
 
         //Death messages
@@ -103,6 +101,10 @@ public class PlayerListener implements Listener {
             Main.getInstance().at_list.remove(p);
         }
 
+        if (Main.getInstance().at_afk.containsKey(p)) {
+            Main.getInstance().at_afk.remove(p);
+        }
+
         //Death messages
         if (Main.getInstance().death_messages.contains(p)) {
             Main.getInstance().death_messages.remove(p);
@@ -130,6 +132,10 @@ public class PlayerListener implements Listener {
         //AT
         if (Main.getInstance().at_list.contains(p)) {
             Main.getInstance().at_list.remove(p);
+        }
+
+        if (Main.getInstance().at_afk.containsKey(p)) {
+            Main.getInstance().at_afk.remove(p);
         }
 
         //Death messages
@@ -165,6 +171,19 @@ public class PlayerListener implements Listener {
         if (e.getNewGameMode() == GameMode.SPECTATOR && !p.hasPermission("craftmanager.spectatorallow")) {
             e.setCancelled(true);
             p.sendMessage("§cNelze si zmenit GM na Spectatora!");
+        }
+    }
+
+    @EventHandler
+    public void onMove(PlayerMoveEvent e){
+        Player p = e.getPlayer();
+
+        if (e.getFrom().getBlockX() != e.getTo().getBlockX() || e.getFrom().getBlockY() != e.getTo().getBlockY() || e.getFrom().getBlockZ() != e.getTo().getBlockZ()) {
+            if(Main.getInstance().at_afk.containsKey(p)) {
+                if(Main.getInstance().at_afk.get(p) != 0) {
+                    Main.getInstance().at_afk.put(p, 0);
+                }
+            }
         }
     }
 
