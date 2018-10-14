@@ -3,7 +3,6 @@ package cz.wake.manager.perks.coloranvil;
 import cz.wake.manager.utils.tasks.AnvilTask;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -36,6 +35,9 @@ public class AnvilListener implements Listener {
             }
 
             if (event.getRawSlot() == 2) {
+                if(inv.getItem(2) == null){
+                    return;
+                }
                 final ItemStack translatedItem = ColorHandler.getTranslatedItem(player, inv, task);
                 if(translatedItem.getType() == Material.CHEST || translatedItem.getType() == Material.TRAPPED_CHEST){
                     event.setCurrentItem(new ItemStack(Material.POISONOUS_POTATO));
