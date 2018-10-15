@@ -1,4 +1,4 @@
-package cz.wake.manager.commads;
+package cz.wake.manager.commads.staff;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;

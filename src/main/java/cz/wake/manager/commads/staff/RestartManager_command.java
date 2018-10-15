@@ -1,4 +1,4 @@
-package cz.wake.manager.commads;
+package cz.wake.manager.commads.staff;
 
 import cz.craftmania.craftcore.spigot.messages.BossBar;
 import cz.wake.manager.Main;

@@ -2,9 +2,12 @@ package cz.wake.manager;
 
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
-import cz.wake.manager.commads.vip.Chatcolor_command;
-import cz.wake.manager.commads.vip.Glow_command;
-import cz.wake.manager.commads.vip.Particles_command;
+import cz.wake.manager.commads.staff.Checkfly_command;
+import cz.wake.manager.commads.staff.Fakevote_command;
+import cz.wake.manager.commads.staff.RestartManager_command;
+import cz.wake.manager.perks.general.Chatcolor_command;
+import cz.wake.manager.perks.general.Glow_command;
+import cz.wake.manager.perks.general.Particles_command;
 import cz.wake.manager.listener.*;
 import cz.wake.manager.managers.TablistManager;
 import cz.wake.manager.perks.chat.Replacements;

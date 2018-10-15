@@ -1,4 +1,4 @@
-package cz.wake.manager.commads;
+package cz.wake.manager.commads.staff;
 
 import com.vexsoftware.votifier.model.VotifierEvent;
 import org.bukkit.Bukkit;

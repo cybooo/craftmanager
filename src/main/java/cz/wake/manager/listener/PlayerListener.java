@@ -1,15 +1,14 @@
 package cz.wake.manager.listener;
 
 import cz.wake.manager.Main;
-import cz.wake.manager.commads.RestartManager_command;
-import cz.wake.manager.commads.vip.Chatcolor_command;
+import cz.wake.manager.commads.staff.RestartManager_command;
+import cz.wake.manager.perks.general.Chatcolor_command;
 import cz.wake.manager.managers.RecipeManager;
 import cz.wake.manager.managers.RecipePlayer;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.utils.UtilTablist;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
-import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
