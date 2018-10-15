@@ -28,23 +28,11 @@ commands:
       description: Server teleport
     creative:
       description: Server teleport
-    creative2:
-      description: Server teleport
     prison:
       description: Server teleport
     vanilla:
       description: Server teleport
-    factions:
-      description: Server teleport
     bedwars:
-      description: Server teleport
-    skywars:
-      description: Server teleport
-    arcade:
-      description: Server teleport
-    murder:
-      description: Server teleport
-    vanillasb:
       description: Server teleport
     disenchant:
       description: Prikaz pro VIP

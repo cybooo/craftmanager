@@ -33,7 +33,7 @@ public class Recipe_command implements CommandExecutor {
 
         if(args.length <= 0) {
             p.sendMessage("§cPouzij /recipe <item> nebo /recipe <id>");
-            return false;
+            return true;
         }
 
         final List<Recipe> recipesOfType = pl.getServer().getRecipesFor(itemType);
@@ -49,10 +49,10 @@ public class Recipe_command implements CommandExecutor {
         if (recipeNo < 0 || recipeNo >= recipesOfType.size() ) {
             if (IntegerUtil.isInt(args[0])) {
                 p.sendMessage("§cNeexistuje zadny recept pro toto id!");
-                return false;
+                return true;
             } else if (recipesOfType.size() < 1) {
                 p.sendMessage("§cNeexistuje zadny recept pro tento item!");
-                return false;
+                return true;
             }
         }
 
@@ -77,7 +77,7 @@ public class Recipe_command implements CommandExecutor {
 
         if (recipesOfType.size() > 1 && args.length == 1) {
         }
-        return false;
+        return true;
     }
 
     public void furnaceRecipe(final CommandSender sender, final FurnaceRecipe recipe) {

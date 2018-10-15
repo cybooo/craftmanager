@@ -18,6 +18,6 @@ public class Navody_command implements CommandExecutor {
                 MenuManager.openNavody(player);
             }
         }
-        return false;
+        return true;
     }
 }

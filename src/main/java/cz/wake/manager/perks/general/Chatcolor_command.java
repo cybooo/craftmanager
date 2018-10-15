@@ -49,7 +49,7 @@ public class Chatcolor_command implements CommandExecutor {
                 }
             }
         }
-        return false;
+        return true;
     }
 
     private void openColorMenu(Player p) {

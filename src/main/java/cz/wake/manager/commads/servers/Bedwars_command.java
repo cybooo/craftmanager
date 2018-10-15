@@ -22,6 +22,6 @@ public class Bedwars_command implements CommandExecutor {
                 }
             }
         }
-        return false;
+        return true;
     }
 }

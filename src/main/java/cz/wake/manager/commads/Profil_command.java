@@ -24,7 +24,7 @@ public class Profil_command implements CommandExecutor {
                 openMenu(p);
             }
         }
-        return false;
+        return true;
     }
 
     public void openMenu(Player p) {

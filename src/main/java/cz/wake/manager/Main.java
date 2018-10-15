@@ -220,12 +220,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("skyblock").setExecutor(new Skyblock_command());
         getCommand("creative").setExecutor(new Creative_command());
         getCommand("prison").setExecutor(new Prison_command());
-        getCommand("factions").setExecutor(new Factions_command());
-        getCommand("vanilla").setExecutor(new Vanilla_command());
         getCommand("bedwars").setExecutor(new Bedwars_command());
-        getCommand("skywars").setExecutor(new SkyWars_command());
-        getCommand("arcade").setExecutor(new Arcade_command());
-        getCommand("murder").setExecutor(new Murder_command());
         getCommand("disenchant").setExecutor(new Disenchant());
         getCommand("vanillasb").setExecutor(new VanillaSb_command());
         getCommand("vote").setExecutor(new Vote_command());

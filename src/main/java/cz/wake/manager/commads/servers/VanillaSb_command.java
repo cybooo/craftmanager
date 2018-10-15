@@ -22,6 +22,6 @@ public class VanillaSb_command implements CommandExecutor {
                 }
             }
         }
-        return false;
+        return true;
     }
 }

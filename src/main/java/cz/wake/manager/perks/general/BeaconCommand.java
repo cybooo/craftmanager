@@ -42,7 +42,7 @@ public class BeaconCommand implements CommandExecutor, Listener {
 
             }
         }
-        return false;
+        return true;
     }
 
     @EventHandler

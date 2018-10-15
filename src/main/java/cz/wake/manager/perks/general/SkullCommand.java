@@ -13,8 +13,8 @@ import java.util.HashMap;
 
 public class SkullCommand implements CommandExecutor {
 
-    private HashMap<Player, Double> _time = new HashMap();
-    private HashMap<Player, BukkitRunnable> _cdRunnable = new HashMap();
+    private HashMap<Player, Double> _time = new HashMap<>();
+    private HashMap<Player, BukkitRunnable> _cdRunnable = new HashMap<>();
 
     @Override
     public boolean onCommand(CommandSender Sender, Command Command, String String, String[] array) {
@@ -44,7 +44,7 @@ public class SkullCommand implements CommandExecutor {
                 return true;
             }
         }
-        return false;
+        return true;
     }
 
     private void giveHead(Player p) {

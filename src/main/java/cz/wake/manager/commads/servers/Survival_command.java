@@ -22,7 +22,7 @@ public class Survival_command implements CommandExecutor {
                 }
             }
         }
-        return false;
+        return true;
     }
 
 }

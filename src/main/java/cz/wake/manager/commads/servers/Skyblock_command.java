@@ -22,6 +22,6 @@ public class Skyblock_command implements CommandExecutor {
                 }
             }
         }
-        return false;
+        return true;
     }
 }

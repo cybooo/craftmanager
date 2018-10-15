@@ -22,6 +22,6 @@ public class Creative_command implements CommandExecutor {
                 }
             }
         }
-        return false;
+        return true;
     }
 }
