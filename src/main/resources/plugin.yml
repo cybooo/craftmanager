@@ -66,6 +66,8 @@ commands:
     restartmanager:
       description: Restart manager
       aliases: [rm]
+    dontdrop:
+      description: Prikaz na aktivaci a deaktivaci dropu ve svete pro VIP
 
 permissions:
     craftmanager.*:

@@ -3,19 +3,14 @@ package cz.wake.manager;
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
 import cz.wake.manager.commads.staff.Checkfly_command;
+import cz.wake.manager.commads.staff.DontDropCommand;
 import cz.wake.manager.commads.staff.Fakevote_command;
 import cz.wake.manager.commads.staff.RestartManager_command;
-import cz.wake.manager.perks.general.Chatcolor_command;
-import cz.wake.manager.perks.general.Glow_command;
-import cz.wake.manager.perks.general.Particles_command;
+import cz.wake.manager.perks.general.*;
 import cz.wake.manager.listener.*;
 import cz.wake.manager.managers.TablistManager;
 import cz.wake.manager.perks.chat.Replacements;
 import cz.wake.manager.perks.coloranvil.AnvilListener;
-import cz.wake.manager.perks.general.BeaconCommand;
-import cz.wake.manager.perks.general.Disenchant;
-import cz.wake.manager.perks.general.DurabilityWarner;
-import cz.wake.manager.perks.general.SkullCommand;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.perks.twerking.TwerkEvent;
 import cz.wake.manager.shop.ShopAPI;
@@ -41,6 +36,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -52,6 +48,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private ParticlesAPI particlesAPI = new ParticlesAPI();
     public List<Material> durabilityWarnerList = new ArrayList<>();
     public List<Pattern> blockedTags = new ArrayList<Pattern>();
+    public static HashMap<String, Boolean> dontdrop_worlds = new HashMap<>();
     public static Long restartTime;
     public static String restartReason;
     private MainGUI gui = new MainGUI();
@@ -185,6 +182,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new Replacements(), this);
         pm.registerEvents(new BeaconCommand(), this);
         pm.registerEvents(new PlayerSwapListener(), this);
+        pm.registerEvents(new NoDropListener(), this);
         //pm.registerEvents(new TabCompleteListener(), this); todo
 
         // Skyblock PVP listener
@@ -238,6 +236,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("beacon").setExecutor(new BeaconCommand());
         getCommand("recipe").setExecutor(new Recipe_command());
         getCommand("restartmanager").setExecutor(new RestartManager_command());
+        getCommand("dontdrop").setExecutor(new DontDropCommand());
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {
