@@ -1,4 +1,4 @@
-package cz.wake.manager.perks.general;
+package cz.wake.manager.listener;
 
 import cz.wake.manager.Main;
 import org.bukkit.Bukkit;

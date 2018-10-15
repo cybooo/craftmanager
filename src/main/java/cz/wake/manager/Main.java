@@ -237,6 +237,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("recipe").setExecutor(new Recipe_command());
         getCommand("restartmanager").setExecutor(new RestartManager_command());
         getCommand("dontdrop").setExecutor(new DontDropCommand());
+        getCommand("glowitem").setExecutor(new GlowItemCommand());
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {
