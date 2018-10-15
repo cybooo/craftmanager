@@ -43,6 +43,7 @@ commands:
       description: Prikaz pro hrace na ziskani svoji hlavy
     profil:
       description: Nastaveni uctu
+      aliases: [profile]
     navody:
       description: Navody pro hrace
     checkfly:
