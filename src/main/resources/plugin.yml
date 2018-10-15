@@ -60,6 +60,8 @@ commands:
     glowitem:
       description: Prikaz na aplikovani glowing efektu na itemy
       aliases: [gi]
+    rawbroadcast:
+      description: Broadcast pro VIP nebo konzoli
 
 permissions:
     craftmanager.*:

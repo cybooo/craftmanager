@@ -2,10 +2,7 @@ package cz.wake.manager;
 
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
-import cz.wake.manager.commads.staff.Checkfly_command;
-import cz.wake.manager.commads.staff.DontDropCommand;
-import cz.wake.manager.commads.staff.Fakevote_command;
-import cz.wake.manager.commads.staff.RestartManager_command;
+import cz.wake.manager.commads.staff.*;
 import cz.wake.manager.perks.general.*;
 import cz.wake.manager.listener.*;
 import cz.wake.manager.managers.TablistManager;
@@ -222,7 +219,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("prison").setExecutor(new Prison_command());
         getCommand("bedwars").setExecutor(new Bedwars_command());
         getCommand("disenchant").setExecutor(new Disenchant());
-        getCommand("vanillasb").setExecutor(new VanillaSb_command());
         getCommand("vote").setExecutor(new Vote_command());
         getCommand("skull").setExecutor(new SkullCommand());
         getCommand("profil").setExecutor(new Profil_command());
@@ -233,6 +229,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("restartmanager").setExecutor(new RestartManager_command());
         getCommand("dontdrop").setExecutor(new DontDropCommand());
         getCommand("glowitem").setExecutor(new GlowItemCommand());
+        getCommand("rawbroadcast").setExecutor(new RawBroadcast());
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {
