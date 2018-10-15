@@ -67,6 +67,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private TablistManager tb = new TablistManager();
     private boolean tablist = false;
     private boolean reminder = false;
+    private boolean useCustomDisenchant = false;
     private ItemDB itemdb;
     private static String mentionPrefix;
 
@@ -148,6 +149,11 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             mentionPrefix = "@";
         }
         Log.withPrefix("Mention prefix nastaven na: " + mentionPrefix);
+
+        if (Bukkit.getPluginManager().isPluginEnabled("AdvancedEnchantments")) {
+            useCustomDisenchant = true;
+            Log.withPrefix("Detekovan plugin AdvancedEnchantments - disenchant jej bude pouzivat.");
+        }
     }
 
     public void onDisable() {
@@ -348,5 +354,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public static String getMentionPrefix() {
         return mentionPrefix;
+    }
+
+    public boolean isCustomDisenchantEnabled() {
+        return useCustomDisenchant;
     }
 }
