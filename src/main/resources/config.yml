@@ -98,7 +98,9 @@ d_msgs:
   player:
    - "§f%player% byl zabit hracem %attacker%."
   player_weapon:
-   - "§f%player% byl zabit hracem %attacker% pomoci %weapon%."
+   - "§f%player% byl zabit hracem %attacker% pomoci "
+  player_weapon_format:
+   - "§f%weapon%."
   mob:
    - "§f%player% byl zabit mobem %mob%."
   fall:
