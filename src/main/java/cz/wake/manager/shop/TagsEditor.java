@@ -123,7 +123,7 @@ public class TagsEditor implements Listener {
                                 }
                                 CraftTokensAPI.takeTokens(player, 1);
                                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tags create " + tag);
-                                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission set craftchat.format." + tag + " true");
+                                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission set craftchat.tag." + tag + " true");
                                 player.sendMessage("");
                                 player.sendMessage("§aTvuj tag §f" + tag + " §abyl uspesne vytvoren! Nyni si ho aktivuj v §e/tags");
                                 player.sendMessage("");
