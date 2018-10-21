@@ -146,6 +146,13 @@
             <scope>system</scope>
             <systemPath>${pom.basedir}/lib/Coins-2.3.2.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>net.horkanos.craftchat</groupId>
+            <artifactId>CraftChat</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/lib/CraftChat.jar</systemPath>
+        </dependency>
 
     </dependencies>
 </project>

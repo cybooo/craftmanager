@@ -358,7 +358,7 @@ public class InventoryListener implements Listener {
                 this.statistics.openMinigamesMenu(player);
             }*/
             if (e.getSlot() == 31) {
-                settings.openSettingsMenu(p);
+                settings.openSettingsMenu(p, 1);
             }
             if (e.getSlot() == 33) {
                 profil.openLanguageMenu(p);
