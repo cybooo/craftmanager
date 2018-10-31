@@ -177,6 +177,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new BeaconCommand(), this);
         pm.registerEvents(new PlayerSwapListener(), this);
         //pm.registerEvents(new TabCompleteListener(), this); todo
+        pm.registerEvents(new EntityDamageListener(), this);
 
         // Skyblock PVP listener
         if (idServer.equalsIgnoreCase("skyblock")) {
@@ -229,6 +230,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("beacon").setExecutor(new BeaconCommand());
         getCommand("recipe").setExecutor(new Recipe_command());
         getCommand("restartmanager").setExecutor(new RestartManager_command());
+        getCommand("cm").setExecutor(new Cm_command());
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {
@@ -346,4 +348,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     public static String getMentionPrefix() {
         return mentionPrefix;
     }
+
+    public boolean areDeathMessagesEnabled() { return getConfig().getBoolean("d_msgs.enabled"); }
 }
