@@ -1,7 +1,8 @@
 name: CraftManager
 main: cz.wake.manager.Main
 authors: [MrWakeCZ]
-depend: [CraftCore,Coins]
+depend: [CraftCore,CraftEconomy,CraftChat]
+softdepend: [AdvancedEnchantments]
 version: 1.2-${git.commit.id.abbrev} # v1.2-a977d1a
 
 commands:
@@ -27,23 +28,11 @@ commands:
       description: Server teleport
     creative:
       description: Server teleport
-    creative2:
-      description: Server teleport
     prison:
       description: Server teleport
     vanilla:
       description: Server teleport
-    factions:
-      description: Server teleport
     bedwars:
-      description: Server teleport
-    skywars:
-      description: Server teleport
-    arcade:
-      description: Server teleport
-    murder:
-      description: Server teleport
-    vanillasb:
       description: Server teleport
     disenchant:
       description: Prikaz pro VIP
@@ -54,6 +43,7 @@ commands:
       description: Prikaz pro hrace na ziskani svoji hlavy
     profil:
       description: Nastaveni uctu
+      aliases: [profile]
     navody:
       description: Navody pro hrace
     checkfly:
@@ -65,6 +55,13 @@ commands:
     restartmanager:
       description: Restart manager
       aliases: [rm]
+    dontdrop:
+      description: Prikaz na aktivaci a deaktivaci dropu ve svete pro VIP
+    glowitem:
+      description: Prikaz na aplikovani glowing efektu na itemy
+      aliases: [gi]
+    rawbroadcast:
+      description: Broadcast pro VIP nebo konzoli
 
 permissions:
     craftmanager.*:

@@ -1,5 +1,6 @@
 package cz.wake.manager.shop;
 
+import cz.craftmania.crafteconomy.api.CraftTokensAPI;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.AnvilContainer;
 import net.minecraft.server.v1_12_R1.EntityPlayer;
@@ -120,9 +121,9 @@ public class TagsEditor implements Listener {
                                     player.closeInventory();
                                     return;
                                 }
-                                Main.getInstance().getMySQL().takeCraftToken(player, 1);
+                                CraftTokensAPI.takeTokens(player, 1);
                                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tags create " + tag);
-                                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission set craftchat.format." + tag + " true");
+                                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission set craftchat.tag." + tag + " true");
                                 player.sendMessage("");
                                 player.sendMessage("§aTvuj tag §f" + tag + " §abyl uspesne vytvoren! Nyni si ho aktivuj v §e/tags");
                                 player.sendMessage("");

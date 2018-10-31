@@ -1,6 +1,7 @@
 package cz.wake.manager.votifier;
 
-import com.vexsoftware.votifier.model.VotifierEvent;
+import cz.craftmania.crafteconomy.api.CraftCoinsAPI;
+import cz.craftmania.crafteconomy.api.VoteTokensAPI;
 import cz.wake.manager.utils.Titles;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -8,9 +9,11 @@ import org.bukkit.entity.Player;
 public class ForwardVote {
 
     public static void vote(final String nick, final String uuid, final String coins) {
-        //Bukkit.getPluginManager().callEvent(new VotifierEvent(null)); // fake?
 
         Player player = Bukkit.getServer().getPlayer(nick);
+
+        VoteTokensAPI.giveVoteTokens(player, 1);
+        CraftCoinsAPI.giveCoins(player, Integer.valueOf(coins));
 
         Titles.sendFullTitlePlayer(player, 10, 60, 10, "§a§lDekujeme!", "§fDostal/a jsi 1x VoteToken.");
         player.sendMessage(" ");

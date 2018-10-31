@@ -1,5 +1,6 @@
 package cz.wake.manager.perks.general;
 
+import cz.craftmania.craftcore.spigot.messages.ActionBar;
 import cz.wake.manager.Main;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -22,10 +23,9 @@ public class DurabilityWarner implements Listener {
             return;
         }
 
-        //TODO: FIX 1.12
         if (Main.getInstance().durabilityWarnerList.contains(material)) {
             if (durability <= 35) {
-                //Titles.sendActionBarPlayer(player, "§c§lVAROVANI! §a" + getBetterName(material) + " §ese brzo znici! (" + durability + "/" + material.getMaxDurability() + ")");
+                new ActionBar("§c§lVAROVANI! §a" + getBetterName(material) + " §ese brzo znici! (" + durability + "/" + material.getMaxDurability() + ")", 1000).send(player);
             }
         }
     }

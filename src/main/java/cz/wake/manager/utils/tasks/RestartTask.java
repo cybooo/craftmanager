@@ -2,7 +2,7 @@ package cz.wake.manager.utils.tasks;
 
 import cz.craftmania.craftcore.spigot.messages.BossBar;
 import cz.wake.manager.Main;
-import cz.wake.manager.commads.RestartManager_command;
+import cz.wake.manager.commads.staff.RestartManager_command;
 import cz.wake.manager.utils.Log;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

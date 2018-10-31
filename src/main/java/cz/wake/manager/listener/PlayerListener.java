@@ -1,15 +1,15 @@
 package cz.wake.manager.listener;
 
 import cz.wake.manager.Main;
-import cz.wake.manager.commads.RestartManager_command;
-import cz.wake.manager.commads.vip.Chatcolor_command;
+import cz.wake.manager.commads.staff.RestartManager_command;
+import cz.wake.manager.perks.general.Chatcolor_command;
 import cz.wake.manager.managers.RecipeManager;
 import cz.wake.manager.managers.RecipePlayer;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.utils.UtilTablist;
+import net.horkanos.craftchat.CraftChat;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
-import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -20,6 +20,8 @@ import org.bukkit.event.player.PlayerGameModeChangeEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+
+import java.util.Map;
 
 public class PlayerListener implements Listener {
 
@@ -76,6 +78,11 @@ public class PlayerListener implements Listener {
         //Mentions
         if (Main.getInstance().getMySQL().getSettingsString(p, "mention_sound") == null && Main.getInstance().getMySQL().getSettingsString(p, "mention_sound").equals("")) {
             Main.getInstance().getMySQL().updateSettings(p, "mention_sound", "ENTITY_EXPERIENCE_ORB_PICKUP");
+        }
+
+        //Disable chat
+        if(Main.getInstance().getMySQL().getSettings(p, "disabled_chat") == 1){
+            CraftChat.disableChat(p, true);
         }
 
         //Register Recipe Player

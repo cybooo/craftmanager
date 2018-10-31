@@ -30,42 +30,6 @@ public class SQLManager {
         return pool;
     }
 
-    public final int getPlayerCraftTokens(final Player player) {
-        Connection conn = null;
-        PreparedStatement ps = null;
-        try {
-            conn = pool.getConnection();
-            ps = conn.prepareStatement("SELECT crafttoken FROM craftmoney_data WHERE uuid = '" + player.getUniqueId().toString() + "';");
-            ps.executeQuery();
-            if (ps.getResultSet().next()) {
-                return ps.getResultSet().getInt("crafttoken");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            pool.close(conn, ps, null);
-        }
-        return 0;
-    }
-
-    public final int getPlayerVoteTokens(final Player player) {
-        Connection conn = null;
-        PreparedStatement ps = null;
-        try {
-            conn = pool.getConnection();
-            ps = conn.prepareStatement("SELECT votetoken FROM craftmoney_data WHERE uuid = '" + player.getUniqueId().toString() + "';");
-            ps.executeQuery();
-            if (ps.getResultSet().next()) {
-                return ps.getResultSet().getInt("votetoken");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            pool.close(conn, ps, null);
-        }
-        return 0;
-    }
-
     public final int getPlayerTotalVotes(final UUID uuid) {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -260,46 +224,6 @@ public class SQLManager {
                     ps.setInt(1, 1 + getPlayerTotalVotes(p.getUniqueId()));
                     ps.setInt(2, 1 + getPlayerTotalWeek(p.getUniqueId()));
                     ps.setInt(3, 1 + getPlayerTotalMonth(p.getUniqueId()));
-                    ps.executeUpdate();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    pool.close(conn, ps, null);
-                }
-            }
-        }.runTaskAsynchronously(Main.getInstance());
-    }
-
-    public final void takeCraftToken(final Player p, final int tokens) {
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                Connection conn = null;
-                PreparedStatement ps = null;
-                try {
-                    conn = pool.getConnection();
-                    ps = conn.prepareStatement("UPDATE craftmoney_data SET crafttoken = ? WHERE uuid = '" + p.getUniqueId().toString() + "';");
-                    ps.setInt(1, getPlayerCraftTokens(p) - tokens);
-                    ps.executeUpdate();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    pool.close(conn, ps, null);
-                }
-            }
-        }.runTaskAsynchronously(Main.getInstance());
-    }
-
-    public final void takeVoteToken(final Player p, final int tokens) {
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                Connection conn = null;
-                PreparedStatement ps = null;
-                try {
-                    conn = pool.getConnection();
-                    ps = conn.prepareStatement("UPDATE craftmoney_data SET votetoken = ? WHERE uuid = '" + p.getUniqueId().toString() + "';");
-                    ps.setInt(1, getPlayerVoteTokens(p) - tokens);
                     ps.executeUpdate();
                 } catch (Exception e) {
                     e.printStackTrace();

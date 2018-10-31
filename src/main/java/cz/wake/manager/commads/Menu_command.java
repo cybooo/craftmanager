@@ -24,6 +24,6 @@ public class Menu_command implements CommandExecutor {
                 }
             }
         }
-        return false;
+        return true;
     }
 }

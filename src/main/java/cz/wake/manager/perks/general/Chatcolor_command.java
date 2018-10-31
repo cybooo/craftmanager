@@ -1,4 +1,4 @@
-package cz.wake.manager.commads.vip;
+package cz.wake.manager.perks.general;
 
 import cz.wake.manager.utils.ItemFactory;
 import org.bukkit.Bukkit;
@@ -49,7 +49,7 @@ public class Chatcolor_command implements CommandExecutor {
                 }
             }
         }
-        return false;
+        return true;
     }
 
     private void openColorMenu(Player p) {

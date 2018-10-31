@@ -1,4 +1,4 @@
-package cz.wake.manager.commads;
+package cz.wake.manager.commads.staff;
 
 import com.vexsoftware.votifier.model.VotifierEvent;
 import org.bukkit.Bukkit;
@@ -21,7 +21,7 @@ public class Fakevote_command implements CommandExecutor {
             Player player = (Player) Sender;
             if ((Command.getName().equalsIgnoreCase("fakevote"))) {
                 if (player.hasPermission("craftmanager.admin")) {
-                    if (ArrayOfString.length == 0) {
+                    if (ArrayOfString.length < 1) {
                         player.sendMessage("§ePouziti: §f/fakevote nick test");
                         return true;
                     }
@@ -40,16 +40,13 @@ public class Fakevote_command implements CommandExecutor {
                             vote.setAddress(FAKE_HOST_NAME_FOR_VOTE);
                             vote.setServiceName(ArrayOfString[2]);
                             Bukkit.getPluginManager().callEvent(new VotifierEvent(vote));
-
                             player.sendMessage("§dTest vote pro: §f" + voteForPlayer.getName());
                     }
-                    return true;
                 } else {
                     player.sendMessage("§cNedostatecna opraveni na pouziti tohoto prikazu!");
-                    return false;
                 }
             }
         }
-        return false;
+        return true;
     }
 }

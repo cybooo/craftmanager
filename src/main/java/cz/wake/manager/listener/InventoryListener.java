@@ -1,7 +1,7 @@
 package cz.wake.manager.listener;
 
 import cz.wake.manager.Main;
-import cz.wake.manager.commads.vip.Chatcolor_command;
+import cz.wake.manager.perks.general.Chatcolor_command;
 import cz.wake.manager.commads.Profil_command;
 import cz.wake.manager.managers.MenuManager;
 import cz.wake.manager.managers.RecipeManager;
@@ -17,7 +17,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.Recipe;
 
 public class InventoryListener implements Listener {
 
@@ -358,7 +357,7 @@ public class InventoryListener implements Listener {
                 this.statistics.openMinigamesMenu(player);
             }*/
             if (e.getSlot() == 31) {
-                settings.openSettingsMenu(p);
+                settings.openSettingsMenu(p, 1);
             }
             if (e.getSlot() == 33) {
                 profil.openLanguageMenu(p);

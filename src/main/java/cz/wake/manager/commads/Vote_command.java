@@ -22,6 +22,6 @@ public class Vote_command implements CommandExecutor {
                 p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
             }
         }
-        return false;
+        return true;
     }
 }
