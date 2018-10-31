@@ -1,25 +1,24 @@
 package cz.wake.manager.listener;
 
 import cz.wake.manager.Main;
-import cz.wake.manager.commads.RestartManager_command;
-import cz.wake.manager.commads.vip.Chatcolor_command;
+import cz.wake.manager.commads.staff.RestartManager_command;
+import cz.wake.manager.perks.general.Chatcolor_command;
 import cz.wake.manager.managers.RecipeManager;
 import cz.wake.manager.managers.RecipePlayer;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.utils.UtilTablist;
+import net.horkanos.craftchat.CraftChat;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
-import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.player.PlayerGameModeChangeEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerKickEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.*;
+
+import java.util.Map;
 
 public class PlayerListener implements Listener {
 
@@ -63,6 +62,7 @@ public class PlayerListener implements Listener {
         //AT
         if (Main.getInstance().getMySQL().isAT(p)) {
             Main.getInstance().at_list.add(p);
+            Main.getInstance().at_afk.put(p, 0);
         }
 
         //Death messages
@@ -78,6 +78,11 @@ public class PlayerListener implements Listener {
         //Mentions
         if (Main.getInstance().getMySQL().getSettingsString(p, "mention_sound") == null && Main.getInstance().getMySQL().getSettingsString(p, "mention_sound").equals("")) {
             Main.getInstance().getMySQL().updateSettings(p, "mention_sound", "ENTITY_EXPERIENCE_ORB_PICKUP");
+        }
+
+        //Disable chat
+        if(Main.getInstance().getMySQL().getSettings(p, "disabled_chat") == 1){
+            CraftChat.disableChat(p, true);
         }
 
         //Register Recipe Player
@@ -103,6 +108,10 @@ public class PlayerListener implements Listener {
         //AT
         if (Main.getInstance().at_list.contains(p)) {
             Main.getInstance().at_list.remove(p);
+        }
+
+        if (Main.getInstance().at_afk.containsKey(p)) {
+            Main.getInstance().at_afk.remove(p);
         }
 
         //Death messages
@@ -132,6 +141,10 @@ public class PlayerListener implements Listener {
         //AT
         if (Main.getInstance().at_list.contains(p)) {
             Main.getInstance().at_list.remove(p);
+        }
+
+        if (Main.getInstance().at_afk.containsKey(p)) {
+            Main.getInstance().at_afk.remove(p);
         }
 
         //Death messages
@@ -167,6 +180,19 @@ public class PlayerListener implements Listener {
         if (e.getNewGameMode() == GameMode.SPECTATOR && !p.hasPermission("craftmanager.spectatorallow")) {
             e.setCancelled(true);
             p.sendMessage("§cNelze si zmenit GM na Spectatora!");
+        }
+    }
+
+    @EventHandler
+    public void onMove(PlayerMoveEvent e){
+        Player p = e.getPlayer();
+
+        if (e.getFrom().getBlockX() != e.getTo().getBlockX() || e.getFrom().getBlockY() != e.getTo().getBlockY() || e.getFrom().getBlockZ() != e.getTo().getBlockZ()) {
+            if(Main.getInstance().at_afk.containsKey(p)) {
+                if(Main.getInstance().at_afk.get(p) != 0) {
+                    Main.getInstance().at_afk.put(p, 0);
+                }
+            }
         }
     }
 

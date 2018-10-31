@@ -1,4 +1,4 @@
-package cz.wake.manager.commads.vip;
+package cz.wake.manager.perks.general;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -31,6 +31,6 @@ public class Glow_command implements CommandExecutor {
                 return true;
             }
         }
-        return false;
+        return true;
     }
 }

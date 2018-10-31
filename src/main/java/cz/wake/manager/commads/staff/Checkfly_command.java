@@ -1,6 +1,5 @@
-package cz.wake.manager.commads;
+package cz.wake.manager.commads.staff;
 
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -18,7 +17,6 @@ public class Checkfly_command implements CommandExecutor {
                     return true;
                 }
                 String name = ArrayOfString[0];
-                Player player = Bukkit.getPlayer(name);
                 if(p.getAllowFlight() || p.hasPermission("askyblock.islandfly")){
                     p.sendMessage("§eKontrola fly pro nick §b" + name + " §e: §a§lPOVOLENO");
                 } else {
@@ -28,6 +26,6 @@ public class Checkfly_command implements CommandExecutor {
                 p.sendMessage("§cNa toto nemas dostatecna prava!");
             }
         }
-        return false;
+        return true;
     }
 }

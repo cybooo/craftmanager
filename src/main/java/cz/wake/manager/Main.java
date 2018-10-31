@@ -2,17 +2,12 @@ package cz.wake.manager;
 
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
-import cz.wake.manager.commads.vip.Chatcolor_command;
-import cz.wake.manager.commads.vip.Glow_command;
-import cz.wake.manager.commads.vip.Particles_command;
+import cz.wake.manager.commads.staff.*;
+import cz.wake.manager.perks.general.*;
 import cz.wake.manager.listener.*;
 import cz.wake.manager.managers.TablistManager;
 import cz.wake.manager.perks.chat.Replacements;
 import cz.wake.manager.perks.coloranvil.AnvilListener;
-import cz.wake.manager.perks.general.BeaconCommand;
-import cz.wake.manager.perks.general.Disenchant;
-import cz.wake.manager.perks.general.DurabilityWarner;
-import cz.wake.manager.perks.general.SkullCommand;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.perks.twerking.TwerkEvent;
 import cz.wake.manager.shop.ShopAPI;
@@ -20,6 +15,7 @@ import cz.wake.manager.shop.TagsEditor;
 import cz.wake.manager.shop.TempShop;
 import cz.wake.manager.sql.SQLManager;
 import cz.wake.manager.utils.*;
+import cz.wake.manager.utils.tasks.ATAfkTask;
 import cz.wake.manager.utils.tasks.ATCheckerTask;
 import cz.wake.manager.utils.tasks.UpdateServerTask;
 import cz.wake.manager.utils.tasks.UpdateTablistTask;
@@ -38,6 +34,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -45,10 +42,12 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     private static ArrayList<Player> players = new ArrayList<Player>();
     public ArrayList<Player> at_list = new ArrayList<>();
+    public HashMap<Player, Integer> at_afk = new HashMap<>();
     public ArrayList<Player> death_messages = new ArrayList<>();
     private ParticlesAPI particlesAPI = new ParticlesAPI();
     public List<Material> durabilityWarnerList = new ArrayList<>();
     public List<Pattern> blockedTags = new ArrayList<Pattern>();
+    public static HashMap<String, Boolean> dontdrop_worlds = new HashMap<>();
     public static Long restartTime;
     public static String restartReason;
     private MainGUI gui = new MainGUI();
@@ -64,6 +63,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private TablistManager tb = new TablistManager();
     private boolean tablist = false;
     private boolean reminder = false;
+    private boolean useCustomDisenchant = false;
     private ItemDB itemdb;
     private static String mentionPrefix;
 
@@ -111,6 +111,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
             getServer().getScheduler().runTaskTimerAsynchronously(this, new ATCheckerTask(), 200, 1200);
             Log.withPrefix("Aktivace AT-Stalkeru");
+
+            getServer().getScheduler().runTaskTimer(this, new ATAfkTask(), 200, 1200);
+            Log.withPrefix("Aktivace AT-Afk checkeru");
         }
 
         // Update tablistu (5s)
@@ -145,6 +148,11 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             mentionPrefix = "@";
         }
         Log.withPrefix("Mention prefix nastaven na: " + mentionPrefix);
+
+        if (Bukkit.getPluginManager().isPluginEnabled("AdvancedEnchantments")) {
+            useCustomDisenchant = true;
+            Log.withPrefix("Detekovan plugin AdvancedEnchantments - disenchant jej bude pouzivat.");
+        }
     }
 
     public void onDisable() {
@@ -176,6 +184,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new Replacements(), this);
         pm.registerEvents(new BeaconCommand(), this);
         pm.registerEvents(new PlayerSwapListener(), this);
+        pm.registerEvents(new NoDropListener(), this);
         //pm.registerEvents(new TabCompleteListener(), this); todo
         pm.registerEvents(new EntityDamageListener(), this);
 
@@ -214,14 +223,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("skyblock").setExecutor(new Skyblock_command());
         getCommand("creative").setExecutor(new Creative_command());
         getCommand("prison").setExecutor(new Prison_command());
-        getCommand("factions").setExecutor(new Factions_command());
-        getCommand("vanilla").setExecutor(new Vanilla_command());
         getCommand("bedwars").setExecutor(new Bedwars_command());
-        getCommand("skywars").setExecutor(new SkyWars_command());
-        getCommand("arcade").setExecutor(new Arcade_command());
-        getCommand("murder").setExecutor(new Murder_command());
         getCommand("disenchant").setExecutor(new Disenchant());
-        getCommand("vanillasb").setExecutor(new VanillaSb_command());
         getCommand("vote").setExecutor(new Vote_command());
         getCommand("skull").setExecutor(new SkullCommand());
         getCommand("profil").setExecutor(new Profil_command());
@@ -231,6 +234,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("recipe").setExecutor(new Recipe_command());
         getCommand("restartmanager").setExecutor(new RestartManager_command());
         getCommand("cm").setExecutor(new Cm_command());
+        getCommand("dontdrop").setExecutor(new DontDropCommand());
+        getCommand("glowitem").setExecutor(new GlowItemCommand());
+        getCommand("rawbroadcast").setExecutor(new RawBroadcast());
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {
@@ -347,6 +353,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public static String getMentionPrefix() {
         return mentionPrefix;
+    }
+
+    public boolean isCustomDisenchantEnabled() {
+        return useCustomDisenchant;
     }
 
     public boolean areDeathMessagesEnabled() { return getConfig().getBoolean("d_msgs.enabled"); }

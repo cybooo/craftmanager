@@ -1,9 +1,11 @@
 package cz.wake.manager.shop;
 
 import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
+import cz.craftmania.crafteconomy.api.CraftCoinsAPI;
+import cz.craftmania.crafteconomy.api.CraftTokensAPI;
+import cz.craftmania.crafteconomy.api.VoteTokensAPI;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
-import net.nifheim.beelzebu.coins.CoinsAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -28,7 +30,7 @@ public class ShopAPI implements Listener {
             Inventory inv = Bukkit.createInventory(null, 54, "§0Coinshop [Beta]");
 
             ItemStack head = new ItemBuilder(Material.SKULL_ITEM, (short) 3)
-                    .setName("§bTvoje bohatstvi").setLore("§7CraftCoins: §f" + CoinsAPI.getCoins(p.getUniqueId()) + " CC", "§7CraftTokens: §f" + Main.getInstance().getMySQL().getPlayerCraftTokens(p) + " CT", "§7VoteTokens: §f" + Main.getInstance().getMySQL().getPlayerVoteTokens(p) + " VT", "", "§eKliknutim zobrazis vysvetleni").setSkullOwner(p.getName()).build();
+                    .setName("§bTvoje bohatstvi").setLore("§7CraftCoins: §f" + CraftCoinsAPI.getCoins(p) + " CC", "§7CraftTokens: §f" + CraftTokensAPI.getTokens(p) + " CT", "§7VoteTokens: §f" + VoteTokensAPI.getVoteTokens(p) + " VT", "", "§eKliknutim zobrazis vysvetleni").setSkullOwner(p.getName()).build();
             inv.setItem(1, head);
 
             ItemStack log = new ItemBuilder(Material.PAPER, (short) 0)
@@ -313,7 +315,7 @@ public class ShopAPI implements Listener {
                 inv.setItem(0, nedostupny);
                 return;
             }
-            if(CoinsAPI.getCoins(p.getUniqueId()) >= 5000) {
+            if(CraftCoinsAPI.getCoins(p) >= 5000) {
                 ItemStack item = new ItemBuilder(Material.GRASS).setName("§aResidence 200x200")
                         .setLore("§7Vsechny tve residence", "§7budes moct nastavit na","§7velikost 200x200.", "", "§7Cena: §f5000 CC").build();
                 inv.setItem(0, item);
@@ -335,7 +337,7 @@ public class ShopAPI implements Listener {
                 inv.setItem(1, nedostupny);
                 return;
             }
-            if(CoinsAPI.getCoins(p.getUniqueId()) >= 15000) {
+            if(CraftCoinsAPI.getCoins(p) >= 15000) {
                 ItemStack item = new ItemBuilder(Material.GRASS).setName("§aResidence 300x300")
                         .setLore("§7Vsechny tve residence", "§7budes moct nastavit na","§7velikost 300x300.", "", "§7Cena: §f15000 CC").build();
                 inv.setItem(1, item);
@@ -358,7 +360,7 @@ public class ShopAPI implements Listener {
 
     private void openVoteMenu(final Player p) {
         Inventory inv = Bukkit.createInventory(null, 45, "§0Odmeny za VoteTokeny");
-        int voteTokens = Main.getInstance().getMySQL().getPlayerVoteTokens(p);
+        long voteTokens = VoteTokensAPI.getVoteTokens(p);
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
         ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
@@ -469,7 +471,7 @@ public class ShopAPI implements Listener {
                 this.openTagsMenu(p);
             }
             if (e.getSlot() == 30) {
-                if (Main.getInstance().getMySQL().getPlayerCraftTokens(p) > 0) {
+                if (CraftTokensAPI.getTokens(p) > 0) {
                     TagsEditor.createTagEditor(p);
                 } else {
                     p.sendMessage("§cNemas dostatek CraftTokenu k provedeni teto akce.");
@@ -502,8 +504,8 @@ public class ShopAPI implements Listener {
                     return;
                 }
                 if(!p.hasPermission("residence.group.bonus1")){
-                    if (CoinsAPI.getCoins(p.getUniqueId()) >= 5000) {
-                        CoinsAPI.takeCoins(p.getUniqueId(), 5000);
+                    if (CraftCoinsAPI.getCoins(p) >= 5000) {
+                        CraftCoinsAPI.takeCoins(p, 5000);
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set residence.group.bonus1 survival");
                         p.sendMessage("§e§l(*) §eZakoupil jsi si §f200x200 Residence §eza §a5000 CC.");
                         p.closeInventory();
@@ -520,8 +522,8 @@ public class ShopAPI implements Listener {
                     return;
                 }
                 if(!p.hasPermission("residence.group.bonus2")){
-                    if (CoinsAPI.getCoins(p.getUniqueId()) >= 15000) {
-                        CoinsAPI.takeCoins(p.getUniqueId(), 15000);
+                    if (CraftCoinsAPI.getCoins(p) >= 15000) {
+                        CraftCoinsAPI.takeCoins(p, 15000);
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set residence.group.bonus2 survival");
                         p.sendMessage("§e§l(*) §eZakoupil jsi si §f300x300 Residence §eza §a15000 CC.");
                         p.closeInventory();
@@ -553,9 +555,9 @@ public class ShopAPI implements Listener {
                     p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
-                if (Main.getInstance().getMySQL().getPlayerVoteTokens(p) >= 1) {
+                if (VoteTokensAPI.getVoteTokens(p) >= 1) {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " votecrate 1");
-                    Main.getInstance().getMySQL().takeVoteToken(p, 1);
+                    VoteTokensAPI.takeVoteTokens(p, 1);
                     p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x VoteCrate §eza §a1 VT.");
                     p.closeInventory();
                 } else {
@@ -570,14 +572,14 @@ public class ShopAPI implements Listener {
                 if (p.hasPermission("worldedit.wand")) {
                     p.sendMessage("§e§l(*) §eJiz mas zakoupeny WorldEdit!");
                 } else {
-                    if (Main.getInstance().getMySQL().getPlayerVoteTokens(p) >= 1) {
+                    if (VoteTokensAPI.getVoteTokens(p) >= 1) {
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.(wand|fill) true 1h creative");
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.(history|brush).* true 1h creative");
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.navigation.up true 1h creative");
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.clipboard.(cut|paste|rotate|flip|copy) true 1h creative");
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.region.(center|hollow|walls|replace|set|smooth) true 1h creative");
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.selection.(pos|chunk) true 1h creative");
-                        Main.getInstance().getMySQL().takeVoteToken(p, 1);
+                        VoteTokensAPI.takeVoteTokens(p, 1);
                         p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x WorldEdit na 1h §eza §a1 VT.");
                         p.closeInventory();
                     } else {
@@ -586,9 +588,9 @@ public class ShopAPI implements Listener {
                 }
             }
             if (e.getSlot() == 2) {
-                if (Main.getInstance().getMySQL().getPlayerVoteTokens(p) >= 1) {
-                    CoinsAPI.addCoins(p.getUniqueId(), 30.0, false);
-                    Main.getInstance().getMySQL().takeVoteToken(p, 1);
+                if (VoteTokensAPI.getVoteTokens(p) >= 1) {
+                    CraftCoinsAPI.giveCoins(p, 30);
+                    VoteTokensAPI.takeVoteTokens(p, 1);
                     p.sendMessage("§e§l(*) §eZakoupil jsi si §f30 CraftCoins §eza §a1 VT.");
                     p.closeInventory();
                 } else {
@@ -600,9 +602,9 @@ public class ShopAPI implements Listener {
                     p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
-                if (Main.getInstance().getMySQL().getPlayerVoteTokens(p) >= 3) {
+                if (VoteTokensAPI.getVoteTokens(p) >= 3) {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " headcrate 1");
-                    Main.getInstance().getMySQL().takeVoteToken(p, 3);
+                    VoteTokensAPI.takeVoteTokens(p, 3);
                     p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x HeadCrate §eza §a3 VT.");
                     p.closeInventory();
                 } else {
@@ -614,9 +616,9 @@ public class ShopAPI implements Listener {
                     p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
-                if (Main.getInstance().getMySQL().getPlayerVoteTokens(p) >= 5) {
+                if (VoteTokensAPI.getVoteTokens(p) >= 5) {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " epiccrate 1");
-                    Main.getInstance().getMySQL().takeVoteToken(p, 5);
+                    VoteTokensAPI.takeVoteTokens(p, 5);
                     p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x EpicCrate §eza §a5 VT.");
                     p.closeInventory();
                 } else {
@@ -631,9 +633,9 @@ public class ShopAPI implements Listener {
                 if (p.hasPermission("askyblock.islandfly")) {
                     p.sendMessage("§e§l(*) §eJiz mas zakoupeny Fly na ostrove! Pockej az skonci...");
                 } else {
-                    if (Main.getInstance().getMySQL().getPlayerVoteTokens(p) >= 3) {
+                    if (VoteTokensAPI.getVoteTokens(p) >= 3) {
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp askyblock.islandfly true 1h " + Main.getInstance().getIdServer().toLowerCase());
-                        Main.getInstance().getMySQL().takeVoteToken(p, 3);
+                        VoteTokensAPI.takeVoteTokens(p, 3);
                         p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x Fly na ostrove na 1h §eza §a1 VT.");
                         p.sendMessage("§c§l(!) §cNekdy Fly nefunguje hned, zkus jit na spawn a zpatky, pokud nepujde. :)");
                         p.closeInventory();
@@ -1180,7 +1182,7 @@ public class ShopAPI implements Listener {
     }
 
     private String checkerCoins(final Player p, int coins) {
-        int i = (int) CoinsAPI.getCoins(p.getUniqueId());
+        int i = (int) CraftCoinsAPI.getCoins(p);
         if (i > coins) {
             return "§eKliknutim provedes nakup za " + coins + " CC.";
         } else {
@@ -1202,10 +1204,10 @@ public class ShopAPI implements Listener {
         if (p.hasPermission(perm)) {
             p.sendMessage("§cTag " + name + " jiz vlastnis!");
         } else {
-            int i = (int) CoinsAPI.getCoins(p.getUniqueId());
+            int i = (int) CraftCoinsAPI.getCoins(p);
             if (i >= price) {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set " + perm + " true");
-                CoinsAPI.takeCoins(p.getUniqueId(), price);
+                CraftCoinsAPI.takeCoins(p, price);
                 p.sendMessage("§eZakoupil jsi si tag: §f" + name);
                 p.closeInventory();
             } else {

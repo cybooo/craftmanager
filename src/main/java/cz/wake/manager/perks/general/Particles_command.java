@@ -1,4 +1,4 @@
-package cz.wake.manager.commads.vip;
+package cz.wake.manager.perks.general;
 
 import cz.wake.manager.Main;
 import org.bukkit.command.Command;
@@ -24,6 +24,6 @@ public class Particles_command implements CommandExecutor {
                 }
             }
         }
-        return false;
+        return true;
     }
 }

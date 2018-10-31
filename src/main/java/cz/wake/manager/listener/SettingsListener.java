@@ -3,6 +3,7 @@ package cz.wake.manager.listener;
 import cz.wake.manager.Main;
 import cz.wake.manager.commads.Profil_command;
 import cz.wake.manager.utils.ItemFactory;
+import net.horkanos.craftchat.CraftChat;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -17,82 +18,104 @@ public class SettingsListener implements Listener {
 
     private Profil_command profil = new Profil_command();
 
-    public void openSettingsMenu(final Player p) {
-
-        Inventory inv = Bukkit.createInventory(null, 45, "Osobni nastaveni");
-
-        ItemStack player = ItemFactory.create(Material.WATCH, (byte) 0, "§e§lViditelnost hracu", "§7Nastavuje zobrazeni", "§7hracu na lobby.");
-        ItemStack pets = ItemFactory.create(Material.BONE, (byte) 0, "§e§lViditelnost pets", "§7Nastavuje zobrazeni", "§7pets na lobby.");
-        ItemStack part = ItemFactory.create(Material.REDSTONE, (byte) 0, "§e§lParticles", "§7Viditelnost efektu", "", "§cDocasne nefunguje na vsechny!");
-        ItemStack fly = ItemFactory.create(Material.ELYTRA, (byte) 0, "§e§lFly", "§7Nastavuje FLY na lobby serverech.", "§7Fly dostanes pri kazdem",
-                "§7vstupu na lobby", "", "§cVyzaduje Global VIP!");
-        ItemStack gadgets = ItemFactory.create(Material.PISTON_BASE, (byte) 0, "§e§lGadgets", "§7Nastavuje zda na tebe", "§7budou fungovat gadget lobby.");
-        ItemStack speed = ItemFactory.create(Material.GOLD_BOOTS, (byte) 0, "§e§lSpeed", "§7Povoluje rychlost chozeni", "§7na lobby.");
-        ItemStack novinky = ItemFactory.create(Material.MAP, (byte) 0, "§e§lReklama", "§7Nastavuje zobrazovani reklamy", "§7na VIP na MiniGames.", "", "§cVyzaduje MiniGames VIP!");
-        ItemStack deathMessages = ItemFactory.create(Material.BLAZE_POWDER, (byte) 0, "§e§lDeath zpravy", "§7Nastavuje zobrazeni smrti", "§7hracu.", "", "§cFunguje pouze na Survival serverech");
-        ItemStack notify = ItemFactory.create(Material.JUKEBOX, (byte) 0, "§e§lOznameni o oznaceni", "§7Pokud te nekdo oznaci", "§7v chatu, server te", "§7upozorni cinknutim.", "",
-                "§eNastaveno: §8" + Main.getInstance().getMySQL().getSettingsString(p, "mention_sound")
-                        .replace("ENTITY_EXPERIENCE_ORB_PICKUP", "EXP ORB PICKUP")
-                        .replace("BLOCK_ANVIL_FALL", "ANVIL FALL")
-                        .replace("BLOCK_GLASS_BREAK", "GLASS BREAK")
-                        .replace("ENTITY_ITEM_PICKUP", "ITEM PICKUP")
-                        .replace("ENTITY_ZOMBIE_HURT", "ZOMBIE HURT"), "", "§bKliknutim si vyber zvuk");
-
+    public void openSettingsMenu(final Player p, final int page) {
         ItemStack enabled = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte) 5, "§a§lZapnuto");
         ItemStack disabled = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte) 14, "§c§lVypnuto");
         ItemStack nedostupne = ItemFactory.create(Material.BARRIER, (byte) 0, "§c§lNedostupne");
         ItemStack pouzeLobby = ItemFactory.create(Material.BARRIER, (byte) 0, "§c§lNastavit lze pouze na lobby");
-
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§eZpet");
+        ItemStack nextPage = ItemFactory.create(Material.ARROW, (byte) 0, "§eDalsi strana");
+        ItemStack previousPage = ItemFactory.create(Material.ARROW, (byte) 0, "§ePredchozi strana");
 
-        inv.setItem(9, fly);
-        inv.setItem(10, player);
-        inv.setItem(11, pets);
-        inv.setItem(12, part);
-        inv.setItem(13, gadgets);
-        inv.setItem(14, speed);
-        inv.setItem(15, novinky);
-        inv.setItem(16, deathMessages); // 25
-        inv.setItem(17, notify);
+        if (page == 1) {
 
-        if (Main.getInstance().getMySQL().getSettings(p, "lobby_players") == 1) {
-            inv.setItem(19, disabled);
-        } else {
-            inv.setItem(19, enabled);
-        }
-        if (Main.getInstance().getMySQL().getSettings(p, "lobby_particles") == 1) {
-            inv.setItem(21, enabled);
-        } else {
-            inv.setItem(21, disabled);
-        }
-        if (Main.getInstance().getMySQL().getSettings(p, "lobby_gadgets") == 1) {
-            inv.setItem(22, enabled);
-        } else {
-            inv.setItem(22, disabled);
-        }
-        if (Main.getInstance().getMySQL().getSettings(p, "lobby_speed") == 1) {
-            inv.setItem(23, enabled);
-        } else {
-            inv.setItem(23, disabled);
-        }
-        if (Main.getInstance().getMySQL().getSettings(p, "death_messages") == 1) {
-            inv.setItem(25, enabled);
-        } else {
-            inv.setItem(25, disabled);
-        }
-        //26 notify
-        if (Main.getInstance().getMySQL().getSettings(p, "mention_notify") == 1) {
-            inv.setItem(26, enabled);
-        } else {
-            inv.setItem(26, disabled);
-        }
-        inv.setItem(24, nedostupne);
-        inv.setItem(20, nedostupne);
-        inv.setItem(18, pouzeLobby);
+            Inventory inv = Bukkit.createInventory(null, 45, "Osobni nastaveni (Strana 1/2)");
 
-        inv.setItem(40, zpet);
+            ItemStack player = ItemFactory.create(Material.WATCH, (byte) 0, "§e§lViditelnost hracu", "§7Nastavuje zobrazeni", "§7hracu na lobby.");
+            ItemStack pets = ItemFactory.create(Material.BONE, (byte) 0, "§e§lViditelnost pets", "§7Nastavuje zobrazeni", "§7pets na lobby.");
+            ItemStack part = ItemFactory.create(Material.REDSTONE, (byte) 0, "§e§lParticles", "§7Viditelnost efektu", "", "§cDocasne nefunguje na vsechny!");
+            ItemStack fly = ItemFactory.create(Material.ELYTRA, (byte) 0, "§e§lFly", "§7Nastavuje FLY na lobby serverech.", "§7Fly dostanes pri kazdem",
+                    "§7vstupu na lobby", "", "§cVyzaduje Global VIP!");
+            ItemStack gadgets = ItemFactory.create(Material.PISTON_BASE, (byte) 0, "§e§lGadgets", "§7Nastavuje zda na tebe", "§7budou fungovat gadget lobby.");
+            ItemStack speed = ItemFactory.create(Material.GOLD_BOOTS, (byte) 0, "§e§lSpeed", "§7Povoluje rychlost chozeni", "§7na lobby.");
+            ItemStack novinky = ItemFactory.create(Material.MAP, (byte) 0, "§e§lReklama", "§7Nastavuje zobrazovani reklamy", "§7na VIP na MiniGames.", "", "§cVyzaduje MiniGames VIP!");
+            ItemStack deathMessages = ItemFactory.create(Material.BLAZE_POWDER, (byte) 0, "§e§lDeath zpravy", "§7Nastavuje zobrazeni smrti", "§7hracu.", "", "§cFunguje pouze na Survival serverech");
+            ItemStack notify = ItemFactory.create(Material.JUKEBOX, (byte) 0, "§e§lOznameni o oznaceni", "§7Pokud te nekdo oznaci", "§7v chatu, server te", "§7upozorni cinknutim.", "",
+                    "§eNastaveno: §8" + Main.getInstance().getMySQL().getSettingsString(p, "mention_sound")
+                            .replace("ENTITY_EXPERIENCE_ORB_PICKUP", "EXP ORB PICKUP")
+                            .replace("BLOCK_ANVIL_FALL", "ANVIL FALL")
+                            .replace("BLOCK_GLASS_BREAK", "GLASS BREAK")
+                            .replace("ENTITY_ITEM_PICKUP", "ITEM PICKUP")
+                            .replace("ENTITY_ZOMBIE_HURT", "ZOMBIE HURT"), "", "§bKliknutim si vyber zvuk");
 
-        p.openInventory(inv);
+
+            inv.setItem(9, fly);
+            inv.setItem(10, player);
+            inv.setItem(11, pets);
+            inv.setItem(12, part);
+            inv.setItem(13, gadgets);
+            inv.setItem(14, speed);
+            inv.setItem(15, novinky);
+            inv.setItem(16, deathMessages); // 25
+            inv.setItem(17, notify);
+
+            if (Main.getInstance().getMySQL().getSettings(p, "lobby_players") == 1) {
+                inv.setItem(19, disabled);
+            } else {
+                inv.setItem(19, enabled);
+            }
+            if (Main.getInstance().getMySQL().getSettings(p, "lobby_particles") == 1) {
+                inv.setItem(21, enabled);
+            } else {
+                inv.setItem(21, disabled);
+            }
+            if (Main.getInstance().getMySQL().getSettings(p, "lobby_gadgets") == 1) {
+                inv.setItem(22, enabled);
+            } else {
+                inv.setItem(22, disabled);
+            }
+            if (Main.getInstance().getMySQL().getSettings(p, "lobby_speed") == 1) {
+                inv.setItem(23, enabled);
+            } else {
+                inv.setItem(23, disabled);
+            }
+            if (Main.getInstance().getMySQL().getSettings(p, "death_messages") == 1) {
+                inv.setItem(25, enabled);
+            } else {
+                inv.setItem(25, disabled);
+            }
+            //26 notify
+            if (Main.getInstance().getMySQL().getSettings(p, "mention_notify") == 1) {
+                inv.setItem(26, enabled);
+            } else {
+                inv.setItem(26, disabled);
+            }
+            inv.setItem(24, nedostupne);
+            inv.setItem(20, nedostupne);
+            inv.setItem(18, pouzeLobby);
+
+            inv.setItem(40, zpet);
+            inv.setItem(44, nextPage);
+
+            p.openInventory(inv);
+        } else if (page == 2) {
+            Inventory inv = Bukkit.createInventory(null, 45, "Osobni nastaveni (Strana 2/2)");
+
+            ItemStack disableChat = ItemFactory.create(Material.BOOK_AND_QUILL, (byte) 0, "§e§lVypnuti zprav v chatu", "§7Nebudes dostavat", "§7zpravy v chatu.");
+
+            inv.setItem(9, disableChat);
+
+            if (Main.getInstance().getMySQL().getSettings(p, "disabled_chat") == 1) {
+                inv.setItem(18, enabled);
+            } else {
+                inv.setItem(18, disabled);
+            }
+
+            inv.setItem(40, zpet);
+            inv.setItem(39, previousPage);
+
+            p.openInventory(inv);
+        }
     }
 
 
@@ -164,7 +187,7 @@ public class SettingsListener implements Listener {
                 return;
             }
         }
-        if (e.getInventory().getTitle().equals("Osobni nastaveni")) {
+        if (e.getInventory().getTitle().equals("Osobni nastaveni (Strana 1/2)")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -245,6 +268,44 @@ public class SettingsListener implements Listener {
                     p.sendMessage("§aZapnul jsi cinkani pri oznaceni v chatu!");
                     p.closeInventory();
                 }
+            }
+            if(e.getSlot() == 44){
+                openSettingsMenu(p, 2);
+            }
+        }
+        if (e.getInventory().getTitle().equals("Osobni nastaveni (Strana 2/2)")) {
+            e.setCancelled(true);
+            if (e.getCurrentItem() == null) {
+                return;
+            }
+            if (e.getCurrentItem().getType() == Material.AIR) {
+                return;
+            }
+            if (e.getSlot() == 40) {
+                profil.openMenu(p);
+            }
+            if (e.getSlot() == 17) {
+                openSoundsMenu(p);
+            }
+            if (e.getSlot() == 18) {
+                if (p.hasPermission("craftmanager.vip.disablechat") && !p.hasPermission("craftmania.at")) {
+                    if (Main.getInstance().getMySQL().getSettings(p, "disabled_chat") == 1) {
+                        Main.getInstance().getMySQL().updateSettings(p, "disabled_chat", 0);
+                        p.sendMessage("§aZpavy v chatu zapnuty!");
+                        CraftChat.disableChat(p, false);
+                        p.closeInventory();
+                    } else {
+                        Main.getInstance().getMySQL().updateSettings(p, "disabled_chat", 1);
+                        p.sendMessage("§cZpravy v chatu vypnuty!");
+                        CraftChat.disableChat(p, true);
+                        p.closeInventory();
+                    }
+                } else {
+                    p.sendMessage("§cNa toto nemas dostatecna prava!");
+                }
+            }
+            if(e.getSlot() == 39){
+                openSettingsMenu(p, 1);
             }
         }
     }

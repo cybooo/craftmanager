@@ -1,8 +1,10 @@
 package cz.wake.manager.shop;
 
+import cz.craftmania.crafteconomy.api.CraftCoinsAPI;
+import cz.craftmania.crafteconomy.api.CraftTokensAPI;
+import cz.craftmania.crafteconomy.api.VoteTokensAPI;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
-import net.nifheim.beelzebu.coins.CoinsAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -36,21 +38,21 @@ public class TempShop implements Listener {
         ItemStack nakup;
 
         if(types == MoneyType.VOTETOKEN) {
-            if(!(Main.getInstance().getMySQL().getPlayerVoteTokens(player) >= coins)) {
+            if(!(VoteTokensAPI.getVoteTokens(p) >= coins)) {
                 p.sendMessage("§cNedostatek tokenu k nakupu: §f" + coins + " VT");
                 return;
             }
             inv = Bukkit.createInventory(null, 45, "[S] Nakup za VoteTokeny");
             nakup = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte) 5, "§a§lZakoupit", "§7Zakoupis za §e" + coin + " VT.");
         } else if (types == MoneyType.CRAFTTOKEN) {
-            if(!(Main.getInstance().getMySQL().getPlayerCraftTokens(player) >= coins)) {
+            if(!(CraftTokensAPI.getTokens(p) >= coins)) {
                 p.sendMessage("§cNedostatek tokenu k nakupu: §f" + coins + " CT");
                 return;
             }
             inv = Bukkit.createInventory(null, 45, "[S] Nakup za CraftTokeny");
             nakup = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte) 5, "§a§lZakoupit", "§7Zakoupis za §e" + coin + " CT.");
         } else {
-            if(!(CoinsAPI.getCoins(p.getUniqueId()) >= coins)){
+            if(!(CraftCoinsAPI.getCoins(p) >= coins)){
                 p.sendMessage("§cNedostatek coinu k nakupu: §f" + coins + " CC");
                 return;
             }
@@ -85,17 +87,17 @@ public class TempShop implements Listener {
             if (e.getSlot() == 30) {
                 if(type == MoneyType.CRAFTCOIN) {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp " + permission + " true " + time + " " + Main.getInstance().getIdServer());
-                    CoinsAPI.takeCoins(p.getUniqueId(), coin);
+                    CraftCoinsAPI.takeCoins(p, coin);
                     p.sendMessage("§eZakoupil jsi si §a" + name + " §eza §6" + coin + " CC.");
                     p.closeInventory();
                 } else if (type == MoneyType.CRAFTTOKEN) {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp " + permission + " true " + time + " " + Main.getInstance().getIdServer());
-                    Main.getInstance().getMySQL().takeCraftToken(player, coin);
+                    CraftTokensAPI.takeTokens(player, coin);
                     p.sendMessage("§eZakoupil jsi si §a" + name + " §eza §6" + coin + " CT.");
                     p.closeInventory();
                 } else {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp " + permission + " true " + time + " " + Main.getInstance().getIdServer());
-                    Main.getInstance().getMySQL().takeVoteToken(p, coin);
+                    VoteTokensAPI.takeVoteTokens(p, coin);
                     p.sendMessage("§eZakoupil jsi si §a" + name + " §eza §6" + coin + " VT.");
                     p.closeInventory();
                 }

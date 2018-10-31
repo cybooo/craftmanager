@@ -3,7 +3,7 @@ package cz.wake.manager.listener;
 import cz.craftmania.craftcore.spigot.messages.Advancement;
 import cz.craftmania.craftcore.spigot.messages.handler.AdvancementManager;
 import cz.wake.manager.Main;
-import cz.wake.manager.commads.vip.Chatcolor_command;
+import cz.wake.manager.perks.general.Chatcolor_command;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
@@ -32,6 +32,12 @@ public class ChatListener implements Listener {
     public void onChat(AsyncPlayerChatEvent e) {
         final Player writingPlayer = e.getPlayer();
         String msg = e.getMessage();
+
+        if (Main.getInstance().at_afk.containsKey(writingPlayer)) {
+            if(Main.getInstance().at_afk.get(writingPlayer) != 0) {
+                Main.getInstance().at_afk.put(e.getPlayer(), 0);
+            }
+        }
         if (Main.getInstance().at_list.contains(writingPlayer)) {
             if (!this._time.containsKey(writingPlayer)) {
                 this._time.put(writingPlayer, 60D + 0.1D);
