@@ -2,6 +2,7 @@ package cz.wake.manager.listener;
 
 import cz.wake.manager.Main;
 import org.bukkit.entity.Animals;
+import org.bukkit.entity.Creeper;
 import org.bukkit.entity.Monster;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -21,7 +22,9 @@ public class EntityDamageListener implements Listener {
 
         if(!(e.getDamager() instanceof Animals) && !(e.getDamager() instanceof Monster)) return;
 
-        if (e.getDamage() >= p.getHealth()) {
+        if (e.getFinalDamage() >= p.getHealth()) {
+            if (e.getDamager() instanceof Creeper) return;
+            if (e.getDamager() instanceof Player) return;
             for (Player pl : Main.getInstance().death_messages) {
                 pl.sendMessage(Main.getInstance().getConfig().getStringList("d_msgs.mob").get(r.nextInt(Main.getInstance().getConfig().getStringList("d_msgs.mob").size()))
                         .replace("%player%", p.getName())
