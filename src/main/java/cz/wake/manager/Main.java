@@ -47,7 +47,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private ParticlesAPI particlesAPI = new ParticlesAPI();
     public List<Material> durabilityWarnerList = new ArrayList<>();
     public List<Pattern> blockedTags = new ArrayList<Pattern>();
-    public static HashMap<String, Boolean> dontdrop_worlds = new HashMap<>();
+    private List<String> dontdrop_worlds = new ArrayList<>();
     public static Long restartTime;
     public static String restartReason;
     private MainGUI gui = new MainGUI();
@@ -153,6 +153,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             useCustomDisenchant = true;
             Log.withPrefix("Detekovan plugin AdvancedEnchantments - disenchant jej bude pouzivat.");
         }
+
+        // Nacteni no-drop svetu pro VIP
+        dontdrop_worlds.addAll(getConfig().getStringList("dontdrop.worlds"));
     }
 
     public void onDisable() {
@@ -360,4 +363,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     }
 
     public boolean areDeathMessagesEnabled() { return getConfig().getBoolean("d_msgs.enabled"); }
+
+    public List<String> getDontDropWorlds() {
+        return dontdrop_worlds;
+    }
 }
