@@ -6,7 +6,6 @@ import cz.wake.manager.commads.staff.*;
 import cz.wake.manager.perks.general.*;
 import cz.wake.manager.listener.*;
 import cz.wake.manager.managers.TablistManager;
-import cz.wake.manager.perks.chat.Replacements;
 import cz.wake.manager.perks.coloranvil.AnvilListener;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.perks.twerking.TwerkEvent;
@@ -184,7 +183,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new TwerkEvent(), this);
         pm.registerEvents(new SettingsListener(), this);
         pm.registerEvents(new TagsEditor(), this);
-        pm.registerEvents(new Replacements(), this);
         pm.registerEvents(new BeaconCommand(), this);
         pm.registerEvents(new PlayerSwapListener(), this);
         pm.registerEvents(new NoDropListener(), this);
