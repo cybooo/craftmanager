@@ -436,15 +436,15 @@ public class ShopAPI implements Listener {
 
         if (voteTokens >= 3) {
             if (Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
-                ItemStack item = new ItemBuilder(Material.ELYTRA).setName("§aFly na ostrove (1h)").setLore("§7Cena: §f2 VT").hideAllFlags().build();
+                ItemStack item = new ItemBuilder(Material.ELYTRA).setName("§aFly na vlastnim ostrove (1h)").setLore("§7Cena: §f3 VT").hideAllFlags().build();
                 inv.setItem(5, item);
             } else {
-                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cFly na ostrove (1h)")
+                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cFly na vlastnim ostrove (1h)")
                         .setLore("§7Nelze zakoupit na tomto serveru.").build();
                 inv.setItem(5, nedostupny);
             }
         } else {
-            ItemStack noMoney = new ItemBuilder (Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§8Fly na ostrove (1h)")
+            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§8Fly na vlastnim ostrove (1h)")
                     .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f3 VT").build();
             inv.setItem(5, noMoney);
         }
