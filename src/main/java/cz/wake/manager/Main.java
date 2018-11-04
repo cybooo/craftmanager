@@ -95,7 +95,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Bungee channels
         Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         Bukkit.getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
-        Bukkit.getMessenger().registerIncomingPluginChannel(this, "craftbungee", this);
+        Bukkit.getMessenger().registerIncomingPluginChannel(this, "craftbungee:vote", this);
 
         // Oznameni kazdou hodinu (1 hod)
         if (reminder && !testing) {
