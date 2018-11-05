@@ -186,7 +186,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new PlayerSwapListener(), this);
         pm.registerEvents(new NoDropListener(), this);
         //pm.registerEvents(new TabCompleteListener(), this); todo
-        pm.registerEvents(new EntityDamageListener(), this);
 
         // Skyblock PVP listener
         if (idServer.equalsIgnoreCase("skyblock")) {

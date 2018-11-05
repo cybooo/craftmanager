@@ -7,38 +7,65 @@ import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.security.Guard;
 import java.util.Random;
 
 public class DeathListener implements Listener {
 
+    Random r = new Random();
+
     @EventHandler
-    public void onDeath(PlayerDeathEvent e) {
+    public void onDeathMsg(PlayerDeathEvent e) {
+        e.setDeathMessage(null);
+    }
+
+    @EventHandler
+    public void onDeath(EntityDeathEvent e) {
+        if (!(e.getEntity() instanceof Player)) return;
 
         if (!Main.getInstance().areDeathMessagesEnabled()) return;
 
-        Player p = e.getEntity();
-        Entity killer = e.getEntity().getKiller();
+        Player p = (Player) e.getEntity();
+        Entity killer = p.getKiller();
         EntityDamageEvent cause = e.getEntity().getLastDamageCause();
 
-        // Preventivni deaktivace death zprav
-        e.setDeathMessage(null);
-
-        broadcastDeath(p, cause.getCause(), e);
-
+        broadcastDeath(p, cause.getCause(), e, killer);
+        //System.out.print(cause.getCause().toString());
     }
 
-    private void broadcastDeath(Player p, EntityDamageEvent.DamageCause cause, EntityDeathEvent e) {
-        Random r = new Random();
+    @EventHandler
+    public void onEntityDamage(EntityDamageByEntityEvent e) {
+        if (!(e.getEntity() instanceof Player)) return;
+        Player p = (Player) e.getEntity();
+        //System.out.print("Damage: " + e.getCause().toString());
+
+        if(!(e.getDamager() instanceof Animals) && !(e.getDamager() instanceof Monster)) return;
+        if (e.getDamager() instanceof Player) return;
+        if (e.getDamager() instanceof Creeper) return;
+        if (e.getDamager() instanceof Guardian || e.getDamager() instanceof ElderGuardian) {
+            if (e.getCause().equals(EntityDamageEvent.DamageCause.THORNS)) return;
+        }
+
+        if (e.getDamage() >= p.getHealth()) {
+            for (Player pl : Main.getInstance().death_messages) {
+                pl.sendMessage(Main.getInstance().getConfig().getStringList("d_msgs.mob").get(r.nextInt(Main.getInstance().getConfig().getStringList("d_msgs.mob").size()))
+                        .replace("%player%", p.getName())
+                        .replace("%mob%", e.getDamager().getName().toLowerCase()));
+            }
+        }
+    }
+
+
+    private void broadcastDeath(Player p, EntityDamageEvent.DamageCause cause, EntityDeathEvent e, Entity killer) {
         //Main.getInstance().getConfig().getStringList("d_msgs.x").get(r.nextInt(Main.getInstance().getConfig().getStringList("d_msgs.x").size())).replace("%player%, p.getName());
         if (cause.equals(EntityDamageEvent.DamageCause.CONTACT)) {
             for (Player pl : Main.getInstance().death_messages) {
@@ -51,13 +78,13 @@ public class DeathListener implements Listener {
                         .replace("%player%", p.getName()));
             }
         } else if (cause.equals(EntityDamageEvent.DamageCause.ENTITY_ATTACK)) { //hráč
-            if (e.getEntity().getKiller() != null) {
+            if (e.getEntity().getKiller() instanceof Player) {
                 Player p2 = e.getEntity().getKiller();
                 if (p2.getInventory().getItemInMainHand().getType() != Material.AIR && p2.getInventory().getItemInMainHand() != null && p2.getInventory().getItemInMainHand().getItemMeta().hasDisplayName()) {
                     for (Player pl : Main.getInstance().death_messages) {
                         sendItemTooltipMessage(pl, Main.getInstance().getConfig().getStringList("d_msgs.player_weapon").get(r.nextInt(Main.getInstance().getConfig().getStringList("d_msgs.player_weapon").size()))
-                                .replace("%player%", p.getName())
-                                .replace("%attacker%", p2.getName()),
+                                        .replace("%player%", p.getName())
+                                        .replace("%attacker%", p2.getName()),
                                 Main.getInstance().getConfig().getStringList("d_msgs.player_weapon_format").get(r.nextInt(Main.getInstance().getConfig().getStringList("d_msgs.player_weapon").size()))
                                         .replace("%weapon%", p2.getInventory().getItemInMainHand().getItemMeta().getDisplayName()),
                                 p2.getInventory().getItemInMainHand());
