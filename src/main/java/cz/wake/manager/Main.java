@@ -367,8 +367,4 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     public List<String> getDontDropWorlds() {
         return dontdrop_worlds;
     }
-
-    public InventoryManager getInvManager() {
-        return invManager;
-    }
 }
