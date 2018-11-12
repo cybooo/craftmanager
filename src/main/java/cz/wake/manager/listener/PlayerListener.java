@@ -29,8 +29,6 @@ public class PlayerListener implements Listener {
     public void onJoin(PlayerJoinEvent e) {
         final Player p = e.getPlayer();
 
-        Main.getInstance().death_messages.add(p);
-
         e.setJoinMessage(null);
 
         //Oprava pro skoncene VIP hrace s Glowing

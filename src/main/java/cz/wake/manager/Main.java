@@ -6,7 +6,6 @@ import cz.wake.manager.commads.staff.*;
 import cz.wake.manager.perks.general.*;
 import cz.wake.manager.listener.*;
 import cz.wake.manager.managers.TablistManager;
-import cz.wake.manager.perks.chat.Replacements;
 import cz.wake.manager.perks.coloranvil.AnvilListener;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.perks.twerking.TwerkEvent;
@@ -47,7 +46,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private ParticlesAPI particlesAPI = new ParticlesAPI();
     public List<Material> durabilityWarnerList = new ArrayList<>();
     public List<Pattern> blockedTags = new ArrayList<Pattern>();
-    public static HashMap<String, Boolean> dontdrop_worlds = new HashMap<>();
+    private List<String> dontdrop_worlds = new ArrayList<>();
     public static Long restartTime;
     public static String restartReason;
     private MainGUI gui = new MainGUI();
@@ -153,6 +152,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             useCustomDisenchant = true;
             Log.withPrefix("Detekovan plugin AdvancedEnchantments - disenchant jej bude pouzivat.");
         }
+
+        // Nacteni no-drop svetu pro VIP
+        dontdrop_worlds.addAll(getConfig().getStringList("dontdrop.worlds"));
     }
 
     public void onDisable() {
@@ -181,11 +183,11 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new TwerkEvent(), this);
         pm.registerEvents(new SettingsListener(), this);
         pm.registerEvents(new TagsEditor(), this);
-        pm.registerEvents(new Replacements(), this);
         pm.registerEvents(new BeaconCommand(), this);
         pm.registerEvents(new PlayerSwapListener(), this);
         pm.registerEvents(new NoDropListener(), this);
-        //pm.registerEvents(new TabCompleteListener(), this); todo
+        //pm.registerEvents(new TabCompleteListener(), this);
+        pm.registerEvents(new VIP_command(), this);
 
         // Skyblock PVP listener
         if (idServer.equalsIgnoreCase("skyblock")) {
@@ -236,6 +238,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("dontdrop").setExecutor(new DontDropCommand());
         getCommand("glowitem").setExecutor(new GlowItemCommand());
         getCommand("rawbroadcast").setExecutor(new RawBroadcast());
+        getCommand("vip").setExecutor(new VIP_command());
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {
@@ -359,4 +362,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     }
 
     public boolean areDeathMessagesEnabled() { return getConfig().getBoolean("d_msgs.enabled"); }
+
+    public List<String> getDontDropWorlds() {
+        return dontdrop_worlds;
+    }
 }
