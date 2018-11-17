@@ -636,7 +636,7 @@ public class ShopAPI implements Listener {
                     if (VoteTokensAPI.getVoteTokens(p) >= 3) {
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp askyblock.islandfly true 1h " + Main.getInstance().getIdServer().toLowerCase());
                         VoteTokensAPI.takeVoteTokens(p, 3);
-                        p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x Fly na ostrove na 1h §eza §a1 VT.");
+                        p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x Fly na ostrove na 1h §eza §a3 VT.");
                         p.sendMessage("§c§l(!) §cNekdy Fly nefunguje hned, zkus jit na spawn a zpatky, pokud nepujde. :)");
                         p.closeInventory();
                     } else {
