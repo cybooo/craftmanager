@@ -14,10 +14,7 @@ import cz.wake.manager.shop.TagsEditor;
 import cz.wake.manager.shop.TempShop;
 import cz.wake.manager.sql.SQLManager;
 import cz.wake.manager.utils.*;
-import cz.wake.manager.utils.tasks.ATAfkTask;
-import cz.wake.manager.utils.tasks.ATCheckerTask;
-import cz.wake.manager.utils.tasks.UpdateServerTask;
-import cz.wake.manager.utils.tasks.UpdateTablistTask;
+import cz.wake.manager.utils.tasks.*;
 import cz.wake.manager.votifier.ForwardVote;
 import cz.wake.manager.votifier.VoteHandler;
 import org.bukkit.Bukkit;
@@ -122,6 +119,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             Log.withPrefix("Aktivace synchronizace prefixu v tablistu");
         } else {
             Log.withPrefix(ChatColor.RED + "Tablist ranky a synchronizace je vypnuta!");
+        }
+        if (getIdServer().equalsIgnoreCase("skyblock")) {
+            getServer().getScheduler().scheduleSyncRepeatingTask(this, new CheckFlyTask(), 0, 100L);
+            Log.withPrefix("Aktivace CheckFly tasku");
         }
 
         // Nastaveni DurabilityWarner
