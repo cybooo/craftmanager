@@ -1,5 +1,9 @@
 package cz.wake.manager.commads.staff;
 
+import com.wasteofplastic.askyblock.ASkyBlock;
+import com.wasteofplastic.askyblock.ASkyBlockAPI;
+import com.wasteofplastic.askyblock.Island;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -17,10 +21,26 @@ public class Checkfly_command implements CommandExecutor {
                     return true;
                 }
                 String name = ArrayOfString[0];
-                if(p.getAllowFlight() || p.hasPermission("askyblock.islandfly")){
-                    p.sendMessage("§eKontrola fly pro nick §b" + name + " §e: §a§lPOVOLENO");
+                Player pl = Bukkit.getPlayer(name);
+                if(pl.getAllowFlight() || pl.hasPermission("askyblock.islandfly")){
+                    if (pl.getAllowFlight()) {
+                        if (!pl.hasPermission("askyblock.islandfly")) {
+                            p.sendMessage("§eKontrola fly §b(" + name + ")§e: §a§lPOVOLENO §7(nezakoupeno)");
+                        } else { //má právo a má povolené lietať - je na ostrove
+                            p.sendMessage("§eKontrola fly §b(" + name + ")§e: §a§lPOVOLENO & ZAKOUPENO");
+                        }
+                    } else if (pl.hasPermission("askyblock.islandfly")) {
+                        Island is = ASkyBlockAPI.getInstance().getIslandAt(pl.getLocation());
+                        if (is == null) { //má právo, ale nie je na ostrove
+                            p.sendMessage("§eKontrola fly §b(" + name + ")§e: §a§lZAKOUPENO §7(mimo ostrov)");
+                        } else {
+                            p.sendMessage("§eKontrola fly §b(" + name + ")§e: §a§lPOVOLENO & ZAKOUPENO");
+                        }
+                    } else {
+                        p.sendMessage("§eKontrola fly §b(" + name + ")§e: §c§lNEPOVOLENO (Cheaty/Bug)");
+                    }
                 } else {
-                    p.sendMessage("§eKontrola fly pro nick §b" + name + " §e: §c§lNema zakoupeno (Cheaty/Bug)");
+                    p.sendMessage("§eKontrola fly §b(" + name + ")§e: §c§lNEPOVOLENO (Cheaty/Bug)");
                 }
             } else {
                 p.sendMessage("§cNa toto nemas dostatecna prava!");

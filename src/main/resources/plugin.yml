@@ -65,6 +65,8 @@ commands:
       aliases: [gi]
     rawbroadcast:
       description: Broadcast pro VIP nebo konzoli
+    vip:
+      description: VIP prehled
 
 permissions:
     craftmanager.*:
