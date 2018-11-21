@@ -47,7 +47,7 @@ public class Help_command implements CommandExecutor {
                     "§eK nastaveni Warpu poloz cedulku a na prvni radek",
                     "§enapis: §f[welcome]");
 
-            ItemStack isTeam = ItemFactory.create(Material.MAGMA, (byte) 0, "§a§lPridani a odebrani hracu na ostrove", "",
+            ItemStack isTeam = ItemFactory.create(Material.MAGMA_CREAM, (byte) 0, "§a§lPridani a odebrani hracu na ostrove", "",
                     "§e/is invite §6" + p.getName() + " §f- §7Prida hrace na tvuj ostrov",
                     "§e/is accept §f- §7Potvrdi zadost o pridani od jineho hrace",
                     "§e/is reject §f- §7Zrusi zadost od jineho hrace",
@@ -56,7 +56,7 @@ public class Help_command implements CommandExecutor {
                     "§e/is makeleader §6" + p.getName() + " §f- §7Nastavi noveho majitele",
                     "§7tveho ostrova");
 
-            ItemStack oIs = ItemFactory.create(Material.MELON_BLOCK, (byte) 0, "§a§lOstatni prikazy k ostrovum", "",
+            ItemStack oIs = ItemFactory.create(Material.MELON, (byte) 0, "§a§lOstatni prikazy k ostrovum", "",
                     "§e/is biomes §f- §7Nastaveni biomu na ostrove",
                     "§e/is settings §f §7Nastaveni ostrova pro hrace,",
                     "§7co nemas v Teamu.",
@@ -230,7 +230,7 @@ public class Help_command implements CommandExecutor {
         if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
             Inventory inv = Bukkit.createInventory(null, 45, "Help pro Survival");
 
-            ItemStack res = ItemFactory.create(Material.LOG, (byte) 2, "§a§lVytvoreni a prvni kroky s Residenci", "",
+            ItemStack res = ItemFactory.create(Material.OAK_LOG, (byte) 2, "§a§lVytvoreni a prvni kroky s Residenci", "",
                     "§6K vytvoreni residence budes potrebovat",
                     "§6drevenou motyku, najdes ji v kitu §c/kit tools",
                     "§6Jako dalsi krok oznac motykou dva body - pravym/levym.",

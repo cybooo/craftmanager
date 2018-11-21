@@ -27,10 +27,10 @@ public class BeaconCommand implements CommandExecutor, Listener {
                     Inventory inv = Bukkit.createInventory(null, InventoryType.DISPENSER, "Zvol si efekt");
 
                     inv.setItem(0, ItemFactory.create(Material.FEATHER, (byte)0, "§f§lSpeed"));
-                    inv.setItem(1, ItemFactory.create(Material.GOLD_PICKAXE, (byte)0, "§e§lHaste"));
+                    inv.setItem(1, ItemFactory.create(Material.GOLDEN_PICKAXE, (byte)0, "§e§lHaste"));
                     inv.setItem(2, ItemFactory.create(Material.IRON_BOOTS, (byte)0, "§a§lJump Boost"));
                     inv.setItem(3, ItemFactory.create(Material.BLAZE_POWDER, (byte)0, "§6§lFire Resistance"));
-                    inv.setItem(4, ItemFactory.create(Material.EYE_OF_ENDER, (byte)0, "§9§lNight Vision"));
+                    inv.setItem(4, ItemFactory.create(Material.ENDER_EYE, (byte)0, "§9§lNight Vision"));
                     inv.setItem(5, ItemFactory.create(Material.PRISMARINE_CRYSTALS, (byte)0, "§3§lWater Breathing"));
 
                     inv.setItem(7, ItemFactory.create(Material.BARRIER, (byte)0, "§c§lZrusit","§7Kliknutim deaktivujes."));

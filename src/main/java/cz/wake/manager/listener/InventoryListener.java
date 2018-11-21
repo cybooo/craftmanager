@@ -42,7 +42,7 @@ public class InventoryListener implements Listener {
                 MenuManager.openNavody(p);
             }
             if (e.getSlot() == 21) {
-                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
+                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
                 p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§7K hlasovani klikni na tento odkaz:");
@@ -128,7 +128,7 @@ public class InventoryListener implements Listener {
                 return;
             }
             if ((e.getSlot() == 12) || (e.getSlot() == 13) || (e.getSlot() == 14)) {
-                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
+                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
                 p.sendMessage("§6▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§eOdkaz na plny navod Residence:");
@@ -138,7 +138,7 @@ public class InventoryListener implements Listener {
                 p.closeInventory();
             }
             if (e.getSlot() == 20) {
-                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
+                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
                 p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§eOdkaz na podrobny navod o Custom Enchantech");
@@ -154,7 +154,7 @@ public class InventoryListener implements Listener {
                 MenuManager.openNavody(p);
             }
             if (e.getSlot() == 24) {
-                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
+                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
                 p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§7K hlasovani klikni na tento odkaz:");
@@ -164,7 +164,7 @@ public class InventoryListener implements Listener {
                 p.closeInventory();
             }
             if (e.getSlot() == 31) {
-                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
+                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
                 p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§eWeb: §7https://craftmania.cz");
@@ -190,7 +190,7 @@ public class InventoryListener implements Listener {
                 MenuManager.openNavody(p);
             }
             if ((e.getSlot() == 12) || (e.getSlot() == 13) || (e.getSlot() == 14)) {
-                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
+                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
                 p.sendMessage("§6▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§eOdkaz na plny navod Pozemky:");
@@ -203,7 +203,7 @@ public class InventoryListener implements Listener {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "chestcommands open example.yml " + p.getName());
             }
             if (e.getSlot() == 22) {
-                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
+                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
                 p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§7K hlasovani klikni na tento odkaz:");
@@ -213,7 +213,7 @@ public class InventoryListener implements Listener {
                 p.closeInventory();
             }
             if (e.getSlot() == 31) {
-                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
+                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
                 p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§eWeb: §7https://craftmania.cz");
@@ -239,7 +239,7 @@ public class InventoryListener implements Listener {
                 MenuManager.openNavody(p);
             }
             if (e.getSlot() == 24) {
-                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
+                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
                 p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§7K hlasovani klikni na tento odkaz:");
@@ -249,7 +249,7 @@ public class InventoryListener implements Listener {
                 p.closeInventory();
             }
             if (e.getSlot() == 31) {
-                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
+                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
                 p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§eWeb: §7https://craftmania.cz");
@@ -375,7 +375,7 @@ public class InventoryListener implements Listener {
                 profil.openMenu(p);
             }
             if (e.getSlot() == 36) {
-                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BASS, 13.0F, 1.0F);
+                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 13.0F, 1.0F);
                 p.sendMessage("");
                 p.sendMessage("§d▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");

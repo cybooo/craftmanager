@@ -139,8 +139,9 @@ public class ItemDB {
                 itemid = bMaterial.getId();
             } else {
                 try {
-                    Material bMaterial = Bukkit.getUnsafe().getMaterialFromInternalName(itemname.toLowerCase(Locale.ENGLISH));
-                    itemid = bMaterial.getId();
+                    //Material bMaterial = Bukkit.getUnsafe().getMaterialFromInternalName(itemname.toLowerCase(Locale.ENGLISH));
+                    //itemid = bMaterial.getId();
+                    itemid = 1; //TODO: Fix portu z 1.12
                 } catch (Throwable throwable) {
                 }
             }
@@ -150,7 +151,7 @@ public class ItemDB {
             //throw new Exception(tl("unknownItemName", itemname));
         }
 
-        final Material mat = Material.getMaterial(itemid);
+        final Material mat = Material.getMaterial(String.valueOf(itemid)); //TODO: Fix je to spatne! xD
         if (mat == null) {
             //throw new Exception(tl("unknownItemId", itemid));
         }

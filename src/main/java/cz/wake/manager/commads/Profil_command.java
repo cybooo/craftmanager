@@ -31,10 +31,10 @@ public class Profil_command implements CommandExecutor {
 
         Inventory menu = Bukkit.createInventory(null, 45, "Profil");
 
-        SkullMeta headItemMeta = (SkullMeta) Bukkit.getItemFactory().getItemMeta(Material.SKULL_ITEM);
+        SkullMeta headItemMeta = (SkullMeta) Bukkit.getItemFactory().getItemMeta(Material.LEGACY_SKULL_ITEM);
         headItemMeta.setOwner(p.getName());
         headItemMeta.setDisplayName("§cInformace o tobe");
-        ItemStack headItem = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+        ItemStack headItem = new ItemStack(Material.LEGACY_SKULL_ITEM, 1, (short) 3);
         ArrayList<String> headLore = new ArrayList<String>();
         headLore.add("§8Planovano...");
         headItemMeta.setLore(headLore);
@@ -44,7 +44,7 @@ public class Profil_command implements CommandExecutor {
 
         ItemStack achievements = ItemFactory.create(Material.BARRIER, (byte) 0, "§cAchievementy", "§8Planovano...");
 
-        ItemStack nastaveni = ItemFactory.create(Material.REDSTONE_COMPARATOR, (byte) 0, "§aNastaveni uctu", "§7Diky nastaveni si muzes", "§7prispusobit lobby/hry podle sebe.", "", "§eKlikni pro zobrazeni/nastaveni");
+        ItemStack nastaveni = ItemFactory.create(Material.LEGACY_REDSTONE_COMPARATOR, (byte) 0, "§aNastaveni uctu", "§7Diky nastaveni si muzes", "§7prispusobit lobby/hry podle sebe.", "", "§eKlikni pro zobrazeni/nastaveni");
 
         ItemStack multiplier = ItemFactory.create(Material.BARRIER, (byte) 0, "§cMultipliers", "§8Planovano...");
 

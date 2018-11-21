@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 
 group = 'cz.wake.manager'
-version = '1.2'
+version = '1.3-SNAPSHOT'
 
 description = """"""
 
@@ -35,10 +35,10 @@ repositories {
 dependencies {
 
     // Spigot
-    compileOnly ('org.spigotmc:spigot-api:1.12.1-R0.1-SNAPSHOT') {
+    compileOnly ('org.spigotmc:spigot-api:1.13-R0.1-SNAPSHOT') {
         exclude group: 'net.md-5'
     }
-    compileOnly name: 'spigot-1.12.1-R0.1-SNAPSHOT-b1393'
+    compileOnly name: 'spigot-1.13.1'
 
     // Others
     compile group: 'com.zaxxer', name: 'HikariCP', version:'2.7.4'

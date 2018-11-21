@@ -31,7 +31,7 @@ public class SkyblockPVPListener implements Listener {
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
             Block b = e.getClickedBlock();
             if (e.getClickedBlock().getType() == Material.SIGN
-                    || e.getClickedBlock().getType() == Material.SIGN_POST
+                    || e.getClickedBlock().getType() == Material.SIGN
                     || e.getClickedBlock().getType() == Material.WALL_SIGN) {
                 if (b.getLocation().equals(new Location(Bukkit.getWorld("pvp"), 452.0, 33.0, -700.0))) { //Teleport na spawn
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "spawn " + p.getName());
@@ -43,7 +43,7 @@ public class SkyblockPVPListener implements Listener {
                     } else if ((p.getInventory().contains(Material.GOLDEN_APPLE)) || (p.getInventory().getItemInOffHand().getType().equals(Material.GOLDEN_APPLE))) {
                         p.sendMessage("§cNelze vstoupit do PvP s Golden Apple!");
                         return;
-                    } else if ((p.getInventory().contains(Material.TOTEM)) || (p.getInventory().getItemInOffHand().getType().equals(Material.TOTEM))) {
+                    } else if ((p.getInventory().contains(Material.TOTEM_OF_UNDYING)) || (p.getInventory().getItemInOffHand().getType().equals(Material.TOTEM_OF_UNDYING))) {
                         p.sendMessage("§cNelze vstoupit do PvP s Totemem!");
                         return;
                     }

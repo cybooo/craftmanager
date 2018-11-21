@@ -15,7 +15,7 @@ public class SkyblockHeadFix implements Listener {
         Player p = e.getPlayer();
         Material m = e.getBlock().getType();
 
-        if (m != Material.SKULL_ITEM) {
+        if (m != Material.LEGACY_SKULL_ITEM) {
             return;
         }
 

@@ -39,7 +39,7 @@ public class TwerkEvent implements Listener {
                 for (int i = -radiusZ; i <= radiusZ; ++i) {
                     final Optional<Block> ofNullable = Optional.ofNullable(world.getBlockAt(blockX + n, blockY + n2, blockZ + i));
                     if (ofNullable.isPresent()) {
-                        if (ofNullable.get().getType() == Material.SAPLING) {
+                        if (ofNullable.get().getType() == Material.OAK_SAPLING) { //TODO: All types Material
                             empty = ofNullable;
                             break;
                         }
@@ -51,7 +51,8 @@ public class TwerkEvent implements Listener {
             return;
         }
         final Location location2 = ((Optional<Block>)empty).get().getLocation();
-        world.spigot().playEffect(location2.add(0.5, 0.5, 0.5), Effect.HAPPY_VILLAGER, 0, 0, 0.25f, 0.25f, 0.25f, 1.0f, 16, 16);
+        //TODO: Effects
+        //world.playEffect(location2.add(0.5, 0.5, 0.5), Effect.VILLAGER_PLANT_GROW, 0, 0, 0.25f, 0.25f, 0.25f, 1.0f, 16, 16);
 
         if (ExpUtil.getTotalExperience(player) - 15 < 0) {
             player.sendMessage("§cNemas dostatek expu!");
@@ -105,7 +106,7 @@ public class TwerkEvent implements Listener {
         }
         ((Optional<Block>)empty).get().setType(Material.AIR);
         if (!world.generateTree(location2, treeType)) {
-            world.getBlockAt(location2).setTypeIdAndData(type.getId(), data, false);
+            //TODO: world.getBlockAt(location2).setTypeIdAndData(type.getId(), data, false);
             ExpUtil.setTotalExperience(player, level);
         }
     }

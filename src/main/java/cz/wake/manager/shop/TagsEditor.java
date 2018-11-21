@@ -3,11 +3,11 @@ package cz.wake.manager.shop;
 import cz.craftmania.crafteconomy.api.CraftTokensAPI;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.AnvilContainer;
-import net.minecraft.server.v1_12_R1.EntityPlayer;
+import net.minecraft.server.v1_13_R2.EntityPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
-import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_13_R2.entity.CraftPlayer;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -41,7 +41,7 @@ public class TagsEditor implements Listener {
         p.sendMessage("");
         p.sendMessage("§cPokud chces kdykoliv opustit editor napis -> zavri menu");
         p.sendMessage("");
-        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BASS, 1.0f, 1.0f);
+        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1.0f, 1.0f);
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)

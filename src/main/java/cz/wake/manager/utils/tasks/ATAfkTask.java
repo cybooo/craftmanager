@@ -23,7 +23,7 @@ public class ATAfkTask implements Runnable {
                 if(Main.getInstance().at_afk.get(p) == 29){
                     p.sendTitle("§cZacni pracovat", "§cjinak te za minutu kicknu ze serveru.", 5, 20, 5);
                     p.sendMessage("§cZacni pracovat, jinak te za minutu kicknu ze serveru");
-                    p.playSound(p.getLocation(), Sound.ENTITY_ENDERDRAGON_AMBIENT, 10, 1);
+                    p.playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_AMBIENT, 10, 1);
                 }
 
                 // 30 minut

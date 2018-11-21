@@ -44,16 +44,16 @@ public class VIP_command implements CommandExecutor, Listener {
         ItemStack server_vip = ItemFactory.createHead("server_vip", "ea66bcbc-6c58-41b6-8f34-3f1f9cc2eb75", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2NhNDVlZjU4MjFhOGIxMDdjYmZiYTdkNjZlOTk3ZmI2YWJlNTUyMWMxNTVjZWUyZjI0YjM0YjNkOTFhNSJ9fX0=");
         server_vip = new ItemBuilder(server_vip).setName("§6Server VIP").setLore("§7VIP, ktere plati pouze na tomto serveru!").build();
 
-        SkullMeta headItemMeta = (SkullMeta) Bukkit.getItemFactory().getItemMeta(Material.SKULL_ITEM);
+        SkullMeta headItemMeta = (SkullMeta) Bukkit.getItemFactory().getItemMeta(Material.LEGACY_SKULL_ITEM);
         headItemMeta.setOwner(player.getName());
         headItemMeta.setDisplayName("§cTvoje VIP");
-        ItemStack headItem = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+        ItemStack headItem = new ItemStack(Material.LEGACY_SKULL_ITEM, 1, (short) 3);
         ArrayList<String> headLore = new ArrayList<String>();
         headLore.add("§8Planovano...");
         headItemMeta.setLore(headLore);
         headItem.setItemMeta(headItemMeta);
 
-        ItemStack filler = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short)15).setName("§f").hideAllFlags().build();
+        ItemStack filler = new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName("§f").hideAllFlags().build();
 
         ItemStack gold_vip = ItemFactory.createHead("gold_vip", "fdea850d-ae8b-4e10-8b03-6883494ae266", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTRiZjg5M2ZjNmRlZmFkMjE4Zjc4MzZlZmVmYmU2MzZmMWMyY2MxYmI2NTBjODJmY2NkOTlmMmMxZWU2In19fQ==");
         gold_vip = new ItemBuilder(gold_vip).setName("§6Golden").setLore("§7Nejnizsi VIP, ktere ale obsahuje", "§7mnoho vyhod, ktere urcite chces!", "", "§eKlikni pro zobrazeni vyhod").build();
@@ -100,8 +100,8 @@ public class VIP_command implements CommandExecutor, Listener {
         Inventory inventory = Bukkit.createInventory(null, 45, "[VIP] Golden VIP");
         String server = getCorrectNameOfServer();
 
-        ItemStack filler = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short)1).setName("§f").hideAllFlags().build();
-        ItemStack branch = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short)14).setName("§f").setName("§c<- Server §8| §a Global ->").hideAllFlags().build();
+        ItemStack filler = new ItemBuilder(Material.ORANGE_STAINED_GLASS_PANE).setName("§f").hideAllFlags().build();
+        ItemStack branch = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§f").setName("§c<- Server §8| §a Global ->").hideAllFlags().build();
 
         ItemStack back = new ItemBuilder(Material.ARROW).setName("§cZpet do menu").build();
         ItemStack nextVip = new ItemBuilder(Material.ARROW).setName("§bDiamond VIP ->").build();
@@ -204,8 +204,8 @@ public class VIP_command implements CommandExecutor, Listener {
         Inventory inventory = Bukkit.createInventory(null, 45, "[VIP] Diamond VIP");
         String server = getCorrectNameOfServer();
 
-        ItemStack filler = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short)3).setName("§f").hideAllFlags().build();
-        ItemStack branch = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short)14).setName("§f").setName("§c<- Server §8| §a Global ->").hideAllFlags().build();
+        ItemStack filler = new ItemBuilder(Material.LIGHT_BLUE_STAINED_GLASS_PANE).setName("§f").hideAllFlags().build();
+        ItemStack branch = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§f").setName("§c<- Server §8| §a Global ->").hideAllFlags().build();
 
         ItemStack back = new ItemBuilder(Material.ARROW).setName("§cZpet do menu").build();
         ItemStack nextVip = new ItemBuilder(Material.ARROW).setName("§aEmerald VIP ->").build();
@@ -314,8 +314,8 @@ public class VIP_command implements CommandExecutor, Listener {
         Inventory inventory = Bukkit.createInventory(null, 45, "[VIP] Emerald VIP");
         String server = getCorrectNameOfServer();
 
-        ItemStack filler = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short)5).setName("§f").hideAllFlags().build();
-        ItemStack branch = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short)14).setName("§f").setName("§c<- Server §8| §a Global ->").hideAllFlags().build();
+        ItemStack filler = new ItemBuilder(Material.LIME_STAINED_GLASS).setName("§f").hideAllFlags().build();
+        ItemStack branch = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§f").setName("§c<- Server §8| §a Global ->").hideAllFlags().build();
 
         ItemStack back = new ItemBuilder(Material.ARROW).setName("§cZpet do menu").build();
         ItemStack nextVip = new ItemBuilder(Material.ARROW).setName("§9Obsidian VIP ->").build();
@@ -421,8 +421,8 @@ public class VIP_command implements CommandExecutor, Listener {
         Inventory inventory = Bukkit.createInventory(null, 45, "[VIP] Obsidian VIP");
         String server = getCorrectNameOfServer();
 
-        ItemStack filler = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short)11).setName("§f").hideAllFlags().build();
-        ItemStack branch = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short)14).setName("§f").setName("§c<- Server §8| §a Global ->").hideAllFlags().build();
+        ItemStack filler = new ItemBuilder(Material.BLUE_STAINED_GLASS_PANE).setName("§f").hideAllFlags().build();
+        ItemStack branch = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§f").setName("§c<- Server §8| §a Global ->").hideAllFlags().build();
 
         ItemStack back = new ItemBuilder(Material.ARROW).setName("§cZpet do menu").build();
         //ItemStack nextVip = new ItemBuilder(Material.ARROW).setName("§9Obsidian VIP ->").build();

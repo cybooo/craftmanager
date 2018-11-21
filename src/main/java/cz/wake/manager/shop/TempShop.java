@@ -43,25 +43,25 @@ public class TempShop implements Listener {
                 return;
             }
             inv = Bukkit.createInventory(null, 45, "[S] Nakup za VoteTokeny");
-            nakup = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte) 5, "§a§lZakoupit", "§7Zakoupis za §e" + coin + " VT.");
+            nakup = ItemFactory.create(Material.LIME_STAINED_GLASS_PANE, (byte) 5, "§a§lZakoupit", "§7Zakoupis za §e" + coin + " VT.");
         } else if (types == MoneyType.CRAFTTOKEN) {
             if(!(CraftTokensAPI.getTokens(p) >= coins)) {
                 p.sendMessage("§cNedostatek tokenu k nakupu: §f" + coins + " CT");
                 return;
             }
             inv = Bukkit.createInventory(null, 45, "[S] Nakup za CraftTokeny");
-            nakup = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte) 5, "§a§lZakoupit", "§7Zakoupis za §e" + coin + " CT.");
+            nakup = ItemFactory.create(Material.LIME_STAINED_GLASS_PANE, (byte) 5, "§a§lZakoupit", "§7Zakoupis za §e" + coin + " CT.");
         } else {
             if(!(CraftCoinsAPI.getCoins(p) >= coins)){
                 p.sendMessage("§cNedostatek coinu k nakupu: §f" + coins + " CC");
                 return;
             }
             inv = Bukkit.createInventory(null, 45, "[S] Nakup za CraftCoiny");
-            nakup = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte) 5, "§a§lZakoupit", "§7Zakoupis za §e" + coin + " CC.");
+            nakup = ItemFactory.create(Material.LIME_STAINED_GLASS_PANE, (byte) 5, "§a§lZakoupit", "§7Zakoupis za §e" + coin + " CC.");
         }
 
         inv.setItem(13, item);
-        ItemStack zamitnout = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte) 14, "§c§lZrusit", "§7Zpet do menu");
+        ItemStack zamitnout = ItemFactory.create(Material.RED_STAINED_GLASS_PANE, (byte) 14, "§c§lZrusit", "§7Zpet do menu");
 
         inv.setItem(30, nakup);
         inv.setItem(32, zamitnout);

@@ -19,8 +19,8 @@ public class SettingsListener implements Listener {
     private Profil_command profil = new Profil_command();
 
     public void openSettingsMenu(final Player p, final int page) {
-        ItemStack enabled = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte) 5, "§a§lZapnuto");
-        ItemStack disabled = ItemFactory.create(Material.STAINED_GLASS_PANE, (byte) 14, "§c§lVypnuto");
+        ItemStack enabled = ItemFactory.create(Material.LIME_STAINED_GLASS_PANE, (byte) 5, "§a§lZapnuto");
+        ItemStack disabled = ItemFactory.create(Material.RED_STAINED_GLASS_PANE, (byte) 14, "§c§lVypnuto");
         ItemStack nedostupne = ItemFactory.create(Material.BARRIER, (byte) 0, "§c§lNedostupne");
         ItemStack pouzeLobby = ItemFactory.create(Material.BARRIER, (byte) 0, "§c§lNastavit lze pouze na lobby");
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§eZpet");
@@ -31,13 +31,13 @@ public class SettingsListener implements Listener {
 
             Inventory inv = Bukkit.createInventory(null, 45, "Osobni nastaveni (Strana 1/2)");
 
-            ItemStack player = ItemFactory.create(Material.WATCH, (byte) 0, "§e§lViditelnost hracu", "§7Nastavuje zobrazeni", "§7hracu na lobby.");
+            ItemStack player = ItemFactory.create(Material.CLOCK, (byte) 0, "§e§lViditelnost hracu", "§7Nastavuje zobrazeni", "§7hracu na lobby.");
             ItemStack pets = ItemFactory.create(Material.BONE, (byte) 0, "§e§lViditelnost pets", "§7Nastavuje zobrazeni", "§7pets na lobby.");
             ItemStack part = ItemFactory.create(Material.REDSTONE, (byte) 0, "§e§lParticles", "§7Viditelnost efektu", "", "§cDocasne nefunguje na vsechny!");
             ItemStack fly = ItemFactory.create(Material.ELYTRA, (byte) 0, "§e§lFly", "§7Nastavuje FLY na lobby serverech.", "§7Fly dostanes pri kazdem",
                     "§7vstupu na lobby", "", "§cVyzaduje Global VIP!");
-            ItemStack gadgets = ItemFactory.create(Material.PISTON_BASE, (byte) 0, "§e§lGadgets", "§7Nastavuje zda na tebe", "§7budou fungovat gadget lobby.");
-            ItemStack speed = ItemFactory.create(Material.GOLD_BOOTS, (byte) 0, "§e§lSpeed", "§7Povoluje rychlost chozeni", "§7na lobby.");
+            ItemStack gadgets = ItemFactory.create(Material.PISTON, (byte) 0, "§e§lGadgets", "§7Nastavuje zda na tebe", "§7budou fungovat gadget lobby.");
+            ItemStack speed = ItemFactory.create(Material.GOLDEN_BOOTS, (byte) 0, "§e§lSpeed", "§7Povoluje rychlost chozeni", "§7na lobby.");
             ItemStack novinky = ItemFactory.create(Material.MAP, (byte) 0, "§e§lReklama", "§7Nastavuje zobrazovani reklamy", "§7na VIP na MiniGames.", "", "§cVyzaduje MiniGames VIP!");
             ItemStack deathMessages = ItemFactory.create(Material.BLAZE_POWDER, (byte) 0, "§e§lDeath zpravy", "§7Nastavuje zobrazeni smrti", "§7hracu.", "", "§cFunguje pouze na Survival serverech");
             ItemStack notify = ItemFactory.create(Material.JUKEBOX, (byte) 0, "§e§lOznameni o oznaceni", "§7Pokud te nekdo oznaci", "§7v chatu, server te", "§7upozorni cinknutim.", "",
@@ -101,7 +101,7 @@ public class SettingsListener implements Listener {
         } else if (page == 2) {
             Inventory inv = Bukkit.createInventory(null, 45, "Osobni nastaveni (Strana 2/2)");
 
-            ItemStack disableChat = ItemFactory.create(Material.BOOK_AND_QUILL, (byte) 0, "§e§lVypnuti zprav v chatu", "§7Nebudes dostavat", "§7zpravy v chatu.");
+            ItemStack disableChat = ItemFactory.create(Material.LEGACY_BOOK_AND_QUILL, (byte) 0, "§e§lVypnuti zprav v chatu", "§7Nebudes dostavat", "§7zpravy v chatu.");
 
             inv.setItem(9, disableChat);
 
@@ -122,7 +122,7 @@ public class SettingsListener implements Listener {
     public void openSoundsMenu(final Player p) {
         Inventory inv = Bukkit.createInventory(null, 27, "Nastaveni zvuku");
 
-        ItemStack experience = ItemFactory.create(Material.EXP_BOTTLE, (byte) 0, "§e§lEXP ORB PICKUP", "§f", "§7Tento zvuk slysis, kdyz", "§7seberes EXP orb.");
+        ItemStack experience = ItemFactory.create(Material.EXPERIENCE_BOTTLE, (byte) 0, "§e§lEXP ORB PICKUP", "§f", "§7Tento zvuk slysis, kdyz", "§7seberes EXP orb.");
         inv.setItem(11, experience); // ENTITY_EXPERIENCE_ORB_PICKUP
 
         ItemStack anvil = ItemFactory.create(Material.ANVIL, (byte) 0, "§e§lANVIL FALL", "§f", "§7Tento zvuk slysis, kdyz", "§7kdyz anvilka dopadne na zem.");

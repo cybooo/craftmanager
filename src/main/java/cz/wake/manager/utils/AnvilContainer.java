@@ -1,8 +1,8 @@
 package cz.wake.manager.utils;
 
-import net.minecraft.server.v1_12_R1.*;
+import net.minecraft.server.v1_13_R2.*;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_13_R2.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;

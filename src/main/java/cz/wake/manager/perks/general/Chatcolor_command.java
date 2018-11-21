@@ -55,20 +55,20 @@ public class Chatcolor_command implements CommandExecutor {
     private void openColorMenu(Player p) {
         Inventory inv = Bukkit.createInventory(null, 45, "Zmena barvy psani");
 
-        ItemStack darkRed = ItemFactory.create(Material.NETHER_STALK, (byte) 0, "§4§lTmave cervana");
-        ItemStack red = ItemFactory.create(Material.INK_SACK, (byte) 1, "§c§lCervena");
-        ItemStack darkBlue = ItemFactory.create(Material.INK_SACK, (byte) 4, "§1§lTmave modra");
-        ItemStack lightBlue = ItemFactory.create(Material.INK_SACK, (byte) 12, "§b§lSvetle modra");
-        ItemStack cyan = ItemFactory.create(Material.INK_SACK, (byte) 6, "§3§lTyrkysova");
+        ItemStack darkRed = ItemFactory.create(Material.LEGACY_NETHER_STALK, (byte) 0, "§4§lTmave cervana");
+        ItemStack red = ItemFactory.create(Material.RED_TULIP, (byte) 1, "§c§lCervena");
+        ItemStack darkBlue = ItemFactory.create(Material.LAPIS_LAZULI, (byte) 4, "§1§lTmave modra");
+        ItemStack lightBlue = ItemFactory.create(Material.LIGHT_BLUE_DYE, (byte) 12, "§b§lSvetle modra");
+        ItemStack cyan = ItemFactory.create(Material.CYAN_DYE, (byte) 6, "§3§lTyrkysova");
         ItemStack gold = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§6§lZlata");
-        ItemStack purple = ItemFactory.create(Material.INK_SACK, (byte) 5, "§5§lFialova");
-        ItemStack white = ItemFactory.create(Material.INK_SACK, (byte) 15, "§f§lBila");
-        ItemStack darkGreen = ItemFactory.create(Material.INK_SACK, (byte) 2, "§2§lTmave zelena");
-        ItemStack green = ItemFactory.create(Material.INK_SACK, (byte) 10, "§a§lZelena");
-        ItemStack gray = ItemFactory.create(Material.INK_SACK, (byte) 7, "§7§lSvetle seda");
-        ItemStack darkGray = ItemFactory.create(Material.INK_SACK, (byte) 8, "§8§lTmave seda");
+        ItemStack purple = ItemFactory.create(Material.PURPLE_DYE, (byte) 5, "§5§lFialova");
+        ItemStack white = ItemFactory.create(Material.BONE_MEAL, (byte) 15, "§f§lBila");
+        ItemStack darkGreen = ItemFactory.create(Material.CACTUS_GREEN, (byte) 2, "§2§lTmave zelena");
+        ItemStack green = ItemFactory.create(Material.LIME_DYE, (byte) 10, "§a§lZelena");
+        ItemStack gray = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 7, "§7§lSvetle seda");
+        ItemStack darkGray = ItemFactory.create(Material.GRAY_DYE, (byte) 8, "§8§lTmave seda");
         ItemStack blue = ItemFactory.create(Material.DRAGON_EGG, (byte) 0, "§9§lModra");
-        ItemStack pink = ItemFactory.create(Material.INK_SACK, (byte) 9, "§d§lRuzova");
+        ItemStack pink = ItemFactory.create(Material.PINK_DYE, (byte) 9, "§d§lRuzova");
 
         ItemStack deaktivace = ItemFactory.create(Material.BARRIER, (byte) 0, "§cDeaktivace");
 

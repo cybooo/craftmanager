@@ -13,7 +13,7 @@ public class Vote_command implements CommandExecutor {
         if (Sender instanceof Player) {
             Player p = (Player) Sender;
             if ((Command.getName().equalsIgnoreCase("vote"))) {
-                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
+                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
                 p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§7K hlasovani klikni na tento odkaz:");

@@ -29,7 +29,7 @@ public class ShopAPI implements Listener {
                 || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
             Inventory inv = Bukkit.createInventory(null, 54, "§0Coinshop [Beta]");
 
-            ItemStack head = new ItemBuilder(Material.SKULL_ITEM, (short) 3)
+            ItemStack head = new ItemBuilder(Material.LEGACY_SKULL_ITEM, (short) 3)
                     .setName("§bTvoje bohatstvi").setLore("§7CraftCoins: §f" + CraftCoinsAPI.getCoins(p) + " CC", "§7CraftTokens: §f" + CraftTokensAPI.getTokens(p) + " CT", "§7VoteTokens: §f" + VoteTokensAPI.getVoteTokens(p) + " VT", "", "§eKliknutim zobrazis vysvetleni").setSkullOwner(p.getName()).build();
             inv.setItem(1, head);
 
@@ -37,19 +37,19 @@ public class ShopAPI implements Listener {
                     .setName("§bLog uctu").setLore("§7Pripravujeme...").build();
             inv.setItem(2, log);
 
-            ItemStack vyber_survival = new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 14)
+            ItemStack vyber_survival = new ItemBuilder(Material.RED_STAINED_GLASS_PANE)
                     .setName("§cSurvival").setLore("§7Server v tomto menu", "§7nelze zvolit.").build();
 
-            ItemStack vyber_skyblock = new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 14)
+            ItemStack vyber_skyblock = new ItemBuilder(Material.RED_STAINED_GLASS_PANE)
                     .setName("§cSkyblock").setLore("§7Server v tomto menu", "§7nelze zvolit.").build();
 
-            ItemStack vyber_creative = new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 14)
+            ItemStack vyber_creative = new ItemBuilder(Material.RED_STAINED_GLASS_PANE)
                     .setName("§cCreative").setLore("§7Server v tomto menu", "§7nelze zvolit.").build();
 
-            ItemStack vyber_prison = new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 14)
+            ItemStack vyber_prison = new ItemBuilder(Material.RED_STAINED_GLASS_PANE)
                     .setName("§cPrison").setLore("§7Server v tomto menu", "§7nelze zvolit.").build();
 
-            ItemStack footer = new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 15).setName("§c").build();
+            ItemStack footer = new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName("§c").build();
             inv.setItem(53, footer);
             inv.setItem(52, footer);
             inv.setItem(51, footer);
@@ -123,7 +123,7 @@ public class ShopAPI implements Listener {
         this.setupTag(p, "deluxetags.tag.oksoud", "OkSoud", inv, 35, 1000);
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
-        ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
+        ItemStack hlavni = ItemFactory.create(Material.ENDER_EYE, (byte) 0, "§aHlavni menu");
         ItemStack dalsi = ItemFactory.create(Material.ARROW, (byte) 0, "§cDalsi stranka");
 
         inv.setItem(39, zpet);
@@ -173,7 +173,7 @@ public class ShopAPI implements Listener {
         this.setupTag(p, "deluxetags.tag.craftmaniak", "CraftManiak", inv, 35, 1500);
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
-        ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
+        ItemStack hlavni = ItemFactory.create(Material.ENDER_EYE, (byte) 0, "§aHlavni menu");
         ItemStack dalsi = ItemFactory.create(Material.ARROW, (byte) 0, "§cDalsi stranka");
 
         inv.setItem(39, zpet);
@@ -224,7 +224,7 @@ public class ShopAPI implements Listener {
         this.setupTag(p, "deluxetags.tag.jachcumoney", "JaChcuMoney", inv, 35, 600);
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
-        ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
+        ItemStack hlavni = ItemFactory.create(Material.ENDER_EYE, (byte) 0, "§aHlavni menu");
         ItemStack dalsi = ItemFactory.create(Material.ARROW, (byte) 0, "§cDalsi stranka");
 
         inv.setItem(39, zpet);
@@ -275,7 +275,7 @@ public class ShopAPI implements Listener {
         this.setupTag(p, "deluxetags.tag.autista", "Autista", inv, 35, 1000);
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
-        ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
+        ItemStack hlavni = ItemFactory.create(Material.ENDER_EYE, (byte) 0, "§aHlavni menu");
         ItemStack dalsi = ItemFactory.create(Material.ARROW, (byte) 0, "§cDalsi stranka");
 
         inv.setItem(39, zpet);
@@ -294,7 +294,7 @@ public class ShopAPI implements Listener {
         this.setupTag(p, "deluxetags.tag.neasi", "Neasi", inv, 4, 700);
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
-        ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
+        ItemStack hlavni = ItemFactory.create(Material.ENDER_EYE, (byte) 0, "§aHlavni menu");
 
         inv.setItem(39, zpet);
         inv.setItem(40, hlavni);
@@ -306,11 +306,11 @@ public class ShopAPI implements Listener {
         Inventory inv = Bukkit.createInventory(null, 45, "§0Prava za CraftCoins");
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
-        ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
+        ItemStack hlavni = ItemFactory.create(Material.ENDER_EYE, (byte) 0, "§aHlavni menu");
 
         if(!p.hasPermission("residence.group.bonus1")) { //Residence 200x200
             if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
-                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cResidence 200x200")
+                ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§cResidence 200x200")
                         .setLore("§7Nelze zakoupit na tomto serveru.").build();
                 inv.setItem(0, nedostupny);
                 return;
@@ -320,7 +320,7 @@ public class ShopAPI implements Listener {
                         .setLore("§7Vsechny tve residence", "§7budes moct nastavit na","§7velikost 200x200.", "", "§7Cena: §f5000 CC").build();
                 inv.setItem(0, item);
             } else {
-                ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§7Residence 200x200")
+                ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§7Residence 200x200")
                         .setLore("§cNedostatek CraftCoinu!", "§7Potrebujes: §f5000 CC").build();
                 inv.setItem(0, noMoney);
             }
@@ -332,7 +332,7 @@ public class ShopAPI implements Listener {
 
         if(!p.hasPermission("residence.group.bonus2")) { //Residence 300x300
             if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
-                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cResidence 300x300")
+                ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§cResidence 300x300")
                         .setLore("§7Nelze zakoupit na tomto serveru.").build();
                 inv.setItem(1, nedostupny);
                 return;
@@ -342,7 +342,7 @@ public class ShopAPI implements Listener {
                         .setLore("§7Vsechny tve residence", "§7budes moct nastavit na","§7velikost 300x300.", "", "§7Cena: §f15000 CC").build();
                 inv.setItem(1, item);
             } else {
-                ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§7Residence 300x300")
+                ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§7Residence 300x300")
                         .setLore("§cNedostatek CraftCoinu!", "§7Potrebujes: §f15000 CC").build();
                 inv.setItem(1, noMoney);
             }
@@ -363,34 +363,34 @@ public class ShopAPI implements Listener {
         long voteTokens = VoteTokensAPI.getVoteTokens(p);
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
-        ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
+        ItemStack hlavni = ItemFactory.create(Material.ENDER_EYE, (byte) 0, "§aHlavni menu");
 
         if (voteTokens >= 1) {
             if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
-                ItemStack voteCrate = new ItemBuilder(Material.PISTON_BASE).setName("§a1x VoteCrate").setLore("§7Cena: §f1 VT").build();
+                ItemStack voteCrate = new ItemBuilder(Material.PISTON).setName("§a1x VoteCrate").setLore("§7Cena: §f1 VT").build();
                 inv.setItem(0, voteCrate);
             } else {
-                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§c1x VoteCrate")
+                ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§c1x VoteCrate")
                         .setLore("§7Nelze zakoupit na tomto serveru.").build();
                 inv.setItem(0, nedostupny);
             }
         } else {
-            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§81x VoteCreate")
+            ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§81x VoteCreate")
                     .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f1 VT").build();
             inv.setItem(0, noMoney);
         }
 
         if (voteTokens >= 1) {
             if (Main.getInstance().getIdServer().equalsIgnoreCase("creative")) {
-                ItemStack item = new ItemBuilder(Material.WOOD_AXE).setName("§aWorldEdit (1h)").setLore("§7Cena: §f1 VT").build();
+                ItemStack item = new ItemBuilder(Material.WOODEN_AXE).setName("§aWorldEdit (1h)").setLore("§7Cena: §f1 VT").build();
                 inv.setItem(1, item);
             } else {
-                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cWorldEdit (1h)")
+                ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§cWorldEdit (1h)")
                         .setLore("§7Nelze zakoupit na tomto serveru.").hideAllFlags().build();
                 inv.setItem(1, nedostupny);
             }
         } else {
-            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§8WorldEdit (1h)")
+            ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§8WorldEdit (1h)")
                     .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f1 VT").build();
             inv.setItem(1, noMoney);
         }
@@ -399,37 +399,37 @@ public class ShopAPI implements Listener {
             ItemStack item = new ItemBuilder(Material.GOLD_INGOT).setName("§630 CraftCoins").setLore("§7Cena: §f1 VT").build();
             inv.setItem(2, item);
         } else {
-            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§830 CraftCoins")
+            ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§830 CraftCoins")
                     .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f1 VT").build();
             inv.setItem(2, noMoney);
         }
 
         if (voteTokens >= 3) {
             if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
-                ItemStack headCreate = new ItemBuilder(Material.PISTON_BASE).setName("§d1x HeadCrate").setLore("§7Cena: §f3 VT").build();
+                ItemStack headCreate = new ItemBuilder(Material.PISTON).setName("§d1x HeadCrate").setLore("§7Cena: §f3 VT").build();
                 inv.setItem(3, headCreate);
             } else {
-                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§c1x HeadCrate")
+                ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§c1x HeadCrate")
                         .setLore("§7Nelze zakoupit na tomto serveru.").build();
                 inv.setItem(3, nedostupny);
             }
         } else {
-            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§81x HeadCrate")
+            ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§81x HeadCrate")
                     .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f3 VT").build();
             inv.setItem(3, noMoney);
         }
 
         if (voteTokens >= 5) {
             if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
-                ItemStack headCreate = new ItemBuilder(Material.PISTON_BASE).setName("§91x EpicCrate").setLore("§7Cena: §f5 VT").build();
+                ItemStack headCreate = new ItemBuilder(Material.PISTON).setName("§91x EpicCrate").setLore("§7Cena: §f5 VT").build();
                 inv.setItem(4, headCreate);
             } else {
-                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§c1x EpicCrate")
+                ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§c1x EpicCrate")
                         .setLore("§7Nelze zakoupit na tomto serveru.").build();
                 inv.setItem(4, nedostupny);
             }
         } else {
-            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§81x EpicCrate")
+            ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§81x EpicCrate")
                     .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f5 VT").build();
             inv.setItem(4, noMoney);
         }
@@ -439,12 +439,12 @@ public class ShopAPI implements Listener {
                 ItemStack item = new ItemBuilder(Material.ELYTRA).setName("§aFly na vlastnim ostrove (1h)").setLore("§7Cena: §f3 VT").hideAllFlags().build();
                 inv.setItem(5, item);
             } else {
-                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cFly na vlastnim ostrove (1h)")
+                ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§cFly na vlastnim ostrove (1h)")
                         .setLore("§7Nelze zakoupit na tomto serveru.").build();
                 inv.setItem(5, nedostupny);
             }
         } else {
-            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§8Fly na vlastnim ostrove (1h)")
+            ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§8Fly na vlastnim ostrove (1h)")
                     .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f3 VT").build();
             inv.setItem(5, noMoney);
         }
@@ -1195,7 +1195,7 @@ public class ShopAPI implements Listener {
             ItemStack tag = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§e" + name, "§7Tento tag jiz vlastnis.");
             inv.setItem(slot, tag);
         } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte) 8, "§b" + name, checkerCoins(p, price));
+            ItemStack i = ItemFactory.create(Material.INK_SAC, (byte) 8, "§b" + name, checkerCoins(p, price));
             inv.setItem(slot, i);
         }
     }

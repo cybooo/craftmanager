@@ -35,7 +35,7 @@ public class DurabilityWarner implements Listener {
             return "Diamond Axe";
         } else if (m == Material.DIAMOND_SWORD) {
             return "Diamond Sword";
-        } else if (m == Material.DIAMOND_SPADE) {
+        } else if (m == Material.DIAMOND_SHOVEL) {
             return "Diamond Spade";
         } else if (m == Material.DIAMOND_PICKAXE) {
             return "Diamond Pickaxe";
@@ -47,7 +47,7 @@ public class DurabilityWarner implements Listener {
             return "Diamond Leggings";
         } else if (m == Material.DIAMOND_BOOTS) {
             return "Diamond Boots";
-        } else if (m == Material.IRON_SPADE) {
+        } else if (m == Material.IRON_SHOVEL) {
             return "Iron Spade";
         } else if (m == Material.IRON_SWORD) {
             return "Iron Sword";

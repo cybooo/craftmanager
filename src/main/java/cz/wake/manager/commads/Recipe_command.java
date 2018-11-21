@@ -64,11 +64,11 @@ public class Recipe_command implements CommandExecutor {
         } else if (selectedRecipe instanceof ShapedRecipe) {
             shapedRecipe(commandSender, (ShapedRecipe) selectedRecipe, true);
         } else if (selectedRecipe instanceof ShapelessRecipe) {
-            if (recipesOfType.size() == 1 && itemType.getType() == Material.FIREWORK) {
+            if (recipesOfType.size() == 1 && itemType.getType() == Material.FIREWORK_ROCKET) {
                 ShapelessRecipe shapelessRecipe = new ShapelessRecipe(itemType);
-                shapelessRecipe.addIngredient(Material.SULPHUR);
+                shapelessRecipe.addIngredient(Material.LEGACY_SULPHUR);
                 shapelessRecipe.addIngredient(Material.PAPER);
-                shapelessRecipe.addIngredient(Material.FIREWORK_CHARGE);
+                shapelessRecipe.addIngredient(Material.LEGACY_FIREWORK_CHARGE);
                 shapelessRecipe(commandSender, shapelessRecipe, true);
             } else {
                 shapelessRecipe(commandSender, (ShapelessRecipe) selectedRecipe, true);

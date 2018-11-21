@@ -47,7 +47,7 @@ public class ParticlesAPI implements Listener {
                 inv.setItem(10, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte) 8, "§cHearts", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cHearts", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(10, i);
         }
         if (p.hasPermission("craftmanager.particles.angry")) {
@@ -60,7 +60,7 @@ public class ParticlesAPI implements Listener {
                 inv.setItem(11, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte) 8, "§cAngry", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cAngry", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(11, i);
         }
         if (p.hasPermission("craftmanager.particles.whitemagic")) {
@@ -73,7 +73,7 @@ public class ParticlesAPI implements Listener {
                 inv.setItem(12, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte) 8, "§cWhite Magic", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cWhite Magic", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(12, i);
         }
         if (p.hasPermission("craftmanager.particles.witchmagic")) {
@@ -86,7 +86,7 @@ public class ParticlesAPI implements Listener {
                 inv.setItem(13, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte) 8, "§cWitch Magic", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cWitch Magic", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(13, i);
         }
         if (p.hasPermission("craftmanager.particles.slime")) {
@@ -99,20 +99,20 @@ public class ParticlesAPI implements Listener {
                 inv.setItem(14, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte) 8, "§cSlime", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cSlime", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(14, i);
         }
         if (p.hasPermission("craftmanager.particles.snowball")) {
             if (Snowball.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.SNOW_BALL, (byte) 0, "§eSnow", "§7Kliknutim deaktivujes!");
+                ItemStack i = ItemFactory.create(Material.SNOWBALL, (byte) 0, "§eSnow", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(15, i);
             } else {
-                ItemStack i = ItemFactory.create(Material.SNOW_BALL, (byte) 0, "§eSnow", "§7Kliknutim aktivujes!");
+                ItemStack i = ItemFactory.create(Material.SNOWBALL, (byte) 0, "§eSnow", "§7Kliknutim aktivujes!");
                 inv.setItem(15, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte) 8, "§cSnow", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cSnow", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(15, i);
         }
         if (p.hasPermission("craftmanager.particles.flame")) {
@@ -125,7 +125,7 @@ public class ParticlesAPI implements Listener {
                 inv.setItem(16, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte) 8, "§cFlame", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cFlame", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(16, i);
         }
         if (p.hasPermission("craftmanager.particles.redstone")) {
@@ -138,7 +138,7 @@ public class ParticlesAPI implements Listener {
                 inv.setItem(19, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte) 8, "§cRedstone", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cRedstone", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(19, i);
         }
         if (p.hasPermission("craftmanager.particles.cloud")) {
@@ -151,7 +151,7 @@ public class ParticlesAPI implements Listener {
                 inv.setItem(20, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte) 8, "§cCloud", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cCloud", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(20, i);
         }
         if (p.hasPermission("craftmanager.particles.enchanted")) {
@@ -164,7 +164,7 @@ public class ParticlesAPI implements Listener {
                 inv.setItem(21, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte) 8, "§cEnchanted", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cEnchanted", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(21, i);
         }
         if (p.hasPermission("craftmanager.particles.endrod")) {
@@ -177,33 +177,33 @@ public class ParticlesAPI implements Listener {
                 inv.setItem(22, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte) 8, "§cEnd Rod", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cEnd Rod", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(22, i);
         }
         if (p.hasPermission("craftmanager.particles.firework")) {
             if (Firework.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.FIREWORK, (byte) 0, "§eFirework", "§7Kliknutim deaktivujes!");
+                ItemStack i = ItemFactory.create(Material.FIREWORK_ROCKET, (byte) 0, "§eFirework", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(23, i);
             } else {
-                ItemStack i = ItemFactory.create(Material.FIREWORK, (byte) 0, "§eFirework", "§7Kliknutim aktivujes!");
+                ItemStack i = ItemFactory.create(Material.FIREWORK_ROCKET, (byte) 0, "§eFirework", "§7Kliknutim aktivujes!");
                 inv.setItem(23, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte) 8, "§cFirework", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cFirework", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(23, i);
         }
         if (p.hasPermission("craftmanager.particles.dragonbreath")) {
             if (DragonBreath.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.DRAGONS_BREATH, (byte) 0, "§eDragonBreath", "§7Kliknutim deaktivujes!");
+                ItemStack i = ItemFactory.create(Material.DRAGON_BREATH, (byte) 0, "§eDragonBreath", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(24, i);
             } else {
-                ItemStack i = ItemFactory.create(Material.DRAGONS_BREATH, (byte) 0, "§eDragonBreath", "§7Kliknutim aktivujes!");
+                ItemStack i = ItemFactory.create(Material.DRAGON_BREATH, (byte) 0, "§eDragonBreath", "§7Kliknutim aktivujes!");
                 inv.setItem(24, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte) 8, "§cDragonBreath", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cDragonBreath", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(24, i);
         }
         if (p.hasPermission("craftmanager.particles.portal")) {
@@ -216,7 +216,7 @@ public class ParticlesAPI implements Listener {
                 inv.setItem(25, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte) 8, "§cPortal", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cPortal", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(25, i);
         }
         if (p.hasPermission("craftmanager.particles.lava")) {
@@ -229,7 +229,7 @@ public class ParticlesAPI implements Listener {
                 inv.setItem(28, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte) 8, "§cLava", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cLava", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(28, i);
         }
         if (p.hasPermission("craftmanager.particles.smoke")) {
@@ -242,7 +242,7 @@ public class ParticlesAPI implements Listener {
                 inv.setItem(29, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte) 8, "§cSmoke", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cSmoke", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(29, i);
         }
         if (p.hasPermission("craftmanager.particles.happy")) {
@@ -255,7 +255,7 @@ public class ParticlesAPI implements Listener {
                 inv.setItem(30, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte) 8, "§cHappy", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cHappy", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(30, i);
         }
         if (p.hasPermission("craftmanager.particles.blackhearts")) {
@@ -268,7 +268,7 @@ public class ParticlesAPI implements Listener {
                 inv.setItem(31, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte) 8, "§cBlackHearts", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cBlackHearts", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(31, i);
         }
         if (p.hasPermission("craftmanager.particles.void")) {
@@ -281,7 +281,7 @@ public class ParticlesAPI implements Listener {
                 inv.setItem(32, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte) 8, "§cVoid", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cVoid", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(32, i);
         }
 
