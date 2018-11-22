@@ -329,6 +329,7 @@ public class VIP_command implements CommandExecutor, Listener {
         server_vyhody.add("");
         server_vyhody.add("§7Oproti Diamond VIP ziskas navic:");
         server_vyhody.add("§e· §fGlowing Items - svitici itemy?! OK §a/gi");
+        server_vyhody.add("§e· §fKopani spawneru s Silktouchem!");
         server_vyhody.add("§e· §fStickers - obrazek jako mapa §a/ps");
         server_vyhody.add("§e· §fFireworkBuilder - vytvareni ohnostroju §a/fwc");
         server_vyhody.add("§e· §fVlastni warpy - vytvor si vlastni warp pro sebe");
@@ -359,6 +360,7 @@ public class VIP_command implements CommandExecutor, Listener {
         global_vyhody.add("§7Oproti Diamond VIP ziskas navic:");
         global_vyhody.add("§e· §fGlowing Items - svitici itemy?! OK §a/gi");
         global_vyhody.add("§e· §fStickers - obrazek jako mapa §a/ps");
+        global_vyhody.add("§e· §fKopani spawneru s Silktouchem!");
         global_vyhody.add("§e· §fFireworkBuilder - vytvareni ohnostroju §a/fwc");
         global_vyhody.add("§e· §fVlastni warpy - vytvor si vlastni warp pro sebe");
         global_vyhody.add("§fnebo pro vsechny hrace na serveru! §a/warps");
