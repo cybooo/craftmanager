@@ -26,7 +26,7 @@ public class GlowItemCommand implements CommandExecutor {
                     return true;
                 }
 
-                if (item.getType() == Material.ENCHANTED_GOLDEN_APPLE) {
+                if (item.isSimilar(new ItemStack(Material.GOLDEN_APPLE, 1, (short)1))) {
                     player.sendMessage("§cNa tento item nelze pouzit prikaz /gi");
                     return true;
                 }
