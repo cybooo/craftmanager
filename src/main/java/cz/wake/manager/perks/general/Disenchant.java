@@ -35,6 +35,14 @@ public class Disenchant implements CommandExecutor {
                         int finalPriceLvls = 0;
                         finalPriceLvls += enchantments.values().size() * 5;
 
+                        // Kontrola Glowing items
+                        if (itemInHand.getEnchantments().containsKey(Enchantment.DURABILITY)) {
+                            if (itemInHand.getEnchantments().get(Enchantment.DURABILITY) == 0) {
+                                player.sendMessage("§cNelze pouzit Disenchant na item, ktery ma na sobe Glowing.");
+                                return true;
+                            }
+                        }
+
                         // Ziskani enchantu
                         if (Main.getInstance().isCustomDisenchantEnabled()) {
                             customEnchants = AEAPI.getEnchantmentsOnItem(itemInHand);
