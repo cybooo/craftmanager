@@ -19,6 +19,7 @@ public class GlowItemCommand implements CommandExecutor {
             if (args.length == 0) {
                 if(!player.hasPermission("craftmanager.vip.glowingitems")) {
                     player.sendMessage("§cNedostatecna prava, na toto musis mit VIP. §f/vip");
+                    return true;
                 }
                 ItemStack item = player.getInventory().getItemInMainHand();
                 if(item == null) {
