@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
  */
 public class NoDropListener implements Listener {
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onPlayerDie(final PlayerDeathEvent e) {
         final Player p = e.getEntity();
         if (Main.getInstance().getDontDropWorlds().contains(p.getWorld().getName())) {
