@@ -120,10 +120,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         } else {
             Log.withPrefix(ChatColor.RED + "Tablist ranky a synchronizace je vypnuta!");
         }
-        if (getIdServer().equalsIgnoreCase("skyblock")) {
-            getServer().getScheduler().scheduleSyncRepeatingTask(this, new CheckFlyTask(), 0, 100L);
-            Log.withPrefix("Aktivace CheckFly tasku");
-        }
 
         // Nastaveni DurabilityWarner
         for (String s : getConfig().getStringList("materials")) {
