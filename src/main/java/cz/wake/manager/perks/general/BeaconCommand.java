@@ -37,7 +37,7 @@ public class BeaconCommand implements CommandExecutor, Listener {
 
                     player.openInventory(inv);
                 } else {
-                    player.sendMessage("§cK ziskani pristupu potrebujes mit aktivni Hero dodatek.");
+                    player.sendMessage("§cK ziskani pristupu potrebujes mit aktivni Golden VIP.");
                 }
 
             }
