@@ -44,7 +44,7 @@ public class Profil_command implements CommandExecutor {
         ItemStack headItem = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
         ArrayList<String> headLore = new ArrayList<String>();
         headLore.add("§7");
-        headLore.add("§7ID: §f" + Main.getInstance().getMySQL().getPlayerProfileDataInt(p, "id") + "#" + Main.getInstance().getMySQL().getPlayerProfileDataString(p, "discriminator"));
+        headLore.add("§7ID: §f" + Main.getInstance().getMySQL().getPlayerProfileDataInt(p, "id") + "#§8" + Main.getInstance().getMySQL().getPlayerProfileDataString(p, "discriminator"));
         headLore.add("§7Prvni pripojeni: §f" + getDate(Main.getInstance().getMySQL().getPlayerProfileDataLong(p, "registred")));
         headLore.add("§7CraftCoins: §f" + CraftCoinsAPI.getCoins(p));
         headLore.add("§7CraftTokens: §f" + CraftTokensAPI.getTokens(p));
