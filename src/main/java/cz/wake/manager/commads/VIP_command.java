@@ -276,7 +276,7 @@ public class VIP_command implements CommandExecutor, Listener {
         ItemStack nakup_server = new ItemBuilder(Material.PAPER).setName("§aNakup server na 60 dni")
                 .setLore("§7CZ: §f100 kc", "§7SK: §f4 EUR", "", "§eKlikni pro odkaz do Storu").build();
         ItemStack nakup_global = new ItemBuilder(Material.PAPER).setName("§aNakup global na 60 dni")
-                .setLore("§7CZ: §f150 kc", "§7SK: §f7 EUR", "", "§eKlikni pro odkaz do Storu").build();
+                .setLore("§7CZ: §f180+- kc", "§7SK: §f7 EUR", "", "§eKlikni pro odkaz do Storu").build();
 
         inventory.setItem(0, filler);
         inventory.setItem(1, diamond_server_vip);
@@ -383,9 +383,9 @@ public class VIP_command implements CommandExecutor, Listener {
                 .setLore(global_vyhody).setGlowing().build();
 
         ItemStack nakup_server = new ItemBuilder(Material.PAPER).setName("§aNakup server na 90 dni")
-                .setLore("§7CZ: §f150 kc", "§7SK: §f7 EUR", "", "§eKlikni pro odkaz do Storu").build();
+                .setLore("§7CZ: §f180+- kc", "§7SK: §f7 EUR", "", "§eKlikni pro odkaz do Storu").build();
         ItemStack nakup_global = new ItemBuilder(Material.PAPER).setName("§aNakup global na 90 dni")
-                .setLore("§7CZ: §f300 kc", "§7SK: §f15 EUR", "", "§eKlikni pro odkaz do Storu").build();
+                .setLore("§7CZ: §f390+- kc", "§7SK: §f15 EUR", "", "§eKlikni pro odkaz do Storu").build();
 
         inventory.setItem(0, filler);
         inventory.setItem(1, emerald_server_vip);
@@ -485,7 +485,7 @@ public class VIP_command implements CommandExecutor, Listener {
                 .setLore(global_vyhody).setGlowing().build();
 
         ItemStack nakup_server = new ItemBuilder(Material.PAPER).setName("§aNakup server NAVZDY!")
-                .setLore("§7CZ: §f300 kc", "§7SK: §f15 EUR", "", "§eKlikni pro odkaz do Storu").build();
+                .setLore("§7CZ: §f380+- kc", "§7SK: §f15 EUR", "", "§eKlikni pro odkaz do Storu").build();
         ItemStack nakup_global = new ItemBuilder(Material.PAPER).setName("§aNakup global NAVZDY!")
                 .setLore("§7CZ: §f1040 kc", "§7SK: §f40 EUR", "", "§eKlikni pro odkaz do Storu").build();
 
