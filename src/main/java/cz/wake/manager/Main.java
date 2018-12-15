@@ -17,11 +17,13 @@ import cz.wake.manager.utils.*;
 import cz.wake.manager.utils.tasks.*;
 import cz.wake.manager.votifier.ForwardVote;
 import cz.wake.manager.votifier.VoteHandler;
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
@@ -62,6 +64,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private boolean useCustomDisenchant = false;
     private ItemDB itemdb;
     private static String mentionPrefix;
+    private Economy econ;
 
     private static Main instance;
 
@@ -152,6 +155,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Nacteni no-drop svetu pro VIP
         dontdrop_worlds.addAll(getConfig().getStringList("dontdrop.worlds"));
+
+        //Vault init
+        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+        econ = rsp.getProvider();
     }
 
     public void onDisable() {
@@ -185,6 +192,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new NoDropListener(), this);
         //pm.registerEvents(new TabCompleteListener(), this);
         pm.registerEvents(new VIP_command(), this);
+        pm.registerEvents(new SignClickListener(), this);
 
         // Skyblock PVP listener
         if (idServer.equalsIgnoreCase("skyblock")) {
@@ -236,6 +244,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("glowitem").setExecutor(new GlowItemCommand());
         getCommand("rawbroadcast").setExecutor(new RawBroadcast());
         getCommand("vip").setExecutor(new VIP_command());
+        getCommand("repair").setExecutor(new Repair_command());
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {
@@ -291,6 +300,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         return itemdb;
     }
 
+    public Economy getEconomy() { return econ; }
+
     @Override
     public void onPluginMessageReceived(String channel, Player player, byte[] message) {
         DataInputStream in = new DataInputStream(new ByteArrayInputStream(message));
@@ -318,7 +329,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         player.sendPluginMessage(Main.getInstance(), "BungeeCord", b.toByteArray());
     }
 
-    private boolean isValidMaterial(Material material) {
+    public boolean isValidMaterial(Material material) {
         String name = String.valueOf(material);
         return name.endsWith("_AXE") || name.endsWith("_PICKAXE") || name.endsWith("_SPADE") || name.endsWith("_SWORD")
                 || name.endsWith("_HELMET") || name.endsWith("_CHESTPLATE") || name.endsWith("_LEGGINGS") || name.endsWith("_BOOTS")
