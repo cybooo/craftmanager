@@ -165,9 +165,9 @@ public class VIP_command implements CommandExecutor, Listener {
                 .setLore(global_vyhody).setGlowing().build();
 
         ItemStack nakup_temporary = new ItemBuilder(Material.PAPER).setName("§aNakup server na 30 dni")
-                .setLore("§7CZ: §f50 kc", "§7SK: §f2 EUR", "", "§eKlikni pro odkaz do Storu").build();
+                .setLore("§7CZ: §c§m50 kc§f 25kc", "§7SK: §c§m2 EUR§f 1 EUR", "", "§eKlikni pro odkaz do Storu").build();
         ItemStack nakup_permanent = new ItemBuilder(Material.PAPER).setName("§aNakup global na 30 dni")
-                .setLore("§7CZ: §f75 kc", "§7SK: §f3 EUR", "", "§eKlikni pro odkaz do Storu").build();
+                .setLore("§7CZ: §c§m75 kc§f 40kc+-", "§7SK: §c§m3 EUR§f 1.5 EUR", "", "§eKlikni pro odkaz do Storu").build();
 
         inventory.setItem(0, filler);
         inventory.setItem(1, gold_server_vip);
@@ -274,9 +274,9 @@ public class VIP_command implements CommandExecutor, Listener {
                 .setLore(global_vyhody).setGlowing().build();
 
         ItemStack nakup_server = new ItemBuilder(Material.PAPER).setName("§aNakup server na 60 dni")
-                .setLore("§7CZ: §f100 kc", "§7SK: §f4 EUR", "", "§eKlikni pro odkaz do Storu").build();
+                .setLore("§7CZ: §c§m100 kc§f 50 kc", "§7SK: §c§m4 EUR§f 2 EUR", "", "§eKlikni pro odkaz do Storu").build();
         ItemStack nakup_global = new ItemBuilder(Material.PAPER).setName("§aNakup global na 60 dni")
-                .setLore("§7CZ: §f180+- kc", "§7SK: §f7 EUR", "", "§eKlikni pro odkaz do Storu").build();
+                .setLore("§7CZ: §c§m180+- kc§f 90kc+-", "§7SK: §c§m7 EUR§f 3.5 EUR", "", "§eKlikni pro odkaz do Storu").build();
 
         inventory.setItem(0, filler);
         inventory.setItem(1, diamond_server_vip);
@@ -383,9 +383,9 @@ public class VIP_command implements CommandExecutor, Listener {
                 .setLore(global_vyhody).setGlowing().build();
 
         ItemStack nakup_server = new ItemBuilder(Material.PAPER).setName("§aNakup server na 90 dni")
-                .setLore("§7CZ: §f180+- kc", "§7SK: §f7 EUR", "", "§eKlikni pro odkaz do Storu").build();
+                .setLore("§7CZ: §c§m180+- kc§f 90kc+-", "§7SK: §c§m7 EUR§f 3.5 EUR", "", "§eKlikni pro odkaz do Storu").build();
         ItemStack nakup_global = new ItemBuilder(Material.PAPER).setName("§aNakup global na 90 dni")
-                .setLore("§7CZ: §f390+- kc", "§7SK: §f15 EUR", "", "§eKlikni pro odkaz do Storu").build();
+                .setLore("§7CZ: §c§m390+- kc§f 200kc+-", "§7SK: §c§m15 EUR§f 7.5 EUR", "", "§eKlikni pro odkaz do Storu").build();
 
         inventory.setItem(0, filler);
         inventory.setItem(1, emerald_server_vip);
@@ -485,9 +485,9 @@ public class VIP_command implements CommandExecutor, Listener {
                 .setLore(global_vyhody).setGlowing().build();
 
         ItemStack nakup_server = new ItemBuilder(Material.PAPER).setName("§aNakup server NAVZDY!")
-                .setLore("§7CZ: §f380+- kc", "§7SK: §f15 EUR", "", "§eKlikni pro odkaz do Storu").build();
+                .setLore("§7CZ: §c§m380+- kc§f 200kc+-", "§7SK: §c§m15 EUR§f 7.5 EUR", "", "§eKlikni pro odkaz do Storu").build();
         ItemStack nakup_global = new ItemBuilder(Material.PAPER).setName("§aNakup global NAVZDY!")
-                .setLore("§7CZ: §f1040 kc", "§7SK: §f40 EUR", "", "§eKlikni pro odkaz do Storu").build();
+                .setLore("§7CZ: §c§m1040 kc§f 520kc+-", "§7SK: §c§m40 EUR§f 20 EUR", "", "§eKlikni pro odkaz do Storu").build();
 
         inventory.setItem(0, filler);
         inventory.setItem(1, obsidian_server_vip);
