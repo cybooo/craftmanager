@@ -65,10 +65,11 @@ public class Disenchant implements CommandExecutor {
                                 for (Map.Entry<String, Integer> enchEntry : customEnchants.entrySet()) {
 
                                     // Sance
-                                    int sance = randRange(10, 60);
+                                    int sance = randRange(50, 80);
+                                    int failSance = 100 - sance;
 
                                     // Name, level, success rate, fail rate
-                                    ItemStack customEnchantedBook = AEAPI.createEnchantmentBook(enchEntry.getKey(), enchEntry.getValue(), sance, 0);
+                                    ItemStack customEnchantedBook = AEAPI.createEnchantmentBook(enchEntry.getKey(), enchEntry.getValue(), sance, failSance);
                                     player.getInventory().addItem(customEnchantedBook);
                                 }
                             }
