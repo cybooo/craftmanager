@@ -30,8 +30,7 @@ public class Checkfly_command implements CommandExecutor {
                             p.sendMessage("§eKontrola fly §b(" + name + ")§e: §a§lPOVOLENO & ZAKOUPENO");
                         }
                     } else if (pl.hasPermission("askyblock.islandfly")) {
-                        Island is = ASkyBlockAPI.getInstance().getIslandAt(pl.getLocation());
-                        if (is == null) { //má právo, ale nie je na ostrove
+                        if (ASkyBlockAPI.getInstance().getIslandAt(pl.getLocation()) == null) { //má právo, ale nie je na ostrove
                             p.sendMessage("§eKontrola fly §b(" + name + ")§e: §a§lZAKOUPENO §7(mimo ostrov)");
                         } else {
                             p.sendMessage("§eKontrola fly §b(" + name + ")§e: §a§lPOVOLENO & ZAKOUPENO");
