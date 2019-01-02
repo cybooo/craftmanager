@@ -41,7 +41,7 @@ commands:
       description: Prikaz pro VIP
     vote:
       description: Prikaz na zobrazeni odkazu k hlasovani
-      aliases: [hlasovani]
+      aliases: [hlasovani,hlasovat]
     skull:
       description: Prikaz pro hrace na ziskani svoji hlavy
     profil:
