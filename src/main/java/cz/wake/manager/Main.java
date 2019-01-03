@@ -185,6 +185,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new NoDropListener(), this);
         //pm.registerEvents(new TabCompleteListener(), this);
         pm.registerEvents(new VIP_command(), this);
+        pm.registerEvents(new Votes_command(), this);
 
         // Skyblock PVP listener
         if (idServer.equalsIgnoreCase("skyblock")) {
@@ -236,10 +237,11 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("glowitem").setExecutor(new GlowItemCommand());
         getCommand("rawbroadcast").setExecutor(new RawBroadcast());
         getCommand("vip").setExecutor(new VIP_command());
+        getCommand("votes").setExecutor(new Votes_command());
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {
-            getCommand("fakevote").setExecutor(new Fakevote_command());
+            //getCommand("fakevote").setExecutor(new Fakevote_command());
         }
     }
 
