@@ -140,7 +140,6 @@ public class Votes_command implements CommandExecutor, Listener {
         long time = Main.getInstance().getMySQL().getLastVote(player);
 
         if (time + 7200000 < System.currentTimeMillis()) {
-            System.out.println(time);
             return "§aNyni";
         } else {
             long calculateMeWaka = (7200000 + 900000) - (System.currentTimeMillis() - time);
