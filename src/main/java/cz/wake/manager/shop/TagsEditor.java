@@ -6,6 +6,7 @@ import cz.wake.manager.utils.AnvilContainer;
 import net.minecraft.server.v1_12_R1.EntityPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.entity.HumanEntity;
@@ -48,12 +49,16 @@ public class TagsEditor implements Listener {
     public void closeAnvil(InventoryCloseEvent e){
         HumanEntity p = e.getPlayer();
         Inventory inv = e.getInventory();
+        ItemStack paper = AnvilContainer.getItem(Material.PAPER, "Prejmenuj me", 0);
         if (inv instanceof AnvilInventory) {
             EntityPlayer entityPlayer = ((CraftPlayer) p).getHandle();
             if ((!entityPlayer.activeContainer.checkReachable) && (list.contains(entityPlayer))) {
                 list.remove(entityPlayer);
                 p.sendMessage("§cZrusil jsi vytvareni tagu!");
                 inv.clear();
+                if (p.getInventory().contains(paper)) {
+                    p.getInventory().remove(paper);
+                }
             }
         }
     }
