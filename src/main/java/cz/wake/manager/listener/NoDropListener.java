@@ -18,8 +18,7 @@ public class NoDropListener implements Listener {
     public void onPlayerDie(final PlayerDeathEvent e) {
         final Player p = e.getEntity();
         if (Main.getInstance().getDontDropWorlds().contains(p.getWorld().getName())) {
-            if (Main.getInstance().getConfig().getBoolean("dontdrop.usepermission")
-                    || p.hasPermission("craftmanager.vip.dontdrop") || p.isOp()) {
+            if (p.hasPermission("craftmanager.vip.dontdrop") || p.isOp()) {
                 p.sendMessage("§aItemy a nastroje byly zachraneny!");
                 e.setKeepLevel(true);
                 e.setDroppedExp(0);
