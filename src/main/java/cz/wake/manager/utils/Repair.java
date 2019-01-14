@@ -15,7 +15,6 @@ public class Repair {
 
     public static void repair(Player p) {
         String server = Main.getInstance().getIdServer();
-        System.out.println(server);
 
         ItemStack item = p.getItemInHand();
 
