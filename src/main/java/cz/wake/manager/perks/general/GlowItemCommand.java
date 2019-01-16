@@ -21,6 +21,10 @@ public class GlowItemCommand implements CommandExecutor {
                     player.sendMessage("§cNedostatecna prava, na toto musis mit VIP. §f/vip");
                     return true;
                 }
+                if (Main.getInstance().getIdServer().equalsIgnoreCase("vanilla")) {
+                    player.sendMessage("§c§l(!) §cNa tomto serveru tato vyhoda neplati!");
+                    return true;
+                }
                 ItemStack item = player.getInventory().getItemInMainHand();
                 if (item == null) {
                     player.sendMessage("§cMusis drzet item, na ktery chces dat glowing efekt.");

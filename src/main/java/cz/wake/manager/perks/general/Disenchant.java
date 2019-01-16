@@ -23,6 +23,12 @@ public class Disenchant implements CommandExecutor {
             Player player = (Player) Sender;
             if ((Command.getName().equalsIgnoreCase("disenchant"))) {
                 if (player.hasPermission("craftmanager.vip.disenchant")) {
+
+                    if (Main.getInstance().getIdServer().equalsIgnoreCase("vanilla")) {
+                        player.sendMessage("§c§l(!) §cNa tomto serveru tato vyhoda neplati!");
+                        return true;
+                    }
+
                     ItemStack itemInHand = player.getItemInHand();
                     short durability = itemInHand.getDurability();
                     if ((!itemInHand.getEnchantments().isEmpty()) && (itemInHand.getType() != Material.BOOK)
