@@ -220,10 +220,8 @@ public class VIP_command implements CommandExecutor, Listener {
         server_vyhody.add("§e· §fAutosort inventare a truhel §a/autosort");
         server_vyhody.add("§e· §fArtMap - kresleni na mapy");
         server_vyhody.add("§e· §fNEO - zobrazeni spawnratu mobu §a/ll");
-        server_vyhody.add("§e· §fHologramMaker - vytvareni vlastnich hologramu");
         server_vyhody.add("§e· §fDurabilityWarner - oznameni o niceni nastroju");
         server_vyhody.add("§e· §fNastaveni vlastniho casu §a/ptime");
-        server_vyhody.add("§e· §fPets - tvuj vlastni pet §a/pets");
         server_vyhody.add("§e· §fInspekce znicenych bloku §a/co inspect");
         server_vyhody.add("§e· §fMoznost vypnout si zobrazovani verejneho chatu");
         server_vyhody.add("§e· §fOchrana proti dropum v normalnim svete. Neplati pro PVP!");
@@ -250,10 +248,8 @@ public class VIP_command implements CommandExecutor, Listener {
         global_vyhody.add("§e· §fArtMap - kresleni na mapy");
         global_vyhody.add("§e· §fNEO - zobrazeni spawnratu mobu §a/ll");
         global_vyhody.add("§e· §fKit VIP kazdych 7 dni §a/kit dvip");
-        global_vyhody.add("§e· §fHologramMaker - vytvareni vlastnich hologramu");
         global_vyhody.add("§e· §fDurabilityWarner - oznameni o niceni nastroju");
         global_vyhody.add("§e· §fNastaveni vlastniho casu §a/ptime");
-        global_vyhody.add("§e· §fPets - tvuj vlastni pet §a/pets");
         global_vyhody.add("§e· §fInspekce znicenych bloku §a/co inspect");
         global_vyhody.add("§e· §fMoznost vypnout si zobrazovani verejneho chatu");
         global_vyhody.add("§e· §fOchrana proti dropum v normalnim svete. Neplati pro PVP!");
