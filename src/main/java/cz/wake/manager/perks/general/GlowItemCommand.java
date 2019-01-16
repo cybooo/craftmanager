@@ -14,20 +14,25 @@ public class GlowItemCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender instanceof Player) {
-            final Player player = (Player)sender;
+        if (sender instanceof Player) {
+            final Player player = (Player) sender;
             if (args.length == 0) {
-                if(!player.hasPermission("craftmanager.vip.glowingitems")) {
+                if (!player.hasPermission("craftmanager.vip.glowingitems")) {
                     player.sendMessage("§cNedostatecna prava, na toto musis mit VIP. §f/vip");
                     return true;
                 }
                 ItemStack item = player.getInventory().getItemInMainHand();
-                if(item == null) {
+                if (item == null) {
                     player.sendMessage("§cMusis drzet item, na ktery chces dat glowing efekt.");
                     return true;
                 }
 
-                if (item.isSimilar(new ItemStack(Material.GOLDEN_APPLE, 1, (short)1))) {
+                if (item.isSimilar(new ItemStack(Material.GOLDEN_APPLE, 1, (short) 1))) {
+                    player.sendMessage("§cNa tento item nelze pouzit prikaz /gi");
+                    return true;
+                }
+
+                if (item.getItemMeta().hasLore()) {
                     player.sendMessage("§cNa tento item nelze pouzit prikaz /gi");
                     return true;
                 }
