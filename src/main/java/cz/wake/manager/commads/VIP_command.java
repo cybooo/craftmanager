@@ -126,6 +126,7 @@ public class VIP_command implements CommandExecutor, Listener {
         server_vyhody.add("§e· §fMoznost zobrazit zdrzeny item §a:item:");
         server_vyhody.add("§e· §fKit VIP kazdych 7 dni §a/kit gvip");
         server_vyhody.add("§e· §fVirtualni Beacon - s efekty §a/beacon");
+        server_vyhody.add("§e· §fOchrana proti dropum v normalnim svete. Neplati pro PVP!");
         server_vyhody.add("");
         server_vyhody.add("§cToto VIP plati pouze na " + server + " serveru!");
         gold_server_vip = new ItemBuilder(gold_server_vip).setName("§6Golden " + server + " VIP")
@@ -151,6 +152,7 @@ public class VIP_command implements CommandExecutor, Listener {
         global_vyhody.add("§e· §fMoznost zobrazit zdrzeny item §a:item:");
         global_vyhody.add("§e· §fKit VIP kazdych 7 dni §a/kit gvip");
         global_vyhody.add("§e· §fVirtualni Beacon - s efekty §a/beacon");
+        global_vyhody.add("§e· §fOchrana proti dropum v normalnim svete. Neplati pro PVP!");
         global_vyhody.add("");
         global_vyhody.add("§7Lobby extra server vyhody:");
         global_vyhody.add("§e· §fParticles efekty na lobby pro VIP");
@@ -224,7 +226,6 @@ public class VIP_command implements CommandExecutor, Listener {
         server_vyhody.add("§e· §fNastaveni vlastniho casu §a/ptime");
         server_vyhody.add("§e· §fInspekce znicenych bloku §a/co inspect");
         server_vyhody.add("§e· §fMoznost vypnout si zobrazovani verejneho chatu");
-        server_vyhody.add("§e· §fOchrana proti dropum v normalnim svete. Neplati pro PVP!");
         if(Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
             server_vyhody.add("§e· §fMaximalni pocet residenci 6 (normal 4)");
         }
@@ -252,7 +253,6 @@ public class VIP_command implements CommandExecutor, Listener {
         global_vyhody.add("§e· §fNastaveni vlastniho casu §a/ptime");
         global_vyhody.add("§e· §fInspekce znicenych bloku §a/co inspect");
         global_vyhody.add("§e· §fMoznost vypnout si zobrazovani verejneho chatu");
-        global_vyhody.add("§e· §fOchrana proti dropum v normalnim svete. Neplati pro PVP!");
         global_vyhody.add("");
         global_vyhody.add("§7Lobby extra server vyhody:");
         global_vyhody.add("§e· §fParticles efekty na lobby pro VIP");
