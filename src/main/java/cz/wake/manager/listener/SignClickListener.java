@@ -15,16 +15,18 @@ public class SignClickListener implements Listener {
         Player p = e.getPlayer();
         Block b = e.getClickedBlock();
 
-        if (b.getState() != null && b.getState() instanceof Sign) {
-            Sign sign = (Sign) b.getState();
-            String line2 = sign.getLine(1);
+        if (b.getState() != null) {
+            if (b.getState() instanceof Sign) {
+                Sign sign = (Sign) b.getState();
+                String line2 = sign.getLine(1);
 
-            if (line2.contains("[repair]")) {
-                if (p.hasPermission("craftmanager.repair")) {
-                    Repair.repair(p);
-                }
-                else {
-                    p.sendMessage("§c§l(!) §cNemas dostatecne opravneni!");
+                if (line2.contains("[repair]")) {
+                    if (p.hasPermission("craftmanager.repair")) {
+                        Repair.repair(p);
+                    }
+                    else {
+                        p.sendMessage("§c§l(!) §cNemas dostatecne opravneni!");
+                    }
                 }
             }
         }
