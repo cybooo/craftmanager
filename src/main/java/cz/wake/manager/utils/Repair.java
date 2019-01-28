@@ -16,7 +16,7 @@ public class Repair {
     public static void repair(Player p) {
         String server = Main.getInstance().getIdServer();
 
-        ItemStack item = p.getItemInHand();
+        ItemStack item = p.getInventory().getItemInMainHand();
 
         if (!Main.getInstance().isValidMaterial(item.getType())) {
             p.sendMessage("§c§l(!) §cNemas v ruce item, ktery by sel opravit.");
@@ -29,7 +29,7 @@ public class Repair {
             money = 1500;
         }
 
-        if (0 <= enchanments.size()) {
+        if (enchanments.size() >= 1) {
             Iterator it = enchanments.entrySet().iterator();
             while (it.hasNext()) {
                 HashMap.Entry pair = (HashMap.Entry)it.next();
@@ -60,6 +60,6 @@ public class Repair {
 
         Main.getInstance().getEconomy().withdrawPlayer(Bukkit.getOfflinePlayer(p.getUniqueId()), money);
         item.setDurability((short) 0);
-        p.sendMessage("§aUspesne sis opravil tento nastroj!");
+        p.sendMessage("§aUspesne sis opravil tento nastroj za §f" + money + "$ §a!");
     }
 }
