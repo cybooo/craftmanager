@@ -67,6 +67,8 @@ commands:
       description: Broadcast pro VIP nebo konzoli
     vip:
       description: VIP prehled
+    repair:
+      description: Repair command
     votes:
       description: Prehled o hlasovani
 
