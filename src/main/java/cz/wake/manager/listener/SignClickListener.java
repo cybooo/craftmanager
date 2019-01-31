@@ -15,6 +15,10 @@ public class SignClickListener implements Listener {
         Player p = e.getPlayer();
         Block b = e.getClickedBlock();
 
+        if (b == null) {
+            return;
+        }
+
         if (b.getState() != null) {
             if (b.getState() instanceof Sign) {
                 Sign sign = (Sign) b.getState();
