@@ -107,14 +107,27 @@ public class Votes_command implements CommandExecutor, Listener {
                 "§f40 hlasu: §6300 CC",
                 "§f60 hlasu: §6500 CC");
 
+        ItemStack odmeny = ItemFactory.create(Material.DIAMOND, (byte)0, "§b§lOdmeny pro TOP 5 hrace",
+                "",
+                "§7Kazdy mesic odmenujeme TOP 5",
+                "§7hracu v hlasovani kupony na Store!",
+                "",
+                "§e1. §f15e",
+                "§72. §f10e",
+                "§63. §f7e",
+                "§a4. §f5e",
+                "§a5. §f5e",
+                "",
+                "§cKupony jsou zasilany do zprav na webu!");
+
 
         inventory.setItem(0, filler);
         inventory.setItem(1, filler);
-        inventory.setItem(2, filler);
-        inventory.setItem(3, headItem);
-        inventory.setItem(4, filler);
-        inventory.setItem(5, hlasy);
-        inventory.setItem(6, filler);
+        inventory.setItem(2, odmeny);
+        inventory.setItem(3, filler);
+        inventory.setItem(4, headItem);
+        inventory.setItem(5, filler);
+        inventory.setItem(6, hlasy);
         inventory.setItem(7, filler);
         inventory.setItem(8, filler);
 
@@ -158,7 +171,7 @@ public class Votes_command implements CommandExecutor, Listener {
             if (e.getCurrentItem().getType() == Material.AIR) {
                 return;
             }
-            if (e.getSlot() == 3) {
+            if (e.getSlot() == 4) {
                 Vote_command.sendVoteLink(player);
                 player.closeInventory();
             }
