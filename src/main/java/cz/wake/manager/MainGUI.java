@@ -1,6 +1,8 @@
 package cz.wake.manager;
 
 import cz.craftmania.crafteconomy.api.CraftCoinsAPI;
+import cz.craftmania.crafteconomy.api.CraftTokensAPI;
+import cz.craftmania.crafteconomy.api.VoteTokensAPI;
 import cz.wake.manager.utils.ItemFactory;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -27,39 +29,11 @@ public class MainGUI implements Listener {
         ArrayList<String> headLore = new ArrayList<>();
         headLore.add("§7");
         headLore.add("§6CraftCoins: §f" + CraftCoinsAPI.getCoins(p));
-        headLore.add("");
-        headLore.add("§eHlasy tento tyden: §f" + Main.getInstance().getVoteHandler().getPlayerCachedWeekVotes(p));
-        headLore.add("§eHlasy tento mesic: §f" + Main.getInstance().getVoteHandler().getPlayerCachedMonthVotes(p));
-        headLore.add("§eHlasy celkem: §f" + Main.getInstance().getVoteHandler().getPlayerCachedTotalVotes(p));
+        headLore.add("§aCraftTokens: §f" + CraftTokensAPI.getTokens(p));
+        headLore.add("§bVoteTokens: §f" + VoteTokensAPI.getVoteTokens(p));
         headMeta.setLore(headLore);
         head.setItemMeta(headMeta);
         inv.setItem(13, head);
-
-        ItemStack hlasy = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§e§lOdmeny za hlasovani",
-                "",
-                "§fKazdy hlas: §610 CC §f+ §aVoteToken",
-                "§f25% sance: §625 CC",
-                "§f5% sance: §650 CC",
-                "§f1% sance: §6100 CC",
-                "",
-                "§bKazdy mesic muzes ziskat tyto bonusy!",
-                "§f20 hlasu: §6200 CC",
-                "§f40 hlasu: §6300 CC",
-                "§f60 hlasu: §6500 CC", "");
-
-        List<String> names = Main.getInstance().getMySQL().getTopVotersMonth();
-        List<String> votes = Main.getInstance().getMySQL().getTopVotersVotes();
-
-        ItemStack top = new ItemStack(Material.HOPPER);
-        ItemMeta topMeta = top.getItemMeta();
-        topMeta.setDisplayName("§d§lTOP hraci (tento mesic)");
-        ArrayList<String> topLore = new ArrayList<String>();
-        for (int i = 0; i < names.size(); i++) {
-            //String pos = Integer.toString(i + 1);
-            topLore.add("§6" + String.valueOf(i + 1) + ". §7" + names.get(i) + " §8(" + votes.get(i) + " hlasu)");
-        }
-        topMeta.setLore(topLore);
-        top.setItemMeta(topMeta);
 
         ItemStack vip = ItemFactory.create(Material.EMERALD, (byte) 0, "§a§lVIP", "§7Prehled vyhod a SMS k ", "§7nakupu VIP na serveru!", "", "§eKlikni pro zobrazeni!");
 
@@ -72,9 +46,7 @@ public class MainGUI implements Listener {
         ItemStack guides = ItemFactory.create(Material.BOOK, (byte)0, "§a§lNavody", "", "§7Seznam navodu, sepsanych", "§7primo pro nas server.", "", "§eKliknutim zobrazis navody");
 
         inv.setItem(30, particles);
-        inv.setItem(20, hlasy);
         inv.setItem(21, odkaz);
-        inv.setItem(22, top);
         inv.setItem(23, shop);
         inv.setItem(24, vip);
         inv.setItem(32, guides);

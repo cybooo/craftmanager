@@ -3,7 +3,7 @@ main: cz.wake.manager.Main
 authors: [MrWakeCZ]
 depend: [CraftCore,CraftEconomy,CraftChat]
 softdepend: [AdvancedEnchantments]
-version: 1.2-${git.commit.id.abbrev} # v1.2-a977d1a
+version: 1.2
 
 commands:
     cm:
@@ -41,7 +41,7 @@ commands:
       description: Prikaz pro VIP
     vote:
       description: Prikaz na zobrazeni odkazu k hlasovani
-      aliases: [hlasovani]
+      aliases: [hlasovani,hlasovat]
     skull:
       description: Prikaz pro hrace na ziskani svoji hlavy
     profil:
@@ -69,6 +69,10 @@ commands:
       description: VIP prehled
     blocks:
       description: Prikaz pro precrafteni itemu na blocky
+    repair:
+      description: Repair command
+    votes:
+      description: Prehled o hlasovani
 
 permissions:
     craftmanager.*:

@@ -21,7 +21,11 @@ public class Recipe_command implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-        ItemStack itemType = null;
+
+        commandSender.sendMessage("§c§l(!) §cTento prikaz je z duvodu kritickeho bugu docasne vypnut!");
+        return true;
+        
+        /*ItemStack itemType = null;
         Plugin pl = Main.getInstance();
         Player p = (Player) commandSender;
         try {
@@ -77,7 +81,7 @@ public class Recipe_command implements CommandExecutor {
 
         if (recipesOfType.size() > 1 && args.length == 1) {
         }
-        return true;
+        return true;*/
     }
 
     public void furnaceRecipe(final CommandSender sender, final FurnaceRecipe recipe) {

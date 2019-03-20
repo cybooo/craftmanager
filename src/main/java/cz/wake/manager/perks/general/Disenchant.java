@@ -23,6 +23,12 @@ public class Disenchant implements CommandExecutor {
             Player player = (Player) Sender;
             if ((Command.getName().equalsIgnoreCase("disenchant"))) {
                 if (player.hasPermission("craftmanager.vip.disenchant")) {
+
+                    if (Main.getInstance().getIdServer().equalsIgnoreCase("vanilla")) {
+                        player.sendMessage("§c§l(!) §cNa tomto serveru tato vyhoda neplati!");
+                        return true;
+                    }
+
                     ItemStack itemInHand = player.getItemInHand();
                     short durability = itemInHand.getDurability();
                     if ((!itemInHand.getEnchantments().isEmpty()) && (itemInHand.getType() != Material.BOOK)
@@ -65,10 +71,11 @@ public class Disenchant implements CommandExecutor {
                                 for (Map.Entry<String, Integer> enchEntry : customEnchants.entrySet()) {
 
                                     // Sance
-                                    int sance = randRange(10, 60);
+                                    int sance = randRange(50, 80);
+                                    int failSance = 100 - sance;
 
                                     // Name, level, success rate, fail rate
-                                    ItemStack customEnchantedBook = AEAPI.createEnchantmentBook(enchEntry.getKey(), enchEntry.getValue(), sance, 0);
+                                    ItemStack customEnchantedBook = AEAPI.createEnchantmentBook(enchEntry.getKey(), enchEntry.getValue(), sance, failSance);
                                     player.getInventory().addItem(customEnchantedBook);
                                 }
                             }
