@@ -236,6 +236,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("glowitem").setExecutor(new GlowItemCommand());
         getCommand("rawbroadcast").setExecutor(new RawBroadcast());
         getCommand("vip").setExecutor(new VIP_command());
+        getCommand("blocks").setExecutor(new Blocks_command());
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {
