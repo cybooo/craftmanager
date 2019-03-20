@@ -61,16 +61,20 @@ public class ShopAPI implements Listener {
 
             ItemStack prava = new ItemBuilder(Material.BOOK, (short) 0)
                     .setName("§6Prava (za CraftCoiny)").setLore("§7Nakup si dalsi prava", "§7a ziskej tak dostatecnou", "§7vyhodu oproti ostatnim", "§7hracum na serveru.", "", "§eKlikni pro zobrazeni").build();
-            inv.setItem(23, prava);
+            inv.setItem(21, prava);
 
             ItemStack voteShop = new ItemBuilder(Material.EMERALD, (short) 0).setName("§aOdmeny (za VoteTokeny)").setLore("§7Vyber si odmenu", "§7za hlasovani podle sebe!", "", "§eKliknutim zobrazis").build();
-            inv.setItem(34, voteShop);
+            inv.setItem(23, voteShop);
+
+            ItemStack itemShop = new ItemBuilder(Material.ENCHANTMENT_TABLE).setName("§6Itemy (za CraftCoiny)")
+                    .setLore("§7Kup si zajimave itemy", "§7a ziskej tak mensi bonusy", "§7k hrani na serveru.", "", "§eKlikni pro zobrazeni").build();
+            inv.setItem(25, itemShop);
 
             inv.setItem(19, tags);
-            inv.setItem(30, tagsTokens);
+            inv.setItem(29, tagsTokens);
             p.openInventory(inv);
         } else {
-            p.sendMessage("§cNa tomto serveru je CoinShop deaktivovany.");
+            p.sendMessage("§cNa tomto serveru je CoinShop deaktivovany nebo neni podporovany.");
         }
     }
 
@@ -727,6 +731,141 @@ public class ShopAPI implements Listener {
 
     }
 
+    private void openItemShop(final Player p) {
+        Inventory inv = Bukkit.createInventory(null, 54, "§0Itemy za CraftCoiny");
+        long craftCoins = CraftCoinsAPI.getCoins(p);
+
+        ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
+        ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
+
+        ItemStack footer = new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 15).setName("§c").build();
+        ItemStack noNextpage = new ItemBuilder(Material.BARRIER).setName("§c ").build();
+        inv.setItem(0, footer);
+        inv.setItem(1, footer);
+        inv.setItem(2, footer);
+        inv.setItem(3, footer);
+        inv.setItem(4, footer);
+        inv.setItem(5, footer);
+        inv.setItem(6, footer);
+        inv.setItem(7, footer);
+        inv.setItem(8, footer);
+
+        inv.setItem(45, footer);
+        inv.setItem(46, footer);
+        inv.setItem(47, footer);
+        inv.setItem(50, noNextpage);
+        inv.setItem(51, footer);
+        inv.setItem(52, footer);
+        inv.setItem(53, footer);
+
+        // Slotovac
+        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+            if (craftCoins >= 1500) {
+                ItemStack item = new ItemBuilder(Material.STORAGE_MINECART).setName("§a1x Slotovac")
+                        .setLore("§7Zvysuje pocet custom enchantu", "§7na itemu - max. 10!", "", "§7Cena: §f1500 CC").build();
+                inv.setItem(19, item);
+            } else {
+                ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§81x Slotovac")
+                        .setLore("§cNedostatek CraftCoins!", "§7Potrebujes: §f1500 CC").build();
+                inv.setItem(19, noMoney);
+            }
+        } else {
+            ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§c1x Slotovac")
+                    .setLore("§7Nelze zakoupit na tomto serveru.").build();
+            inv.setItem(19, nedostupny);
+        }
+
+        // MobTracker
+        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+            if (craftCoins >= 500) {
+                ItemStack item = new ItemBuilder(Material.FERMENTED_SPIDER_EYE).setName("§eMobTrak")
+                        .setLore("§7Zaznamenava na nastroj", "§7kolik jsi zabil mobu.", "", "§7Cena: §f500 CC").build();
+                inv.setItem(20, item);
+            } else {
+                ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§8MobTrak")
+                        .setLore("§cNedostatek CraftCoins!", "§7Potrebujes: §f500 CC").build();
+                inv.setItem(20, noMoney);
+            }
+        } else {
+            ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cMobTrak")
+                    .setLore("§7Nelze zakoupit na tomto serveru.").build();
+            inv.setItem(20, nedostupny);
+        }
+
+        // StatTrak
+        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+            if (craftCoins >= 500) {
+                ItemStack item = new ItemBuilder(Material.MAGMA_CREAM).setName("§6StatTrak")
+                        .setLore("§7Zaznamenava na nastroj", "§7kolik jsi zabil hracu.", "", "§7Cena: §f500 CC").build();
+                inv.setItem(21, item);
+            } else {
+                ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§8StatTrak")
+                        .setLore("§cNedostatek CraftCoins!", "§7Potrebujes: §f500 CC").build();
+                inv.setItem(21, noMoney);
+            }
+        } else {
+            ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cStatTrak")
+                    .setLore("§7Nelze zakoupit na tomto serveru.").build();
+            inv.setItem(21, nedostupny);
+        }
+
+        // BlockTrak
+        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+            if (craftCoins >= 500) {
+                ItemStack item = new ItemBuilder(Material.SLIME_BALL).setName("§aBlockTrak")
+                        .setLore("§7Zaznamenava na nastroj", "§7kolik jsi vykopal bloku.", "", "§7Cena: §f500 CC").build();
+                inv.setItem(22, item);
+            } else {
+                ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§8BlockTrak")
+                        .setLore("§cNedostatek CraftCoins!", "§7Potrebujes: §f500 CC").build();
+                inv.setItem(22, noMoney);
+            }
+        } else {
+            ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cBlockTrak")
+                    .setLore("§7Nelze zakoupit na tomto serveru.").build();
+            inv.setItem(22, nedostupny);
+        }
+
+        // Randomizer
+        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+            if (craftCoins >= 300) {
+                ItemStack item = new ItemBuilder(Material.PAPER).setName("§eRandomizer")
+                        .setLore("§7Vygeneruje znovu nahodne", "§7sance na knize.", "", "§7Cena: §f300 CC").build();
+                inv.setItem(23, item);
+            } else {
+                ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§8Randomizer")
+                        .setLore("§cNedostatek CraftCoins!", "§7Potrebujes: §f300 CC").build();
+                inv.setItem(23, noMoney);
+            }
+        } else {
+            ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cRandomizer")
+                    .setLore("§7Nelze zakoupit na tomto serveru.").build();
+            inv.setItem(23, nedostupny);
+        }
+
+        // Transmog
+        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+            if (craftCoins >= 600) {
+                ItemStack item = new ItemBuilder(Material.PAPER).setName("§eTransmog Scroll")
+                        .setLore("§7Seradi vsechny enchanty", "§7na itemu podle rarity.", "", "§7Cena: §f600 CC").build();
+                inv.setItem(24, item);
+            } else {
+                ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§8Transmog Scroll")
+                        .setLore("§cNedostatek CraftCoins!", "§7Potrebujes: §f600 CC").build();
+                inv.setItem(24, noMoney);
+            }
+        } else {
+            ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cTransmog Scroll")
+                    .setLore("§7Nelze zakoupit na tomto serveru.").build();
+            inv.setItem(24, nedostupny);
+        }
+
+        inv.setItem(48, zpet);
+        inv.setItem(49, hlavni);
+
+        p.openInventory(inv);
+    }
+
     @EventHandler
     private void onClick(InventoryClickEvent e) {
         final Player p = (Player) e.getWhoClicked();
@@ -741,18 +880,132 @@ public class ShopAPI implements Listener {
             if (e.getSlot() == 19) {
                 this.openTagsMenu(p);
             }
-            if (e.getSlot() == 30) {
+            if (e.getSlot() == 29) {
                 if (CraftTokensAPI.getTokens(p) > 0) {
                     TagsEditor.createTagEditor(p);
                 } else {
                     p.sendMessage("§cNemas dostatek CraftTokenu k provedeni teto akce.");
                 }
             }
-            if (e.getSlot() == 34) {
+            if (e.getSlot() == 23) {
                 this.openVoteMenu(p);
             }
-            if (e.getSlot() == 23) {
+            if (e.getSlot() == 21) {
                 this.openPermsMenu(p);
+            }
+            if (e.getSlot() == 25) {
+                this.openItemShop(p);
+            }
+        }
+        if (e.getInventory().getTitle().equals("§0Itemy za CraftCoiny")) {
+            e.setCancelled(true);
+            if (e.getCurrentItem() == null) {
+                return;
+            }
+            if (e.getCurrentItem().getType() == Material.AIR) {
+                return;
+            }
+            if (e.getSlot() == 48) {
+                this.openShopMainGUI(p);
+            }
+            if (e.getSlot() == 49) {
+                Main.getInstance().getMainGUI().openMainMenu(p);
+            }
+
+            // Slotovac
+            if (e.getSlot() == 19) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    return;
+                }
+                if (CraftCoinsAPI.getCoins(p) >= 1500) {
+                    CraftCoinsAPI.takeCoins(p, 1500);
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ae giveitem " + p.getName() + " slotincreaser 1 simple");
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x Slotovac §eza §a1500 CC.");
+                    p.closeInventory();
+                } else {
+                    p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (1500).");
+                }
+            }
+
+            // MobTrak
+            if (e.getSlot() == 20) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    return;
+                }
+                if (CraftCoinsAPI.getCoins(p) >= 500) {
+                    CraftCoinsAPI.takeCoins(p, 500);
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ae giveitem " + p.getName() + " mobtrak 1 simple");
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x MobTrak §eza §a500 CC.");
+                    p.closeInventory();
+                } else {
+                    p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (500).");
+                }
+            }
+
+            // StatTrak
+            if (e.getSlot() == 21) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    return;
+                }
+                if (CraftCoinsAPI.getCoins(p) >= 500) {
+                    CraftCoinsAPI.takeCoins(p, 500);
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ae giveitem " + p.getName() + " stattrak 1 simple");
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x StatTrak §eza §a500 CC.");
+                    p.closeInventory();
+                } else {
+                    p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (500).");
+                }
+            }
+
+            // BlockTrak
+            if (e.getSlot() == 22) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    return;
+                }
+                if (CraftCoinsAPI.getCoins(p) >= 500) {
+                    CraftCoinsAPI.takeCoins(p, 500);
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ae giveitem " + p.getName() + " blocktrak 1 simple");
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x BlockTrak §eza §a500 CC.");
+                    p.closeInventory();
+                } else {
+                    p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (500).");
+                }
+            }
+
+            // Randomizer
+            if (e.getSlot() == 23) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    return;
+                }
+                if (CraftCoinsAPI.getCoins(p) >= 300) {
+                    CraftCoinsAPI.takeCoins(p, 300);
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ae giveitem " + p.getName() + " randomizer 1 simple");
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x Randomizer §eza §a300 CC.");
+                    p.closeInventory();
+                } else {
+                    p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (300).");
+                }
+            }
+
+            // Transmog Scroll
+            if (e.getSlot() == 24) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    return;
+                }
+                if (CraftCoinsAPI.getCoins(p) >= 600) {
+                    CraftCoinsAPI.takeCoins(p, 600);
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ae giveitem " + p.getName() + " transmog 1 simple");
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x Transmog Scroll §eza §a600 CC.");
+                    p.closeInventory();
+                } else {
+                    p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (600).");
+                }
             }
         }
         if (e.getInventory().getTitle().equals("§0Prava za CraftCoins")) {
