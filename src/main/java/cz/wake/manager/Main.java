@@ -245,6 +245,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("glowitem").setExecutor(new GlowItemCommand());
         getCommand("rawbroadcast").setExecutor(new RawBroadcast());
         getCommand("vip").setExecutor(new VIP_command());
+        getCommand("blocks").setExecutor(new Blocks_command());
         getCommand("repair").setExecutor(new Repair_command());
         getCommand("votes").setExecutor(new Votes_command());
 
