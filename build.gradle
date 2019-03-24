@@ -48,6 +48,6 @@ dependencies {
     // CraftMania
     compileOnly name: 'EnchantmentFixer'
     compileOnly name: 'CraftChat'
-    compileOnly group: 'cz.craftmania.craftcore', name: 'craftcore', version: '2.0.10'
-    compileOnly group: 'cz.craftmania.crafteconomy', name: 'crafteconomy', version: '1.0.2'
+    compileOnly group: 'cz.craftmania.craftcore', name: 'craftcore', version: '2.0.13'
+    compileOnly group: 'cz.craftmania.crafteconomy', name: 'crafteconomy', version: '1.0.7'
 }
