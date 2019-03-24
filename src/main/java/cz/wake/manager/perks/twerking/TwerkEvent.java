@@ -1,5 +1,6 @@
 package cz.wake.manager.perks.twerking;
 
+import cz.wake.manager.Main;
 import cz.wake.manager.utils.ExpUtil;
 import org.bukkit.*;
 import org.bukkit.block.Block;
@@ -20,7 +21,8 @@ public class TwerkEvent implements Listener {
             return;
         }
         final Player player = e.getPlayer();
-        if (!player.hasPermission("craftmanager.vip.twerking")) {
+        if (!player.hasPermission("craftmanager.vip.twerking")
+                || Main.getInstance().getIdServer().equalsIgnoreCase("vanilla")) {
             return;
         }
         final World world = player.getWorld();

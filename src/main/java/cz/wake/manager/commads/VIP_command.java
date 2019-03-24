@@ -126,6 +126,7 @@ public class VIP_command implements CommandExecutor, Listener {
         server_vyhody.add("§e· §fMoznost zobrazit zdrzeny item §a:item:");
         server_vyhody.add("§e· §fKit VIP kazdych 7 dni §a/kit gvip");
         server_vyhody.add("§e· §fVirtualni Beacon - s efekty §a/beacon");
+        server_vyhody.add("§e· §fOchrana proti dropum v normalnim svete. Neplati pro PVP!");
         server_vyhody.add("");
         server_vyhody.add("§cToto VIP plati pouze na " + server + " serveru!");
         gold_server_vip = new ItemBuilder(gold_server_vip).setName("§6Golden " + server + " VIP")
@@ -151,6 +152,7 @@ public class VIP_command implements CommandExecutor, Listener {
         global_vyhody.add("§e· §fMoznost zobrazit zdrzeny item §a:item:");
         global_vyhody.add("§e· §fKit VIP kazdych 7 dni §a/kit gvip");
         global_vyhody.add("§e· §fVirtualni Beacon - s efekty §a/beacon");
+        global_vyhody.add("§e· §fOchrana proti dropum v normalnim svete. Neplati pro PVP!");
         global_vyhody.add("");
         global_vyhody.add("§7Lobby extra server vyhody:");
         global_vyhody.add("§e· §fParticles efekty na lobby pro VIP");
@@ -220,13 +222,10 @@ public class VIP_command implements CommandExecutor, Listener {
         server_vyhody.add("§e· §fAutosort inventare a truhel §a/autosort");
         server_vyhody.add("§e· §fArtMap - kresleni na mapy");
         server_vyhody.add("§e· §fNEO - zobrazeni spawnratu mobu §a/ll");
-        server_vyhody.add("§e· §fHologramMaker - vytvareni vlastnich hologramu");
         server_vyhody.add("§e· §fDurabilityWarner - oznameni o niceni nastroju");
         server_vyhody.add("§e· §fNastaveni vlastniho casu §a/ptime");
-        server_vyhody.add("§e· §fPets - tvuj vlastni pet §a/pets");
         server_vyhody.add("§e· §fInspekce znicenych bloku §a/co inspect");
         server_vyhody.add("§e· §fMoznost vypnout si zobrazovani verejneho chatu");
-        server_vyhody.add("§e· §fOchrana proti dropum v normalnim svete. Neplati pro PVP!");
         if(Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
             server_vyhody.add("§e· §fMaximalni pocet residenci 6 (normal 4)");
         }
@@ -250,13 +249,10 @@ public class VIP_command implements CommandExecutor, Listener {
         global_vyhody.add("§e· §fArtMap - kresleni na mapy");
         global_vyhody.add("§e· §fNEO - zobrazeni spawnratu mobu §a/ll");
         global_vyhody.add("§e· §fKit VIP kazdych 7 dni §a/kit dvip");
-        global_vyhody.add("§e· §fHologramMaker - vytvareni vlastnich hologramu");
         global_vyhody.add("§e· §fDurabilityWarner - oznameni o niceni nastroju");
         global_vyhody.add("§e· §fNastaveni vlastniho casu §a/ptime");
-        global_vyhody.add("§e· §fPets - tvuj vlastni pet §a/pets");
         global_vyhody.add("§e· §fInspekce znicenych bloku §a/co inspect");
         global_vyhody.add("§e· §fMoznost vypnout si zobrazovani verejneho chatu");
-        global_vyhody.add("§e· §fOchrana proti dropum v normalnim svete. Neplati pro PVP!");
         global_vyhody.add("");
         global_vyhody.add("§7Lobby extra server vyhody:");
         global_vyhody.add("§e· §fParticles efekty na lobby pro VIP");
@@ -276,7 +272,7 @@ public class VIP_command implements CommandExecutor, Listener {
         ItemStack nakup_server = new ItemBuilder(Material.PAPER).setName("§aNakup server na 60 dni")
                 .setLore("§7CZ: §f100 kc", "§7SK: §f4 EUR", "", "§eKlikni pro odkaz do Storu").build();
         ItemStack nakup_global = new ItemBuilder(Material.PAPER).setName("§aNakup global na 60 dni")
-                .setLore("§7CZ: §f150 kc", "§7SK: §f7 EUR", "", "§eKlikni pro odkaz do Storu").build();
+                .setLore("§7CZ: §f180+- kc", "§7SK: §f7 EUR", "", "§eKlikni pro odkaz do Storu").build();
 
         inventory.setItem(0, filler);
         inventory.setItem(1, diamond_server_vip);
@@ -329,6 +325,7 @@ public class VIP_command implements CommandExecutor, Listener {
         server_vyhody.add("");
         server_vyhody.add("§7Oproti Diamond VIP ziskas navic:");
         server_vyhody.add("§e· §fGlowing Items - svitici itemy?! OK §a/gi");
+        server_vyhody.add("§e· §fKopani spawneru s Silktouchem!");
         server_vyhody.add("§e· §fStickers - obrazek jako mapa §a/ps");
         server_vyhody.add("§e· §fFireworkBuilder - vytvareni ohnostroju §a/fwc");
         server_vyhody.add("§e· §fVlastni warpy - vytvor si vlastni warp pro sebe");
@@ -359,6 +356,7 @@ public class VIP_command implements CommandExecutor, Listener {
         global_vyhody.add("§7Oproti Diamond VIP ziskas navic:");
         global_vyhody.add("§e· §fGlowing Items - svitici itemy?! OK §a/gi");
         global_vyhody.add("§e· §fStickers - obrazek jako mapa §a/ps");
+        global_vyhody.add("§e· §fKopani spawneru s Silktouchem!");
         global_vyhody.add("§e· §fFireworkBuilder - vytvareni ohnostroju §a/fwc");
         global_vyhody.add("§e· §fVlastni warpy - vytvor si vlastni warp pro sebe");
         global_vyhody.add("§fnebo pro vsechny hrace na serveru! §a/warps");
@@ -381,9 +379,9 @@ public class VIP_command implements CommandExecutor, Listener {
                 .setLore(global_vyhody).setGlowing().build();
 
         ItemStack nakup_server = new ItemBuilder(Material.PAPER).setName("§aNakup server na 90 dni")
-                .setLore("§7CZ: §f150 kc", "§7SK: §f7 EUR", "", "§eKlikni pro odkaz do Storu").build();
+                .setLore("§7CZ: §f180+- kc", "§7SK: §f7 EUR", "", "§eKlikni pro odkaz do Storu").build();
         ItemStack nakup_global = new ItemBuilder(Material.PAPER).setName("§aNakup global na 90 dni")
-                .setLore("§7CZ: §f300 kc", "§7SK: §f15 EUR", "", "§eKlikni pro odkaz do Storu").build();
+                .setLore("§7CZ: §f390+- kc", "§7SK: §f15 EUR", "", "§eKlikni pro odkaz do Storu").build();
 
         inventory.setItem(0, filler);
         inventory.setItem(1, emerald_server_vip);
@@ -483,7 +481,7 @@ public class VIP_command implements CommandExecutor, Listener {
                 .setLore(global_vyhody).setGlowing().build();
 
         ItemStack nakup_server = new ItemBuilder(Material.PAPER).setName("§aNakup server NAVZDY!")
-                .setLore("§7CZ: §f300 kc", "§7SK: §f15 EUR", "", "§eKlikni pro odkaz do Storu").build();
+                .setLore("§7CZ: §f380+- kc", "§7SK: §f15 EUR", "", "§eKlikni pro odkaz do Storu").build();
         ItemStack nakup_global = new ItemBuilder(Material.PAPER).setName("§aNakup global NAVZDY!")
                 .setLore("§7CZ: §f1040 kc", "§7SK: §f40 EUR", "", "§eKlikni pro odkaz do Storu").build();
 

@@ -1,5 +1,6 @@
 package cz.wake.manager.perks.general;
 
+import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -24,6 +25,11 @@ public class BeaconCommand implements CommandExecutor, Listener {
             if ((Command.getName().equalsIgnoreCase("beacon"))) {
                 if (player.hasPermission("craftmanager.vip.beacon")) {
 
+                    if (Main.getInstance().getIdServer().equalsIgnoreCase("vanilla")) {
+                        player.sendMessage("§c§l(!) §cNa tomto serveru tato vyhoda neplati!");
+                        return true;
+                    }
+
                     Inventory inv = Bukkit.createInventory(null, InventoryType.DISPENSER, "Zvol si efekt");
 
                     inv.setItem(0, ItemFactory.create(Material.FEATHER, (byte)0, "§f§lSpeed"));
@@ -37,7 +43,7 @@ public class BeaconCommand implements CommandExecutor, Listener {
 
                     player.openInventory(inv);
                 } else {
-                    player.sendMessage("§cK ziskani pristupu potrebujes mit aktivni Hero dodatek.");
+                    player.sendMessage("§cK ziskani pristupu potrebujes mit aktivni Golden VIP.");
                 }
 
             }

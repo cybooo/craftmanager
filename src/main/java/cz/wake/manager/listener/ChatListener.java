@@ -64,6 +64,9 @@ public class ChatListener implements Listener {
                 ex.printStackTrace();
             }
         }
+        if (e.isCancelled()) {
+            return;
+        }
         //práva: craftmania.group.helper
         String prefix = Main.getMentionPrefix();
         for (Player onlinePlayer : Bukkit.getServer().getOnlinePlayers()) {

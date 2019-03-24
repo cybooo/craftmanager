@@ -27,9 +27,9 @@ public class ShopAPI implements Listener {
                 || Main.getInstance().getIdServer().equalsIgnoreCase("vanillasb")
                 || Main.getInstance().getIdServer().equalsIgnoreCase("test")
                 || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
-            Inventory inv = Bukkit.createInventory(null, 54, "§0Coinshop [Beta]");
+            Inventory inv = Bukkit.createInventory(null, 54, "§0Coinshop");
 
-            ItemStack head = new ItemBuilder(Material.LEGACY_SKULL_ITEM, (short) 3)
+            ItemStack head = new ItemBuilder(Material.SKULL_ITEM, (short) 3)
                     .setName("§bTvoje bohatstvi").setLore("§7CraftCoins: §f" + CraftCoinsAPI.getCoins(p) + " CC", "§7CraftTokens: §f" + CraftTokensAPI.getTokens(p) + " CT", "§7VoteTokens: §f" + VoteTokensAPI.getVoteTokens(p) + " VT", "", "§eKliknutim zobrazis vysvetleni").setSkullOwner(p.getName()).build();
             inv.setItem(1, head);
 
@@ -37,19 +37,7 @@ public class ShopAPI implements Listener {
                     .setName("§bLog uctu").setLore("§7Pripravujeme...").build();
             inv.setItem(2, log);
 
-            ItemStack vyber_survival = new ItemBuilder(Material.RED_STAINED_GLASS_PANE)
-                    .setName("§cSurvival").setLore("§7Server v tomto menu", "§7nelze zvolit.").build();
-
-            ItemStack vyber_skyblock = new ItemBuilder(Material.RED_STAINED_GLASS_PANE)
-                    .setName("§cSkyblock").setLore("§7Server v tomto menu", "§7nelze zvolit.").build();
-
-            ItemStack vyber_creative = new ItemBuilder(Material.RED_STAINED_GLASS_PANE)
-                    .setName("§cCreative").setLore("§7Server v tomto menu", "§7nelze zvolit.").build();
-
-            ItemStack vyber_prison = new ItemBuilder(Material.RED_STAINED_GLASS_PANE)
-                    .setName("§cPrison").setLore("§7Server v tomto menu", "§7nelze zvolit.").build();
-
-            ItemStack footer = new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName("§c").build();
+            ItemStack footer = new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 15).setName("§c").build();
             inv.setItem(53, footer);
             inv.setItem(52, footer);
             inv.setItem(51, footer);
@@ -60,26 +48,33 @@ public class ShopAPI implements Listener {
             inv.setItem(46, footer);
             inv.setItem(45, footer);
 
-            inv.setItem(4, vyber_survival);
-            inv.setItem(5, vyber_skyblock);
-            inv.setItem(6, vyber_creative);
-            inv.setItem(7, vyber_prison);
+            inv.setItem(0, footer);
+            inv.setItem(3, footer);
+            inv.setItem(4, footer);
+            inv.setItem(5, footer);
+            inv.setItem(6, footer);
+            inv.setItem(7, footer);
+            inv.setItem(8, footer);
 
             ItemStack tags = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§6Tags (za CraftCoiny)", "§7Zakup si tag pred nick", "§7a bud IN!", "", "§eKlikni pro zobrazeni");
             ItemStack tagsTokens = ItemFactory.create(Material.ANVIL, (byte) 0, "§bTags (za CraftTokeny)", "§7Vytvor si vlastni tag", "§7podle svych predstav,", "§7limit prakticky neexistuje!", "", "§eKlikni k otevreni editoru");
 
             ItemStack prava = new ItemBuilder(Material.BOOK, (short) 0)
                     .setName("§6Prava (za CraftCoiny)").setLore("§7Nakup si dalsi prava", "§7a ziskej tak dostatecnou", "§7vyhodu oproti ostatnim", "§7hracum na serveru.", "", "§eKlikni pro zobrazeni").build();
-            inv.setItem(23, prava);
+            inv.setItem(21, prava);
 
             ItemStack voteShop = new ItemBuilder(Material.EMERALD, (short) 0).setName("§aOdmeny (za VoteTokeny)").setLore("§7Vyber si odmenu", "§7za hlasovani podle sebe!", "", "§eKliknutim zobrazis").build();
-            inv.setItem(34, voteShop);
+            inv.setItem(23, voteShop);
+
+            ItemStack itemShop = new ItemBuilder(Material.ENCHANTMENT_TABLE).setName("§6Itemy (za CraftCoiny)")
+                    .setLore("§7Kup si zajimave itemy", "§7a ziskej tak mensi bonusy", "§7k hrani na serveru.", "", "§eKlikni pro zobrazeni").build();
+            inv.setItem(25, itemShop);
 
             inv.setItem(19, tags);
-            inv.setItem(30, tagsTokens);
+            inv.setItem(29, tagsTokens);
             p.openInventory(inv);
         } else {
-            p.sendMessage("§cNa tomto serveru je CoinShop deaktivovany.");
+            p.sendMessage("§cNa tomto serveru je CoinShop deaktivovany nebo neni podporovany.");
         }
     }
 
@@ -123,7 +118,7 @@ public class ShopAPI implements Listener {
         this.setupTag(p, "deluxetags.tag.oksoud", "OkSoud", inv, 35, 1000);
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
-        ItemStack hlavni = ItemFactory.create(Material.ENDER_EYE, (byte) 0, "§aHlavni menu");
+        ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
         ItemStack dalsi = ItemFactory.create(Material.ARROW, (byte) 0, "§cDalsi stranka");
 
         inv.setItem(39, zpet);
@@ -173,7 +168,7 @@ public class ShopAPI implements Listener {
         this.setupTag(p, "deluxetags.tag.craftmaniak", "CraftManiak", inv, 35, 1500);
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
-        ItemStack hlavni = ItemFactory.create(Material.ENDER_EYE, (byte) 0, "§aHlavni menu");
+        ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
         ItemStack dalsi = ItemFactory.create(Material.ARROW, (byte) 0, "§cDalsi stranka");
 
         inv.setItem(39, zpet);
@@ -224,7 +219,7 @@ public class ShopAPI implements Listener {
         this.setupTag(p, "deluxetags.tag.jachcumoney", "JaChcuMoney", inv, 35, 600);
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
-        ItemStack hlavni = ItemFactory.create(Material.ENDER_EYE, (byte) 0, "§aHlavni menu");
+        ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
         ItemStack dalsi = ItemFactory.create(Material.ARROW, (byte) 0, "§cDalsi stranka");
 
         inv.setItem(39, zpet);
@@ -275,7 +270,7 @@ public class ShopAPI implements Listener {
         this.setupTag(p, "deluxetags.tag.autista", "Autista", inv, 35, 1000);
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
-        ItemStack hlavni = ItemFactory.create(Material.ENDER_EYE, (byte) 0, "§aHlavni menu");
+        ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
         ItemStack dalsi = ItemFactory.create(Material.ARROW, (byte) 0, "§cDalsi stranka");
 
         inv.setItem(39, zpet);
@@ -294,7 +289,7 @@ public class ShopAPI implements Listener {
         this.setupTag(p, "deluxetags.tag.neasi", "Neasi", inv, 4, 700);
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
-        ItemStack hlavni = ItemFactory.create(Material.ENDER_EYE, (byte) 0, "§aHlavni menu");
+        ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
 
         inv.setItem(39, zpet);
         inv.setItem(40, hlavni);
@@ -303,163 +298,578 @@ public class ShopAPI implements Listener {
     }
 
     private void openPermsMenu(final Player p) {
-        Inventory inv = Bukkit.createInventory(null, 45, "§0Prava za CraftCoins");
+        Inventory inv = Bukkit.createInventory(null, 54, "§0Prava za CraftCoins");
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
-        ItemStack hlavni = ItemFactory.create(Material.ENDER_EYE, (byte) 0, "§aHlavni menu");
+        ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
 
-        if(!p.hasPermission("residence.group.bonus1")) { //Residence 200x200
+        ItemStack footer = new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 15).setName("§c").build();
+        ItemStack noNextpage = new ItemBuilder(Material.BARRIER).setName("§c ").build();
+        inv.setItem(0, footer);
+        inv.setItem(1, footer);
+        inv.setItem(2, footer);
+        inv.setItem(3, footer);
+        inv.setItem(4, footer);
+        inv.setItem(5, footer);
+        inv.setItem(6, footer);
+        inv.setItem(7, footer);
+        inv.setItem(8, footer);
+
+        inv.setItem(45, footer);
+        inv.setItem(46, footer);
+        inv.setItem(47, footer);
+        inv.setItem(50, noNextpage);
+        inv.setItem(51, footer);
+        inv.setItem(52, footer);
+        inv.setItem(53, footer);
+
+        // Residence 200x200 (2,500)
+        if(!p.hasPermission("residence.group.bonus1")) {
             if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
-                ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§cResidence 200x200")
+                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cResidence 200x200")
                         .setLore("§7Nelze zakoupit na tomto serveru.").build();
-                inv.setItem(0, nedostupny);
-                return;
-            }
-            if(CraftCoinsAPI.getCoins(p) >= 5000) {
-                ItemStack item = new ItemBuilder(Material.GRASS).setName("§aResidence 200x200")
-                        .setLore("§7Vsechny tve residence", "§7budes moct nastavit na","§7velikost 200x200.", "", "§7Cena: §f5000 CC").build();
-                inv.setItem(0, item);
+                inv.setItem(19, nedostupny);
             } else {
-                ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§7Residence 200x200")
-                        .setLore("§cNedostatek CraftCoinu!", "§7Potrebujes: §f5000 CC").build();
-                inv.setItem(0, noMoney);
+                if(CraftCoinsAPI.getCoins(p) >= 2500) {
+                    ItemStack item = new ItemBuilder(Material.WOOD_HOE).setName("§aResidence 200x200")
+                            .setLore("§7Vsechny tve residence", "§7budes moct nastavit na","§7velikost 200x200.", "", "§7Cena: §f2500 CC")
+                            .hideAllFlags().build();
+                    inv.setItem(19, item);
+                } else {
+                    ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§7Residence 200x200")
+                            .setLore("§cNedostatek CraftCoinu!", "§7Potrebujes: §f2500 CC").build();
+                    inv.setItem(19, noMoney);
+                }
             }
         } else {
-            ItemStack item = new ItemBuilder(Material.GRASS).setName("§bResidence 200x200")
+            ItemStack item = new ItemBuilder(Material.WOOD_HOE).setName("§bResidence 200x200")
                     .setLore("§7Jiz zakoupeno.").setGlowing().hideAllFlags().build();
-            inv.setItem(0, item);
+            inv.setItem(19, item);
         }
 
-        if(!p.hasPermission("residence.group.bonus2")) { //Residence 300x300
-            if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
-                ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§cResidence 300x300")
+        // Residence 300x300 (7,500)
+        if (!p.hasPermission("residence.group.bonus2")) {
+            if (!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cResidence 300x300")
                         .setLore("§7Nelze zakoupit na tomto serveru.").build();
-                inv.setItem(1, nedostupny);
-                return;
-            }
-            if(CraftCoinsAPI.getCoins(p) >= 15000) {
-                ItemStack item = new ItemBuilder(Material.GRASS).setName("§aResidence 300x300")
-                        .setLore("§7Vsechny tve residence", "§7budes moct nastavit na","§7velikost 300x300.", "", "§7Cena: §f15000 CC").build();
-                inv.setItem(1, item);
+                inv.setItem(20, nedostupny);
             } else {
-                ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§7Residence 300x300")
-                        .setLore("§cNedostatek CraftCoinu!", "§7Potrebujes: §f15000 CC").build();
-                inv.setItem(1, noMoney);
+                if (!p.hasPermission("residence.group.bonus1")) {
+                    ItemStack item = new ItemBuilder(Material.BARRIER).setName("§cResidence 300x300")
+                            .setLore("§7Pro nakup musis mit", "§7koupeny nizsi tier!").build();
+                    inv.setItem(20, item);
+                } else if (CraftCoinsAPI.getCoins(p) >= 7500) {
+                    ItemStack item = new ItemBuilder(Material.STONE_HOE).setName("§aResidence 300x300")
+                            .setLore("§7Vsechny tve residence", "§7budes moct nastavit na","§7velikost 300x300.", "", "§7Cena: §f7500 CC")
+                            .hideAllFlags().build();
+                    inv.setItem(20, item);
+                } else {
+                    ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§7Residence 300x300")
+                            .setLore("§cNedostatek CraftCoinu!", "§7Potrebujes: §f7500 CC").build();
+                    inv.setItem(20, noMoney);
+                }
             }
         } else {
-            ItemStack item = new ItemBuilder(Material.GRASS).setName("§bResidence 300x300")
+            ItemStack item = new ItemBuilder(Material.STONE_HOE).setName("§bResidence 300x300")
                     .setLore("§7Jiz zakoupeno.").setGlowing().hideAllFlags().build();
-            inv.setItem(1, item);
+            inv.setItem(20, item);
         }
 
-        inv.setItem(39, zpet);
-        inv.setItem(40, hlavni);
+        // Residence 400x400 (15,000)
+        if (!p.hasPermission("residence.group.bonus3")) {
+            if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cResidence 400x400")
+                        .setLore("§7Nelze zakoupit na tomto serveru.").build();
+                inv.setItem(21, nedostupny);
+            } else {
+                if (!p.hasPermission("residence.group.bonus2")) {
+                    ItemStack item = new ItemBuilder(Material.BARRIER).setName("§cResidence 400x400")
+                            .setLore("§7Pro nakup musis mit", "§7koupeny nizsi tier!").build();
+                    inv.setItem(21, item);
+                } else if (CraftCoinsAPI.getCoins(p) >= 15000) {
+                    ItemStack item = new ItemBuilder(Material.GOLD_HOE).setName("§aResidence 400x400")
+                            .setLore("§7Vsechny tve residence", "§7budes moct nastavit na","§7velikost 400x400.", "", "§7Cena: §f15000 CC")
+                            .hideAllFlags().build();
+                    inv.setItem(21, item);
+                } else {
+                    ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§7Residence 400x400")
+                            .setLore("§cNedostatek CraftCoinu!", "§7Potrebujes: §f15000 CC").build();
+                    inv.setItem(21, noMoney);
+                }
+            }
+        } else {
+            ItemStack item = new ItemBuilder(Material.GOLD_HOE).setName("§bResidence 400x400")
+                    .setLore("§7Jiz zakoupeno.").setGlowing().hideAllFlags().build();
+            inv.setItem(21, item);
+        }
+
+        // Skyblock - 5 hraci (1,500)
+        if (!p.hasPermission("askyblock.team.maxsize.5")) {
+            if(!Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cMax. hracu na IS (5)")
+                        .setLore("§7Nelze zakoupit na tomto serveru.").build();
+                inv.setItem(23, nedostupny);
+            } else {
+                if (CraftCoinsAPI.getCoins(p) >= 1500) {
+                    ItemStack item = new ItemBuilder(Material.CHAINMAIL_HELMET).setName("§aMax. hracu na IS (5)")
+                            .setLore("§7Zakoupenim ziskas", "§7moznost pridat vice hracu", "§7az 5 na svuj ostrov.", "", "§7Cena: §f1500 CC")
+                            .hideAllFlags().build();
+                    inv.setItem(23, item);
+                } else {
+                    ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§7Max. hracu na IS (5)")
+                            .setLore("§cNedostatek CraftCoinu!", "§7Potrebujes: §f1500 CC").build();
+                    inv.setItem(23, noMoney);
+                }
+            }
+        } else {
+            ItemStack item = new ItemBuilder(Material.CHAINMAIL_HELMET).setName("§bMax. hracu na IS (5)")
+                    .setLore("§7Jiz zakoupeno.").setGlowing().hideAllFlags().build();
+                inv.setItem(23, item);
+        }
+
+        // Skyblock - 7 hraci (3,500)
+        if (!p.hasPermission("askyblock.team.maxsize.7")) {
+            if(!Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cMax. hracu na IS (7)")
+                        .setLore("§7Nelze zakoupit na tomto serveru.").build();
+                inv.setItem(24, nedostupny);
+            } else {
+                if (!p.hasPermission("askyblock.team.maxsize.5")) {
+                    ItemStack item = new ItemBuilder(Material.BARRIER).setName("§cMax. hracu na IS (7)")
+                            .setLore("§7Pro nakup musis mit", "§7koupeny nizsi tier!").build();
+                    inv.setItem(24, item);
+                } else if (CraftCoinsAPI.getCoins(p) >= 3500) {
+                    ItemStack item = new ItemBuilder(Material.IRON_HELMET).setName("§aMax. hracu na IS (7)")
+                            .setLore("§7Zakoupenim ziskas", "§7moznost pridat vice hracu", "§7az 7 na svuj ostrov.", "", "§7Cena: §f3500 CC")
+                            .hideAllFlags().build();
+                    inv.setItem(24, item);
+                } else {
+                    ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§7Max. hracu na IS (7)")
+                            .setLore("§cNedostatek CraftCoinu!", "§7Potrebujes: §f3500 CC").build();
+                    inv.setItem(24, noMoney);
+                }
+            }
+        } else {
+            ItemStack item = new ItemBuilder(Material.IRON_HELMET).setName("§bMax. hracu na IS (7)")
+                    .setLore("§7Jiz zakoupeno.").setGlowing().hideAllFlags().build();
+            inv.setItem(24, item);
+        }
+
+        // Skyblock - 10 hraci (5,000)
+        if (!p.hasPermission("askyblock.team.maxsize.10")) {
+            if(!Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cMax. hracu na IS (10)")
+                        .setLore("§7Nelze zakoupit na tomto serveru.").build();
+                inv.setItem(25, nedostupny);
+            } else {
+                if (!p.hasPermission("askyblock.team.maxsize.7")) {
+                    ItemStack item = new ItemBuilder(Material.BARRIER).setName("§cMax. hracu na IS (10)")
+                            .setLore("§7Pro nakup musis mit", "§7koupeny nizsi tier!").build();
+                    inv.setItem(25, item);
+                } else if (CraftCoinsAPI.getCoins(p) >= 5000) {
+                    ItemStack item = new ItemBuilder(Material.GOLD_HELMET).setName("§aMax. hracu na IS (10)")
+                            .setLore("§7Zakoupenim ziskas", "§7moznost pridat vice hracu", "§7az 10 na svuj ostrov.", "", "§7Cena: §f5000 CC")
+                            .hideAllFlags().build();
+                    inv.setItem(25, item);
+                } else {
+                    ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§7Max. hracu na IS (10)")
+                            .setLore("§cNedostatek CraftCoinu!", "§7Potrebujes: §f5000 CC").build();
+                    inv.setItem(25, noMoney);
+                }
+            }
+        } else {
+            ItemStack item = new ItemBuilder(Material.GOLD_HELMET).setName("§bMax. hracu na IS (10)")
+                    .setLore("§7Jiz zakoupeno.").setGlowing().hideAllFlags().build();
+            inv.setItem(25, item);
+        }
+
+        // Skyblock - 15 hraci (10,000) - 32
+        if (!p.hasPermission("askyblock.team.maxsize.15")) {
+            if(!Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cMax. hracu na IS (15)")
+                        .setLore("§7Nelze zakoupit na tomto serveru.").build();
+                inv.setItem(32, nedostupny);
+            } else {
+                if (!p.hasPermission("askyblock.team.maxsize.10")) {
+                    ItemStack item = new ItemBuilder(Material.BARRIER).setName("§cMax. hracu na IS (15)")
+                            .setLore("§7Pro nakup musis mit", "§7koupeny nizsi tier!").build();
+                    inv.setItem(32, item);
+                } else if (CraftCoinsAPI.getCoins(p) >= 10000) {
+                    ItemStack item = new ItemBuilder(Material.DIAMOND_HELMET).setName("§aMax. hracu na IS (15)")
+                            .setLore("§7Zakoupenim ziskas", "§7moznost pridat vice hracu", "§7az 15 na svuj ostrov.", "", "§7Cena: §f10000 CC")
+                            .hideAllFlags().build();
+                    inv.setItem(32, item);
+                } else {
+                    ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§7Max. hracu na IS (15)")
+                            .setLore("§cNedostatek CraftCoinu!", "§7Potrebujes: §f10000 CC").build();
+                    inv.setItem(32, noMoney);
+                }
+            }
+        } else {
+            ItemStack item = new ItemBuilder(Material.DIAMOND_HELMET).setName("§bMax. hracu na IS (15)")
+                    .setLore("§7Jiz zakoupeno.").setGlowing().hideAllFlags().build();
+            inv.setItem(32, item);
+        }
+
+        inv.setItem(48, zpet);
+        inv.setItem(49, hlavni);
 
         p.openInventory(inv);
     }
 
     private void openVoteMenu(final Player p) {
-        Inventory inv = Bukkit.createInventory(null, 45, "§0Odmeny za VoteTokeny");
+        Inventory inv = Bukkit.createInventory(null, 54, "§0Odmeny za VoteTokeny");
         long voteTokens = VoteTokensAPI.getVoteTokens(p);
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
-        ItemStack hlavni = ItemFactory.create(Material.ENDER_EYE, (byte) 0, "§aHlavni menu");
+        ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
 
+        ItemStack footer = new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 15).setName("§c").build();
+        ItemStack noNextpage = new ItemBuilder(Material.BARRIER).setName("§c ").build();
+        inv.setItem(0, footer);
+        inv.setItem(1, footer);
+        inv.setItem(2, footer);
+        inv.setItem(3, footer);
+        inv.setItem(4, footer);
+        inv.setItem(5, footer);
+        inv.setItem(6, footer);
+        inv.setItem(7, footer);
+        inv.setItem(8, footer);
+
+        inv.setItem(45, footer);
+        inv.setItem(46, footer);
+        inv.setItem(47, footer);
+        inv.setItem(50, noNextpage);
+        inv.setItem(51, footer);
+        inv.setItem(52, footer);
+        inv.setItem(53, footer);
+
+        // VoteCrate (1x)
         if (voteTokens >= 1) {
             if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
-                ItemStack voteCrate = new ItemBuilder(Material.PISTON).setName("§a1x VoteCrate").setLore("§7Cena: §f1 VT").build();
-                inv.setItem(0, voteCrate);
+                ItemStack voteCrate = new ItemBuilder(Material.PISTON_BASE).setName("§a1x VoteCrate").setLore("§7Cena: §f1 VT").build();
+                inv.setItem(19, voteCrate);
             } else {
-                ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§c1x VoteCrate")
+                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§c1x VoteCrate")
                         .setLore("§7Nelze zakoupit na tomto serveru.").build();
-                inv.setItem(0, nedostupny);
+                inv.setItem(19, nedostupny);
             }
         } else {
-            ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§81x VoteCreate")
+            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§81x VoteCreate")
                     .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f1 VT").build();
-            inv.setItem(0, noMoney);
+            inv.setItem(19, noMoney);
         }
 
-        if (voteTokens >= 1) {
-            if (Main.getInstance().getIdServer().equalsIgnoreCase("creative")) {
-                ItemStack item = new ItemBuilder(Material.WOODEN_AXE).setName("§aWorldEdit (1h)").setLore("§7Cena: §f1 VT").build();
-                inv.setItem(1, item);
-            } else {
-                ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§cWorldEdit (1h)")
-                        .setLore("§7Nelze zakoupit na tomto serveru.").hideAllFlags().build();
-                inv.setItem(1, nedostupny);
-            }
-        } else {
-            ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§8WorldEdit (1h)")
-                    .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f1 VT").build();
-            inv.setItem(1, noMoney);
-        }
-
-        if (voteTokens >= 1) {
-            ItemStack item = new ItemBuilder(Material.GOLD_INGOT).setName("§630 CraftCoins").setLore("§7Cena: §f1 VT").build();
-            inv.setItem(2, item);
-        } else {
-            ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§830 CraftCoins")
-                    .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f1 VT").build();
-            inv.setItem(2, noMoney);
-        }
-
-        if (voteTokens >= 3) {
-            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
-                ItemStack headCreate = new ItemBuilder(Material.PISTON).setName("§d1x HeadCrate").setLore("§7Cena: §f3 VT").build();
-                inv.setItem(3, headCreate);
-            } else {
-                ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§c1x HeadCrate")
-                        .setLore("§7Nelze zakoupit na tomto serveru.").build();
-                inv.setItem(3, nedostupny);
-            }
-        } else {
-            ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§81x HeadCrate")
-                    .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f3 VT").build();
-            inv.setItem(3, noMoney);
-        }
-
+        // VoteCrate (5x)
         if (voteTokens >= 5) {
             if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
-                ItemStack headCreate = new ItemBuilder(Material.PISTON).setName("§91x EpicCrate").setLore("§7Cena: §f5 VT").build();
-                inv.setItem(4, headCreate);
+                ItemStack voteCrate = new ItemBuilder(Material.PISTON_BASE).setName("§a5x VoteCrate").setLore("§7Cena: §f5 VT").build();
+                inv.setItem(28, voteCrate);
             } else {
-                ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§c1x EpicCrate")
+                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§c5x VoteCrate")
                         .setLore("§7Nelze zakoupit na tomto serveru.").build();
-                inv.setItem(4, nedostupny);
+                inv.setItem(28, nedostupny);
             }
         } else {
-            ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§81x EpicCrate")
+            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§85x VoteCrate")
                     .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f5 VT").build();
-            inv.setItem(4, noMoney);
+            inv.setItem(28, noMoney);
         }
 
+        // EpicCrate (1x)
+        if (voteTokens >= 5) {
+            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
+                ItemStack headCreate = new ItemBuilder(Material.PISTON_BASE).setName("§91x EpicCrate").setLore("§7Cena: §f5 VT").build();
+                inv.setItem(20, headCreate);
+            } else {
+                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§c1x EpicCrate")
+                        .setLore("§7Nelze zakoupit na tomto serveru.").build();
+                inv.setItem(20, nedostupny);
+            }
+        } else {
+            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§81x EpicCrate")
+                    .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f5 VT").build();
+            inv.setItem(20, noMoney);
+        }
+
+        // EpicCrate (3x)
+        if (voteTokens >= 15) {
+            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
+                ItemStack headCreate = new ItemBuilder(Material.PISTON_BASE).setName("§93x EpicCrate").setLore("§7Cena: §f15 VT").build();
+                inv.setItem(29, headCreate);
+            } else {
+                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§c3x EpicCrate")
+                        .setLore("§7Nelze zakoupit na tomto serveru.").build();
+                inv.setItem(29, nedostupny);
+            }
+        } else {
+            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§83x EpicCrate")
+                    .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f15 VT").build();
+            inv.setItem(29, noMoney);
+        }
+
+        // HeadCrate (1x)
+        if (voteTokens >= 3) {
+            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
+                ItemStack headCreate = new ItemBuilder(Material.PISTON_BASE).setName("§d1x HeadCrate").setLore("§7Cena: §f3 VT").build();
+                inv.setItem(21, headCreate);
+            } else {
+                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§c1x HeadCrate")
+                        .setLore("§7Nelze zakoupit na tomto serveru.").build();
+                inv.setItem(21, nedostupny);
+            }
+        } else {
+            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§81x HeadCrate")
+                    .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f3 VT").build();
+            inv.setItem(21, noMoney);
+        }
+
+        // HeadCrate (3x)
+        if (voteTokens >= 9) {
+            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
+                ItemStack headCreate = new ItemBuilder(Material.PISTON_BASE).setName("§d3x HeadCrate").setLore("§7Cena: §f9 VT").build();
+                inv.setItem(30, headCreate);
+            } else {
+                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§c3x HeadCrate")
+                        .setLore("§7Nelze zakoupit na tomto serveru.").build();
+                inv.setItem(30, nedostupny);
+            }
+        } else {
+            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§83x HeadCrate")
+                    .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f9 VT").build();
+            inv.setItem(30, noMoney);
+        }
+
+        // WorldEdit (1h)
+        if (voteTokens >= 1) {
+            if (Main.getInstance().getIdServer().equalsIgnoreCase("creative")) {
+                ItemStack item = new ItemBuilder(Material.WOOD_AXE).setName("§aWorldEdit (1h)").setLore("§7Cena: §f1 VT").hideAllFlags().build();
+                inv.setItem(23, item);
+            } else {
+                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cWorldEdit (1h)")
+                        .setLore("§7Nelze zakoupit na tomto serveru.").hideAllFlags().build();
+                inv.setItem(23, nedostupny);
+            }
+        } else {
+            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§8WorldEdit (1h)")
+                    .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f1 VT").build();
+            inv.setItem(23, noMoney);
+        }
+
+        // WorldEdit (3h)
+        if (voteTokens >= 3) {
+            if (Main.getInstance().getIdServer().equalsIgnoreCase("creative")) {
+                ItemStack item = new ItemBuilder(Material.IRON_AXE).setName("§aWorldEdit (3h)").setLore("§7Cena: §f3 VT").hideAllFlags().build();
+                inv.setItem(32, item);
+            } else {
+                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cWorldEdit (3h)")
+                        .setLore("§7Nelze zakoupit na tomto serveru.").hideAllFlags().build();
+                inv.setItem(32, nedostupny);
+            }
+        } else {
+            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§8WorldEdit (3h)")
+                    .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f3 VT").build();
+            inv.setItem(32, noMoney);
+        }
+
+        // Skyblock Fly (1h)
         if (voteTokens >= 3) {
             if (Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
-                ItemStack item = new ItemBuilder(Material.ELYTRA).setName("§aFly na vlastnim ostrove (1h)").setLore("§7Cena: §f3 VT").hideAllFlags().build();
-                inv.setItem(5, item);
+                ItemStack item = new ItemBuilder(Material.FEATHER).setName("§aFly na vlastnim ostrove (1h)").setLore("§7Cena: §f3 VT").hideAllFlags().build();
+                inv.setItem(24, item);
             } else {
-                ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§cFly na vlastnim ostrove (1h)")
+                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cFly na vlastnim ostrove (1h)")
                         .setLore("§7Nelze zakoupit na tomto serveru.").build();
-                inv.setItem(5, nedostupny);
+                inv.setItem(24, nedostupny);
             }
         } else {
-            ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§8Fly na vlastnim ostrove (1h)")
+            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§8Fly na vlastnim ostrove (1h)")
                     .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f3 VT").build();
-            inv.setItem(5, noMoney);
+            inv.setItem(24, noMoney);
         }
 
-        inv.setItem(39, zpet);
-        inv.setItem(40, hlavni);
+        // Skyblock Fly (3h)
+        if (voteTokens >= 9) {
+            if (Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
+                ItemStack item = new ItemBuilder(Material.ELYTRA).setName("§aFly na vlastnim ostrove (3h)").setLore("§7Cena: §f9 VT").hideAllFlags().build();
+                inv.setItem(33, item);
+            } else {
+                ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cFly na vlastnim ostrove (3h)")
+                        .setLore("§7Nelze zakoupit na tomto serveru.").build();
+                inv.setItem(33, nedostupny);
+            }
+        } else {
+            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§8Fly na vlastnim ostrove (3h)")
+                    .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f9 VT").build();
+            inv.setItem(33, noMoney);
+        }
+
+        // 30 CraftCoins
+        if (voteTokens >= 1) {
+            ItemStack item = new ItemBuilder(Material.GOLD_NUGGET).setName("§630 CraftCoins").setLore("§7Cena: §f1 VT").build();
+            inv.setItem(25, item);
+        } else {
+            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§830 CraftCoins")
+                    .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f1 VT").build();
+            inv.setItem(25, noMoney);
+        }
+
+        // 100 CraftCoins
+        if (voteTokens >= 3) {
+            ItemStack item = new ItemBuilder(Material.GOLD_INGOT).setName("§6100 CraftCoins").setLore("§7Cena: §f3 VT").build();
+            inv.setItem(34, item);
+        } else {
+            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§8100 CraftCoins")
+                    .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f3 VT").build();
+            inv.setItem(34, noMoney);
+        }
+
+        inv.setItem(48, zpet);
+        inv.setItem(49, hlavni);
 
         p.openInventory(inv);
 
     }
 
+    private void openItemShop(final Player p) {
+        Inventory inv = Bukkit.createInventory(null, 54, "§0Itemy za CraftCoiny");
+        long craftCoins = CraftCoinsAPI.getCoins(p);
+
+        ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
+        ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
+
+        ItemStack footer = new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 15).setName("§c").build();
+        ItemStack noNextpage = new ItemBuilder(Material.BARRIER).setName("§c ").build();
+        inv.setItem(0, footer);
+        inv.setItem(1, footer);
+        inv.setItem(2, footer);
+        inv.setItem(3, footer);
+        inv.setItem(4, footer);
+        inv.setItem(5, footer);
+        inv.setItem(6, footer);
+        inv.setItem(7, footer);
+        inv.setItem(8, footer);
+
+        inv.setItem(45, footer);
+        inv.setItem(46, footer);
+        inv.setItem(47, footer);
+        inv.setItem(50, noNextpage);
+        inv.setItem(51, footer);
+        inv.setItem(52, footer);
+        inv.setItem(53, footer);
+
+        // Slotovac
+        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+            if (craftCoins >= 1500) {
+                ItemStack item = new ItemBuilder(Material.STORAGE_MINECART).setName("§a1x Slotovac")
+                        .setLore("§7Zvysuje pocet custom enchantu", "§7na itemu - max. 10!", "", "§7Cena: §f1500 CC").build();
+                inv.setItem(19, item);
+            } else {
+                ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§81x Slotovac")
+                        .setLore("§cNedostatek CraftCoins!", "§7Potrebujes: §f1500 CC").build();
+                inv.setItem(19, noMoney);
+            }
+        } else {
+            ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§c1x Slotovac")
+                    .setLore("§7Nelze zakoupit na tomto serveru.").build();
+            inv.setItem(19, nedostupny);
+        }
+
+        // MobTracker
+        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+            if (craftCoins >= 500) {
+                ItemStack item = new ItemBuilder(Material.FERMENTED_SPIDER_EYE).setName("§eMobTrak")
+                        .setLore("§7Zaznamenava na nastroj", "§7kolik jsi zabil mobu.", "", "§7Cena: §f500 CC").build();
+                inv.setItem(20, item);
+            } else {
+                ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§8MobTrak")
+                        .setLore("§cNedostatek CraftCoins!", "§7Potrebujes: §f500 CC").build();
+                inv.setItem(20, noMoney);
+            }
+        } else {
+            ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cMobTrak")
+                    .setLore("§7Nelze zakoupit na tomto serveru.").build();
+            inv.setItem(20, nedostupny);
+        }
+
+        // StatTrak
+        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+            if (craftCoins >= 500) {
+                ItemStack item = new ItemBuilder(Material.MAGMA_CREAM).setName("§6StatTrak")
+                        .setLore("§7Zaznamenava na nastroj", "§7kolik jsi zabil hracu.", "", "§7Cena: §f500 CC").build();
+                inv.setItem(21, item);
+            } else {
+                ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§8StatTrak")
+                        .setLore("§cNedostatek CraftCoins!", "§7Potrebujes: §f500 CC").build();
+                inv.setItem(21, noMoney);
+            }
+        } else {
+            ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cStatTrak")
+                    .setLore("§7Nelze zakoupit na tomto serveru.").build();
+            inv.setItem(21, nedostupny);
+        }
+
+        // BlockTrak
+        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+            if (craftCoins >= 500) {
+                ItemStack item = new ItemBuilder(Material.SLIME_BALL).setName("§aBlockTrak")
+                        .setLore("§7Zaznamenava na nastroj", "§7kolik jsi vykopal bloku.", "", "§7Cena: §f500 CC").build();
+                inv.setItem(22, item);
+            } else {
+                ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§8BlockTrak")
+                        .setLore("§cNedostatek CraftCoins!", "§7Potrebujes: §f500 CC").build();
+                inv.setItem(22, noMoney);
+            }
+        } else {
+            ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cBlockTrak")
+                    .setLore("§7Nelze zakoupit na tomto serveru.").build();
+            inv.setItem(22, nedostupny);
+        }
+
+        // Randomizer
+        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+            if (craftCoins >= 300) {
+                ItemStack item = new ItemBuilder(Material.PAPER).setName("§eRandomizer")
+                        .setLore("§7Vygeneruje znovu nahodne", "§7sance na knize.", "", "§7Cena: §f300 CC").build();
+                inv.setItem(23, item);
+            } else {
+                ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§8Randomizer")
+                        .setLore("§cNedostatek CraftCoins!", "§7Potrebujes: §f300 CC").build();
+                inv.setItem(23, noMoney);
+            }
+        } else {
+            ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cRandomizer")
+                    .setLore("§7Nelze zakoupit na tomto serveru.").build();
+            inv.setItem(23, nedostupny);
+        }
+
+        // Transmog
+        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+            if (craftCoins >= 600) {
+                ItemStack item = new ItemBuilder(Material.PAPER).setName("§eTransmog Scroll")
+                        .setLore("§7Seradi vsechny enchanty", "§7na itemu podle rarity.", "", "§7Cena: §f600 CC").build();
+                inv.setItem(24, item);
+            } else {
+                ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§8Transmog Scroll")
+                        .setLore("§cNedostatek CraftCoins!", "§7Potrebujes: §f600 CC").build();
+                inv.setItem(24, noMoney);
+            }
+        } else {
+            ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cTransmog Scroll")
+                    .setLore("§7Nelze zakoupit na tomto serveru.").build();
+            inv.setItem(24, nedostupny);
+        }
+
+        inv.setItem(48, zpet);
+        inv.setItem(49, hlavni);
+
+        p.openInventory(inv);
+    }
+
     @EventHandler
     private void onClick(InventoryClickEvent e) {
         final Player p = (Player) e.getWhoClicked();
-        if (e.getInventory().getTitle().equals("§0Coinshop [Beta]")) {
+        if (e.getInventory().getTitle().equals("§0Coinshop")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -470,18 +880,132 @@ public class ShopAPI implements Listener {
             if (e.getSlot() == 19) {
                 this.openTagsMenu(p);
             }
-            if (e.getSlot() == 30) {
+            if (e.getSlot() == 29) {
                 if (CraftTokensAPI.getTokens(p) > 0) {
                     TagsEditor.createTagEditor(p);
                 } else {
                     p.sendMessage("§cNemas dostatek CraftTokenu k provedeni teto akce.");
                 }
             }
-            if (e.getSlot() == 34) {
+            if (e.getSlot() == 23) {
                 this.openVoteMenu(p);
             }
-            if (e.getSlot() == 23) {
+            if (e.getSlot() == 21) {
                 this.openPermsMenu(p);
+            }
+            if (e.getSlot() == 25) {
+                this.openItemShop(p);
+            }
+        }
+        if (e.getInventory().getTitle().equals("§0Itemy za CraftCoiny")) {
+            e.setCancelled(true);
+            if (e.getCurrentItem() == null) {
+                return;
+            }
+            if (e.getCurrentItem().getType() == Material.AIR) {
+                return;
+            }
+            if (e.getSlot() == 48) {
+                this.openShopMainGUI(p);
+            }
+            if (e.getSlot() == 49) {
+                Main.getInstance().getMainGUI().openMainMenu(p);
+            }
+
+            // Slotovac
+            if (e.getSlot() == 19) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    return;
+                }
+                if (CraftCoinsAPI.getCoins(p) >= 1500) {
+                    CraftCoinsAPI.takeCoins(p, 1500);
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ae giveitem " + p.getName() + " slotincreaser 1 simple");
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x Slotovac §eza §a1500 CC.");
+                    p.closeInventory();
+                } else {
+                    p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (1500).");
+                }
+            }
+
+            // MobTrak
+            if (e.getSlot() == 20) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    return;
+                }
+                if (CraftCoinsAPI.getCoins(p) >= 500) {
+                    CraftCoinsAPI.takeCoins(p, 500);
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ae giveitem " + p.getName() + " mobtrak 1 simple");
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x MobTrak §eza §a500 CC.");
+                    p.closeInventory();
+                } else {
+                    p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (500).");
+                }
+            }
+
+            // StatTrak
+            if (e.getSlot() == 21) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    return;
+                }
+                if (CraftCoinsAPI.getCoins(p) >= 500) {
+                    CraftCoinsAPI.takeCoins(p, 500);
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ae giveitem " + p.getName() + " stattrak 1 simple");
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x StatTrak §eza §a500 CC.");
+                    p.closeInventory();
+                } else {
+                    p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (500).");
+                }
+            }
+
+            // BlockTrak
+            if (e.getSlot() == 22) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    return;
+                }
+                if (CraftCoinsAPI.getCoins(p) >= 500) {
+                    CraftCoinsAPI.takeCoins(p, 500);
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ae giveitem " + p.getName() + " blocktrak 1 simple");
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x BlockTrak §eza §a500 CC.");
+                    p.closeInventory();
+                } else {
+                    p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (500).");
+                }
+            }
+
+            // Randomizer
+            if (e.getSlot() == 23) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    return;
+                }
+                if (CraftCoinsAPI.getCoins(p) >= 300) {
+                    CraftCoinsAPI.takeCoins(p, 300);
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ae giveitem " + p.getName() + " randomizer 1 simple");
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x Randomizer §eza §a300 CC.");
+                    p.closeInventory();
+                } else {
+                    p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (300).");
+                }
+            }
+
+            // Transmog Scroll
+            if (e.getSlot() == 24) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    return;
+                }
+                if (CraftCoinsAPI.getCoins(p) >= 600) {
+                    CraftCoinsAPI.takeCoins(p, 600);
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ae giveitem " + p.getName() + " transmog 1 simple");
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x Transmog Scroll §eza §a600 CC.");
+                    p.closeInventory();
+                } else {
+                    p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (600).");
+                }
             }
         }
         if (e.getInventory().getTitle().equals("§0Prava za CraftCoins")) {
@@ -492,22 +1016,132 @@ public class ShopAPI implements Listener {
             if (e.getCurrentItem().getType() == Material.AIR) {
                 return;
             }
-            if (e.getSlot() == 39) {
+            if (e.getSlot() == 48) {
                 this.openShopMainGUI(p);
             }
-            if (e.getSlot() == 40) {
+            if (e.getSlot() == 49) {
                 Main.getInstance().getMainGUI().openMainMenu(p);
             }
-            if (e.getSlot() == 0) {
+
+            // Residence 200x200
+            if (e.getSlot() == 19) {
                 if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
                 if(!p.hasPermission("residence.group.bonus1")){
-                    if (CraftCoinsAPI.getCoins(p) >= 5000) {
-                        CraftCoinsAPI.takeCoins(p, 5000);
+                    if (CraftCoinsAPI.getCoins(p) >= 2500) {
+                        CraftCoinsAPI.takeCoins(p, 2500);
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set residence.group.bonus1 survival");
-                        p.sendMessage("§e§l(*) §eZakoupil jsi si §f200x200 Residence §eza §a5000 CC.");
+                        p.sendMessage("§e§l(*) §eZakoupil jsi si §f200x200 Residence §eza §a2500 CC.");
+                        p.closeInventory();
+                    } else {
+                        p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (2500).");
+                    }
+                } else {
+                    p.sendMessage("§c§l(!) §cJiz mas tento bonus zakoupeny.");
+                }
+            }
+
+            // Residence 300x300
+            if (e.getSlot() == 20) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    return;
+                }
+                if(!p.hasPermission("residence.group.bonus2")){
+                    if (!p.hasPermission("residence.group.bonus1")) {
+                        p.sendMessage("§c§l(!) §cPro nakup musis mit koupeny nizsi tier!");
+                    } else if (CraftCoinsAPI.getCoins(p) >= 7500) {
+                        CraftCoinsAPI.takeCoins(p, 7500);
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set residence.group.bonus2 survival");
+                        p.sendMessage("§e§l(*) §eZakoupil jsi si §f300x300 Residence §eza §a7500 CC.");
+                        p.closeInventory();
+                    } else {
+                        p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (7500).");
+                    }
+                } else {
+                    p.sendMessage("§c§l(!) §cJiz mas tento bonus zakoupeny.");
+                }
+            }
+
+            // Residence 400x400
+            if (e.getSlot() == 21) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    return;
+                }
+                if(!p.hasPermission("residence.group.bonus3")){
+                    if (!p.hasPermission("residence.group.bonus2")) {
+                        p.sendMessage("§c§l(!) §cPro nakup musis mit koupeny nizsi tier!");
+                    } else if (CraftCoinsAPI.getCoins(p) >= 15000) {
+                        CraftCoinsAPI.takeCoins(p, 15000);
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set residence.group.bonus3 survival");
+                        p.sendMessage("§e§l(*) §eZakoupil jsi si §f400x400 Residence §eza §a15000 CC.");
+                        p.closeInventory();
+                    } else {
+                        p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (15000).");
+                    }
+                } else {
+                    p.sendMessage("§c§l(!) §cJiz mas tento bonus zakoupeny.");
+                }
+            }
+
+            // Skyblock (5 hracu)
+            if (e.getSlot() == 23) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    return;
+                }
+                if(!p.hasPermission("askyblock.team.maxsize.5")){
+                    if (CraftCoinsAPI.getCoins(p) >= 1500) {
+                        CraftCoinsAPI.takeCoins(p, 1500);
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set askyblock.team.maxsize.5 skyblock");
+                        p.sendMessage("§e§l(*) §eZakoupil jsi si §fMax. pocet hracu na ostrove (5) §eza §a1500 CC.");
+                        p.closeInventory();
+                    } else {
+                        p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (1500).");
+                    }
+                } else {
+                    p.sendMessage("§c§l(!) §cJiz mas tento bonus zakoupeny.");
+                }
+            }
+
+            // Skyblock (7 hracu)
+            if (e.getSlot() == 24) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    return;
+                }
+                if(!p.hasPermission("askyblock.team.maxsize.7")){
+                    if (!p.hasPermission("askyblock.team.maxsize.5")) {
+                        p.sendMessage("§c§l(!) §cPro nakup musis mit koupeny nizsi tier!");
+                    } else if (CraftCoinsAPI.getCoins(p) >= 3500) {
+                        CraftCoinsAPI.takeCoins(p, 3500);
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set askyblock.team.maxsize.7 skyblock");
+                        p.sendMessage("§e§l(*) §eZakoupil jsi si §fMax. pocet hracu na ostrove (7) §eza §a3500 CC.");
+                        p.closeInventory();
+                    } else {
+                        p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (3500).");
+                    }
+                } else {
+                    p.sendMessage("§c§l(!) §cJiz mas tento bonus zakoupeny.");
+                }
+            }
+
+            // Skyblock (10 hracu)
+            if (e.getSlot() == 25) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    return;
+                }
+                if(!p.hasPermission("askyblock.team.maxsize.10")){
+                    if (!p.hasPermission("askyblock.team.maxsize.7")) {
+                        p.sendMessage("§c§l(!) §cPro nakup musis mit koupeny nizsi tier!");
+                    } else if (CraftCoinsAPI.getCoins(p) >= 5000) {
+                        CraftCoinsAPI.takeCoins(p, 5000);
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set askyblock.team.maxsize.10 skyblock");
+                        p.sendMessage("§e§l(*) §eZakoupil jsi si §fMax. pocet hracu na ostrove (10) §eza §a5000 CC.");
                         p.closeInventory();
                     } else {
                         p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (5000).");
@@ -516,19 +1150,23 @@ public class ShopAPI implements Listener {
                     p.sendMessage("§c§l(!) §cJiz mas tento bonus zakoupeny.");
                 }
             }
-            if (e.getSlot() == 1) {
-                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+
+            // Skyblock (15 hracu)
+            if (e.getSlot() == 32) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
-                if(!p.hasPermission("residence.group.bonus2")){
-                    if (CraftCoinsAPI.getCoins(p) >= 15000) {
-                        CraftCoinsAPI.takeCoins(p, 15000);
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set residence.group.bonus2 survival");
-                        p.sendMessage("§e§l(*) §eZakoupil jsi si §f300x300 Residence §eza §a15000 CC.");
+                if(!p.hasPermission("askyblock.team.maxsize.15")){
+                    if (!p.hasPermission("askyblock.team.maxsize.10")) {
+                        p.sendMessage("§c§l(!) §cPro nakup musis mit koupeny nizsi tier!");
+                    } else if (CraftCoinsAPI.getCoins(p) >= 10000) {
+                        CraftCoinsAPI.takeCoins(p, 10000);
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set askyblock.team.maxsize.15 skyblock");
+                        p.sendMessage("§e§l(*) §eZakoupil jsi si §fMax. pocet hracu na ostrove (15) §eza §a10000 CC.");
                         p.closeInventory();
                     } else {
-                        p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (15000).");
+                        p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (10000).");
                     }
                 } else {
                     p.sendMessage("§c§l(!) §cJiz mas tento bonus zakoupeny.");
@@ -544,13 +1182,15 @@ public class ShopAPI implements Listener {
             if (e.getCurrentItem().getType() == Material.AIR) {
                 return;
             }
-            if (e.getSlot() == 39) {
+            if (e.getSlot() == 48) {
                 this.openShopMainGUI(p);
             }
-            if (e.getSlot() == 40) {
+            if (e.getSlot() == 49) {
                 Main.getInstance().getMainGUI().openMainMenu(p);
             }
-            if (e.getSlot() == 0) {
+
+            // VoteCrate (1x)
+            if (e.getSlot() == 19) {
                 if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
@@ -564,7 +1204,89 @@ public class ShopAPI implements Listener {
                     p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (1)!");
                 }
             }
-            if (e.getSlot() == 1) {
+
+            // VoteCrate (5x)
+            if (e.getSlot() == 28) {
+                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
+                    return;
+                }
+                if (VoteTokensAPI.getVoteTokens(p) >= 5) {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " votecrate 5");
+                    VoteTokensAPI.takeVoteTokens(p, 5);
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f5x VoteCrate §eza §a5 VT.");
+                    p.closeInventory();
+                } else {
+                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (5)!");
+                }
+            }
+
+            // EpicCrate (1x)
+            if (e.getSlot() == 20) {
+                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
+                    return;
+                }
+                if (VoteTokensAPI.getVoteTokens(p) >= 5) {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " epiccrate 1");
+                    VoteTokensAPI.takeVoteTokens(p, 5);
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x EpicCrate §eza §a5 VT.");
+                    p.closeInventory();
+                } else {
+                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (5)!");
+                }
+            }
+
+            // EpicCrate (3x)
+            if (e.getSlot() == 29) {
+                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
+                    return;
+                }
+                if (VoteTokensAPI.getVoteTokens(p) >= 15) {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " epiccrate 3");
+                    VoteTokensAPI.takeVoteTokens(p, 15);
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f3x EpicCrate §eza §a15 VT.");
+                    p.closeInventory();
+                } else {
+                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (15)!");
+                }
+            }
+
+            // HeadCrate (1x)
+            if (e.getSlot() == 21) {
+                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
+                    return;
+                }
+                if (VoteTokensAPI.getVoteTokens(p) >= 3) {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " headcrate 1");
+                    VoteTokensAPI.takeVoteTokens(p, 3);
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x HeadCrate §eza §a3 VT.");
+                    p.closeInventory();
+                } else {
+                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (3)!");
+                }
+            }
+
+            // HeadCrate (3x)
+            if (e.getSlot() == 30) {
+                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
+                    return;
+                }
+                if (VoteTokensAPI.getVoteTokens(p) >= 9) {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " headcrate 3");
+                    VoteTokensAPI.takeVoteTokens(p, 9);
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f3x HeadCrate §eza §a9 VT.");
+                    p.closeInventory();
+                } else {
+                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (9)!");
+                }
+            }
+
+            // WorldEdit (1h)
+            if (e.getSlot() == 23) {
                 if (!(Main.getInstance().getIdServer().equalsIgnoreCase("creative"))) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
@@ -587,45 +1309,34 @@ public class ShopAPI implements Listener {
                     }
                 }
             }
-            if (e.getSlot() == 2) {
-                if (VoteTokensAPI.getVoteTokens(p) >= 1) {
-                    CraftCoinsAPI.giveCoins(p, 30);
-                    VoteTokensAPI.takeVoteTokens(p, 1);
-                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f30 CraftCoins §eza §a1 VT.");
-                    p.closeInventory();
-                } else {
-                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (1)!");
-                }
-            }
-            if (e.getSlot() == 3) {
-                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
+
+            // WorldEdit (3h)
+            if (e.getSlot() == 32) {
+                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("creative"))) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
-                if (VoteTokensAPI.getVoteTokens(p) >= 3) {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " headcrate 1");
-                    VoteTokensAPI.takeVoteTokens(p, 3);
-                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x HeadCrate §eza §a3 VT.");
-                    p.closeInventory();
+                if (p.hasPermission("worldedit.wand")) {
+                    p.sendMessage("§e§l(*) §eJiz mas zakoupeny WorldEdit!");
                 } else {
-                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (3)!");
+                    if (VoteTokensAPI.getVoteTokens(p) >= 3) {
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.(wand|fill) true 3h creative");
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.(history|brush).* true 3h creative");
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.navigation.up true 3h creative");
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.clipboard.(cut|paste|rotate|flip|copy) true 3h creative");
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.region.(center|hollow|walls|replace|set|smooth) true 3h creative");
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.selection.(pos|chunk) true 3h creative");
+                        VoteTokensAPI.takeVoteTokens(p, 3);
+                        p.sendMessage("§e§l(*) §eZakoupil jsi si §fWorldEdit na 3h §eza §a3 VT.");
+                        p.closeInventory();
+                    } else {
+                        p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (3)!");
+                    }
                 }
             }
-            if (e.getSlot() == 4) {
-                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
-                    return;
-                }
-                if (VoteTokensAPI.getVoteTokens(p) >= 5) {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " epiccrate 1");
-                    VoteTokensAPI.takeVoteTokens(p, 5);
-                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x EpicCrate §eza §a5 VT.");
-                    p.closeInventory();
-                } else {
-                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (5)!");
-                }
-            }
-            if (e.getSlot() == 5) {
+
+            // Skyblock Fly (1h)
+            if (e.getSlot() == 24) {
                 if (!(Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
@@ -642,6 +1353,51 @@ public class ShopAPI implements Listener {
                     } else {
                         p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (3)!");
                     }
+                }
+            }
+
+            // Skyblock Fly (3h)
+            if (e.getSlot() == 33) {
+                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
+                    p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
+                    return;
+                }
+                if (p.hasPermission("askyblock.islandfly")) {
+                    p.sendMessage("§e§l(*) §eJiz mas zakoupeny Fly na ostrove! Pockej az skonci...");
+                } else {
+                    if (VoteTokensAPI.getVoteTokens(p) >= 9) {
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp askyblock.islandfly true 3h " + Main.getInstance().getIdServer().toLowerCase());
+                        VoteTokensAPI.takeVoteTokens(p, 9);
+                        p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x Fly na ostrove na 3h §eza §a9 VT.");
+                        p.sendMessage("§c§l(!) §cNekdy Fly nefunguje hned, zkus jit na spawn a zpatky, pokud nepujde. :)");
+                        p.closeInventory();
+                    } else {
+                        p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (9)!");
+                    }
+                }
+            }
+
+            // CraftCoins (30)
+            if (e.getSlot() == 25) {
+                if (VoteTokensAPI.getVoteTokens(p) >= 1) {
+                    CraftCoinsAPI.giveCoins(p, 30);
+                    VoteTokensAPI.takeVoteTokens(p, 1);
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f30 CraftCoins §eza §a1 VT.");
+                    p.closeInventory();
+                } else {
+                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (1)!");
+                }
+            }
+
+            // CraftCoins (100)
+            if (e.getSlot() == 34) {
+                if (VoteTokensAPI.getVoteTokens(p) >= 3) {
+                    CraftCoinsAPI.giveCoins(p, 100);
+                    VoteTokensAPI.takeVoteTokens(p, 3);
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f100 CraftCoins §eza §a3 VT.");
+                    p.closeInventory();
+                } else {
+                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (3)!");
                 }
             }
         }
@@ -1195,7 +1951,7 @@ public class ShopAPI implements Listener {
             ItemStack tag = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§e" + name, "§7Tento tag jiz vlastnis.");
             inv.setItem(slot, tag);
         } else {
-            ItemStack i = ItemFactory.create(Material.INK_SAC, (byte) 8, "§b" + name, checkerCoins(p, price));
+            ItemStack i = ItemFactory.create(Material.INK_SACK, (byte) 8, "§b" + name, checkerCoins(p, price));
             inv.setItem(slot, i);
         }
     }

@@ -13,15 +13,19 @@ public class Vote_command implements CommandExecutor {
         if (Sender instanceof Player) {
             Player p = (Player) Sender;
             if ((Command.getName().equalsIgnoreCase("vote"))) {
-                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
-                p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
-                p.sendMessage("");
-                p.sendMessage("§7K hlasovani klikni na tento odkaz:");
-                p.sendMessage("§chttps://craftmania.cz/hlasovani/");
-                p.sendMessage("");
-                p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
+                sendVoteLink(p);
             }
         }
         return true;
+    }
+
+    public static void sendVoteLink(final Player p) {
+        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 1.0f, 1.0f);
+        p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
+        p.sendMessage("");
+        p.sendMessage("§7K hlasovani klikni na tento odkaz:");
+        p.sendMessage("§chttps://czech-craft.eu/vote?id=7113&user=" + p.getName());
+        p.sendMessage("");
+        p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
     }
 }

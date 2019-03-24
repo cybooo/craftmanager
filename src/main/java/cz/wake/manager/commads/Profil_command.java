@@ -1,6 +1,11 @@
 package cz.wake.manager.commads;
 
+import cz.craftmania.crafteconomy.api.CraftCoinsAPI;
+import cz.craftmania.crafteconomy.api.CraftTokensAPI;
+import cz.craftmania.crafteconomy.api.VoteTokensAPI;
+import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
+import cz.wake.manager.utils.TimeUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -12,7 +17,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Profil_command implements CommandExecutor {
 
@@ -36,7 +43,14 @@ public class Profil_command implements CommandExecutor {
         headItemMeta.setDisplayName("§cInformace o tobe");
         ItemStack headItem = new ItemStack(Material.LEGACY_SKULL_ITEM, 1, (short) 3);
         ArrayList<String> headLore = new ArrayList<String>();
-        headLore.add("§8Planovano...");
+        headLore.add("§7");
+        headLore.add("§7ID: §f" + Main.getInstance().getMySQL().getPlayerProfileDataInt(p, "id") + "#§8" + Main.getInstance().getMySQL().getPlayerProfileDataString(p, "discriminator"));
+        headLore.add("§7Prvni pripojeni: §f" + getDate(Main.getInstance().getMySQL().getPlayerProfileDataLong(p, "registred")));
+        headLore.add("§7CraftCoins: §f" + CraftCoinsAPI.getCoins(p));
+        headLore.add("§7CraftTokens: §f" + CraftTokensAPI.getTokens(p));
+        headLore.add("§7VoteTokens: §f" + VoteTokensAPI.getVoteTokens(p));
+        headLore.add("§7Celkem odehrany cas: §f" + TimeUtils.formatTime("%dd, %hh %mm", Main.getInstance().getMySQL().getPlayerProfileDataInt(p, "played_time"), false));
+
         headItemMeta.setLore(headLore);
         headItem.setItemMeta(headItemMeta);
 
@@ -123,5 +137,12 @@ public class Profil_command implements CommandExecutor {
 
         p.openInventory(inv);
     }
+
+    private String getDate(long time) {
+        final Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(time);
+        return new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(cal.getTime());
+    }
+
 
 }
