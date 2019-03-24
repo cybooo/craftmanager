@@ -3,6 +3,7 @@ package cz.wake.manager;
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
 import cz.wake.manager.commads.staff.*;
+import cz.wake.manager.listener.suggestions.PlayerCommandSendListener;
 import cz.wake.manager.perks.general.*;
 import cz.wake.manager.listener.*;
 import cz.wake.manager.managers.TablistManager;
@@ -218,6 +219,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             Log.withPrefix("Aktivace barevneho psani v kovadline.");
         }
 
+        pm.registerEvents(new PlayerCommandSendListener(this), this);
+
     }
 
     private void loadCommands() {
@@ -343,26 +346,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     private void initDatabase() {
         sql = new SQLManager(this);
-    }
-
-    public boolean isEconomyFix() {
-        return economyFix;
-    }
-
-    public TablistManager getTablistManager() {
-        return tb;
-    }
-
-    public boolean isTestingServer() {
-        return testing;
-    }
-
-    public boolean isTablistEnabled() {
-        return tablist;
-    }
-
-    public boolean isReminderEnabled() {
-        return reminder;
     }
 
     public static String getMentionPrefix() {

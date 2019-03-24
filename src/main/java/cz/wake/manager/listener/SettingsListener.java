@@ -1,5 +1,6 @@
 package cz.wake.manager.listener;
 
+import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
 import cz.wake.manager.Main;
 import cz.wake.manager.commads.Profil_command;
 import cz.wake.manager.utils.ItemFactory;
@@ -109,6 +110,16 @@ public class SettingsListener implements Listener {
                 inv.setItem(18, enabled);
             } else {
                 inv.setItem(18, disabled);
+            }
+
+            ItemStack chatSuggestions = new ItemBuilder(Material.HEART_OF_THE_SEA).setName("§e§lNapovidani v chatu")
+                    .setLore("§7Povolenim se ti budou", "§7zobrazovat v chatu napovedy", "§7pro prikazy §aod MC 1.13.").build();
+            inv.setItem(10, chatSuggestions);
+
+            if (Main.getInstance().getMySQL().getSettings(p, "disabled_chat_suggestions") == 0) {
+                inv.setItem(19, enabled);
+            } else {
+                inv.setItem(19, disabled);
             }
 
             inv.setItem(40, zpet);
@@ -302,6 +313,20 @@ public class SettingsListener implements Listener {
                     }
                 } else {
                     p.sendMessage("§cNa toto nemas dostatecna prava!");
+                }
+            }
+            if (e.getSlot() == 19) {
+                if (Main.getInstance().getMySQL().getSettings(p, "disabled_chat_suggestions") == 1) {
+                    // Aktivace
+                    Main.getInstance().getMySQL().updateSettings(p, "disabled_chat_suggestions", 0);
+                    p.sendMessage("§aNyni se tu budou zobrazovat napovedy v chatu!");
+                    p.sendMessage("§aK plne aktivaci jdi do lobby a zpet!");
+                    p.closeInventory();
+                } else {
+                    Main.getInstance().getMySQL().updateSettings(p, "disabled_chat_suggestions", 1);
+                    p.sendMessage("§cNapovedy v chatu se ti jiz nebudou zobrazovat.");
+                    p.sendMessage("§cK plne deaktivaci jdi do lobby a zpet!");
+                    p.closeInventory();
                 }
             }
             if(e.getSlot() == 39){
