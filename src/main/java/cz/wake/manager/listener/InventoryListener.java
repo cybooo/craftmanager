@@ -27,7 +27,7 @@ public class InventoryListener implements Listener {
     @EventHandler
     public void onClick(InventoryClickEvent e) {
         final Player p = (Player) e.getWhoClicked();
-        if (e.getInventory().getTitle().equals("§0Menu")) {
+        if (e.getInventory().getTitle().equals("Menu")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -58,7 +58,7 @@ public class InventoryListener implements Listener {
                 p.performCommand("vip");
             }
         }
-        if (e.getInventory().getTitle().equals("§0Seznam dostupnych navodu")) {
+        if (e.getInventory().getTitle().equals("Seznam dostupnych navodu")) {
             e.setCancelled(true);
             if(e.getSlot() == 0){
                 MenuManager.prepareNavodLink(p, "Pravidla", "https://wiki.craftmania.cz/zakladni-informace/pravidla.html");

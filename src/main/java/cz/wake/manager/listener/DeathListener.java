@@ -5,7 +5,6 @@ import cz.wake.manager.utils.ItemFactory;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -16,7 +15,6 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.security.Guard;
 import java.util.Random;
 
 public class DeathListener implements Listener {
@@ -82,12 +80,12 @@ public class DeathListener implements Listener {
                 Player p2 = e.getEntity().getKiller();
                 if (p2.getInventory().getItemInMainHand().getType() != Material.AIR && p2.getInventory().getItemInMainHand() != null && p2.getInventory().getItemInMainHand().getItemMeta().hasDisplayName()) {
                     for (Player pl : Main.getInstance().death_messages) {
-                        sendItemTooltipMessage(pl, Main.getInstance().getConfig().getStringList("d_msgs.player_weapon").get(r.nextInt(Main.getInstance().getConfig().getStringList("d_msgs.player_weapon").size()))
+                        /*sendItemTooltipMessage(pl, Main.getInstance().getConfig().getStringList("d_msgs.player_weapon").get(r.nextInt(Main.getInstance().getConfig().getStringList("d_msgs.player_weapon").size()))
                                         .replace("%player%", p.getName())
                                         .replace("%attacker%", p2.getName()),
                                 Main.getInstance().getConfig().getStringList("d_msgs.player_weapon_format").get(r.nextInt(Main.getInstance().getConfig().getStringList("d_msgs.player_weapon").size()))
                                         .replace("%weapon%", p2.getInventory().getItemInMainHand().getItemMeta().getDisplayName()),
-                                p2.getInventory().getItemInMainHand());
+                                p2.getInventory().getItemInMainHand());*/
 //                        pl.sendMessage(Main.getInstance().getConfig().getStringList("d_msgs.player_weapon").get(r.nextInt(Main.getInstance().getConfig().getStringList("d_msgs.player_weapon").size()))
 //                                .replace("%player%", p.getName())
 //                                .replace("%attacker%", p2.getName())
@@ -184,7 +182,7 @@ public class DeathListener implements Listener {
         }
     }
 
-    public void sendItemTooltipMessage(Player player, String noToolTip, String withToolTip, ItemStack item) {
+    /*public void sendItemTooltipMessage(Player player, String noToolTip, String withToolTip, ItemStack item) {
         String itemJson = ItemFactory.convertItemStackToJson(item);
 
         // Prepare a BaseComponent array with the itemJson as a text component
@@ -195,8 +193,8 @@ public class DeathListener implements Listener {
         // Create the hover event
         HoverEvent event = new HoverEvent(HoverEvent.Action.SHOW_ITEM, hoverEventComponents);
 
-        /* And now we create the text component (this is the actual text that the player sees)
-         * and set it's hover event to the item event */
+        *//* And now we create the text component (this is the actual text that the player sees)
+         * and set it's hover event to the item event *//*
         TextComponent component = new TextComponent(withToolTip);
         component.setHoverEvent(event);
 
@@ -204,6 +202,6 @@ public class DeathListener implements Listener {
 
         // Finally, send the message to the player
         player.spigot().sendMessage(component2, component);
-    }
+    }*/
 
 }

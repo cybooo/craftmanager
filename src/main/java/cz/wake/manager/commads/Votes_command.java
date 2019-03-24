@@ -36,10 +36,10 @@ public class Votes_command implements CommandExecutor, Listener {
     public void openVotesMenu(final Player player) {
         Inventory inventory = Bukkit.createInventory(null, 45, "TOP Hlasovani");
 
-        SkullMeta headItemMeta = (SkullMeta) Bukkit.getItemFactory().getItemMeta(Material.SKULL_ITEM);
+        SkullMeta headItemMeta = (SkullMeta) Bukkit.getItemFactory().getItemMeta(Material.PLAYER_HEAD);
         headItemMeta.setOwner(player.getName());
         headItemMeta.setDisplayName("§c§lTvoje statistiky");
-        ItemStack headItem = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+        ItemStack headItem = new ItemStack(Material.PLAYER_HEAD, 1, (short) 3);
         ArrayList<String> headLore = new ArrayList<String>();
         headLore.add("");
         headLore.add("§7Tydenni hlasy: §f" + Main.getInstance().getMySQL().getPlayerProfileDataInt(player, "week_votes"));
@@ -52,7 +52,7 @@ public class Votes_command implements CommandExecutor, Listener {
         headItemMeta.setLore(headLore);
         headItem.setItemMeta(headItemMeta);
 
-        ItemStack filler = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short)3).setName("§f").hideAllFlags().build();
+        ItemStack filler = new ItemBuilder(Material.LIME_STAINED_GLASS_PANE).setName("§f").hideAllFlags().build();
 
         // Get Stats
         List<String> namesWeek = Main.getInstance().getMySQL().getTopVotersWeek();

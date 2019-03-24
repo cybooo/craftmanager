@@ -69,7 +69,7 @@ public class Blocks_command implements CommandExecutor {
                     redstone += is.getAmount();
                     player.getInventory().remove(is);
                 }
-                if (is.getType() != Material.INK_SACK || ((Dye) is.getData()).getColor() != DyeColor.BLUE) continue;
+                if (is.getType() != Material.LEGACY_INK_SACK || ((Dye) is.getData()).getColor() != DyeColor.BLUE) continue;
                 player.getInventory().remove(is);
                 lapis += is.getAmount();
             }
@@ -96,7 +96,7 @@ public class Blocks_command implements CommandExecutor {
             player.getInventory().addItem(new ItemStack[]{new ItemStack(lT > 0 ? Material.LAPIS_BLOCK : Material.AIR, lT)});
             player.getInventory().addItem(new ItemStack[]{new ItemStack(cT > 0 ? Material.COAL_BLOCK : Material.AIR, cT)});
             player.getInventory().addItem(new ItemStack[]{new ItemStack(rO > 0 ? Material.REDSTONE : Material.AIR, rO)});
-            player.getInventory().addItem(new ItemStack[]{new ItemStack(lO > 0 ? Material.INK_SACK : Material.AIR, lO, (byte) 4)});
+            player.getInventory().addItem(new ItemStack[]{new ItemStack(lO > 0 ? Material.LEGACY_INK_SACK : Material.AIR, lO, (byte) 4)});
             player.getInventory().addItem(new ItemStack[]{new ItemStack(cO > 0 ? Material.COAL : Material.AIR, cO)});
             player.sendMessage("§ePremenil si §f" + String.valueOf(itemsChanged) + " itemu na §e" + (itemsChanged -= diamondOverflow + emeraldsOverflow + ironOverflow + goldOverflow + glowstoneOverflow + rO + cO + lO) / 9 + " blocku.");
             player.updateInventory();

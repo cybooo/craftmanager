@@ -3,6 +3,7 @@ main: cz.wake.manager.Main
 authors: [MrWakeCZ]
 depend: [CraftCore,CraftEconomy,CraftChat]
 softdepend: [AdvancedEnchantments]
+api-version: 1.13
 version: 1.3
 
 commands:

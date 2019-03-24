@@ -35,7 +35,7 @@ public class ParticlesAPI implements Listener {
 
     public void openParticlesMenu(final Player p) {
 
-        Inventory inv = Bukkit.createInventory(null, 54, "§0Particles");
+        Inventory inv = Bukkit.createInventory(null, 54, "Particles");
 
         if (p.hasPermission("craftmanager.particles.hearts")) {
             if (Hearts.e.containsKey(p.getName())) {
@@ -297,7 +297,7 @@ public class ParticlesAPI implements Listener {
     @EventHandler
     private void onInteract(InventoryClickEvent e) {
         final Player p = (Player) e.getWhoClicked();
-        if (e.getInventory().getTitle().equals("§0Particles")) {
+        if (e.getInventory().getTitle().equals("Particles")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;

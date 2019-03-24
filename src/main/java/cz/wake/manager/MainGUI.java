@@ -20,12 +20,12 @@ public class MainGUI implements Listener {
 
     public void openMainMenu(Player p) {
 
-        Inventory inv = Bukkit.createInventory(null, 45, "§0Menu");
+        Inventory inv = Bukkit.createInventory(null, 45, "Menu");
 
-        SkullMeta headMeta = (SkullMeta) Bukkit.getItemFactory().getItemMeta(Material.LEGACY_SKULL_ITEM);
+        SkullMeta headMeta = (SkullMeta) Bukkit.getItemFactory().getItemMeta(Material.PLAYER_HEAD);
         headMeta.setOwner(p.getName());
         headMeta.setDisplayName("§9§l" + p.getName());
-        ItemStack head = new ItemStack(Material.LEGACY_SKULL_ITEM, 1, (byte) 3);
+        ItemStack head = new ItemStack(Material.PLAYER_HEAD);
         ArrayList<String> headLore = new ArrayList<>();
         headLore.add("§7");
         headLore.add("§6CraftCoins: §f" + CraftCoinsAPI.getCoins(p));

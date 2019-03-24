@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 public class MenuManager {
 
     public static void openNavody(Player p){
-        Inventory inv = Bukkit.createInventory(null, 36, "§0Seznam dostupnych navodu");
+        Inventory inv = Bukkit.createInventory(null, 36, "Seznam dostupnych navodu");
 
         ItemStack pravidla = ItemFactory.create(Material.ENCHANTED_BOOK, (byte)0, "§e§lPravidla serveru", "§7Pravidla serveru jsou", "§7zaklad spravneho chovani!", "", "§fVhodne pro: §cVsude");
         ItemStack mody = ItemFactory.create(Material.ENCHANTED_BOOK, (byte)0, "§e§lPovolene/zakazane mody", "§7Nevis jestli je tvuj mod", "§7povoleny nebo zakazany?", "", "§fVhodne pro: §cVsude");

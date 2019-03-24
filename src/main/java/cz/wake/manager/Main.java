@@ -125,12 +125,13 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         }
 
         // Nastaveni DurabilityWarner
-        for (String s : getConfig().getStringList("materials")) {
+        //TODO: Aktivovat na 1.13?!
+        /*for (String s : getConfig().getStringList("materials")) {
             Material material = Material.valueOf(s);
             if (isValidMaterial(material)) {
                 durabilityWarnerList.add(material);
             }
-        }
+        }*/
 
         // Nastaveni blokovanych tagu
         for (String s : getConfig().getStringList("blocked-tags")) {
