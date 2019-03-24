@@ -38,7 +38,7 @@ dependencies {
     compileOnly ('org.spigotmc:spigot-api:1.13.2-R0.1-SNAPSHOT') {
         exclude group: 'net.md-5'
     }
-    compileOnly name: 'paper-spigot-1-13-577.jar'
+    compileOnly name: 'paper-spigot-1-13-577'
 
     // Others
     compile group: 'com.zaxxer', name: 'HikariCP', version:'2.7.4'
