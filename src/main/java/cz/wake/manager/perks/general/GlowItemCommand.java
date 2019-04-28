@@ -36,9 +36,11 @@ public class GlowItemCommand implements CommandExecutor {
                     return true;
                 }
 
-                if (item.getItemMeta().hasLore()) {
-                    player.sendMessage("§cNa tento item nelze pouzit prikaz /gi");
-                    return true;
+                if (item.hasItemMeta()) {
+                    if (item.getItemMeta().hasLore()) {
+                        player.sendMessage("§cNa tento item nelze pouzit prikaz /gi");
+                        return true;
+                    }
                 }
 
                 if (item.getAmount() > 1) {
