@@ -32,7 +32,7 @@ public class ColorHandler {
                 final ItemStack inputItem = inv.getItem(0);
                 if (inputItem != null && inputItem.hasItemMeta()) {
                     final ItemMeta inputItemMeta = inputItem.getItemMeta();
-                    if(inputItemMeta.getDisplayName().equalsIgnoreCase("&a&lVoteCrate") || inputItemMeta.getDisplayName().equalsIgnoreCase("&9&lEpicCrate") || inputItemMeta.getDisplayName().equalsIgnoreCase("&c&lHeadCrate")){
+                    if(inputItemMeta.hasDisplayName() && inputItemMeta.getDisplayName().equalsIgnoreCase("&a&lVoteCrate") || inputItemMeta.getDisplayName().equalsIgnoreCase("&9&lEpicCrate") || inputItemMeta.getDisplayName().equalsIgnoreCase("&c&lHeadCrate")){
                         outputItemMeta.setDisplayName("§e§lAHOJ TADY WAKE!"); //xD
                         outputItem.setItemMeta(outputItemMeta);
                         return  colorItemWithPermissions(outputItem, p);
