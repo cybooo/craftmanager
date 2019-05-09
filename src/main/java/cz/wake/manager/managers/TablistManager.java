@@ -19,21 +19,22 @@ public class TablistManager {
 
         sb.registerNewTeam("0majitel").setPrefix("§3§lMAJITEL §f");
         sb.registerNewTeam("1hladmin").setPrefix("§c§lHL.ADMIN");
-        sb.registerNewTeam("2developer").setPrefix("§e§lDEVELOPER");
-        sb.registerNewTeam("3adminka").setPrefix("§c§lADMINKA");
-        sb.registerNewTeam("4admin").setPrefix("§c§lADMIN");
-        sb.registerNewTeam("5eventer").setPrefix("§d§lEVENTER");
-        sb.registerNewTeam("6builder").setPrefix("§1§lBUILDER");
-        sb.registerNewTeam("7helper").setPrefix("§2§lHELPER");
+        sb.registerNewTeam("2manager").setPrefix("§c§lMANAGER §f");
+        sb.registerNewTeam("3developer").setPrefix("§e§lDEVELOPER");
+        sb.registerNewTeam("4adminka").setPrefix("§c§lADMINKA");
+        sb.registerNewTeam("5admin").setPrefix("§c§lADMIN");
+        sb.registerNewTeam("6eventer").setPrefix("§d§lEVENTER");
+        sb.registerNewTeam("7builder").setPrefix("§1§lBUILDER");
         sb.registerNewTeam("8helperka").setPrefix("§2HELPERKA");
-        sb.registerNewTeam("9hero").setPrefix("§5§lHERO");
-        sb.registerNewTeam("10obsidian").setPrefix("§9§lOBSIDIAN");
-        sb.registerNewTeam("11diamond").setPrefix("§b§lDIAMOND");
-        sb.registerNewTeam("12gold").setPrefix("§6§lGOLD");
-        sb.registerNewTeam("13iron").setPrefix("§8§lIRON");
-        sb.registerNewTeam("14vipp").setPrefix("§a§lVIP+");
-        sb.registerNewTeam("15vip").setPrefix("§6§lVIP");
-        sb.registerNewTeam("16hrac").setPrefix("§f");
+        sb.registerNewTeam("9helper").setPrefix("§2§lHELPER");
+        sb.registerNewTeam("10hero").setPrefix("§5§lHERO");
+        sb.registerNewTeam("11obsidian").setPrefix("§9§lOBSIDIAN");
+        sb.registerNewTeam("12diamond").setPrefix("§b§lDIAMOND");
+        sb.registerNewTeam("13gold").setPrefix("§6§lGOLD");
+        sb.registerNewTeam("14iron").setPrefix("§8§lIRON");
+        sb.registerNewTeam("15vipp").setPrefix("§a§lVIP+");
+        sb.registerNewTeam("16vip").setPrefix("§6§lVIP");
+        sb.registerNewTeam("17hrac").setPrefix("§f");
         Log.normalMessage(ChatColor.RED + "Registrace ranku dokoncena!");
     }
 
@@ -42,36 +43,38 @@ public class TablistManager {
             sb.getTeam("0majitel").addPlayer(p);
         } else if (p.hasPermission("craftmanager.prefix.hladmin")) {
             sb.getTeam("1hladmin").addPlayer(p);
+        } else if (p.hasPermission("craftmanager.prefix.hladmin")) {
+            sb.getTeam("2manager").addPlayer(p);
+        } else if (p.hasPermission("craftmanager.prefix.manager")) {
+            sb.getTeam("3developer").addPlayer(p);
         } else if (p.hasPermission("craftmanager.prefix.adminka")) {
-            sb.getTeam("3adminka").addPlayer(p);
-        } else if (p.hasPermission("craftmanager.prefix.eventer")) {
-            sb.getTeam("5eventer").addPlayer(p);
-        } else if (p.hasPermission("craftmanager.prefix.developer")) {
-            sb.getTeam("2developer").addPlayer(p);
+            sb.getTeam("4adminka").addPlayer(p);
         } else if (p.hasPermission("craftmanager.prefix.admin")) {
-            sb.getTeam("4admin").addPlayer(p);
+            sb.getTeam("5admin").addPlayer(p);
+        } else if (p.hasPermission("craftmanager.prefix.eventer")) {
+            sb.getTeam("6eventer").addPlayer(p);
         } else if (p.hasPermission("craftmanager.prefix.builder")) {
-            sb.getTeam("6builder").addPlayer(p);
+            sb.getTeam("7builder").addPlayer(p);
         } else if (p.hasPermission("craftmanager.prefix.helperka")) {
             sb.getTeam("8helperka").addPlayer(p);
         } else if (p.hasPermission("craftmanager.prefix.helper")) {
-            sb.getTeam("7helper").addPlayer(p);
+            sb.getTeam("9helper").addPlayer(p);
         } else if (p.hasPermission("craftmanager.prefix.hero")) {
-            sb.getTeam("9hero").addPlayer(p);
+            sb.getTeam("10hero").addPlayer(p);
         } else if (p.hasPermission("craftmanager.prefix.ovip")) {
-            sb.getTeam("10obsidian").addPlayer(p);
+            sb.getTeam("11obsidian").addPlayer(p);
         } else if (p.hasPermission("craftmanager.prefix.dvip")) {
-            sb.getTeam("11diamond").addPlayer(p);
+            sb.getTeam("12diamond").addPlayer(p);
         } else if (p.hasPermission("craftmanager.prefix.gvip")) {
-            sb.getTeam("12gold").addPlayer(p);
+            sb.getTeam("13gold").addPlayer(p);
         } else if (p.hasPermission("craftmanager.prefix.ivip")) {
-            sb.getTeam("13iron").addPlayer(p);
+            sb.getTeam("14iron").addPlayer(p);
         } else if (p.hasPermission("craftmanager.prefix.vipplus")) {
-            sb.getTeam("14vipp").addPlayer(p);
+            sb.getTeam("15vipp").addPlayer(p);
         } else if (p.hasPermission("craftmanager.prefix.vip")) {
-            sb.getTeam("15vip").addPlayer(p);
+            sb.getTeam("16vip").addPlayer(p);
         } else {
-            sb.getTeam("16hrac").addPlayer(p);
+            sb.getTeam("17hrac").addPlayer(p);
         }
         for (final Player all : Bukkit.getOnlinePlayers()) {
             all.setScoreboard(sb);
