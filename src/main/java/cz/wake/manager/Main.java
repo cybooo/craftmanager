@@ -14,6 +14,7 @@ import cz.wake.manager.shop.TagsEditor;
 import cz.wake.manager.shop.TempShop;
 import cz.wake.manager.sql.SQLManager;
 import cz.wake.manager.utils.*;
+import cz.wake.manager.utils.prometheus.MetricsController;
 import cz.wake.manager.utils.tasks.*;
 import cz.wake.manager.votifier.ForwardVote;
 import cz.wake.manager.votifier.VoteHandler;
@@ -159,6 +160,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         //Vault init
         RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
         econ = rsp.getProvider();
+
+        if(getConfig().getBoolean("prometheus.state")){
+            MetricsController.setup(this);
+        }
     }
 
     public void onDisable() {

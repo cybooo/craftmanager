@@ -45,6 +45,11 @@ coloredanvils: false
 # Zakazani podobnych nicku MrWakeCZ & mrwakecz (UUID bug)
 economyfix: false
 
+# Prometheus statistiky
+prometheus:
+ state: false
+ port: 9225
+
 # Detekce prikazu psanych AT
 ats-commands:
   enabled: true
