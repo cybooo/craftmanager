@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ServerCollector extends Collector {
@@ -38,6 +39,6 @@ public class ServerCollector extends Collector {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return new ArrayList<>();
     }
 }

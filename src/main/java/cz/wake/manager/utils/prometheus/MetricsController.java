@@ -15,8 +15,6 @@ import java.lang.management.ManagementFactory;
 
 public class MetricsController {
 
-    private final Main plugin;
-
     public static final Gauge players = Gauge.build().name(Main.getInstance().getIdServer() + "_players_total").help("Online and offline players").labelNames("state").create().register();
     public static final Gauge loadedChunks = Gauge.build().name(Main.getInstance().getIdServer() + "_loaded_chunks_total").help("Chunks loaded per world").labelNames("world").create().register();
     public static final Gauge playersOnline = Gauge.build().name(Main.getInstance().getIdServer() + "_players_online_total").help("Players currently online per world").labelNames("world").create().register();
@@ -43,7 +41,6 @@ public class MetricsController {
 
     public MetricsController(Main plugin) {
         DefaultExports.initialize();
-        this.plugin = plugin;
 
         new ServerCollector().register();
         try {
