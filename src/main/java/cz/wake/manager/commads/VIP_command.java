@@ -158,7 +158,7 @@ public class VIP_command implements CommandExecutor, Listener {
         global_vyhody.add("§e· §fParticles efekty na lobby pro VIP");
         global_vyhody.add("§e· §fFly libovolne na lobby");
         global_vyhody.add("§e· §fJoin zprava o pripojeni na lobby");
-        global_vyhody.add("§e· §fMesicni bonus §b2000 CraftCoins §f& §b1 CraftToken");
+        global_vyhody.add("§e· §fMesicni bonus §b2000 CraftCoins");
         global_vyhody.add("");
         global_vyhody.add("§7Creative extra server_vyhody:");
         global_vyhody.add("§e· §fMaximalni pocet pozemku (50)");
@@ -258,7 +258,7 @@ public class VIP_command implements CommandExecutor, Listener {
         global_vyhody.add("§e· §fParticles efekty na lobby pro VIP");
         global_vyhody.add("§e· §fFly libovolne na lobby");
         global_vyhody.add("§e· §fJoin zprava o pripojeni na lobby");
-        global_vyhody.add("§e· §fMesicni bonus §b2000 CraftCoins §f& §b2 CraftToken");
+        global_vyhody.add("§e· §fMesicni bonus §b2000 CraftCoins");
         global_vyhody.add("");
         global_vyhody.add("§7Creative extra server vyhody:");
         global_vyhody.add("§e· §fMaximalni pocet pozemku (100)");
@@ -366,7 +366,7 @@ public class VIP_command implements CommandExecutor, Listener {
         global_vyhody.add("§e· §fParticles efekty na lobby pro VIP");
         global_vyhody.add("§e· §fFly libovolne na lobby");
         global_vyhody.add("§e· §fJoin zprava o pripojeni na lobby");
-        global_vyhody.add("§e· §fMesicni bonus §b3000 CraftCoins §f& §b2 CraftToken");
+        global_vyhody.add("§e· §fMesicni bonus §b3000 CraftCoins");
         global_vyhody.add("");
         global_vyhody.add("§7Creative extra server vyhody:");
         global_vyhody.add("§e· §fMaximalni pocet pozemku (150)");
@@ -465,7 +465,7 @@ public class VIP_command implements CommandExecutor, Listener {
         global_vyhody.add("§e· §fParticles efekty na lobby pro VIP");
         global_vyhody.add("§e· §fFly libovolne na lobby");
         global_vyhody.add("§e· §fJoin zprava o pripojeni na lobby");
-        global_vyhody.add("§e· §fMesicni bonus §b4000 CraftCoins §f& §b4 CraftToken");
+        global_vyhody.add("§e· §fMesicni bonus §b4000 CraftCoins");
         global_vyhody.add("");
         global_vyhody.add("§7Creative extra server vyhody:");
         global_vyhody.add("§e· §fMaximalni pocet pozemku (200)");

@@ -259,6 +259,7 @@ public class Help_command implements CommandExecutor {
 
             ItemStack resF = ItemFactory.create(Material.PRISMARINE, (byte) 2, "§a§lPridani kamaradu a dalsi prikazy", "",
                     "§e/res padd §6" + p.getName() + " §f- §7Prida hrace do residence",
+                    "§e/res pdel §6" + p.getName() + " §f- §7Odebere hrace z residence",
                     "§e/res list §f- §7Seznam vsech tvych residenci",
                     "§e/res limits §f- §7Zobrazi limity pro zabrani uzemi",
                     "§e/res tp §6nazev §f- §7Teleport na residenci",
