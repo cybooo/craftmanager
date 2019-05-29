@@ -163,8 +163,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
         econ = rsp.getProvider();
 
-        if(getConfig().getBoolean("prometheus.state")){
+        // Prometheus
+        if(getConfig().getBoolean("prometheus.state", false)){
             MetricsController.setup(this);
+            Log.withPrefix("Aktivace Prometheus Endpointu na portu: " + getConfig().get("prometheus.port").toString());
         }
     }
 
