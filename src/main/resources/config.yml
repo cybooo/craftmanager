@@ -60,6 +60,8 @@ ats-commands:
 mentions:
   prefix: "@"
 
+# Prefix v tablistu pres display-name
+tablist-prefixes: false
 
 # Materialy pro DurabilityWarner
 # Funkce pro VIP
