@@ -55,7 +55,9 @@ public class PlayerListener implements Listener {
         // Nastaveni tablistu
         //if (Main.getInstance().isTablistEnabled())
         //Main.getInstance().getTablistManager().setRank(p);
-        UtilTablist.setupTablist(p);
+        if (Main.getInstance().getConfig().getBoolean("tablist-prefixes", false)) {
+            UtilTablist.setupTablist(p);
+        }
 
         //AT
         if (Main.getInstance().getMySQL().isAT(p)) {
