@@ -30,9 +30,9 @@ public class SkyblockPVPListener implements Listener {
 
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
             Block b = e.getClickedBlock();
-            if (e.getClickedBlock().getType() == Material.SIGN
-                    || e.getClickedBlock().getType() == Material.SIGN
-                    || e.getClickedBlock().getType() == Material.WALL_SIGN) {
+            if (e.getClickedBlock().getType() == Material.OAK_SIGN
+                    || e.getClickedBlock().getType() == Material.OAK_SIGN
+                    || e.getClickedBlock().getType() == Material.OAK_WALL_SIGN) {
                 if (b.getLocation().equals(new Location(Bukkit.getWorld("pvp"), 452.0, 33.0, -700.0))) { //Teleport na spawn
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "spawn " + p.getName());
                 }

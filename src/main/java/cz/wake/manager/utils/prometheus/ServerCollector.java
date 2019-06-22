@@ -1,7 +1,7 @@
 package cz.wake.manager.utils.prometheus;
 
 import io.prometheus.client.Collector;
-import net.minecraft.server.v1_13_R2.MinecraftServer;
+import net.minecraft.server.v1_14_R1.MinecraftServer;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 

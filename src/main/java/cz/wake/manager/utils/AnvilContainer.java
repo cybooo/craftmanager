@@ -1,8 +1,8 @@
 package cz.wake.manager.utils;
 
-import net.minecraft.server.v1_13_R2.*;
+import net.minecraft.server.v1_14_R1.*;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_13_R2.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_14_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -10,6 +10,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 
+//TODO: Prevest do CraftCore s podporou 1.14.x
+
+/*
 public class AnvilContainer extends ContainerAnvil {
 
     public AnvilContainer(EntityHuman paramEntityHuman) {
@@ -56,3 +59,4 @@ public class AnvilContainer extends ContainerAnvil {
         return (ItemStack) localObject;
     }
 }
+*/

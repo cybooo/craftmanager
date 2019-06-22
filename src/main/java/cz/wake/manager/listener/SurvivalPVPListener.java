@@ -30,9 +30,10 @@ public class SurvivalPVPListener implements Listener {
 
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
             Block b = e.getClickedBlock();
-            if (e.getClickedBlock().getType() == Material.SIGN
-                    || e.getClickedBlock().getType() == Material.SIGN
-                    || e.getClickedBlock().getType() == Material.WALL_SIGN) {
+            //TODO: Všechny cedulky od 1.14
+            if (e.getClickedBlock().getType() == Material.OAK_SIGN
+                    || e.getClickedBlock().getType() == Material.OAK_SIGN
+                    || e.getClickedBlock().getType() == Material.OAK_WALL_SIGN) {
                 if (b.getLocation().equals(new Location(Bukkit.getWorld("pvp"), -578.0, 111.0, 142.0))) { //Teleport na spawn
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "spawn " + p.getName());
                 }

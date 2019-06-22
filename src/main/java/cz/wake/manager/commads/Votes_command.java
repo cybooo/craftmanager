@@ -163,7 +163,7 @@ public class Votes_command implements CommandExecutor, Listener {
     @EventHandler
     public void onClick(InventoryClickEvent e) {
         final Player player = (Player) e.getWhoClicked();
-        if (e.getInventory().getTitle().equals("TOP Hlasovani")) {
+        if (e.getView().getTitle().equals("TOP Hlasovani")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;

@@ -54,7 +54,7 @@ public class BeaconCommand implements CommandExecutor, Listener {
     @EventHandler
     private void onClick(InventoryClickEvent e) {
         final Player p = (Player) e.getWhoClicked();
-        if (e.getInventory().getTitle().equals("Zvol si efekt")) {
+        if (e.getView().getTitle().equals("Zvol si efekt")) {
             if(e.getSlot() == 0){
                 activateEffect(p, PotionEffectType.SPEED, 2);
                 p.sendMessage("§eAktivoval jsi permanentni §bSpeed!");

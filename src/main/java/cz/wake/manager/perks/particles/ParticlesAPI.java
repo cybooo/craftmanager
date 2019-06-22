@@ -297,7 +297,7 @@ public class ParticlesAPI implements Listener {
     @EventHandler
     private void onInteract(InventoryClickEvent e) {
         final Player p = (Player) e.getWhoClicked();
-        if (e.getInventory().getTitle().equals("Particles")) {
+        if (e.getView().getTitle().equals("Particles")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;

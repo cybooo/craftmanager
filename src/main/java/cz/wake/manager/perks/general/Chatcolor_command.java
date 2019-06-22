@@ -63,7 +63,7 @@ public class Chatcolor_command implements CommandExecutor {
         ItemStack gold = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§6§lZlata");
         ItemStack purple = ItemFactory.create(Material.PURPLE_DYE, (byte) 5, "§5§lFialova");
         ItemStack white = ItemFactory.create(Material.BONE_MEAL, (byte) 15, "§f§lBila");
-        ItemStack darkGreen = ItemFactory.create(Material.CACTUS_GREEN, (byte) 2, "§2§lTmave zelena");
+        ItemStack darkGreen = ItemFactory.create(Material.GREEN_DYE, (byte) 2, "§2§lTmave zelena");
         ItemStack green = ItemFactory.create(Material.LIME_DYE, (byte) 10, "§a§lZelena");
         ItemStack gray = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 7, "§7§lSvetle seda");
         ItemStack darkGray = ItemFactory.create(Material.GRAY_DYE, (byte) 8, "§8§lTmave seda");

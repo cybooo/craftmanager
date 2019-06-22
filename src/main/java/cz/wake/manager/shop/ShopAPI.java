@@ -869,7 +869,7 @@ public class ShopAPI implements Listener {
     @EventHandler
     private void onClick(InventoryClickEvent e) {
         final Player p = (Player) e.getWhoClicked();
-        if (e.getInventory().getTitle().equals("Coinshop")) {
+        if (e.getView().getTitle().equals("Coinshop")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -882,7 +882,7 @@ public class ShopAPI implements Listener {
             }
             if (e.getSlot() == 29) {
                 if (CraftTokensAPI.getTokens(p) > 0) {
-                    TagsEditor.createTagEditor(p);
+                    //TagsEditor.createTagEditor(p);
                 } else {
                     p.sendMessage("§cNemas dostatek CraftTokenu k provedeni teto akce.");
                 }
@@ -897,7 +897,7 @@ public class ShopAPI implements Listener {
                 this.openItemShop(p);
             }
         }
-        if (e.getInventory().getTitle().equals("Itemy za CraftCoiny")) {
+        if (e.getView().getTitle().equals("Itemy za CraftCoiny")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -1008,7 +1008,7 @@ public class ShopAPI implements Listener {
                 }
             }
         }
-        if (e.getInventory().getTitle().equals("Prava za CraftCoins")) {
+        if (e.getView().getTitle().equals("Prava za CraftCoins")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -1174,7 +1174,7 @@ public class ShopAPI implements Listener {
             }
 
         }
-        if (e.getInventory().getTitle().equals("Odmeny za VoteTokeny")) {
+        if (e.getView().getTitle().equals("Odmeny za VoteTokeny")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -1401,7 +1401,7 @@ public class ShopAPI implements Listener {
                 }
             }
         }
-        if (e.getInventory().getTitle().equals("Tagy (1/5)")) {
+        if (e.getView().getTitle().equals("Tagy (1/5)")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -1527,7 +1527,7 @@ public class ShopAPI implements Listener {
                 this.prepareTag(p, 1000, "deluxetags.tag.oksoud", "OkSoud");
             }
         }
-        if (e.getInventory().getTitle().equals("Tagy (2/5)")) {
+        if (e.getView().getTitle().equals("Tagy (2/5)")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -1653,7 +1653,7 @@ public class ShopAPI implements Listener {
                 this.prepareTag(p, 1500, "deluxetags.tag.craftmaniak", "Craftmaniak");
             }
         }
-        if (e.getInventory().getTitle().equals("Tagy (3/5)")) {
+        if (e.getView().getTitle().equals("Tagy (3/5)")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -1779,7 +1779,7 @@ public class ShopAPI implements Listener {
                 this.prepareTag(p, 600, "deluxetags.tag.jachcumoney", "JaChcuMoney");
             }
         }
-        if (e.getInventory().getTitle().equals("Tagy (4/5)")) {
+        if (e.getView().getTitle().equals("Tagy (4/5)")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -1905,7 +1905,7 @@ public class ShopAPI implements Listener {
                 this.prepareTag(p, 1000, "deluxetags.tag.autista", "Autista");
             }
         }
-        if (e.getInventory().getTitle().equals("Tagy (5/5)")) {
+        if (e.getView().getTitle().equals("Tagy (5/5)")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;

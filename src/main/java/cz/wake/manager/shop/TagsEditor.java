@@ -2,13 +2,12 @@ package cz.wake.manager.shop;
 
 import cz.craftmania.crafteconomy.api.CraftTokensAPI;
 import cz.wake.manager.Main;
-import cz.wake.manager.utils.AnvilContainer;
-import net.minecraft.server.v1_13_R2.EntityPlayer;
+import net.minecraft.server.v1_14_R1.EntityPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.craftbukkit.v1_13_R2.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_14_R1.entity.CraftPlayer;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -28,7 +27,7 @@ import java.util.regex.Pattern;
 
 public class TagsEditor implements Listener {
 
-    private static HashSet<Player> list = new HashSet<Player>();
+    /*private static HashSet<Player> list = new HashSet<Player>();
 
     public static void createTagEditor(final Player p) {
         list.add(p);
@@ -75,8 +74,8 @@ public class TagsEditor implements Listener {
                 if ((!localEntityPlayer.activeContainer.checkReachable) &&
                         (list.contains(player))) {
                     int i = e.getRawSlot();
-                    if ((e.getClickedInventory() != null) &&
-                            (e.getClickedInventory().equals(player.getInventory()))) {
+                    if ((e.getInventory() != null) &&
+                            (e.getInventory().equals(player.getInventory()))) { //TODO: TEST
                         return;
                     }
                     e.setCancelled(true);
@@ -140,5 +139,5 @@ public class TagsEditor implements Listener {
                 }
             }
         }
-    }
+    }*/
 }

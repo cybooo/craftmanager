@@ -72,9 +72,9 @@ public class TempShop implements Listener {
     @EventHandler
     private void onClick(InventoryClickEvent e) {
         final Player p = (Player) e.getWhoClicked();
-        if (e.getInventory().getTitle().equals("[S] Nakup za CraftTokeny")
-                || e.getInventory().getTitle().equalsIgnoreCase("[S] Nakup za VoteTokeny")
-                || e.getInventory().getTitle().equalsIgnoreCase("[S] Nakup za CraftCoiny")) {
+        if (e.getView().getTitle().equals("[S] Nakup za CraftTokeny")
+                || e.getView().getTitle().equalsIgnoreCase("[S] Nakup za VoteTokeny")
+                || e.getView().getTitle().equalsIgnoreCase("[S] Nakup za CraftCoiny")) {
             if (e.getCurrentItem() == null) {
                 return;
             }

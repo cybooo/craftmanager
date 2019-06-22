@@ -154,7 +154,7 @@ public class SettingsListener implements Listener {
     @EventHandler
     private void onInventoryClick(InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
-        if (e.getInventory().getTitle().equals("Nastaveni zvuku")) {
+        if (e.getView().getTitle().equals("Nastaveni zvuku")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -198,7 +198,7 @@ public class SettingsListener implements Listener {
                 return;
             }
         }
-        if (e.getInventory().getTitle().equals("Osobni nastaveni (Strana 1/2)")) {
+        if (e.getView().getTitle().equals("Osobni nastaveni (Strana 1/2)")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -284,7 +284,7 @@ public class SettingsListener implements Listener {
                 openSettingsMenu(p, 2);
             }
         }
-        if (e.getInventory().getTitle().equals("Osobni nastaveni (Strana 2/2)")) {
+        if (e.getView().getTitle().equals("Osobni nastaveni (Strana 2/2)")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;

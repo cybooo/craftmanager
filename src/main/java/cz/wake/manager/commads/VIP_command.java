@@ -520,7 +520,7 @@ public class VIP_command implements CommandExecutor, Listener {
     @EventHandler
     public void onClick(InventoryClickEvent e) {
         final Player player = (Player) e.getWhoClicked();
-        if (e.getInventory().getTitle().equals("[VIP] Server prehled")) {
+        if (e.getView().getTitle().equals("[VIP] Server prehled")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -544,7 +544,7 @@ public class VIP_command implements CommandExecutor, Listener {
                 openObsidianMenu(player);
             }
         }
-        if (e.getInventory().getTitle().equals("[VIP] Golden VIP")) {
+        if (e.getView().getTitle().equals("[VIP] Golden VIP")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -559,7 +559,7 @@ public class VIP_command implements CommandExecutor, Listener {
                 openDiamondMenu(player);
             }
         }
-        if (e.getInventory().getTitle().equals("[VIP] Diamond VIP")) {
+        if (e.getView().getTitle().equals("[VIP] Diamond VIP")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -575,7 +575,7 @@ public class VIP_command implements CommandExecutor, Listener {
             }
         }
 
-        if (e.getInventory().getTitle().equals("[VIP] Emerald VIP")) {
+        if (e.getView().getTitle().equals("[VIP] Emerald VIP")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -591,7 +591,7 @@ public class VIP_command implements CommandExecutor, Listener {
             }
         }
 
-        if (e.getInventory().getTitle().equals("[VIP] Obsidian VIP")) {
+        if (e.getView().getTitle().equals("[VIP] Obsidian VIP")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;

@@ -27,7 +27,7 @@ public class InventoryListener implements Listener {
     @EventHandler
     public void onClick(InventoryClickEvent e) {
         final Player p = (Player) e.getWhoClicked();
-        if (e.getInventory().getTitle().equals("Menu")) {
+        if (e.getView().getTitle().equals("Menu")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -58,7 +58,7 @@ public class InventoryListener implements Listener {
                 p.performCommand("vip");
             }
         }
-        if (e.getInventory().getTitle().equals("Seznam dostupnych navodu")) {
+        if (e.getView().getTitle().equals("Seznam dostupnych navodu")) {
             e.setCancelled(true);
             if(e.getSlot() == 0){
                 MenuManager.prepareNavodLink(p, "Pravidla", "https://wiki.craftmania.cz/zakladni-informace/pravidla.html");
@@ -119,7 +119,7 @@ public class InventoryListener implements Listener {
             }
 
         }
-        if (e.getInventory().getTitle().equals("Help pro Survival")) {
+        if (e.getView().getTitle().equals("Help pro Survival")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -178,7 +178,7 @@ public class InventoryListener implements Listener {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "chestcommands open vip.yml " + p.getName());
             }
         }
-        if (e.getInventory().getTitle().equals("Help pro Creative")) {
+        if (e.getView().getTitle().equals("Help pro Creative")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -224,7 +224,7 @@ public class InventoryListener implements Listener {
                 p.closeInventory();
             }
         }
-        if (e.getInventory().getTitle().equals("Help pro Skyblock")) {
+        if (e.getView().getTitle().equals("Help pro Skyblock")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -260,7 +260,7 @@ public class InventoryListener implements Listener {
                 p.closeInventory();
             }
         }
-        if (e.getInventory().getTitle().equals("Zmena barvy psani")) {
+        if (e.getView().getTitle().equals("Zmena barvy psani")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -345,7 +345,7 @@ public class InventoryListener implements Listener {
             }
             p.closeInventory();
         }
-        if (e.getInventory().getTitle().equals("Profil")) {
+        if (e.getView().getTitle().equals("Profil")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -363,7 +363,7 @@ public class InventoryListener implements Listener {
                 profil.openLanguageMenu(p);
             }
         }
-        if (e.getInventory().getTitle().equals("Nastaveni jazyka")) {
+        if (e.getView().getTitle().equals("Nastaveni jazyka")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
