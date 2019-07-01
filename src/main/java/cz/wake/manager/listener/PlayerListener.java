@@ -18,8 +18,6 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.*;
 
-import java.util.Map;
-
 public class PlayerListener implements Listener {
 
     private ParticlesAPI partAPI = new ParticlesAPI();
@@ -87,8 +85,6 @@ public class PlayerListener implements Listener {
 
         //Register Recipe Player
         RecipeManager.registerRecipePlayer(new RecipePlayer(p));
-
-
     }
 
     @EventHandler

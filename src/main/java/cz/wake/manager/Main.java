@@ -2,24 +2,32 @@ package cz.wake.manager;
 
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
-import cz.wake.manager.commads.staff.*;
-import cz.wake.manager.listener.suggestions.PlayerCommandSendListener;
-import cz.wake.manager.perks.general.*;
+import cz.wake.manager.commads.staff.Checkfly_command;
+import cz.wake.manager.commads.staff.DontDropCommand;
+import cz.wake.manager.commads.staff.RawBroadcast;
+import cz.wake.manager.commads.staff.RestartManager_command;
 import cz.wake.manager.listener.*;
+import cz.wake.manager.listener.suggestions.PlayerCommandSendListener;
 import cz.wake.manager.managers.TablistManager;
 import cz.wake.manager.perks.coloranvil.AnvilListener;
+import cz.wake.manager.perks.general.*;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.perks.twerking.TwerkEvent;
+import cz.wake.manager.servers.vanillaskylock.VillagerManager;
 import cz.wake.manager.shop.ShopAPI;
 import cz.wake.manager.shop.TagsEditor;
 import cz.wake.manager.shop.TempShop;
 import cz.wake.manager.sql.SQLManager;
 import cz.wake.manager.utils.*;
 import cz.wake.manager.utils.prometheus.MetricsController;
-import cz.wake.manager.utils.tasks.*;
+import cz.wake.manager.utils.tasks.ATAfkTask;
+import cz.wake.manager.utils.tasks.ATCheckerTask;
+import cz.wake.manager.utils.tasks.UpdateServerTask;
+import cz.wake.manager.utils.tasks.UpdateTablistTask;
 import cz.wake.manager.votifier.ForwardVote;
 import cz.wake.manager.votifier.VoteHandler;
 import net.milkbowl.vault.economy.Economy;
+import net.minecraft.server.v1_14_R1.EntityTypes;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -68,8 +76,16 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private static String mentionPrefix;
     private Economy econ;
 
+    public static EntityTypes CUSTOM_VILLAGER;
+
     private static Main instance;
 
+    @Override
+    public void onLoad() {
+
+    }
+
+    @Override
     public void onEnable() {
         instance = this;
 
@@ -106,7 +122,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         }
 
         // Update ID stats task (1 min)
-        if(!testing){
+        if (!testing) {
             getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateServerTask(), 200, 1200);
             Log.withPrefix("Aktivace update serveru kazdych 60 vterin.");
 
@@ -146,7 +162,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Nastaveni mention prefixu
         mentionPrefix = Main.getInstance().getConfig().getString("mentions.prefix");
-        if(mentionPrefix == null) {
+        if (mentionPrefix == null) {
             mentionPrefix = "@";
         }
         Log.withPrefix("Mention prefix nastaven na: " + mentionPrefix);
@@ -164,10 +180,12 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         econ = rsp.getProvider();
 
         // Prometheus
-        if(getConfig().getBoolean("prometheus.state", false)){
+        if (getConfig().getBoolean("prometheus.state", false)) {
             MetricsController.setup(this);
             Log.withPrefix("Aktivace Prometheus Endpointu na portu: " + getConfig().get("prometheus.port").toString());
         }
+
+        VillagerManager.spawnVillagers();
     }
 
     public void onDisable() {
@@ -226,7 +244,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             Log.withPrefix("Aktivace barevneho psani v kovadline.");
         }
 
-        pm.registerEvents(new PlayerCommandSendListener(this), this);
+        //pm.registerEvents(new PlayerCommandSendListener(this), this);
 
     }
 
@@ -314,7 +332,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         return itemdb;
     }
 
-    public Economy getEconomy() { return econ; }
+    public Economy getEconomy() {
+        return econ;
+    }
 
     @Override
     public void onPluginMessageReceived(String channel, Player player, byte[] message) {
@@ -326,7 +346,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
                 String coins = in.readUTF();
                 ForwardVote.vote(nick, null, coins); //TODO: UUID
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -363,7 +383,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         return useCustomDisenchant;
     }
 
-    public boolean areDeathMessagesEnabled() { return getConfig().getBoolean("d_msgs.enabled"); }
+    public boolean areDeathMessagesEnabled() {
+        return getConfig().getBoolean("d_msgs.enabled");
+    }
 
     public List<String> getDontDropWorlds() {
         return dontdrop_worlds;
