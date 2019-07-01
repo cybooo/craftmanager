@@ -6,7 +6,6 @@ import cz.wake.manager.perks.general.Chatcolor_command;
 import cz.wake.manager.managers.RecipeManager;
 import cz.wake.manager.managers.RecipePlayer;
 import cz.wake.manager.perks.particles.ParticlesAPI;
-import cz.wake.manager.utils.UtilTablist;
 import net.horkanos.craftchat.CraftChat;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -48,13 +47,6 @@ public class PlayerListener implements Listener {
                 p.setAllowFlight(false);
                 p.setFlying(false);
             }
-        }
-
-        // Nastaveni tablistu
-        //if (Main.getInstance().isTablistEnabled())
-        //Main.getInstance().getTablistManager().setRank(p);
-        if (Main.getInstance().getConfig().getBoolean("tablist-prefixes", false)) {
-            UtilTablist.setupTablist(p);
         }
 
         //AT

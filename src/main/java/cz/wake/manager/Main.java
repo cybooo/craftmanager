@@ -7,7 +7,6 @@ import cz.wake.manager.commads.staff.DontDropCommand;
 import cz.wake.manager.commads.staff.RawBroadcast;
 import cz.wake.manager.commads.staff.RestartManager_command;
 import cz.wake.manager.listener.*;
-import cz.wake.manager.listener.suggestions.PlayerCommandSendListener;
 import cz.wake.manager.managers.TablistManager;
 import cz.wake.manager.perks.coloranvil.AnvilListener;
 import cz.wake.manager.perks.general.*;
@@ -23,13 +22,10 @@ import cz.wake.manager.utils.prometheus.MetricsController;
 import cz.wake.manager.utils.tasks.ATAfkTask;
 import cz.wake.manager.utils.tasks.ATCheckerTask;
 import cz.wake.manager.utils.tasks.UpdateServerTask;
-import cz.wake.manager.utils.tasks.UpdateTablistTask;
 import cz.wake.manager.votifier.ForwardVote;
 import cz.wake.manager.votifier.VoteHandler;
 import net.milkbowl.vault.economy.Economy;
-import net.minecraft.server.v1_14_R1.EntityTypes;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
@@ -75,8 +71,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private ItemDB itemdb;
     private static String mentionPrefix;
     private Economy econ;
-
-    public static EntityTypes CUSTOM_VILLAGER;
 
     private static Main instance;
 
@@ -131,15 +125,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
             getServer().getScheduler().runTaskTimer(this, new ATAfkTask(), 200, 1200);
             Log.withPrefix("Aktivace AT-Afk checkeru");
-        }
-
-        // Update tablistu (5s)
-        if (tablist) {
-            //tb.createRanks();
-            getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateTablistTask(), 0, 100L);
-            Log.withPrefix("Aktivace synchronizace prefixu v tablistu");
-        } else {
-            Log.withPrefix(ChatColor.RED + "Tablist ranky a synchronizace je vypnuta!");
         }
 
         // Nastaveni DurabilityWarner
