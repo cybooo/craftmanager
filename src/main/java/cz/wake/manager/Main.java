@@ -7,7 +7,6 @@ import cz.wake.manager.commads.staff.DontDropCommand;
 import cz.wake.manager.commads.staff.RawBroadcast;
 import cz.wake.manager.commads.staff.RestartManager_command;
 import cz.wake.manager.listener.*;
-import cz.wake.manager.managers.TablistManager;
 import cz.wake.manager.perks.coloranvil.AnvilListener;
 import cz.wake.manager.perks.general.*;
 import cz.wake.manager.perks.particles.ParticlesAPI;
@@ -62,10 +61,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private static ByteArrayOutputStream b = new ByteArrayOutputStream();
     private static DataOutputStream out = new DataOutputStream(b);
     private SQLManager sql;
-    private boolean economyFix = false;
     private boolean testing = false;
-    private TablistManager tb = new TablistManager();
-    private boolean tablist = false;
     private boolean reminder = false;
     private boolean useCustomDisenchant = false;
     private ItemDB itemdb;
@@ -98,9 +94,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         initDatabase();
 
         // Nastaveni hodnot
-        economyFix = getConfig().getBoolean("economyfix");
         testing = getConfig().getBoolean("testing");
-        tablist = getConfig().getBoolean("tablist-update");
         reminder = getConfig().getBoolean("reminder");
         itemdb = new ItemDB(this);
 
