@@ -137,7 +137,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         }
 
         // Custom crafting recepty
-        CustomCrafting.addPackedIce(this);
+        //TODO: Podle server verze?
+        if (!idServer.equalsIgnoreCase("vanilla-skyblock")) {
+            CustomCrafting.addPackedIce(this);
+        }
 
         // Nastaveni mention prefixu
         mentionPrefix = Main.getInstance().getConfig().getString("mentions.prefix");
