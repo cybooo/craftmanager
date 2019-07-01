@@ -11,6 +11,7 @@ import cz.wake.manager.perks.coloranvil.AnvilListener;
 import cz.wake.manager.perks.general.*;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.perks.twerking.TwerkEvent;
+import cz.wake.manager.servers.vanillaskylock.VillagerDamageListener;
 import cz.wake.manager.servers.vanillaskylock.VillagerManager;
 import cz.wake.manager.shop.ShopAPI;
 import cz.wake.manager.shop.TagsEditor;
@@ -138,7 +139,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Custom crafting recepty
         //TODO: Podle server verze?
-        if (!idServer.equalsIgnoreCase("vanilla-skyblock")) {
+        if (!idServer.equalsIgnoreCase("vanillasb")) {
             CustomCrafting.addPackedIce(this);
         }
 
@@ -171,6 +172,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     }
 
     public void onDisable() {
+
+        VillagerManager.killVillagers();
 
         // Deaktivace MySQL
         sql.onDisable();
@@ -224,6 +227,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         if (getConfig().getBoolean("coloredanvils")) {
             pm.registerEvents(new AnvilListener(), this);
             Log.withPrefix("Aktivace barevneho psani v kovadline.");
+        }
+
+        if (idServer.equalsIgnoreCase("vanillasb")) {
+            pm.registerEvents(new VillagerDamageListener(), this);
         }
 
         //pm.registerEvents(new PlayerCommandSendListener(this), this);

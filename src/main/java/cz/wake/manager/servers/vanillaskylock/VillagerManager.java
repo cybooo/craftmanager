@@ -17,15 +17,16 @@ import java.util.Objects;
 
 public class VillagerManager {
 
-    private static List<AbstractVillager> villagerList = new ArrayList<>();
+    public static List<AbstractVillager> villagerList = new ArrayList<>();
 
     private static Location sellVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 299.5, 109.0, -261.5, -180, 0);
-    private static Location seaVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 314.5, 109, -265.5, -180, 0);
+    private static Location netherVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 314.5, 109, -265.5, -180, 0);
     private static Location rareVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 273.5, 109, -276.5, -90, 0);
-    private static Location endVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 284.5, 109, -265.5, -180, 0);
-    private static Location netherVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 325.5, 109, -276.5, 90, 0);
+    private static Location seaVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 284.5, 109, -265.5, -180, 0);
+    private static Location endVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 325.5, 109, -276.5, 90, 0);
 
     public static void spawnVillagers() {
+        killVillagers(); // Nejdriv zabit vsechny co existuji
         spawnSellVillager();
         spawnSeaVillager();
         spawnRareVillager();
@@ -34,7 +35,11 @@ public class VillagerManager {
     }
 
     public static void killVillagers() {
-        villagerList.forEach(Entity::remove);
+        Objects.requireNonNull(Bukkit.getWorld("vsbspawn")).getEntities().forEach(villager -> {
+            if (villager.hasMetadata("market_villager")){
+                villager.remove();
+            }
+        });
     }
 
     public static void respawnVillagers() {
@@ -49,6 +54,10 @@ public class VillagerManager {
         villager.setProfession(Villager.Profession.LIBRARIAN);
         villager.setVillagerType(Villager.Type.JUNGLE);
         villager.setCanPickupItems(false);
+        villager.setVillagerLevel(5);
+        villager.setRemoveWhenFarAway(false);
+
+        setMetadata(villager, "market_villager", "market_villager", Main.getInstance());
 
         VillagerTradeBuilder tradeBuilder = new VillagerTradeBuilder();
         tradeBuilder.clearTrades(villager);
@@ -79,6 +88,10 @@ public class VillagerManager {
         villager.setProfession(Villager.Profession.BUTCHER);
         villager.setVillagerType(Villager.Type.DESERT);
         villager.setCanPickupItems(false);
+        villager.setVillagerLevel(5);
+        villager.setRemoveWhenFarAway(false);
+
+        setMetadata(villager, "market_villager", "market_villager", Main.getInstance());
 
         VillagerTradeBuilder tradeBuilder = new VillagerTradeBuilder();
         tradeBuilder.clearTrades(villager);
@@ -99,6 +112,9 @@ public class VillagerManager {
         WanderingTrader villager = (WanderingTrader)entity;
         villager.setAI(false);
         villager.setCanPickupItems(false);
+        villager.setRemoveWhenFarAway(false);
+
+        setMetadata(villager, "market_villager", "market_villager", Main.getInstance());
 
         VillagerTradeBuilder tradeBuilder = new VillagerTradeBuilder();
         tradeBuilder.clearTrades(villager);
@@ -120,6 +136,10 @@ public class VillagerManager {
         villager.setProfession(Villager.Profession.CARTOGRAPHER);
         villager.setVillagerType(Villager.Type.SAVANNA);
         villager.setCanPickupItems(false);
+        villager.setVillagerLevel(5);
+        villager.setRemoveWhenFarAway(false);
+
+        setMetadata(villager, "market_villager", "market_villager", Main.getInstance());
 
         VillagerTradeBuilder tradeBuilder = new VillagerTradeBuilder();
         tradeBuilder.clearTrades(villager);
@@ -142,6 +162,10 @@ public class VillagerManager {
         villager.setProfession(Villager.Profession.FISHERMAN);
         villager.setVillagerType(Villager.Type.SNOW);
         villager.setCanPickupItems(false);
+        villager.setVillagerLevel(5);
+        villager.setRemoveWhenFarAway(false);
+
+        setMetadata(villager, "market_villager", "market_villager", Main.getInstance());
 
         VillagerTradeBuilder tradeBuilder = new VillagerTradeBuilder();
         tradeBuilder.clearTrades(villager);
@@ -155,6 +179,10 @@ public class VillagerManager {
     }
 
     public static void setMetadata(Villager villager, String paramString, Object paramObject, Main paramMain) {
+        villager.setMetadata(paramString, new FixedMetadataValue(paramMain, paramObject));
+    }
+
+    public static void setMetadata(WanderingTrader villager, String paramString, Object paramObject, Main paramMain) {
         villager.setMetadata(paramString, new FixedMetadataValue(paramMain, paramObject));
     }
 }
