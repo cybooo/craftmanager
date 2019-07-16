@@ -56,7 +56,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private MainGUI gui = new MainGUI();
     private ShopAPI shop = new ShopAPI();
     private ServerFactory sf = new ServerFactory();
-    private String idServer;
     private static ByteArrayOutputStream b = new ByteArrayOutputStream();
     private static DataOutputStream out = new DataOutputStream(b);
     private SQLManager sql;
@@ -207,12 +206,12 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new Votes_command(), this);
 
         // Skyblock PVP listener
-        if (idServer.equalsIgnoreCase("skyblock")) {
+        if (serverType == ServerType.SKYBLOCK) {
             pm.registerEvents(new SkyblockPVPListener(), this);
         }
 
         // Survival PVP listener
-        if (idServer.equalsIgnoreCase("survival")) {
+        if (serverType == ServerType.SURVIVAL) {
             pm.registerEvents(new SurvivalPVPListener(), this);
         }
 
@@ -222,11 +221,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             Log.withPrefix("Aktivace barevneho psani v kovadline.");
         }
 
-        if (idServer.equalsIgnoreCase("vanillasb")) {
+        if (serverType == ServerType.SKYCLOUD) {
             pm.registerEvents(new VillagerDamageListener(), this);
         }
-
-        //pm.registerEvents(new PlayerCommandSendListener(this), this);
 
     }
 
