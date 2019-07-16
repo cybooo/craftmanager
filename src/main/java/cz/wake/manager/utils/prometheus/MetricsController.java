@@ -15,15 +15,15 @@ import java.lang.management.ManagementFactory;
 
 public class MetricsController {
 
-    public static final Gauge players = Gauge.build().name(Main.getInstance().getIdServer() + "_players_total").help("Online and offline players").labelNames("state").create().register();
-    public static final Gauge loadedChunks = Gauge.build().name(Main.getInstance().getIdServer() + "_loaded_chunks_total").help("Chunks loaded per world").labelNames("world").create().register();
-    public static final Gauge playersOnline = Gauge.build().name(Main.getInstance().getIdServer() + "_players_online_total").help("Players currently online per world").labelNames("world").create().register();
-    public static final Gauge entities = Gauge.build().name(Main.getInstance().getIdServer() + "_entities_total").help("Entities loaded per world").labelNames("world").create().register();
-    public static final Gauge livingEntities = Gauge.build().name(Main.getInstance().getIdServer() + "_living_entities_total").help("Living entities loaded per world").labelNames("world").create().register();
-    public static final Gauge memory = Gauge.build().name(Main.getInstance().getIdServer() + "_jvm_memory").help("JVM memory usage").labelNames("type").create().register();
-    public static final Gauge tps = Gauge.build().name(Main.getInstance().getIdServer() + "_tps").help("Server TPS (ticks per second)").create().register();
-    public static final Gauge disk = Gauge.build().name(Main.getInstance().getIdServer() + "_disk").help("Space of disk").labelNames("type").create().register();
-    public static final Gauge cpu = Gauge.build().name(Main.getInstance().getIdServer() + "_cpu").help("Processor").create().register();
+    public static final Gauge players = Gauge.build().name(Main.getServerType().name().toLowerCase() + "_players_total").help("Online and offline players").labelNames("state").create().register();
+    public static final Gauge loadedChunks = Gauge.build().name(Main.getServerType().name().toLowerCase() + "_loaded_chunks_total").help("Chunks loaded per world").labelNames("world").create().register();
+    public static final Gauge playersOnline = Gauge.build().name(Main.getServerType().name().toLowerCase() + "_players_online_total").help("Players currently online per world").labelNames("world").create().register();
+    public static final Gauge entities = Gauge.build().name(Main.getServerType().name().toLowerCase() + "_entities_total").help("Entities loaded per world").labelNames("world").create().register();
+    public static final Gauge livingEntities = Gauge.build().name(Main.getServerType().name().toLowerCase() + "_living_entities_total").help("Living entities loaded per world").labelNames("world").create().register();
+    public static final Gauge memory = Gauge.build().name(Main.getServerType().name().toLowerCase() + "_jvm_memory").help("JVM memory usage").labelNames("type").create().register();
+    public static final Gauge tps = Gauge.build().name(Main.getServerType().name().toLowerCase() + "_tps").help("Server TPS (ticks per second)").create().register();
+    public static final Gauge disk = Gauge.build().name(Main.getServerType().name().toLowerCase() + "_disk").help("Space of disk").labelNames("type").create().register();
+    public static final Gauge cpu = Gauge.build().name(Main.getServerType().name().toLowerCase() + "_cpu").help("Processor").create().register();
 
     private static MetricsController instance;
 

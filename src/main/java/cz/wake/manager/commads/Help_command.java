@@ -2,6 +2,7 @@ package cz.wake.manager.commads;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
+import cz.wake.manager.utils.ServerType;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -19,7 +20,7 @@ public class Help_command implements CommandExecutor {
             Player player = (Player) Sender;
             if ((Command.getName().equalsIgnoreCase("help"))
                     && (ArrayOfString.length == 0)) {
-                if (Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
+                if (Main.getServerType() == ServerType.PRISON) {
                     player.performCommand("tutorial");
                 } else {
                     openHelpMenu(player);
@@ -30,7 +31,7 @@ public class Help_command implements CommandExecutor {
     }
 
     private void openHelpMenu(Player p) {
-        if (Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+        if (Main.getServerType() == ServerType.SKYBLOCK) {
             Inventory inv = Bukkit.createInventory(null, 45, "Help pro Skyblock");
 
             ItemStack is = ItemFactory.create(Material.GRASS, (byte) 0, "§a§lVytvoreni a nastaveni ostrova", "",
@@ -144,8 +145,7 @@ public class Help_command implements CommandExecutor {
 
             p.openInventory(inv);
         }
-        if (Main.getInstance().getIdServer().equalsIgnoreCase("creative")
-                || Main.getInstance().getIdServer().equalsIgnoreCase("creative2")) {
+        if (Main.getServerType() == ServerType.CREATIVE) {
             Inventory inv = Bukkit.createInventory(null, 45, "Help pro Creative");
 
             ItemStack poz = ItemFactory.create(Material.DIRT, (byte) 2, "§a§lZakladni sprava pozemku", "",
@@ -227,7 +227,7 @@ public class Help_command implements CommandExecutor {
 
             p.openInventory(inv);
         }
-        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+        if (Main.getServerType() == ServerType.SURVIVAL) {
             Inventory inv = Bukkit.createInventory(null, 45, "Help pro Survival");
 
             ItemStack res = ItemFactory.create(Material.OAK_LOG, (byte) 2, "§a§lVytvoreni a prvni kroky s Residenci", "",

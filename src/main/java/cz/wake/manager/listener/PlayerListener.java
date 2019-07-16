@@ -90,9 +90,6 @@ public class PlayerListener implements Listener {
             Main.getInstance().removePlayer(p);
         }
 
-        //Odebrani hrace z cache na hlasy
-        Main.getInstance().getVoteHandler().removePlayer(p);
-
         //AT
         if (Main.getInstance().at_list.contains(p)) {
             Main.getInstance().at_list.remove(p);
@@ -122,9 +119,6 @@ public class PlayerListener implements Listener {
             partAPI.deactivateParticles(p);
             Main.getInstance().removePlayer(p);
         }
-
-        //Odebrani hrace z cache na hlasy
-        Main.getInstance().getVoteHandler().removePlayer(p);
 
         //AT
         if (Main.getInstance().at_list.contains(p)) {

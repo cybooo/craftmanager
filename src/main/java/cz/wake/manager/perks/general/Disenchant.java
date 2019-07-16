@@ -1,6 +1,7 @@
 package cz.wake.manager.perks.general;
 
 import cz.wake.manager.Main;
+import cz.wake.manager.utils.ServerType;
 import n3kas.ae.api.AEAPI;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -24,7 +25,7 @@ public class Disenchant implements CommandExecutor {
             if ((Command.getName().equalsIgnoreCase("disenchant"))) {
                 if (player.hasPermission("craftmanager.vip.disenchant")) {
 
-                    if (Main.getInstance().getIdServer().equalsIgnoreCase("vanilla")) {
+                    if (Main.getServerType() == ServerType.VANILLA) {
                         player.sendMessage("§c§l(!) §cNa tomto serveru tato vyhoda neplati!");
                         return true;
                     }

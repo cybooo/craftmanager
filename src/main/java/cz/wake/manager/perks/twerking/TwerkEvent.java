@@ -2,6 +2,7 @@ package cz.wake.manager.perks.twerking;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ExpUtil;
+import cz.wake.manager.utils.ServerType;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -22,7 +23,7 @@ public class TwerkEvent implements Listener {
         }
         final Player player = e.getPlayer();
         if (!player.hasPermission("craftmanager.vip.twerking")
-                || Main.getInstance().getIdServer().equalsIgnoreCase("vanilla")) {
+                || Main.getServerType() == ServerType.VANILLA) {
             return;
         }
         final World world = player.getWorld();

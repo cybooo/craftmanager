@@ -2,6 +2,7 @@ package cz.wake.manager.perks.general;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
+import cz.wake.manager.utils.ServerType;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -25,7 +26,7 @@ public class BeaconCommand implements CommandExecutor, Listener {
             if ((Command.getName().equalsIgnoreCase("beacon"))) {
                 if (player.hasPermission("craftmanager.vip.beacon")) {
 
-                    if (Main.getInstance().getIdServer().equalsIgnoreCase("vanilla")) {
+                    if (Main.getServerType() == ServerType.VANILLA) {
                         player.sendMessage("§c§l(!) §cNa tomto serveru tato vyhoda neplati!");
                         return true;
                     }

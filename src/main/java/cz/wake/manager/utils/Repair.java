@@ -14,8 +14,6 @@ import java.util.Iterator;
 public class Repair {
 
     public static void repair(Player p) {
-        String server = Main.getInstance().getIdServer();
-
         ItemStack item = p.getInventory().getItemInMainHand();
 
         if (!Main.getInstance().isValidMaterial(item.getType())) {
@@ -39,7 +37,7 @@ public class Repair {
             }
         }
 
-        if (server.equalsIgnoreCase("survival")) {
+        if (Main.getServerType() == ServerType.SURVIVAL) {
             if (AEAPI.getEnchantmentsOnItem(item).size() != 0) {
                 HashMap<Enchantment, Integer> enchanments2 = new HashMap<>(AEAPI.getEnchantmentsOnItem(item));
 

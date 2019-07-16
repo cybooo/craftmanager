@@ -2,6 +2,7 @@ package cz.wake.manager.sql;
 
 import com.zaxxer.hikari.HikariDataSource;
 import cz.wake.manager.Main;
+import cz.wake.manager.utils.ServerType;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -263,7 +264,7 @@ public class SQLManager {
                 try {
                     conn = pool.getConnection();
                     ps = conn.prepareStatement("INSERT INTO stav_survival_server (nazev, pocet_hracu, pocet_slotu, verze, pocet_pluginu) VALUES (?,?,?,?,?) ON DUPLICATE KEY UPDATE pocet_hracu = ?;");
-                    ps.setString(1, Main.getInstance().getIdServer());
+                    ps.setString(1, Main.getServerType().name().toLowerCase());
                     ps.setInt(2, Main.getInstance().getServerFactory().getOnlinePlayers());
                     ps.setInt(3, Main.getInstance().getServerFactory().getMaxPlayers());
                     ps.setString(4, Main.getInstance().getServerFactory().getVersion());
@@ -346,18 +347,18 @@ public class SQLManager {
 
     private String getServerName() {
         String name = "";
-        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+        if (Main.getServerType() == ServerType.SURVIVAL) {
             name = "surv";
-        } else if (Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+        } else if (Main.getServerType() == ServerType.SKYBLOCK) {
             name = "sky";
-        } else if ((Main.getInstance().getIdServer().equalsIgnoreCase("creative")) || Main.getInstance().getIdServer().equalsIgnoreCase("creative2")) {
+        } else if (Main.getServerType() == ServerType.CREATIVE) {
             name = "crea";
-        } else if (Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
+        } else if (Main.getServerType() == ServerType.PRISON) {
             name = "prison";
-        } else if (Main.getInstance().getIdServer().equalsIgnoreCase("vanilla")) {
+        } else if (Main.getServerType() == ServerType.VANILLA) {
             name = "vanilla";
-        } else if (Main.getInstance().getIdServer().equalsIgnoreCase("vanillasb")) {
-            name = "vanillasb";
+        } else if (Main.getServerType() == ServerType.SKYCLOUD) {
+            name = "vanillasb"; //TODO: Prejmenovat v SQL
         }
         return name;
     }
@@ -372,7 +373,7 @@ public class SQLManager {
                     conn = pool.getConnection();
                     ps = conn.prepareStatement("INSERT INTO at_commands (nick,server,command,time) VALUES (?,?,?,?);");
                     ps.setString(1, p.getName());
-                    ps.setString(2, Main.getInstance().getIdServer());
+                    ps.setString(2, Main.getServerType().name().toLowerCase());
                     ps.setString(3, command);
                     ps.setLong(4, System.currentTimeMillis());
                     ps.executeUpdate();

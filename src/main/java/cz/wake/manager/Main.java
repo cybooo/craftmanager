@@ -23,7 +23,6 @@ import cz.wake.manager.utils.tasks.ATAfkTask;
 import cz.wake.manager.utils.tasks.ATCheckerTask;
 import cz.wake.manager.utils.tasks.UpdateServerTask;
 import cz.wake.manager.votifier.ForwardVote;
-import cz.wake.manager.votifier.VoteHandler;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -56,7 +55,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     public static String restartReason;
     private MainGUI gui = new MainGUI();
     private ShopAPI shop = new ShopAPI();
-    private VoteHandler vh = new VoteHandler();
     private ServerFactory sf = new ServerFactory();
     private String idServer;
     private static ByteArrayOutputStream b = new ByteArrayOutputStream();
@@ -70,6 +68,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private Economy econ;
 
     private static Main instance;
+    private static ServerType serverType = ServerType.UNKNOWN;
 
     @Override
     public void onLoad() {
@@ -84,8 +83,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getConfig().options().copyDefaults(true);
         saveDefaultConfig();
 
-        // Bungee ID z configu
-        idServer = getConfig().getString("server");
+        // ID serveru a typ
+        serverType = resolveServerType();
 
         // Register eventu a prikazu
         loadListeners();
@@ -139,7 +138,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Custom crafting recepty
         //TODO: Podle server verze?
-        if (!idServer.equalsIgnoreCase("vanillasb")) {
+        if (serverType != ServerType.SKYCLOUD) {
             CustomCrafting.addPackedIce(this);
         }
 
@@ -242,7 +241,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("skyblock").setExecutor(new Skyblock_command());
         getCommand("creative").setExecutor(new Creative_command());
         getCommand("prison").setExecutor(new Prison_command());
-        getCommand("bedwars").setExecutor(new Bedwars_command());
         getCommand("disenchant").setExecutor(new Disenchant());
         getCommand("vote").setExecutor(new Vote_command());
         getCommand("skull").setExecutor(new SkullCommand());
@@ -297,14 +295,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public SQLManager getMySQL() {
         return sql;
-    }
-
-    public VoteHandler getVoteHandler() {
-        return vh;
-    }
-
-    public String getIdServer() {
-        return idServer;
     }
 
     public ServerFactory getServerFactory() {
@@ -372,5 +362,33 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public List<String> getDontDropWorlds() {
         return dontdrop_worlds;
+    }
+
+    public static ServerType getServerType() {
+        return serverType;
+    }
+
+    private ServerType resolveServerType() {
+        String type = getInstance().getConfig().getString("server");
+        if (type == null) {
+            return ServerType.UNKNOWN;
+        }
+        if (type.equalsIgnoreCase("survival")) {
+            return ServerType.SURVIVAL;
+        } else if (type.equalsIgnoreCase("skyblock")) {
+            return ServerType.SKYBLOCK;
+        } else if (type.equalsIgnoreCase("creative")) {
+            return ServerType.CREATIVE;
+        } else if (type.equalsIgnoreCase("prison")) {
+            return ServerType.PRISON;
+        } else if (type.equalsIgnoreCase("vanilla")) {
+            return ServerType.VANILLA;
+        } else if (type.equalsIgnoreCase("skycloud")) {
+            return ServerType.SKYCLOUD;
+        } else if (type.equalsIgnoreCase("skygrid")) {
+            return ServerType.SKYGRID;
+        } else {
+            return ServerType.UNKNOWN;
+        }
     }
 }

@@ -6,6 +6,7 @@ import cz.craftmania.crafteconomy.api.CraftTokensAPI;
 import cz.craftmania.crafteconomy.api.VoteTokensAPI;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
+import cz.wake.manager.utils.ServerType;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -21,12 +22,11 @@ import java.util.Calendar;
 public class ShopAPI implements Listener {
 
     public void openShopMainGUI(final Player p) {
-        if (Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")
-                || Main.getInstance().getIdServer().equalsIgnoreCase("survival")
-                || Main.getInstance().getIdServer().equalsIgnoreCase("creative")
-                || Main.getInstance().getIdServer().equalsIgnoreCase("vanillasb")
-                || Main.getInstance().getIdServer().equalsIgnoreCase("test")
-                || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
+        if (Main.getServerType() == ServerType.SURVIVAL
+                || Main.getServerType() == ServerType.SKYBLOCK
+                || Main.getServerType() == ServerType.CREATIVE
+                || Main.getServerType() == ServerType.SKYCLOUD
+                || Main.getServerType() == ServerType.PRISON) {
             Inventory inv = Bukkit.createInventory(null, 54, "Coinshop");
 
             ItemStack head = new ItemBuilder(Material.PLAYER_HEAD)
@@ -325,7 +325,7 @@ public class ShopAPI implements Listener {
 
         // Residence 200x200 (2,500)
         if(!p.hasPermission("residence.group.bonus1")) {
-            if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+            if(Main.getServerType() != ServerType.SURVIVAL) {
                 ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§cResidence 200x200")
                         .setLore("§7Nelze zakoupit na tomto serveru.").build();
                 inv.setItem(19, nedostupny);
@@ -349,7 +349,7 @@ public class ShopAPI implements Listener {
 
         // Residence 300x300 (7,500)
         if (!p.hasPermission("residence.group.bonus2")) {
-            if (!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+            if (Main.getServerType() != ServerType.SURVIVAL) {
                 ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§cResidence 300x300")
                         .setLore("§7Nelze zakoupit na tomto serveru.").build();
                 inv.setItem(20, nedostupny);
@@ -377,7 +377,7 @@ public class ShopAPI implements Listener {
 
         // Residence 400x400 (15,000)
         if (!p.hasPermission("residence.group.bonus3")) {
-            if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+            if(Main.getServerType() != ServerType.SURVIVAL) {
                 ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§cResidence 400x400")
                         .setLore("§7Nelze zakoupit na tomto serveru.").build();
                 inv.setItem(21, nedostupny);
@@ -405,7 +405,7 @@ public class ShopAPI implements Listener {
 
         // Skyblock - 5 hraci (1,500)
         if (!p.hasPermission("askyblock.team.maxsize.5")) {
-            if(!Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+            if(Main.getServerType() != ServerType.SKYBLOCK) {
                 ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§cMax. hracu na IS (5)")
                         .setLore("§7Nelze zakoupit na tomto serveru.").build();
                 inv.setItem(23, nedostupny);
@@ -429,7 +429,7 @@ public class ShopAPI implements Listener {
 
         // Skyblock - 7 hraci (3,500)
         if (!p.hasPermission("askyblock.team.maxsize.7")) {
-            if(!Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+            if(Main.getServerType() != ServerType.SKYBLOCK) {
                 ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§cMax. hracu na IS (7)")
                         .setLore("§7Nelze zakoupit na tomto serveru.").build();
                 inv.setItem(24, nedostupny);
@@ -457,7 +457,7 @@ public class ShopAPI implements Listener {
 
         // Skyblock - 10 hraci (5,000)
         if (!p.hasPermission("askyblock.team.maxsize.10")) {
-            if(!Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+            if(Main.getServerType() != ServerType.SKYBLOCK) {
                 ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§cMax. hracu na IS (10)")
                         .setLore("§7Nelze zakoupit na tomto serveru.").build();
                 inv.setItem(25, nedostupny);
@@ -485,7 +485,7 @@ public class ShopAPI implements Listener {
 
         // Skyblock - 15 hraci (10,000) - 32
         if (!p.hasPermission("askyblock.team.maxsize.15")) {
-            if(!Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+            if(Main.getServerType() != ServerType.SKYBLOCK) {
                 ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§cMax. hracu na IS (15)")
                         .setLore("§7Nelze zakoupit na tomto serveru.").build();
                 inv.setItem(32, nedostupny);
@@ -546,7 +546,7 @@ public class ShopAPI implements Listener {
 
         // VoteCrate (1x)
         if (voteTokens >= 1) {
-            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
+            if (Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK) {
                 ItemStack voteCrate = new ItemBuilder(Material.PISTON).setName("§a1x VoteCrate").setLore("§7Cena: §f1 VT").build();
                 inv.setItem(19, voteCrate);
             } else {
@@ -562,7 +562,7 @@ public class ShopAPI implements Listener {
 
         // VoteCrate (5x)
         if (voteTokens >= 5) {
-            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
+            if (Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK) {
                 ItemStack voteCrate = new ItemBuilder(Material.PISTON).setName("§a5x VoteCrate").setLore("§7Cena: §f5 VT").build();
                 inv.setItem(28, voteCrate);
             } else {
@@ -578,7 +578,7 @@ public class ShopAPI implements Listener {
 
         // EpicCrate (1x)
         if (voteTokens >= 5) {
-            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
+            if (Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK) {
                 ItemStack headCreate = new ItemBuilder(Material.PISTON).setName("§91x EpicCrate").setLore("§7Cena: §f5 VT").build();
                 inv.setItem(20, headCreate);
             } else {
@@ -594,7 +594,7 @@ public class ShopAPI implements Listener {
 
         // EpicCrate (3x)
         if (voteTokens >= 15) {
-            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
+            if (Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK) {
                 ItemStack headCreate = new ItemBuilder(Material.PISTON).setName("§93x EpicCrate").setLore("§7Cena: §f15 VT").build();
                 inv.setItem(29, headCreate);
             } else {
@@ -610,7 +610,7 @@ public class ShopAPI implements Listener {
 
         // HeadCrate (1x)
         if (voteTokens >= 3) {
-            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
+            if (Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK) {
                 ItemStack headCreate = new ItemBuilder(Material.PISTON).setName("§d1x HeadCrate").setLore("§7Cena: §f3 VT").build();
                 inv.setItem(21, headCreate);
             } else {
@@ -626,7 +626,7 @@ public class ShopAPI implements Listener {
 
         // HeadCrate (3x)
         if (voteTokens >= 9) {
-            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
+            if (Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK) {
                 ItemStack headCreate = new ItemBuilder(Material.PISTON).setName("§d3x HeadCrate").setLore("§7Cena: §f9 VT").build();
                 inv.setItem(30, headCreate);
             } else {
@@ -642,7 +642,7 @@ public class ShopAPI implements Listener {
 
         // WorldEdit (1h)
         if (voteTokens >= 1) {
-            if (Main.getInstance().getIdServer().equalsIgnoreCase("creative")) {
+            if (Main.getServerType() == ServerType.CREATIVE) {
                 ItemStack item = new ItemBuilder(Material.WOODEN_AXE).setName("§aWorldEdit (1h)").setLore("§7Cena: §f1 VT").hideAllFlags().build();
                 inv.setItem(23, item);
             } else {
@@ -658,7 +658,7 @@ public class ShopAPI implements Listener {
 
         // WorldEdit (3h)
         if (voteTokens >= 3) {
-            if (Main.getInstance().getIdServer().equalsIgnoreCase("creative")) {
+            if (Main.getServerType() == ServerType.CREATIVE) {
                 ItemStack item = new ItemBuilder(Material.IRON_AXE).setName("§aWorldEdit (3h)").setLore("§7Cena: §f3 VT").hideAllFlags().build();
                 inv.setItem(32, item);
             } else {
@@ -674,7 +674,7 @@ public class ShopAPI implements Listener {
 
         // Skyblock Fly (1h)
         if (voteTokens >= 3) {
-            if (Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
+            if (Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON) {
                 ItemStack item = new ItemBuilder(Material.FEATHER).setName("§aFly na vlastnim ostrove (1h)").setLore("§7Cena: §f3 VT").hideAllFlags().build();
                 inv.setItem(24, item);
             } else {
@@ -690,7 +690,7 @@ public class ShopAPI implements Listener {
 
         // Skyblock Fly (3h)
         if (voteTokens >= 9) {
-            if (Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
+            if (Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON) {
                 ItemStack item = new ItemBuilder(Material.ELYTRA).setName("§aFly na vlastnim ostrove (3h)").setLore("§7Cena: §f9 VT").hideAllFlags().build();
                 inv.setItem(33, item);
             } else {
@@ -759,7 +759,7 @@ public class ShopAPI implements Listener {
         inv.setItem(53, footer);
 
         // Slotovac
-        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+        if (Main.getServerType() == ServerType.SURVIVAL) {
             if (craftCoins >= 1500) {
                 ItemStack item = new ItemBuilder(Material.CHEST_MINECART).setName("§a1x Slotovac")
                         .setLore("§7Zvysuje pocet custom enchantu", "§7na itemu - max. 10!", "", "§7Cena: §f1500 CC").build();
@@ -776,7 +776,7 @@ public class ShopAPI implements Listener {
         }
 
         // MobTracker
-        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+        if (Main.getServerType() == ServerType.SURVIVAL) {
             if (craftCoins >= 500) {
                 ItemStack item = new ItemBuilder(Material.FERMENTED_SPIDER_EYE).setName("§eMobTrak")
                         .setLore("§7Zaznamenava na nastroj", "§7kolik jsi zabil mobu.", "", "§7Cena: §f500 CC").build();
@@ -793,7 +793,7 @@ public class ShopAPI implements Listener {
         }
 
         // StatTrak
-        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+        if (Main.getServerType() == ServerType.SURVIVAL) {
             if (craftCoins >= 500) {
                 ItemStack item = new ItemBuilder(Material.MAGMA_CREAM).setName("§6StatTrak")
                         .setLore("§7Zaznamenava na nastroj", "§7kolik jsi zabil hracu.", "", "§7Cena: §f500 CC").build();
@@ -810,7 +810,7 @@ public class ShopAPI implements Listener {
         }
 
         // BlockTrak
-        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+        if (Main.getServerType() == ServerType.SURVIVAL) {
             if (craftCoins >= 500) {
                 ItemStack item = new ItemBuilder(Material.SLIME_BALL).setName("§aBlockTrak")
                         .setLore("§7Zaznamenava na nastroj", "§7kolik jsi vykopal bloku.", "", "§7Cena: §f500 CC").build();
@@ -827,7 +827,7 @@ public class ShopAPI implements Listener {
         }
 
         // Randomizer
-        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+        if (Main.getServerType() == ServerType.SURVIVAL) {
             if (craftCoins >= 300) {
                 ItemStack item = new ItemBuilder(Material.PAPER).setName("§eRandomizer")
                         .setLore("§7Vygeneruje znovu nahodne", "§7sance na knize.", "", "§7Cena: §f300 CC").build();
@@ -844,7 +844,7 @@ public class ShopAPI implements Listener {
         }
 
         // Transmog
-        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+        if (Main.getServerType() == ServerType.SURVIVAL) {
             if (craftCoins >= 600) {
                 ItemStack item = new ItemBuilder(Material.PAPER).setName("§eTransmog Scroll")
                         .setLore("§7Seradi vsechny enchanty", "§7na itemu podle rarity.", "", "§7Cena: §f600 CC").build();
@@ -914,7 +914,7 @@ public class ShopAPI implements Listener {
 
             // Slotovac
             if (e.getSlot() == 19) {
-                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                if(Main.getServerType() != ServerType.SURVIVAL) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
@@ -930,7 +930,7 @@ public class ShopAPI implements Listener {
 
             // MobTrak
             if (e.getSlot() == 20) {
-                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                if(Main.getServerType() != ServerType.SURVIVAL) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
@@ -946,7 +946,7 @@ public class ShopAPI implements Listener {
 
             // StatTrak
             if (e.getSlot() == 21) {
-                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                if(Main.getServerType() != ServerType.SURVIVAL) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
@@ -962,7 +962,7 @@ public class ShopAPI implements Listener {
 
             // BlockTrak
             if (e.getSlot() == 22) {
-                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                if(Main.getServerType() != ServerType.SURVIVAL) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
@@ -978,7 +978,7 @@ public class ShopAPI implements Listener {
 
             // Randomizer
             if (e.getSlot() == 23) {
-                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                if(Main.getServerType() != ServerType.SURVIVAL) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
@@ -994,7 +994,7 @@ public class ShopAPI implements Listener {
 
             // Transmog Scroll
             if (e.getSlot() == 24) {
-                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                if(Main.getServerType() != ServerType.SURVIVAL) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
@@ -1025,7 +1025,7 @@ public class ShopAPI implements Listener {
 
             // Residence 200x200
             if (e.getSlot() == 19) {
-                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                if(Main.getServerType() != ServerType.SURVIVAL) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
@@ -1045,7 +1045,7 @@ public class ShopAPI implements Listener {
 
             // Residence 300x300
             if (e.getSlot() == 20) {
-                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                if(Main.getServerType()!= ServerType.SURVIVAL) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
@@ -1067,7 +1067,7 @@ public class ShopAPI implements Listener {
 
             // Residence 400x400
             if (e.getSlot() == 21) {
-                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+                if(Main.getServerType() != ServerType.SURVIVAL) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
@@ -1089,7 +1089,7 @@ public class ShopAPI implements Listener {
 
             // Skyblock (5 hracu)
             if (e.getSlot() == 23) {
-                if(!Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+                if(Main.getServerType() != ServerType.SKYBLOCK) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
@@ -1109,7 +1109,7 @@ public class ShopAPI implements Listener {
 
             // Skyblock (7 hracu)
             if (e.getSlot() == 24) {
-                if(!Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+                if(Main.getServerType() != ServerType.SKYBLOCK) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
@@ -1131,7 +1131,7 @@ public class ShopAPI implements Listener {
 
             // Skyblock (10 hracu)
             if (e.getSlot() == 25) {
-                if(!Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+                if(Main.getServerType() != ServerType.SKYBLOCK) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
@@ -1153,7 +1153,7 @@ public class ShopAPI implements Listener {
 
             // Skyblock (15 hracu)
             if (e.getSlot() == 32) {
-                if(!Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+                if(Main.getServerType() != ServerType.SKYBLOCK) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
@@ -1191,7 +1191,7 @@ public class ShopAPI implements Listener {
 
             // VoteCrate (1x)
             if (e.getSlot() == 19) {
-                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
+                if (!(Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON)) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
@@ -1207,7 +1207,7 @@ public class ShopAPI implements Listener {
 
             // VoteCrate (5x)
             if (e.getSlot() == 28) {
-                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
+                if (!(Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON)) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
@@ -1223,7 +1223,7 @@ public class ShopAPI implements Listener {
 
             // EpicCrate (1x)
             if (e.getSlot() == 20) {
-                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
+                if (!(Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON)) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
@@ -1239,7 +1239,7 @@ public class ShopAPI implements Listener {
 
             // EpicCrate (3x)
             if (e.getSlot() == 29) {
-                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
+                if (!(Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON)) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
@@ -1255,7 +1255,7 @@ public class ShopAPI implements Listener {
 
             // HeadCrate (1x)
             if (e.getSlot() == 21) {
-                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
+                if (!(Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON)) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
@@ -1271,7 +1271,7 @@ public class ShopAPI implements Listener {
 
             // HeadCrate (3x)
             if (e.getSlot() == 30) {
-                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
+                if (!(Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON)) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
@@ -1287,7 +1287,7 @@ public class ShopAPI implements Listener {
 
             // WorldEdit (1h)
             if (e.getSlot() == 23) {
-                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("creative"))) {
+                if (Main.getServerType() != ServerType.CREATIVE) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
@@ -1312,7 +1312,7 @@ public class ShopAPI implements Listener {
 
             // WorldEdit (3h)
             if (e.getSlot() == 32) {
-                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("creative"))) {
+                if (Main.getServerType() != ServerType.CREATIVE) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
@@ -1337,7 +1337,7 @@ public class ShopAPI implements Listener {
 
             // Skyblock Fly (1h)
             if (e.getSlot() == 24) {
-                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
+                if (!(Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON)) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
@@ -1345,7 +1345,8 @@ public class ShopAPI implements Listener {
                     p.sendMessage("§e§l(*) §eJiz mas zakoupeny Fly na ostrove! Pockej az skonci...");
                 } else {
                     if (VoteTokensAPI.getVoteTokens(p) >= 3) {
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp askyblock.islandfly true 1h " + Main.getInstance().getIdServer().toLowerCase());
+                        ServerType serverType = Main.getServerType();
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp askyblock.islandfly true 1h " + serverType.name().toLowerCase());
                         VoteTokensAPI.takeVoteTokens(p, 3);
                         p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x Fly na ostrove na 1h §eza §a3 VT.");
                         p.sendMessage("§c§l(!) §cNekdy Fly nefunguje hned, zkus jit na spawn a zpatky, pokud nepujde. :)");
@@ -1358,7 +1359,7 @@ public class ShopAPI implements Listener {
 
             // Skyblock Fly (3h)
             if (e.getSlot() == 33) {
-                if (!(Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison"))) {
+                if (!(Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON)) {
                     p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
@@ -1366,7 +1367,8 @@ public class ShopAPI implements Listener {
                     p.sendMessage("§e§l(*) §eJiz mas zakoupeny Fly na ostrove! Pockej az skonci...");
                 } else {
                     if (VoteTokensAPI.getVoteTokens(p) >= 9) {
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp askyblock.islandfly true 3h " + Main.getInstance().getIdServer().toLowerCase());
+                        ServerType serverType = Main.getServerType();
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp askyblock.islandfly true 3h " + serverType.name().toLowerCase());
                         VoteTokensAPI.takeVoteTokens(p, 9);
                         p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x Fly na ostrove na 3h §eza §a9 VT.");
                         p.sendMessage("§c§l(!) §cNekdy Fly nefunguje hned, zkus jit na spawn a zpatky, pokud nepujde. :)");

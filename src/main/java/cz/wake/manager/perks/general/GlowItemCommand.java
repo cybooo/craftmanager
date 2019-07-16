@@ -2,6 +2,7 @@ package cz.wake.manager.perks.general;
 
 import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
 import cz.wake.manager.Main;
+import cz.wake.manager.utils.ServerType;
 import n3kas.ae.api.AEAPI;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -21,7 +22,7 @@ public class GlowItemCommand implements CommandExecutor {
                     player.sendMessage("§cNedostatecna prava, na toto musis mit VIP. §f/vip");
                     return true;
                 }
-                if (Main.getInstance().getIdServer().equalsIgnoreCase("vanilla")) {
+                if (Main.getServerType() == ServerType.VANILLA) {
                     player.sendMessage("§c§l(!) §cNa tomto serveru tato vyhoda neplati!");
                     return true;
                 }

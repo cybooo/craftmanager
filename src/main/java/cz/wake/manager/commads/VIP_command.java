@@ -4,6 +4,7 @@ package cz.wake.manager.commads;
 import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
+import cz.wake.manager.utils.ServerType;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -25,9 +26,9 @@ public class VIP_command implements CommandExecutor, Listener {
     public boolean onCommand(CommandSender sender, Command command, String string, String[] arrayOfString) {
         if (sender instanceof Player) {
             Player player = (Player)sender;
-            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")
-                || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")
-                || Main.getInstance().getIdServer().equalsIgnoreCase("creative")) {
+            if (Main.getServerType() == ServerType.SURVIVAL
+                || Main.getServerType() == ServerType.SKYBLOCK
+                || Main.getServerType() == ServerType.CREATIVE) {
                 openVIPMenu(player);
             } else {
                 player.sendMessage("§c§l(!) §cNa tomto serveru nelze zobrazit VIP jelikoz zde zatim zadne neni.");
@@ -226,10 +227,10 @@ public class VIP_command implements CommandExecutor, Listener {
         server_vyhody.add("§e· §fNastaveni vlastniho casu §a/ptime");
         server_vyhody.add("§e· §fInspekce znicenych bloku §a/co inspect");
         server_vyhody.add("§e· §fMoznost vypnout si zobrazovani verejneho chatu");
-        if(Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+        if (Main.getServerType() == ServerType.SURVIVAL) {
             server_vyhody.add("§e· §fMaximalni pocet residenci 6 (normal 4)");
         }
-        if(Main.getInstance().getIdServer().equalsIgnoreCase("creative")) {
+        if (Main.getServerType() == ServerType.CREATIVE) {
             server_vyhody.add("§e· §fMaximalni pocet pozemku az 100 (normal 10)");
         }
         server_vyhody.add("");
@@ -331,11 +332,10 @@ public class VIP_command implements CommandExecutor, Listener {
         server_vyhody.add("§e· §fVlastni warpy - vytvor si vlastni warp pro sebe");
         server_vyhody.add("§fnebo pro vsechny hrace na serveru! §a/warps");
 
-        if(Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+        if (Main.getServerType() == ServerType.SURVIVAL) {
             server_vyhody.add("§e· §fMaximalni pocet residenci 8 (normal 4)");
         }
-
-        if(Main.getInstance().getIdServer().equalsIgnoreCase("creative")) {
+        if (Main.getServerType() == ServerType.CREATIVE) {
             server_vyhody.add("§e· §fMaximalni pocet pozemku (150)");
             server_vyhody.add("§e· §fPristup k WorldEditu");
         }
@@ -435,15 +435,15 @@ public class VIP_command implements CommandExecutor, Listener {
         server_vyhody.add("");
         server_vyhody.add("§7Oproti Emerald VIP ziskas navic:");
 
-        if(Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+        if(Main.getServerType() == ServerType.SURVIVAL) {
             server_vyhody.add("§e· §fMaximalni pocet residenci 10 (normal 4)");
         }
 
-        if(Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+        if(Main.getServerType() == ServerType.SKYBLOCK) {
             server_vyhody.add("§e· §fMaximalni velikost ostrova az 300x300 bloku (normal 200x200)");
         }
 
-        if(Main.getInstance().getIdServer().equalsIgnoreCase("creative")) {
+        if(Main.getServerType() == ServerType.CREATIVE) {
             server_vyhody.add("§e· §fMaximalni pocet pozemku (200)");
         }
 
@@ -606,16 +606,16 @@ public class VIP_command implements CommandExecutor, Listener {
     }
 
     private String getCorrectNameOfServer() {
-        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
+        if (Main.getServerType() == ServerType.SURVIVAL) {
             return "Survival";
-        } else if (Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+        } else if (Main.getServerType() == ServerType.SKYBLOCK) {
             return "Skyblock";
-        } else if (Main.getInstance().getIdServer().equalsIgnoreCase("creative")) {
+        } else if (Main.getServerType() == ServerType.CREATIVE) {
             return "Creative";
-        } else if (Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
+        } else if (Main.getServerType() == ServerType.PRISON) {
             return "Prison";
         } else {
-            return "Unknown"; // :D
+            return "Unknown";
         }
     }
 }
