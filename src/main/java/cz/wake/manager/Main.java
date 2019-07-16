@@ -168,6 +168,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             Log.withPrefix("Aktivace Prometheus Endpointu na portu: " + getConfig().get("prometheus.port").toString());
         }
 
+        VillagerManager.loadChunksAndKill();
         VillagerManager.spawnVillagers();
     }
 

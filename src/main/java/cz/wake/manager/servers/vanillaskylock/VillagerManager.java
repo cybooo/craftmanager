@@ -6,32 +6,36 @@ import cz.craftmania.craftcore.spigot.builders.items.CustomMaterial;
 import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
 import cz.craftmania.craftcore.spigot.builders.villager.VillagerTradeBuilder;
 import cz.wake.manager.Main;
+import cz.wake.manager.utils.Log;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionType;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class VillagerManager {
 
     public static List<AbstractVillager> villagerList = new ArrayList<>();
+    private static VillagerTradeList tradeList = new VillagerTradeList();
 
     private static Location sellVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 299.5, 109.0, -261.5, -180, 0);
     private static Location netherVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 314.5, 109, -265.5, -180, 0);
     private static Location rareVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 273.5, 109, -276.5, -90, 0);
     private static Location seaVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 284.5, 109, -265.5, -180, 0);
     private static Location endVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 325.5, 109, -276.5, 90, 0);
+    private static Location buyVilllagerLocaiton = new Location(Bukkit.getWorld("vsbspawn"), 299.5, 109.0, -260.5, -180, 0);
 
     public static void spawnVillagers() {
         killVillagers(); // Nejdriv zabit vsechny co existuji
         spawnSellVillager();
+        spawnBuyVillager();
         spawnSeaVillager();
         spawnRareVillager();
         spawnNetherVillager();
@@ -44,6 +48,36 @@ public class VillagerManager {
                 villager.remove();
             }
         });
+    }
+
+    public static void loadChunksAndKill() {
+        // Nacist chunky kvuli smazani entit
+        sellVillagerLocation.getChunk().load();
+        netherVillagerLocation.getChunk().load();
+        rareVillagerLocation.getChunk().load();
+        seaVillagerLocation.getChunk().load();
+        endVillagerLocation.getChunk().load();
+        buyVilllagerLocaiton.getChunk().load();
+
+        List<Entity> sellChunk = Arrays.asList(sellVillagerLocation.getChunk().getEntities());
+        sellChunk.forEach(Entity::remove);
+
+        List<Entity> buyChunk = Arrays.asList(buyVilllagerLocaiton.getChunk().getEntities());
+        buyChunk.forEach(Entity::remove);
+
+        List<Entity> netherChunk = Arrays.asList(netherVillagerLocation.getChunk().getEntities());
+        netherChunk.forEach(Entity::remove);
+
+        List<Entity> rareChunk = Arrays.asList(rareVillagerLocation.getChunk().getEntities());
+        rareChunk.forEach(Entity::remove);
+
+        List<Entity> seaChunk = Arrays.asList(seaVillagerLocation.getChunk().getEntities());
+        seaChunk.forEach(Entity::remove);
+
+        List<Entity> endChunk = Arrays.asList(endVillagerLocation.getChunk().getEntities());
+        endChunk.forEach(Entity::remove);
+
+        Log.withPrefix("Market - nacten a vsechny Villageri zabiti");
     }
 
     public static void respawnVillagers() {
@@ -63,71 +97,7 @@ public class VillagerManager {
 
         setMetadata(villager, "market_villager", "market_villager", Main.getInstance());
 
-        VillagerTradeBuilder tradeBuilder = new VillagerTradeBuilder();
-        tradeBuilder.clearTrades(villager);
-
-        // Farmareni
-        tradeBuilder.addTrade(new ItemStack(Material.CAKE), new ItemStack(Material.EMERALD));
-        tradeBuilder.addTrade(new ItemStack(Material.PUMPKIN_PIE), new ItemStack(Material.EMERALD));
-        tradeBuilder.addTrade(new ItemStack(Material.POISONOUS_POTATO, 16), new ItemStack(Material.EMERALD));
-        tradeBuilder.addTrade(new ItemStack(Material.BAKED_POTATO, 48), new ItemStack(Material.EMERALD));
-        tradeBuilder.addTrade(new ItemStack(Material.RABBIT_STEW), new ItemStack(Material.EMERALD));
-        tradeBuilder.addTrade(new ItemStack(Material.GLISTERING_MELON_SLICE, 5), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.GOLDEN_CARROT, 5), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.ENCHANTED_GOLDEN_APPLE), new ItemStack(Material.EMERALD, 5));
-
-        // Drevo
-        tradeBuilder.addTrade(new ItemStack(Material.OAK_WOOD, 48), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.ACACIA_WOOD, 48), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.BIRCH_WOOD, 48), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.DARK_OAK_WOOD, 48), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.JUNGLE_WOOD, 48), new ItemStack(Material.EMERALD, 2));
-
-        // Redstone
-        tradeBuilder.addTrade(new ItemStack(Material.COMPARATOR, 32), new ItemStack(Material.EMERALD, 3));
-        tradeBuilder.addTrade(new ItemStack(Material.OBSERVER, 32), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.COMPASS, 48), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.REPEATER, 48), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.STICKY_PISTON, 32), new ItemStack(Material.EMERALD, 4));
-        tradeBuilder.addTrade(new ItemStack(Material.DISPENSER, 42), new ItemStack(Material.EMERALD, 3));
-        tradeBuilder.addTrade(new ItemStack(Material.HOPPER, 32), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.DAYLIGHT_DETECTOR, 24), new ItemStack(Material.EMERALD, 5));
-
-        // Ostatni
-        tradeBuilder.addTrade(new ItemStack(Material.CROSSBOW), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.ANVIL), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.WITHER_SKELETON_SKULL), new ItemStack(Material.EMERALD, 3));
-        tradeBuilder.addTrade(new ItemStack(Material.WRITABLE_BOOK), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.TURTLE_EGG, 16), new ItemStack(Material.EMERALD, 3));
-        tradeBuilder.addTrade(new ItemStack(Material.PACKED_ICE, 16), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.FIRE_CHARGE, 32), new ItemStack(Material.EMERALD, 4));
-        tradeBuilder.addTrade(new ItemStack(Material.NETHER_STAR, 24), new ItemStack(Material.EMERALD, 8));
-        tradeBuilder.addTrade(new ItemStack(Material.SLIME_BLOCK, 64), new ItemStack(Material.EMERALD, 3));
-        tradeBuilder.addTrade(new ItemStack(Material.MYCELIUM), new ItemStack(Material.EMERALD));
-        tradeBuilder.addTrade(new ItemStack(Material.CRACKED_STONE_BRICKS, 24), new ItemStack(Material.EMERALD, 1));
-
-        // Potions
-        //tradeBuilder.addTrade(new ItemBuilder(new CraftPotion(PotionBase.NORMAL, PotionType.INVISIBILITY, true, true).getItemStack()).setAmount(5).build(), new ItemStack(Material.EMERALD, 3));
-
-        // Terracota
-        tradeBuilder.addTrade(new ItemStack(Material.WHITE_GLAZED_TERRACOTTA, 32), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.ORANGE_GLAZED_TERRACOTTA, 32), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.MAGENTA_GLAZED_TERRACOTTA, 32), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.LIGHT_BLUE_GLAZED_TERRACOTTA, 32), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.YELLOW_GLAZED_TERRACOTTA, 32), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.LIME_GLAZED_TERRACOTTA, 32), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.PINK_GLAZED_TERRACOTTA, 32), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.GRAY_GLAZED_TERRACOTTA, 32), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.LIGHT_GRAY_GLAZED_TERRACOTTA, 32), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.CYAN_GLAZED_TERRACOTTA, 32), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.PURPLE_GLAZED_TERRACOTTA, 32), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.BLUE_GLAZED_TERRACOTTA, 32), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.BROWN_GLAZED_TERRACOTTA, 32), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.GREEN_GLAZED_TERRACOTTA, 32), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.RED_GLAZED_TERRACOTTA, 32), new ItemStack(Material.EMERALD, 2));
-        tradeBuilder.addTrade(new ItemStack(Material.BLACK_GLAZED_TERRACOTTA, 32), new ItemStack(Material.EMERALD, 2));
-
-        tradeBuilder.setTrades(villager);
+        tradeList.generateSellVillagerShop(villager);
 
         sellVillagerLocation.add(0, 3, 0);
         Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), sellVillagerLocation);
@@ -146,14 +116,12 @@ public class VillagerManager {
         villager.setCanPickupItems(false);
         villager.setVillagerLevel(5);
         villager.setRemoveWhenFarAway(false);
+        villager.setCustomName("Aquaman");
+        villager.setCustomNameVisible(false);
 
         setMetadata(villager, "market_villager", "market_villager", Main.getInstance());
 
-        VillagerTradeBuilder tradeBuilder = new VillagerTradeBuilder();
-        tradeBuilder.clearTrades(villager);
-        tradeBuilder.addTrade(new ItemStack(Material.WHEAT_SEEDS), new ItemStack(Material.CHICKEN));
-        tradeBuilder.addTrade(new ItemStack(Material.MELON_SEEDS), new ItemStack(Material.BEEF));
-        tradeBuilder.setTrades(villager);
+        tradeList.generateSeaVillagerShop(villager);
 
         seaVillagerLocation.add(0, 3, 0);
         Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), seaVillagerLocation);
@@ -172,10 +140,7 @@ public class VillagerManager {
 
         setMetadata(villager, "market_villager", "market_villager", Main.getInstance());
 
-        VillagerTradeBuilder tradeBuilder = new VillagerTradeBuilder();
-        tradeBuilder.clearTrades(villager);
-        tradeBuilder.addTrade(new ItemStack(Material.LIGHT_BLUE_GLAZED_TERRACOTTA), new ItemStack(Material.BLUE_BED));
-        tradeBuilder.setTrades(villager);
+        tradeList.generateRareVillagerShop(villager);
 
         rareVillagerLocation.add(0, 3, 0);
         Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), rareVillagerLocation);
@@ -194,14 +159,12 @@ public class VillagerManager {
         villager.setCanPickupItems(false);
         villager.setVillagerLevel(5);
         villager.setRemoveWhenFarAway(false);
+        villager.setCustomName("Hellboi");
+        villager.setCustomNameVisible(false);
 
         setMetadata(villager, "market_villager", "market_villager", Main.getInstance());
 
-        VillagerTradeBuilder tradeBuilder = new VillagerTradeBuilder();
-        tradeBuilder.clearTrades(villager);
-        tradeBuilder.addTrade(new ItemStack(Material.WHEAT_SEEDS), new ItemStack(Material.CHICKEN));
-        tradeBuilder.addTrade(new ItemStack(Material.MELON_SEEDS), new ItemStack(Material.BEEF));
-        tradeBuilder.setTrades(villager);
+        tradeList.generateNetherVillagerShop(villager);
 
         netherVillagerLocation.add(0, 3, 0);
         Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), netherVillagerLocation);
@@ -223,13 +186,34 @@ public class VillagerManager {
 
         setMetadata(villager, "market_villager", "market_villager", Main.getInstance());
 
-        VillagerTradeBuilder tradeBuilder = new VillagerTradeBuilder();
-        tradeBuilder.clearTrades(villager);
+        tradeList.generateEndVillagerShop(villager);
 
         endVillagerLocation.add(0, 3, 0);
         Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), endVillagerLocation);
         hologram.appendTextLine("§e§lEnd Villager");
         hologram.appendTextLine("§7End it now!");
+
+        villagerList.add(villager);
+    }
+
+    private static void spawnBuyVillager() {
+        Entity entity = Objects.requireNonNull(Bukkit.getWorld("vsbspawn")).spawnEntity(buyVilllagerLocaiton, EntityType.VILLAGER);
+        Villager villager = (Villager)entity;
+        villager.setAI(false);
+        villager.setProfession(Villager.Profession.CLERIC);
+        villager.setVillagerType(Villager.Type.SWAMP);
+        villager.setCanPickupItems(false);
+        villager.setVillagerLevel(5);
+        villager.setRemoveWhenFarAway(false);
+
+        setMetadata(villager, "market_villager", "market_villager", Main.getInstance());
+
+        tradeList.generateBuyVillagerShop(villager);
+
+        buyVilllagerLocaiton.add(0, 3,0);
+        Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), buyVilllagerLocaiton);
+        hologram.appendTextLine("§d§lBuy Villager");
+        hologram.appendTextLine("§7Nakup levne ZDE!");
 
         villagerList.add(villager);
     }
@@ -243,6 +227,23 @@ public class VillagerManager {
     }
 
     public enum PotionBase {NORMAL, ARROW, LINGERING, SPLASH,}
+
+    public static ItemStack getEnchantmentBook(Enchantment enchant, int level, int amount) {
+        final LinkedHashMap<Enchantment, Integer> e = new LinkedHashMap<>();
+        e.put(enchant, level);
+        return getEnchantmentBook(e, amount);
+    }
+
+    private static ItemStack getEnchantmentBook(LinkedHashMap<Enchantment, Integer> enchants, int amount) {
+        final ItemStack s = new ItemStack(Material.ENCHANTED_BOOK, amount);
+        final EnchantmentStorageMeta sm = (EnchantmentStorageMeta) s;
+        for (Enchantment enchant : enchants.keySet())
+            sm.addStoredEnchant(enchant, enchants.get(enchant), true);
+        s.setItemMeta(sm);
+        return s;
+    }
+
+
 }
 
 class CraftPotion {
