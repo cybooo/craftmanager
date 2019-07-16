@@ -218,12 +218,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             pm.registerEvents(new SurvivalPVPListener(), this);
         }
 
-        // Skyblock Skull fix
-        if (idServer.equalsIgnoreCase("skyblock") || idServer.equalsIgnoreCase("vanillasb")) {
-            pm.registerEvents(new SkyblockHeadFix(), this);
-            Log.withPrefix("Aktivace opravy SkullFix");
-        }
-
         // Colored Anvils (VIP vyhoda)
         if (getConfig().getBoolean("coloredanvils")) {
             pm.registerEvents(new AnvilListener(), this);
