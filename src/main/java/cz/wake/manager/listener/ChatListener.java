@@ -172,12 +172,6 @@ public class ChatListener implements Listener {
         Main.getInstance().getMySQL().atsCommandLog(e.getPlayer(), e.getMessage());
     }
 
-    @EventHandler(ignoreCancelled = true)
-    public void tabComplete(PlayerChatTabCompleteEvent e) {
-        Player p = e.getPlayer();
-        String msg = e.getChatMessage();
-    }
-
     private void pingPlayer(Player p, String sound) {
         if (Main.getInstance().getMySQL().getSettings(p, "mention_notify") == 1) {
             p.playSound(p.getLocation(), Sound.valueOf(sound), 0.8F, 0.8F);

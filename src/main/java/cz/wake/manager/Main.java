@@ -203,7 +203,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new BeaconCommand(), this);
         pm.registerEvents(new PlayerSwapListener(), this);
         pm.registerEvents(new NoDropListener(), this);
-        //pm.registerEvents(new TabCompleteListener(), this);
         pm.registerEvents(new VIP_command(), this);
         pm.registerEvents(new SignClickListener(), this);
         pm.registerEvents(new Votes_command(), this);
