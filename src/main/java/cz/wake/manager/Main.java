@@ -50,7 +50,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private ParticlesAPI particlesAPI = new ParticlesAPI();
     public List<Material> durabilityWarnerList = new ArrayList<>();
     public List<Pattern> blockedTags = new ArrayList<Pattern>();
-    private List<String> dontdrop_worlds = new ArrayList<>();
     public static Long restartTime;
     public static String restartReason;
     private MainGUI gui = new MainGUI();
@@ -153,9 +152,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             Log.withPrefix("Detekovan plugin AdvancedEnchantments - disenchant jej bude pouzivat.");
         }
 
-        // Nacteni no-drop svetu pro VIP
-        dontdrop_worlds.addAll(getConfig().getStringList("dontdrop.worlds"));
-
         //Vault init
         RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
         econ = rsp.getProvider();
@@ -200,7 +196,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new TagsEditor(), this);
         pm.registerEvents(new BeaconCommand(), this);
         pm.registerEvents(new PlayerSwapListener(), this);
-        pm.registerEvents(new NoDropListener(), this);
         pm.registerEvents(new VIP_command(), this);
         pm.registerEvents(new SignClickListener(), this);
         pm.registerEvents(new Votes_command(), this);
@@ -355,10 +350,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public boolean areDeathMessagesEnabled() {
         return getConfig().getBoolean("d_msgs.enabled");
-    }
-
-    public List<String> getDontDropWorlds() {
-        return dontdrop_worlds;
     }
 
     public static ServerType getServerType() {
