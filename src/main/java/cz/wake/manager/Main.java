@@ -48,7 +48,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     public HashMap<Player, Integer> at_afk = new HashMap<>();
     public ArrayList<Player> death_messages = new ArrayList<>();
     private ParticlesAPI particlesAPI = new ParticlesAPI();
-    public List<Material> durabilityWarnerList = new ArrayList<>();
     public List<Pattern> blockedTags = new ArrayList<Pattern>();
     public static Long restartTime;
     public static String restartReason;
@@ -119,15 +118,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             Log.withPrefix("Aktivace AT-Afk checkeru");
         }
 
-        // Nastaveni DurabilityWarner
-        //TODO: Aktivovat na 1.13?!
-        /*for (String s : getConfig().getStringList("materials")) {
-            Material material = Material.valueOf(s);
-            if (isValidMaterial(material)) {
-                durabilityWarnerList.add(material);
-            }
-        }*/
-
         // Nastaveni blokovanych tagu
         for (String s : getConfig().getStringList("blocked-tags")) {
             Pattern p = Pattern.compile(s);
@@ -188,7 +178,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new MainGUI(), this);
         pm.registerEvents(new ShopAPI(), this);
         pm.registerEvents(new ChatListener(), this);
-        pm.registerEvents(new DurabilityWarner(), this);
         pm.registerEvents(new TempShop(), this);
         pm.registerEvents(new DeathListener(), this);
         pm.registerEvents(new TwerkEvent(), this);
