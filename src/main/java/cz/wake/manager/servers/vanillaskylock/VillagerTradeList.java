@@ -157,6 +157,7 @@ public class VillagerTradeList {
             tradeList.addTrade(e(8), new ItemStack(Material.PRISMARINE_CRYSTALS, 16));
         } else if (randomNumber == 6) {
             tradeList.addTrade(e(13), new ItemStack(Material.HORN_CORAL, 3));
+            //TODO: Chybi coral
             tradeList.addTrade(e(64), e(16), new ItemStack(Material.DOLPHIN_SPAWN_EGG, 1));
             tradeList.addTrade(e(49), new ItemStack(Material.ELDER_GUARDIAN_SPAWN_EGG, 1));
             tradeList.addTrade(e(30), new ItemStack(Material.HEART_OF_THE_SEA, 1));
@@ -322,7 +323,7 @@ public class VillagerTradeList {
             tradeList.addTrade(e(7), new ItemStack(Material.BLUE_CONCRETE_POWDER, 32));
             tradeList.addTrade(e(10), new ItemStack(Material.CHISELED_STONE_BRICKS, 18));
             tradeList.addTrade(e(16), new ItemStack(Material.IRON_ORE, 3));
-            tradeList.addTrade(e(17), VillagerManager.getEnchantmentBook(Enchantment.VANISHING_CURSE, 1, 1));
+            //tradeList.addTrade(e(17), VillagerManager.getEnchantmentBook(Enchantment.VANISHING_CURSE, 1, 1));
         } else if (randomNumber == 7) {
             tradeList.addTrade(e(10), new ItemStack(Material.GRANITE, 44));
             tradeList.addTrade(e(10), new ItemStack(Material.DIORITE, 44));
@@ -367,7 +368,7 @@ public class VillagerTradeList {
             tradeList.addTrade(e(7), new ItemStack(Material.BLUE_CONCRETE_POWDER, 32));
             tradeList.addTrade(e(44), new ItemStack(Material.SAND, 10));
             tradeList.addTrade(e(10), new ItemStack(Material.SNOW_BLOCK, 44)); // Drazsi?
-            tradeList.addTrade(e(17), VillagerManager.getEnchantmentBook(Enchantment.VANISHING_CURSE, 1, 1));
+            //tradeList.addTrade(e(17), VillagerManager.getEnchantmentBook(Enchantment.VANISHING_CURSE, 1, 1));
         } else if (randomNumber == 12) {
             tradeList.addTrade(e(10), new ItemStack(Material.GRANITE, 44));
             tradeList.addTrade(e(10), new ItemStack(Material.ANDESITE, 44));
@@ -398,7 +399,7 @@ public class VillagerTradeList {
     public VillagerTradeBuilder generateRareVillagerShop(AbstractVillager villager) {
         VillagerTradeBuilder tradeList = new VillagerTradeBuilder();
         tradeList.clearTrades(villager);
-        int randomNumber = randRange(1,6);
+        int randomNumber = randRange(1,3);
 
         if (randomNumber == 1) {
             tradeList.addTrade(e(64), e(20), new ItemStack(Material.ELYTRA, 1)); // Drazší?
@@ -406,19 +407,19 @@ public class VillagerTradeList {
             tradeList.addTrade(e(19), new ItemStack(Material.CONDUIT, 1)); // Dražší?
             tradeList.addTrade(e(10), new ItemStack(Material.SPECTRAL_ARROW, 32)); // Moc levný?
             tradeList.addTrade(e(10), new ItemStack(Material.FIREWORK_ROCKET, 64));
-            tradeList.addTrade(e(38), VillagerManager.getEnchantmentBook(Enchantment.PROTECTION_FALL, 3, 1)); // Dražší?
+            //tradeList.addTrade(e(38), VillagerManager.getEnchantmentBook(Enchantment.PROTECTION_FALL, 3, 1)); // Dražší?
             tradeList.addTrade(e(42), new ItemBuilder(Material.DIAMOND_PICKAXE).addEnchant(Enchantment.DIG_SPEED, 5).build()); //Dražší nebo nižší lvl?
         } else if (randomNumber == 2) {
             tradeList.addTrade(e(18), new ItemStack(Material.BELL, 1));
             tradeList.addTrade(e(64), new ItemStack(Material.VILLAGER_SPAWN_EGG)); // Dražší?
             tradeList.addTrade(e(42), new ItemStack(Material.EXPERIENCE_BOTTLE, 16));
-            tradeList.addTrade(e(32), VillagerManager.getEnchantmentBook(Enchantment.PROTECTION_ENVIRONMENTAL, 3, 1)); // Dražší nebo nižší?
-            tradeList.addTrade(e(35), VillagerManager.getEnchantmentBook(Enchantment.LURE, 3, 1)); // Dražší?
+            //tradeList.addTrade(e(32), VillagerManager.getEnchantmentBook(Enchantment.PROTECTION_ENVIRONMENTAL, 3, 1)); // Dražší nebo nižší?
+            //tradeList.addTrade(e(35), VillagerManager.getEnchantmentBook(Enchantment.LURE, 3, 1)); // Dražší?
         } else if (randomNumber == 3) {
-            tradeList.addTrade(e(48), VillagerManager.getEnchantmentBook(Enchantment.LOOT_BONUS_BLOCKS, 3, 1));
+            //tradeList.addTrade(e(48), VillagerManager.getEnchantmentBook(Enchantment.LOOT_BONUS_BLOCKS, 3, 1));
             tradeList.addTrade(e(28), new ItemStack(Material.ENCHANTING_TABLE, 1));
             tradeList.addTrade(e(32), new ItemStack(Material.DRAGON_BREATH, 4));
-            tradeList.addTrade(e(57), VillagerManager.getEnchantmentBook(Enchantment.MENDING, 1,1));
+            //tradeList.addTrade(e(57), VillagerManager.getEnchantmentBook(Enchantment.MENDING, 1,1));
             tradeList.addTrade(e(18), new ItemStack(Material.FARMLAND, 2));
             tradeList.addTrade(e(15), new ItemStack(Material.PANDA_SPAWN_EGG, 1));
             tradeList.addTrade(e(64), e(64), new ItemStack(Material.BAMBOO_SAPLING, 10));

@@ -228,7 +228,7 @@ public class VillagerManager {
 
     public enum PotionBase {NORMAL, ARROW, LINGERING, SPLASH,}
 
-    public static ItemStack getEnchantmentBook(Enchantment enchant, int level, int amount) {
+    /*public static ItemStack getEnchantmentBook(Enchantment enchant, int level, int amount) {
         final LinkedHashMap<Enchantment, Integer> e = new LinkedHashMap<>();
         e.put(enchant, level);
         return getEnchantmentBook(e, amount);
@@ -241,7 +241,7 @@ public class VillagerManager {
             sm.addStoredEnchant(enchant, enchants.get(enchant), true);
         s.setItemMeta(sm);
         return s;
-    }
+    }*/
 
 
 }
