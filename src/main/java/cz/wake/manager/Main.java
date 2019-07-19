@@ -3,7 +3,6 @@ package cz.wake.manager;
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
 import cz.wake.manager.commads.staff.Checkfly_command;
-import cz.wake.manager.commads.staff.DontDropCommand;
 import cz.wake.manager.commads.staff.RawBroadcast;
 import cz.wake.manager.commads.staff.RestartManager_command;
 import cz.wake.manager.listener.*;
@@ -18,6 +17,8 @@ import cz.wake.manager.shop.TagsEditor;
 import cz.wake.manager.shop.TempShop;
 import cz.wake.manager.sql.SQLManager;
 import cz.wake.manager.utils.*;
+import cz.wake.manager.utils.configs.Config;
+import cz.wake.manager.utils.configs.ConfigAPI;
 import cz.wake.manager.utils.prometheus.MetricsController;
 import cz.wake.manager.utils.tasks.ATAfkTask;
 import cz.wake.manager.utils.tasks.ATCheckerTask;
@@ -32,10 +33,7 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -63,8 +61,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private ItemDB itemdb;
     private static String mentionPrefix;
     private Economy econ;
+    private ConfigAPI configAPI;
 
     private static Main instance;
+
     private static ServerType serverType = ServerType.UNKNOWN;
 
     @Override
@@ -74,14 +74,20 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     @Override
     public void onEnable() {
+
         instance = this;
 
         //Config
         getConfig().options().copyDefaults(true);
         saveDefaultConfig();
 
+        // Nacteni config souboru
+        configAPI = new ConfigAPI(this);
+        loadConfiguration();
+
         // ID serveru a typ
         serverType = resolveServerType();
+        Log.withPrefix("Server zaevidovany jako: " + serverType.name());
 
         // Register eventu a prikazu
         loadListeners();
@@ -222,7 +228,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("skyblock").setExecutor(new Skyblock_command());
         getCommand("creative").setExecutor(new Creative_command());
         getCommand("prison").setExecutor(new Prison_command());
-        getCommand("disenchant").setExecutor(new Disenchant());
+        getCommand("disenchant").setExecutor(new Disenchant()); //TODO: Deep test needed
         getCommand("vote").setExecutor(new Vote_command());
         getCommand("skull").setExecutor(new SkullCommand());
         getCommand("profil").setExecutor(new Profil_command());
@@ -232,7 +238,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("recipe").setExecutor(new Recipe_command());
         getCommand("restartmanager").setExecutor(new RestartManager_command());
         getCommand("cm").setExecutor(new Cm_command());
-        getCommand("dontdrop").setExecutor(new DontDropCommand());
         getCommand("glowitem").setExecutor(new GlowItemCommand());
         getCommand("rawbroadcast").setExecutor(new RawBroadcast());
         getCommand("vip").setExecutor(new VIP_command());
@@ -244,6 +249,40 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         if (getConfig().getBoolean("hlasovani")) {
             //getCommand("fakevote").setExecutor(new Fakevote_command());
         }
+    }
+
+    public ConfigAPI getConfigAPI() {
+        if (!hasConfigAPI()) {
+            configAPI = new ConfigAPI(this);
+        }
+        return configAPI;
+    }
+
+    private boolean hasConfigAPI() {
+        return configAPI != null;
+    }
+
+    private void loadConfiguration() {
+        Config blockedTagsFile = new Config(this.configAPI,  "blockedTags");
+        configAPI.registerConfig(blockedTagsFile);
+
+        Config deathMessagesFile = new Config(this.configAPI, "deathMessages");
+        configAPI.registerConfig(deathMessagesFile);
+
+        Config tabCommandsFile = new Config(this.configAPI, "tabCommands");
+        configAPI.registerConfig(tabCommandsFile);
+    }
+
+    public Config getBlockedTagsFile() {
+        return this.configAPI.getConfig("blockedTags");
+    }
+
+    public Config getDeathMessFile() {
+        return this.configAPI.getConfig("deathMessages");
+    }
+
+    public Config getTabCommandsFile() {
+        return this.configAPI.getConfig("tabCommands");
     }
 
     public ArrayList<Player> getPlayers() {
