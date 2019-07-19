@@ -25,12 +25,12 @@ public class VillagerManager {
     public static List<AbstractVillager> villagerList = new ArrayList<>();
     private static VillagerTradeList tradeList = new VillagerTradeList();
 
-    private static Location sellVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 299.5, 109.0, -261.5, -180, 0);
+    private static Location sellVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 297.5, 109.0, -261.5, -180, 0);
     private static Location netherVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 314.5, 109, -265.5, -180, 0);
     private static Location rareVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 273.5, 109, -276.5, -90, 0);
     private static Location seaVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 284.5, 109, -265.5, -180, 0);
     private static Location endVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 325.5, 109, -276.5, 90, 0);
-    private static Location buyVilllagerLocaiton = new Location(Bukkit.getWorld("vsbspawn"), 299.5, 109.0, -260.5, -180, 0);
+    private static Location buyVilllagerLocaiton = new Location(Bukkit.getWorld("vsbspawn"), 301.5, 109.0, -261.5, -180, 0);
 
     public static void spawnVillagers() {
         killVillagers(); // Nejdriv zabit vsechny co existuji
