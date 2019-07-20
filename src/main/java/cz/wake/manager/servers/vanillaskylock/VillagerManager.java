@@ -102,7 +102,7 @@ public class VillagerManager {
         sellVillagerLocation.add(0, 3, 0);
         Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), sellVillagerLocation);
         hologram.appendTextLine("§lSell Villager");
-        hologram.appendTextLine("§7Vsechny sracky levne! Kupuj! ZDE!");
+        hologram.appendTextLine("§7Všechny sračky levně! Kupuj! ZDE!");
 
         villagerList.add(villager);
     }
@@ -116,7 +116,7 @@ public class VillagerManager {
         villager.setCanPickupItems(false);
         villager.setVillagerLevel(5);
         villager.setRemoveWhenFarAway(false);
-        villager.setCustomName("Aquaman");
+        villager.setCustomName("Akvamen");
         villager.setCustomNameVisible(false);
 
         setMetadata(villager, "market_villager", "market_villager", Main.getInstance());
@@ -126,7 +126,7 @@ public class VillagerManager {
         seaVillagerLocation.add(0, 3, 0);
         Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), seaVillagerLocation);
         hologram.appendTextLine("§b§lSea Villager");
-        hologram.appendTextLine("§7Morske plody primo od urody!");
+        hologram.appendTextLine("§7Mořské plody přímo z vody!");
 
         villagerList.add(villager);
     }
@@ -145,7 +145,7 @@ public class VillagerManager {
         rareVillagerLocation.add(0, 3, 0);
         Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), rareVillagerLocation);
         hologram.appendTextLine("§9§lRare Villager");
-        hologram.appendTextLine("§7Vzacne itemy, tady a teď!");
+        hologram.appendTextLine("§7Vzácné itemy, tady a teď!");
 
         villagerList.add(villager);
     }
@@ -159,7 +159,7 @@ public class VillagerManager {
         villager.setCanPickupItems(false);
         villager.setVillagerLevel(5);
         villager.setRemoveWhenFarAway(false);
-        villager.setCustomName("Hellboi");
+        villager.setCustomName("Helbój");
         villager.setCustomNameVisible(false);
 
         setMetadata(villager, "market_villager", "market_villager", Main.getInstance());
@@ -213,7 +213,7 @@ public class VillagerManager {
         buyVilllagerLocaiton.add(0, 3,0);
         Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), buyVilllagerLocaiton);
         hologram.appendTextLine("§d§lBuy Villager");
-        hologram.appendTextLine("§7Nakup levne ZDE!");
+        hologram.appendTextLine("§7Nakup levně ZDE!");
 
         villagerList.add(villager);
     }

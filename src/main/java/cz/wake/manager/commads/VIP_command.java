@@ -31,7 +31,7 @@ public class VIP_command implements CommandExecutor, Listener {
                 || Main.getServerType() == ServerType.CREATIVE) {
                 openVIPMenu(player);
             } else {
-                player.sendMessage("§c§l(!) §cNa tomto serveru nelze zobrazit VIP jelikoz zde zatim zadne neni.");
+                player.sendMessage("§c§l(!) §cNa tomto serveru nelze zobrazit VIP, jelikoz zde zatim zadne neni.");
             }
         }
         return true;
@@ -614,6 +614,8 @@ public class VIP_command implements CommandExecutor, Listener {
             return "Creative";
         } else if (Main.getServerType() == ServerType.PRISON) {
             return "Prison";
+        } else if (Main.getServerType() == ServerType.SKYCLOUD) {
+            return "SkyCloud";
         } else {
             return "Unknown";
         }

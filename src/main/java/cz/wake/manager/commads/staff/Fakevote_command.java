@@ -22,14 +22,14 @@ public class Fakevote_command implements CommandExecutor {
             if ((Command.getName().equalsIgnoreCase("fakevote"))) {
                 if (player.hasPermission("craftmanager.admin")) {
                     if (ArrayOfString.length < 1) {
-                        player.sendMessage("§ePouziti: §f/fakevote nick test");
+                        player.sendMessage("§e§l(*) §ePouziti: §f/fakevote nick test");
                         return true;
                     }
                     switch (ArrayOfString[0]) {
                         case "test":
                             if (ArrayOfString.length != 3) {
-                                player.sendMessage(ChatColor.RED + "Musis specifikovat argumenty.");
-                                player.sendMessage(ChatColor.RED + "/fakevote test <player> <service>");
+                                player.sendMessage(ChatColor.RED + "§c§l(!) Musis specifikovat argumenty.");
+                                player.sendMessage(ChatColor.RED + "§c§l(!) /fakevote test <player> <service>");
                                 return true;
                             }
                             Player voteForPlayer = Bukkit.getPlayer(ArrayOfString[1]);
@@ -43,7 +43,7 @@ public class Fakevote_command implements CommandExecutor {
                             player.sendMessage("§dTest vote pro: §f" + voteForPlayer.getName());
                     }
                 } else {
-                    player.sendMessage("§cNedostatecna opraveni na pouziti tohoto prikazu!");
+                    player.sendMessage("§c§l(!) §cNedostatecna opraveni na pouziti tohoto prikazu!");
                 }
             }
         }

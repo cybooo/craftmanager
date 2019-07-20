@@ -74,7 +74,7 @@ public class ShopAPI implements Listener {
             inv.setItem(29, tagsTokens);
             p.openInventory(inv);
         } else {
-            p.sendMessage("§cNa tomto serveru je CoinShop deaktivovany nebo neni podporovany.");
+            p.sendMessage("§c§l(!) §cNa tomto serveru je CoinShop deaktivovany nebo neni podporovany.");
         }
     }
 
@@ -885,7 +885,7 @@ public class ShopAPI implements Listener {
                 if (CraftTokensAPI.getTokens(p) > 0) {
                     //TagsEditor.createTagEditor(p);
                 } else {
-                    p.sendMessage("§cNemas dostatek CraftTokenu k provedeni teto akce.");
+                    p.sendMessage("§c§l(!) §cNemas dostatek CraftTokenu k provedeni teto akce.");
                 }
             }
             if (e.getSlot() == 23) {
@@ -1964,16 +1964,16 @@ public class ShopAPI implements Listener {
 
     private void prepareTag(Player p, int price, String perm, String name) {
         if (p.hasPermission(perm)) {
-            p.sendMessage("§cTag " + name + " jiz vlastnis!");
+            p.sendMessage("§c§l(!) §cTag " + name + " jiz vlastnis!");
         } else {
             int i = (int) CraftCoinsAPI.getCoins(p);
             if (i >= price) {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set " + perm + " true");
                 CraftCoinsAPI.takeCoins(p, price);
-                p.sendMessage("§eZakoupil jsi si tag: §f" + name);
+                p.sendMessage("§e§l(*) §eZakoupil jsi si tag: §f" + name);
                 p.closeInventory();
             } else {
-                p.sendMessage("§cNemas dostatek coinu k nakupu tohoto tagu!");
+                p.sendMessage("§c§l(!) §cNemas dostatek coinu k nakupu tohoto tagu!");
             }
         }
     }

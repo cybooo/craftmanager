@@ -44,7 +44,7 @@ public class BeaconCommand implements CommandExecutor, Listener {
 
                     player.openInventory(inv);
                 } else {
-                    player.sendMessage("§cK ziskani pristupu potrebujes mit aktivni Golden VIP.");
+                    player.sendMessage("§c§l(!) §cK ziskani pristupu potrebujes mit aktivni minimalne Gold VIP.");
                 }
 
             }
@@ -58,31 +58,31 @@ public class BeaconCommand implements CommandExecutor, Listener {
         if (e.getView().getTitle().equals("Zvol si efekt")) {
             if(e.getSlot() == 0){
                 activateEffect(p, PotionEffectType.SPEED, 2);
-                p.sendMessage("§eAktivoval jsi permanentni §bSpeed!");
+                p.sendMessage("§e§l(*) §eAktivoval jsi permanentni §bSpeed!");
             }
             if(e.getSlot() == 1){
                 activateEffect(p, PotionEffectType.FAST_DIGGING, 2);
-                p.sendMessage("§eAktivoval jsi permanentni §bHaste!");
+                p.sendMessage("§e§l(*) §eAktivoval jsi permanentni §bHaste!");
             }
             if(e.getSlot() == 2){
                 activateEffect(p, PotionEffectType.JUMP, 3);
-                p.sendMessage("§eAktivoval jsi permanentni §bJump Boost!");
+                p.sendMessage("§e§l(*) §eAktivoval jsi permanentni §bJump Boost!");
             }
             if(e.getSlot() == 3){
                 activateEffect(p, PotionEffectType.FIRE_RESISTANCE, 3);
-                p.sendMessage("§eAktivoval jsi permanentni §bFire Resistance!");
+                p.sendMessage("§e§l(*) §eAktivoval jsi permanentni §bFire Resistance!");
             }
             if(e.getSlot() == 4){
                 activateEffect(p, PotionEffectType.NIGHT_VISION, 5);
-                p.sendMessage("§eAktivoval jsi permanentni §bNight Vision!");
+                p.sendMessage("§e§l(*) §eAktivoval jsi permanentni §bNight Vision!");
             }
             if(e.getSlot() == 5){
                 activateEffect(p, PotionEffectType.WATER_BREATHING, 3);
-                p.sendMessage("§eAktivoval jsi permanentni §bWater Breathing!");
+                p.sendMessage("§e§l(*) §eAktivoval jsi permanentni §bWater Breathing!");
             }
             if(e.getSlot() == 7){
                 p.getActivePotionEffects().stream().map(PotionEffect::getType).forEach(p::removePotionEffect);
-                p.sendMessage("§cOdebral jsi vsechny aktivni efekty!");
+                p.sendMessage("§c§l(!) §cOdebral jsi vsechny aktivni efekty!");
                 p.closeInventory();
             }
         }

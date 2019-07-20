@@ -164,35 +164,35 @@ public class SettingsListener implements Listener {
             }
             if (e.getSlot() == 11) {
                 p.closeInventory();
-                p.sendMessage("§eZvuk oznacovani byl nastaven na §2§lEXP ORB PICKUP§e.");
+                p.sendMessage("§e§l(*) §eZvuk oznacovani byl nastaven na §2§lEXP ORB PICKUP§e.");
                 p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
                 Main.getInstance().getMySQL().updateSettings(p, "mention_sound", "ENTITY_EXPERIENCE_ORB_PICKUP");
                 return;
             }
             if (e.getSlot() == 12) {
                 p.closeInventory();
-                p.sendMessage("§eZvuk oznacovani byl nastaven na §2§lANVIL FALL§e.");
+                p.sendMessage("§e§l(*) §eZvuk oznacovani byl nastaven na §2§lANVIL FALL§e.");
                 p.playSound(p.getLocation(), Sound.BLOCK_ANVIL_FALL, 1.0f, 1.0f);
                 Main.getInstance().getMySQL().updateSettings(p, "mention_sound", "BLOCK_ANVIL_FALL");
                 return;
             }
             if (e.getSlot() == 13) {
                 p.closeInventory();
-                p.sendMessage("§eZvuk oznacovani byl nastaven na §2§lGLASS BREAK§e.");
+                p.sendMessage("§e§l(*) §eZvuk oznacovani byl nastaven na §2§lGLASS BREAK§e.");
                 p.playSound(p.getLocation(), Sound.BLOCK_GLASS_BREAK, 1.0f, 1.0f);
                 Main.getInstance().getMySQL().updateSettings(p, "mention_sound", "BLOCK_GLASS_BREAK");
                 return;
             }
             if (e.getSlot() == 14) {
                 p.closeInventory();
-                p.sendMessage("§eZvuk oznacovani byl nastaven na §2§lITEM PICKUP§e.");
+                p.sendMessage("§e§l(*) §eZvuk oznacovani byl nastaven na §2§lITEM PICKUP§e.");
                 p.playSound(p.getLocation(), Sound.ENTITY_ITEM_PICKUP, 1.0f, 1.0f);
                 Main.getInstance().getMySQL().updateSettings(p, "mention_sound", "ENTITY_ITEM_PICKUP");
                 return;
             }
             if (e.getSlot() == 15) {
                 p.closeInventory();
-                p.sendMessage("§eZvuk oznacovani byl nastaven na §2§lZOMBIE HURT§e.");
+                p.sendMessage("§e§l(*) §eZvuk oznacovani byl nastaven na §2§lZOMBIE HURT§e.");
                 p.playSound(p.getLocation(), Sound.ENTITY_ZOMBIE_HURT, 1.0f, 1.0f);
                 Main.getInstance().getMySQL().updateSettings(p, "mention_sound", "ENTITY_ZOMBIE_HURT");
                 return;
@@ -215,56 +215,56 @@ public class SettingsListener implements Listener {
             if (e.getSlot() == 19) {
                 if (Main.getInstance().getMySQL().getSettings(p, "lobby_players") == 1) {
                     Main.getInstance().getMySQL().updateSettings(p, "lobby_players", 0);
-                    p.sendMessage("§aZobrazovani hracu zapnuto!");
+                    p.sendMessage("§e§l(*) §eZobrazovani hracu zapnuto!");
                     p.closeInventory();
                 } else {
                     Main.getInstance().getMySQL().updateSettings(p, "lobby_players", 1);
-                    p.sendMessage("§cZobrazovani hracu vypnuto!");
+                    p.sendMessage("§c§l(!) §cZobrazovani hracu vypnuto!");
                     p.closeInventory();
                 }
             }
             if (e.getSlot() == 21) {
                 if (Main.getInstance().getMySQL().getSettings(p, "lobby_particles") == 1) {
                     Main.getInstance().getMySQL().updateSettings(p, "lobby_particles", 0);
-                    p.sendMessage("§cZobrazovani efektu vypnuto!");
+                    p.sendMessage("§c§l(!) §cZobrazovani efektu vypnuto!");
                     p.closeInventory();
                 } else {
                     Main.getInstance().getMySQL().updateSettings(p, "lobby_particles", 1);
-                    p.sendMessage("§aZobrazovani efektu zapnuto!");
+                    p.sendMessage("§e§l(*) §eZobrazovani efektu zapnuto!");
                     p.closeInventory();
                 }
             }
             if (e.getSlot() == 22) {
                 if (Main.getInstance().getMySQL().getSettings(p, "lobby_gadgets") == 1) {
                     Main.getInstance().getMySQL().updateSettings(p, "lobby_gadgets", 0);
-                    p.sendMessage("§cGadgety jiz na tebe nebudou reagovat!");
+                    p.sendMessage("§c§l(!) §cGadgety jiz na tebe nebudou reagovat!");
                     p.closeInventory();
                 } else {
                     Main.getInstance().getMySQL().updateSettings(p, "lobby_gadgets", 1);
-                    p.sendMessage("§aGadgety nyni na tebe budou reagovat!");
+                    p.sendMessage("§e§l(*) §eGadgety nyni na tebe budou reagovat!");
                     p.closeInventory();
                 }
             }
             if (e.getSlot() == 23) {
                 if (Main.getInstance().getMySQL().getSettings(p, "lobby_speed") == 1) {
                     Main.getInstance().getMySQL().updateSettings(p, "lobby_speed", 0);
-                    p.sendMessage("§cRychlost byla nastavena na zakladni!");
+                    p.sendMessage("§c§l(!) §cRychlost byla nastavena na zakladni!");
                     p.closeInventory();
                 } else {
                     Main.getInstance().getMySQL().updateSettings(p, "lobby_speed", 1);
-                    p.sendMessage("§aRychlost byla nastavena na 2x rychlejsi!");
+                    p.sendMessage("§e§l(*) §eRychlost byla nastavena na 2x rychlejsi!");
                     p.closeInventory();
                 }
             }
             if (e.getSlot() == 25) {
                 if (Main.getInstance().getMySQL().getSettings(p, "death_messages") == 1) {
                     Main.getInstance().getMySQL().updateSettings(p, "death_messages", 0);
-                    p.sendMessage("§cZablokovano zobrazovani zprav o smrti!");
+                    p.sendMessage("§c§l(!) §cZablokovano zobrazovani zprav o smrti!");
                     Main.getInstance().death_messages.remove(p);
                     p.closeInventory();
                 } else {
                     Main.getInstance().getMySQL().updateSettings(p, "death_messages", 1);
-                    p.sendMessage("§aNyni uvidis v chatu zpravy o smrti hracu!");
+                    p.sendMessage("§e§l(*) §eNyni uvidis v chatu zpravy o smrti hracu!");
                     Main.getInstance().death_messages.add(p);
                     p.closeInventory();
                 }
@@ -272,11 +272,11 @@ public class SettingsListener implements Listener {
             if (e.getSlot() == 26) {
                 if (Main.getInstance().getMySQL().getSettings(p, "mention_notify") == 1) {
                     Main.getInstance().getMySQL().updateSettings(p, "mention_notify", 0);
-                    p.sendMessage("§cNyni ti oznaceni nebude cinkat!");
+                    p.sendMessage("§c§l(!) §cNyni ti oznaceni nebude cinkat!");
                     p.closeInventory();
                 } else {
                     Main.getInstance().getMySQL().updateSettings(p, "mention_notify", 1);
-                    p.sendMessage("§aZapnul jsi cinkani pri oznaceni v chatu!");
+                    p.sendMessage("§e§l(*) §eZapnul jsi cinkani pri oznaceni v chatu!");
                     p.closeInventory();
                 }
             }
@@ -302,30 +302,30 @@ public class SettingsListener implements Listener {
                 if (p.hasPermission("craftmanager.vip.disablechat") && !p.hasPermission("craftmania.at")) {
                     if (Main.getInstance().getMySQL().getSettings(p, "disabled_chat") == 1) {
                         Main.getInstance().getMySQL().updateSettings(p, "disabled_chat", 0);
-                        p.sendMessage("§aZpavy v chatu zapnuty!");
+                        p.sendMessage("§e§l(*) §eZpavy v chatu zapnuty!");
                         CraftChat.disableChat(p, false);
                         p.closeInventory();
                     } else {
                         Main.getInstance().getMySQL().updateSettings(p, "disabled_chat", 1);
-                        p.sendMessage("§cZpravy v chatu vypnuty!");
+                        p.sendMessage("§c§l(!) §cZpravy v chatu vypnuty!");
                         CraftChat.disableChat(p, true);
                         p.closeInventory();
                     }
                 } else {
-                    p.sendMessage("§cNa toto nemas dostatecna prava!");
+                    p.sendMessage("§c§l(!) §cNa toto nemas dostatecna prava!");
                 }
             }
             if (e.getSlot() == 19) {
                 if (Main.getInstance().getMySQL().getSettings(p, "disabled_chat_suggestions") == 1) {
                     // Aktivace
                     Main.getInstance().getMySQL().updateSettings(p, "disabled_chat_suggestions", 0);
-                    p.sendMessage("§aNyni se tu budou zobrazovat napovedy v chatu!");
-                    p.sendMessage("§aK plne aktivaci jdi do lobby a zpet!");
+                    p.sendMessage("§e§l(*) §eNyni se ti budou zobrazovat napovedy v chatu!");
+                    p.sendMessage("§e§l(*) §eK plne aktivaci jdi do lobby a zpet!");
                     p.closeInventory();
                 } else {
                     Main.getInstance().getMySQL().updateSettings(p, "disabled_chat_suggestions", 1);
-                    p.sendMessage("§cNapovedy v chatu se ti jiz nebudou zobrazovat.");
-                    p.sendMessage("§cK plne deaktivaci jdi do lobby a zpet!");
+                    p.sendMessage("§c§l(!) §cNapovedy v chatu se ti jiz nebudou zobrazovat.");
+                    p.sendMessage("§c§l(!) §cK plne deaktivaci jdi do lobby a zpet!");
                     p.closeInventory();
                 }
             }

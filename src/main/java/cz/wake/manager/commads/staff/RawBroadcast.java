@@ -12,7 +12,7 @@ public class RawBroadcast implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender.hasPermission("craftmanager.rawbroadcast")) {
             if (args.length == 0) {
-                sender.sendMessage("§cSpatne pouziti prikazu! Zkus /rawbroadcast [text]");
+                sender.sendMessage("§c§l(!) §cSpatne pouziti prikazu! Zkus /rawbroadcast [text]");
             } else {
                 StringBuilder sb = new StringBuilder();
                 for (String arg : args) {
@@ -25,7 +25,7 @@ public class RawBroadcast implements CommandExecutor {
                     p.sendMessage(text);
                     p.sendMessage("");
                 }
-                sender.sendMessage("§eText byl odeslan vsem online hracum!");
+                sender.sendMessage("§e§l(*) §eText byl odeslan vsem online hracum!");
             }
 
         }

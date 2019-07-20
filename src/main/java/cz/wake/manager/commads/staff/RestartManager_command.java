@@ -30,7 +30,7 @@ public class RestartManager_command implements CommandExecutor {
             if (strings.length == 0) {
                 if (Main.restartTime != null) {
                   Long remaining = Main.restartTime - System.currentTimeMillis();
-                  p.sendMessage("§eAktualne je naplanovany §c§lRESTART §e(za " + TimeUnit.MILLISECONDS.toMinutes(remaining) + "m " + TimeUnit.MILLISECONDS.toSeconds(remaining) % 60 % 60 + "s)");
+                  p.sendMessage("§e§l(*) §eAktualne je naplanovany §c§lRESTART §e(za " + TimeUnit.MILLISECONDS.toMinutes(remaining) + "m " + TimeUnit.MILLISECONDS.toSeconds(remaining) % 60 % 60 + "s)");
                 }
                 sendUsage(p);
                 return true;
@@ -94,11 +94,11 @@ public class RestartManager_command implements CommandExecutor {
             } if (strings.length == 1) {
                 if (strings[0].equalsIgnoreCase("stop")) {
                   if (Main.restartTime == null) {
-                      p.sendMessage("§cMomentalne neni naplanovan zadny restart.");
+                      p.sendMessage("§c§l(!) §cMomentalne neni naplanovan zadny restart.");
                       return true;
                   }
                   Main.restartTime = null;
-                  p.sendMessage("§aNaplanovany restart byl uspesne zrusen.");
+                  p.sendMessage("§e§l(*) §eNaplanovany restart byl uspesne zrusen.");
                   runnables.get(0).cancel();
                   bb.hide();
                   return true;

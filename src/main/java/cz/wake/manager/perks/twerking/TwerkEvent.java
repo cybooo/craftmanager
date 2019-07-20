@@ -23,7 +23,8 @@ public class TwerkEvent implements Listener {
         }
         final Player player = e.getPlayer();
         if (!player.hasPermission("craftmanager.vip.twerking")
-                || Main.getServerType() == ServerType.VANILLA) {
+                || Main.getServerType() == ServerType.VANILLA
+                || Main.getServerType() == ServerType.SKYCLOUD) {
             return;
         }
         final World world = player.getWorld();
@@ -58,7 +59,7 @@ public class TwerkEvent implements Listener {
         //world.playEffect(location2.add(0.5, 0.5, 0.5), Effect.VILLAGER_PLANT_GROW, 0, 0, 0.25f, 0.25f, 0.25f, 1.0f, 16, 16);
 
         if (ExpUtil.getTotalExperience(player) - 15 < 0) {
-            player.sendMessage("§cNemas dostatek expu!");
+            player.sendMessage("§c§l(!) §cNemas dostatek expu!");
             return;
         }
 
