@@ -111,7 +111,7 @@ public class ShopAPI implements Listener {
         this.setupTag(p, "deluxetags.tag.cotokamerujes", "CoToKamerujes", inv, 28, 800);
         this.setupTag(p, "deluxetags.tag.nerd", "Nerd", inv, 29, 1000);
         this.setupTag(p, "deluxetags.tag.fofola", "Fofola", inv, 30, 1000);
-        this.setupTag(p, "deluxetags.tag.negr", "Negr", inv, 31, 500);
+        this.setupTag(p, "deluxetags.tag.cenim", "cenim", inv, 31, 500);
         this.setupTag(p, "deluxetags.tag.faded", "Faded", inv, 32, 1000);
         this.setupTag(p, "deluxetags.tag.jsemtop", "jsemTOP", inv, 33, 750);
         this.setupTag(p, "deluxetags.tag.presnetaak", "PresneTaak", inv, 34, 500);
@@ -287,6 +287,7 @@ public class ShopAPI implements Listener {
         this.setupTag(p, "deluxetags.tag.hlhrac", "Hl.Hrac", inv, 2, 700);
         this.setupTag(p, "deluxetags.tag.baxcus", "BaxCus", inv, 3, 700);
         this.setupTag(p, "deluxetags.tag.neasi", "Neasi", inv, 4, 700);
+        this.setupTag(p, "deluxetags.tag.orandzboy", "Orandzboy", inv, 5, 1000);
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
         ItemStack hlavni = ItemFactory.create(Material.ENDER_EYE, (byte) 0, "§aHlavni menu");
@@ -1514,7 +1515,7 @@ public class ShopAPI implements Listener {
                 this.prepareTag(p, 1000, "deluxetags.tag.fofola", "Fofola");
             }
             if (e.getSlot() == 31) {
-                this.prepareTag(p, 500, "deluxetags.tag.negr", "Negr");
+                this.prepareTag(p, 500, "deluxetags.tag.cenim", "Cenim");
             }
             if (e.getSlot() == 32) {
                 this.prepareTag(p, 1000, "deluxetags.tag.faded", "Faded");
@@ -1935,6 +1936,9 @@ public class ShopAPI implements Listener {
             }
             if (e.getSlot() == 4) {
                 this.prepareTag(p, 700, "deluxetags.tag.neasi", "NeAsi");
+            }
+            if (e.getSlot() == 5) {
+                this.prepareTag(p, 1000, "deluxetags.tag.orandzboy", "OrandzBoy");
             }
         }
     }
