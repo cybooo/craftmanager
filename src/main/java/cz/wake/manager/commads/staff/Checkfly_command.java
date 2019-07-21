@@ -17,7 +17,7 @@ public class Checkfly_command implements CommandExecutor {
         if ((Command.getName().equalsIgnoreCase("checkfly"))) {
             if(p.hasPermission("craftmanager.checkfly")){
                 if (ArrayOfString.length == 0) {
-                    p.sendMessage("§ePouziti: §f/checkfly nick");
+                    p.sendMessage("§e§l(*) §ePouziti: §f/checkfly nick");
                     return true;
                 }
                 String name = ArrayOfString[0];
@@ -25,24 +25,24 @@ public class Checkfly_command implements CommandExecutor {
                 if(pl.getAllowFlight() || pl.hasPermission("askyblock.islandfly")){
                     if (pl.getAllowFlight()) {
                         if (!pl.hasPermission("askyblock.islandfly")) {
-                            p.sendMessage("§eKontrola fly §b(" + name + ")§e: §a§lPOVOLENO §7(nezakoupeno)");
+                            p.sendMessage("§e§l(*) §eKontrola fly §b(" + name + ")§e: §a§lPOVOLENO §7(nezakoupeno)");
                         } else { //má právo a má povolené lietať - je na ostrove
-                            p.sendMessage("§eKontrola fly §b(" + name + ")§e: §a§lPOVOLENO & ZAKOUPENO");
+                            p.sendMessage("§e§l(*) §eKontrola fly §b(" + name + ")§e: §a§lPOVOLENO & ZAKOUPENO");
                         }
                     } else if (pl.hasPermission("askyblock.islandfly")) {
                         if (ASkyBlockAPI.getInstance().getIslandAt(pl.getLocation()) == null) { //má právo, ale nie je na ostrove
-                            p.sendMessage("§eKontrola fly §b(" + name + ")§e: §a§lZAKOUPENO §7(mimo ostrov)");
+                            p.sendMessage("§e§l(*) §eKontrola fly §b(" + name + ")§e: §a§lZAKOUPENO §7(mimo ostrov)");
                         } else {
-                            p.sendMessage("§eKontrola fly §b(" + name + ")§e: §a§lPOVOLENO & ZAKOUPENO");
+                            p.sendMessage("§e§l(*) §eKontrola fly §b(" + name + ")§e: §a§lPOVOLENO & ZAKOUPENO");
                         }
                     } else {
-                        p.sendMessage("§eKontrola fly §b(" + name + ")§e: §c§lNEPOVOLENO (Cheaty/Bug)");
+                        p.sendMessage("§e§l(*) §eKontrola fly §b(" + name + ")§e: §c§lNEPOVOLENO (Cheaty/Bug)");
                     }
                 } else {
-                    p.sendMessage("§eKontrola fly §b(" + name + ")§e: §c§lNEPOVOLENO (Cheaty/Bug)");
+                    p.sendMessage("§e§l(*) §eKontrola fly §b(" + name + ")§e: §c§lNEPOVOLENO (Cheaty/Bug)");
                 }
             } else {
-                p.sendMessage("§cNa toto nemas dostatecna prava!");
+                p.sendMessage("§c§l(!) §cNa toto nemas dostatecna prava!");
             }
         }
         return true;

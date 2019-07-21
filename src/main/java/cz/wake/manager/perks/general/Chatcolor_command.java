@@ -45,7 +45,7 @@ public class Chatcolor_command implements CommandExecutor {
                     this.openColorMenu(player);
                     return true;
                 } else {
-                    player.sendMessage("§cK pouziti teto schopnosti musis vlastnit VIP!");
+                    player.sendMessage("§c§l(!) §cPro psani barevne v chatu musis vlastnit VIP!");
                 }
             }
         }

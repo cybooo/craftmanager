@@ -39,13 +39,13 @@ public class SurvivalPVPListener implements Listener {
                 }
                 if (b.getLocation().equals(new Location(Bukkit.getWorld("pvp"), -578.0, 111.0, 134.0))) { //Teleport do areny
                     if (p.getInventory().contains(Material.ELYTRA)) {
-                        p.sendMessage("§cNelze vstoupit do PvP s Elytrou!");
+                        p.sendMessage("§c§l(!) §cNelze vstoupit do PvP s Elytrou!");
                         return;
                     } else if ((p.getInventory().contains(Material.GOLDEN_APPLE))) {
-                        p.sendMessage("§cNelze vstoupit do PvP s Golden Apple!");
+                        p.sendMessage("§c§l(!) §cNelze vstoupit do PvP s Golden Apple!");
                         return;
                     } else if ((p.getInventory().contains(Material.TOTEM_OF_UNDYING))) {
-                        p.sendMessage("§cNelze vstoupit do PvP s Totemem!");
+                        p.sendMessage("§c§l(!) §cNelze vstoupit do PvP s Totemem!");
                         return;
                     }
                     teleportToArena(p);
@@ -54,7 +54,7 @@ public class SurvivalPVPListener implements Listener {
                     p.setFlying(false);
                 }
                 if (b.getLocation().equals(new Location(Bukkit.getWorld("pvp"), -586.0, 106.0, 138.0)) && !queue.equals(p)) { //Teleport na spawn
-                    p.sendMessage("§eZa 4 vteriny budes teleportovan na spawn!");
+                    p.sendMessage("§e§l(*) §eZa 4 vteriny budes teleportovan na spawn!");
                     queue.add(p);
                     Bukkit.getScheduler().runTaskLater(Main.getInstance(), new BukkitRunnable() {
                         @Override

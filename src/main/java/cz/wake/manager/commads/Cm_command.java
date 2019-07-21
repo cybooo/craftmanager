@@ -13,7 +13,7 @@ public class Cm_command implements CommandExecutor {
             if (strings.length == 1) {
                 if (strings[0].equalsIgnoreCase("reload")) {
                     Main.getInstance().reloadConfig();
-                    sender.sendMessage("§aConfig uspesne reloadnut.");
+                    sender.sendMessage("§e§l(*) §eConfig uspesne reloadnut.");
                     return true;
                 }
                 else {
