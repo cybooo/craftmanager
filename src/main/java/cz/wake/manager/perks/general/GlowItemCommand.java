@@ -31,7 +31,7 @@ public class GlowItemCommand implements CommandExecutor {
                     player.sendMessage("§c§l(!) §cMusis drzet item, na ktery chces dat glowing efekt.");
                     return true;
                 }
-
+                //Přidat blacklist všech itemů, na které jde dávat ve Vanilla MC enchanty. Viz: https://youtrack.waked.cz/issue/CMD-845
                 if (item.isSimilar(new ItemStack(Material.GOLDEN_APPLE, 1, (short) 1))) {
                     player.sendMessage("§c§l(!) §cNa tento item nelze pouzit prikaz /gi");
                     return true;

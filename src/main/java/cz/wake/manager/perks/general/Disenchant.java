@@ -25,7 +25,7 @@ public class Disenchant implements CommandExecutor {
             if ((Command.getName().equalsIgnoreCase("disenchant"))) {
                 if (player.hasPermission("craftmanager.vip.disenchant")) {
 
-                    if (Main.getServerType() == ServerType.VANILLA) {
+                    if (Main.getServerType() == ServerType.VANILLA || Main.getServerType() == ServerType.SKYCLOUD) {
                         player.sendMessage("§c§l(!) §cNa tomto serveru tato vyhoda neplati!");
                         return true;
                     }
