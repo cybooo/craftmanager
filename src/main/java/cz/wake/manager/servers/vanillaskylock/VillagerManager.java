@@ -115,6 +115,7 @@ public class VillagerManager {
         villager.setCanPickupItems(false);
         villager.setVillagerLevel(5);
         villager.setRemoveWhenFarAway(false);
+        villager.setSilent(true);
 
         setMetadata(villager, VillagerType.SELL_VILLAGER, VillagerType.SELL_VILLAGER, Main.getInstance());
 
@@ -137,6 +138,7 @@ public class VillagerManager {
         villager.setRemoveWhenFarAway(false);
         villager.setCustomName("Akvamen");
         villager.setCustomNameVisible(false);
+        villager.setSilent(true);
 
         setMetadata(villager, VillagerType.SEA_VILLAGER, VillagerType.SEA_VILLAGER, Main.getInstance());
 
@@ -154,6 +156,7 @@ public class VillagerManager {
         villager.setAI(false);
         villager.setCanPickupItems(false);
         villager.setRemoveWhenFarAway(false);
+        villager.setSilent(true);
 
         setMetadata(villager, VillagerType.RARE_VILLAGER, VillagerType.RARE_VILLAGER, Main.getInstance());
 
@@ -176,6 +179,7 @@ public class VillagerManager {
         villager.setRemoveWhenFarAway(false);
         villager.setCustomName("Helbój");
         villager.setCustomNameVisible(false);
+        villager.setSilent(true);
 
         setMetadata(villager, VillagerType.NETHER_VILLAGER, VillagerType.NETHER_VILLAGER, Main.getInstance());
 
@@ -196,6 +200,7 @@ public class VillagerManager {
         villager.setCanPickupItems(false);
         villager.setVillagerLevel(5);
         villager.setRemoveWhenFarAway(false);
+        villager.setSilent(true);
 
         setMetadata(villager, VillagerType.END_VILLAGER, VillagerType.END_VILLAGER, Main.getInstance());
 
@@ -216,6 +221,7 @@ public class VillagerManager {
         villager.setCanPickupItems(false);
         villager.setVillagerLevel(5);
         villager.setRemoveWhenFarAway(false);
+        villager.setSilent(true);
 
         setMetadata(villager, VillagerType.BUY_VILLAGER, VillagerType.BUY_VILLAGER, Main.getInstance());
 
