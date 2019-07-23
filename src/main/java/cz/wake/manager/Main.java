@@ -47,8 +47,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     public List<Material> durabilityWarnerList = new ArrayList<>();
     public List<Pattern> blockedTags = new ArrayList<Pattern>();
     private List<String> dontdrop_worlds = new ArrayList<>();
-    public static Long restartTime;
-    public static String restartReason;
+    public static Long restartTime = null;
+    public static String restartReason = null;
     private MainGUI gui = new MainGUI();
     private ShopAPI shop = new ShopAPI();
     private VoteHandler vh = new VoteHandler();
