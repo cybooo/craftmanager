@@ -29,7 +29,7 @@ public class SignClickListener implements Listener {
                         Repair.repair(p);
                     }
                     else {
-                        p.sendMessage("§c§l(!) §cNemas dostatecne opravneni!");
+                        p.sendMessage("§c§l[!] §cNemas dostatecne opravneni!");
                     }
                 }
             }

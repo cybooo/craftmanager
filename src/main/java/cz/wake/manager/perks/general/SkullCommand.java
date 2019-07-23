@@ -38,7 +38,7 @@ public class SkullCommand implements CommandExecutor {
                         });
                         (this._cdRunnable.get(player)).runTaskTimer(Main.getInstance(), 2L, 2L);
                     } else {
-                        player.sendMessage("§c§l(!) §cTento prikaz muzes provadet pouze kazdych 10 minut!");
+                        player.sendMessage("§c§l[!] §cTento prikaz muzes provadet pouze kazdych 10 minut!");
                     }
                 }
                 return true;
@@ -53,7 +53,7 @@ public class SkullCommand implements CommandExecutor {
                     .replaceAll("%creator%", p.getName()).replaceAll("%name%", p.getName());
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
         } catch (Exception e) {
-            p.sendMessage("§c§l(!) §cChyba v API Mojangu! Zkus to znova zachvilku! :)");
+            p.sendMessage("§c§l[!] §cChyba v API Mojangu! Zkus to znova zachvilku! :)");
         }
     }
 

@@ -161,7 +161,7 @@ public class PlayerListener implements Listener {
         // Deaktivace Spectatoru
         if (e.getNewGameMode() == GameMode.SPECTATOR && !p.hasPermission("craftmanager.spectatorallow")) {
             e.setCancelled(true);
-            p.sendMessage("§c§l(!) §cNelze si zmenit GM na Spectatora!");
+            p.sendMessage("§c§l[!] §cNelze si zmenit GM na Spectatora!");
         }
     }
 

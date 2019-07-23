@@ -74,7 +74,7 @@ public class ShopAPI implements Listener {
             inv.setItem(29, tagsTokens);
             p.openInventory(inv);
         } else {
-            p.sendMessage("§c§l(!) §cNa tomto serveru je CoinShop deaktivovany nebo neni podporovany.");
+            p.sendMessage("§c§l[!] §cNa tomto serveru je CoinShop deaktivovany nebo neni podporovany.");
         }
     }
 
@@ -885,7 +885,7 @@ public class ShopAPI implements Listener {
                 if (CraftTokensAPI.getTokens(p) > 0) {
                     //TagsEditor.createTagEditor(p);
                 } else {
-                    p.sendMessage("§c§l(!) §cNemas dostatek CraftTokenu k provedeni teto akce.");
+                    p.sendMessage("§c§l[!] §cNemas dostatek CraftTokenu k provedeni teto akce.");
                 }
             }
             if (e.getSlot() == 23) {
@@ -916,96 +916,96 @@ public class ShopAPI implements Listener {
             // Slotovac
             if (e.getSlot() == 19) {
                 if(Main.getServerType() != ServerType.SURVIVAL) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
                 if (CraftCoinsAPI.getCoins(p) >= 1500) {
                     CraftCoinsAPI.takeCoins(p, 1500);
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ae giveitem " + p.getName() + " slotincreaser 1 simple");
-                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x Slotovac §eza §a1500 CC.");
+                    p.sendMessage("§e§l[*] §eZakoupil jsi si §f1x Slotovac §eza §a1500 CC.");
                     p.closeInventory();
                 } else {
-                    p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (1500).");
+                    p.sendMessage("§c§l[!] §cNemas dostatek CraftCoinu (1500).");
                 }
             }
 
             // MobTrak
             if (e.getSlot() == 20) {
                 if(Main.getServerType() != ServerType.SURVIVAL) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
                 if (CraftCoinsAPI.getCoins(p) >= 500) {
                     CraftCoinsAPI.takeCoins(p, 500);
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ae giveitem " + p.getName() + " mobtrak 1 simple");
-                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x MobTrak §eza §a500 CC.");
+                    p.sendMessage("§e§l[*] §eZakoupil jsi si §f1x MobTrak §eza §a500 CC.");
                     p.closeInventory();
                 } else {
-                    p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (500).");
+                    p.sendMessage("§c§l[!] §cNemas dostatek CraftCoinu (500).");
                 }
             }
 
             // StatTrak
             if (e.getSlot() == 21) {
                 if(Main.getServerType() != ServerType.SURVIVAL) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
                 if (CraftCoinsAPI.getCoins(p) >= 500) {
                     CraftCoinsAPI.takeCoins(p, 500);
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ae giveitem " + p.getName() + " stattrak 1 simple");
-                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x StatTrak §eza §a500 CC.");
+                    p.sendMessage("§e§l[*] §eZakoupil jsi si §f1x StatTrak §eza §a500 CC.");
                     p.closeInventory();
                 } else {
-                    p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (500).");
+                    p.sendMessage("§c§l[!] §cNemas dostatek CraftCoinu (500).");
                 }
             }
 
             // BlockTrak
             if (e.getSlot() == 22) {
                 if(Main.getServerType() != ServerType.SURVIVAL) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
                 if (CraftCoinsAPI.getCoins(p) >= 500) {
                     CraftCoinsAPI.takeCoins(p, 500);
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ae giveitem " + p.getName() + " blocktrak 1 simple");
-                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x BlockTrak §eza §a500 CC.");
+                    p.sendMessage("§e§l[*] §eZakoupil jsi si §f1x BlockTrak §eza §a500 CC.");
                     p.closeInventory();
                 } else {
-                    p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (500).");
+                    p.sendMessage("§c§l[!] §cNemas dostatek CraftCoinu (500).");
                 }
             }
 
             // Randomizer
             if (e.getSlot() == 23) {
                 if(Main.getServerType() != ServerType.SURVIVAL) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
                 if (CraftCoinsAPI.getCoins(p) >= 300) {
                     CraftCoinsAPI.takeCoins(p, 300);
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ae giveitem " + p.getName() + " randomizer 1 simple");
-                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x Randomizer §eza §a300 CC.");
+                    p.sendMessage("§e§l[*] §eZakoupil jsi si §f1x Randomizer §eza §a300 CC.");
                     p.closeInventory();
                 } else {
-                    p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (300).");
+                    p.sendMessage("§c§l[!] §cNemas dostatek CraftCoinu (300).");
                 }
             }
 
             // Transmog Scroll
             if (e.getSlot() == 24) {
                 if(Main.getServerType() != ServerType.SURVIVAL) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
                 if (CraftCoinsAPI.getCoins(p) >= 600) {
                     CraftCoinsAPI.takeCoins(p, 600);
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ae giveitem " + p.getName() + " transmog 1 simple");
-                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x Transmog Scroll §eza §a600 CC.");
+                    p.sendMessage("§e§l[*] §eZakoupil jsi si §f1x Transmog Scroll §eza §a600 CC.");
                     p.closeInventory();
                 } else {
-                    p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (600).");
+                    p.sendMessage("§c§l[!] §cNemas dostatek CraftCoinu (600).");
                 }
             }
         }
@@ -1027,150 +1027,150 @@ public class ShopAPI implements Listener {
             // Residence 200x200
             if (e.getSlot() == 19) {
                 if(Main.getServerType() != ServerType.SURVIVAL) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
                 if(!p.hasPermission("residence.group.bonus1")){
                     if (CraftCoinsAPI.getCoins(p) >= 2500) {
                         CraftCoinsAPI.takeCoins(p, 2500);
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set residence.group.bonus1 survival");
-                        p.sendMessage("§e§l(*) §eZakoupil jsi si §f200x200 Residence §eza §a2500 CC.");
+                        p.sendMessage("§e§l[*] §eZakoupil jsi si §f200x200 Residence §eza §a2500 CC.");
                         p.closeInventory();
                     } else {
-                        p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (2500).");
+                        p.sendMessage("§c§l[!] §cNemas dostatek CraftCoinu (2500).");
                     }
                 } else {
-                    p.sendMessage("§c§l(!) §cJiz mas tento bonus zakoupeny.");
+                    p.sendMessage("§c§l[!] §cJiz mas tento bonus zakoupeny.");
                 }
             }
 
             // Residence 300x300
             if (e.getSlot() == 20) {
                 if(Main.getServerType()!= ServerType.SURVIVAL) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
                 if(!p.hasPermission("residence.group.bonus2")){
                     if (!p.hasPermission("residence.group.bonus1")) {
-                        p.sendMessage("§c§l(!) §cPro nakup musis mit koupeny nizsi tier!");
+                        p.sendMessage("§c§l[!] §cPro nakup musis mit koupeny nizsi tier!");
                     } else if (CraftCoinsAPI.getCoins(p) >= 7500) {
                         CraftCoinsAPI.takeCoins(p, 7500);
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set residence.group.bonus2 survival");
-                        p.sendMessage("§e§l(*) §eZakoupil jsi si §f300x300 Residence §eza §a7500 CC.");
+                        p.sendMessage("§e§l[*] §eZakoupil jsi si §f300x300 Residence §eza §a7500 CC.");
                         p.closeInventory();
                     } else {
-                        p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (7500).");
+                        p.sendMessage("§c§l[!] §cNemas dostatek CraftCoinu (7500).");
                     }
                 } else {
-                    p.sendMessage("§c§l(!) §cJiz mas tento bonus zakoupeny.");
+                    p.sendMessage("§c§l[!] §cJiz mas tento bonus zakoupeny.");
                 }
             }
 
             // Residence 400x400
             if (e.getSlot() == 21) {
                 if(Main.getServerType() != ServerType.SURVIVAL) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
                 if(!p.hasPermission("residence.group.bonus3")){
                     if (!p.hasPermission("residence.group.bonus2")) {
-                        p.sendMessage("§c§l(!) §cPro nakup musis mit koupeny nizsi tier!");
+                        p.sendMessage("§c§l[!] §cPro nakup musis mit koupeny nizsi tier!");
                     } else if (CraftCoinsAPI.getCoins(p) >= 15000) {
                         CraftCoinsAPI.takeCoins(p, 15000);
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set residence.group.bonus3 survival");
-                        p.sendMessage("§e§l(*) §eZakoupil jsi si §f400x400 Residence §eza §a15000 CC.");
+                        p.sendMessage("§e§l[*] §eZakoupil jsi si §f400x400 Residence §eza §a15000 CC.");
                         p.closeInventory();
                     } else {
-                        p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (15000).");
+                        p.sendMessage("§c§l[!] §cNemas dostatek CraftCoinu (15000).");
                     }
                 } else {
-                    p.sendMessage("§c§l(!) §cJiz mas tento bonus zakoupeny.");
+                    p.sendMessage("§c§l[!] §cJiz mas tento bonus zakoupeny.");
                 }
             }
 
             // Skyblock (5 hracu)
             if (e.getSlot() == 23) {
                 if(Main.getServerType() != ServerType.SKYBLOCK) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
                 if(!p.hasPermission("askyblock.team.maxsize.5")){
                     if (CraftCoinsAPI.getCoins(p) >= 1500) {
                         CraftCoinsAPI.takeCoins(p, 1500);
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set askyblock.team.maxsize.5 skyblock");
-                        p.sendMessage("§e§l(*) §eZakoupil jsi si §fMax. pocet hracu na ostrove (5) §eza §a1500 CC.");
+                        p.sendMessage("§e§l[*] §eZakoupil jsi si §fMax. pocet hracu na ostrove (5) §eza §a1500 CC.");
                         p.closeInventory();
                     } else {
-                        p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (1500).");
+                        p.sendMessage("§c§l[!] §cNemas dostatek CraftCoinu (1500).");
                     }
                 } else {
-                    p.sendMessage("§c§l(!) §cJiz mas tento bonus zakoupeny.");
+                    p.sendMessage("§c§l[!] §cJiz mas tento bonus zakoupeny.");
                 }
             }
 
             // Skyblock (7 hracu)
             if (e.getSlot() == 24) {
                 if(Main.getServerType() != ServerType.SKYBLOCK) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
                 if(!p.hasPermission("askyblock.team.maxsize.7")){
                     if (!p.hasPermission("askyblock.team.maxsize.5")) {
-                        p.sendMessage("§c§l(!) §cPro nakup musis mit koupeny nizsi tier!");
+                        p.sendMessage("§c§l[!] §cPro nakup musis mit koupeny nizsi tier!");
                     } else if (CraftCoinsAPI.getCoins(p) >= 3500) {
                         CraftCoinsAPI.takeCoins(p, 3500);
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set askyblock.team.maxsize.7 skyblock");
-                        p.sendMessage("§e§l(*) §eZakoupil jsi si §fMax. pocet hracu na ostrove (7) §eza §a3500 CC.");
+                        p.sendMessage("§e§l[*] §eZakoupil jsi si §fMax. pocet hracu na ostrove (7) §eza §a3500 CC.");
                         p.closeInventory();
                     } else {
-                        p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (3500).");
+                        p.sendMessage("§c§l[!] §cNemas dostatek CraftCoinu (3500).");
                     }
                 } else {
-                    p.sendMessage("§c§l(!) §cJiz mas tento bonus zakoupeny.");
+                    p.sendMessage("§c§l[!] §cJiz mas tento bonus zakoupeny.");
                 }
             }
 
             // Skyblock (10 hracu)
             if (e.getSlot() == 25) {
                 if(Main.getServerType() != ServerType.SKYBLOCK) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
                 if(!p.hasPermission("askyblock.team.maxsize.10")){
                     if (!p.hasPermission("askyblock.team.maxsize.7")) {
-                        p.sendMessage("§c§l(!) §cPro nakup musis mit koupeny nizsi tier!");
+                        p.sendMessage("§c§l[!] §cPro nakup musis mit koupeny nizsi tier!");
                     } else if (CraftCoinsAPI.getCoins(p) >= 5000) {
                         CraftCoinsAPI.takeCoins(p, 5000);
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set askyblock.team.maxsize.10 skyblock");
-                        p.sendMessage("§e§l(*) §eZakoupil jsi si §fMax. pocet hracu na ostrove (10) §eza §a5000 CC.");
+                        p.sendMessage("§e§l[*] §eZakoupil jsi si §fMax. pocet hracu na ostrove (10) §eza §a5000 CC.");
                         p.closeInventory();
                     } else {
-                        p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (5000).");
+                        p.sendMessage("§c§l[!] §cNemas dostatek CraftCoinu (5000).");
                     }
                 } else {
-                    p.sendMessage("§c§l(!) §cJiz mas tento bonus zakoupeny.");
+                    p.sendMessage("§c§l[!] §cJiz mas tento bonus zakoupeny.");
                 }
             }
 
             // Skyblock (15 hracu)
             if (e.getSlot() == 32) {
                 if(Main.getServerType() != ServerType.SKYBLOCK) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru toto nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
                 if(!p.hasPermission("askyblock.team.maxsize.15")){
                     if (!p.hasPermission("askyblock.team.maxsize.10")) {
-                        p.sendMessage("§c§l(!) §cPro nakup musis mit koupeny nizsi tier!");
+                        p.sendMessage("§c§l[!] §cPro nakup musis mit koupeny nizsi tier!");
                     } else if (CraftCoinsAPI.getCoins(p) >= 10000) {
                         CraftCoinsAPI.takeCoins(p, 10000);
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set askyblock.team.maxsize.15 skyblock");
-                        p.sendMessage("§e§l(*) §eZakoupil jsi si §fMax. pocet hracu na ostrove (15) §eza §a10000 CC.");
+                        p.sendMessage("§e§l[*] §eZakoupil jsi si §fMax. pocet hracu na ostrove (15) §eza §a10000 CC.");
                         p.closeInventory();
                     } else {
-                        p.sendMessage("§c§l(!) §cNemas dostatek CraftCoinu (10000).");
+                        p.sendMessage("§c§l[!] §cNemas dostatek CraftCoinu (10000).");
                     }
                 } else {
-                    p.sendMessage("§c§l(!) §cJiz mas tento bonus zakoupeny.");
+                    p.sendMessage("§c§l[!] §cJiz mas tento bonus zakoupeny.");
                 }
             }
 
@@ -1193,107 +1193,107 @@ public class ShopAPI implements Listener {
             // VoteCrate (1x)
             if (e.getSlot() == 19) {
                 if (!(Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON)) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
                 if (VoteTokensAPI.getVoteTokens(p) >= 1) {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " votecrate 1");
                     VoteTokensAPI.takeVoteTokens(p, 1);
-                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x VoteCrate §eza §a1 VT.");
+                    p.sendMessage("§e§l[*] §eZakoupil jsi si §f1x VoteCrate §eza §a1 VT.");
                     p.closeInventory();
                 } else {
-                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (1)!");
+                    p.sendMessage("§c§l[!] §cNemas dostatek VoteTokenu (1)!");
                 }
             }
 
             // VoteCrate (5x)
             if (e.getSlot() == 28) {
                 if (!(Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON)) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
                 if (VoteTokensAPI.getVoteTokens(p) >= 5) {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " votecrate 5");
                     VoteTokensAPI.takeVoteTokens(p, 5);
-                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f5x VoteCrate §eza §a5 VT.");
+                    p.sendMessage("§e§l[*] §eZakoupil jsi si §f5x VoteCrate §eza §a5 VT.");
                     p.closeInventory();
                 } else {
-                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (5)!");
+                    p.sendMessage("§c§l[!] §cNemas dostatek VoteTokenu (5)!");
                 }
             }
 
             // EpicCrate (1x)
             if (e.getSlot() == 20) {
                 if (!(Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON)) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
                 if (VoteTokensAPI.getVoteTokens(p) >= 5) {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " epiccrate 1");
                     VoteTokensAPI.takeVoteTokens(p, 5);
-                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x EpicCrate §eza §a5 VT.");
+                    p.sendMessage("§e§l[*] §eZakoupil jsi si §f1x EpicCrate §eza §a5 VT.");
                     p.closeInventory();
                 } else {
-                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (5)!");
+                    p.sendMessage("§c§l[!] §cNemas dostatek VoteTokenu (5)!");
                 }
             }
 
             // EpicCrate (3x)
             if (e.getSlot() == 29) {
                 if (!(Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON)) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
                 if (VoteTokensAPI.getVoteTokens(p) >= 15) {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " epiccrate 3");
                     VoteTokensAPI.takeVoteTokens(p, 15);
-                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f3x EpicCrate §eza §a15 VT.");
+                    p.sendMessage("§e§l[*] §eZakoupil jsi si §f3x EpicCrate §eza §a15 VT.");
                     p.closeInventory();
                 } else {
-                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (15)!");
+                    p.sendMessage("§c§l[!] §cNemas dostatek VoteTokenu (15)!");
                 }
             }
 
             // HeadCrate (1x)
             if (e.getSlot() == 21) {
                 if (!(Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON)) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
                 if (VoteTokensAPI.getVoteTokens(p) >= 3) {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " headcrate 1");
                     VoteTokensAPI.takeVoteTokens(p, 3);
-                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x HeadCrate §eza §a3 VT.");
+                    p.sendMessage("§e§l[*] §eZakoupil jsi si §f1x HeadCrate §eza §a3 VT.");
                     p.closeInventory();
                 } else {
-                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (3)!");
+                    p.sendMessage("§c§l[!] §cNemas dostatek VoteTokenu (3)!");
                 }
             }
 
             // HeadCrate (3x)
             if (e.getSlot() == 30) {
                 if (!(Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON)) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
                 if (VoteTokensAPI.getVoteTokens(p) >= 9) {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " headcrate 3");
                     VoteTokensAPI.takeVoteTokens(p, 9);
-                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f3x HeadCrate §eza §a9 VT.");
+                    p.sendMessage("§e§l[*] §eZakoupil jsi si §f3x HeadCrate §eza §a9 VT.");
                     p.closeInventory();
                 } else {
-                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (9)!");
+                    p.sendMessage("§c§l[!] §cNemas dostatek VoteTokenu (9)!");
                 }
             }
 
             // WorldEdit (1h)
             if (e.getSlot() == 23) {
                 if (Main.getServerType() != ServerType.CREATIVE) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
                 if (p.hasPermission("worldedit.wand")) {
-                    p.sendMessage("§e§l(*) §eJiz mas zakoupeny WorldEdit!");
+                    p.sendMessage("§e§l[*] §eJiz mas zakoupeny WorldEdit!");
                 } else {
                     if (VoteTokensAPI.getVoteTokens(p) >= 1) {
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.(wand|fill) true 1h creative");
@@ -1303,10 +1303,10 @@ public class ShopAPI implements Listener {
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.region.(center|hollow|walls|replace|set|smooth) true 1h creative");
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.selection.(pos|chunk) true 1h creative");
                         VoteTokensAPI.takeVoteTokens(p, 1);
-                        p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x WorldEdit na 1h §eza §a1 VT.");
+                        p.sendMessage("§e§l[*] §eZakoupil jsi si §f1x WorldEdit na 1h §eza §a1 VT.");
                         p.closeInventory();
                     } else {
-                        p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (1)!");
+                        p.sendMessage("§c§l[!] §cNemas dostatek VoteTokenu (1)!");
                     }
                 }
             }
@@ -1314,11 +1314,11 @@ public class ShopAPI implements Listener {
             // WorldEdit (3h)
             if (e.getSlot() == 32) {
                 if (Main.getServerType() != ServerType.CREATIVE) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
                 if (p.hasPermission("worldedit.wand")) {
-                    p.sendMessage("§e§l(*) §eJiz mas zakoupeny WorldEdit!");
+                    p.sendMessage("§e§l[*] §eJiz mas zakoupeny WorldEdit!");
                 } else {
                     if (VoteTokensAPI.getVoteTokens(p) >= 3) {
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.(wand|fill) true 3h creative");
@@ -1328,10 +1328,10 @@ public class ShopAPI implements Listener {
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.region.(center|hollow|walls|replace|set|smooth) true 3h creative");
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.selection.(pos|chunk) true 3h creative");
                         VoteTokensAPI.takeVoteTokens(p, 3);
-                        p.sendMessage("§e§l(*) §eZakoupil jsi si §fWorldEdit na 3h §eza §a3 VT.");
+                        p.sendMessage("§e§l[*] §eZakoupil jsi si §fWorldEdit na 3h §eza §a3 VT.");
                         p.closeInventory();
                     } else {
-                        p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (3)!");
+                        p.sendMessage("§c§l[!] §cNemas dostatek VoteTokenu (3)!");
                     }
                 }
             }
@@ -1339,21 +1339,21 @@ public class ShopAPI implements Listener {
             // Skyblock Fly (1h)
             if (e.getSlot() == 24) {
                 if (!(Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON)) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
                 if (p.hasPermission("askyblock.islandfly")) {
-                    p.sendMessage("§e§l(*) §eJiz mas zakoupeny Fly na ostrove! Pockej az skonci...");
+                    p.sendMessage("§e§l[*] §eJiz mas zakoupeny Fly na ostrove! Pockej az skonci...");
                 } else {
                     if (VoteTokensAPI.getVoteTokens(p) >= 3) {
                         ServerType serverType = Main.getServerType();
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp askyblock.islandfly true 1h " + serverType.name().toLowerCase());
                         VoteTokensAPI.takeVoteTokens(p, 3);
-                        p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x Fly na ostrove na 1h §eza §a3 VT.");
-                        p.sendMessage("§c§l(!) §cNekdy Fly nefunguje hned, zkus jit na spawn a zpatky, pokud nepujde. :)");
+                        p.sendMessage("§e§l[*] §eZakoupil jsi si §f1x Fly na ostrove na 1h §eza §a3 VT.");
+                        p.sendMessage("§c§l[!] §cNekdy Fly nefunguje hned, zkus jit na spawn a zpatky, pokud nepujde. :)");
                         p.closeInventory();
                     } else {
-                        p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (3)!");
+                        p.sendMessage("§c§l[!] §cNemas dostatek VoteTokenu (3)!");
                     }
                 }
             }
@@ -1361,21 +1361,21 @@ public class ShopAPI implements Listener {
             // Skyblock Fly (3h)
             if (e.getSlot() == 33) {
                 if (!(Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON)) {
-                    p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
+                    p.sendMessage("§c§l[!] §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
                 if (p.hasPermission("askyblock.islandfly")) {
-                    p.sendMessage("§e§l(*) §eJiz mas zakoupeny Fly na ostrove! Pockej az skonci...");
+                    p.sendMessage("§e§l[*] §eJiz mas zakoupeny Fly na ostrove! Pockej az skonci...");
                 } else {
                     if (VoteTokensAPI.getVoteTokens(p) >= 9) {
                         ServerType serverType = Main.getServerType();
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp askyblock.islandfly true 3h " + serverType.name().toLowerCase());
                         VoteTokensAPI.takeVoteTokens(p, 9);
-                        p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x Fly na ostrove na 3h §eza §a9 VT.");
-                        p.sendMessage("§c§l(!) §cNekdy Fly nefunguje hned, zkus jit na spawn a zpatky, pokud nepujde. :)");
+                        p.sendMessage("§e§l[*] §eZakoupil jsi si §f1x Fly na ostrove na 3h §eza §a9 VT.");
+                        p.sendMessage("§c§l[!] §cNekdy Fly nefunguje hned, zkus jit na spawn a zpatky, pokud nepujde. :)");
                         p.closeInventory();
                     } else {
-                        p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (9)!");
+                        p.sendMessage("§c§l[!] §cNemas dostatek VoteTokenu (9)!");
                     }
                 }
             }
@@ -1385,10 +1385,10 @@ public class ShopAPI implements Listener {
                 if (VoteTokensAPI.getVoteTokens(p) >= 1) {
                     CraftCoinsAPI.giveCoins(p, 30);
                     VoteTokensAPI.takeVoteTokens(p, 1);
-                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f30 CraftCoins §eza §a1 VT.");
+                    p.sendMessage("§e§l[*] §eZakoupil jsi si §f30 CraftCoins §eza §a1 VT.");
                     p.closeInventory();
                 } else {
-                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (1)!");
+                    p.sendMessage("§c§l[!] §cNemas dostatek VoteTokenu (1)!");
                 }
             }
 
@@ -1397,10 +1397,10 @@ public class ShopAPI implements Listener {
                 if (VoteTokensAPI.getVoteTokens(p) >= 3) {
                     CraftCoinsAPI.giveCoins(p, 100);
                     VoteTokensAPI.takeVoteTokens(p, 3);
-                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f100 CraftCoins §eza §a3 VT.");
+                    p.sendMessage("§e§l[*] §eZakoupil jsi si §f100 CraftCoins §eza §a3 VT.");
                     p.closeInventory();
                 } else {
-                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (3)!");
+                    p.sendMessage("§c§l[!] §cNemas dostatek VoteTokenu (3)!");
                 }
             }
         }
@@ -1964,16 +1964,16 @@ public class ShopAPI implements Listener {
 
     private void prepareTag(Player p, int price, String perm, String name) {
         if (p.hasPermission(perm)) {
-            p.sendMessage("§c§l(!) §cTag " + name + " jiz vlastnis!");
+            p.sendMessage("§c§l[!] §cTag " + name + " jiz vlastnis!");
         } else {
             int i = (int) CraftCoinsAPI.getCoins(p);
             if (i >= price) {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set " + perm + " true");
                 CraftCoinsAPI.takeCoins(p, price);
-                p.sendMessage("§e§l(*) §eZakoupil jsi si tag: §f" + name);
+                p.sendMessage("§e§l[*] §eZakoupil jsi si tag: §f" + name);
                 p.closeInventory();
             } else {
-                p.sendMessage("§c§l(!) §cNemas dostatek coinu k nakupu tohoto tagu!");
+                p.sendMessage("§c§l[!] §cNemas dostatek coinu k nakupu tohoto tagu!");
             }
         }
     }

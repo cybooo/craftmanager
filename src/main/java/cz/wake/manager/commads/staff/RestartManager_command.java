@@ -30,7 +30,7 @@ public class RestartManager_command implements CommandExecutor {
             if (strings.length == 0) {
                 if (Main.restartTime != null) {
                   Long remaining = Main.restartTime - System.currentTimeMillis();
-                  p.sendMessage("§e§l(*) §eAktualne je naplanovany §c§lRESTART §e(za " + TimeUnit.MILLISECONDS.toMinutes(remaining) + "m " + TimeUnit.MILLISECONDS.toSeconds(remaining) % 60 % 60 + "s)");
+                  p.sendMessage("§e§l[*] §eAktualne je naplanovany §c§lRESTART §e(za " + TimeUnit.MILLISECONDS.toMinutes(remaining) + "m " + TimeUnit.MILLISECONDS.toSeconds(remaining) % 60 % 60 + "s)");
                 }
                 sendUsage(p);
                 return true;
@@ -38,7 +38,7 @@ public class RestartManager_command implements CommandExecutor {
             if (strings.length >= 3) {
                 if (strings[0].equalsIgnoreCase("start")) {
                     if (Main.restartTime != null) {
-                      p.sendMessage("§c§l(!) §cJiz probiha nejaky restart, musis ho nejdrive zrusit!");
+                      p.sendMessage("§c§l[!] §cJiz probiha nejaky restart, musis ho nejdrive zrusit!");
                       return true;
                     }
                     try {
@@ -85,7 +85,7 @@ public class RestartManager_command implements CommandExecutor {
                             return true;
                         }
                     } catch (NumberFormatException e) {
-                        p.sendMessage("§c§l(!) §cNespravny format cisel!");
+                        p.sendMessage("§c§l[!] §cNespravny format cisel!");
                         return true;
                     }
                 } else {
@@ -94,11 +94,11 @@ public class RestartManager_command implements CommandExecutor {
             } if (strings.length == 1) {
                 if (strings[0].equalsIgnoreCase("stop")) {
                   if (Main.restartTime == null) {
-                      p.sendMessage("§c§l(!) §cMomentalne neni naplanovan zadny restart.");
+                      p.sendMessage("§c§l[!] §cMomentalne neni naplanovan zadny restart.");
                       return true;
                   }
                   Main.restartTime = null;
-                  p.sendMessage("§e§l(*) §eNaplanovany restart byl uspesne zrusen.");
+                  p.sendMessage("§e§l[*] §eNaplanovany restart byl uspesne zrusen.");
                   runnables.get(0).cancel();
                   bb.hide();
                   return true;
@@ -111,13 +111,13 @@ public class RestartManager_command implements CommandExecutor {
                 return true;
             }
         } else {
-          p.sendMessage("§c§l(!) §cNemas dostatecna prava!");
+          p.sendMessage("§c§l[!] §cNemas dostatecna prava!");
           return true;
         }
         return true;
     }
 
     private void sendUsage(Player p) {
-        p.sendMessage("§ePouziti: §f/rm start/stop <minuty> <duvod>");
+        p.sendMessage("§e§l[*] §ePouziti: §f/rm start/stop <minuty> <duvod>");
     }
 }

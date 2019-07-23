@@ -20,7 +20,7 @@ public class Blocks_command implements CommandExecutor {
                 if (player.hasPermission("craftmanager.vip.blocks")) {
                     craftBlocks(player);
                 } else {
-                    player.sendMessage("§c§l(!) §cK ziskani pristupu potrebujes aktivni minimalne Diamond VIP.");
+                    player.sendMessage("§c§l[!] §cK ziskani pristupu potrebujes aktivni minimalne Diamond VIP.");
                 }
 
             }
@@ -92,7 +92,7 @@ public class Blocks_command implements CommandExecutor {
             player.getInventory().addItem(new ItemStack[]{new ItemStack(rO > 0 ? Material.REDSTONE : Material.AIR, rO)});
             player.getInventory().addItem(new ItemStack[]{new ItemStack(lO > 0 ? Material.LEGACY_INK_SACK : Material.AIR, lO, (byte) 4)});
             player.getInventory().addItem(new ItemStack[]{new ItemStack(cO > 0 ? Material.COAL : Material.AIR, cO)});
-            player.sendMessage("§e§l(*) §ePremenil si §f§l" + String.valueOf(itemsChanged) + " itemu §ena §f§l" + (itemsChanged -= diamondOverflow + emeraldsOverflow + ironOverflow + goldOverflow + rO + cO + lO) / 9 + "§e blocku.");
+            player.sendMessage("§e§l[*] §ePremenil si §f§l" + String.valueOf(itemsChanged) + " itemu §ena §f§l" + (itemsChanged -= diamondOverflow + emeraldsOverflow + ironOverflow + goldOverflow + rO + cO + lO) / 9 + "§e blocku.");
             player.updateInventory();
         } catch (Exception e) {
             e.printStackTrace();

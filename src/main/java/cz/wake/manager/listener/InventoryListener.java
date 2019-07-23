@@ -271,77 +271,77 @@ public class InventoryListener implements Listener {
             if (e.getSlot() == 10) {
                 chatc.setColor(p, ChatColor.RED);
                 Main.getInstance().getMySQL().updateSettings(p, "chatcolor", 12);
-                p.sendMessage("§e§l(*) §eBarva psani nastavena na: §cCervena");
+                p.sendMessage("§e§l[*] §eBarva psani nastavena na: §cCervena");
             }
             if (e.getSlot() == 11) {
                 chatc.setColor(p, ChatColor.DARK_AQUA);
                 Main.getInstance().getMySQL().updateSettings(p, "chatcolor", 3);
-                p.sendMessage("§e§l(*) §eBarva psani nastavena na: §3Tyrkysova");
+                p.sendMessage("§e§l[*] §eBarva psani nastavena na: §3Tyrkysova");
             }
             if (e.getSlot() == 12) {
                 chatc.setColor(p, ChatColor.GREEN);
                 Main.getInstance().getMySQL().updateSettings(p, "chatcolor", 10);
-                p.sendMessage("§e§l(*) §eBarva psani nastavena na: §aZelena");
+                p.sendMessage("§e§l[*] §eBarva psani nastavena na: §aZelena");
             }
             if (e.getSlot() == 13) {
                 chatc.setColor(p, ChatColor.LIGHT_PURPLE);
                 Main.getInstance().getMySQL().updateSettings(p, "chatcolor", 13);
-                p.sendMessage("§e§l(*) §eBarva psani nastavena na: §dRuzova");
+                p.sendMessage("§e§l[*] §eBarva psani nastavena na: §dRuzova");
             }
             if (e.getSlot() == 14) {
                 chatc.setColor(p, ChatColor.GOLD);
                 Main.getInstance().getMySQL().updateSettings(p, "chatcolor", 6);
-                p.sendMessage("§e§l(*) §eBarva psani nastavena na: §6Zlata");
+                p.sendMessage("§e§l[*] §eBarva psani nastavena na: §6Zlata");
             }
             if (e.getSlot() == 15) {
                 chatc.setColor(p, ChatColor.DARK_PURPLE);
                 Main.getInstance().getMySQL().updateSettings(p, "chatcolor", 5);
-                p.sendMessage("§e§l(*) §eBarva psani nastavena na: §5Fialova");
+                p.sendMessage("§e§l[*] §eBarva psani nastavena na: §5Fialova");
             }
             if (e.getSlot() == 16) {
                 chatc.setColor(p, ChatColor.GRAY);
                 Main.getInstance().getMySQL().updateSettings(p, "chatcolor", 7);
-                p.sendMessage("§e§l(*) §eBarva psani nastavena na: §7Seda");
+                p.sendMessage("§e§l[*] §eBarva psani nastavena na: §7Seda");
             }
             if (e.getSlot() == 19) {
                 chatc.setColor(p, ChatColor.DARK_GRAY);
                 Main.getInstance().getMySQL().updateSettings(p, "chatcolor", 8);
-                p.sendMessage("§e§l(*) §eBarva psani nastavena na: §8Tmave-seda");
+                p.sendMessage("§e§l[*] §eBarva psani nastavena na: §8Tmave-seda");
             }
             if (e.getSlot() == 20) {
                 chatc.setColor(p, ChatColor.WHITE);
                 Main.getInstance().getMySQL().updateSettings(p, "chatcolor", 15);
-                p.sendMessage("§e§l(*) §eBarva psani nastavena na: §fBila");
+                p.sendMessage("§e§l[*] §eBarva psani nastavena na: §fBila");
             }
             if (e.getSlot() == 21) {
                 chatc.setColor(p, ChatColor.BLUE);
                 Main.getInstance().getMySQL().updateSettings(p, "chatcolor", 9);
-                p.sendMessage("§e§l(*) §eBarva psani nastavena na: §9Modra");
+                p.sendMessage("§e§l[*] §eBarva psani nastavena na: §9Modra");
             }
             if (e.getSlot() == 22) {
                 chatc.setColor(p, ChatColor.DARK_BLUE);
                 Main.getInstance().getMySQL().updateSettings(p, "chatcolor", 1);
-                p.sendMessage("§e§l(*) §eBarva psani nastavena na: §1Tmave-modra");
+                p.sendMessage("§e§l[*] §eBarva psani nastavena na: §1Tmave-modra");
             }
             if (e.getSlot() == 23) {
                 chatc.setColor(p, ChatColor.AQUA);
                 Main.getInstance().getMySQL().updateSettings(p, "chatcolor", 11);
-                p.sendMessage("§e§l(*) §eBarva psani nastavena na: §bSvetle-modra");
+                p.sendMessage("§e§l[*] §eBarva psani nastavena na: §bSvetle-modra");
             }
             if (e.getSlot() == 24) {
                 chatc.setColor(p, ChatColor.DARK_GREEN);
                 Main.getInstance().getMySQL().updateSettings(p, "chatcolor", 2);
-                p.sendMessage("§e§l(*) §eBarva psani nastavena na: §2Tmave-zelena");
+                p.sendMessage("§e§l[*] §eBarva psani nastavena na: §2Tmave-zelena");
             }
             if (e.getSlot() == 25) {
                 chatc.setColor(p, ChatColor.DARK_RED);
                 Main.getInstance().getMySQL().updateSettings(p, "chatcolor", 4);
-                p.sendMessage("§e§l(*) §eBarva psani nastavena na: §4Tmave-cervena");
+                p.sendMessage("§e§l[*] §eBarva psani nastavena na: §4Tmave-cervena");
             }
             if (e.getSlot() == 40) {
                 chatc.removeColor(p);
                 Main.getInstance().getMySQL().updateSettings(p, "chatcolor", 15);
-                p.sendMessage("§e§l(*) §eBarva psani nastavena na: §fBila");
+                p.sendMessage("§e§l[*] §eBarva psani nastavena na: §fBila");
             }
             p.closeInventory();
         }

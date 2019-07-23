@@ -59,7 +59,7 @@ public class TwerkEvent implements Listener {
         //world.playEffect(location2.add(0.5, 0.5, 0.5), Effect.VILLAGER_PLANT_GROW, 0, 0, 0.25f, 0.25f, 0.25f, 1.0f, 16, 16);
 
         if (ExpUtil.getTotalExperience(player) - 15 < 0) {
-            player.sendMessage("§c§l(!) §cNemas dostatek expu!");
+            player.sendMessage("§c§l[!] §cNemas dostatek expu!");
             return;
         }
 
