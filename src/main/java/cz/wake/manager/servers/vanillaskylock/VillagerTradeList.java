@@ -5,8 +5,6 @@ import cz.craftmania.craftcore.spigot.builders.villager.VillagerTradeBuilder;
 import cz.wake.manager.utils.Log;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.AbstractVillager;
-import org.bukkit.entity.Villager;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionType;
 
@@ -16,9 +14,8 @@ public class VillagerTradeList {
 
     //TODO: Podelit nektery?
 
-    public VillagerTradeBuilder generateSellVillagerShop(Villager villager) {
+    public VillagerTradeBuilder generateSellVillagerShop() {
         VillagerTradeBuilder tradeList = new VillagerTradeBuilder();
-        tradeList.clearTrades(villager);
         int randomNumber = randRange(1,10);
 
         if (randomNumber == 1) {
@@ -114,14 +111,11 @@ public class VillagerTradeList {
             Log.withPrefix("Zadany shop neexistuje!");
             return tradeList;
         }
-
-        tradeList.setTrades(villager);
         return tradeList;
     }
 
-    public VillagerTradeBuilder generateSeaVillagerShop(Villager villager) {
+    public VillagerTradeBuilder generateSeaVillagerShop() {
         VillagerTradeBuilder tradeList = new VillagerTradeBuilder();
-        tradeList.clearTrades(villager);
         int randomNumber = randRange(1,6);
 
         if (randomNumber == 1) {
@@ -166,14 +160,11 @@ public class VillagerTradeList {
             Log.withPrefix("Zadany shop neexistuje!");
             return tradeList;
         }
-
-        tradeList.setTrades(villager);
         return tradeList;
     }
 
-    public VillagerTradeBuilder generateEndVillagerShop(Villager villager) {
+    public VillagerTradeBuilder generateEndVillagerShop() {
         VillagerTradeBuilder tradeList = new VillagerTradeBuilder();
-        tradeList.clearTrades(villager);
         int randomNumber = randRange(1,6);
 
         if (randomNumber == 1) {
@@ -216,14 +207,11 @@ public class VillagerTradeList {
             Log.withPrefix("Zadany shop neexistuje!");
             return tradeList;
         }
-
-        tradeList.setTrades(villager);
         return tradeList;
     }
 
-    public VillagerTradeBuilder generateNetherVillagerShop(Villager villager) {
+    public VillagerTradeBuilder generateNetherVillagerShop() {
         VillagerTradeBuilder tradeList = new VillagerTradeBuilder();
-        tradeList.clearTrades(villager);
         int randomNumber = randRange(1,6);
 
         if (randomNumber == 1) {
@@ -260,14 +248,11 @@ public class VillagerTradeList {
             Log.withPrefix("Zadany shop neexistuje!");
             return tradeList;
         }
-
-        tradeList.setTrades(villager);
         return tradeList;
     }
 
-    public VillagerTradeBuilder generateBuyVillagerShop(Villager villager) {
+    public VillagerTradeBuilder generateBuyVillagerShop() {
         VillagerTradeBuilder tradeList = new VillagerTradeBuilder();
-        tradeList.clearTrades(villager);
         int randomNumber = randRange(1,13);
 
         if (randomNumber == 1) {
@@ -391,14 +376,11 @@ public class VillagerTradeList {
             Log.withPrefix("Zadany shop neexistuje!");
             return tradeList;
         }
-
-        tradeList.setTrades(villager);
         return tradeList;
     }
 
-    public VillagerTradeBuilder generateRareVillagerShop(AbstractVillager villager) {
+    public VillagerTradeBuilder generateRareVillagerShop() {
         VillagerTradeBuilder tradeList = new VillagerTradeBuilder();
-        tradeList.clearTrades(villager);
         int randomNumber = randRange(1,3);
 
         if (randomNumber == 1) {
@@ -427,8 +409,6 @@ public class VillagerTradeList {
             Log.withPrefix("Zadany shop neexistuje!");
             return tradeList;
         }
-
-        tradeList.setTrades(villager);
         return tradeList;
     }
 

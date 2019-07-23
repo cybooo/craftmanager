@@ -12,7 +12,8 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
-import org.bukkit.inventory.ItemStack;
+import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.potion.Potion;
@@ -32,6 +33,13 @@ public class VillagerManager {
     private static Location endVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 325.5, 109, -276.5, 90, 0);
     private static Location buyVilllagerLocaiton = new Location(Bukkit.getWorld("vsbspawn"), 301.5, 109.0, -261.5, -180, 0);
 
+    private static VillagerTradeBuilder sellMerchant;
+    private static VillagerTradeBuilder netherMerchant;
+    private static VillagerTradeBuilder rareMerchant;
+    private static VillagerTradeBuilder seaMerchant;
+    private static VillagerTradeBuilder endMerchant;
+    private static VillagerTradeBuilder buyMerchant;
+
     public static void spawnVillagers() {
         killVillagers(); // Nejdriv zabit vsechny co existuji
         spawnSellVillager();
@@ -40,11 +48,24 @@ public class VillagerManager {
         spawnRareVillager();
         spawnNetherVillager();
         spawnEndVillager();
+
+        // Prepare shops
+        sellMerchant = tradeList.generateSellVillagerShop();
+        netherMerchant = tradeList.generateNetherVillagerShop();
+        rareMerchant = tradeList.generateRareVillagerShop();
+        seaMerchant = tradeList.generateSeaVillagerShop();
+        endMerchant = tradeList.generateEndVillagerShop();
+        buyMerchant = tradeList.generateBuyVillagerShop();
     }
 
     public static void killVillagers() {
         Objects.requireNonNull(Bukkit.getWorld("vsbspawn")).getEntities().forEach(villager -> {
-            if (villager.hasMetadata("market_villager")){
+            if (villager.hasMetadata(VillagerType.SEA_VILLAGER.name())
+                    || villager.hasMetadata(VillagerType.RARE_VILLAGER.name())
+                    || villager.hasMetadata(VillagerType.NETHER_VILLAGER.name())
+                    || villager.hasMetadata(VillagerType.END_VILLAGER.name())
+                    || villager.hasMetadata(VillagerType.BUY_VILLAGER.name())
+                    || villager.hasMetadata(VillagerType.SELL_VILLAGER.name())) {
                 villager.remove();
             }
         });
@@ -95,9 +116,7 @@ public class VillagerManager {
         villager.setVillagerLevel(5);
         villager.setRemoveWhenFarAway(false);
 
-        setMetadata(villager, "market_villager", "market_villager", Main.getInstance());
-
-        tradeList.generateSellVillagerShop(villager);
+        setMetadata(villager, VillagerType.SELL_VILLAGER, VillagerType.SELL_VILLAGER, Main.getInstance());
 
         sellVillagerLocation.add(0, 3, 0);
         Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), sellVillagerLocation);
@@ -119,9 +138,7 @@ public class VillagerManager {
         villager.setCustomName("Akvamen");
         villager.setCustomNameVisible(false);
 
-        setMetadata(villager, "market_villager", "market_villager", Main.getInstance());
-
-        tradeList.generateSeaVillagerShop(villager);
+        setMetadata(villager, VillagerType.SEA_VILLAGER, VillagerType.SEA_VILLAGER, Main.getInstance());
 
         seaVillagerLocation.add(0, 3, 0);
         Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), seaVillagerLocation);
@@ -138,9 +155,7 @@ public class VillagerManager {
         villager.setCanPickupItems(false);
         villager.setRemoveWhenFarAway(false);
 
-        setMetadata(villager, "market_villager", "market_villager", Main.getInstance());
-
-        tradeList.generateRareVillagerShop(villager);
+        setMetadata(villager, VillagerType.RARE_VILLAGER, VillagerType.RARE_VILLAGER, Main.getInstance());
 
         rareVillagerLocation.add(0, 3, 0);
         Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), rareVillagerLocation);
@@ -162,9 +177,7 @@ public class VillagerManager {
         villager.setCustomName("Helbój");
         villager.setCustomNameVisible(false);
 
-        setMetadata(villager, "market_villager", "market_villager", Main.getInstance());
-
-        tradeList.generateNetherVillagerShop(villager);
+        setMetadata(villager, VillagerType.NETHER_VILLAGER, VillagerType.NETHER_VILLAGER, Main.getInstance());
 
         netherVillagerLocation.add(0, 3, 0);
         Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), netherVillagerLocation);
@@ -184,9 +197,7 @@ public class VillagerManager {
         villager.setVillagerLevel(5);
         villager.setRemoveWhenFarAway(false);
 
-        setMetadata(villager, "market_villager", "market_villager", Main.getInstance());
-
-        tradeList.generateEndVillagerShop(villager);
+        setMetadata(villager, VillagerType.END_VILLAGER, VillagerType.END_VILLAGER, Main.getInstance());
 
         endVillagerLocation.add(0, 3, 0);
         Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), endVillagerLocation);
@@ -206,9 +217,7 @@ public class VillagerManager {
         villager.setVillagerLevel(5);
         villager.setRemoveWhenFarAway(false);
 
-        setMetadata(villager, "market_villager", "market_villager", Main.getInstance());
-
-        tradeList.generateBuyVillagerShop(villager);
+        setMetadata(villager, VillagerType.BUY_VILLAGER, VillagerType.BUY_VILLAGER, Main.getInstance());
 
         buyVilllagerLocaiton.add(0, 3,0);
         Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), buyVilllagerLocaiton);
@@ -218,12 +227,12 @@ public class VillagerManager {
         villagerList.add(villager);
     }
 
-    public static void setMetadata(Villager villager, String paramString, Object paramObject, Main paramMain) {
-        villager.setMetadata(paramString, new FixedMetadataValue(paramMain, paramObject));
+    public static void setMetadata(Villager villager, VillagerType paramString, VillagerType paramObject, Main paramMain) {
+        villager.setMetadata(paramString.name(), new FixedMetadataValue(paramMain, paramObject.name()));
     }
 
-    public static void setMetadata(WanderingTrader villager, String paramString, Object paramObject, Main paramMain) {
-        villager.setMetadata(paramString, new FixedMetadataValue(paramMain, paramObject));
+    public static void setMetadata(WanderingTrader villager, VillagerType paramString, VillagerType paramObject, Main paramMain) {
+        villager.setMetadata(paramString.name(), new FixedMetadataValue(paramMain, paramObject.name()));
     }
 
     public enum PotionBase {NORMAL, ARROW, LINGERING, SPLASH,}
@@ -243,7 +252,35 @@ public class VillagerManager {
         return s;
     }*/
 
-
+    public static void openMerchantInventory(VillagerType type, Player player) {
+        if (type == VillagerType.SELL_VILLAGER) {
+            Merchant merchant = Bukkit.createMerchant("Sell Villager");
+            sellMerchant.setTrades(merchant);
+            player.openMerchant(merchant, true);
+        } else if (type == VillagerType.BUY_VILLAGER) {
+            Merchant merchant = Bukkit.createMerchant("Buy Villager");
+            buyMerchant.setTrades(merchant);
+            player.openMerchant(merchant, true);
+        } else if (type == VillagerType.END_VILLAGER) {
+            Merchant merchant = Bukkit.createMerchant("End Villager");
+            endMerchant.setTrades(merchant);
+            player.openMerchant(merchant, true);
+        } else if (type == VillagerType.NETHER_VILLAGER) {
+            Merchant merchant = Bukkit.createMerchant("Nether Villager");
+            netherMerchant.setTrades(merchant);
+            player.openMerchant(merchant, true);
+        } else if (type == VillagerType.RARE_VILLAGER) {
+            Merchant merchant = Bukkit.createMerchant("Rare Villager");
+            rareMerchant.setTrades(merchant);
+            player.openMerchant(merchant, true);
+        } else if (type == VillagerType.SEA_VILLAGER) {
+            Merchant merchant = Bukkit.createMerchant("Sea Villager");
+            seaMerchant.setTrades(merchant);
+            player.openMerchant(merchant, true);
+        } else {
+            Log.withPrefix(player.getName() + " se snazi otevrit shop, ktery neexistuje!");
+        }
+    }
 }
 
 class CraftPotion {
