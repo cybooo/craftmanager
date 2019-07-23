@@ -60,6 +60,11 @@ public class GlowItemCommand implements CommandExecutor {
                     }
                 }
 
+                if (Main.getInstance().getConfig().getStringList("glow_blacklist").contains(item.getType().toString().toUpperCase())) {
+                    player.sendMessage("§cGlowItem nelze pouzit na tento item!");
+                    return true;
+                }
+
                 ItemBuilder itemBuilder = new ItemBuilder(item);
                 player.getInventory().setItemInMainHand(null);
                 itemBuilder.setGlowing();
