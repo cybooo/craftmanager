@@ -16,13 +16,13 @@ public class ATAfkTask implements Runnable {
                 // 10 minut
                 if(Main.getInstance().at_afk.get(p) == 10){
                     p.sendTitle("§cByl jsi prepnut do AFK rezimu", "§ctakze se ti nebude pricitat cas do ats", 5, 20, 5);
-                    p.sendMessage("§c§l(!) §cByl jsi prepnut do AFK rezimu, takze se ti nebude pricitat cas do ats");
+                    p.sendMessage("§c§l[!] §cByl jsi prepnut do AFK rezimu, takze se ti nebude pricitat cas do ats");
                 }
 
                 // 29 minut
                 if(Main.getInstance().at_afk.get(p) == 29){
                     p.sendTitle("§cZacni pracovat", "§cjinak te za minutu kicknu ze serveru.", 5, 20, 5);
-                    p.sendMessage("§c§l(!) §cZacni pracovat, jinak te za minutu kicknu ze serveru");
+                    p.sendMessage("§c§l[!] §cZacni pracovat, jinak te za minutu kicknu ze serveru");
                     p.playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_AMBIENT, 10, 1);
                 }
 

@@ -14,7 +14,7 @@ public class Creative_command implements CommandExecutor {
             Player player = (Player) Sender;
             if ((Command.getName().equalsIgnoreCase("creative"))) {
                 try {
-                    player.sendMessage("§eTeleportuji na server §fCreative");
+                    player.sendMessage("§e§l[*] §eTeleportuji na server §fCreative");
                     Main.getInstance().sendToServer(player, "creative");
                 } catch (Exception e) {
                     e.printStackTrace();

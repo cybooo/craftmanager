@@ -13,7 +13,7 @@ public class Cm_command implements CommandExecutor {
             if (strings.length == 1) {
                 if (strings[0].equalsIgnoreCase("reload")) {
                     Main.getInstance().reloadConfig();
-                    sender.sendMessage("§e§l(*) §eConfig uspesne reloadnut.");
+                    sender.sendMessage("§e§l[*] §eConfig uspesne reloadnut.");
                     return true;
                 }
                 else {
@@ -25,7 +25,7 @@ public class Cm_command implements CommandExecutor {
                 return true;
             }
         } else {
-            sender.sendMessage("§c§l(!) §cNemas dostatecna prava!");
+            sender.sendMessage("§c§l[!] §cNemas dostatecna prava!");
             return true;
         }
     }

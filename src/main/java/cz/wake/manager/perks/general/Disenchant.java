@@ -25,8 +25,8 @@ public class Disenchant implements CommandExecutor {
             if ((Command.getName().equalsIgnoreCase("disenchant"))) {
                 if (player.hasPermission("craftmanager.vip.disenchant")) {
 
-                    if (Main.getServerType() == ServerType.VANILLA) {
-                        player.sendMessage("§c§l(!) §cNa tomto serveru tato vyhoda neplati!");
+                    if (Main.getServerType() == ServerType.VANILLA || Main.getServerType() == ServerType.SKYCLOUD) {
+                        player.sendMessage("§c§l[!] §cNa tomto serveru tato vyhoda neplati!");
                         return true;
                     }
 
@@ -45,7 +45,7 @@ public class Disenchant implements CommandExecutor {
                         // Kontrola Glowing items
                         if (itemInHand.getEnchantments().containsKey(Enchantment.DURABILITY)) {
                             if (itemInHand.getEnchantments().get(Enchantment.DURABILITY) == 0) {
-                                player.sendMessage("§c§l(!) §cNelze pouzit Disenchant na item, ktery ma na sobe Glowing.");
+                                player.sendMessage("§c§l[!] §cNelze pouzit Disenchant na item, ktery ma na sobe Glowing.");
                                 return true;
                             }
                         }
@@ -94,13 +94,13 @@ public class Disenchant implements CommandExecutor {
                             withoutEnchant.setDurability(durability);
                             player.getInventory().addItem(withoutEnchant);
                         } else {
-                            player.sendMessage("§c§l(!) §cMusis mit minimalne " + finalPriceLvls + " levlu na disenchant tohoto itemu!");
+                            player.sendMessage("§c§l[!] §cMusis mit minimalne " + finalPriceLvls + " levlu na disenchant tohoto itemu!");
                         }
                     } else {
-                        player.sendMessage("§c§l(!) §cNa pozadovany item nelze pouzit Disenchant!");
+                        player.sendMessage("§c§l[!] §cNa pozadovany item nelze pouzit Disenchant!");
                     }
                 } else {
-                    player.sendMessage("§c§l(!) §cK pouziti tohoto prikazu musis mit zakoupene VIP!");
+                    player.sendMessage("§c§l[!] §cK pouziti tohoto prikazu musis mit zakoupene VIP!");
                 }
             }
         }

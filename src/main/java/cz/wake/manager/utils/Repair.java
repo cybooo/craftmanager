@@ -17,7 +17,7 @@ public class Repair {
         ItemStack item = p.getInventory().getItemInMainHand();
 
         if (!Main.getInstance().isValidMaterial(item.getType())) {
-            p.sendMessage("§c§l(!) §cNemas v ruce item, ktery by sel opravit.");
+            p.sendMessage("§c§l[!] §cNemas v ruce item, ktery by sel opravit.");
             return;
         }
         int money = 0;
@@ -52,12 +52,12 @@ public class Repair {
         }
 
         if (Main.getInstance().getEconomy().getBalance(Bukkit.getOfflinePlayer(p.getUniqueId())) < money) {
-            p.sendMessage("§c§l(!) §cNemas dostatek penez! Potrebujes: §f" + money + "$ §c!");
+            p.sendMessage("§c§l[!] §cNemas dostatek penez! Potrebujes: §f" + money + "$ §c!");
             return;
         }
 
         Main.getInstance().getEconomy().withdrawPlayer(Bukkit.getOfflinePlayer(p.getUniqueId()), money);
         item.setDurability((short) 0);
-        p.sendMessage("§e§l(*) §eUspesne sis opravil tento nastroj za §f" + money + "$ §e!");
+        p.sendMessage("§e§l[*] §eUspesne sis opravil tento nastroj za §f" + money + "$ §e!");
     }
 }

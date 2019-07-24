@@ -38,13 +38,13 @@ public class SkyblockPVPListener implements Listener {
                 }
                 if (b.getLocation().equals(new Location(Bukkit.getWorld("pvp"), 448.0, 33.0, -703.0))) { //Teleport do areny
                     if (p.getInventory().contains(Material.ELYTRA) || (p.getInventory().getItemInOffHand().getType().equals(Material.ELYTRA))) {
-                        p.sendMessage("§c§l(!) §cNelze vstoupit do PvP s Elytrou!");
+                        p.sendMessage("§c§l[!] §cNelze vstoupit do PvP s Elytrou!");
                         return;
                     } else if ((p.getInventory().contains(Material.GOLDEN_APPLE)) || (p.getInventory().getItemInOffHand().getType().equals(Material.GOLDEN_APPLE))) {
-                        p.sendMessage("§c§l(!) §cNelze vstoupit do PvP s Golden Apple!");
+                        p.sendMessage("§c§l[!] §cNelze vstoupit do PvP s Golden Apple!");
                         return;
                     } else if ((p.getInventory().contains(Material.TOTEM_OF_UNDYING)) || (p.getInventory().getItemInOffHand().getType().equals(Material.TOTEM_OF_UNDYING))) {
-                        p.sendMessage("§c§l(!) §cNelze vstoupit do PvP s Totemem!");
+                        p.sendMessage("§c§l[!] §cNelze vstoupit do PvP s Totemem!");
                         return;
                     }
                     teleportToArena(p);
@@ -53,7 +53,7 @@ public class SkyblockPVPListener implements Listener {
                     p.setFlying(false);
                 }
                 if (b.getLocation().equals(new Location(Bukkit.getWorld("pvp"), 450.0, 14.0, -700.0)) && !queue.equals(p)) { //Teleport na spawn
-                    p.sendMessage("§e§l(*) §eZa 4 vteriny budes teleportovan na spawn!");
+                    p.sendMessage("§e§l[*] §eZa 4 vteriny budes teleportovan na spawn!");
                     queue.add(p);
                     Bukkit.getScheduler().runTaskLater(Main.getInstance(), new BukkitRunnable() {
                         @Override
@@ -89,8 +89,8 @@ public class SkyblockPVPListener implements Listener {
     private void sendMessage(Player p) {
         p.playSound(p.getLocation(), Sound.BLOCK_ANVIL_BREAK, 1f, 1f);
         p.sendMessage("   ");
-        p.sendMessage("§c§lUpozorneni pro PvP:");
-        p.sendMessage("§eTeamy v PVP jsou zakazany, poruseni se tresta banem!");
+        p.sendMessage("§c§l[!] §c§lUpozorneni pro PvP:");
+        p.sendMessage("§e§l[*] §eTeamy v PVP jsou zakazany, poruseni se tresta banem!");
         p.sendMessage("   ");
     }
 

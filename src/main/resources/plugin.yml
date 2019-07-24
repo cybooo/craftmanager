@@ -4,7 +4,7 @@ authors: [MrWakeCZ]
 depend: [CraftCore,CraftEconomy,CraftChat]
 softdepend: [AdvancedEnchantments,HolographicDisplays]
 api-version: "1.14"
-version: "1.4"
+version: "1.4.1"
 
 commands:
     cm:
@@ -36,7 +36,7 @@ commands:
       description: Server teleport
     vanilla:
       description: Server teleport
-    bedwars:
+    skycloud:
       description: Server teleport
     disenchant:
       description: Prikaz pro VIP
@@ -89,7 +89,7 @@ permissions:
     craftmanager.particles.*:
       description: Pravo na aktivace vsech Particles v /part
     craftmanager.vip.twerking:
-      description: Tweking pro VIP na Vanilla-Skyblock
+      description: Tweking pro VIP na SkyCloud a Vanillu
     craftmanager.chatcolor:
       description: Povoleni hraci zmeny barvy psani v /chatcolor
     craftmanager.chatcolor.at:

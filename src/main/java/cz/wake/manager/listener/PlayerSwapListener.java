@@ -11,7 +11,7 @@ public class PlayerSwapListener implements Listener {
     @EventHandler
     public void onVotePartySwap(PlayerSwapHandItemsEvent event){
         if(event.getOffHandItem().getType() == Material.PISTON && ChatColor.stripColor(event.getOffHandItem().getItemMeta().getDisplayName()).contains("VoteParty")){
-            event.getPlayer().sendMessage("§c§l(!) §cNelze dat VoteParty do druhe ruky!");
+            event.getPlayer().sendMessage("§c§l[!] §cNelze dat VoteParty do druhe ruky!");
             event.setCancelled(true);
         }
     }

@@ -16,7 +16,7 @@ public class Repair_command implements CommandExecutor {
         }
 
         if (!sender.hasPermission("craftmanager.repair")) {
-            sender.sendMessage("§c§l(!) §cNemas dostatecne opravneni!");
+            sender.sendMessage("§c§l[!] §cNemas dostatecne opravneni!");
             return true;
         }
 

@@ -19,44 +19,44 @@ public class GlowItemCommand implements CommandExecutor {
             final Player player = (Player) sender;
             if (args.length == 0) {
                 if (!player.hasPermission("craftmanager.vip.glowingitems")) {
-                    player.sendMessage("§c§l(!) §cNedostatecna prava, na toto musis mit VIP. §f/vip");
+                    player.sendMessage("§c§l[!] §cNedostatecna prava, na toto musis mit VIP. §f/vip");
                     return true;
                 }
                 if (Main.getServerType() == ServerType.VANILLA) {
-                    player.sendMessage("§c§l(!) §cNa tomto serveru tato vyhoda neplati!");
+                    player.sendMessage("§c§l[!] §cNa tomto serveru tato vyhoda neplati!");
                     return true;
                 }
                 ItemStack item = player.getInventory().getItemInMainHand();
                 if (item == null) {
-                    player.sendMessage("§c§l(!) §cMusis drzet item, na ktery chces dat glowing efekt.");
+                    player.sendMessage("§c§l[!] §cMusis drzet item, na ktery chces dat glowing efekt.");
                     return true;
                 }
-
+                //Přidat blacklist všech itemů, na které jde dávat ve Vanilla MC enchanty. Viz: https://youtrack.waked.cz/issue/CMD-845
                 if (item.isSimilar(new ItemStack(Material.GOLDEN_APPLE, 1, (short) 1))) {
-                    player.sendMessage("§c§l(!) §cNa tento item nelze pouzit prikaz /gi");
+                    player.sendMessage("§c§l[!] §cNa tento item nelze pouzit prikaz /gi");
                     return true;
                 }
 
                 if (item.hasItemMeta()) {
                     if (item.getItemMeta().hasLore()) {
-                        player.sendMessage("§c§l(!) §cNa tento item nelze pouzit prikaz /gi");
+                        player.sendMessage("§c§l[!] §cNa tento item nelze pouzit prikaz /gi");
                         return true;
                     }
                 }
 
                 if (item.getAmount() > 1) {
-                    player.sendMessage("§c§l(!) §cGlowItem lze pouzit pouze na jeden item!");
+                    player.sendMessage("§c§l[!] §cGlowItem lze pouzit pouze na jeden item!");
                     return true;
                 }
 
                 if (!item.getEnchantments().isEmpty()) {
-                    player.sendMessage("§c§l(!) §cNelze pouzit GlowItem na item, ktery jiz ma enchant!");
+                    player.sendMessage("§c§l[!] §cNelze pouzit GlowItem na item, ktery jiz ma enchant!");
                     return true;
                 }
 
                 if (Main.getInstance().isCustomDisenchantEnabled()) {
                     if (!AEAPI.getEnchantmentsOnItem(item).isEmpty()) {
-                        player.sendMessage("§c§l(!) §cNelze pouzit GlowItem na item, ktery jiz ma enchant!");
+                        player.sendMessage("§c§l[!] §cNelze pouzit GlowItem na item, ktery jiz ma enchant!");
                         return true;
                     }
                 }
@@ -66,7 +66,7 @@ public class GlowItemCommand implements CommandExecutor {
                 itemBuilder.setGlowing();
                 itemBuilder.setAmount(1);
                 player.getInventory().setItemInMainHand(itemBuilder.build());
-                player.sendMessage("§e§l(*) §eItem byl zmenen na Glowing!");
+                player.sendMessage("§e§l[*] §eItem byl zmenen na Glowing!");
             }
         }
         return true;

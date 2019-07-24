@@ -90,17 +90,17 @@ public class TempShop implements Listener {
                 if(type == MoneyType.CRAFTCOIN) {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp " + permission + " true " + time + " " + serverType.name().toLowerCase());
                     CraftCoinsAPI.takeCoins(p, coin);
-                    p.sendMessage("§eZakoupil jsi si §a" + name + " §eza §6" + coin + " CC.");
+                    p.sendMessage("§e§l[*] §eZakoupil jsi si §a" + name + " §eza §6" + coin + " CC.");
                     p.closeInventory();
                 } else if (type == MoneyType.CRAFTTOKEN) {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp " + permission + " true " + time + " " + serverType.name().toLowerCase());
                     CraftTokensAPI.takeTokens(player, coin);
-                    p.sendMessage("§eZakoupil jsi si §a" + name + " §eza §6" + coin + " CT.");
+                    p.sendMessage("§e§l[*] §eZakoupil jsi si §a" + name + " §eza §6" + coin + " CT.");
                     p.closeInventory();
                 } else {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp " + permission + " true " + time + " " + serverType.name().toLowerCase());
                     VoteTokensAPI.takeVoteTokens(p, coin);
-                    p.sendMessage("§eZakoupil jsi si §a" + name + " §eza §6" + coin + " VT.");
+                    p.sendMessage("§e§l[*] §eZakoupil jsi si §a" + name + " §eza §6" + coin + " VT.");
                     p.closeInventory();
                 }
             }
