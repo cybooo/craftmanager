@@ -1,5 +1,8 @@
 package cz.wake.manager.listener;
 
+import com.wasteofplastic.askyblock.ASkyBlock;
+import com.wasteofplastic.askyblock.ASkyBlockAPI;
+import com.wasteofplastic.askyblock.Island;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -56,6 +59,12 @@ public class DeathListener implements Listener {
         }
 
         if (e.getDamage() >= p.getHealth()) {
+            if(Main.getInstance().getServer().equals("skyblock")){
+                Island is = ASkyBlockAPI.getInstance().getIslandAt(p.getLocation());
+                if(is.getOwner() != p.getUniqueId()) {
+                    return;
+                }
+            }
             for (Player pl : Main.getInstance().death_messages) {
                 pl.sendMessage(Main.getInstance().getConfig().getStringList("d_msgs.mob").get(r.nextInt(Main.getInstance().getConfig().getStringList("d_msgs.mob").size()))
                         .replace("%player%", p.getName())
