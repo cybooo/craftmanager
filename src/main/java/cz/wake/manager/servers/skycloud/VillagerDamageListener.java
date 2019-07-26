@@ -1,9 +1,6 @@
 package cz.wake.manager.servers.skycloud;
 
-import org.bukkit.entity.AbstractVillager;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Villager;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -41,11 +38,17 @@ public class VillagerDamageListener implements Listener {
                 VillagerManager.openMerchantInventory(VillagerType.END_VILLAGER, player);
             } else if (villager.hasMetadata(VillagerType.NETHER_VILLAGER.name())) {
                 VillagerManager.openMerchantInventory(VillagerType.NETHER_VILLAGER, player);
-            } else if (villager.hasMetadata(VillagerType.RARE_VILLAGER.name())) {
-                VillagerManager.openMerchantInventory(VillagerType.RARE_VILLAGER, player);
             } else if (villager.hasMetadata(VillagerType.SEA_VILLAGER.name())) {
                 VillagerManager.openMerchantInventory(VillagerType.SEA_VILLAGER, player);
             }
+        } else if (entity instanceof WanderingTrader) {
+            WanderingTrader villager = (WanderingTrader)entity;
+            event.setCancelled(true);
+            if (villager.hasMetadata(VillagerType.RARE_VILLAGER.name())) {
+                VillagerManager.openMerchantInventory(VillagerType.RARE_VILLAGER, player);
+            }
+        }
+    }
         }
     }
 }
