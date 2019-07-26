@@ -1,10 +1,18 @@
 package cz.wake.manager.servers.skycloud;
 
+import cz.wake.manager.utils.Log;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.MerchantInventory;
+
+import java.util.Objects;
 
 public class VillagerDamageListener implements Listener {
 
@@ -49,6 +57,31 @@ public class VillagerDamageListener implements Listener {
             }
         }
     }
+
+    @EventHandler
+    public void onTrade(InventoryClickEvent event) {
+        Player player = (Player) event.getWhoClicked();
+        Inventory inventory = event.getClickedInventory();
+
+        if (inventory != null && inventory.getType() != InventoryType.MERCHANT) {
+            return;
         }
+
+        if (!Objects.requireNonNull(player.getLocation().getWorld()).getName().equalsIgnoreCase("vsbspawn")) {
+            return;
+        }
+
+        if (event.getSlotType() == InventoryType.SlotType.RESULT) {
+            MerchantInventory merchantInventory = (MerchantInventory) inventory;
+            if (event.getCurrentItem() == null || merchantInventory == null) {
+                return;
+            }
+            if (merchantInventory.getSelectedRecipe() == null) {
+                return;
+            }
+            ItemStack item = merchantInventory.getSelectedRecipe().getResult();
+            Log.withPrefix("Hrac " + player.getName() + " si koupil: " + item.getType().name() + " (" + item.getAmount() + "x)");
+        }
+
     }
 }
