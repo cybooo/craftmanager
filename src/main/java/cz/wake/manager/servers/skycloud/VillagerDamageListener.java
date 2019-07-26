@@ -1,4 +1,4 @@
-package cz.wake.manager.servers.vanillaskylock;
+package cz.wake.manager.servers.skycloud;
 
 import org.bukkit.entity.AbstractVillager;
 import org.bukkit.entity.Entity;
@@ -7,10 +7,7 @@ import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityInteractEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
-
-import java.util.Arrays;
 
 public class VillagerDamageListener implements Listener {
 

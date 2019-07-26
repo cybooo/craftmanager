@@ -1,4 +1,4 @@
-package cz.wake.manager.servers.vanillaskylock;
+package cz.wake.manager.servers.skycloud;
 
 import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
 import cz.craftmania.craftcore.spigot.builders.villager.VillagerTradeBuilder;

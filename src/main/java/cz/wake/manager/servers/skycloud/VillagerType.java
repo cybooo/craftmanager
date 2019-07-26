@@ -1,4 +1,4 @@
-package cz.wake.manager.servers.vanillaskylock;
+package cz.wake.manager.servers.skycloud;
 
 public enum VillagerType {
 

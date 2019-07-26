@@ -1,9 +1,7 @@
-package cz.wake.manager.servers.vanillaskylock;
+package cz.wake.manager.servers.skycloud;
 
 import com.gmail.filoghost.holographicdisplays.api.Hologram;
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
-import cz.craftmania.craftcore.spigot.builders.items.CustomMaterial;
-import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
 import cz.craftmania.craftcore.spigot.builders.villager.VillagerTradeBuilder;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.Log;
@@ -12,13 +10,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.*;
-import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.metadata.FixedMetadataValue;
-import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionType;
 
 import java.util.*;
