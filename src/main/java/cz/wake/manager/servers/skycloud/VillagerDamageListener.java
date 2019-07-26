@@ -1,5 +1,6 @@
 package cz.wake.manager.servers.skycloud;
 
+import cz.wake.manager.Main;
 import cz.wake.manager.utils.Log;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -11,6 +12,7 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.MerchantInventory;
+import org.bukkit.inventory.MerchantRecipe;
 
 import java.util.Objects;
 
@@ -80,8 +82,17 @@ public class VillagerDamageListener implements Listener {
                 return;
             }
             ItemStack item = merchantInventory.getSelectedRecipe().getResult();
+            int price = generatePrice(merchantInventory.getSelectedRecipe());
             Log.withPrefix("Hrac " + player.getName() + " si koupil: " + item.getType().name() + " (" + item.getAmount() + "x)");
+            Main.getInstance().getMySQL().sendMarketLog(player, item.getType().name(), item.getAmount(), price, System.currentTimeMillis());
         }
+    }
 
+    private int generatePrice(MerchantRecipe recipe) {
+        int price = 0;
+        for (ItemStack itemStack : recipe.getIngredients()) {
+            price += itemStack.getAmount();
+        }
+        return price;
     }
 }

@@ -516,6 +516,30 @@ public class SQLManager {
         return 0;
     }
 
+    public final void sendMarketLog(final Player p, final String item, final int amount, final int price, final long time) {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                Connection conn = null;
+                PreparedStatement ps = null;
+                try {
+                    conn = pool.getConnection();
+                    ps = conn.prepareStatement("INSERT INTO skycloud_market_log (nick,uuid,item,price,time) VALUES (?,?,?,?,?);");
+                    ps.setString(1, p.getName());
+                    ps.setString(2, p.getUniqueId().toString());
+                    ps.setString(3, item + " (" + amount + "x)");
+                    ps.setInt(4, price);
+                    ps.setLong(5, time);
+                    ps.executeUpdate();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    pool.close(conn, ps, null);
+                }
+            }
+        }.runTaskAsynchronously(Main.getInstance());
+    }
+
 
 
 
