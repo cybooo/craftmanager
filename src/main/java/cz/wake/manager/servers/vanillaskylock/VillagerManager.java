@@ -7,7 +7,9 @@ import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
 import cz.craftmania.craftcore.spigot.builders.villager.VillagerTradeBuilder;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.Log;
+import cz.wake.manager.utils.ParticleEffect;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -23,9 +25,11 @@ import java.util.*;
 
 public class VillagerManager {
 
+    // Seznam villagerů a trade listů
     public static List<AbstractVillager> villagerList = new ArrayList<>();
     private static VillagerTradeList tradeList = new VillagerTradeList();
 
+    // Lokace villagerů
     private static Location sellVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 297.5, 109.0, -261.5, -180, 0);
     private static Location netherVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 314.5, 109, -265.5, -180, 0);
     private static Location rareVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 273.5, 109, -276.5, -90, 0);
@@ -33,6 +37,7 @@ public class VillagerManager {
     private static Location endVillagerLocation = new Location(Bukkit.getWorld("vsbspawn"), 325.5, 109, -276.5, 90, 0);
     private static Location buyVilllagerLocaiton = new Location(Bukkit.getWorld("vsbspawn"), 301.5, 109.0, -261.5, -180, 0);
 
+    // Globální uložiště merchantů
     private static VillagerTradeBuilder sellMerchant;
     private static VillagerTradeBuilder netherMerchant;
     private static VillagerTradeBuilder rareMerchant;
@@ -40,12 +45,20 @@ public class VillagerManager {
     private static VillagerTradeBuilder endMerchant;
     private static VillagerTradeBuilder buyMerchant;
 
+    // Pro Rare villagera
+    private static Location rareHologramLocation = new Location(Bukkit.getWorld("vsbspawn"), 273.5, 112, -276.5, -90, 0);
+    private static Hologram rareHologram;
+
     public static void spawnVillagers() {
+
+        rareHologram = HologramsAPI.createHologram(Main.getInstance(), rareHologramLocation);
+
         killVillagers(); // Nejdriv zabit vsechny co existuji
+
         spawnSellVillager();
         spawnBuyVillager();
         spawnSeaVillager();
-        spawnRareVillager();
+        spawnRareVillager(true);
         spawnNetherVillager();
         spawnEndVillager();
 
@@ -150,22 +163,77 @@ public class VillagerManager {
         villagerList.add(villager);
     }
 
-    private static void spawnRareVillager() {
-        Entity entity = Objects.requireNonNull(Bukkit.getWorld("vsbspawn")).spawnEntity(rareVillagerLocation, EntityType.WANDERING_TRADER);
-        WanderingTrader villager = (WanderingTrader)entity;
-        villager.setAI(false);
-        villager.setCanPickupItems(false);
-        villager.setRemoveWhenFarAway(false);
-        villager.setSilent(true);
+    private static void spawnRareVillager(boolean appendHologram) {
 
-        setMetadata(villager, VillagerType.RARE_VILLAGER, VillagerType.RARE_VILLAGER, Main.getInstance());
+        int spawnTime = randRange(1000, 1000); // TEST
+        int despawnTime = randRange(1000, 50000);
 
-        rareVillagerLocation.add(0, 3, 0);
-        Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), rareVillagerLocation);
-        hologram.appendTextLine("§9§lRare Villager");
-        hologram.appendTextLine("§7Vzácné itemy, tady a teď!");
+        int miliSecondsSpawn = (spawnTime / 20) * 1000;
+        int miliSecondsDespawn = (despawnTime / 20) * 1000;
 
-        villagerList.add(villager);
+        Log.withPrefix("Rare Villager se spawne v: " + new Date(System.currentTimeMillis() + miliSecondsSpawn).toString());
+
+        // Priprava hologramu
+        if (appendHologram) {
+            rareHologram.appendTextLine("§c§lRare Villager");
+            rareHologram.appendTextLine("§fse tu ještě neobjevil!");
+        }
+
+        Bukkit.getScheduler().runTaskLater(Main.getInstance(), () -> {
+
+            if (Bukkit.getOnlinePlayers().size() < 2) { // Min jak x hráčů se nespawne
+                Log.withPrefix(ChatColor.RED + "Nedostatek hracu na spawn Rare Villagera. Probehne znovu vygenerovani procesu!");
+                spawnRareVillager(false);
+                return;
+            }
+
+            Entity entity = Objects.requireNonNull(Bukkit.getWorld("vsbspawn")).spawnEntity(rareVillagerLocation, EntityType.WANDERING_TRADER);
+            WanderingTrader villager = (WanderingTrader)entity;
+            villager.setAI(false);
+            villager.setCanPickupItems(false);
+            villager.setRemoveWhenFarAway(false);
+            villager.setSilent(true);
+
+            setMetadata(villager, VillagerType.RARE_VILLAGER, VillagerType.RARE_VILLAGER, Main.getInstance());
+
+            rareHologram.clearLines();
+            rareHologram.appendTextLine("§9§lRare Villager");
+            rareHologram.appendTextLine("§7Vzácné itemy, tady a teď!");
+
+            // Změna shopu při každém spawnu
+            rareMerchant = tradeList.generateRareVillagerShop();
+            villagerList.add(villager);
+
+            broadcast("§e§l[*] §9§lRare Villager §ese právě spawnul! Nakupuj dokud je čas!");
+            Log.withPrefix("Rare Villager se despawne v: " + new Date(System.currentTimeMillis() + miliSecondsDespawn).toString());
+
+            ParticleEffect.FIREWORKS_SPARK.display(3f, 3f, 3f, 0.1f, 50, rareVillagerLocation, Main.getInstance().getPlayers());
+
+            // Broadcast
+            Bukkit.getScheduler().runTaskLater(Main.getInstance(), () -> {
+
+                broadcast("§e§l[*] §9§lRare Villager §cjiž není k dispozici! Zkus to příště!");
+
+                villager.remove();
+                rareHologram.clearLines();
+                rareHologram.appendTextLine("§c§lRare Villager");
+                rareHologram.appendTextLine("§fse tu ještě neobjevil!");
+
+                Bukkit.getOnlinePlayers().forEach(player -> {
+                    if (player.getOpenInventory().getTitle().equalsIgnoreCase("Wandering Trader")
+                        || player.getOpenInventory().getTitle().equalsIgnoreCase("Rare Villager")) {
+                        player.closeInventory();
+                    }
+                });
+
+                ParticleEffect.TOTEM.display(3f, 3f, 3f, 0.1f, 50, rareVillagerLocation, Main.getInstance().getPlayers());
+
+                // Spustit znova Timer
+                spawnRareVillager(false);
+
+            }, despawnTime);
+
+        }, spawnTime);
     }
 
     private static void spawnNetherVillager() {
@@ -286,6 +354,15 @@ public class VillagerManager {
         } else {
             Log.withPrefix(player.getName() + " se snazi otevrit shop, ktery neexistuje!");
         }
+    }
+
+    private static void broadcast(String message){
+        Bukkit.getOnlinePlayers().forEach(player -> player.sendMessage(message));
+    }
+
+    private static int randRange(int min, int max) {
+        Random rand = new Random();
+        return rand.nextInt(max - min + 1) + min;
     }
 }
 
