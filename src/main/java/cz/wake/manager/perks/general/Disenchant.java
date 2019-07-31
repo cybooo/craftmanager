@@ -69,14 +69,18 @@ public class Disenchant implements CommandExecutor {
 
                             if (Main.getInstance().isCustomDisenchantEnabled()) {
                                 for (Map.Entry<String, Integer> enchEntry : customEnchants.entrySet()) {
+                                    try {
 
-                                    // Sance
-                                    int sance = randRange(50, 80);
-                                    int failSance = 100 - sance;
+                                        // Sance
+                                        int sance = randRange(50, 80);
+                                        int failSance = 100 - sance;
 
-                                    // Name, level, success rate, fail rate
-                                    ItemStack customEnchantedBook = AEAPI.createEnchantmentBook(enchEntry.getKey(), enchEntry.getValue(), sance, failSance);
-                                    player.getInventory().addItem(customEnchantedBook);
+                                        // Name, level, success rate, fail rate
+                                        ItemStack customEnchantedBook = AEAPI.createEnchantmentBook(enchEntry.getKey(), enchEntry.getValue(), sance, failSance);
+                                        player.getInventory().addItem(customEnchantedBook);
+                                    } catch (NullPointerException e) {
+                                        continue;
+                                    }
                                 }
                             }
 
