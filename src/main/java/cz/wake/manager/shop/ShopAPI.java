@@ -577,9 +577,9 @@ public class ShopAPI implements Listener {
         }
 
         // EpicCrate (1x)
-        if (voteTokens >= 5) {
+        if (voteTokens >= 7) {
             if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
-                ItemStack headCreate = new ItemBuilder(Material.PISTON_BASE).setName("§91x EpicCrate").setLore("§7Cena: §f5 VT").build();
+                ItemStack headCreate = new ItemBuilder(Material.PISTON_BASE).setName("§91x EpicCrate").setLore("§7Cena: §f7 VT").build();
                 inv.setItem(20, headCreate);
             } else {
                 ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§c1x EpicCrate")
@@ -588,14 +588,14 @@ public class ShopAPI implements Listener {
             }
         } else {
             ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§81x EpicCrate")
-                    .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f5 VT").build();
+                    .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f7 VT").build();
             inv.setItem(20, noMoney);
         }
 
         // EpicCrate (3x)
-        if (voteTokens >= 15) {
+        if (voteTokens >= 18) {
             if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
-                ItemStack headCreate = new ItemBuilder(Material.PISTON_BASE).setName("§93x EpicCrate").setLore("§7Cena: §f15 VT").build();
+                ItemStack headCreate = new ItemBuilder(Material.PISTON_BASE).setName("§93x EpicCrate").setLore("§7Cena: §f18 VT").build();
                 inv.setItem(29, headCreate);
             } else {
                 ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§c3x EpicCrate")
@@ -604,14 +604,14 @@ public class ShopAPI implements Listener {
             }
         } else {
             ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§83x EpicCrate")
-                    .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f15 VT").build();
+                    .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f18 VT").build();
             inv.setItem(29, noMoney);
         }
 
         // HeadCrate (1x)
-        if (voteTokens >= 3) {
+        if (voteTokens >= 5) {
             if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
-                ItemStack headCreate = new ItemBuilder(Material.PISTON_BASE).setName("§d1x HeadCrate").setLore("§7Cena: §f3 VT").build();
+                ItemStack headCreate = new ItemBuilder(Material.PISTON_BASE).setName("§d1x HeadCrate").setLore("§7Cena: §f5 VT").build();
                 inv.setItem(21, headCreate);
             } else {
                 ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§c1x HeadCrate")
@@ -620,14 +620,14 @@ public class ShopAPI implements Listener {
             }
         } else {
             ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§81x HeadCrate")
-                    .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f3 VT").build();
+                    .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f5 VT").build();
             inv.setItem(21, noMoney);
         }
 
         // HeadCrate (3x)
-        if (voteTokens >= 9) {
+        if (voteTokens >= 14) {
             if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
-                ItemStack headCreate = new ItemBuilder(Material.PISTON_BASE).setName("§d3x HeadCrate").setLore("§7Cena: §f9 VT").build();
+                ItemStack headCreate = new ItemBuilder(Material.PISTON_BASE).setName("§d3x HeadCrate").setLore("§7Cena: §f14 VT").build();
                 inv.setItem(30, headCreate);
             } else {
                 ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§c3x HeadCrate")
@@ -636,7 +636,7 @@ public class ShopAPI implements Listener {
             }
         } else {
             ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§83x HeadCrate")
-                    .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f9 VT").build();
+                    .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f14 VT").build();
             inv.setItem(30, noMoney);
         }
 
@@ -1029,13 +1029,13 @@ public class ShopAPI implements Listener {
                     p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
-                if (VoteTokensAPI.getVoteTokens(p) >= 5) {
+                if (VoteTokensAPI.getVoteTokens(p) >= 7) {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " epiccrate 1");
-                    VoteTokensAPI.takeVoteTokens(p, 5);
-                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x EpicCrate §eza §a5 VT.");
+                    VoteTokensAPI.takeVoteTokens(p, 7);
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x EpicCrate §eza §a6 VT.");
                     p.closeInventory();
                 } else {
-                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (5)!");
+                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (7)!");
                 }
             }
 
@@ -1045,13 +1045,13 @@ public class ShopAPI implements Listener {
                     p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
-                if (VoteTokensAPI.getVoteTokens(p) >= 15) {
+                if (VoteTokensAPI.getVoteTokens(p) >= 18) {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " epiccrate 3");
-                    VoteTokensAPI.takeVoteTokens(p, 15);
-                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f3x EpicCrate §eza §a15 VT.");
+                    VoteTokensAPI.takeVoteTokens(p, 18);
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f3x EpicCrate §eza §a18 VT.");
                     p.closeInventory();
                 } else {
-                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (15)!");
+                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (18)!");
                 }
             }
 
@@ -1061,13 +1061,13 @@ public class ShopAPI implements Listener {
                     p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
-                if (VoteTokensAPI.getVoteTokens(p) >= 3) {
+                if (VoteTokensAPI.getVoteTokens(p) >= 5) {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " headcrate 1");
-                    VoteTokensAPI.takeVoteTokens(p, 3);
-                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x HeadCrate §eza §a3 VT.");
+                    VoteTokensAPI.takeVoteTokens(p, 5);
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x HeadCrate §eza §a5 VT.");
                     p.closeInventory();
                 } else {
-                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (3)!");
+                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (5)!");
                 }
             }
 
@@ -1077,13 +1077,13 @@ public class ShopAPI implements Listener {
                     p.sendMessage("§c§l(!) §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
-                if (VoteTokensAPI.getVoteTokens(p) >= 9) {
+                if (VoteTokensAPI.getVoteTokens(p) >= 14) {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " headcrate 3");
-                    VoteTokensAPI.takeVoteTokens(p, 9);
-                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f3x HeadCrate §eza §a9 VT.");
+                    VoteTokensAPI.takeVoteTokens(p, 14);
+                    p.sendMessage("§e§l(*) §eZakoupil jsi si §f3x HeadCrate §eza §a14 VT.");
                     p.closeInventory();
                 } else {
-                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (9)!");
+                    p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (14)!");
                 }
             }
 
