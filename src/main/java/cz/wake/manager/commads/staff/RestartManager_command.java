@@ -23,9 +23,7 @@ public class RestartManager_command implements CommandExecutor {
     String combinedArgs;
 
   @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if (!(commandSender instanceof Player)) return true;
-        Player p = (Player) commandSender;
+    public boolean onCommand(CommandSender p, Command command, String s, String[] strings) {
         if (p.hasPermission("craftmanager.restartmanager")) {
             if (strings.length == 0) {
                 if (Main.restartTime != null) {
