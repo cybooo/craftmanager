@@ -6,6 +6,7 @@ import cz.wake.manager.perks.general.Chatcolor_command;
 import cz.wake.manager.managers.RecipeManager;
 import cz.wake.manager.managers.RecipePlayer;
 import cz.wake.manager.perks.particles.ParticlesAPI;
+import cz.wake.manager.utils.ServerType;
 import net.horkanos.craftchat.CraftChat;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -180,6 +181,11 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onGamemode(PlayerGameModeChangeEvent e) {
         Player p = e.getPlayer();
+
+        // Pouze Creative
+        if (Main.getServerType() != ServerType.CREATIVE) {
+            return;
+        }
 
         // Deaktivace Spectatoru
         if (e.getNewGameMode() == GameMode.SPECTATOR && !p.hasPermission("craftmanager.spectatorallow")) {
