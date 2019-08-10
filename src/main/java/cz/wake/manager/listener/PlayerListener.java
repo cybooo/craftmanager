@@ -7,6 +7,7 @@ import cz.wake.manager.managers.RecipeManager;
 import cz.wake.manager.managers.RecipePlayer;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import net.horkanos.craftchat.CraftChat;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.entity.EntityType;
@@ -16,6 +17,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.*;
+
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class PlayerListener implements Listener {
 
@@ -77,6 +81,25 @@ public class PlayerListener implements Listener {
 
         //Register Recipe Player
         RecipeManager.registerRecipePlayer(new RecipePlayer(p));
+
+        if (Main.restartReason != null) {
+            Long min = Main.restartTime - System.currentTimeMillis();
+            if (min > 60 * 60 * 1000) {
+                p.sendMessage("§7§m---------§7[§c§l Restart serveru §7]§m---------\n");
+                p.sendMessage("§f");
+                p.sendMessage("   §7Server bude restartovan za §f" + TimeUnit.MILLISECONDS.toHours(min) + "h " + TimeUnit.MILLISECONDS.toMinutes(min) % 60 + "m§7.");
+                p.sendMessage("   §7Duvod restartu: §f" + Main.restartReason);
+                p.sendMessage("§f");
+                p.sendMessage("§7§m-------------------------------------");
+            } else {
+                p.sendMessage("§7§m---------§7[§c§l Restart serveru §7]§m---------\n");
+                p.sendMessage("§f");
+                p.sendMessage("   §7Server bude restartovan za §f" + TimeUnit.MILLISECONDS.toMinutes(min) + "m§7 §f" + TimeUnit.MILLISECONDS.toSeconds(min) % 60 + "s§7.");
+                p.sendMessage("   §7Duvod restartu: §f" + Main.restartReason);
+                p.sendMessage("§f");
+                p.sendMessage("§7§m-------------------------------------");
+            }
+        }
     }
 
     @EventHandler

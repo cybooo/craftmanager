@@ -47,8 +47,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     public ArrayList<Player> death_messages = new ArrayList<>();
     private ParticlesAPI particlesAPI = new ParticlesAPI();
     public List<Pattern> blockedTags = new ArrayList<Pattern>();
-    public static Long restartTime;
-    public static String restartReason;
+    private List<String> dontdrop_worlds = new ArrayList<>();
+    public static Long restartTime = null;
+    public static String restartReason = null;
     private MainGUI gui = new MainGUI();
     private ShopAPI shop = new ShopAPI();
     private ServerFactory sf = new ServerFactory();
