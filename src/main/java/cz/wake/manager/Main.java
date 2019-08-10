@@ -222,6 +222,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     }
 
     private void loadCommands() {
+        //TODO: Kompletni rewrite na 1.13 CommandAPI
         getCommand("menu").setExecutor(new Menu_command());
         getCommand("coinshop").setExecutor(new Coinshop_command());
         getCommand("particles").setExecutor(new Particles_command());
@@ -242,7 +243,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("checkfly").setExecutor(new Checkfly_command());
         getCommand("beacon").setExecutor(new BeaconCommand());
         getCommand("recipe").setExecutor(new Recipe_command());
-        getCommand("restartmanager").setExecutor(new RestartManager_command());
+        getCommand("restartmanager").setExecutor(new RestartManager_command()); //TODO: Nenačítat, pokud nebude CraftCore na serveru?
         getCommand("cm").setExecutor(new Cm_command());
         getCommand("glowitem").setExecutor(new GlowItemCommand());
         getCommand("rawbroadcast").setExecutor(new RawBroadcast());
@@ -399,7 +400,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             return ServerType.SURVIVAL;
         } else if (type.equalsIgnoreCase("skyblock")) {
             return ServerType.SKYBLOCK;
-        } else if (type.equalsIgnoreCase("creative")) {
+        } else if (type.equalsIgnoreCase("creative") || type.equalsIgnoreCase("creative2")) { // creative2 = 1.14
             return ServerType.CREATIVE;
         } else if (type.equalsIgnoreCase("prison")) {
             return ServerType.PRISON;
