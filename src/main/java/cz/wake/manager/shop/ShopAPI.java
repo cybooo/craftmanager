@@ -579,8 +579,8 @@ public class ShopAPI implements Listener {
 
         // EpicCrate (1x)
         if (voteTokens >= 7) {
-            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
-                ItemStack headCreate = new ItemBuilder(Material.PISTON_BASE).setName("§91x EpicCrate").setLore("§7Cena: §f7 VT").build();
+            if (Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON) {
+                ItemStack headCreate = new ItemBuilder(Material.PISTON).setName("§91x EpicCrate").setLore("§7Cena: §f7 VT").build();
                 inv.setItem(20, headCreate);
             } else {
                 ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§c1x EpicCrate")
@@ -588,15 +588,15 @@ public class ShopAPI implements Listener {
                 inv.setItem(20, nedostupny);
             }
         } else {
-            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§81x EpicCrate")
+            ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§81x EpicCrate")
                     .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f7 VT").build();
             inv.setItem(20, noMoney);
         }
 
         // EpicCrate (3x)
         if (voteTokens >= 18) {
-            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
-                ItemStack headCreate = new ItemBuilder(Material.PISTON_BASE).setName("§93x EpicCrate").setLore("§7Cena: §f18 VT").build();
+            if (Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON) {
+                ItemStack headCreate = new ItemBuilder(Material.PISTON).setName("§93x EpicCrate").setLore("§7Cena: §f18 VT").build();
                 inv.setItem(29, headCreate);
             } else {
                 ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§c3x EpicCrate")
@@ -604,15 +604,15 @@ public class ShopAPI implements Listener {
                 inv.setItem(29, nedostupny);
             }
         } else {
-            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§83x EpicCrate")
+            ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§83x EpicCrate")
                     .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f18 VT").build();
             inv.setItem(29, noMoney);
         }
 
         // HeadCrate (1x)
         if (voteTokens >= 5) {
-            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
-                ItemStack headCreate = new ItemBuilder(Material.PISTON_BASE).setName("§d1x HeadCrate").setLore("§7Cena: §f5 VT").build();
+            if (Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON) {
+                ItemStack headCreate = new ItemBuilder(Material.PISTON).setName("§d1x HeadCrate").setLore("§7Cena: §f5 VT").build();
                 inv.setItem(21, headCreate);
             } else {
                 ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§c1x HeadCrate")
@@ -620,15 +620,15 @@ public class ShopAPI implements Listener {
                 inv.setItem(21, nedostupny);
             }
         } else {
-            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§81x HeadCrate")
+            ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§81x HeadCrate")
                     .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f5 VT").build();
             inv.setItem(21, noMoney);
         }
 
         // HeadCrate (3x)
         if (voteTokens >= 14) {
-            if (Main.getInstance().getIdServer().equalsIgnoreCase("survival") || Main.getInstance().getIdServer().equalsIgnoreCase("skyblock") || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
-                ItemStack headCreate = new ItemBuilder(Material.PISTON_BASE).setName("§d3x HeadCrate").setLore("§7Cena: §f14 VT").build();
+            if (Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON) {
+                ItemStack headCreate = new ItemBuilder(Material.PISTON).setName("§d3x HeadCrate").setLore("§7Cena: §f14 VT").build();
                 inv.setItem(30, headCreate);
             } else {
                 ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§c3x HeadCrate")
@@ -636,7 +636,7 @@ public class ShopAPI implements Listener {
                 inv.setItem(30, nedostupny);
             }
         } else {
-            ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 7).setName("§83x HeadCrate")
+            ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§83x HeadCrate")
                     .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f14 VT").build();
             inv.setItem(30, noMoney);
         }

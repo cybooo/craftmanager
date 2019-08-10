@@ -115,7 +115,7 @@ public class RestartManager_command implements CommandExecutor {
         return true;
     }
 
-    private void sendUsage(Player p) {
+    private void sendUsage(CommandSender p) {
         p.sendMessage("§e§l[*] §ePouziti: §f/rm start/stop <minuty> <duvod>");
     }
 }
