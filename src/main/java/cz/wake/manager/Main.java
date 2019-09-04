@@ -149,9 +149,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             Log.withPrefix("Detekovan plugin AdvancedEnchantments - disenchant jej bude pouzivat.");
         }
 
-        //Vault init
-        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
-        econ = rsp.getProvider();
+        //Vault init //TODO: ? Why tu je a proč nefunguje
+//        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+//        econ = rsp.getProvider();
 
         // Prometheus
         if (getConfig().getBoolean("prometheus.state", false)) {
