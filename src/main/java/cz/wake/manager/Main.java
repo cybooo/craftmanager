@@ -168,7 +168,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public void onDisable() {
 
-        VillagerManager.killVillagers();
+        if (serverType == ServerType.SKYCLOUD) {
+            VillagerManager.killVillagers();
+        }
 
         // Deaktivace MySQL
         sql.onDisable();
