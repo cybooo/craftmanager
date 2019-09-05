@@ -6,6 +6,7 @@ import cz.wake.manager.commads.staff.Checkfly_command;
 import cz.wake.manager.commads.staff.RawBroadcast;
 import cz.wake.manager.commads.staff.RestartManager_command;
 import cz.wake.manager.listener.*;
+import cz.wake.manager.listener.suggestions.PlayerCommandSendListener;
 import cz.wake.manager.perks.coloranvil.AnvilListener;
 import cz.wake.manager.perks.general.*;
 import cz.wake.manager.perks.particles.ParticlesAPI;
@@ -200,6 +201,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new VIP_command(), this);
         pm.registerEvents(new SignClickListener(), this);
         pm.registerEvents(new Votes_command(), this);
+        pm.registerEvents(new PlayerCommandSendListener(this), this);
 
         // Skyblock PVP listener
         if (serverType == ServerType.SKYBLOCK) {
