@@ -90,6 +90,7 @@ public class PlayerListener implements Listener {
             p.sendMessage("§7Tento server je označený jako §bBETA§7!");
             p.sendMessage("§7Mohou se zde vyskytovat bugy, lagy a jiné problémy.");
             p.sendMessage("§7Budeme rádi, když nám dané problémy nahlásíš! :)");
+            p.sendMessage("§eDiscord: https://discord.gg/craftmania -> #1_14_problemy");
             p.sendMessage("");
         }
 
