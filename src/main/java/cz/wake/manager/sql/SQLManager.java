@@ -302,7 +302,7 @@ public class SQLManager {
     }
 
     public final void updateAtPlayerTime(Player p) {
-        String server = getServerName();
+        String server = Main.getServerType().name().toLowerCase();
         new BukkitRunnable() {
             @Override
             public void run() {
