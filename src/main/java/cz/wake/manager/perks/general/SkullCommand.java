@@ -49,9 +49,12 @@ public class SkullCommand implements CommandExecutor {
 
     private void giveHead(Player p) {
         try {
-            String command = "minecraft:give %creator% skull 1 3 {SkullOwner:\"%name%\",display:{Name:\"§b§l%name%\",Lore:[\"§7Vygenerovano pomoci §e/skull\",\"§8Vytvoril: %creator%\"]}}"
-                    .replaceAll("%creator%", p.getName()).replaceAll("%name%", p.getName());
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
+            //String command = "minecraft:give %creator% skull 1 3 {SkullOwner:\"%name%\",display:{Name:\"§b§l%name%\",Lore:[\"§7Vygenerovano pomoci §e/skull\",\"§8Vytvoril: %creator%\"]}}"
+            //        .replaceAll("%creator%", p.getName()).replaceAll("%name%", p.getName());
+            // 1.14+
+            //String command = "give %creator% minecraft:player_head{SkullOwner:\"%creator%\",display:{Lore:[\"{\"text\":\"Vygenerováno pomocí \",\"color\":\"blue\",\"extra\":[{\"text\":\"/skull\",\"color\":\"green\"}]}\"]}}"
+            //        .replaceAll("%creator%", p.getName()).replaceAll("%name%", p.getName());
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "give %creator% minecraft:player_head{\"SkullOwner\":\"%creator%\"}".replaceAll("%creator%", p.getName()));
         } catch (Exception e) {
             p.sendMessage("§c§l[!] §cChyba v API Mojangu! Zkus to znova zachvilku! :)");
         }
