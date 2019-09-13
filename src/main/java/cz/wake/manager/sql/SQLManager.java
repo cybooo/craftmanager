@@ -31,60 +31,6 @@ public class SQLManager {
         return pool;
     }
 
-    public final int getPlayerTotalVotes(final UUID uuid) {
-        Connection conn = null;
-        PreparedStatement ps = null;
-        try {
-            conn = pool.getConnection();
-            ps = conn.prepareStatement("SELECT votes FROM votes WHERE uuid = '" + uuid.toString() + "';");
-            ps.executeQuery();
-            if (ps.getResultSet().next()) {
-                return ps.getResultSet().getInt("votes");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            pool.close(conn, ps, null);
-        }
-        return 0;
-    }
-
-    public final int getPlayerTotalMonth(final UUID uuid) {
-        Connection conn = null;
-        PreparedStatement ps = null;
-        try {
-            conn = pool.getConnection();
-            ps = conn.prepareStatement("SELECT month FROM votes WHERE uuid = '" + uuid.toString() + "';");
-            ps.executeQuery();
-            if (ps.getResultSet().next()) {
-                return ps.getResultSet().getInt("month");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            pool.close(conn, ps, null);
-        }
-        return 0;
-    }
-
-    public final int getPlayerTotalWeek(final UUID uuid) {
-        Connection conn = null;
-        PreparedStatement ps = null;
-        try {
-            conn = pool.getConnection();
-            ps = conn.prepareStatement("SELECT week FROM votes WHERE uuid = '" + uuid.toString() + "';");
-            ps.executeQuery();
-            if (ps.getResultSet().next()) {
-                return ps.getResultSet().getInt("week");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            pool.close(conn, ps, null);
-        }
-        return 0;
-    }
-
     public final List<String> getTopVotersMonth() {
         List<String> names = new ArrayList<>();
         Connection conn = null;
@@ -302,7 +248,8 @@ public class SQLManager {
     }
 
     public final void updateAtPlayerTime(Player p) {
-        String server = Main.getServerType().name().toLowerCase();
+        String server = getServerName();
+        System.out.println("Update ATS pro: " + p.getName() + ", server: " + server) ;
         new BukkitRunnable() {
             @Override
             public void run() {

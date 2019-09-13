@@ -8,3 +8,5 @@ target
 .gradle
 *.iml
 build
+
+.DS_Store

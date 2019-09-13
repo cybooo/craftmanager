@@ -24,13 +24,11 @@ import cz.wake.manager.utils.prometheus.MetricsController;
 import cz.wake.manager.utils.tasks.ATAfkTask;
 import cz.wake.manager.utils.tasks.ATCheckerTask;
 import cz.wake.manager.utils.tasks.UpdateServerTask;
-import cz.wake.manager.votifier.ForwardVote;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
-import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
@@ -106,7 +104,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Bungee channels
         Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         Bukkit.getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
-        Bukkit.getMessenger().registerIncomingPluginChannel(this, "craftbungee:vote", this);
 
         // Oznameni kazdou hodinu (1 hod)
         if (reminder && !testing) {
@@ -341,19 +338,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     }
 
     @Override
-    public void onPluginMessageReceived(String channel, Player player, byte[] message) {
-        DataInputStream in = new DataInputStream(new ByteArrayInputStream(message));
-        try {
-            String sub = in.readUTF();
-            if (sub.equals("vote")) {
-                String nick = in.readUTF();
-                String coins = in.readUTF();
-                ForwardVote.vote(nick, null, coins); //TODO: UUID
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    public void onPluginMessageReceived(String channel, Player player, byte[] message) {}
 
     public void sendToServer(Player player, String target) {
         ByteArrayOutputStream b = new ByteArrayOutputStream();
