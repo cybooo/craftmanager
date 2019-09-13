@@ -642,7 +642,7 @@ public class ShopAPI implements Listener {
         }
 
         // WorldEdit (1h)
-        if (voteTokens >= 1) {
+        /*if (voteTokens >= 1) {
             if (Main.getServerType() == ServerType.CREATIVE) {
                 ItemStack item = new ItemBuilder(Material.WOODEN_AXE).setName("§aWorldEdit (1h)").setLore("§7Cena: §f1 VT").hideAllFlags().build();
                 inv.setItem(23, item);
@@ -655,10 +655,10 @@ public class ShopAPI implements Listener {
             ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§8WorldEdit (1h)")
                     .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f1 VT").build();
             inv.setItem(23, noMoney);
-        }
+        }*/
 
         // WorldEdit (3h)
-        if (voteTokens >= 3) {
+        /*if (voteTokens >= 3) {
             if (Main.getServerType() == ServerType.CREATIVE) {
                 ItemStack item = new ItemBuilder(Material.IRON_AXE).setName("§aWorldEdit (3h)").setLore("§7Cena: §f3 VT").hideAllFlags().build();
                 inv.setItem(32, item);
@@ -671,7 +671,11 @@ public class ShopAPI implements Listener {
             ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§8WorldEdit (3h)")
                     .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f3 VT").build();
             inv.setItem(32, noMoney);
-        }
+        }*/
+
+        ItemStack worldEditBlock = new ItemBuilder(Material.BARREL).setName("§c§lWorldEdit").setLore("§7WorldEdit je dočasně zablokovaný.", "§7Důvodem je špatná optimalizace na 1.14!").build();
+        inv.setItem(32, worldEditBlock);
+        inv.setItem(23, worldEditBlock);
 
         // Skyblock Fly (1h)
         if (voteTokens >= 3) {
@@ -1094,6 +1098,10 @@ public class ShopAPI implements Listener {
                     p.sendMessage("§c§l[!] §cNa tomto serveru tuto vyhodu nelze zakoupit.");
                     return;
                 }
+                if (true) {
+                    p.sendMessage("§c§l[!] §cWorldEdit je dočasně zablokovaný. Důvodem je špatná optimalizace na 1.14!");
+                    return;
+                }
                 if (p.hasPermission("worldedit.wand")) {
                     p.sendMessage("§e§l[*] §eJiz mas zakoupeny WorldEdit!");
                 } else {
@@ -1117,6 +1125,10 @@ public class ShopAPI implements Listener {
             if (e.getSlot() == 32) {
                 if (Main.getServerType() != ServerType.CREATIVE) {
                     p.sendMessage("§c§l[!] §cNa tomto serveru tuto vyhodu nelze zakoupit.");
+                    return;
+                }
+                if (true) {
+                    p.sendMessage("§c§l[!] §cWorldEdit je dočasně zablokovaný. Důvodem je špatná optimalizace na 1.14!");
                     return;
                 }
                 if (p.hasPermission("worldedit.wand")) {
