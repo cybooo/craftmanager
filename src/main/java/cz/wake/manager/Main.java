@@ -2,7 +2,6 @@ package cz.wake.manager;
 
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
-import cz.wake.manager.commads.staff.Checkfly_command;
 import cz.wake.manager.commads.staff.RawBroadcast;
 import cz.wake.manager.commads.staff.RestartManager_command;
 import cz.wake.manager.listener.*;
@@ -29,6 +28,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
@@ -36,6 +36,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class Main extends JavaPlugin implements PluginMessageListener {
@@ -147,9 +148,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             Log.withPrefix("Detekovan plugin AdvancedEnchantments - disenchant jej bude pouzivat.");
         }
 
-        //Vault init //TODO: ? Why tu je a proč nefunguje
-//        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
-//        econ = rsp.getProvider();
+        //Vault init
+        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+        econ = Objects.requireNonNull(rsp).getProvider();
 
         // Prometheus
         if (getConfig().getBoolean("prometheus.state", false)) {
@@ -241,7 +242,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("skull").setExecutor(new SkullCommand());
         getCommand("profil").setExecutor(new Profil_command());
         getCommand("navody").setExecutor(new Navody_command());
-        getCommand("checkfly").setExecutor(new Checkfly_command());
         getCommand("beacon").setExecutor(new BeaconCommand());
         getCommand("recipe").setExecutor(new Recipe_command());
         getCommand("restartmanager").setExecutor(new RestartManager_command()); //TODO: Nenačítat, pokud nebude CraftCore na serveru?
