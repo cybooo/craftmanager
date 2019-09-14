@@ -175,7 +175,7 @@ public class InventoryListener implements Listener {
                 p.closeInventory();
             }
             if (e.getSlot() == 32) {
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "chestcommands open vip.yml " + p.getName());
+                p.performCommand("vip");
             }
         }
         if (e.getView().getTitle().equals("Help pro Creative")) {
@@ -200,7 +200,7 @@ public class InventoryListener implements Listener {
                 p.closeInventory();
             }
             if (e.getSlot() == 21) {
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "chestcommands open example.yml " + p.getName());
+                p.performCommand("vip");
             }
             if (e.getSlot() == 22) {
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
@@ -233,7 +233,7 @@ public class InventoryListener implements Listener {
                 return;
             }
             if (e.getSlot() == 32) {
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "chestcommands open vip.yml " + p.getName());
+                p.performCommand("vip");
             }
             if(e.getSlot() == 23){
                 MenuManager.openNavody(p);
