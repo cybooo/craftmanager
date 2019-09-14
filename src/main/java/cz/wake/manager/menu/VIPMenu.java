@@ -1,15 +1,12 @@
-package cz.wake.manager.commads;
-
+package cz.wake.manager.menu;
 
 import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
 import cz.wake.manager.utils.ServerType;
+import io.github.jorelali.commandapi.api.CommandAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,35 +17,36 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.ArrayList;
 
-public class VIP_command implements CommandExecutor, Listener {
+public class VIPMenu implements Listener {
 
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String string, String[] arrayOfString) {
-        if (sender instanceof Player) {
-            Player player = (Player)sender;
-            if (Main.getServerType() == ServerType.SURVIVAL
-                || Main.getServerType() == ServerType.SKYBLOCK
-                || Main.getServerType() == ServerType.CREATIVE) {
-                openVIPMenu(player);
+    public static void registerCommand() {
+        CommandAPI.getInstance().register("vip", new String[]{}, null, (sender, args) -> {
+            if (sender instanceof Player) {
+                if (Main.getServerType() == ServerType.SURVIVAL
+                        || Main.getServerType() == ServerType.SKYBLOCK
+                        || Main.getServerType() == ServerType.CREATIVE) {
+                    openVIPMenu((Player) sender);
+                } else {
+                    sender.sendMessage("§c§l[!] §cNa tomto serveru nelze zobrazit VIP, jelikož zde zatím žádné není.");
+                }
             } else {
-                player.sendMessage("§c§l[!] §cNa tomto serveru nelze zobrazit VIP, jelikoz zde zatim zadne neni.");
+                sender.sendMessage("§c§l[!] §cZ konzole VIP nefunguje!");
             }
-        }
-        return true;
+        });
     }
 
-    private void openVIPMenu(final Player player) {
+    private static void openVIPMenu(final Player player) {
         Inventory inventory = Bukkit.createInventory(null, 45, "[VIP] Server prehled");
 
         ItemStack global_vip = ItemFactory.createHead("global_vip", "0ceac85e-159d-4f9d-a1c2-c8acde792f23", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjFkZDRmZTRhNDI5YWJkNjY1ZGZkYjNlMjEzMjFkNmVmYTZhNmI1ZTdiOTU2ZGI5YzVkNTljOWVmYWIyNSJ9fX0=");
-        global_vip = new ItemBuilder(global_vip).setName("§bGlobal VIP").setLore("§7VIP, ktere plati po celem serveru!","", "§7Zahrnuje:","§e· §fSurvival", "§e· §fSkyblock", "§e· §fCreative", "§e· §fPrison", "§e· §fMiniGames").build();
+        global_vip = new ItemBuilder(global_vip).setName("§bGlobal VIP").setLore("§7VIP, ktere plati po celem serveru!", "", "§7Zahrnuje:", "§e· §fSurvival", "§e· §fSkyblock", "§e· §fCreative", "§e· §fPrison").build();
         ItemStack server_vip = ItemFactory.createHead("server_vip", "ea66bcbc-6c58-41b6-8f34-3f1f9cc2eb75", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2NhNDVlZjU4MjFhOGIxMDdjYmZiYTdkNjZlOTk3ZmI2YWJlNTUyMWMxNTVjZWUyZjI0YjM0YjNkOTFhNSJ9fX0=");
         server_vip = new ItemBuilder(server_vip).setName("§6Server VIP").setLore("§7VIP, ktere plati pouze na tomto serveru!").build();
 
-        SkullMeta headItemMeta = (SkullMeta) Bukkit.getItemFactory().getItemMeta(Material.LEGACY_SKULL_ITEM);
+        SkullMeta headItemMeta = (SkullMeta) Bukkit.getItemFactory().getItemMeta(Material.PLAYER_HEAD);
         headItemMeta.setOwner(player.getName());
         headItemMeta.setDisplayName("§cTvoje VIP");
-        ItemStack headItem = new ItemStack(Material.LEGACY_SKULL_ITEM, 1, (short) 3);
+        ItemStack headItem = new ItemStack(Material.PLAYER_HEAD, 1, (short) 3);
         ArrayList<String> headLore = new ArrayList<String>();
         headLore.add("§8Planovano...");
         headItemMeta.setLore(headLore);
@@ -65,7 +63,7 @@ public class VIP_command implements CommandExecutor, Listener {
         ItemStack emerald_vip = ItemFactory.createHead("emerald_vip", "7c10ae35-bc55-465c-a0fc-b2415e900c79", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWM5MDZkNjg4ZTY1ODAyNTY5ZDk3MDViNTc5YmNlNTZlZGM4NmVhNWMzNmJkZDZkNmZjMzU1MTZhNzdkNCJ9fX0=");
         emerald_vip = new ItemBuilder(emerald_vip).setName("§aEmerald").setLore("§7Cim vic vyhod, tim vic VIP!", "§7Cim lepsi VIP, tim vic vyhod!", "", "§e§eKlikni pro zobrazeni vyhod").build();
 
-        ItemStack obsidian_vip = ItemFactory.createHead("obsidian_vip","02dbc5d5-60eb-46d5-8d8e-7c241401a684", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGU3NjBiYmMxMTNjMjczZmFjNDA4OTZmYTIwODlhNTZjYzc0NmE3OWE3YTgyNzVmNjM4NTdlNjllNmY3NzAzYSJ9fX0=");
+        ItemStack obsidian_vip = ItemFactory.createHead("obsidian_vip", "02dbc5d5-60eb-46d5-8d8e-7c241401a684", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGU3NjBiYmMxMTNjMjczZmFjNDA4OTZmYTIwODlhNTZjYzc0NmE3OWE3YTgyNzVmNjM4NTdlNjllNmY3NzAzYSJ9fX0=");
         obsidian_vip = new ItemBuilder(obsidian_vip).setName("§9Obsidian").setLore("§7Nejvetsi a nejlepsi VIP, ", "§7tak velky, ze z tebe bude", "§7na serveru Lich King!", "", "§e§eKlikni pro zobrazeni vyhod").build();
 
         inventory.setItem(1, global_vip);
@@ -425,7 +423,7 @@ public class VIP_command implements CommandExecutor, Listener {
         ItemStack back = new ItemBuilder(Material.ARROW).setName("§cZpet do menu").build();
         //ItemStack nextVip = new ItemBuilder(Material.ARROW).setName("§9Obsidian VIP ->").build();
 
-        ItemStack obsidian_server_vip = ItemFactory.createHead("obsidian_vip","02dbc5d5-60eb-46d5-8d8e-7c241401a684", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGU3NjBiYmMxMTNjMjczZmFjNDA4OTZmYTIwODlhNTZjYzc0NmE3OWE3YTgyNzVmNjM4NTdlNjllNmY3NzAzYSJ9fX0=");
+        ItemStack obsidian_server_vip = ItemFactory.createHead("obsidian_vip", "02dbc5d5-60eb-46d5-8d8e-7c241401a684", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGU3NjBiYmMxMTNjMjczZmFjNDA4OTZmYTIwODlhNTZjYzc0NmE3OWE3YTgyNzVmNjM4NTdlNjllNmY3NzAzYSJ9fX0=");
 
         ArrayList<String> server_vyhody = new ArrayList<>();
         server_vyhody.add("§7Toto VIP zahrnuje:");
@@ -435,15 +433,15 @@ public class VIP_command implements CommandExecutor, Listener {
         server_vyhody.add("");
         server_vyhody.add("§7Oproti Emerald VIP ziskas navic:");
 
-        if(Main.getServerType() == ServerType.SURVIVAL) {
+        if (Main.getServerType() == ServerType.SURVIVAL) {
             server_vyhody.add("§e· §fMaximalni pocet residenci 10 (normal 4)");
         }
 
-        if(Main.getServerType() == ServerType.SKYBLOCK) {
+        if (Main.getServerType() == ServerType.SKYBLOCK) {
             server_vyhody.add("§e· §fMaximalni velikost ostrova az 300x300 bloku (normal 200x200)");
         }
 
-        if(Main.getServerType() == ServerType.CREATIVE) {
+        if (Main.getServerType() == ServerType.CREATIVE) {
             server_vyhody.add("§e· §fMaximalni pocet pozemku (200)");
         }
 
@@ -453,7 +451,7 @@ public class VIP_command implements CommandExecutor, Listener {
         obsidian_server_vip = new ItemBuilder(obsidian_server_vip).setName("§9Obsidian " + server + " VIP")
                 .setLore(server_vyhody).setGlowing().build();
 
-        ItemStack obsidian_global_vip = ItemFactory.createHead("obsidian_vip","02dbc5d5-60eb-46d5-8d8e-7c241401a684", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGU3NjBiYmMxMTNjMjczZmFjNDA4OTZmYTIwODlhNTZjYzc0NmE3OWE3YTgyNzVmNjM4NTdlNjllNmY3NzAzYSJ9fX0=");
+        ItemStack obsidian_global_vip = ItemFactory.createHead("obsidian_vip", "02dbc5d5-60eb-46d5-8d8e-7c241401a684", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGU3NjBiYmMxMTNjMjczZmFjNDA4OTZmYTIwODlhNTZjYzc0NmE3OWE3YTgyNzVmNjM4NTdlNjllNmY3NzAzYSJ9fX0=");
 
         ArrayList<String> global_vyhody = new ArrayList<>();
         global_vyhody.add("§7Toto VIP zahrnuje:");
@@ -558,6 +556,9 @@ public class VIP_command implements CommandExecutor, Listener {
             if (e.getSlot() == 43) {
                 openDiamondMenu(player);
             }
+            if (e.getSlot() == 19 || e.getSlot() == 25) {
+                sendStoreLink(player);
+            }
         }
         if (e.getView().getTitle().equals("[VIP] Diamond VIP")) {
             e.setCancelled(true);
@@ -573,6 +574,9 @@ public class VIP_command implements CommandExecutor, Listener {
             if (e.getSlot() == 43) {
                 openEmeraldMenu(player);
             }
+            if (e.getSlot() == 19 || e.getSlot() == 25) {
+                sendStoreLink(player);
+            }
         }
 
         if (e.getView().getTitle().equals("[VIP] Emerald VIP")) {
@@ -586,8 +590,11 @@ public class VIP_command implements CommandExecutor, Listener {
             if (e.getSlot() == 37) {
                 openVIPMenu(player);
             }
-            if(e.getSlot() == 43){
+            if (e.getSlot() == 43) {
                 openObsidianMenu(player);
+            }
+            if (e.getSlot() == 19 || e.getSlot() == 25) {
+                sendStoreLink(player);
             }
         }
 
@@ -602,7 +609,18 @@ public class VIP_command implements CommandExecutor, Listener {
             if (e.getSlot() == 37) {
                 openVIPMenu(player);
             }
+            if (e.getSlot() == 19 || e.getSlot() == 25) {
+                sendStoreLink(player);
+            }
         }
+    }
+
+    private void sendStoreLink(Player player) {
+        player.closeInventory();
+        player.sendMessage("");
+        player.sendMessage("§e§lOdkaz na Store:");
+        player.sendMessage("§bhttps://store.craftmania.cz/");
+        player.sendMessage("");
     }
 
     private String getCorrectNameOfServer() {
@@ -620,4 +638,6 @@ public class VIP_command implements CommandExecutor, Listener {
             return "Unknown";
         }
     }
+
+
 }

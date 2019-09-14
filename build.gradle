@@ -45,6 +45,7 @@ dependencies {
     compileOnly group: 'com.vexsoftware', name: 'nuvotifier-universal', version: '2.3.4'
     compileOnly group: 'com.gmail.filoghost.holographicdisplays', name: 'holographicdisplays-api', version: '2.3.3-SNAPSHOT'
     compileOnly "com.github.MilkBowl:VaultAPI:1.7"
+    compile 'io.github.jorelali:commandapi:2.2'
 
     // CraftMania
     compileOnly name: 'EnchantmentFixer'

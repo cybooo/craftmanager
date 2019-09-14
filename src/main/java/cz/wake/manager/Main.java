@@ -6,6 +6,7 @@ import cz.wake.manager.commads.staff.RawBroadcast;
 import cz.wake.manager.commads.staff.RestartManager_command;
 import cz.wake.manager.listener.*;
 import cz.wake.manager.listener.suggestions.PlayerCommandSendListener;
+import cz.wake.manager.menu.VIPMenu;
 import cz.wake.manager.perks.coloranvil.AnvilListener;
 import cz.wake.manager.perks.general.*;
 import cz.wake.manager.perks.particles.ParticlesAPI;
@@ -196,10 +197,12 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new TagsEditor(), this);
         pm.registerEvents(new BeaconCommand(), this);
         pm.registerEvents(new PlayerSwapListener(), this);
-        pm.registerEvents(new VIP_command(), this);
         pm.registerEvents(new SignClickListener(), this);
         pm.registerEvents(new Votes_command(), this);
         pm.registerEvents(new PlayerCommandSendListener(this), this);
+
+        // Refactored
+        pm.registerEvents(new VIPMenu(), this);
 
         // Skyblock PVP listener
         if (serverType == ServerType.SKYBLOCK) {
@@ -224,6 +227,13 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     }
 
     private void loadCommands() {
+
+        // CommandAPI 1.13+
+        if (Bukkit.getPluginManager().isPluginEnabled("CommandAPI")) {
+            Log.normalMessage("CommandsAPI detekovano, prikazy budou registrovany!");
+            VIPMenu.registerCommand();
+        }
+
         //TODO: Kompletni rewrite na 1.13 CommandAPI
         getCommand("menu").setExecutor(new Menu_command());
         getCommand("coinshop").setExecutor(new Coinshop_command());
@@ -248,7 +258,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("cm").setExecutor(new Cm_command());
         getCommand("glowitem").setExecutor(new GlowItemCommand());
         getCommand("rawbroadcast").setExecutor(new RawBroadcast());
-        getCommand("vip").setExecutor(new VIP_command());
         getCommand("blocks").setExecutor(new Blocks_command());
         getCommand("repair").setExecutor(new Repair_command());
         getCommand("votes").setExecutor(new Votes_command());
