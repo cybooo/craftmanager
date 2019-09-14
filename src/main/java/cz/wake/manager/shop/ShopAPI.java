@@ -1097,12 +1097,12 @@ public class ShopAPI implements Listener {
                     p.sendMessage("§e§l(*) §eJiz mas zakoupeny WorldEdit!");
                 } else {
                     if (VoteTokensAPI.getVoteTokens(p) >= 1) {
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.(wand|fill) true 1h creative");
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.(history|brush).* true 1h creative");
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.navigation.up true 1h creative");
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.clipboard.(cut|paste|rotate|flip|copy) true 1h creative");
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.region.(center|hollow|walls|replace|set|smooth) true 1h creative");
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.selection.(pos|chunk) true 1h creative");
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.(wand|fill) true 1h creative2");
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.(history|brush).* true 1h creative2");
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.navigation.up true 1h creative2");
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.clipboard.(cut|paste|rotate|flip|copy) true 1h creative2");
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.region.(center|hollow|walls|replace|set|smooth) true 1h creative2");
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.selection.(pos|chunk) true 1h creative2");
                         VoteTokensAPI.takeVoteTokens(p, 1);
                         p.sendMessage("§e§l(*) §eZakoupil jsi si §f1x WorldEdit na 1h §eza §a1 VT.");
                         p.closeInventory();
@@ -1122,12 +1122,12 @@ public class ShopAPI implements Listener {
                     p.sendMessage("§e§l(*) §eJiz mas zakoupeny WorldEdit!");
                 } else {
                     if (VoteTokensAPI.getVoteTokens(p) >= 3) {
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.(wand|fill) true 3h creative");
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.(history|brush).* true 3h creative");
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.navigation.up true 3h creative");
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.clipboard.(cut|paste|rotate|flip|copy) true 3h creative");
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.region.(center|hollow|walls|replace|set|smooth) true 3h creative");
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.selection.(pos|chunk) true 3h creative");
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.(wand|fill) true 3h creative2");
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.(history|brush).* true 3h creative2");
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.navigation.up true 3h creative2");
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.clipboard.(cut|paste|rotate|flip|copy) true 3h creative2");
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.region.(center|hollow|walls|replace|set|smooth) true 3h creative2");
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp worldedit.selection.(pos|chunk) true 3h creative2");
                         VoteTokensAPI.takeVoteTokens(p, 3);
                         p.sendMessage("§e§l(*) §eZakoupil jsi si §fWorldEdit na 3h §eza §a3 VT.");
                         p.closeInventory();
