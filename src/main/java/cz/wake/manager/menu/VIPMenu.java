@@ -20,12 +20,13 @@ import java.util.ArrayList;
 public class VIPMenu implements Listener {
 
     public static void registerCommand() {
-        CommandAPI.getInstance().register("vip", new String[]{}, null, (sender, args) -> {
+        CommandAPI.getInstance().register("vip", null, (sender, args) -> {
             if (sender instanceof Player) {
+                Player player = (Player) sender;
                 if (Main.getServerType() == ServerType.SURVIVAL
                         || Main.getServerType() == ServerType.SKYBLOCK
                         || Main.getServerType() == ServerType.CREATIVE) {
-                    openVIPMenu((Player) sender);
+                    openVIPMenu(player);
                 } else {
                     sender.sendMessage("§c§l[!] §cNa tomto serveru nelze zobrazit VIP, jelikož zde zatím žádné není.");
                 }

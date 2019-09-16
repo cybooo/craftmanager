@@ -230,7 +230,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // CommandAPI 1.13+
         if (Bukkit.getPluginManager().isPluginEnabled("CommandAPI")) {
-            Log.normalMessage("CommandsAPI detekovano, prikazy budou registrovany!");
+            Log.withPrefix("CommandsAPI detekovano, prikazy budou registrovany!");
             VIPMenu.registerCommand();
         }
 
