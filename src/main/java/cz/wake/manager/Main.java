@@ -150,8 +150,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         }
 
         //Vault init
-        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
-        econ = Objects.requireNonNull(rsp).getProvider();
+        /*RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+        econ = Objects.requireNonNull(rsp).getProvider();*/
 
         // Prometheus
         if (getConfig().getBoolean("prometheus.state", false)) {
