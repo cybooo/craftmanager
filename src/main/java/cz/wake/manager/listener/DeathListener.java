@@ -57,6 +57,7 @@ public class DeathListener implements Listener {
         if (e.getDamager() instanceof Guardian || e.getDamager() instanceof ElderGuardian) {
             if (e.getCause().equals(EntityDamageEvent.DamageCause.THORNS)) return;
         }
+        if (e.getDamager() instanceof Vindicator) return;
 
         if (e.getDamage() >= p.getHealth()) {
             if(e.isCancelled()) {
