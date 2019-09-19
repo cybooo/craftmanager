@@ -96,8 +96,11 @@ public class RestartManager_command implements CommandExecutor {
                       return true;
                   }
                   Main.restartTime = null;
+                  Main.restartReason = null;
                   p.sendMessage("§aNaplanovany restart byl uspesne zrusen.");
-                  runnables.get(0).cancel();
+                  for (BukkitTask task : runnables) {
+                      task.cancel();
+                  }
                   bb.hide();
                   return true;
                 } else {
