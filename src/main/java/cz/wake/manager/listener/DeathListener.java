@@ -62,6 +62,12 @@ public class DeathListener implements Listener {
             if(e.isCancelled()) {
                 return;
             }
+            if (Main.getInstance().getIdServer().equalsIgnoreCase("skyblock")) {
+                Island is = ASkyBlockAPI.getInstance().getIslandAt(p.getLocation());
+                if (is != null) {
+                    if (is != ASkyBlockAPI.getInstance().getIslandOwnedBy(p.getUniqueId())) return;
+                }
+            }
             for (Player pl : Main.getInstance().death_messages) {
                 pl.sendMessage(Main.getInstance().getConfig().getStringList("d_msgs.mob").get(r.nextInt(Main.getInstance().getConfig().getStringList("d_msgs.mob").size()))
                         .replace("%player%", p.getName())
