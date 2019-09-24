@@ -2,6 +2,7 @@ package cz.wake.manager.votifier;
 
 import cz.craftmania.crafteconomy.api.CraftCoinsAPI;
 import cz.craftmania.crafteconomy.api.VoteTokensAPI;
+import cz.wake.manager.Main;
 import cz.wake.manager.utils.Titles;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -14,6 +15,7 @@ public class ForwardVote {
 
         VoteTokensAPI.giveVoteTokens(player, 1);
         CraftCoinsAPI.giveCoins(player, Integer.valueOf(coins));
+        Main.getInstance().getMySQL().addPlayerVote(nick);
 
         Titles.sendFullTitlePlayer(player, 10, 60, 10, "§a§lDekujeme!", "§fDostal/a jsi 1x VoteToken.");
         player.sendMessage(" ");
