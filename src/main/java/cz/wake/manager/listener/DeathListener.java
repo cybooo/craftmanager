@@ -1,7 +1,6 @@
 package cz.wake.manager.listener;
 
 import cz.wake.manager.Main;
-import cz.wake.manager.utils.ServerType;
 import cz.wake.manager.utils.configs.Config;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
@@ -28,8 +27,6 @@ public class DeathListener implements Listener {
         if (!(e.getEntity() instanceof Player)) return;
 
         if (!Main.getInstance().areDeathMessagesEnabled()) return;
-
-        if(Main.getServerType() == ServerType.SURVIVAL && e.getEntity().getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.VOID) e.getDrops().clear();
 
         Player p = (Player) e.getEntity();
         Entity killer = p.getKiller();
