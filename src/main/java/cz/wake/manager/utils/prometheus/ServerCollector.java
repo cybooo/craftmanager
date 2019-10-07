@@ -1,18 +1,29 @@
 package cz.wake.manager.utils.prometheus;
 
+import cz.wake.manager.Main;
+import cz.wake.manager.listener.CommandListener;
 import io.prometheus.client.Collector;
+import io.prometheus.client.GaugeMetricFamily;
 import net.minecraft.server.v1_14_R1.MinecraftServer;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ServerCollector extends Collector {
 
     @Override
     public List<MetricFamilySamples> collect() {
+        List<MetricFamilySamples> familySamples = new ArrayList<>();
+        GaugeMetricFamily commandsExecutions = new GaugeMetricFamily(Main.getServerType().name().toLowerCase() + "_commands_executions", "Number of commands executions",
+                Collections.singletonList("command"));
+        familySamples.add(commandsExecutions);
+
+        for(Map.Entry<String, Integer> command : CommandListener.getCommandsExecutions().entrySet()) {
+            commandsExecutions.addMetric(Collections.singletonList(command.getKey()), command.getValue());
+        }
+
         MetricsController.players.labels("online").set(Bukkit.getOnlinePlayers().size());
         MetricsController.players.labels("offline").set(Bukkit.getOfflinePlayers().length);
 
@@ -39,6 +50,6 @@ public class ServerCollector extends Collector {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return new ArrayList<>();
+        return familySamples;
     }
 }

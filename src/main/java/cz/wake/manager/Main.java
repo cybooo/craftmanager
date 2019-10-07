@@ -200,7 +200,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new SignClickListener(), this);
         pm.registerEvents(new Votes_command(), this);
         pm.registerEvents(new PlayerCommandSendListener(this), this);
-
+        pm.registerEvents(new CommandListener(), this);
+        
         // Refactored
         pm.registerEvents(new VIPMenu(), this);
 
