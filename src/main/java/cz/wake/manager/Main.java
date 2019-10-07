@@ -402,7 +402,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             return ServerType.CREATIVE;
         } else if (type.equalsIgnoreCase("prison")) {
             return ServerType.PRISON;
-        } else if (type.equalsIgnoreCase("vanilla")) {
+        } else if (type.equalsIgnoreCase("vanilla") || type.equalsIgnoreCase("vanilla2")) { // vanilla2 = 1.13
             return ServerType.VANILLA;
         } else if (type.equalsIgnoreCase("skycloud")) {
             return ServerType.SKYCLOUD;
