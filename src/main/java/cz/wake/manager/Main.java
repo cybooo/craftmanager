@@ -13,6 +13,7 @@ import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.perks.twerking.TwerkEvent;
 import cz.wake.manager.servers.skycloud.VillagerDamageListener;
 import cz.wake.manager.servers.skycloud.VillagerManager;
+import cz.wake.manager.servers.vanilla.LecternBookTakeListener;
 import cz.wake.manager.shop.ShopAPI;
 import cz.wake.manager.shop.TagsEditor;
 import cz.wake.manager.shop.TempShop;
@@ -223,6 +224,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         if (serverType == ServerType.SKYCLOUD) {
             pm.registerEvents(new VillagerDamageListener(), this);
+        }
+
+        if (serverType == ServerType.VANILLA) {
+            pm.registerEvents(new LecternBookTakeListener(), this);
         }
 
     }
