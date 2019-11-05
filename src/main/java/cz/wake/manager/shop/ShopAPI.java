@@ -759,103 +759,103 @@ public class ShopAPI implements Listener {
         inv.setItem(53, footer);
 
         // Slotovac
-        if (Main.getServerType() == ServerType.SURVIVAL) {
+        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
             if (craftCoins >= 1500) {
-                ItemStack item = new ItemBuilder(Material.CHEST_MINECART).setName("§a1x Slotovac")
+                ItemStack item = new ItemBuilder(Material.STORAGE_MINECART).setName("§a1x Slotovac")
                         .setLore("§7Zvysuje pocet custom enchantu", "§7na itemu - max. 10!", "", "§7Cena: §f1500 CC").build();
                 inv.setItem(19, item);
             } else {
-                ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§81x Slotovac")
+                ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§81x Slotovac")
                         .setLore("§cNedostatek CraftCoins!", "§7Potrebujes: §f1500 CC").build();
                 inv.setItem(19, noMoney);
             }
         } else {
-            ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§c1x Slotovac")
+            ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§c1x Slotovac")
                     .setLore("§7Nelze zakoupit na tomto serveru.").build();
             inv.setItem(19, nedostupny);
         }
 
         // MobTracker
-        if (Main.getServerType() == ServerType.SURVIVAL) {
+        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
             if (craftCoins >= 500) {
                 ItemStack item = new ItemBuilder(Material.FERMENTED_SPIDER_EYE).setName("§eMobTrak")
                         .setLore("§7Zaznamenava na nastroj", "§7kolik jsi zabil mobu.", "", "§7Cena: §f500 CC").build();
                 inv.setItem(20, item);
             } else {
-                ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§8MobTrak")
+                ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§8MobTrak")
                         .setLore("§cNedostatek CraftCoins!", "§7Potrebujes: §f500 CC").build();
                 inv.setItem(20, noMoney);
             }
         } else {
-            ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§cMobTrak")
+            ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cMobTrak")
                     .setLore("§7Nelze zakoupit na tomto serveru.").build();
             inv.setItem(20, nedostupny);
         }
 
         // StatTrak
-        if (Main.getServerType() == ServerType.SURVIVAL) {
+        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
             if (craftCoins >= 500) {
                 ItemStack item = new ItemBuilder(Material.MAGMA_CREAM).setName("§6StatTrak")
                         .setLore("§7Zaznamenava na nastroj", "§7kolik jsi zabil hracu.", "", "§7Cena: §f500 CC").build();
                 inv.setItem(21, item);
             } else {
-                ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§8StatTrak")
+                ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§8StatTrak")
                         .setLore("§cNedostatek CraftCoins!", "§7Potrebujes: §f500 CC").build();
                 inv.setItem(21, noMoney);
             }
         } else {
-            ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§cStatTrak")
+            ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cStatTrak")
                     .setLore("§7Nelze zakoupit na tomto serveru.").build();
             inv.setItem(21, nedostupny);
         }
 
         // BlockTrak
-        if (Main.getServerType() == ServerType.SURVIVAL) {
+        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
             if (craftCoins >= 500) {
                 ItemStack item = new ItemBuilder(Material.SLIME_BALL).setName("§aBlockTrak")
                         .setLore("§7Zaznamenava na nastroj", "§7kolik jsi vykopal bloku.", "", "§7Cena: §f500 CC").build();
                 inv.setItem(22, item);
             } else {
-                ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§8BlockTrak")
+                ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§8BlockTrak")
                         .setLore("§cNedostatek CraftCoins!", "§7Potrebujes: §f500 CC").build();
                 inv.setItem(22, noMoney);
             }
         } else {
-            ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§cBlockTrak")
+            ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cBlockTrak")
                     .setLore("§7Nelze zakoupit na tomto serveru.").build();
             inv.setItem(22, nedostupny);
         }
 
         // Randomizer
-        if (Main.getServerType() == ServerType.SURVIVAL) {
+        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
             if (craftCoins >= 300) {
                 ItemStack item = new ItemBuilder(Material.PAPER).setName("§eRandomizer")
                         .setLore("§7Vygeneruje znovu nahodne", "§7sance na knize.", "", "§7Cena: §f300 CC").build();
                 inv.setItem(23, item);
             } else {
-                ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§8Randomizer")
+                ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§8Randomizer")
                         .setLore("§cNedostatek CraftCoins!", "§7Potrebujes: §f300 CC").build();
                 inv.setItem(23, noMoney);
             }
         } else {
-            ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§cRandomizer")
+            ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cRandomizer")
                     .setLore("§7Nelze zakoupit na tomto serveru.").build();
             inv.setItem(23, nedostupny);
         }
 
         // Transmog
-        if (Main.getServerType() == ServerType.SURVIVAL) {
+        if (Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
             if (craftCoins >= 600) {
                 ItemStack item = new ItemBuilder(Material.PAPER).setName("§eTransmog Scroll")
                         .setLore("§7Seradi vsechny enchanty", "§7na itemu podle rarity.", "", "§7Cena: §f600 CC").build();
                 inv.setItem(24, item);
             } else {
-                ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§8Transmog Scroll")
+                ItemStack noMoney = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§8Transmog Scroll")
                         .setLore("§cNedostatek CraftCoins!", "§7Potrebujes: §f600 CC").build();
                 inv.setItem(24, noMoney);
             }
         } else {
-            ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§cTransmog Scroll")
+            ItemStack nedostupny = new ItemBuilder(Material.STAINED_GLASS_PANE).setDurability((short) 14).setName("§cTransmog Scroll")
                     .setLore("§7Nelze zakoupit na tomto serveru.").build();
             inv.setItem(24, nedostupny);
         }
@@ -914,7 +914,7 @@ public class ShopAPI implements Listener {
 
             // Slotovac
             if (e.getSlot() == 19) {
-                if(Main.getServerType() != ServerType.SURVIVAL) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
                     p.sendMessage("§c§l[!] §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
@@ -930,7 +930,7 @@ public class ShopAPI implements Listener {
 
             // MobTrak
             if (e.getSlot() == 20) {
-                if(Main.getServerType() != ServerType.SURVIVAL) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
                     p.sendMessage("§c§l[!] §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
@@ -946,7 +946,7 @@ public class ShopAPI implements Listener {
 
             // StatTrak
             if (e.getSlot() == 21) {
-                if(Main.getServerType() != ServerType.SURVIVAL) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
                     p.sendMessage("§c§l[!] §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
@@ -962,7 +962,7 @@ public class ShopAPI implements Listener {
 
             // BlockTrak
             if (e.getSlot() == 22) {
-                if(Main.getServerType() != ServerType.SURVIVAL) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
                     p.sendMessage("§c§l[!] §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
@@ -978,7 +978,7 @@ public class ShopAPI implements Listener {
 
             // Randomizer
             if (e.getSlot() == 23) {
-                if(Main.getServerType() != ServerType.SURVIVAL) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
                     p.sendMessage("§c§l[!] §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
@@ -994,7 +994,7 @@ public class ShopAPI implements Listener {
 
             // Transmog Scroll
             if (e.getSlot() == 24) {
-                if(Main.getServerType() != ServerType.SURVIVAL) {
+                if(!Main.getInstance().getIdServer().equalsIgnoreCase("survival")) {
                     p.sendMessage("§c§l[!] §cNa tomto serveru toto nelze zakoupit.");
                     return;
                 }
