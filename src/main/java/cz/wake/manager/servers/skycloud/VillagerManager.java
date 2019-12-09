@@ -159,8 +159,9 @@ public class VillagerManager {
 
     private static void spawnRareVillager(boolean appendHologram) {
 
-        int spawnTime = randRange(1000, 1000); // TEST
-        int despawnTime = randRange(1000, 50000);
+        // Random cas v minutach
+        int spawnTime = randRange(5, 60) * 1000;
+        int despawnTime = randRange(180, 720) * 1000;
 
         int miliSecondsSpawn = (spawnTime / 20) * 1000;
         int miliSecondsDespawn = (despawnTime / 20) * 1000;
