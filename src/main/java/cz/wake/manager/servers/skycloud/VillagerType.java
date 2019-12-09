@@ -7,12 +7,15 @@ public enum VillagerType {
     END_VILLAGER("end_villager"),
     NETHER_VILLAGER("nether_villager"),
     RARE_VILLAGER("rare_villager"),
-    SEA_VILLAGER("sea_villager")
-    ;
+    SEA_VILLAGER("sea_villager");
 
     private String name;
 
     VillagerType(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 }
