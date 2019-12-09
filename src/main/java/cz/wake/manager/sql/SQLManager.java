@@ -305,7 +305,7 @@ public class SQLManager {
         } else if (Main.getServerType() == ServerType.VANILLA) {
             name = "vanilla";
         } else if (Main.getServerType() == ServerType.SKYCLOUD) {
-            name = "vanillasb"; //TODO: Prejmenovat v SQL
+            name = "skycloud";
         }
         return name;
     }
