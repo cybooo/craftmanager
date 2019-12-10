@@ -133,9 +133,15 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         }
 
         // Custom crafting recepty
-        //TODO: Podle server verze?
         if (serverType != ServerType.SKYCLOUD) {
             CustomCrafting.addPackedIce(this);
+        }
+
+        if (serverType == ServerType.SKYCLOUD) {
+            CustomCrafting.addSandCrafting(this);
+            CustomCrafting.addNetherBrickRecipe(this);
+            CustomCrafting.addGravelCutterRecipe(this);
+            CustomCrafting.addShulkerShellRecipe(this);
         }
 
         // Nastaveni mention prefixu
