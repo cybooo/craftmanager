@@ -91,5 +91,15 @@ public class CustomCrafting {
         return recipe;
     }
 
+    public static Recipe getCoarseDirtRecipe() {
+        ItemStack block = new ItemStack(Material.COARSE_DIRT, 2);
+        ShapedRecipe recipe = new ShapedRecipe(new NamespacedKey(Main.getInstance(), "crafting_coarse_dir"), block);
+        recipe.shape("abx", "bax", "xxx");
+        recipe.setIngredient('a', Material.GRAVEL);
+        recipe.setIngredient('b', Material.DIRT);
+        recipe.setIngredient('x', Material.AIR);
+        return recipe;
+    }
+
 
 }

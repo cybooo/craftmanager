@@ -30,8 +30,8 @@ import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.PluginManager;
-import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
@@ -39,7 +39,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class Main extends JavaPlugin implements PluginMessageListener {
@@ -139,6 +138,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         }
 
         if (serverType == ServerType.SKYCLOUD) {
+            this.getServer().getRecipesFor(new ItemStack(Material.COARSE_DIRT)).clear();
             this.getServer().addRecipe(CustomCrafting.getSandCrafting());
             this.getServer().addRecipe(CustomCrafting.getNetherBrickRecipe());
             this.getServer().addRecipe(CustomCrafting.getGravelCutterRecipe());
@@ -147,6 +147,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             this.getServer().addRecipe(CustomCrafting.getClayBlockRecipe());
             this.getServer().addRecipe(CustomCrafting.getRedSandRecipe());
             this.getServer().addRecipe(CustomCrafting.getSaddleRecipe());
+            this.getServer().addRecipe(CustomCrafting.getCoarseDirtRecipe());
         }
 
         // Nastaveni mention prefixu
