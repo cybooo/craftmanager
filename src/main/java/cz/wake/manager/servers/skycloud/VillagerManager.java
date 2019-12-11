@@ -129,7 +129,7 @@ public class VillagerManager {
         sellVillagerLocation.add(0, 3, 0);
         Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), sellVillagerLocation);
         hologram.appendTextLine("§lSell Villager");
-        hologram.appendTextLine("§7Všechny sračky levně! Kupuj! ZDE!");
+        hologram.appendTextLine("§7Hledáš co prodat? Prodávej! ZDE!");
 
         villagerList.add(villager);
     }
@@ -373,7 +373,7 @@ class CraftPotion {
         org.bukkit.potion.PotionData pd = null;
         if (a) {
             pm = (org.bukkit.inventory.meta.PotionMeta) is.getItemMeta();
-            pd = new org.bukkit.potion.PotionData(type, type.isExtendable() ? extended : false, type.isUpgradeable() ? upgraded : false);
+            pd = new org.bukkit.potion.PotionData(type, type.isExtendable() && extended, type.isUpgradeable() && upgraded);
         }
         potiondata = pd;
         if (a) {

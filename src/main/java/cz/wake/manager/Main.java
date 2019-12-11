@@ -138,10 +138,14 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         }
 
         if (serverType == ServerType.SKYCLOUD) {
-            CustomCrafting.addSandCrafting(this);
-            CustomCrafting.addNetherBrickRecipe(this);
-            CustomCrafting.addGravelCutterRecipe(this);
-            CustomCrafting.addShulkerShellRecipe(this);
+            this.getServer().addRecipe(CustomCrafting.getSandCrafting());
+            this.getServer().addRecipe(CustomCrafting.getNetherBrickRecipe());
+            this.getServer().addRecipe(CustomCrafting.getGravelCutterRecipe());
+            this.getServer().addRecipe(CustomCrafting.getShulkerShellRecipe());
+            this.getServer().addRecipe(CustomCrafting.getDiamondRecipe());
+            this.getServer().addRecipe(CustomCrafting.getClayBlockRecipe());
+            this.getServer().addRecipe(CustomCrafting.getRedSandRecipe());
+            this.getServer().addRecipe(CustomCrafting.getSaddleRecipe());
         }
 
         // Nastaveni mention prefixu
@@ -155,10 +159,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             useCustomDisenchant = true;
             Log.withPrefix("Detekovan plugin AdvancedEnchantments - disenchant jej bude pouzivat.");
         }
-
-        //Vault init
-        /*RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
-        econ = Objects.requireNonNull(rsp).getProvider();*/
 
         // Prometheus
         if (getConfig().getBoolean("prometheus.state", false)) {
