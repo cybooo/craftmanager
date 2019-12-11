@@ -9,6 +9,10 @@ public class Log {
         Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "[CraftManager] " + ChatColor.WHITE + s);
     }
 
+    public static void debug(String s) {
+        Bukkit.getConsoleSender().sendMessage(ChatColor.BLUE + "[DEBUG] " + ChatColor.WHITE + s);
+    }
+
     public static void normalMessage(String s) {
         Bukkit.getConsoleSender().sendMessage(s);
     }
