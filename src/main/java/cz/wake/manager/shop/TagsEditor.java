@@ -2,12 +2,10 @@ package cz.wake.manager.shop;
 
 import cz.craftmania.crafteconomy.api.CraftTokensAPI;
 import cz.wake.manager.Main;
-import net.minecraft.server.v1_14_R1.EntityPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.craftbukkit.v1_14_R1.entity.CraftPlayer;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

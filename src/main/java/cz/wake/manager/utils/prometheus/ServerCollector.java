@@ -4,7 +4,7 @@ import cz.wake.manager.Main;
 import cz.wake.manager.listener.CommandListener;
 import io.prometheus.client.Collector;
 import io.prometheus.client.GaugeMetricFamily;
-import net.minecraft.server.v1_14_R1.MinecraftServer;
+import net.minecraft.server.v1_15_R1.MinecraftServer;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 
