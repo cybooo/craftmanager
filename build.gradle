@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 
 group = 'cz.wake.manager'
-version = '1.4'
+version = '1.5'
 
 description = """"""
 
