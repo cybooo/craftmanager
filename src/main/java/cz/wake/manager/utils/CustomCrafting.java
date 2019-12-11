@@ -57,16 +57,13 @@ public class CustomCrafting {
     }
 
     public static Recipe getDiamondRecipe() {
-        ItemStack block = new ItemStack(Material.DIAMOND, 1);
-        ShapedRecipe recipe = new ShapedRecipe(new NamespacedKey(Main.getInstance(), "crafting_diamond"), block);
-        recipe.shape("aaa", "aaa", "aaa");
-        recipe.setIngredient('a', Material.EMERALD);
-        return recipe;
+        ItemStack diamond = new ItemStack(Material.DIAMOND, 1);
+        return new StonecuttingRecipe(new NamespacedKey(Main.getInstance(), "stone_cutter_diamond"), diamond, Material.EMERALD_BLOCK);
     }
 
     public static Recipe getClayBlockRecipe() {
         ItemStack block = new ItemStack(Material.CLAY, 4);
-        ShapedRecipe recipe = new ShapedRecipe(new NamespacedKey(Main.getInstance(), "crafting_clack_block"), block);
+        ShapedRecipe recipe = new ShapedRecipe(new NamespacedKey(Main.getInstance(), "crafting_clay_block"), block);
         recipe.shape("aba", "bcb", "bdb");
         recipe.setIngredient('a', Material.GUNPOWDER);
         recipe.setIngredient('b', new RecipeChoice.MaterialChoice(Material.WHITE_DYE, Material.GRAVEL));
