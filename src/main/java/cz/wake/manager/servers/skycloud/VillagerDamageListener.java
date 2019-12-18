@@ -4,8 +4,10 @@ import cz.wake.manager.Main;
 import cz.wake.manager.utils.Log;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
@@ -61,6 +63,14 @@ public class VillagerDamageListener implements Listener {
             if (villager.hasMetadata(VillagerType.RARE_VILLAGER.name())) {
                 VillagerManager.openMerchantInventory(VillagerType.RARE_VILLAGER, player);
             }
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGH)
+    public void onEntitySpawn(EntitySpawnEvent event) {
+        Entity entity = event.getEntity();
+        if (entity instanceof WanderingTrader) { // Deaktivace spawnování Wandering Tradera na Skycloudu
+            event.setCancelled(true);
         }
     }
 
