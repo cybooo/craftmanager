@@ -22,45 +22,39 @@ public class ItemDropListener implements Listener {
     @EventHandler
     public void onLeafDecay(final LeavesDecayEvent event) {
         Block block = event.getBlock();
-        if (block.getType() == Material.OAK_LEAVES) { // Oak -> Spruce 1%
+        if (block.getType() == Material.OAK_LEAVES) { // Oak -> Spruce 0.5%
             int chance = randRange(1, 1000);
-            if (chance <= 10) {
-                Log.debug("Drop: SPRUCE_LEAVES");
+            if (chance <= 5) {
                 event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.SPRUCE_SAPLING));
             }
         }
-        if (block.getType() == Material.SPRUCE_LEAVES) { // Spruce -> Acacia 0.8%
+        if (block.getType() == Material.SPRUCE_LEAVES) { // Spruce -> Acacia 0.3%
             int chance = randRange(1, 1000);
-            if (chance <= 8) {
-                Log.debug("Drop: ACACIA_LEAVES");
+            if (chance <= 3) {
                 event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.ACACIA_SAPLING));
             }
         }
-        if (block.getType() == Material.ACACIA_LEAVES) { // Acacia -> Birch 1%
+        if (block.getType() == Material.ACACIA_LEAVES) { // Acacia -> Birch 0.5%
             int chance = randRange(1, 1000);
-            if (chance <= 10) {
-                Log.debug("Drop: BIRCH_LEAVES");
+            if (chance <= 5) {
                 event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.BIRCH_SAPLING));
             }
         }
-        if (block.getType() == Material.BIRCH_LEAVES) { // Birch -> Jungle 0.5%
+        if (block.getType() == Material.BIRCH_LEAVES) { // Birch -> Jungle 0.2%
             int chance = randRange(1, 1000);
-            if (chance <= 5) {
-                Log.debug("Drop: JUNGLE_LEAVES");
+            if (chance <= 2) {
                 event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.JUNGLE_SAPLING));
             }
         }
-        if (block.getType() == Material.JUNGLE_LEAVES) { // Jungle -> Dark Oak 1%
+        if (block.getType() == Material.JUNGLE_LEAVES) { // Jungle -> Dark Oak 0.5%
             int chance = randRange(1, 1000);
-            if (chance <= 10) {
-                Log.debug("Drop: DARK_OAK_LEAVES");
+            if (chance <= 5) {
                 event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.DARK_OAK_SAPLING));
             }
         }
-        if (block.getType() == Material.DARK_OAK_LEAVES) { // Dark Oak -> Oak 1%
+        if (block.getType() == Material.DARK_OAK_LEAVES) { // Dark Oak -> Oak 0.3%
             int chance = randRange(1, 1000);
-            if (chance <= 10) {
-                Log.debug("Drop: OAK_LEAVES");
+            if (chance <= 3) {
                 event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.OAK_SAPLING));
             }
         }
@@ -95,7 +89,7 @@ public class ItemDropListener implements Listener {
             if (chance <= 10) {
                 event.getEntity().getWorld().dropItemNaturally(event.getEntity().getLocation(), new ItemStack(Material.MAGMA_BLOCK));
             }
-            if (chance <= 45) {
+            if (chance <= 30) {
                 event.getEntity().getWorld().dropItemNaturally(event.getEntity().getLocation(), new ItemStack(Material.BLAZE_ROD));
             }
         }
