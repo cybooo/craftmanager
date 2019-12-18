@@ -39,16 +39,20 @@ public class VillagerDamageListener implements Listener {
         Player player = event.getPlayer();
         if (entity instanceof Villager) {
             Villager villager = (Villager)entity;
-            event.setCancelled(true);
             if (villager.hasMetadata(VillagerType.SELL_VILLAGER.name())) { // Name protoze maji ID
+                event.setCancelled(true);
                 VillagerManager.openMerchantInventory(VillagerType.SELL_VILLAGER, player);
             } else if (villager.hasMetadata(VillagerType.BUY_VILLAGER.name())) {
+                event.setCancelled(true);
                 VillagerManager.openMerchantInventory(VillagerType.BUY_VILLAGER, player);
             } else if (villager.hasMetadata(VillagerType.END_VILLAGER.name())) {
+                event.setCancelled(true);
                 VillagerManager.openMerchantInventory(VillagerType.END_VILLAGER, player);
             } else if (villager.hasMetadata(VillagerType.NETHER_VILLAGER.name())) {
+                event.setCancelled(true);
                 VillagerManager.openMerchantInventory(VillagerType.NETHER_VILLAGER, player);
             } else if (villager.hasMetadata(VillagerType.SEA_VILLAGER.name())) {
+                event.setCancelled(true);
                 VillagerManager.openMerchantInventory(VillagerType.SEA_VILLAGER, player);
             }
         } else if (entity instanceof WanderingTrader) {
@@ -88,7 +92,7 @@ public class VillagerDamageListener implements Listener {
         }
     }
 
-    private int generatePrice(MerchantRecipe recipe) {
+    private int generatePrice(MerchantRecipe recipe) { //TODO: Podpora dia / dia_blocks
         int price = 0;
         for (ItemStack itemStack : recipe.getIngredients()) {
             price += itemStack.getAmount();
