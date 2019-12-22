@@ -26,6 +26,7 @@ import cz.wake.manager.utils.prometheus.MetricsController;
 import cz.wake.manager.utils.tasks.ATAfkTask;
 import cz.wake.manager.utils.tasks.ATCheckerTask;
 import cz.wake.manager.utils.tasks.UpdateServerTask;
+import cz.wake.manager.utils.tasks.VoteReminderTask;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -124,6 +125,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
             getServer().getScheduler().runTaskTimer(this, new ATAfkTask(), 200, 1200);
             Log.withPrefix("Aktivace AT-Afk checkeru");
+
+            getServer().getScheduler().runTaskTimerAsynchronously(this, new VoteReminderTask(), 100, 1200);
         }
 
         // Nastaveni blokovanych tagu
