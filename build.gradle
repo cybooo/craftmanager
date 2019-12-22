@@ -41,6 +41,8 @@ dependencies {
     compileOnly name: 'spigot-1.12.1-R0.1-SNAPSHOT-b1393'
 
     // Others
+    compile group: 'org.json', name: 'json', version: '20190722'
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
     compile group: 'com.zaxxer', name: 'HikariCP', version:'2.7.4'
     compileOnly group: 'com.vexsoftware', name: 'nuvotifier-universal', version:'2.3.4'
     compileOnly group: 'com.wasteofplastic', name: 'askyblock', version:'3.0.9'

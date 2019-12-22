@@ -114,6 +114,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
             getServer().getScheduler().runTaskTimer(this, new ATAfkTask(), 200, 1200);
             Log.withPrefix("Aktivace AT-Afk checkeru");
+
+            getServer().getScheduler().runTaskTimerAsynchronously(this, new VoteReminderTask(), 100, 1200);
         }
 
         // Update tablistu (5s)
