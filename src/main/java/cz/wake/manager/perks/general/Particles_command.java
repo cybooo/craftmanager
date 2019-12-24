@@ -1,6 +1,8 @@
 package cz.wake.manager.perks.general;
 
+import cz.craftmania.craftcore.spigot.inventory.builder.SmartInventory;
 import cz.wake.manager.Main;
+import cz.wake.manager.menu.ParticlesMainGUI;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -15,7 +17,7 @@ public class Particles_command implements CommandExecutor {
             if ((Command.getName().equalsIgnoreCase("particles"))) {
                 try {
                     if (ArrayOfString.length == 0) {
-                        Main.getInstance().getParticlesAPI().openParticlesMenu(player);
+                        SmartInventory.builder().provider(new ParticlesMainGUI()).title("Particles").size(5, 9).build().open(player);
                         return true;
                     }
                     return true;

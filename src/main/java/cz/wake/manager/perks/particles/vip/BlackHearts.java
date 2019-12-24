@@ -1,4 +1,4 @@
-package cz.wake.manager.perks.particles;
+package cz.wake.manager.perks.particles.vip;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ParticleEffect;

@@ -1,4 +1,4 @@
-package cz.wake.manager.perks.particles;
+package cz.wake.manager.perks.particles.vip;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ParticleEffect;
@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 
-public class WhiteMagic {
+public class WitchMagic {
 
     public static final HashMap<String, Integer> e = new HashMap<>();
     int task;
@@ -16,7 +16,7 @@ public class WhiteMagic {
         if (!e.containsKey(p.getName())) {
             task = Bukkit.getScheduler().runTaskTimer(Main.getInstance(), () -> {
                 if (e.containsKey(p.getName()) && p.isOnline()) {
-                    ParticleEffect.SPELL_MOB.display(0.7f, 0.7f, 0.7f, 0.05f, 20, p.getLocation(), Main.getInstance().getPlayers());
+                    ParticleEffect.SPELL_WITCH.display(0.7f, 0.7f, 0.7f, 0.05f, 8, p.getLocation(), Main.getInstance().getPlayers());
                 }
             }, 0L, 5L).getTaskId();
             e.put(p.getName(), task);

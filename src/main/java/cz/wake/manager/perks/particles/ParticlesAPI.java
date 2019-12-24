@@ -1,6 +1,10 @@
 package cz.wake.manager.perks.particles;
 
 import cz.wake.manager.Main;
+import cz.wake.manager.perks.particles.capes.ChristmasCape;
+import cz.wake.manager.perks.particles.special.SantaHat;
+import cz.wake.manager.perks.particles.vip.*;
+import cz.wake.manager.perks.particles.vip.Void;
 import cz.wake.manager.utils.ItemFactory;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -31,11 +35,11 @@ public class ParticlesAPI implements Listener {
     private Happy ha = new Happy();
     private Snowball sn = new Snowball();
     private BlackHearts bh = new BlackHearts();
-    private Void vo = new Void();
+    private cz.wake.manager.perks.particles.vip.Void vo = new cz.wake.manager.perks.particles.vip.Void();
 
     public void openParticlesMenu(final Player p) {
 
-        Inventory inv = Bukkit.createInventory(null, 54, "Particles");
+        Inventory inv = Bukkit.createInventory(null, 54, "VIP Particles");
 
         if (p.hasPermission("craftmanager.particles.hearts")) {
             if (Hearts.e.containsKey(p.getName())) {
@@ -272,7 +276,7 @@ public class ParticlesAPI implements Listener {
             inv.setItem(31, i);
         }
         if (p.hasPermission("craftmanager.particles.void")) {
-            if (Void.e.containsKey(p.getName())) {
+            if (cz.wake.manager.perks.particles.vip.Void.e.containsKey(p.getName())) {
                 ItemStack i = ItemFactory.create(Material.BEDROCK, (byte) 0, "§eVoid", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(32, i);
@@ -297,7 +301,7 @@ public class ParticlesAPI implements Listener {
     @EventHandler
     private void onInteract(InventoryClickEvent e) {
         final Player p = (Player) e.getWhoClicked();
-        if (e.getView().getTitle().equals("Particles")) {
+        if (e.getView().getTitle().equals("VIP Particles")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {
                 return;
@@ -596,9 +600,21 @@ public class ParticlesAPI implements Listener {
             BlackHearts.e.remove(p.getName());
             p.closeInventory();
         }
-        if (Void.e.containsKey(p.getName())) {
-            Bukkit.getScheduler().cancelTask(((Integer) Void.e.get(p.getName())).intValue());
+        if (cz.wake.manager.perks.particles.vip.Void.e.containsKey(p.getName())) {
+            Bukkit.getScheduler().cancelTask(((Integer) cz.wake.manager.perks.particles.vip.Void.e.get(p.getName())).intValue());
             Void.e.remove(p.getName());
+            p.closeInventory();
+        }
+        if (SantaHat.sh.containsKey(p.getName())) {
+            Bukkit.getScheduler().cancelTask(((Integer) SantaHat.sh.get(p.getName())).intValue());
+            SantaHat.sh.remove(p.getName());
+            p.closeInventory();
+        }
+
+        if (ChristmasCape.turnajCloaks.containsKey(p.getName())) {
+            Bukkit.getScheduler().cancelTask((ChristmasCape.turnajCloaks.get(p.getName())));
+            ChristmasCape.turnajCloaks.remove(p.getName());
+            p.getInventory().setArmorContents(null);
             p.closeInventory();
         }
     }
