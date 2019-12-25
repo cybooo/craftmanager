@@ -70,7 +70,9 @@ public class VillagerDamageListener implements Listener {
     public void onEntitySpawn(EntitySpawnEvent event) {
         Entity entity = event.getEntity();
         if (entity instanceof WanderingTrader) { // Deaktivace spawnování Wandering Tradera na Skycloudu
-            event.setCancelled(true);
+            if (!entity.hasMetadata(VillagerType.RARE_VILLAGER.name())) {
+                event.setCancelled(true);
+            }
         }
     }
 
