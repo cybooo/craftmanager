@@ -1,4 +1,4 @@
-package cz.wake.manager.perks.particles;
+package cz.wake.manager.perks.particles.vip;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ParticleEffect;
@@ -8,7 +8,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
 
-public class Snowball {
+public class Portal {
 
     public static final HashMap<String, Integer> e = new HashMap();
     int task;
@@ -20,12 +20,11 @@ public class Snowball {
                 @Override
                 public void run() {
                     if (e.containsKey(p.getName()) && p.isOnline()) {
-                        ParticleEffect.SNOWBALL.display(1.0f, 1.0f, 1.0f, 0.05f, 7, p.getLocation(), Main.getInstance().getPlayers());
+                        ParticleEffect.PORTAL.display(0.7f, 0.7f, 0.7f, 0.05f, 5, p.getLocation(), Main.getInstance().getPlayers());
                     }
                 }
             }, 0L, 5L).getTaskId();
             e.put(p.getName(), Integer.valueOf(task));
         }
     }
-
 }
