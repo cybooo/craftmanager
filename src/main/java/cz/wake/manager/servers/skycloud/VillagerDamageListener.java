@@ -66,7 +66,7 @@ public class VillagerDamageListener implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    /*@EventHandler(priority = EventPriority.HIGH)
     public void onEntitySpawn(EntitySpawnEvent event) {
         Entity entity = event.getEntity();
         if (entity instanceof WanderingTrader) { // Deaktivace spawnování Wandering Tradera na Skycloudu
@@ -74,7 +74,7 @@ public class VillagerDamageListener implements Listener {
                 event.setCancelled(true);
             }
         }
-    }
+    }*/
 
     @EventHandler
     public void onTrade(InventoryClickEvent event) {
