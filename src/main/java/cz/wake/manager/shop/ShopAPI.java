@@ -29,15 +29,15 @@ public class ShopAPI implements Listener {
                 || Main.getInstance().getIdServer().equalsIgnoreCase("prison")) {
             Inventory inv = Bukkit.createInventory(null, 54, "§0Coinshop");
 
-            ItemStack head = new ItemBuilder(Material.SKULL_ITEM, (short) 3)
+            ItemStack head = new ItemBuilder(Material.SKULL_ITEM, 1, (short) 3)
                     .setName("§bTvoje bohatstvi").setLore("§7CraftCoins: §f" + CraftCoinsAPI.getCoins(p) + " CC", "§7CraftTokens: §f" + CraftTokensAPI.getTokens(p) + " CT", "§7VoteTokens: §f" + VoteTokensAPI.getVoteTokens(p) + " VT", "", "§eKliknutim zobrazis vysvetleni").setSkullOwner(p.getName()).build();
             inv.setItem(1, head);
 
-            ItemStack log = new ItemBuilder(Material.PAPER, (short) 0)
+            ItemStack log = new ItemBuilder(Material.PAPER)
                     .setName("§bLog uctu").setLore("§7Pripravujeme...").build();
             inv.setItem(2, log);
 
-            ItemStack footer = new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 15).setName("§c").build();
+            ItemStack footer = new ItemBuilder(Material.STAINED_GLASS_PANE, 1, (short) 15).setName("§c").build();
             inv.setItem(53, footer);
             inv.setItem(52, footer);
             inv.setItem(51, footer);
@@ -59,11 +59,11 @@ public class ShopAPI implements Listener {
             ItemStack tags = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§6Tags (za CraftCoiny)", "§7Zakup si tag pred nick", "§7a bud IN!", "", "§eKlikni pro zobrazeni");
             ItemStack tagsTokens = ItemFactory.create(Material.ANVIL, (byte) 0, "§bTags (za CraftTokeny)", "§7Vytvor si vlastni tag", "§7podle svych predstav,", "§7limit prakticky neexistuje!", "", "§eKlikni k otevreni editoru");
 
-            ItemStack prava = new ItemBuilder(Material.BOOK, (short) 0)
+            ItemStack prava = new ItemBuilder(Material.BOOK)
                     .setName("§6Prava (za CraftCoiny)").setLore("§7Nakup si dalsi prava", "§7a ziskej tak dostatecnou", "§7vyhodu oproti ostatnim", "§7hracum na serveru.", "", "§eKlikni pro zobrazeni").build();
             inv.setItem(21, prava);
 
-            ItemStack voteShop = new ItemBuilder(Material.EMERALD, (short) 0).setName("§aOdmeny (za VoteTokeny)").setLore("§7Vyber si odmenu", "§7za hlasovani podle sebe!", "", "§eKliknutim zobrazis").build();
+            ItemStack voteShop = new ItemBuilder(Material.EMERALD).setName("§aOdmeny (za VoteTokeny)").setLore("§7Vyber si odmenu", "§7za hlasovani podle sebe!", "", "§eKliknutim zobrazis").build();
             inv.setItem(23, voteShop);
 
             ItemStack itemShop = new ItemBuilder(Material.ENCHANTMENT_TABLE).setName("§6Itemy (za CraftCoiny)")
@@ -303,7 +303,7 @@ public class ShopAPI implements Listener {
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
         ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
 
-        ItemStack footer = new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 15).setName("§c").build();
+        ItemStack footer = new ItemBuilder(Material.STAINED_GLASS_PANE).setName("§c").build();
         ItemStack noNextpage = new ItemBuilder(Material.BARRIER).setName("§c ").build();
         inv.setItem(0, footer);
         inv.setItem(1, footer);
@@ -524,7 +524,7 @@ public class ShopAPI implements Listener {
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
         ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
 
-        ItemStack footer = new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 15).setName("§c").build();
+        ItemStack footer = new ItemBuilder(Material.STAINED_GLASS_PANE, 1, (short) 15).setName("§c").build();
         ItemStack noNextpage = new ItemBuilder(Material.BARRIER).setName("§c ").build();
         inv.setItem(0, footer);
         inv.setItem(1, footer);
@@ -738,7 +738,7 @@ public class ShopAPI implements Listener {
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet");
         ItemStack hlavni = ItemFactory.create(Material.EYE_OF_ENDER, (byte) 0, "§aHlavni menu");
 
-        ItemStack footer = new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 15).setName("§c").build();
+        ItemStack footer = new ItemBuilder(Material.STAINED_GLASS_PANE, 1, (short) 0).setName("§c").build();
         ItemStack noNextpage = new ItemBuilder(Material.BARRIER).setName("§c ").build();
         inv.setItem(0, footer);
         inv.setItem(1, footer);
