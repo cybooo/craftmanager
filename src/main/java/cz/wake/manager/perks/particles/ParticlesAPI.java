@@ -2,6 +2,7 @@ package cz.wake.manager.perks.particles;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.perks.particles.capes.ChristmasCape;
+import cz.wake.manager.perks.particles.capes.NewYearCape;
 import cz.wake.manager.perks.particles.special.SantaHat;
 import cz.wake.manager.perks.particles.vip.*;
 import cz.wake.manager.perks.particles.vip.Void;
@@ -606,7 +607,7 @@ public class ParticlesAPI implements Listener {
             p.closeInventory();
         }
         if (SantaHat.sh.containsKey(p.getName())) {
-            Bukkit.getScheduler().cancelTask(((Integer) SantaHat.sh.get(p.getName())).intValue());
+            Bukkit.getScheduler().cancelTask(SantaHat.sh.get(p.getName()));
             SantaHat.sh.remove(p.getName());
             p.closeInventory();
         }
@@ -614,6 +615,12 @@ public class ParticlesAPI implements Listener {
         if (ChristmasCape.turnajCloaks.containsKey(p.getName())) {
             Bukkit.getScheduler().cancelTask((ChristmasCape.turnajCloaks.get(p.getName())));
             ChristmasCape.turnajCloaks.remove(p.getName());
+            p.getInventory().setArmorContents(null);
+            p.closeInventory();
+        }
+        if (NewYearCape.turnajCloaks.containsKey(p.getName())) {
+            Bukkit.getScheduler().cancelTask((NewYearCape.turnajCloaks.get(p.getName())));
+            NewYearCape.turnajCloaks.remove(p.getName());
             p.getInventory().setArmorContents(null);
             p.closeInventory();
         }
