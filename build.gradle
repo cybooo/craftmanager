@@ -52,7 +52,7 @@ dependencies {
     // CraftMania
     compileOnly name: 'EnchantmentFixer'
     compileOnly name: 'CraftChat'
-    compileOnly group: 'cz.craftmania.craftcore', name: 'craftcore', version: '2.2.1'
+    compileOnly group: 'cz.craftmania.craftcore', name: 'craftcore', version: '2.2.6'
     compileOnly group: 'cz.craftmania.crafteconomy', name: 'crafteconomy', version: '1.2.0'
 
     // Prometheus

@@ -26,7 +26,8 @@ public class ShopAPI implements Listener {
                 || Main.getServerType() == ServerType.SKYBLOCK
                 || Main.getServerType() == ServerType.CREATIVE
                 || Main.getServerType() == ServerType.SKYCLOUD
-                || Main.getServerType() == ServerType.PRISON) {
+                || Main.getServerType() == ServerType.PRISON
+                || Main.getServerType() == ServerType.VANILLA) {
             Inventory inv = Bukkit.createInventory(null, 54, "Coinshop");
 
             ItemStack head = new ItemBuilder(Material.PLAYER_HEAD)
@@ -785,7 +786,7 @@ public class ShopAPI implements Listener {
             }
             if (e.getSlot() == 29) {
                 if (CraftTokensAPI.getTokens(p) > 0) {
-                    //TagsEditor.createTagEditor(p);
+                    TagsEditor.createTagEditor(p);
                 } else {
                     p.sendMessage("§c§l[!] §cNemas dostatek CraftTokenu k provedeni teto akce.");
                 }

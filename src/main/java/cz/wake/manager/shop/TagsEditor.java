@@ -1,5 +1,6 @@
 package cz.wake.manager.shop;
 
+import cz.craftmania.craftcore.spigot.builders.anvil.AnvilGUI;
 import cz.craftmania.crafteconomy.api.CraftTokensAPI;
 import cz.wake.manager.Main;
 import org.bukkit.Bukkit;
@@ -25,12 +26,52 @@ import java.util.regex.Pattern;
 
 public class TagsEditor implements Listener {
 
-    /*private static HashSet<Player> list = new HashSet<Player>();
-
     public static void createTagEditor(final Player p) {
-        list.add(p);
         p.closeInventory();
-        AnvilContainer.openAnvil(p);
+        new AnvilGUI.Builder().plugin(Main.getInstance()).text("Název tagu").onComplete((player, text) -> {
+            //CREATE TAG
+            if(text.length() > 12){
+                player.sendMessage("");
+                player.sendMessage("§cTag nemuze byt delsi nez 12 znaku!");
+                player.sendMessage("");
+                return AnvilGUI.Response.close();
+            }
+            if(text.contains(" ")){
+                player.sendMessage("");
+                player.sendMessage("§cNelze vytvorit tag, ktery obsahuje mezeru!");
+                player.sendMessage("");
+                return AnvilGUI.Response.close();
+            }
+            if(text.contains("&") || text.contains("§")){
+                player.sendMessage("");
+                player.sendMessage("§cNelze vytvorit tag, ktery obsahuje prefix pro barvy!");
+                player.sendMessage("");
+                return AnvilGUI.Response.close();
+            }
+            for (Pattern pattern : Main.getInstance().blockedTags){
+                String editedMessage = text.toLowerCase();
+                Matcher matcher = pattern.matcher(editedMessage);
+                if (matcher.find()){
+                    player.sendMessage("");
+                    player.sendMessage("§cTento tag je blokovany, nelze ho vytvorit!");
+                    player.sendMessage("");
+                    return AnvilGUI.Response.close();
+                }
+            }
+            if (!text.matches("[a-zA-Z]+")) {
+                player.sendMessage("");
+                player.sendMessage("§cNelze vytvorit tag, ktery obsahuje specialni znaky!");
+                player.sendMessage("");
+                return AnvilGUI.Response.close();
+            }
+            CraftTokensAPI.takeTokens(player, 1);
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tags create " + text);
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission set craftchat.tag." + text + " true");
+            player.sendMessage("");
+            player.sendMessage("§aTvuj tag §f" + text + " §abyl uspesne vytvoren! Nyni si ho aktivuj v §e/tags");
+            player.sendMessage("");
+            return AnvilGUI.Response.close();
+        }).open(p);
         p.sendMessage("");
         p.sendMessage("§e§lEditor pro vytvareni vlastnich tagu");
         p.sendMessage("§7Nyni napis do kovadliny, jaky tag chces vytvorit.");
@@ -42,7 +83,7 @@ public class TagsEditor implements Listener {
         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1.0f, 1.0f);
     }
 
-    @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
+    /*@EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
     public void closeAnvil(InventoryCloseEvent e){
         HumanEntity p = e.getPlayer();
         Inventory inv = e.getInventory();
