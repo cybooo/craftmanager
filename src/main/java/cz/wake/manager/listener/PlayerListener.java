@@ -83,17 +83,6 @@ public class PlayerListener implements Listener {
         //Register Recipe Player
         RecipeManager.registerRecipePlayer(new RecipePlayer(p));
 
-        // Info o betě
-        if (Main.getServerType() == ServerType.CREATIVE) {
-            p.sendMessage("");
-            p.sendMessage("§c§lUpozornění");
-            p.sendMessage("§7Tento server je označený jako §bBETA§7!");
-            p.sendMessage("§7Mohou se zde vyskytovat bugy, lagy a jiné problémy.");
-            p.sendMessage("§7Budeme rádi, když nám dané problémy nahlásíš! :)");
-            p.sendMessage("§eDiscord: https://discord.gg/craftmania -> #1_14_problemy");
-            p.sendMessage("");
-        }
-
         if (Main.restartReason != null) {
             Long min = Main.restartTime - System.currentTimeMillis();
             if (min > 60 * 60 * 1000) {
