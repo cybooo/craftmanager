@@ -12,9 +12,6 @@ settings:
  maximumConnections: 5
  timeout: 30000
 
-features:
- beehive-counter: true
-
 # Zda-li je server pouze na testy!
 testing: false
 

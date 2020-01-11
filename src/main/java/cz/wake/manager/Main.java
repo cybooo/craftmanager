@@ -217,10 +217,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Refactored
         pm.registerEvents(new VIPMenu(), this);
 
-        if (getConfig().getBoolean("features.beehive-counter", true)) {
-            pm.registerEvents(new BeeHiveListener(), this);
-        }
-
         // Skyblock PVP listener
         if (serverType == ServerType.SKYBLOCK) {
             pm.registerEvents(new SkyblockPVPListener(), this);
