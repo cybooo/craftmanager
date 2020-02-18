@@ -25,11 +25,11 @@ repositories {
     flatDir { dirs 'lib' }
     mavenCentral()
     maven { url "https://hub.spigotmc.org/nexus/content/repositories/snapshots/" }
-    maven { url "http://dl.bintray.com/tastybento/maven-repo" } // aSkyblock API
+    maven { url "https://dl.bintray.com/tastybento/maven-repo" } // aSkyblock API
     maven { url "https://dl.bintray.com/nuvotifier/maven/" }
     maven { url "https://jitpack.io" }
-    maven { url "http://repo.maven.apache.org/maven2" }
-    maven { url "http://nexus.hc.to/content/repositories/pub_releases/" } // Vault
+    maven { url "https://repo.maven.apache.org/maven2" }
+    maven { url "https://nexus.hc.to/content/repositories/pub_releases/" } // Vault
     maven { url "https://packages.craftmania.cz/repository/craftmania/" }
 }
 dependencies {
