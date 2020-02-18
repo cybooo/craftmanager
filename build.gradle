@@ -27,7 +27,7 @@ repositories {
     maven { url "https://hub.spigotmc.org/nexus/content/repositories/snapshots/" }
     maven { url "https://dl.bintray.com/nuvotifier/maven/" }
     maven { url "https://jitpack.io" }
-    maven { url "http://repo.maven.apache.org/maven2" }
+    maven { url "https://repo.maven.apache.org/maven2" }
     maven { url "http://nexus.hc.to/content/repositories/pub_releases/" } // Vault
     maven { url "https://packages.craftmania.cz/repository/craftmania/" }
     maven { url "https://raw.githubusercontent.com/JorelAli/1.13-Command-API/mvn-repo/1.13CommandAPI/" }
