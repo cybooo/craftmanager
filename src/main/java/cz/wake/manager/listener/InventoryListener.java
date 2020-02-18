@@ -61,58 +61,28 @@ public class InventoryListener implements Listener {
         if (e.getView().getTitle().equals("Seznam dostupnych navodu")) {
             e.setCancelled(true);
             if(e.getSlot() == 0){
-                MenuManager.prepareNavodLink(p, "Pravidla", "https://wiki.craftmania.cz/zakladni-informace/pravidla.html");
+                MenuManager.prepareNavodLink(p, "Pravidla", "https://wiki.craftmania.cz/pravidla-serveru/");
             }
             if (e.getSlot() == 1){
-                MenuManager.prepareNavodLink(p, "Povolene/zakazane mody", "https://wiki.craftmania.cz/zakladni-informace/povolene-zakazane-mody.html");
+                MenuManager.prepareNavodLink(p, "Povolene/zakazane mody", "https://wiki.craftmania.cz/povolene-a-zakazane-mody/");
             }
             if(e.getSlot() == 2){
-                MenuManager.prepareNavodLink(p, "Prevody uctu", "https://wiki.craftmania.cz/zakladni-informace/prevody-uctu.html");
+                MenuManager.prepareNavodLink(p, "Residence", "https://wiki.craftmania.cz/residence/");
             }
             if(e.getSlot() == 3){
-                MenuManager.prepareNavodLink(p, "Residence", "https://wiki.craftmania.cz/navody/residence.html");
+                MenuManager.prepareNavodLink(p, "Jobs", "https://wiki.craftmania.cz/jobs/");
             }
             if(e.getSlot() == 4){
-                MenuManager.prepareNavodLink(p, "Trade", "https://wiki.craftmania.cz/navody/trade.html");
+                MenuManager.prepareNavodLink(p, "ChestShop", "https://wiki.craftmania.cz/chestshop/");
             }
             if(e.getSlot() == 5){
-                MenuManager.prepareNavodLink(p, "Jobs", "https://wiki.craftmania.cz/navody/jobs.html");
+                MenuManager.prepareNavodLink(p ,"Pozemky", "https://wiki.craftmania.cz/pozemky/");
             }
-            if(e.getSlot() == 6){
-                MenuManager.prepareNavodLink(p, "ChestShop", "https://wiki.craftmania.cz/navody/chestshop.html");
+            if(e.getSlot() == 6) {
+                MenuManager.prepareNavodLink(p ,"Lands", "https://wiki.craftmania.cz/lands/");
             }
             if(e.getSlot() == 7){
-                MenuManager.prepareNavodLink(p, "ArmorStand Editor", "https://wiki.craftmania.cz/navody/armorstandeditor.html");
-            }
-            if(e.getSlot() == 8){
-                MenuManager.prepareNavodLink(p, "BannerBuilder", "https://wiki.craftmania.cz/navody/bannerbuilder.html");
-            }
-            if(e.getSlot() == 9){
-                MenuManager.prepareNavodLink(p, "ArtMap", "https://wiki.craftmania.cz/navody/artmap.html");
-            }
-            if(e.getSlot() == 10){
-                MenuManager.prepareNavodLink(p, "Psani barevne", "https://wiki.craftmania.cz/navody/psanibarevne.html");
-            }
-            if(e.getSlot() == 11){
-                MenuManager.prepareNavodLink(p ,"Pozemky", "https://wiki.craftmania.cz/navody/pozemky.html");
-            }
-            if(e.getSlot() == 12){
-                MenuManager.prepareNavodLink(p, "Ostrovy", "https://wiki.craftmania.cz/navody/skyblock.html");
-            }
-            if(e.getSlot() == 13){
-                MenuManager.prepareNavodLink(p, "WorldEdit", "https://wiki.craftmania.cz/navody/worldedit.html");
-            }
-            if(e.getSlot() == 14){
-                MenuManager.prepareNavodLink(p, "GhostBlocks", "https://wiki.craftmania.cz/navody/ghostblocky.html");
-            }
-            if(e.getSlot() == 15){
-                MenuManager.prepareNavodLink(p, "Warpy", "https://wiki.craftmania.cz/navody/warpy.html");
-            }
-            if(e.getSlot() == 16){
-                MenuManager.prepareNavodLink(p, "Hologramy", "https://wiki.craftmania.cz/navody/hologramy.html");
-            }
-            if(e.getSlot() == 17){
-                MenuManager.prepareNavodLink(p, "Replacementy", "https://wiki.craftmania.cz/navody/replacementy.html");
+                MenuManager.prepareNavodLink(p, "Replacementy", "https://wiki.craftmania.cz/replacementy/");
             }
             if(e.getSlot() == 31){
                 Main.getInstance().getMainGUI().openMainMenu(p);

@@ -15,46 +15,24 @@ public class MenuManager {
 
         ItemStack pravidla = ItemFactory.create(Material.ENCHANTED_BOOK, (byte)0, "§e§lPravidla serveru", "§7Pravidla serveru jsou", "§7zaklad spravneho chovani!", "", "§fVhodne pro: §cVsude");
         ItemStack mody = ItemFactory.create(Material.ENCHANTED_BOOK, (byte)0, "§e§lPovolene/zakazane mody", "§7Nevis jestli je tvuj mod", "§7povoleny nebo zakazany?", "", "§fVhodne pro: §cVsude");
-        ItemStack prevody = ItemFactory.create(Material.ENCHANTED_BOOK, (byte)0, "§e§lPrevody uctu", "§7Chces si prevest ucet?", "§7Nebo jsi si zmenil nick?", "", "§fVhodne pro: §cVsude");
 
         ItemStack residence = ItemFactory.create(Material.PAPER, (byte)0, "§e§lResidence", "§7Navod pro vsechny", "§7co chceji plnohodnotne", "§7ovladnout residence","","§fVhodne pro: §bSurvival");
-        //ItemStack lwc = ItemFactory.create(Material.PAPER, (byte)0, "§e§lLWC", "§7Dodatecne zabezpeceni", "§7truhel s podrobnym navodem.", "", "§fVhodne pro: §bSur, Skyb, Van-SB");
-        ItemStack trade = ItemFactory.create(Material.PAPER, (byte)0, "§e§lTrade", "§7Jak obchodovat s hraci", "§7a co je potreba znat.", "", "§fVhodne pro: §bVsechny survivaly");
         ItemStack jobs = ItemFactory.create(Material.PAPER, (byte)0, "§e§lJobs", "§7Jak si vydelavat penize", "§7na nasich serverech?", "", "§fVhodne pro: §bSkyblock");
         ItemStack shop = ItemFactory.create(Material.PAPER, (byte)0, "§e§lChestShop", "§7Jak vytvorit shop", "§7a jak vykupovat itemy.", "", "§fVhodnoce pro: §bSurv, Sky");
-        ItemStack armorstand = ItemFactory.create(Material.PAPER, (byte)0, "§e§lArmorStand Editor", "§7Uprava vsech armorstandu", "§7podle vlastni potreby.", "", "§fVhodne pro §cVsude");
-        ItemStack artmap = ItemFactory.create(Material.PAPER, (byte)0, "§e§lArtMap", "§7Jak kreslit na mapy", "§7co s nimi dal?", "", "§fVhodne pro: §bSurv, Sky, Crea");
-        ItemStack banner = ItemFactory.create(Material.PAPER, (byte)0, "§e§lBannerBuilder", "§7Vytvareni banneru", "§7pomoci par kliknuti...", "", "§fVhodne pro: §bSurv, Sky, Crea");
-        ItemStack chat = ItemFactory.create(Material.PAPER, (byte)0, "§e§lPsani barevne", "§7Nevis jak prat do chatu", "§7pomoci barvicek?", "", "§fVhodne pro: §cVsude");
         ItemStack pozemky = ItemFactory.create(Material.PAPER, (byte)0, "§e§lPozemky", "§7Navod jak ovladnout", "§7tvuj pozemek naplno!", "", "§fVhodne pro: §bCreative");
-        ItemStack ostrov = ItemFactory.create(Material.PAPER, (byte)0, "§e§lOstrov", "§7Nevis jak neco nastavit", "§7na svem ostrove?", "", "§fVhodne pro: §bSky, VSB, Prison");
-        ItemStack worldedit = ItemFactory.create(Material.PAPER, (byte)0, "§e§lWorldEdit", "§7Jednoduchy navod pro", "§7vsechny, co chteji stavet", "§7pomoci WorldEditu.", "", "§fVhodne pro: §bCreative");
-        //ItemStack lift = ItemFactory.create(Material.PAPER, (byte)0, "§e§lVytah", "§7Chces si postavit vytah?","§7Ale nevis jak na to?", "", "§fVhodne pro: §bSurv, Skyb");
-        ItemStack ghostBlocks = ItemFactory.create(Material.PAPER, (byte)0, "§e§lGhostBlocks", "§7Chces si vycraftit", "§7mizejici bloky?", "", "§fVhodne pro: §bCreative");
-        ItemStack warps = ItemFactory.create(Material.PAPER, (byte)0, "§e§lVlastni warpy", "§7Vlastni warp kamkoliv?", "", "§fVhodne pro: §bSurv, Sky, Crea");
-        ItemStack holo = ItemFactory.create(Material.PAPER, (byte)0, "§e§lHologramy", "§7Chces si vytvorit vlastni", "§7hologram s efekty?", "", "§fVhodne pro: §bSurv, Sky, Crea");
+        ItemStack lands = ItemFactory.create(Material.PAPER, (byte)0, "§e§lLands", "§7Vytvareni Lands, sprava lands", "§7a jine tipy a triky!", "", "§fVhodne pro: §bVanilla");
         ItemStack repl = ItemFactory.create(Material.PAPER, (byte)0, "§e§lReplacementy", "§7Jak na Emoji v chatu", "", "§fVhodne pro: §bSurv, Sky, Crea");
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, (byte)0, "§cZpet");
 
         inv.setItem(0, pravidla);
         inv.setItem(1, mody);
-        inv.setItem(2, prevody);
-        inv.setItem(3, residence);
-        inv.setItem(4, trade);
-        inv.setItem(5, jobs);
-        inv.setItem(6, shop);
-        inv.setItem(7, armorstand);
-        inv.setItem(8, banner);
-        inv.setItem(9, artmap);
-        inv.setItem(10, chat);
-        inv.setItem(11, pozemky);
-        inv.setItem(12, ostrov);
-        inv.setItem(13, worldedit);
-        inv.setItem(14, ghostBlocks);
-        inv.setItem(15, warps);
-        inv.setItem(16, holo);
-        inv.setItem(17, repl);
+        inv.setItem(2, residence);
+        inv.setItem(3, jobs);
+        inv.setItem(4, shop);
+        inv.setItem(5, pozemky);
+        inv.setItem(6, lands);
+        inv.setItem(7, repl);
         inv.setItem(31, zpet);
 
         p.openInventory(inv);
