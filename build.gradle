@@ -29,7 +29,7 @@ repositories {
     maven { url "https://dl.bintray.com/nuvotifier/maven/" }
     maven { url "https://jitpack.io" }
     maven { url "https://repo.maven.apache.org/maven2" }
-    maven { url "https://nexus.hc.to/content/repositories/pub_releases/" } // Vault
+    maven { url "http://nexus.hc.to/content/repositories/pub_releases/" } // Vault
     maven { url "https://packages.craftmania.cz/repository/craftmania/" }
 }
 dependencies {
