@@ -83,6 +83,16 @@ public class PlayerListener implements Listener {
         //Register Recipe Player
         RecipeManager.registerRecipePlayer(new RecipePlayer(p));
 
+        if (Main.getServerType() == ServerType.SURVIVAL) {
+            p.sendMessage("");
+            p.sendMessage("§c§lUpozornění");
+            p.sendMessage("§7Tento server je označený jako §b§lBETA");
+            p.sendMessage("§7Mohou se zde vyskytovat lagy, bugy a jiné problémy!");
+            p.sendMessage("§7Pokud nějaký najdeš, nahlaš nám ho na Discordu!");
+            p.sendMessage("§eDiscord: §6https://discord.gg/craftmania -> #bugy_a_problemy");
+            p.sendMessage("");
+        }
+
         if (Main.restartReason != null) {
             Long min = Main.restartTime - System.currentTimeMillis();
             if (min > 60 * 60 * 1000) {
