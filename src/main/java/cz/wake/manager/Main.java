@@ -29,6 +29,7 @@ import cz.wake.manager.utils.tasks.UpdateServerTask;
 import cz.wake.manager.utils.tasks.VoteReminderTask;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
+import org.bukkit.GameRule;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -176,6 +177,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             VillagerManager.loadChunksAndKill();
             VillagerManager.spawnVillagers();
         }
+
+        Bukkit.getWorlds().forEach(world -> {
+            world.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
+        });
     }
 
     public void onDisable() {
