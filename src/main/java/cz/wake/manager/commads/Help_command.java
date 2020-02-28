@@ -232,7 +232,7 @@ public class Help_command implements CommandExecutor {
 
             ItemStack res = ItemFactory.create(Material.OAK_LOG, (byte) 2, "§a§lVytvoreni a prvni kroky s Residenci", "",
                     "§6K vytvoreni residence budes potrebovat",
-                    "§6drevenou motyku, najdes ji v kitu §c/kit tools",
+                    "§6drevenou motyku, najdes ji v kitu §c/kit starter",
                     "§6Jako dalsi krok oznac motykou dva body - pravym/levym.",
                     "§6Napis §e/res select vert §f- §7Vybere Y od 0 do 256",
                     "§6Dale pouzij prikaz §e/res create nazevResidence",
@@ -271,16 +271,6 @@ public class Help_command implements CommandExecutor {
                     "§7Pokud si chces zakoupit VIP,", "§7tak kliknutim zde se ti zobrazi prehled",
                     "§7vsech dostupnych VIP na tomto serveru.", "", "§bKlikni pro zobrazeni");
 
-            ItemStack aech = ItemFactory.create(Material.ENCHANTED_BOOK, (byte) 0, "§a§lCustom enchanty", "",
-                    "§7Na nasem serveru jsou k dispozici", "§7custom enchanty, ktere se",
-                    "§7normalne v Minecraftu nevyskytuji.",
-                    "§7Existuji dva zakladni prikazy",
-                    "§b/enchanter §7- Levy klik nakup, pravy klik seznam",
-                    "§b/tinker §7- Premena knihy na prasek",
-                    "§fMagic Dust §7- Po kliknuti na custom",
-                    "§7enchant se zvysi uspesnost aplikace enchantu", "",
-                    "§bKliknutim zobrazis odkaz na cely navod!");
-
             ItemStack aukce = ItemFactory.create(Material.CAKE, (byte) 0, "§a§lAukce", "",
                     "§7Pomoci aukci muzes prodavat hracum", "§7nepotrebne itemy/bloky.", "",
                     "§cVytvoreni aukce:", "§7K vytvoreni aukce uchop item co chces", "§7prodat a napis tento prikaz:",
@@ -295,14 +285,16 @@ public class Help_command implements CommandExecutor {
                     "§6cas §f- §7Urcuje konec aukce pr. 1m/1h/1d ",
                     "§7(lze i kombinovat 1d12h)");
 
-            ItemStack questy = ItemFactory.create(Material.NETHER_STAR, (byte) 0, "§a§lQuesty", "",
-                    "§7Chces plnit i nejake Questy (ukoly)?",
-                    "§7Staci dat §b/quest §7a muzes zacit!",
-                    "§7Pro splneni nekterych Questu je potreba",
-                    "§7zjistit o jaky predmet se jedna",
-                    "§7a chvili jej drzet v ruce.",
+            ItemStack levels = ItemFactory.create(Material.NETHER_STAR, (byte) 0, "§a§lAchievements & Rewards", "",
+                    "§7Chceš dosáhnout novýc cílů a mít tak vyšší level?",
+                    "§7Server level ti totiž odemyká mnoho bonusových",
+                    "§7práv a možností, co dělat na serveru.",
                     "",
-                    "§eKliknutim zobrazis dostupne questy");
+                    "§e/level §f- §7Zobrazení globální levelu (součet všech)",
+                    "§e/level survival §f- §7Zobrazení levelu pro Survival",
+                    "§e/rewards §f- §7Zobrazení odměn za levely",
+                    "",
+                    "§eKliknutím zobrazíš rewards odměny");
 
             ItemStack hlasovani = ItemFactory.create(Material.PAPER, (byte) 0, "§a§lHlasovani", "",
                     "§cHlasovat muze kazdy 1x za 2 hodiny!",
@@ -334,24 +326,26 @@ public class Help_command implements CommandExecutor {
                     "§e/lobby §7nebo §e/hub §f- §7Teleport na lobby");
 
             ItemStack conn = ItemFactory.create(Material.MAP, (byte) 0, "§a§lOdkazy na nase dalsi servery", "",
-                    "§eWeb: §7https://craftmania.cz",
-                    "§eDiscord: §7https://discord.gg/craftmania",
-                    "§eStatus page: §7https://status.craftmania.cz", "",
+                    "§eNovinky: §7https://news.craftmania.cz/",
+                    "§eForum: §7https://craftmania.cz/",
+                    "§eDiscord: §7https://discord.gg/craftmania/",
+                    "§eStatus page: §7https://status.craftmania.cz/",
+                    "§eStatistiky: §7https://stats.craftmania.cz/",
+                    "",
                     "§bKliknutim ti zobrazime klikaci odkazy v chatu!");
 
             inv.setItem(12, res);
             inv.setItem(13, resV);
             inv.setItem(14, resF);
 
-            inv.setItem(20, aech);
+            inv.setItem(20, vip);
             inv.setItem(21, aukce);
-            inv.setItem(22, questy);
+            inv.setItem(22, levels);
             inv.setItem(23, guides);
             inv.setItem(24, hlasovani);
 
             inv.setItem(30, ser);
-            inv.setItem(31, conn);
-            inv.setItem(32, vip);
+            inv.setItem(32, conn);
 
             p.openInventory(inv);
         }

@@ -102,49 +102,35 @@ public class InventoryListener implements Listener {
                 p.sendMessage("§6▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.sendMessage("");
                 p.sendMessage("§eOdkaz na plny navod Residence:");
-                p.sendMessage("§7https://wiki.craftmania.cz/navody/residence.html");
+                p.sendMessage("§7https://wiki.craftmania.cz/residence/");
                 p.sendMessage("");
                 p.sendMessage("§6▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.closeInventory();
             }
-            if (e.getSlot() == 20) {
-                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
-                p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
-                p.sendMessage("");
-                p.sendMessage("§eOdkaz na podrobny navod o Custom Enchantech");
-                p.sendMessage("§7https://wiki.craftmania.cz/navody/custom-enchanty.html");
-                p.sendMessage("");
-                p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
-                p.closeInventory();
-            }
             if (e.getSlot() == 22) {
-                p.performCommand("quests");
+                p.performCommand("rewards");
             }
             if(e.getSlot() == 23){
                 MenuManager.openNavody(p);
             }
             if (e.getSlot() == 24) {
-                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
-                p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
-                p.sendMessage("");
-                p.sendMessage("§7K hlasovani klikni na tento odkaz:");
-                p.sendMessage("§chttps://craftmania.cz/hlasovani/");
-                p.sendMessage("");
-                p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
-                p.closeInventory();
-            }
-            if (e.getSlot() == 31) {
-                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
-                p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
-                p.sendMessage("");
-                p.sendMessage("§eWeb: §7https://craftmania.cz");
-                p.sendMessage("§eDiscord: §7https://discord.gg/craftmania");
-                p.sendMessage("§eStatus page: §7https://status.craftmania.cz");
-                p.sendMessage("");
-                p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
+                p.performCommand("vote");
                 p.closeInventory();
             }
             if (e.getSlot() == 32) {
+                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
+                p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
+                p.sendMessage("");
+                p.sendMessage("§eNovinky: §7https://news.craftmania.cz/");
+                p.sendMessage("§eForum: §7https://craftmania.cz/");
+                p.sendMessage("§eDiscord: §7https://discord.gg/craftmania/");
+                p.sendMessage("§eStatus page: §7https://status.craftmania.cz/");
+                p.sendMessage("§eStatistiky: §7https://stats.craftmania.cz/");
+                p.sendMessage("");
+                p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
+                p.closeInventory();
+            }
+            if (e.getSlot() == 20) {
                 p.performCommand("vip");
             }
         }
