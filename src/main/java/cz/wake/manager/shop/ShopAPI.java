@@ -460,15 +460,15 @@ public class ShopAPI implements Listener {
         // VoteCrate (1x)
         if (voteTokens >= 1) {
             if (Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK) {
-                ItemStack voteCrate = new ItemBuilder(Material.PISTON).setName("§a1x VoteCrate").setLore("§7Cena: §f1 VT").build();
+                ItemStack voteCrate = new ItemBuilder(Material.TRIPWIRE_HOOK).setName("§a1x VoteCrate Key").setLore("§7Cena: §f1 VT").build();
                 inv.setItem(19, voteCrate);
             } else {
-                ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§c1x VoteCrate")
+                ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§c1x VoteCrate Key")
                         .setLore("§7Nelze zakoupit na tomto serveru.").build();
                 inv.setItem(19, nedostupny);
             }
         } else {
-            ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§81x VoteCreate")
+            ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§81x VoteCreate Key")
                     .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f1 VT").build();
             inv.setItem(19, noMoney);
         }
@@ -476,20 +476,20 @@ public class ShopAPI implements Listener {
         // VoteCrate (5x)
         if (voteTokens >= 5) {
             if (Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK) {
-                ItemStack voteCrate = new ItemBuilder(Material.PISTON).setName("§a5x VoteCrate").setLore("§7Cena: §f5 VT").build();
+                ItemStack voteCrate = new ItemBuilder(Material.TRIPWIRE_HOOK).setName("§a5x VoteCrate Key").setLore("§7Cena: §f5 VT").build();
                 inv.setItem(28, voteCrate);
             } else {
-                ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§c5x VoteCrate")
+                ItemStack nedostupny = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setName("§c5x VoteCrate Key")
                         .setLore("§7Nelze zakoupit na tomto serveru.").build();
                 inv.setItem(28, nedostupny);
             }
         } else {
-            ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§85x VoteCrate")
+            ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§85x VoteCrate Key")
                     .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f5 VT").build();
             inv.setItem(28, noMoney);
         }
 
-        // EpicCrate (1x)
+      /*  // EpicCrate (1x)
         if (voteTokens >= 7) {
             if (Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON) {
                 ItemStack headCreate = new ItemBuilder(Material.PISTON).setName("§91x EpicCrate").setLore("§7Cena: §f7 VT").build();
@@ -503,9 +503,9 @@ public class ShopAPI implements Listener {
             ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§81x EpicCrate")
                     .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f7 VT").build();
             inv.setItem(20, noMoney);
-        }
+        }*/
 
-        // EpicCrate (3x)
+        /*// EpicCrate (3x)
         if (voteTokens >= 18) {
             if (Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON) {
                 ItemStack headCreate = new ItemBuilder(Material.PISTON).setName("§93x EpicCrate").setLore("§7Cena: §f18 VT").build();
@@ -551,7 +551,7 @@ public class ShopAPI implements Listener {
             ItemStack noMoney = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName("§83x HeadCrate")
                     .setLore("§cNedostatek VoteTokenu!", "§7Potrebujes: §f14 VT").build();
             inv.setItem(30, noMoney);
-        }
+        }*/
 
         // WorldEdit (1h)
         /*if (voteTokens >= 1) {
@@ -829,9 +829,9 @@ public class ShopAPI implements Listener {
                     return;
                 }
                 if (VoteTokensAPI.getVoteTokens(p) >= 1) {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " votecrate 1");
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "crate give physical Vote 1 " + p.getName());
                     VoteTokensAPI.takeVoteTokens(p, 1);
-                    p.sendMessage("§e§l[*] §eZakoupil jsi si §f1x VoteCrate §eza §a1 VT.");
+                    p.sendMessage("§e§l[*] §eZakoupil jsi si §f1x VoteCrate Key §eza §a1 VT.");
                     p.closeInventory();
                 } else {
                     p.sendMessage("§c§l[!] §cNemas dostatek VoteTokenu (1)!");
@@ -845,16 +845,16 @@ public class ShopAPI implements Listener {
                     return;
                 }
                 if (VoteTokensAPI.getVoteTokens(p) >= 5) {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "propackages give " + p.getName() + " votecrate 5");
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "crate give physical Vote 5 " + p.getName());
                     VoteTokensAPI.takeVoteTokens(p, 5);
-                    p.sendMessage("§e§l[*] §eZakoupil jsi si §f5x VoteCrate §eza §a5 VT.");
+                    p.sendMessage("§e§l[*] §eZakoupil jsi si §f5x VoteCrate Key §eza §a5 VT.");
                     p.closeInventory();
                 } else {
                     p.sendMessage("§c§l[!] §cNemas dostatek VoteTokenu (5)!");
                 }
             }
 
-            // EpicCrate (1x)
+            /*// EpicCrate (1x)
             if (e.getSlot() == 20) {
                 if (!(Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON)) {
                     p.sendMessage("§c§l[!] §cNa tomto serveru tuto vyhodu nelze zakoupit.");
@@ -916,7 +916,7 @@ public class ShopAPI implements Listener {
                 } else {
                     p.sendMessage("§c§l(!) §cNemas dostatek VoteTokenu (14)!");
                 }
-            }
+            }*/
 
             // WorldEdit (1h)
             if (e.getSlot() == 23) {
