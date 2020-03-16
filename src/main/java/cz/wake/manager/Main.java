@@ -4,6 +4,7 @@ import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
 import cz.wake.manager.commads.staff.RawBroadcast;
 import cz.wake.manager.commads.staff.RestartManager_command;
+import cz.wake.manager.commads.staff.ServerSlots_command;
 import cz.wake.manager.listener.*;
 import cz.wake.manager.listener.suggestions.PlayerCommandSendListener;
 import cz.wake.manager.menu.VIPMenu;
@@ -24,9 +25,7 @@ import cz.wake.manager.utils.configs.Config;
 import cz.wake.manager.utils.configs.ConfigAPI;
 import cz.wake.manager.utils.prometheus.MetricsController;
 import cz.wake.manager.utils.tasks.ATAfkTask;
-import cz.wake.manager.utils.tasks.ATCheckerTask;
-import cz.wake.manager.utils.tasks.UpdateServerTask;
-import cz.wake.manager.utils.tasks.VoteReminderTask;
+import cz.wake.manager.utils.tasks.*;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
@@ -192,6 +191,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Deaktivace MySQL
         sql.onDisable();
 
+        // Config
+        // KNOWN BUG: Bukkit saveConfig() maže komentáře.
+        saveConfig(); // TODO: Předělat config na ConfigAPI
         instance = null;
     }
 
@@ -218,6 +220,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new Votes_command(), this);
         pm.registerEvents(new PlayerCommandSendListener(this), this);
         pm.registerEvents(new CommandListener(), this);
+        pm.registerEvents(new PlayerLoginListener(), this);
         
         // Refactored
         pm.registerEvents(new VIPMenu(), this);
@@ -255,6 +258,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         if (Bukkit.getPluginManager().isPluginEnabled("CommandAPI")) {
             Log.withPrefix("CommandsAPI detekovano, prikazy budou registrovany!");
             VIPMenu.registerCommand();
+            ServerSlots_command.registerCommand();
         }
 
         //TODO: Kompletni rewrite na 1.13 CommandAPI
