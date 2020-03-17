@@ -7,13 +7,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 
 public class PlayerLoginListener implements Listener {
+
     @EventHandler
     public void dynamicSlotsLoginCheck(PlayerLoginEvent e) {
         int totalSlots = Main.getInstance().getConfig().getInt("totalSlots");
         int reservedSlots = Main.getInstance().getConfig().getInt("reservedSlots");
         int playerCount = Bukkit.getOnlinePlayers().size();
 
-        if (playerCount < totalSlots || e.getPlayer().getDisplayName().equals("MrWakeCZ")) { //Jestli momentálních hráčů je méně než slotů povolených, hráče to připojí
+        if (playerCount < totalSlots || e.getPlayer().getName().equals("MrWakeCZ")) { //Jestli momentálních hráčů je méně než slotů povolených, hráče to připojí
             e.allow();
         } else {
             if (e.getPlayer().hasPermission("craftmanager.vip.login-bypass")) {

@@ -13,10 +13,13 @@ import org.bukkit.ChatColor;
 import java.util.LinkedHashMap;
 
 public class ServerSlots_command {
+
     public static void registerCommand() {
+
+        //Default: /server slots -> Vypíše statistiky o slotech
         LinkedHashMap<String, Argument> serverArgs = new LinkedHashMap<>();
         serverArgs.put("slots", new LiteralArgument("slots").withPermission(CommandPermission.fromString("craftmanager.slots.edit")));
-        CommandAPI.getInstance().register("server", serverArgs, (sender, args) -> { //Vypíše statistiky o slotech
+        CommandAPI.getInstance().register("server", serverArgs, (sender, args) -> {
             int maxSlots = Bukkit.getMaxPlayers();
             int totalSlots = Main.getInstance().getConfig().getInt("totalSlots");
             int reservedSlots = Main.getInstance().getConfig().getInt("reservedSlots");
@@ -27,6 +30,8 @@ public class ServerSlots_command {
             sender.sendMessage(ChatColor.AQUA + "Počet slotů pro VIP a AT: " + ChatColor.GRAY + reservedSlots + ChatColor.DARK_GRAY + " Slotů");
             sender.sendMessage(ChatColor.AQUA + "Momentální počet hráčů: " + ChatColor.GRAY + playerCount + ChatColor.DARK_GRAY + " hráč/i/ů");
         });
+
+        //Edit slots: /server slots total|reserved [value]
         serverArgs.put("type", new StringArgument().overrideSuggestions("total", "reserved"));
         serverArgs.put("slotsNumber", new IntegerArgument());
         CommandAPI.getInstance().register("server", serverArgs, (sender, args) -> { //Mění počet slotů
