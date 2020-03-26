@@ -18,6 +18,10 @@ testing: false
 # ID serveru pro statistiky
 server: Survival
 
+# Nastaveni slotu na danem serveru
+totalSlots: 40
+reservedSlots: 5
+
 # Oznamovani do chatu o hlasech
 reminder: true
 
