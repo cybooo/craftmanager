@@ -10,11 +10,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class VIP_command implements CommandExecutor {
+
     @Override
     public boolean onCommand(CommandSender sender, Command Command, String String, String[] ArrayOfString) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            //player.sendMessage("Oteviram menu.."); debug
             if (Main.getServerType() == ServerType.SURVIVAL
                     || Main.getServerType() == ServerType.SKYBLOCK
                     || Main.getServerType() == ServerType.CREATIVE) {

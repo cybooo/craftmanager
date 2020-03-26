@@ -17,17 +17,16 @@ import org.bukkit.inventory.meta.SkullMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-//Mluvím tady k tobě, ať jsi kdokoliv, v druhé osobě :p
 public class VIPMenu_inv implements InventoryProvider {
 
     String server = "2beChecked";
-    //URL hlav, kdyby jsi chtěl měnit vizuál hlav
-    String goldBlockUrl = "http://textures.minecraft.net/texture/54bf893fc6defad218f7836efefbe636f1c2cc1bb650c82fccd99f2c1ee6";
-    String diamondBlockUrl = "http://textures.minecraft.net/texture/9631597dce4e4051e8d5a543641966ab54fbf25a0ed6047f11e6140d88bf48f";
-    String emeraldBlockUrl = "http://textures.minecraft.net/texture/ac906d688e65802569d9705b579bce56edc86ea5c36bdd6d6fc35516a77d4";
-    String obsidianBlockUrl = "http://textures.minecraft.net/texture/4e760bbc113c273fac40896fa2089a56cc746a79a7a8275f63857e69e6f7703a";
-    String serverBlockUrl = "http://textures.minecraft.net/texture/cca45ef5821a8b107cbfba7d66e997fb6abe5521c155cee2f24b34b3d91a5";
-    String globeBlockUrl = "http://textures.minecraft.net/texture/b1dd4fe4a429abd665dfdb3e21321d6efa6a6b5e7b956db9c5d59c9efab25";
+    //Data hlav
+    String goldBlockData = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTRiZjg5M2ZjNmRlZmFkMjE4Zjc4MzZlZmVmYmU2MzZmMWMyY2MxYmI2NTBjODJmY2NkOTlmMmMxZWU2In19fQ==";
+    String diamondBlockData = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTYzMTU5N2RjZTRlNDA1MWU4ZDVhNTQzNjQxOTY2YWI1NGZiZjI1YTBlZDYwNDdmMTFlNjE0MGQ4OGJmNDhmIn19fQ==";
+    String emeraldBlockData = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWM5MDZkNjg4ZTY1ODAyNTY5ZDk3MDViNTc5YmNlNTZlZGM4NmVhNWMzNmJkZDZkNmZjMzU1MTZhNzdkNCJ9fX0=";
+    String obsidianBlockData = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzg0MGI4N2Q1MjI3MWQyYTc1NWRlZGM4Mjg3N2UwZWQzZGY2N2RjYzQyZWE0NzllYzE0NjE3NmIwMjc3OWE1In19fQ==";
+    String serverBlockData = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2NhNDVlZjU4MjFhOGIxMDdjYmZiYTdkNjZlOTk3ZmI2YWJlNTUyMWMxNTVjZWUyZjI0YjM0YjNkOTFhNSJ9fX0=";
+    String globeBlockData = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjFkZDRmZTRhNDI5YWJkNjY1ZGZkYjNlMjEzMjFkNmVmYTZhNmI1ZTdiOTU2ZGI5YzVkNTljOWVmYWIyNSJ9fX0=";
 
     @Override
     public void init(Player player, InventoryContents contents) {
@@ -66,29 +65,6 @@ public class VIPMenu_inv implements InventoryProvider {
 
     @Override
     public void update(Player player, InventoryContents contents) {
-        //Kdyby se chtělo v nějakém menu udělat něco animovaného, např. nějaká duha či něco tak
-        /*
-        Pagination pagination = contents.pagination();
-        switch (pagination.getPage()) {
-            case 0: {
-
-                break;
-            }
-            case 1: {
-
-                break;
-            }
-            case 2: {
-
-                break;
-            }
-
-            case 3: {
-
-                break;
-            }
-        }
-        */
     }
 
     //VIP MENUS
@@ -107,18 +83,13 @@ public class VIPMenu_inv implements InventoryProvider {
                 e -> contents.inventory().open(player, pagination.page(4).getPage())));//Obsidian VIP head sender
     }
     private void GVIPMenu(InventoryContents contents, Player player, Pagination pagination) {
-        //
         createRowsUpAndDown(contents, new ItemStack(Material.ORANGE_STAINED_GLASS_PANE));
         createColumnServerAndGlobalVip(contents);
 
-        //
         contents.set(0, 7, ClickableItem.empty(getGVIPvyhodyGlobalItem()));
         contents.set(0, 1, ClickableItem.empty(getGVIPvyhodyServerItem()));
-        //
         contents.set(2, 1, ClickableItem.of(getGVIPnakupServerItem(), e -> { sendStoreLink(player);}));
         contents.set(2, 7, ClickableItem.of(getGVIPnakupGlobalItem(), e -> { sendStoreLink(player);}));
-
-        //
         contents.set(4, 1, ClickableItem.of(createArrow(ChatColor.RED + "Zpět do menu"), e -> { contents.inventory().open(player, pagination.page(0).getPage()); }));
         contents.set(4, 7, ClickableItem.of(createArrow(ChatColor.AQUA + "Diamond VIP ->"), e -> { contents.inventory().open(player, pagination.next().getPage()); }));
     }
@@ -126,14 +97,10 @@ public class VIPMenu_inv implements InventoryProvider {
         createRowsUpAndDown(contents, new ItemStack(Material.LIGHT_BLUE_STAINED_GLASS_PANE));
         createColumnServerAndGlobalVip(contents);
 
-        //
         contents.set(0, 1, ClickableItem.empty(getDVIPvyhodyServerItem()));
         contents.set(0, 7, ClickableItem.empty(getDVIPvyhodyGlobalItem()));
-        //
         contents.set(2, 1, ClickableItem.of(getDVIPnakupServerItem(), e -> { sendStoreLink(player);}));
         contents.set(2, 7, ClickableItem.of(getDVIPnakupGlobalItem(), e -> { sendStoreLink(player);}));
-
-        //
         contents.set(4, 1, ClickableItem.of(createArrow(ChatColor.RED + "Zpět do menu"), e -> { contents.inventory().open(player, pagination.page(0).getPage()); }));
         contents.set(4, 7, ClickableItem.of(createArrow(ChatColor.GREEN + "Emerald VIP ->"), e -> { contents.inventory().open(player, pagination.next().getPage()); }));
     }
@@ -141,14 +108,10 @@ public class VIPMenu_inv implements InventoryProvider {
         createRowsUpAndDown(contents, new ItemStack(Material.LIME_STAINED_GLASS_PANE));
         createColumnServerAndGlobalVip(contents);
 
-        //
         contents.set(0, 1, ClickableItem.empty(getEVIPvyhodyServerItem()));
         contents.set(0, 7, ClickableItem.empty(getEVIPvyhodyGlobalItem()));
-        //
         contents.set(2, 1, ClickableItem.of(getEVIPnakupServerItem(), e -> { sendStoreLink(player);}));
         contents.set(2, 7, ClickableItem.of(getEVIPnakupGlobalItem(), e -> { sendStoreLink(player);}));
-
-        //
         contents.set(4, 1, ClickableItem.of(createArrow(ChatColor.RED + "Zpět do menu"), e -> { contents.inventory().open(player, pagination.page(0).getPage()); }));
         contents.set(4, 7, ClickableItem.of(createArrow(ChatColor.BLUE + "Obsidian VIP ->"), e -> { contents.inventory().open(player, pagination.next().getPage()); }));
     }
@@ -162,10 +125,7 @@ public class VIPMenu_inv implements InventoryProvider {
         contents.set(2, 7, ClickableItem.of(getOVIPnakupGlobalItem(), e -> { sendStoreLink(player);}));
         contents.set(4, 1, ClickableItem.of(createArrow(ChatColor.RED + "Zpět do menu"), e -> { contents.inventory().open(player, pagination.page(0).getPage()); }));
     }
-
     //VIP MENUS
-
-
 
     //VIP MENU HEADS
     private ItemStack getGlobalVipHead() {
@@ -178,12 +138,12 @@ public class VIPMenu_inv implements InventoryProvider {
         lore.add(ChatColor.YELLOW + "*" + ChatColor.WHITE + " Creative");
         lore.add(ChatColor.YELLOW + "*" + ChatColor.WHITE + " Prison");
         lore.add(ChatColor.YELLOW + "*" + ChatColor.WHITE + " MiniGames");
-        return createHeadFromUrl(globeBlockUrl, ChatColor.AQUA + "Global VIP", lore);
+        return createHeadFromData(globeBlockData, ChatColor.AQUA + "Global VIP", lore);
     }
     private ItemStack getServerVipHead() {
         List <String> lore = new ArrayList<String>();
         lore.add(ChatColor.GRAY + "VIP, které platí pouze na tomto serveru!");
-        return createHeadFromUrl(serverBlockUrl, ChatColor.GOLD + "Server VIP", lore);
+        return createHeadFromData(serverBlockData, ChatColor.GOLD + "Server VIP", lore);
     }
     private ItemStack getCurrentPlayerHead(Player player) {
         List <String> lore = new ArrayList<String>();
@@ -192,11 +152,7 @@ public class VIPMenu_inv implements InventoryProvider {
     }
     //VIP MENU HEADS
 
-
-    // POKUD BUDEŠ CHTÍT MĚNIT TEXTY VÝHOD (vyhodyServerList / vyhodyGlobalList)
-    //  NEBO VÝHODY (nakupServerList / nakupGloballist), EDITUJ LISTY V "VIP DATA"!
-    // <3
-    //VIP data
+    //VIP data (zde se mění výhody)
     List <String> getGVIPvyhodyServerList() {
         List <String> GVIPvyhody = new ArrayList<>();
         GVIPvyhody.add("§7Toto VIP zahrnuje:");
@@ -268,7 +224,6 @@ public class VIPMenu_inv implements InventoryProvider {
         GVIPnakup.add(ChatColor.YELLOW + "Klikni pro odkaz do Storu");
         return GVIPnakup;
     }
-
     List <String> getDVIPvyhodyServerList() {
         List <String> DVIPvyhody = new ArrayList<>();
         DVIPvyhody.add("§7Toto VIP zahrnuje:");
@@ -340,7 +295,6 @@ public class VIPMenu_inv implements InventoryProvider {
         GVIPnakup.add(ChatColor.YELLOW + "Klikni pro odkaz do Storu");
         return GVIPnakup;
     }
-
     List <String> getEVIPvyhodyServerList() {
         List <String> EVIPvyhody = new ArrayList<>();
         EVIPvyhody.add("§7Toto VIP zahrnuje:");
@@ -414,7 +368,6 @@ public class VIPMenu_inv implements InventoryProvider {
         EVIPnakup.add(ChatColor.YELLOW + "Klikni pro odkaz do Storu");
         return EVIPnakup;
     }
-
     List <String> getOVIPvyhodyServerList() {
         List <String> OVIPvyhody = new ArrayList<>();
         OVIPvyhody.add("§7Toto VIP zahrnuje:");
@@ -482,25 +435,24 @@ public class VIPMenu_inv implements InventoryProvider {
     }
     //VIP data
 
-    //GOLDEN VIP HEADS - Používané jen na získání hlavy, vše se mění v VIP DATA! a vlastně maximálně je tu zde String
-    // Který říká, na jak dlouho vip je, např. "Nákup server vip na 30 dní"
+    //GOLDEN VIP HEADS
     private ItemStack getGVIPsenderItem() {
         List <String> lore = new ArrayList<String>();
         lore.add(ChatColor.GRAY + "Nejnižší VIP, které ale obsahuje");
         lore.add(ChatColor.GRAY + "mnoho výhod, které určitě chceš!");
         lore.add("");
         lore.add(ChatColor.YELLOW + "Klikni pro zobrazení výhod");
-        return createHeadFromUrl(goldBlockUrl, ChatColor.GOLD + "Golden VIP", lore);
+        return createHeadFromData(goldBlockData, ChatColor.GOLD + "Golden VIP", lore);
     }
     private ItemStack getGVIPvyhodyServerItem() {
         List <String> GVIPvyhody = new ArrayList<>();
         GVIPvyhody = getGVIPvyhodyServerList();
-        return createHeadFromUrl(goldBlockUrl, ChatColor.GOLD + "Golden " + getCurrentServer() + " VIP", GVIPvyhody);
+        return createHeadFromData(goldBlockData, ChatColor.GOLD + "Golden " + getCurrentServer() + " VIP", GVIPvyhody);
     }
     private ItemStack getGVIPvyhodyGlobalItem() {
         List <String> GVIPvyhody = new ArrayList<String>();
         GVIPvyhody = getGVIPvyhodyGlobalList();
-        return createHeadFromUrl(goldBlockUrl, ChatColor.GOLD + "Golden Global VIP", GVIPvyhody);
+        return createHeadFromData(goldBlockData, ChatColor.GOLD + "Golden Global VIP", GVIPvyhody);
     }
     private ItemStack getGVIPnakupServerItem() {
         List <String> GVIPnakup = new ArrayList<String>();
@@ -521,17 +473,17 @@ public class VIPMenu_inv implements InventoryProvider {
         lore.add(ChatColor.GRAY + "ukážeš kdo je tu pán!");
         lore.add("");
         lore.add(ChatColor.YELLOW + "Klikni pro zobrazení výhod");
-        return createHeadFromUrl(diamondBlockUrl, ChatColor.AQUA + "Diamond VIP", lore);
+        return createHeadFromData(diamondBlockData, ChatColor.AQUA + "Diamond VIP", lore);
     }
     private ItemStack getDVIPvyhodyServerItem() {
         List <String> DVIPvyhody = new ArrayList<>();
         DVIPvyhody = getDVIPvyhodyServerList();
-        return createHeadFromUrl(diamondBlockUrl, ChatColor.AQUA + "Diamond " + getCurrentServer() + "VIP", DVIPvyhody);
+        return createHeadFromData(diamondBlockData, ChatColor.AQUA + "Diamond " + getCurrentServer() + "VIP", DVIPvyhody);
     }
     private ItemStack getDVIPvyhodyGlobalItem() {
         List <String> DVIPvyhody = new ArrayList<String>();
         DVIPvyhody = getDVIPvyhodyGlobalList();
-        return createHeadFromUrl(diamondBlockUrl, ChatColor.AQUA + "Diamond Global VIP", DVIPvyhody);
+        return createHeadFromData(diamondBlockData, ChatColor.AQUA + "Diamond Global VIP", DVIPvyhody);
     }
     private ItemStack getDVIPnakupServerItem() {
         List <String> DVIPnakup = new ArrayList<String>();
@@ -552,17 +504,17 @@ public class VIPMenu_inv implements InventoryProvider {
         lore.add(ChatColor.GRAY + "Čím lepší VIP, tím víc výhod!");
         lore.add("");
         lore.add(ChatColor.YELLOW + "Klikni pro zobrazení výhod");
-        return createHeadFromUrl(emeraldBlockUrl, ChatColor.GREEN + "Emerald VIP", lore);
+        return createHeadFromData(emeraldBlockData, ChatColor.GREEN + "Emerald VIP", lore);
     }
     private ItemStack getEVIPvyhodyServerItem() {
         List <String> EVIPvyhody = new ArrayList<String>();
         EVIPvyhody = getEVIPvyhodyServerList();
-        return createHeadFromUrl(emeraldBlockUrl, ChatColor.GREEN + "Emerald " + getCurrentServer() + " VIP", EVIPvyhody);
+        return createHeadFromData(emeraldBlockData, ChatColor.GREEN + "Emerald " + getCurrentServer() + " VIP", EVIPvyhody);
     }
     private ItemStack getEVIPvyhodyGlobalItem() {
         List <String> EVIPvyhody = new ArrayList<String>();
         EVIPvyhody = getEVIPvyhodyGlobalList();
-        return createHeadFromUrl(emeraldBlockUrl, ChatColor.GREEN + "Emerald Global VIP", EVIPvyhody);
+        return createHeadFromData(emeraldBlockData, ChatColor.GREEN + "Emerald Global VIP", EVIPvyhody);
     }
     private ItemStack getEVIPnakupServerItem() {
         List <String> EVIPnakup = new ArrayList<String>();
@@ -584,17 +536,17 @@ public class VIPMenu_inv implements InventoryProvider {
         lore.add(ChatColor.GRAY + "na serveru Lich King!");
         lore.add("");
         lore.add(ChatColor.YELLOW + "Klikni pro zobrazení výhod");
-        return createHeadFromUrl(obsidianBlockUrl, ChatColor.BLUE + "Obsidian VIP", lore);
+        return createHeadFromData(obsidianBlockData, ChatColor.BLUE + "Obsidian VIP", lore);
     }
     private ItemStack getOVIPvyhodyServerItem() {
         List <String> OVIPvyhody = new ArrayList<String>();
         OVIPvyhody = getOVIPvyhodyServerList();
-        return createHeadFromUrl(obsidianBlockUrl, ChatColor.BLUE + "Obsidian " + getCurrentServer() + " VIP", OVIPvyhody);
+        return createHeadFromData(obsidianBlockData, ChatColor.BLUE + "Obsidian " + getCurrentServer() + " VIP", OVIPvyhody);
     }
     private ItemStack getOVIPvyhodyGlobalItem() {
         List <String> OVIPvyhody = new ArrayList<String>();
         OVIPvyhody = getOVIPvyhodyGlobalList();
-        return createHeadFromUrl(obsidianBlockUrl, ChatColor.BLUE + "Obsidian Global VIP", OVIPvyhody);
+        return createHeadFromData(obsidianBlockData, ChatColor.BLUE + "Obsidian Global VIP", OVIPvyhody);
     }
     private ItemStack getOVIPnakupServerItem() {
         List <String> OVIPnakup = new ArrayList<String>();
@@ -627,10 +579,9 @@ public class VIPMenu_inv implements InventoryProvider {
         head.setAmount(1);
         return head;
     }
-    //Používám SkullCreator, bc to umí hned z URL :pog:
-    private ItemStack createHeadFromUrl(String urlToHead, String itemName, List <String> itemLore) {
+    private ItemStack createHeadFromData(String headData, String itemName, List <String> itemLore) {
         ItemStack sHead = new ItemStack(Material.PLAYER_HEAD, 1);
-        sHead = SkullCreator.itemFromUrl(urlToHead);
+        sHead = SkullCreator.itemWithBase64(sHead, headData);
         SkullMeta sMeta = (SkullMeta) sHead.getItemMeta();
         sMeta.setDisplayName(itemName);
         sMeta.setLore(itemLore);
@@ -638,7 +589,6 @@ public class VIPMenu_inv implements InventoryProvider {
         sHead.setAmount(1);
         return sHead;
     }
-
     private ItemStack createArrow(String itemName) {
         ItemStack item = new ItemStack(Material.ARROW);
         ItemMeta meta = item.getItemMeta();
@@ -656,7 +606,6 @@ public class VIPMenu_inv implements InventoryProvider {
         item.setAmount(1);
         return item;
     }
-
     private void createRowsUpAndDown(InventoryContents contents, ItemStack itemMaterial) {
         ItemMeta meta = itemMaterial.getItemMeta();
         meta.setDisplayName(" ");
@@ -664,11 +613,8 @@ public class VIPMenu_inv implements InventoryProvider {
         contents.fillRow(0, ClickableItem.empty(itemMaterial));
         contents.fillRow(contents.inventory().getRows()-1, ClickableItem.empty(itemMaterial));
     }
-
     private String getCurrentServer() {
         ServerType currentServer = Main.getServerType();
-        //Vím, if else if else if else, jen pak ten String mám switchnutý v checkách :herold: můžu to předělat, pokud potřeba.
-        // Pls ne
         if (currentServer == ServerType.CREATIVE)
             server = "Creative";
         else if (currentServer == ServerType.SURVIVAL)
@@ -687,7 +633,6 @@ public class VIPMenu_inv implements InventoryProvider {
             server = "Unknown";
         return server;
     }
-
     private void sendStoreLink(Player player) {
         player.closeInventory();
         player.sendMessage("");
@@ -695,9 +640,5 @@ public class VIPMenu_inv implements InventoryProvider {
         player.sendMessage("§bhttps://store.craftmania.cz/");
         player.sendMessage("");
     }
-
     //UTILS
-
-
-
 }
