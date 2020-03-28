@@ -26,6 +26,7 @@ import cz.wake.manager.utils.configs.ConfigAPI;
 import cz.wake.manager.utils.prometheus.MetricsController;
 import cz.wake.manager.utils.tasks.ATAfkTask;
 import cz.wake.manager.utils.tasks.*;
+import cz.wake.manager.commads.VIP_command;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
@@ -36,7 +37,8 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -257,8 +259,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // CommandAPI 1.13+
         if (Bukkit.getPluginManager().isPluginEnabled("CommandAPI")) {
             Log.withPrefix("CommandsAPI detekovano, prikazy budou registrovany!");
-            VIPMenu.registerCommand();
             ServerSlots_command.registerCommand();
+            VIPMenu.registerCommand();
         }
 
         //TODO: Kompletni rewrite na 1.13 CommandAPI
@@ -288,6 +290,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("blocks").setExecutor(new Blocks_command());
         getCommand("repair").setExecutor(new Repair_command());
         getCommand("votes").setExecutor(new Votes_command());
+        getCommand("vip").setExecutor(new VIP_command());
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {
