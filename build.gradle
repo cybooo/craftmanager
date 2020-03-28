@@ -16,11 +16,6 @@ tasks.withType(JavaCompile) {
 clean { delete "./target" }
 clean { delete "./build" }
 
-task compilePlugin(type: Jar) {
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-    with jar
-}
-
 repositories {
     flatDir { dirs 'lib' }
     mavenCentral()
