@@ -1,5 +1,11 @@
-apply plugin: 'java'
-apply plugin: 'maven'
+plugins {
+    id 'java'
+    id 'application'
+    id 'maven'
+    id 'com.github.johnrengelman.shadow' version '4.0.4'
+}
+
+mainClassName = 'cz.wake.manager.Main'
 
 group = 'cz.wake.manager'
 version = '1.5'
@@ -13,7 +19,12 @@ tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
 }
 
-clean { delete "./target" }
+shadowJar {
+    baseName = 'craftmanager'
+    classifier = null
+    version = this.version
+}
+
 clean { delete "./build" }
 
 repositories {
@@ -55,5 +66,5 @@ dependencies {
     compile group: 'io.prometheus', name: 'simpleclient_httpserver', version: '0.6.0'
     compile group: 'io.prometheus', name: 'simpleclient_hotspot', version: '0.6.0'
 
-    implementation (group: 'org.spigotmc', name: 'spigot', version: '1.15')
+    compileOnly (group: 'org.spigotmc', name: 'spigot', version: '1.15')
 }
