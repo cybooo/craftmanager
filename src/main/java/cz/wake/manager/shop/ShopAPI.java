@@ -327,8 +327,8 @@ public class ShopAPI implements Listener {
         inv.setItem(52, footer);
         inv.setItem(53, footer);
 
-        /*// Residence 200x200 | LVL 15 | 1,000
-        if (Main.getServerType() != ServerType.SURVIVAL) {
+        // Residence 200x200 | LVL 15 | 1,000
+        if (Main.getServerType() == ServerType.SURVIVAL) {
             if (!(LevelAPI.getLevel(p, LevelType.SURVIVAL_LEVEL) < 15)) {
                 if (p.hasPermission("craftmanager.cshop.residence_200")) {
                     if (CraftCoinsAPI.getCoins(p) >= 1000) {
@@ -360,7 +360,7 @@ public class ShopAPI implements Listener {
                 inv.setItem(19, item);
             }
         }
-
+        /*
         // Residence 300x300 | LVL 20 | 2,000
         if (Main.getServerType() != ServerType.SURVIVAL) {
             if (!(LevelAPI.getLevel(p, LevelType.SURVIVAL_LEVEL) < 20)) {
@@ -393,12 +393,12 @@ public class ShopAPI implements Listener {
                         .setLore("§cNemáš požadovaný level: 15").setGlowing().hideAllFlags().build();
                 inv.setItem(20, item);
             }
-        }*/
+        }
 
         // FAKEEEE
         ItemStack item_1 = new ItemBuilder(Material.BARREL).setName("§bResidence 200x200")
                 .setLore("§cNemáš požadovaný level: 15").hideAllFlags().build();
-        inv.setItem(19, item_1);
+        inv.setItem(19, item_1);*/
 
         ItemStack item0 = new ItemBuilder(Material.BARREL).setName("§bResidence 300x300")
                 .setLore("§cNemáš požadovaný level: 20").hideAllFlags().build();
