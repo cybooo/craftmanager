@@ -24,7 +24,7 @@ public class Vote_command implements CommandExecutor {
         p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
         p.sendMessage("");
         p.sendMessage("§7K hlasovani klikni na tento odkaz:");
-        p.sendMessage("§c1. https://czech-craft.eu/vote?id=7113&user=" + p.getName());
+        p.sendMessage("§c1. https://czech-craft.eu/server/craftmania/vote/?user=" + p.getName());
         p.sendMessage("§c2. http://craftlist.org/craftmania?nickname=" + p.getName());
         p.sendMessage("");
         p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
