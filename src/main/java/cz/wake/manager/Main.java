@@ -7,6 +7,7 @@ import cz.wake.manager.commads.staff.RestartManager_command;
 import cz.wake.manager.commads.staff.ServerSlots_command;
 import cz.wake.manager.listener.*;
 import cz.wake.manager.listener.suggestions.PlayerCommandSendListener;
+import cz.wake.manager.managers.CshopManager;
 import cz.wake.manager.menu.VIPMenu;
 import cz.wake.manager.perks.coloranvil.AnvilListener;
 import cz.wake.manager.perks.general.*;
@@ -68,6 +69,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private static String mentionPrefix;
     private Economy econ;
     private ConfigAPI configAPI;
+    private CshopManager cshopManager;
 
     private static Main instance;
 
@@ -182,6 +184,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         Bukkit.getWorlds().forEach(world -> {
             world.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
         });
+
+        // Načtení Cshopu
+        this.cshopManager = new CshopManager(this);
+        this.cshopManager.loadCshop();
     }
 
     public void onDisable() {
@@ -439,5 +445,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         } else {
             return ServerType.UNKNOWN;
         }
+    }
+
+    public CshopManager getCshopManager() {
+        return cshopManager;
     }
 }

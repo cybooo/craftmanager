@@ -2,14 +2,22 @@ package cz.wake.manager.utils;
 
 public enum ServerType {
 
-    SURVIVAL,
-    SKYBLOCK,
-    CREATIVE,
-    PRISON,
-    VANILLA,
-    SKYCLOUD,
-    SKYGRID,
-    UNKNOWN;
+    SURVIVAL("Survival"),
+    SKYBLOCK("Skyblock"),
+    CREATIVE("Creative"),
+    PRISON("Prison"),
+    VANILLA("Vanilla"),
+    SKYCLOUD("SkyCloud"),
+    SKYGRID("SkyGrid"),
+    UNKNOWN("Unknown");
 
-    ServerType() {}
+    public final String name;
+
+    ServerType(String name) {
+        this.name = name;
+    }
+
+    public String getFormatedname() {
+        return name;
+    }
 }
