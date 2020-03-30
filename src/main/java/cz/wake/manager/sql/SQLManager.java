@@ -210,7 +210,7 @@ public class SQLManager {
                 try {
                     conn = pool.getConnection();
                     ps = conn.prepareStatement("INSERT INTO stav_survival_server (nazev, pocet_hracu, pocet_slotu, verze, pocet_pluginu) VALUES (?,?,?,?,?) ON DUPLICATE KEY UPDATE pocet_hracu = ?;");
-                    ps.setString(1, Main.getServerType().name().toLowerCase());
+                    ps.setString(1, Main.getInstance().getConfig().getString("server")); // Kvůli 1.13+
                     ps.setInt(2, Main.getInstance().getServerFactory().getOnlinePlayers());
                     ps.setInt(3, Main.getInstance().getServerFactory().getMaxPlayers());
                     ps.setString(4, Main.getInstance().getServerFactory().getVersion());
