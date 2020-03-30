@@ -878,7 +878,8 @@ public class ShopAPI implements Listener {
                 return;
             }
             if (e.getSlot() == 19) {
-                this.openTagsMenu(p);
+                //this.openTagsMenu(p);
+                p.performCommand("tags");
             }
             if (e.getSlot() == 29) {
                 if (CraftTokensAPI.getTokens(p) > 0) {
@@ -1536,7 +1537,8 @@ public class ShopAPI implements Listener {
                 return;
             }
             if (e.getSlot() == 39) {
-                this.openTagsMenu(p);
+                //this.openTagsMenu(p);
+                p.performCommand("tags");
             }
             if (e.getSlot() == 40) {
                 Main.getInstance().getMainGUI().openMainMenu(p);
