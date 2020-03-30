@@ -2,6 +2,7 @@ package cz.wake.manager.managers;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.shop.types.PermissionItem;
+import cz.wake.manager.shop.types.VoteItem;
 import cz.wake.manager.utils.ServerType;
 import org.bukkit.Material;
 
@@ -11,7 +12,7 @@ import java.util.List;
 public class CshopManager {
 
     private static List<PermissionItem> permsShopItems = new ArrayList<>();
-    private static List<Object> voteShopItems = new ArrayList<>();
+    private static List<VoteItem> voteShopItems = new ArrayList<>();
     private static List<Object> itemsShopItems = new ArrayList<>(); // Nice jméno
 
     private Main plugin;
@@ -33,7 +34,7 @@ public class CshopManager {
         return permsShopItems;
     }
 
-    public List<Object> getVoteShopItems() {
+    public List<VoteItem> getVoteShopItems() {
         return voteShopItems;
     }
 
@@ -54,6 +55,13 @@ public class CshopManager {
     }
 
     private void loadVoteShopItems() {
+        if (Main.getServerType() == ServerType.SURVIVAL) {
+            voteShopItems.add(new VoteItem().setName("1x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(1).setCommandToExecute("crate give physical Vote 1 %player%"));
+            voteShopItems.add(new VoteItem().setName("5x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(5).setCommandToExecute("crate give physical Vote 5 %player%"));
+        }
+        voteShopItems.add(new VoteItem().setName("30 CraftCoins").setPrice(1).setEconomyReward(30));
+        voteShopItems.add(new VoteItem().setName("100 CraftCoins").setPrice(3).setEconomyReward(100));
+        voteShopItems.add(new VoteItem().setName("220 CraftCoins").setPrice(6).setEconomyReward(220));
 
     }
 

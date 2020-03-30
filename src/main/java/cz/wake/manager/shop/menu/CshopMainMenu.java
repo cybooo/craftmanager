@@ -37,7 +37,9 @@ public class CshopMainMenu implements InventoryProvider {
         }));
 
         ItemStack voteShop = new ItemBuilder(Material.EMERALD).setName("§aOdměny (za VoteTokeny)").setLore("§7Vyber si odměnu", "§7za hlasování podle sebe!", "", "§eKliknutím zobrazíš").build();
-        contents.set(2, 5, ClickableItem.of(voteShop, item -> {}));
+        contents.set(2, 5, ClickableItem.of(voteShop, item -> {
+            SmartInventory.builder().size(6, 9).title("Odměny za hlasování").provider(new CshopVoteShop()).build().open(player);
+        }));
 
         ItemStack itemShop = new ItemBuilder(Material.ENCHANTING_TABLE).setName("§6Itemy (za CraftCoiny)").setLore("§7Kup si zajímavé itemy", "§7a získej tak menší bonusy", "§7k hraní na serveru.", "", "§eKlikni pro zobrazení").build();
         contents.set(2, 7, ClickableItem.of(itemShop, item -> {}));
