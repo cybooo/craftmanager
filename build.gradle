@@ -45,7 +45,10 @@ dependencies {
     compile group: 'commons-io', name: 'commons-io', version: '2.6'
     compile group: 'com.zaxxer', name: 'HikariCP', version:'2.7.4'
     compileOnly group: 'com.vexsoftware', name: 'nuvotifier-universal', version:'2.3.4'
-    compileOnly group: 'com.wasteofplastic', name: 'askyblock', version:'3.0.9'
+    compileOnly ('com.wasteofplastic:askyblock:3.0.9') {
+        exclude group: 'net.milkbowl.vault'
+    }
+    compileOnly "com.github.MilkBowl:VaultAPI:1.7"
 
     // CraftMania
     compileOnly name: 'EnchantmentFixer'
