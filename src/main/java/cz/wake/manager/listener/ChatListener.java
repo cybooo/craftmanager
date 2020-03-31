@@ -3,7 +3,6 @@ package cz.wake.manager.listener;
 import cz.craftmania.craftcore.spigot.messages.Advancement;
 import cz.craftmania.craftcore.spigot.messages.handler.AdvancementManager;
 import cz.wake.manager.Main;
-import cz.wake.manager.perks.general.Chatcolor_command;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
@@ -11,7 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.PlayerChatTabCompleteEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -22,7 +20,6 @@ import java.util.List;
 
 public class ChatListener implements Listener {
 
-    private Chatcolor_command chatc = new Chatcolor_command();
     private HashMap<Player, Double> _time = new HashMap();
     private HashMap<Player, BukkitRunnable> _cdRunnable = new HashMap();
     private HashMap<Player, Long> cd = new HashMap<>();
@@ -55,13 +52,6 @@ public class ChatListener implements Listener {
                     }
                 });
                 (this._cdRunnable.get(writingPlayer)).runTaskTimer(Main.getInstance(), 2L, 2L);
-            }
-        }
-        if (chatc.getChatcolorList().containsKey(writingPlayer)) {
-            try {
-                e.setMessage(chatc.getChatcolorList().get(writingPlayer).toString() + msg);
-            } catch (Exception ex) {
-                ex.printStackTrace();
             }
         }
         if (e.isCancelled()) {

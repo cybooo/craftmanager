@@ -274,7 +274,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("coinshop").setExecutor(new Coinshop_command());
         getCommand("particles").setExecutor(new Particles_command());
         getCommand("glow").setExecutor(new Glow_command());
-        getCommand("chatcolor").setExecutor(new Chatcolor_command());
         getCommand("help").setExecutor(new Help_command());
         getCommand("survival").setExecutor(new Survival_command());
         getCommand("skyblock").setExecutor(new Skyblock_command());
