@@ -28,6 +28,8 @@ commands:
       description: Help pro servery
     survival:
       description: Server teleport
+    survival2:
+      description: Server teleport
     skyblock:
       description: Server teleport
     creative:
