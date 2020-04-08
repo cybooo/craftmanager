@@ -22,16 +22,6 @@ public class ScoreboardManager {
         Log.withPrefix("ScoreboardManager loaded");
     }
 
-    public void test(Player p) {
-        this.xoreBoard.addPlayer(p);
-        PrivateSidebar sidebar = xoreBoard.getPrivateSidebar(p);
-        sidebar.setDisplayName("TEST");
-        sidebar.rewriteLine("cenimAAAAAAAAAAA", 1);
-        sidebar.rewriteLine("taky cenim", 2);
-
-        sidebar.showSidebar();
-    }
-
     public void setupPlayer(Player player) {
         this.xoreBoard.addPlayer(player);
 
