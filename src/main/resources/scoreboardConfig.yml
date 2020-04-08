@@ -1,0 +1,13 @@
+# Scoreboard Config
+
+board_refreshTimeTicks: 20
+board_name: "JMENO BOARDU"
+lines:
+  - "Demonstrace PlaceholderAPI"
+  - "Tvůj nick: %player_name%"
+  - "Tvoje ip: %player_ip%"
+  - "x pozice: %player_x%"
+  - "z pozice: %player_z%"
+  - ""
+  - "^ Prázdný řádek"
+  - "Momentální čas: %localtime_time%"

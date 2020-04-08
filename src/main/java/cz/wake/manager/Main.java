@@ -25,6 +25,8 @@ import cz.wake.manager.utils.*;
 import cz.wake.manager.utils.configs.Config;
 import cz.wake.manager.utils.configs.ConfigAPI;
 import cz.wake.manager.utils.prometheus.MetricsController;
+import cz.wake.manager.utils.scoreboard.ScoreboardManager;
+import cz.wake.manager.utils.scoreboard.ScoreboardProvider;
 import cz.wake.manager.utils.tasks.ATAfkTask;
 import cz.wake.manager.utils.tasks.*;
 import cz.wake.manager.commads.VIP_command;
@@ -70,6 +72,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private Economy econ;
     private ConfigAPI configAPI;
     private CshopManager cshopManager;
+    private static ScoreboardManager scoreboardManager;
+    private static ScoreboardProvider scoreboardProvider;
 
     private static Main instance;
 
@@ -188,6 +192,12 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Načtení Cshopu
         this.cshopManager = new CshopManager(this);
         this.cshopManager.loadCshop();
+
+        // Načtení ScoreboardManageru
+        scoreboardManager = new ScoreboardManager();
+        scoreboardProvider = new ScoreboardProvider();
+
+        Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, () -> getScoreboardManager().update(), 0L, getConfigAPI().getConfig("scoreboardConfig").getLong("board_refreshTimeTicks"));
     }
 
     public void onDisable() {
@@ -323,6 +333,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         Config tabCommandsFile = new Config(this.configAPI, "tabCommands");
         configAPI.registerConfig(tabCommandsFile);
+
+        Config scoreboardFile = new Config(this.configAPI, "scoreboardConfig");
+        configAPI.registerConfig(scoreboardFile);
     }
 
     public Config getBlockedTagsFile() {
@@ -448,5 +461,13 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public CshopManager getCshopManager() {
         return cshopManager;
+    }
+
+    public ScoreboardManager getScoreboardManager() {
+        return scoreboardManager;
+    }
+
+    public ScoreboardProvider getScoreboardProvider() {
+        return scoreboardProvider;
     }
 }
