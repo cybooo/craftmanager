@@ -20,13 +20,12 @@ public class ScoreboardProvider {
     }
 
     public void updateCache() {
-        Log.withPrefix("[Scoreboard CACHE] Caching...");
+        Log.withPrefix("[Scoreboard] Caching...");
         Config configLines = Main.getInstance().getConfigAPI().getConfig("scoreboardConfig");
-
         if (configLines != null) {
             String lineEscape = "§d";
-            cachedBoardName = configLines.getString("board_name");
-            cachedLinesRaw = configLines.getStringList("lines");
+            cachedBoardName = configLines.getString("scoreboard.name");
+            cachedLinesRaw = configLines.getStringList("scoreboard.lines");
             for (int x = 0; x < cachedLinesRaw.size(); x++) {
                 if (cachedLinesRaw.get(x).equals("")) {
                     cachedLinesRaw.set(x, lineEscape);

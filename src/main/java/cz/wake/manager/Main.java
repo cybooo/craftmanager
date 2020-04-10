@@ -194,10 +194,14 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         this.cshopManager.loadCshop();
 
         // Načtení ScoreboardManageru
-        scoreboardManager = new ScoreboardManager();
-        scoreboardProvider = new ScoreboardProvider();
-
-        Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, () -> getScoreboardManager().update(), 0L, getConfigAPI().getConfig("scoreboardConfig").getLong("board_refreshTimeTicks"));
+        if (getConfigAPI().getConfig("scoreboardConfig").getBoolean("scoreboard.enabled")) {
+            Log.withPrefix("Aktivace Scoreboard!");
+            scoreboardManager = new ScoreboardManager();
+            scoreboardProvider = new ScoreboardProvider();
+            Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, () -> getScoreboardManager().update(), 0L, getConfigAPI().getConfig("scoreboardConfig").getLong("scoreboard.refreshTime"));
+        } else {
+            Log.withPrefix("Scoreboard je deaktivovaná...");
+        }
     }
 
     public void onDisable() {

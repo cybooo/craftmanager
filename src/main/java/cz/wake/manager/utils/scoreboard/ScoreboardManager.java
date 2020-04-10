@@ -19,7 +19,7 @@ public class ScoreboardManager {
         // this.boards = new HashMap<>();
         this.xoreBoard = XoreBoardUtil.getNextXoreBoard();
 
-        Log.withPrefix("ScoreboardManager loaded");
+        Log.withPrefix("ScoreboardManager loaded!");
     }
 
     public void setupPlayer(Player player) {
