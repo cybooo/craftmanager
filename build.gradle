@@ -69,8 +69,8 @@ dependencies {
     compile group: 'io.prometheus', name: 'simpleclient_hotspot', version: '0.6.0'
 
     compileOnly (group: 'org.spigotmc', name: 'spigot', version: '1.15')
-    compileOnly name: 'PlaceholderAPI-2.10.4'
-    compileOnly name: 'XoreboardUtil'
+    compileOnly group: 'me.clip', name: 'placeholderapi', version: '2.10.4'
+    compileOnly group: 'net.minecord', name: 'xoreboardutil', version: '1.14.4'
 
     implementation 'io.github.jorelali:commandapi:2.2'
 }

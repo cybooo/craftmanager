@@ -1,8 +1,8 @@
 name: CraftManager
 main: cz.wake.manager.Main
 authors: [MrWakeCZ,lilmayu]
-depend: [CraftCore,CraftEconomy,CraftChat,PlaceholderAPI]
-softdepend: [AdvancedEnchantments,HolographicDisplays,CommandAPI]
+depend: [CraftCore,CraftEconomy,CraftChat]
+softdepend: [AdvancedEnchantments,HolographicDisplays,CommandAPI,PlaceholderAPI]
 api-version: "1.15"
 version: "1.5.0"
 
