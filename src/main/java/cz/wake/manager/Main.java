@@ -66,7 +66,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private SQLManager sql;
     private boolean testing = false;
     private boolean reminder = false;
-    private boolean useCustomDisenchant = false;
     private ItemDB itemdb;
     private static String mentionPrefix;
     private Economy econ;
@@ -167,11 +166,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             mentionPrefix = "@";
         }
         Log.withPrefix("Mention prefix nastaven na: " + mentionPrefix);
-
-        if (Bukkit.getPluginManager().isPluginEnabled("AdvancedEnchantments")) {
-            useCustomDisenchant = true;
-            Log.withPrefix("Detekovan plugin AdvancedEnchantments - disenchant jej bude pouzivat.");
-        }
 
         // Prometheus
         if (getConfig().getBoolean("prometheus.state", false)) {
@@ -427,10 +421,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public static String getMentionPrefix() {
         return mentionPrefix;
-    }
-
-    public boolean isCustomDisenchantEnabled() {
-        return useCustomDisenchant;
     }
 
     public boolean areDeathMessagesEnabled() {
