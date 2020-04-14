@@ -73,6 +73,9 @@ public class PlayerListener implements Listener {
         //Register Recipe Player
         RecipeManager.registerRecipePlayer(new RecipePlayer(p));
 
+        //ScoreboardManager
+        Main.getInstance().getScoreboardManager().setupPlayer(p);
+
         if (Main.getServerType() == ServerType.SURVIVAL) {
             p.sendMessage("");
             p.sendMessage("§c§lUpozornění");
@@ -133,6 +136,9 @@ public class PlayerListener implements Listener {
 
         //RestartManager
         RestartManager_command.bb.removePlayer(p);
+
+        //ScoreboardManager
+        Main.getInstance().getScoreboardManager().removePlayer(p);
     }
 
     @EventHandler
@@ -160,6 +166,9 @@ public class PlayerListener implements Listener {
 
         //Unregister RecipePlayeru
         RecipeManager.unregisterRecipePlayer(RecipeManager.getRecipePlayer(p));
+
+        //ScoreboardManager
+        Main.getInstance().getScoreboardManager().removePlayer(p);
     }
 
     @EventHandler(ignoreCancelled = true)

@@ -1,0 +1,10 @@
+# Scoreboard Config
+
+scoreboard:
+  enabled: true
+  refreshTime: 20
+  name: "JMENO BOARDU"
+  lines:
+    - "JAKÝ KEKEKE"
+    - "TI DÁM KEKEKE"
+    - "nick: %player_name%"

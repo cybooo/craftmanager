@@ -2,7 +2,6 @@ package cz.wake.manager.perks.general;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ServerType;
-import n3kas.ae.api.AEAPI;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -50,12 +49,6 @@ public class Disenchant implements CommandExecutor {
                             }
                         }
 
-                        // Ziskani enchantu
-                        if (Main.getInstance().isCustomDisenchantEnabled()) {
-                            customEnchants = AEAPI.getEnchantmentsOnItem(itemInHand);
-                            finalPriceLvls += customEnchants.values().size() * 10;
-                        }
-
                         if (player.getLevel() > finalPriceLvls) {
                             ItemStack withoutEnchant = new ItemStack(player.getItemInHand().getType(), 1);
                             player.getInventory().removeItem(itemInHand);
@@ -68,27 +61,10 @@ public class Disenchant implements CommandExecutor {
                                 player.getInventory().addItem(addBookEnchantment(enchantBook, enchant, level));
                             }
 
-                            if (Main.getInstance().isCustomDisenchantEnabled()) {
-                                for (Map.Entry<String, Integer> enchEntry : customEnchants.entrySet()) {
-
-                                    // Sance
-                                    int sance = randRange(50, 80);
-                                    int failSance = 100 - sance;
-
-                                    // Name, level, success rate, fail rate
-                                    ItemStack customEnchantedBook = AEAPI.createEnchantmentBook(enchEntry.getKey(), enchEntry.getValue(), sance, failSance);
-                                    player.getInventory().addItem(customEnchantedBook);
-                                }
-                            }
-
                             player.sendMessage("§e\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac");
                             player.sendMessage("");
                             player.sendMessage("§aPredmet byl disenchantovan za §6" + finalPriceLvls + " LVL");
-                            if (Main.getInstance().isCustomDisenchantEnabled()) {
-                                player.sendMessage("§7Standartni enchant - 5 LVL, Custom enchant - 10 LVL");
-                            } else {
-                                player.sendMessage("§7Standartni enchant - 5 LVL");
-                            }
+                            player.sendMessage("§7Standartni enchant - 5 LVL");
                             player.sendMessage("");
                             player.sendMessage("§e\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac");
                             withoutEnchant.setDurability(durability);
