@@ -69,4 +69,5 @@ dependencies {
     compileOnly (group: 'org.spigotmc', name: 'spigot', version: '1.15')
 
     implementation 'io.github.jorelali:commandapi:2.2'
+    compile 'com.github.cryptomorin:XSeries:5.3.1'
 }
