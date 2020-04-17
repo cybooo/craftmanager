@@ -113,12 +113,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         Bukkit.getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
 
-        // Oznameni kazdou hodinu (1 hod)
-        if (reminder && !testing) {
-            //getServer().getScheduler().runTaskTimerAsynchronously(this, new Reminder(), 2000, 72000);
-            Log.withPrefix("Aktivace hodinoveho oznamovani o hlasech do chatu.");
-        }
-
         // Update ID stats task (1 min)
         if (!testing) {
             getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateServerTask(), 200, 1200);
