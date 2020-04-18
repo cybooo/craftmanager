@@ -25,6 +25,8 @@ import cz.wake.manager.utils.*;
 import cz.wake.manager.utils.configs.Config;
 import cz.wake.manager.utils.configs.ConfigAPI;
 import cz.wake.manager.utils.prometheus.MetricsController;
+import cz.wake.manager.utils.scoreboard.ScoreboardManager;
+import cz.wake.manager.utils.scoreboard.ScoreboardProvider;
 import cz.wake.manager.utils.tasks.ATAfkTask;
 import cz.wake.manager.utils.tasks.*;
 import cz.wake.manager.commads.VIP_command;
@@ -64,12 +66,13 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private SQLManager sql;
     private boolean testing = false;
     private boolean reminder = false;
-    private boolean useCustomDisenchant = false;
     private ItemDB itemdb;
     private static String mentionPrefix;
     private Economy econ;
     private ConfigAPI configAPI;
     private CshopManager cshopManager;
+    private static ScoreboardManager scoreboardManager;
+    private static ScoreboardProvider scoreboardProvider;
 
     private static Main instance;
 
@@ -158,11 +161,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         }
         Log.withPrefix("Mention prefix nastaven na: " + mentionPrefix);
 
-        if (Bukkit.getPluginManager().isPluginEnabled("AdvancedEnchantments")) {
-            useCustomDisenchant = true;
-            Log.withPrefix("Detekovan plugin AdvancedEnchantments - disenchant jej bude pouzivat.");
-        }
-
         // Prometheus
         if (getConfig().getBoolean("prometheus.state", false)) {
             MetricsController.setup(this);
@@ -182,6 +180,16 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Načtení Cshopu
         this.cshopManager = new CshopManager(this);
         this.cshopManager.loadCshop();
+
+        // Načtení ScoreboardManageru
+        if (getConfigAPI().getConfig("scoreboardConfig").getBoolean("scoreboard.enabled")) {
+            Log.withPrefix("Aktivace Scoreboard!");
+            scoreboardManager = new ScoreboardManager();
+            scoreboardProvider = new ScoreboardProvider();
+            Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, () -> getScoreboardManager().update(), 0L, getConfigAPI().getConfig("scoreboardConfig").getLong("scoreboard.refreshTime"));
+        } else {
+            Log.withPrefix("Scoreboard je deaktivovaná...");
+        }
     }
 
     public void onDisable() {
@@ -318,6 +326,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         Config tabCommandsFile = new Config(this.configAPI, "tabCommands");
         configAPI.registerConfig(tabCommandsFile);
+
+        Config scoreboardFile = new Config(this.configAPI, "scoreboardConfig");
+        configAPI.registerConfig(scoreboardFile);
     }
 
     public Config getBlockedTagsFile() {
@@ -407,10 +418,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         return mentionPrefix;
     }
 
-    public boolean isCustomDisenchantEnabled() {
-        return useCustomDisenchant;
-    }
-
     public boolean areDeathMessagesEnabled() {
         return getConfig().getBoolean("d_msgs.enabled");
     }
@@ -443,5 +450,13 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public CshopManager getCshopManager() {
         return cshopManager;
+    }
+
+    public ScoreboardManager getScoreboardManager() {
+        return scoreboardManager;
+    }
+
+    public ScoreboardProvider getScoreboardProvider() {
+        return scoreboardProvider;
     }
 }

@@ -1,13 +1,11 @@
 package cz.wake.manager.utils;
 
 import cz.wake.manager.Main;
-import n3kas.ae.api.AEAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -34,20 +32,6 @@ public class Repair {
                 int level = (int) pair.getValue();
                 money += 1500 * level;
                 it.remove();
-            }
-        }
-
-        if (Main.getServerType() == ServerType.SURVIVAL) {
-            if (AEAPI.getEnchantmentsOnItem(item).size() != 0) {
-                HashMap<Enchantment, Integer> enchanments2 = new HashMap<>(AEAPI.getEnchantmentsOnItem(item));
-
-                Iterator it = enchanments2.entrySet().iterator();
-                while (it.hasNext()) {
-                    HashMap.Entry pair = (HashMap.Entry)it.next();
-                    int level = (int) pair.getValue();
-                    money += 5000 * level;
-                    it.remove();
-                }
             }
         }
 

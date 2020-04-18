@@ -3,7 +3,6 @@ package cz.wake.manager.perks.general;
 import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ServerType;
-import n3kas.ae.api.AEAPI;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -52,13 +51,6 @@ public class GlowItemCommand implements CommandExecutor {
                 if (!item.getEnchantments().isEmpty()) {
                     player.sendMessage("§c§l[!] §cNelze pouzit GlowItem na item, ktery jiz ma enchant!");
                     return true;
-                }
-
-                if (Main.getInstance().isCustomDisenchantEnabled()) {
-                    if (!AEAPI.getEnchantmentsOnItem(item).isEmpty()) {
-                        player.sendMessage("§c§l[!] §cNelze pouzit GlowItem na item, ktery jiz ma enchant!");
-                        return true;
-                    }
                 }
 
                 ItemBuilder itemBuilder = new ItemBuilder(item);
