@@ -56,12 +56,16 @@ public class VillagerDamageListener implements Listener {
             } else if (villager.hasMetadata(VillagerType.SEA_VILLAGER.name())) {
                 event.setCancelled(true);
                 VillagerManager.openMerchantInventory(VillagerType.SEA_VILLAGER, player);
+            } else {
+                event.setCancelled(true);
             }
         } else if (entity instanceof WanderingTrader) {
             WanderingTrader villager = (WanderingTrader)entity;
             event.setCancelled(true);
             if (villager.hasMetadata(VillagerType.RARE_VILLAGER.name())) {
                 VillagerManager.openMerchantInventory(VillagerType.RARE_VILLAGER, player);
+            } else {
+                event.setCancelled(true);
             }
         }
     }
