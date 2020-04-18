@@ -16,11 +16,11 @@ public class PlayerLoginListener implements Listener {
         int playerCount = Bukkit.getOnlinePlayers().size();
 
         if (playerCount < totalSlots || e.getPlayer().getName().equals("MrWakeCZ")) { //Jestli momentálních hráčů je méně než slotů povolených, hráče to připojí
-            e.allow();
+            return;
         } else {
             if (e.getPlayer().hasPermission("craftmanager.vip.login-bypass")) {
                 if (playerCount < (totalSlots + reservedSlots)) { //Hráč má práva na login-bypass a server ještě není úplně plný
-                    e.allow();
+                    return;
                 } else { //Hráč sice má práva na login-bypass, ale server presáhl svou maximální kapacitu
                     e.disallow(PlayerLoginEvent.Result.KICK_FULL, "Server je plný!\nServer dosáhl své maximální kapacity pro hráče, VIP i AT! Budeš si muset počkat, než se uvolní místo pro tebe.");
                 }

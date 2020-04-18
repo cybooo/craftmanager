@@ -74,9 +74,11 @@ public class PlayerListener implements Listener {
         RecipeManager.registerRecipePlayer(new RecipePlayer(p));
 
         //ScoreboardManager
-        Main.getInstance().getScoreboardManager().setupPlayer(p);
+        Main.getInstance().getServer().getScheduler().runTaskLater(Main.getInstance(), () -> {
+            Main.getInstance().getScoreboardManager().setupPlayer(p);
+        }, 10L);
 
-        if (Main.getServerType() == ServerType.SURVIVAL) {
+        if (Main.getServerType() == ServerType.SKYCLOUD) {
             p.sendMessage("");
             p.sendMessage("§c§lUpozornění");
             p.sendMessage("§7Tento server je označený jako §b§lBETA");

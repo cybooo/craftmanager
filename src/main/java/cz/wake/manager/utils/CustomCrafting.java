@@ -58,7 +58,10 @@ public class CustomCrafting {
 
     public static Recipe getDiamondRecipe() {
         ItemStack diamond = new ItemStack(Material.DIAMOND, 1);
-        return new StonecuttingRecipe(new NamespacedKey(Main.getInstance(), "stone_cutter_diamond"), diamond, Material.EMERALD_BLOCK);
+        ShapedRecipe recipe = new ShapedRecipe(new NamespacedKey(Main.getInstance(), "crafting_diamond"), diamond);
+        recipe.shape("aaa","aaa","aaa");
+        recipe.setIngredient('a', Material.EMERALD_BLOCK);
+        return recipe;
     }
 
     public static Recipe getClayBlockRecipe() {
