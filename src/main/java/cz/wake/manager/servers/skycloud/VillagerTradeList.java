@@ -160,7 +160,7 @@ public class VillagerTradeList {
             tradeList.addTrade(e(15), new ItemStack(Material.HORN_CORAL_BLOCK, 3));
             tradeList.addTrade(e(13), new ItemStack(Material.SEA_PICKLE, 6));
             tradeList.addTrade(e(18), new ItemStack(Material.GUARDIAN_SPAWN_EGG, 1));
-            tradeList.addTrade(e(32), new ItemStack(Material.NAUTILUS_SHELL, 4));
+            tradeList.addTrade(e(32), new ItemStack(Material.NAUTILUS_SHELL, 2));
             tradeList.addTrade(e(16), new ItemStack(Material.KELP, 2));
         } else if (randomNumber == 2) {
             tradeList.addTrade(e(13), new ItemStack(Material.BRAIN_CORAL, 3));
@@ -174,7 +174,7 @@ public class VillagerTradeList {
             tradeList.addTrade(e(15), new ItemStack(Material.BRAIN_CORAL_BLOCK, 3));
             tradeList.addTrade(d(64), new ItemStack(Material.TRIDENT, 1));
             tradeList.addTrade(e(8), new ItemStack(Material.PRISMARINE_SHARD, 32));
-            tradeList.addTrade(e(32), new ItemStack(Material.NAUTILUS_SHELL, 4));
+            tradeList.addTrade(e(32), new ItemStack(Material.NAUTILUS_SHELL, 2));
             tradeList.addTrade(e(16), new ItemStack(Material.KELP, 2));
         } else if (randomNumber == 4) {
             tradeList.addTrade(e(13), new ItemStack(Material.FIRE_CORAL, 3));
@@ -212,7 +212,7 @@ public class VillagerTradeList {
             tradeList.addTrade(e(32), new ItemStack(Material.END_ROD, 1));
             tradeList.addTrade(e(20), new ItemStack(Material.PURPUR_BLOCK, 6));
             tradeList.addTrade(d(2), new ItemStack(Material.WHITE_SHULKER_BOX, 1));
-            tradeList.addTrade(d(5), new ItemStack(Material.SHULKER_SPAWN_EGG, 1));
+            tradeList.addTrade(d(2), new ItemStack(Material.SHULKER_SPAWN_EGG, 1));
         } else if (randomNumber == 2) {
             tradeList.addTrade(e(10), new ItemStack(Material.END_STONE_BRICKS, 2));
             tradeList.addTrade(db(8), new ItemStack(Material.DRAGON_HEAD, 1));
@@ -230,7 +230,7 @@ public class VillagerTradeList {
             tradeList.addTrade(e(48), new ItemStack(Material.DRAGON_BREATH, 2));
             tradeList.addTrade(e(20), new ItemStack(Material.PURPUR_PILLAR));
             tradeList.addTrade(e(64), new ItemStack(Material.BLACK_SHULKER_BOX, 1));
-            tradeList.addTrade(d(5), new ItemStack(Material.SHULKER_SPAWN_EGG, 1));
+            tradeList.addTrade(d(2), new ItemStack(Material.SHULKER_SPAWN_EGG, 1));
         } else if (randomNumber == 5) {
             tradeList.addTrade(e(10), new ItemStack(Material.END_STONE_BRICKS, 2));
             tradeList.addTrade(e(32), new ItemStack(Material.OBSIDIAN, 1));
