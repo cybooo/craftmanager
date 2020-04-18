@@ -74,7 +74,9 @@ public class PlayerListener implements Listener {
         RecipeManager.registerRecipePlayer(new RecipePlayer(p));
 
         //ScoreboardManager
-        Main.getInstance().getScoreboardManager().setupPlayer(p);
+        Main.getInstance().getServer().getScheduler().runTaskLater(Main.getInstance(), () -> {
+            Main.getInstance().getScoreboardManager().setupPlayer(p);
+        }, 10L);
 
         if (Main.getServerType() == ServerType.SURVIVAL) {
             p.sendMessage("");
