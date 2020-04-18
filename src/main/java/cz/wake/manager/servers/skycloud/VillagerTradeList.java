@@ -27,10 +27,12 @@ public class VillagerTradeList {
             tradeList.addTrade(new ItemStack(Material.ORANGE_GLAZED_TERRACOTTA, 32), e(2));
             tradeList.addTrade(new ItemStack(Material.YELLOW_GLAZED_TERRACOTTA, 32), e(2));
             tradeList.addTrade(new ItemStack(Material.TURTLE_EGG, 16), e(3));
-            tradeList.addTrade(new ItemStack(Material.ANVIL, 3), e(1));
+            tradeList.addTrade(new ItemStack(Material.ANVIL, 3), e(6));
             tradeList.addTrade(new ItemStack(Material.BREAD, 64), e(1));
             tradeList.addTrade(new ItemStack(Material.APPLE, 32), e(1));
             tradeList.addTrade(new ItemStack(Material.BONE, 64), e(1));
+            tradeList.addTrade(new ItemStack(Material.DRIED_KELP_BLOCK, 12), e(1));
+            tradeList.addTrade(new ItemStack(Material.COOKED_BEEF, 32), e(1));
         } else if (randomNumber == 2) {
             tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.INVISIBILITY, false, true).getItemStack()).build(), e(1));
             tradeList.addTrade(new ItemStack(Material.CAKE, 1), e(2));
@@ -54,6 +56,7 @@ public class VillagerTradeList {
             tradeList.addTrade(new ItemStack(Material.BREAD, 64), e(1));
             tradeList.addTrade(new ItemStack(Material.APPLE, 32), e(1));
             tradeList.addTrade(new ItemStack(Material.BONE, 64), e(1));
+            tradeList.addTrade(new ItemStack(Material.COOKED_BEEF, 32), e(1));
         } else if (randomNumber == 4) {
             tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.INSTANT_DAMAGE, true, false).getItemStack()).build(), e(1));
             tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.SLOW_FALLING, false, true).getItemStack()).build(), e(1));
@@ -65,6 +68,8 @@ public class VillagerTradeList {
             tradeList.addTrade(new ItemStack(Material.LIME_GLAZED_TERRACOTTA, 32), e(2));
             tradeList.addTrade(new ItemStack(Material.PACKED_ICE, 16), e(2));
             tradeList.addTrade(new ItemStack(Material.STONE, 64), e(1));
+            tradeList.addTrade(new ItemStack(Material.APPLE, 32), e(1));
+            tradeList.addTrade(new ItemStack(Material.DRIED_KELP_BLOCK, 12), e(1));
         } else if (randomNumber == 5) {
             tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.SPEED, true, false).getItemStack()).build(), e(1));
             tradeList.addTrade(new ItemStack(Material.BAKED_POTATO, 48), e(1));
@@ -87,6 +92,7 @@ public class VillagerTradeList {
             tradeList.addTrade(new ItemStack(Material.BROWN_MUSHROOM_BLOCK, 32), e(2));
             tradeList.addTrade(new ItemStack(Material.STONE, 64), e(1));
             tradeList.addTrade(new ItemStack(Material.APPLE, 32), e(1));
+            tradeList.addTrade(new ItemStack(Material.DRIED_KELP_BLOCK, 12), e(1));
         } else if (randomNumber == 7) {
             tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.JUMP, true, false).getItemStack()).build(), e(1));
             tradeList.addTrade(new ItemStack(Material.GOLDEN_CARROT, 5), e(1));
@@ -99,6 +105,7 @@ public class VillagerTradeList {
             tradeList.addTrade(new ItemStack(Material.BREAD, 64), e(1));
             tradeList.addTrade(new ItemStack(Material.ENDER_EYE, 16), e(1));
             tradeList.addTrade(new ItemStack(Material.TURTLE_EGG, 16), e(3));
+            tradeList.addTrade(new ItemStack(Material.COOKED_BEEF, 32), e(1));
         } else if (randomNumber == 8) {
             tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.SPEED, true, false).getItemStack()).build(), e(1));
             tradeList.addTrade(new ItemStack(Material.ENCHANTED_GOLDEN_APPLE, 1), e(3));
@@ -122,6 +129,7 @@ public class VillagerTradeList {
             tradeList.addTrade(new ItemStack(Material.STONE, 64), e(1));
             tradeList.addTrade(new ItemStack(Material.ENDER_EYE, 16), e(1));
             tradeList.addTrade(new ItemStack(Material.BONE, 64), e(1));
+            tradeList.addTrade(new ItemStack(Material.DRIED_KELP_BLOCK, 12), e(1));
         } else if (randomNumber == 10) {
             tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.SLOW_FALLING, true, false).getItemStack()).build(), e(1));
             tradeList.addTrade(new ItemStack(Material.GOLDEN_CARROT, 5), e(1));
@@ -135,6 +143,7 @@ public class VillagerTradeList {
             tradeList.addTrade(new ItemStack(Material.BROWN_MUSHROOM_BLOCK, 32), e(2));
             tradeList.addTrade(new ItemStack(Material.STONE, 64), e(1));
             tradeList.addTrade(new ItemStack(Material.APPLE, 32), e(1));
+            tradeList.addTrade(new ItemStack(Material.COOKED_BEEF, 32), e(1));
         } else {
             Log.withPrefix("Zadany shop neexistuje!");
             return tradeList;
@@ -151,7 +160,8 @@ public class VillagerTradeList {
             tradeList.addTrade(e(15), new ItemStack(Material.HORN_CORAL_BLOCK, 3));
             tradeList.addTrade(e(13), new ItemStack(Material.SEA_PICKLE, 6));
             tradeList.addTrade(e(18), new ItemStack(Material.GUARDIAN_SPAWN_EGG, 1));
-            tradeList.addTrade(e(24), new ItemStack(Material.NAUTILUS_SHELL, 4));
+            tradeList.addTrade(e(32), new ItemStack(Material.NAUTILUS_SHELL, 4));
+            tradeList.addTrade(e(16), new ItemStack(Material.KELP, 2));
         } else if (randomNumber == 2) {
             tradeList.addTrade(e(13), new ItemStack(Material.BRAIN_CORAL, 3));
             tradeList.addTrade(e(15), new ItemStack(Material.FIRE_CORAL_BLOCK, 3));
@@ -164,7 +174,8 @@ public class VillagerTradeList {
             tradeList.addTrade(e(15), new ItemStack(Material.BRAIN_CORAL_BLOCK, 3));
             tradeList.addTrade(d(64), new ItemStack(Material.TRIDENT, 1));
             tradeList.addTrade(e(8), new ItemStack(Material.PRISMARINE_SHARD, 32));
-            tradeList.addTrade(e(24), new ItemStack(Material.NAUTILUS_SHELL, 4));
+            tradeList.addTrade(e(32), new ItemStack(Material.NAUTILUS_SHELL, 4));
+            tradeList.addTrade(e(16), new ItemStack(Material.KELP, 2));
         } else if (randomNumber == 4) {
             tradeList.addTrade(e(13), new ItemStack(Material.FIRE_CORAL, 3));
             tradeList.addTrade(e(15), new ItemStack(Material.BUBBLE_CORAL_BLOCK, 3));
@@ -177,6 +188,7 @@ public class VillagerTradeList {
             tradeList.addTrade(d(12), new ItemStack(Material.HEART_OF_THE_SEA, 1));
             tradeList.addTrade(e(4), new ItemStack(Material.LILY_PAD, 10));
             tradeList.addTrade(e(8), new ItemStack(Material.PRISMARINE_CRYSTALS, 8));
+            tradeList.addTrade(e(16), new ItemStack(Material.KELP, 2));
         } else if (randomNumber == 6) {
             tradeList.addTrade(e(13), new ItemStack(Material.HORN_CORAL, 3));
             tradeList.addTrade(e(15), new ItemStack(Material.BUBBLE_CORAL_BLOCK, 3));
@@ -289,6 +301,7 @@ public class VillagerTradeList {
         int randomNumber = randRange(1,13);
 
         if (randomNumber == 1) {
+            tradeList.addTrade(e(4), new ItemStack(Material.PORKCHOP, 12));
             tradeList.addTrade(e(10), new ItemStack(Material.ANDESITE, 44));
             tradeList.addTrade(e(10), new ItemStack(Material.DIORITE, 44));
             tradeList.addTrade(e(16), new ItemStack(Material.IRON_ORE, 3));
@@ -297,28 +310,36 @@ public class VillagerTradeList {
             tradeList.addTrade(e(20), new ItemStack(Material.BLUE_ICE, 4));
             tradeList.addTrade(e(32), new ItemStack(Material.GLASS, 8));
             tradeList.addTrade(e(24), new ItemStack(Material.SLIME_SPAWN_EGG, 1));
+            tradeList.addTrade(e(32), XEnchantment.DURABILITY.getBook(1));
+            tradeList.addTrade(e(3), new ItemStack(Material.WATER_BUCKET));
         } else if (randomNumber == 2) {
             tradeList.addTrade(e(10), new ItemStack(Material.GRANITE, 44));
             tradeList.addTrade(e(10), new ItemStack(Material.BRICK, 44)); //TODO: Zkontrolovat
-            tradeList.addTrade(e(12), new ItemStack(Material.GOLD_ORE, 4));
+            tradeList.addTrade(e(24), new ItemStack(Material.GOLD_ORE, 3));
+            tradeList.addTrade(e(16), new ItemStack(Material.IRON_ORE, 3));
             tradeList.addTrade(e(7), new ItemStack(Material.MAGENTA_CONCRETE_POWDER, 32));
             tradeList.addTrade(e(7), new ItemStack(Material.LIGHT_BLUE_CONCRETE_POWDER, 32));
-            tradeList.addTrade(e(30), new ItemStack(Material.OBSIDIAN, 8));
+            tradeList.addTrade(e(32), new ItemStack(Material.OBSIDIAN, 1));
             tradeList.addTrade(e(44), new ItemStack(Material.RED_SAND, 10));
             tradeList.addTrade(e(33), new ItemStack(Material.SKELETON_HORSE_SPAWN_EGG, 1));
         } else if (randomNumber == 3) {
             tradeList.addTrade(e(10), new ItemStack(Material.CLAY, 44)); //TODO: Zkontrolovat
             tradeList.addTrade(e(10), new ItemStack(Material.SNOW_BLOCK, 10));
             tradeList.addTrade(e(12), new ItemStack(Material.LAPIS_ORE, 8));
+            tradeList.addTrade(e(16), new ItemStack(Material.IRON_ORE, 3));
             tradeList.addTrade(e(7), new ItemStack(Material.YELLOW_CONCRETE_POWDER, 32));
             tradeList.addTrade(e(7), new ItemStack(Material.LIME_CONCRETE_POWDER, 32));
             tradeList.addTrade(e(10), new ItemStack(Material.CHISELED_STONE_BRICKS, 18));
             tradeList.addTrade(e(20), new ItemStack(Material.COARSE_DIRT, 8));
             tradeList.addTrade(e(33), new ItemStack(Material.ZOMBIE_HORSE_SPAWN_EGG, 1));
+            tradeList.addTrade(e(32), XEnchantment.DURABILITY.getBook(1));
+            tradeList.addTrade(e(3), new ItemStack(Material.WATER_BUCKET));
         } else if (randomNumber == 4) {
+            tradeList.addTrade(e(4), new ItemStack(Material.PORKCHOP, 12));
             tradeList.addTrade(e(10), new ItemStack(Material.ANDESITE, 44));
             tradeList.addTrade(e(10), new ItemStack(Material.GRANITE, 44));
             tradeList.addTrade(eb(14), new ItemStack(Material.DIAMOND_ORE, 1));
+            tradeList.addTrade(e(16), new ItemStack(Material.IRON_ORE, 3));
             tradeList.addTrade(e(7), new ItemStack(Material.PINK_CONCRETE_POWDER, 32));
             tradeList.addTrade(e(7), new ItemStack(Material.GRAY_CONCRETE_POWDER, 32));
             tradeList.addTrade(e(32), new ItemStack(Material.GLASS, 8));
@@ -328,29 +349,34 @@ public class VillagerTradeList {
             tradeList.addTrade(e(10), new ItemStack(Material.DIORITE, 44));
             tradeList.addTrade(e(10), new ItemStack(Material.CLAY, 44)); //TODO: Zkontrolovat
             tradeList.addTrade(e(44), new ItemStack(Material.SAND, 10));
+            tradeList.addTrade(e(16), new ItemStack(Material.IRON_ORE, 3));
             tradeList.addTrade(e(7), new ItemStack(Material.LIGHT_GRAY_CONCRETE_POWDER, 32));
             tradeList.addTrade(e(7), new ItemStack(Material.CYAN_CONCRETE_POWDER, 32));
             tradeList.addTrade(e(10), new ItemStack(Material.SNOW_BLOCK, 10));
             tradeList.addTrade(e(32), new ItemStack(Material.GLASS, 8));
             tradeList.addTrade(e(64), e(2), new ItemStack(Material.PILLAGER_SPAWN_EGG, 1));
+            tradeList.addTrade(e(3), new ItemStack(Material.WATER_BUCKET));
         } else if (randomNumber == 6) {
+            tradeList.addTrade(e(4), new ItemStack(Material.PORKCHOP, 18));
             tradeList.addTrade(e(10), new ItemStack(Material.BRICK, 44)); //TODO: Zkontrolovat
             tradeList.addTrade(e(10), new ItemStack(Material.ANDESITE, 44));
             tradeList.addTrade(e(15), new ItemStack(Material.GRASS_BLOCK, 1));
+            tradeList.addTrade(e(16), new ItemStack(Material.IRON_ORE, 3));
             tradeList.addTrade(e(7), new ItemStack(Material.PURPLE_CONCRETE_POWDER, 32));
             tradeList.addTrade(e(7), new ItemStack(Material.BLUE_CONCRETE_POWDER, 32));
             tradeList.addTrade(e(10), new ItemStack(Material.CHISELED_STONE_BRICKS, 18));
-            tradeList.addTrade(e(16), new ItemStack(Material.IRON_ORE, 3));
         } else if (randomNumber == 7) {
             tradeList.addTrade(e(10), new ItemStack(Material.GRANITE, 44));
             tradeList.addTrade(e(10), new ItemStack(Material.DIORITE, 44));
-            tradeList.addTrade(e(12), new ItemStack(Material.GOLD_ORE, 4));
+            tradeList.addTrade(e(24), new ItemStack(Material.GOLD_ORE, 3));
+            tradeList.addTrade(e(16), new ItemStack(Material.IRON_ORE, 3));
             tradeList.addTrade(e(7), new ItemStack(Material.BROWN_CONCRETE_POWDER, 32));
             tradeList.addTrade(e(7), new ItemStack(Material.GREEN_CONCRETE_POWDER, 32));
-            tradeList.addTrade(e(30), new ItemStack(Material.OBSIDIAN, 8));
+            tradeList.addTrade(e(32), new ItemStack(Material.OBSIDIAN, 1));
             tradeList.addTrade(e(20), new ItemStack(Material.BLUE_ICE, 4));
             tradeList.addTrade(e(8), new ItemStack(Material.NAME_TAG, 1));
         } else if (randomNumber == 8) {
+            tradeList.addTrade(e(4), new ItemStack(Material.PORKCHOP, 12));
             tradeList.addTrade(e(10), new ItemStack(Material.BRICK, 44)); //TODO: Zkontrolovat
             tradeList.addTrade(e(10), new ItemStack(Material.CLAY, 44)); //TODO: Zkontrolovat
             tradeList.addTrade(eb(9), new ItemStack(Material.DIAMOND, 1));
@@ -359,16 +385,20 @@ public class VillagerTradeList {
             tradeList.addTrade(e(44), new ItemStack(Material.SAND, 10));
             tradeList.addTrade(e(20), new ItemStack(Material.BLUE_ICE, 4));
             tradeList.addTrade(e(3), new ItemStack(Material.SADDLE, 1));
+            tradeList.addTrade(e(32), XEnchantment.DURABILITY.getBook(1));
+            tradeList.addTrade(e(3), new ItemStack(Material.WATER_BUCKET));
         } else if (randomNumber == 9) {
             tradeList.addTrade(e(10), new ItemStack(Material.GRANITE, 44));
             tradeList.addTrade(e(10), new ItemStack(Material.DIORITE, 44));
             tradeList.addTrade(e(12), new ItemStack(Material.LAPIS_ORE, 8));
+            tradeList.addTrade(e(16), new ItemStack(Material.IRON_ORE, 3));
             tradeList.addTrade(e(7), new ItemStack(Material.GREEN_CONCRETE_POWDER, 32));
             tradeList.addTrade(e(7), new ItemStack(Material.PURPLE_CONCRETE_POWDER, 32));
             tradeList.addTrade(e(44), new ItemStack(Material.SAND, 10));
             tradeList.addTrade(e(44), new ItemStack(Material.RED_SAND, 10));
             tradeList.addTrade(e(3), new ItemStack(Material.SADDLE, 1));
         } else if (randomNumber == 10) {
+            tradeList.addTrade(e(4), new ItemStack(Material.PORKCHOP, 12));
             tradeList.addTrade(e(10), new ItemStack(Material.ANDESITE, 44));
             tradeList.addTrade(e(10), new ItemStack(Material.BRICK, 44)); //TODO: Zkontrolovat
             tradeList.addTrade(eb(14), new ItemStack(Material.DIAMOND_ORE, 1));
@@ -381,12 +411,15 @@ public class VillagerTradeList {
             tradeList.addTrade(e(10), new ItemStack(Material.CLAY, 44)); //TODO: Zkontrolovat
             tradeList.addTrade(e(10), new ItemStack(Material.DIORITE, 44));
             tradeList.addTrade(eb(9), new ItemStack(Material.DIAMOND, 1));
+            tradeList.addTrade(e(16), new ItemStack(Material.IRON_ORE, 3));
             tradeList.addTrade(e(7), new ItemStack(Material.YELLOW_CONCRETE_POWDER, 32));
             tradeList.addTrade(e(7), new ItemStack(Material.BLUE_CONCRETE_POWDER, 32));
             tradeList.addTrade(e(44), new ItemStack(Material.SAND, 10));
             tradeList.addTrade(e(10), new ItemStack(Material.SNOW_BLOCK, 10));
             tradeList.addTrade(e(17), XEnchantment.VANISHING_CURSE.getBook(1));
+            tradeList.addTrade(e(3), new ItemStack(Material.WATER_BUCKET));
         } else if (randomNumber == 12) {
+            tradeList.addTrade(e(4), new ItemStack(Material.PORKCHOP, 12));
             tradeList.addTrade(e(10), new ItemStack(Material.GRANITE, 44));
             tradeList.addTrade(e(10), new ItemStack(Material.ANDESITE, 44));
             tradeList.addTrade(e(9), new ItemStack(Material.DIAMOND, 1));
@@ -395,15 +428,19 @@ public class VillagerTradeList {
             tradeList.addTrade(e(44), new ItemStack(Material.RED_SAND, 10));
             tradeList.addTrade(e(16), new ItemStack(Material.IRON_ORE, 3));
             tradeList.addTrade(e(3), new ItemStack(Material.SADDLE, 1));
+            tradeList.addTrade(e(3), new ItemStack(Material.WATER_BUCKET));
         } else if (randomNumber == 13) {
             tradeList.addTrade(e(10), new ItemStack(Material.BRICK, 44)); //TODO: Zkontrolovat
             tradeList.addTrade(e(10), new ItemStack(Material.CLAY, 44)); //TODO: Zkontrolovat
-            tradeList.addTrade(e(12), new ItemStack(Material.GOLD_ORE, 4));
+            tradeList.addTrade(e(24), new ItemStack(Material.GOLD_ORE, 3));
+            tradeList.addTrade(e(16), new ItemStack(Material.IRON_ORE, 3));
             tradeList.addTrade(e(7), new ItemStack(Material.BLACK_CONCRETE_POWDER, 32));
             tradeList.addTrade(e(7), new ItemStack(Material.MAGENTA_CONCRETE_POWDER, 32));
             tradeList.addTrade(e(32), new ItemStack(Material.GLASS, 8));
             tradeList.addTrade(e(10), new ItemStack(Material.CHISELED_STONE_BRICKS, 18));
-            tradeList.addTrade(e(8), new ItemStack(Material.NAME_TAG, 1)); // Eeee?
+            tradeList.addTrade(e(8), new ItemStack(Material.NAME_TAG, 1));
+            tradeList.addTrade(e(32), XEnchantment.DURABILITY.getBook(1));
+            tradeList.addTrade(e(3), new ItemStack(Material.WATER_BUCKET));
         } else {
             Log.withPrefix("Zadany shop neexistuje!");
             return tradeList;
@@ -421,19 +458,30 @@ public class VillagerTradeList {
             tradeList.addTrade(eb(12), new ItemStack(Material.CONDUIT, 1));
             tradeList.addTrade(e(32), new ItemStack(Material.SPECTRAL_ARROW, 12));
             tradeList.addTrade(e(10), new ItemStack(Material.FIREWORK_ROCKET, 32));
-            tradeList.addTrade(eb(32), new ItemBuilder(Material.DIAMOND_PICKAXE).addEnchant(Enchantment.DIG_SPEED, 3).build());
+            tradeList.addTrade(eb(32), XEnchantment.MENDING.getBook(1));
+            tradeList.addTrade(eb(3), new ItemBuilder(Material.DIAMOND_PICKAXE).addEnchant(Enchantment.DIG_SPEED, 3).build());
+            tradeList.addTrade(db(12), new ItemStack(Material.END_PORTAL_FRAME));
+            tradeList.addTrade(e(32), new ItemStack(Material.CAT_SPAWN_EGG));
+            tradeList.addTrade(e(32), new ItemStack(Material.WOLF_SPAWN_EGG));
+            tradeList.addTrade(d(1), new ItemStack(Material.LECTERN));
         } else if (randomNumber == 2) {
             tradeList.addTrade(e(18), new ItemStack(Material.BELL, 1));
-            //tradeList.addTrade(eb(64), new ItemStack(Material.VILLAGER_SPAWN_EGG));
+            tradeList.addTrade(eb(64), new ItemStack(Material.VILLAGER_SPAWN_EGG));
             tradeList.addTrade(e(42), new ItemStack(Material.EXPERIENCE_BOTTLE, 16));
             tradeList.addTrade(eb(32), new ItemStack(Material.WITHER_ROSE));
-            tradeList.addTrade(db(16), new ItemStack(Material.END_PORTAL_FRAME));
+            tradeList.addTrade(db(12), new ItemStack(Material.END_PORTAL_FRAME));
             tradeList.addTrade(eb(12), XEnchantment.FROST_WALKER.getBook(1));
+            tradeList.addTrade(e(64), new ItemStack(Material.FOX_SPAWN_EGG));
+            tradeList.addTrade(e(32), new ItemStack(Material.PARROT_SPAWN_EGG));
         } else if (randomNumber == 3) {
             tradeList.addTrade(db(6), new ItemStack(Material.ENCHANTING_TABLE, 1));
             tradeList.addTrade(db(1), new ItemStack(Material.DRAGON_BREATH, 4));
             tradeList.addTrade(eb(32), XEnchantment.MENDING.getBook(1));
-            tradeList.addTrade(e(15), new ItemStack(Material.PANDA_SPAWN_EGG, 1));
+            tradeList.addTrade(e(32), new ItemStack(Material.PANDA_SPAWN_EGG, 1));
+            tradeList.addTrade(eb(3), new ItemBuilder(Material.IRON_AXE).addEnchant(Enchantment.DAMAGE_ALL, 2).build());
+            tradeList.addTrade(eb(4), new ItemBuilder(Material.DIAMOND_CHESTPLATE).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2).build());
+            tradeList.addTrade(e(32), new ItemStack(Material.PARROT_SPAWN_EGG));
+            tradeList.addTrade(e(32), new ItemStack(Material.CAT_SPAWN_EGG));
         } else {
             Log.withPrefix("Zadany shop neexistuje!");
             return tradeList;
