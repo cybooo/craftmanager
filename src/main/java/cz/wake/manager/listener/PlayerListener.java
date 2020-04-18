@@ -78,7 +78,7 @@ public class PlayerListener implements Listener {
             Main.getInstance().getScoreboardManager().setupPlayer(p);
         }, 10L);
 
-        if (Main.getServerType() == ServerType.SURVIVAL) {
+        if (Main.getServerType() == ServerType.SKYCLOUD) {
             p.sendMessage("");
             p.sendMessage("§c§lUpozornění");
             p.sendMessage("§7Tento server je označený jako §b§lBETA");
