@@ -2,6 +2,7 @@ package cz.wake.manager.servers.skycloud;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.Log;
+import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -56,6 +57,8 @@ public class VillagerDamageListener implements Listener {
             } else if (villager.hasMetadata(VillagerType.SEA_VILLAGER.name())) {
                 event.setCancelled(true);
                 VillagerManager.openMerchantInventory(VillagerType.SEA_VILLAGER, player);
+            } else if (player.getInventory().getItemInMainHand().getType() == Material.NAME_TAG) {
+                event.setCancelled(false);
             } else {
                 event.setCancelled(true);
             }
@@ -64,6 +67,8 @@ public class VillagerDamageListener implements Listener {
             event.setCancelled(true);
             if (villager.hasMetadata(VillagerType.RARE_VILLAGER.name())) {
                 VillagerManager.openMerchantInventory(VillagerType.RARE_VILLAGER, player);
+            } else if (player.getInventory().getItemInMainHand().getType() == Material.NAME_TAG) {
+                event.setCancelled(false);
             } else {
                 event.setCancelled(true);
             }
