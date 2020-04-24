@@ -17,8 +17,6 @@ import cz.wake.manager.servers.skycloud.ItemDropListener;
 import cz.wake.manager.servers.skycloud.VillagerDamageListener;
 import cz.wake.manager.servers.skycloud.VillagerManager;
 import cz.wake.manager.servers.vanilla.LecternBookTakeListener;
-import cz.wake.manager.shop.ShopAPI;
-import cz.wake.manager.shop.TagsEditor;
 import cz.wake.manager.shop.TempShop;
 import cz.wake.manager.sql.SQLManager;
 import cz.wake.manager.utils.*;
@@ -45,7 +43,6 @@ import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.regex.Pattern;
 
 public class Main extends JavaPlugin implements PluginMessageListener {
 
@@ -54,18 +51,15 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     public HashMap<Player, Integer> at_afk = new HashMap<>();
     public ArrayList<Player> death_messages = new ArrayList<>();
     private ParticlesAPI particlesAPI = new ParticlesAPI();
-    public List<Pattern> blockedTags = new ArrayList<Pattern>();
     private List<String> dontdrop_worlds = new ArrayList<>();
     public static Long restartTime = null;
     public static String restartReason = null;
     private MainGUI gui = new MainGUI();
-    private ShopAPI shop = new ShopAPI();
     private ServerFactory sf = new ServerFactory();
     private static ByteArrayOutputStream b = new ByteArrayOutputStream();
     private static DataOutputStream out = new DataOutputStream(b);
     private SQLManager sql;
     private boolean testing = false;
-    private boolean reminder = false;
     private ItemDB itemdb;
     private static String mentionPrefix;
     private Economy econ;
@@ -109,7 +103,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Nastaveni hodnot
         testing = getConfig().getBoolean("testing");
-        reminder = getConfig().getBoolean("reminder");
         itemdb = new ItemDB(this);
 
         // Bungee channels
@@ -128,17 +121,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             Log.withPrefix("Aktivace AT-Afk checkeru");
 
             getServer().getScheduler().runTaskTimerAsynchronously(this, new VoteReminderTask(), 100, 1200);
-        }
-
-        // Nastaveni blokovanych tagu
-        for (String s : getConfig().getStringList("blocked-tags")) {
-            Pattern p = Pattern.compile(s);
-            blockedTags.add(p);
-        }
-
-        // Custom crafting recepty
-        if (serverType != ServerType.SKYCLOUD) {
-            CustomCrafting.addPackedIce(this);
         }
 
         if (serverType == ServerType.SKYCLOUD) {
@@ -214,13 +196,11 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new ParticlesAPI(), this);
         pm.registerEvents(new PlayerListener(), this);
         pm.registerEvents(new MainGUI(), this);
-        pm.registerEvents(new ShopAPI(), this);
         pm.registerEvents(new ChatListener(), this);
         pm.registerEvents(new TempShop(), this);
         pm.registerEvents(new DeathListener(), this); //TODO: Zkontrolovat damage, pry se pkazdy posle zprava
         pm.registerEvents(new TwerkEvent(), this);
         pm.registerEvents(new SettingsListener(), this);
-        pm.registerEvents(new TagsEditor(), this);
         pm.registerEvents(new BeaconCommand(), this);
         pm.registerEvents(new PlayerSwapListener(), this);
         pm.registerEvents(new SignClickListener(), this);
@@ -362,10 +342,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public MainGUI getMainGUI() {
         return gui;
-    }
-
-    public ShopAPI getShopGUI() {
-        return shop;
     }
 
     public SQLManager getMySQL() {

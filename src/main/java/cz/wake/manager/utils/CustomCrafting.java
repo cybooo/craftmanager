@@ -7,19 +7,6 @@ import org.bukkit.inventory.*;
 
 public class CustomCrafting {
 
-    // Od 1.13 je tento recept dostupný v základní vanille
-    public static void addPackedIce(Main instance) {
-
-        ItemStack packedIce = new ItemStack(Material.PACKED_ICE);
-
-        ShapedRecipe recipe = new ShapedRecipe(new NamespacedKey(Main.getInstance(), "packed_ice"), packedIce);
-        recipe.shape("xxx", "xyy", "xyy");
-        recipe.setIngredient('y', Material.ICE);
-        recipe.setIngredient('x', Material.AIR);
-
-        instance.getServer().addRecipe(recipe);
-    }
-
     /**
      * Přidá recept na vycraftění písku z mořských bloků.
      */
