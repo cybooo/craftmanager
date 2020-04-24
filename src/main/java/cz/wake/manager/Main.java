@@ -201,9 +201,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Deaktivace MySQL
         sql.onDisable();
 
-        // Config
-        // KNOWN BUG: Bukkit saveConfig() maže komentáře.
-        saveConfig(); // TODO: Předělat config na ConfigAPI
         instance = null;
     }
 
