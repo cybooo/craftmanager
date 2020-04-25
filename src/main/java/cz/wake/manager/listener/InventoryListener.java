@@ -48,9 +48,6 @@ public class InventoryListener implements Listener {
                 p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.closeInventory();
             }
-            if (e.getSlot() == 23) {
-                Main.getInstance().getShopGUI().openShopMainGUI(p);
-            }
             if (e.getSlot() == 24) {
                 p.performCommand("vip");
             }
