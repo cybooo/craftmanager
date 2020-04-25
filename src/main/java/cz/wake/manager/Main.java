@@ -65,8 +65,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private Economy econ;
     private ConfigAPI configAPI;
     private CshopManager cshopManager;
-    private static ScoreboardManager scoreboardManager;
-    private static ScoreboardProvider scoreboardProvider;
+    private static ScoreboardManager scoreboardManager = null;
+    private static ScoreboardProvider scoreboardProvider = null;
 
     private static Main instance;
 

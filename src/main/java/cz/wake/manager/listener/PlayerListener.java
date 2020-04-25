@@ -74,9 +74,11 @@ public class PlayerListener implements Listener {
         RecipeManager.registerRecipePlayer(new RecipePlayer(p));
 
         //ScoreboardManager
-        Main.getInstance().getServer().getScheduler().runTaskLater(Main.getInstance(), () -> {
-            Main.getInstance().getScoreboardManager().setupPlayer(p);
-        }, 10L);
+        if (Main.getInstance().getScoreboardManager() != null) { // Null když je vypnutý
+            Main.getInstance().getServer().getScheduler().runTaskLater(Main.getInstance(), () -> {
+                Main.getInstance().getScoreboardManager().setupPlayer(p);
+            }, 10L);
+        }
 
         if (Main.getServerType() == ServerType.SKYCLOUD) {
             p.sendMessage("");
