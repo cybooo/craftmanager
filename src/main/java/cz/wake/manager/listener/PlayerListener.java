@@ -91,7 +91,7 @@ public class PlayerListener implements Listener {
         }
 
         if (Main.restartReason != null) {
-            Long min = Main.restartTime - System.currentTimeMillis();
+            long min = Main.restartTime - System.currentTimeMillis();
             if (min > 60 * 60 * 1000) {
                 p.sendMessage("§7§m---------§7[§c§l Restart serveru §7]§m---------\n");
                 p.sendMessage("§f");
