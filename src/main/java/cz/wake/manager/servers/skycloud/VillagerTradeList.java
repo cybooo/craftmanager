@@ -31,7 +31,7 @@ public class VillagerTradeList {
             tradeList.addTrade(new ItemStack(Material.BONE, 64), e(1));
             tradeList.addTrade(new ItemStack(Material.COOKED_BEEF, 32), e(1));
             tradeList.addTrade(new ItemStack(Material.HONEY_BLOCK, 16), e(1));
-            tradeList.addTrade(new ItemStack(Material.DRIED_KELP_BLOCK, 16), e(1));
+            tradeList.addTrade(new ItemStack(Material.DRIED_KELP_BLOCK, 24), e(1));
             tradeList.addTrade(new ItemStack(Material.DARK_OAK_SAPLING, 64), new ItemStack(Material.DARK_OAK_SAPLING, 64), e(1));
         } else if (randomNumber == 2) {
             tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.INVISIBILITY, false, true).getItemStack()).build(), e(1));
@@ -71,7 +71,7 @@ public class VillagerTradeList {
             tradeList.addTrade(new ItemStack(Material.LIME_GLAZED_TERRACOTTA, 32), e(2));
             tradeList.addTrade(new ItemStack(Material.PACKED_ICE, 16), e(2));
             tradeList.addTrade(new ItemStack(Material.APPLE, 32), e(1));
-            tradeList.addTrade(new ItemStack(Material.DRIED_KELP_BLOCK, 16), e(1));
+            tradeList.addTrade(new ItemStack(Material.DRIED_KELP_BLOCK, 24), e(1));
             tradeList.addTrade(new ItemStack(Material.BOOK, 32), e(1));
             tradeList.addTrade(new ItemStack(Material.ACACIA_SAPLING, 64), new ItemStack(Material.ACACIA_SAPLING, 64), e(1));
         } else if (randomNumber == 5) {
@@ -134,7 +134,7 @@ public class VillagerTradeList {
             tradeList.addTrade(new ItemStack(Material.ENDER_EYE, 16), e(1));
             tradeList.addTrade(new ItemStack(Material.BONE, 64), e(1));
             tradeList.addTrade(new ItemStack(Material.SPIDER_EYE, 64), e(1));
-            tradeList.addTrade(new ItemStack(Material.DRIED_KELP_BLOCK, 16), e(1));
+            tradeList.addTrade(new ItemStack(Material.DRIED_KELP_BLOCK, 24), e(1));
         } else if (randomNumber == 10) {
             tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.SLOW_FALLING, true, false).getItemStack()).build(), e(1));
             tradeList.addTrade(new ItemStack(Material.GOLDEN_CARROT, 6), e(1));
