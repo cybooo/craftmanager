@@ -14,8 +14,7 @@ public class Skycloud_command implements CommandExecutor {
             Player player = (Player) Sender;
             if ((Command.getName().equalsIgnoreCase("skycloud"))) {
                 try {
-                    player.sendMessage("§c§l[!] §cZadany server neexistuje?!");
-                    //Main.getInstance().sendToServer(player, "skycloud");
+                    Main.getInstance().sendToServer(player, "skycloud");
                 } catch (Exception e) {
                     e.printStackTrace();
                     player.sendMessage("§cTeleport na server §fSkyCloud §cse nezdaril!");
