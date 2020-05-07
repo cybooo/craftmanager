@@ -15,6 +15,7 @@ public class CshopManager {
     private static List<PermissionItem> permsShopItems = new ArrayList<>();
     private static List<VoteItem> voteShopItems = new ArrayList<>();
     private static List<Object> itemsShopItems = new ArrayList<>(); // Nice jméno
+    private static List<VoteItem> eventShopItems = new ArrayList<>();
 
     private Main plugin;
 
@@ -29,6 +30,7 @@ public class CshopManager {
         loadPermsShopItems();
         loadVoteShopItems();
         loadItemShopItems();
+        loadEventShopItems();
     }
 
     public List<PermissionItem> getPermsShopItems() {
@@ -41,6 +43,10 @@ public class CshopManager {
 
     public List<Object> getItemsShopItems() {
         return itemsShopItems;
+    }
+
+    public List<VoteItem> getEventShopItems() {
+        return eventShopItems;
     }
 
     private void loadPermsShopItems() {
@@ -72,6 +78,16 @@ public class CshopManager {
 
     private void loadItemShopItems() {
 
+    }
+
+    private void loadEventShopItems() {
+        eventShopItems.add(new VoteItem().setName("50x CraftCoins").setPrice(3).setEconomyReward(50, RewardType.CRAFTCOINS));
+        eventShopItems.add(new VoteItem().setName("120x CraftCoins").setPrice(5).setEconomyReward(120, RewardType.CRAFTCOINS));
+        eventShopItems.add(new VoteItem().setName("280x CraftCoins").setPrice(12).setEconomyReward(280, RewardType.CRAFTCOINS));
+        eventShopItems.add(new VoteItem().setName("1x CraftToken").setPrice(125).setEconomyReward(1, RewardType.CRAFTTOKEN));
+        if (Main.getServerType() == ServerType.CREATIVE || Main.getServerType() == ServerType.SKYCLOUD || Main.getServerType() == ServerType.SURVIVAL) {
+            eventShopItems.add(new VoteItem().setName("ArmorStandEditor (2h)").setPrice(10).setCommandToExecute("lp user %player% permission settemp asedit.* true 2h %server%"));
+        }
     }
 
 }

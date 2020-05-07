@@ -47,6 +47,11 @@ public class CshopMainMenu implements InventoryProvider {
         contents.set(2, 7, ClickableItem.of(itemShop, item -> {
             SmartInventory.builder().size(6, 9).title("Itemy za CraftCoiny").provider(new CshopItemShop(Main.getServerType())).build().open(player);
         }));
+
+        ItemStack eventShop = new ItemBuilder(Material.NAUTILUS_SHELL).setName("§dEvent Shop (za Event Points)").setLore("§7Hraješ na našem Event Serveru?", "§7Tak přímo pro tebe zde máme", "§7tento shop, s odměnami", "§7které se ti budou líbit!", "", "§eKlikni pro zobrazení").build();
+        contents.set(3, 2, ClickableItem.of(eventShop, item -> {
+            SmartInventory.builder().size(6, 9).title("Event Shop").provider(new CshopEventShop()).build().open(player);
+        }));
     }
 
     @Override
