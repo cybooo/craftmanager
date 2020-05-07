@@ -3,8 +3,6 @@ package cz.wake.manager.listener;
 import cz.wake.manager.Main;
 import cz.wake.manager.commads.Profil_command;
 import cz.wake.manager.managers.MenuManager;
-import cz.wake.manager.managers.RecipeManager;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -223,52 +221,6 @@ public class InventoryListener implements Listener {
             }*/
             if (e.getSlot() == 31) {
                 settings.openSettingsMenu(p, 1);
-            }
-            if (e.getSlot() == 33) {
-                profil.openLanguageMenu(p);
-            }
-        }
-        if (e.getView().getTitle().equals("Nastaveni jazyka")) {
-            e.setCancelled(true);
-            if (e.getCurrentItem() == null) {
-                return;
-            }
-            if (e.getCurrentItem().getType() == Material.AIR) {
-                return;
-            }
-            if (e.getSlot() == 40) {
-                profil.openMenu(p);
-            }
-            if (e.getSlot() == 36) {
-                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 13.0F, 1.0F);
-                p.sendMessage("");
-                p.sendMessage("§d▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
-                p.sendMessage("");
-                p.sendMessage("");
-                p.sendMessage("§eOdkaz na nas Crowdin projekt:");
-                //p.sendMessage("§bhttps://crowdin.com/project/craftmaniacz");
-                p.sendMessage("§cAktualne pozastaveno!");
-                p.sendMessage("");
-                p.sendMessage("§d▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
-                p.sendMessage("");
-                p.closeInventory();
-            }
-        }
-        final Inventory top = e.getView().getTopInventory();
-        final InventoryType type = top.getType();
-        if (type == InventoryType.WORKBENCH) {
-            if (RecipeManager.getRecipePlayer(p).isRecipe()) {
-                e.setCancelled(true);
-            }
-        }
-    }
-
-    @EventHandler(priority = EventPriority.MONITOR)
-    public void onInventoryCloseEvent(final InventoryCloseEvent event) {
-        if (event.getView().getTopInventory().getType() == InventoryType.WORKBENCH) {
-            if (RecipeManager.getRecipePlayer((Player) event.getPlayer()).isRecipe()) {
-                RecipeManager.getRecipePlayer((Player) event.getPlayer()).setRecipe(false);
-                event.getView().getTopInventory().clear();
             }
         }
     }

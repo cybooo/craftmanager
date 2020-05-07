@@ -281,7 +281,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         getCommand("profil").setExecutor(new Profil_command());
         getCommand("navody").setExecutor(new Navody_command());
         getCommand("beacon").setExecutor(new BeaconCommand());
-        getCommand("recipe").setExecutor(new Recipe_command());
         getCommand("restartmanager").setExecutor(new RestartManager_command()); //TODO: Nenačítat, pokud nebude CraftCore na serveru?
         getCommand("cm").setExecutor(new Cm_command());
         getCommand("glowitem").setExecutor(new GlowItemCommand());

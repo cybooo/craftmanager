@@ -2,8 +2,6 @@ package cz.wake.manager.listener;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.commads.staff.RestartManager_command;
-import cz.wake.manager.managers.RecipeManager;
-import cz.wake.manager.managers.RecipePlayer;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.utils.ServerType;
 import net.horkanos.craftchat.CraftChat;
@@ -70,9 +68,6 @@ public class PlayerListener implements Listener {
             CraftChat.disableChat(p, true);
         }
 
-        //Register Recipe Player
-        RecipeManager.registerRecipePlayer(new RecipePlayer(p));
-
         //ScoreboardManager
         if (Main.getInstance().getScoreboardManager() != null) { // Null když je vypnutý
             Main.getInstance().getServer().getScheduler().runTaskLater(Main.getInstance(), () -> {
@@ -136,9 +131,6 @@ public class PlayerListener implements Listener {
                 Main.getInstance().death_messages.remove(p);
             }
 
-            //Unregister RecipePlayeru
-            RecipeManager.unregisterRecipePlayer(RecipeManager.getRecipePlayer(p));
-
             //RestartManager
             RestartManager_command.bb.removePlayer(p);
 
@@ -173,9 +165,6 @@ public class PlayerListener implements Listener {
             if (Main.getInstance().death_messages.contains(p)) {
                 Main.getInstance().death_messages.remove(p);
             }
-
-            //Unregister RecipePlayeru
-            RecipeManager.unregisterRecipePlayer(RecipeManager.getRecipePlayer(p));
 
             //ScoreboardManager
             Main.getInstance().getScoreboardManager().removePlayer(p);
