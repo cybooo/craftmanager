@@ -135,7 +135,9 @@ public class PlayerListener implements Listener {
             RestartManager_command.bb.removePlayer(p);
 
             //ScoreboardManager
-            Main.getInstance().getScoreboardManager().removePlayer(p);
+            if (Main.getInstance().getScoreboardManager() != null) {
+                Main.getInstance().getScoreboardManager().removePlayer(p);
+            }
         } catch (Exception exception) {
             exception.printStackTrace();
             Main.getInstance().sendSentryException(exception);
@@ -167,7 +169,9 @@ public class PlayerListener implements Listener {
             }
 
             //ScoreboardManager
-            Main.getInstance().getScoreboardManager().removePlayer(p);
+            if (Main.getInstance().getScoreboardManager() != null) {
+                Main.getInstance().getScoreboardManager().removePlayer(p);
+            }
         } catch (Exception exception) {
             exception.printStackTrace();
             Main.getInstance().sendSentryException(exception);
