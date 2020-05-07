@@ -116,63 +116,73 @@ public class PlayerListener implements Listener {
 
         e.setQuitMessage(null);
 
-        if (Main.getInstance().isVisibleForPlayer(p)) {
-            partAPI.deactivateParticles(p);
-            Main.getInstance().removePlayer(p);
+        try {
+            if (Main.getInstance().isVisibleForPlayer(p)) {
+                partAPI.deactivateParticles(p);
+                Main.getInstance().removePlayer(p);
+            }
+
+            //AT
+            if (Main.getInstance().at_list.contains(p)) {
+                Main.getInstance().at_list.remove(p);
+            }
+
+            if (Main.getInstance().at_afk.containsKey(p)) {
+                Main.getInstance().at_afk.remove(p);
+            }
+
+            //Death messages
+            if (Main.getInstance().death_messages.contains(p)) {
+                Main.getInstance().death_messages.remove(p);
+            }
+
+            //Unregister RecipePlayeru
+            RecipeManager.unregisterRecipePlayer(RecipeManager.getRecipePlayer(p));
+
+            //RestartManager
+            RestartManager_command.bb.removePlayer(p);
+
+            //ScoreboardManager
+            Main.getInstance().getScoreboardManager().removePlayer(p);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            Main.getInstance().sendSentryException(exception);
         }
-
-        //AT
-        if (Main.getInstance().at_list.contains(p)) {
-            Main.getInstance().at_list.remove(p);
-        }
-
-        if (Main.getInstance().at_afk.containsKey(p)) {
-            Main.getInstance().at_afk.remove(p);
-        }
-
-        //Death messages
-        if (Main.getInstance().death_messages.contains(p)) {
-            Main.getInstance().death_messages.remove(p);
-        }
-
-        //Unregister RecipePlayeru
-        RecipeManager.unregisterRecipePlayer(RecipeManager.getRecipePlayer(p));
-
-        //RestartManager
-        RestartManager_command.bb.removePlayer(p);
-
-        //ScoreboardManager
-        Main.getInstance().getScoreboardManager().removePlayer(p);
     }
 
     @EventHandler
     public void onKick(PlayerKickEvent e) {
         final Player p = e.getPlayer();
 
-        if (Main.getInstance().isVisibleForPlayer(p)) {
-            partAPI.deactivateParticles(p);
-            Main.getInstance().removePlayer(p);
+        try {
+            if (Main.getInstance().isVisibleForPlayer(p)) {
+                partAPI.deactivateParticles(p);
+                Main.getInstance().removePlayer(p);
+            }
+
+            //AT
+            if (Main.getInstance().at_list.contains(p)) {
+                Main.getInstance().at_list.remove(p);
+            }
+
+            if (Main.getInstance().at_afk.containsKey(p)) {
+                Main.getInstance().at_afk.remove(p);
+            }
+
+            //Death messages
+            if (Main.getInstance().death_messages.contains(p)) {
+                Main.getInstance().death_messages.remove(p);
+            }
+
+            //Unregister RecipePlayeru
+            RecipeManager.unregisterRecipePlayer(RecipeManager.getRecipePlayer(p));
+
+            //ScoreboardManager
+            Main.getInstance().getScoreboardManager().removePlayer(p);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            Main.getInstance().sendSentryException(exception);
         }
-
-        //AT
-        if (Main.getInstance().at_list.contains(p)) {
-            Main.getInstance().at_list.remove(p);
-        }
-
-        if (Main.getInstance().at_afk.containsKey(p)) {
-            Main.getInstance().at_afk.remove(p);
-        }
-
-        //Death messages
-        if (Main.getInstance().death_messages.contains(p)) {
-            Main.getInstance().death_messages.remove(p);
-        }
-
-        //Unregister RecipePlayeru
-        RecipeManager.unregisterRecipePlayer(RecipeManager.getRecipePlayer(p));
-
-        //ScoreboardManager
-        Main.getInstance().getScoreboardManager().removePlayer(p);
     }
 
     @EventHandler(ignoreCancelled = true)

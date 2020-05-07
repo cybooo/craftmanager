@@ -19,6 +19,7 @@ public class Survival_command implements CommandExecutor {
                 } catch (Exception e) {
                     e.printStackTrace();
                     player.sendMessage("§cTeleport na server §fSurvival §cse nezdaril!");
+                    Main.getInstance().sendSentryException(e);
                 }
             }
         }

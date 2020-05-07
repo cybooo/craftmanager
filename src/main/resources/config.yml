@@ -31,6 +31,9 @@ hlasovani: true
 # Barevne psani v kovadline
 coloredanvils: false
 
+# Integrace a zasílání exceptions na Sentry
+sentry-dsn: ''
+
 # Prometheus statistiky
 prometheus:
  state: false

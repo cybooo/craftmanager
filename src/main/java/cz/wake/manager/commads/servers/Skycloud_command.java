@@ -18,6 +18,7 @@ public class Skycloud_command implements CommandExecutor {
                 } catch (Exception e) {
                     e.printStackTrace();
                     player.sendMessage("§cTeleport na server §fSkyCloud §cse nezdaril!");
+                    Main.getInstance().sendSentryException(e);
                 }
             }
         }

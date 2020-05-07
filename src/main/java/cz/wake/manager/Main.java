@@ -1,5 +1,6 @@
 package cz.wake.manager;
 
+import cz.craftmania.craftlibs.sentry.CraftSentry;
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
 import cz.wake.manager.commads.staff.RawBroadcast;
@@ -43,6 +44,7 @@ import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class Main extends JavaPlugin implements PluginMessageListener {
 
@@ -72,6 +74,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     private static ServerType serverType = ServerType.UNKNOWN;
 
+    // Sentry
+    private CraftSentry sentry = null;
+
     @Override
     public void onLoad() {
 
@@ -93,6 +98,15 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // ID serveru a typ
         serverType = resolveServerType();
         Log.withPrefix("Server zaevidovany jako: " + serverType.name());
+
+        // Sentry integration
+        if (!(Objects.requireNonNull(getConfig().getString("sentry-dsn")).length() == 0) && Bukkit.getPluginManager().isPluginEnabled("CraftLibs")) {
+            String dsn = getConfig().getString("sentry-dsn");
+            Log.normalMessage("Sentry integration je aktivní: §7" + dsn);
+            sentry = new CraftSentry(dsn);
+        } else {
+            Log.normalMessage("Sentry integration neni aktivovana!");
+        }
 
         // Register eventu a prikazu
         loadListeners();
@@ -431,5 +445,16 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public ScoreboardProvider getScoreboardProvider() {
         return scoreboardProvider;
+    }
+
+    /**
+     * Odesilá exception na Sentry
+     */
+    public void sendSentryException(Exception exception) {
+        if (sentry == null) {
+            Log.normalMessage("Sentry neni aktivovany, error nebude zaslan!");
+            return;
+        }
+        sentry.sendException(exception);
     }
 }

@@ -21,6 +21,7 @@ public class Menu_command implements CommandExecutor {
                     return true;
                 } catch (NullPointerException e) {
                     e.printStackTrace();
+                    Main.getInstance().sendSentryException(e);
                 }
             }
         }

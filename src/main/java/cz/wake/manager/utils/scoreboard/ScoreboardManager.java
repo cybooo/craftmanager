@@ -13,24 +13,26 @@ import java.util.HashMap;
 
 public class ScoreboardManager {
     private XoreBoard xoreBoard;
-    //private HashMap<Player, XoreBoardPlayerSidebar> boards;
 
     public ScoreboardManager() {
-        // this.boards = new HashMap<>();
         this.xoreBoard = XoreBoardUtil.getNextXoreBoard();
-
         Log.withPrefix("ScoreboardManager loaded!");
     }
 
     public void setupPlayer(Player player) {
-        this.xoreBoard.addPlayer(player);
+        try {
+            this.xoreBoard.addPlayer(player);
 
-        PrivateSidebar sidebar = xoreBoard.getPrivateSidebar(player);
-        sidebar.setDisplayName(Main.getInstance().getScoreboardProvider().getCachedBoardName());
+            PrivateSidebar sidebar = xoreBoard.getPrivateSidebar(player);
+            sidebar.setDisplayName(Main.getInstance().getScoreboardProvider().getCachedBoardName());
 
-        sidebar.rewriteLines(getLines(player));
+            sidebar.rewriteLines(getLines(player));
 
-        sidebar.showSidebar();
+            sidebar.showSidebar();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            Main.getInstance().sendSentryException(exception);
+        }
     }
 
     public void worldChange(Player player) {
@@ -39,8 +41,6 @@ public class ScoreboardManager {
 
     public void removePlayer(Player player) {
         this.xoreBoard.removePlayer(player);
-
-        // this.boards.remove(player);
     }
 
     private HashMap<String, Integer> getLines(Player player) {
@@ -48,9 +48,11 @@ public class ScoreboardManager {
     }
 
     public void update() {
-        /*boards.forEach((player, board)->{
-            board.rewriteLines(getLines(player));
-        });*/
-        Bukkit.getOnlinePlayers().forEach(player -> this.xoreBoard.getPrivateSidebar(player).rewriteLines(getLines(player)));
+        try {
+            Bukkit.getOnlinePlayers().forEach(player -> this.xoreBoard.getPrivateSidebar(player).rewriteLines(getLines(player)));
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            Main.getInstance().sendSentryException(exception);
+        }
     }
 }

@@ -19,6 +19,7 @@ public class Skyblock_command implements CommandExecutor {
                 } catch (Exception e) {
                     e.printStackTrace();
                     player.sendMessage("§cTeleport na server §fSkyblock §cse nezdaril!");
+                    Main.getInstance().sendSentryException(e);
                 }
             }
         }

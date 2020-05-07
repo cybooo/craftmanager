@@ -19,6 +19,7 @@ public class Vanilla_command implements CommandExecutor {
                 } catch (Exception e) {
                     e.printStackTrace();
                     player.sendMessage("§cTeleport na server §fVanilla §cse nezdaril!");
+                    Main.getInstance().sendSentryException(e);
                 }
             }
         }
