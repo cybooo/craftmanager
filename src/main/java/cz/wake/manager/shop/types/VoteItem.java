@@ -14,7 +14,7 @@ public class VoteItem {
     private int price = 0;
     private String permision = null;
     private ItemStack itemStack = new ItemBuilder(Material.MUSHROOM_STEM).setName("§cERROR").hideAllFlags().build();
-    private RewardType rewardType = null;
+    private RewardType rewardType = RewardType.CRAFTCOINS;
     private String commandToExecute = null;
     private int economyValue = 0; // CraftCoins, CraftTokens co hráč obdrží
 
@@ -89,9 +89,9 @@ public class VoteItem {
         return economyValue;
     }
 
-    public VoteItem setEconomyReward(int economyValue) {
+    public VoteItem setEconomyReward(int economyValue, RewardType rewardType) {
         this.economyValue = economyValue;
-        this.rewardType = RewardType.CRAFTCOINS; // TODO: Víc hodnot?
+        this.rewardType = rewardType;
         return this;
     }
 }

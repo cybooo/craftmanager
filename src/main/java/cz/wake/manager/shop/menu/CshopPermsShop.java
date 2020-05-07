@@ -83,7 +83,7 @@ public class CshopPermsShop implements InventoryProvider {
             }));
         }
 
-        contents.set(5, 4, ClickableItem.of(new ItemBuilder(Material.ENDER_EYE).setName("§aZpět do menu").build(), e -> {
+        contents.set(5, 4, ClickableItem.of(new ItemBuilder(Material.ARROW).setName("§aZpět do menu").build(), e -> {
             SmartInventory.builder().size(6, 9).title("[" + Main.getServerType().getFormatedname() + "] Coinshop").provider(new CshopMainMenu()).build().open(player);
         }));
 

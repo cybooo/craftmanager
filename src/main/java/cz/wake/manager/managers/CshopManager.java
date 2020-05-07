@@ -2,6 +2,7 @@ package cz.wake.manager.managers;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.shop.types.PermissionItem;
+import cz.wake.manager.shop.types.RewardType;
 import cz.wake.manager.shop.types.VoteItem;
 import cz.wake.manager.utils.ServerType;
 import org.bukkit.Material;
@@ -59,9 +60,13 @@ public class CshopManager {
             voteShopItems.add(new VoteItem().setName("1x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(1).setCommandToExecute("crate give physical Vote 1 %player%"));
             voteShopItems.add(new VoteItem().setName("5x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(5).setCommandToExecute("crate give physical Vote 5 %player%"));
         }
-        voteShopItems.add(new VoteItem().setName("30 CraftCoins").setPrice(1).setEconomyReward(30));
-        voteShopItems.add(new VoteItem().setName("100 CraftCoins").setPrice(3).setEconomyReward(100));
-        voteShopItems.add(new VoteItem().setName("220 CraftCoins").setPrice(6).setEconomyReward(220));
+        if (Main.getServerType() == ServerType.SKYCLOUD) {
+            voteShopItems.add(new VoteItem().setName("1x Emerald").setPrice(2).setEconomyReward(1, RewardType.MONEY));
+            voteShopItems.add(new VoteItem().setName("4x Emerald").setPrice(7).setEconomyReward(7, RewardType.MONEY));
+        }
+        voteShopItems.add(new VoteItem().setName("30 CraftCoins").setPrice(1).setEconomyReward(30, RewardType.CRAFTCOINS));
+        voteShopItems.add(new VoteItem().setName("100 CraftCoins").setPrice(3).setEconomyReward(100, RewardType.CRAFTCOINS));
+        voteShopItems.add(new VoteItem().setName("220 CraftCoins").setPrice(6).setEconomyReward(220, RewardType.CRAFTCOINS));
 
     }
 

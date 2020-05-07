@@ -4,5 +4,6 @@ public enum RewardType {
 
     CRAFTCOINS,
     PERMISSION,
-    COMMAND
+    COMMAND,
+    MONEY
 }

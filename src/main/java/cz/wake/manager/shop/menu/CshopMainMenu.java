@@ -7,6 +7,7 @@ import cz.craftmania.craftcore.spigot.inventory.builder.content.InventoryContent
 import cz.craftmania.craftcore.spigot.inventory.builder.content.InventoryProvider;
 import cz.craftmania.crafteconomy.api.CraftCoinsAPI;
 import cz.craftmania.crafteconomy.api.CraftTokensAPI;
+import cz.craftmania.crafteconomy.api.EventPointsAPI;
 import cz.craftmania.crafteconomy.api.VoteTokensAPI;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
@@ -23,7 +24,8 @@ public class CshopMainMenu implements InventoryProvider {
         contents.fillRow(5, ClickableItem.of(new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName("§c").build(), item -> {}));
 
         ItemStack playerHead = new ItemBuilder(Material.PLAYER_HEAD)
-                .setName("§bTvůj profil").setLore("§7CraftCoins: §f" + CraftCoinsAPI.getCoins(player) + " CC", "§7CraftTokens: §f" + CraftTokensAPI.getTokens(player) + " CT", "§7VoteTokens: §f" + VoteTokensAPI.getVoteTokens(player) + " VT").setSkullOwner(player.getName()).build();
+                .setName("§bTvůj profil")
+                .setLore("§7CraftCoins: §f" + CraftCoinsAPI.getCoins(player) + " CC", "§7CraftTokens: §f" + CraftTokensAPI.getTokens(player) + " CT", "§7VoteTokens: §f" + VoteTokensAPI.getVoteTokens(player) + " VT", "§7EventPoints: §f" + EventPointsAPI.getEventPoints(player), "§7Karma: §f0").setSkullOwner(player.getName()).build();
         contents.set(0, 1, ClickableItem.of(playerHead, item -> {}));
 
         ItemStack tags = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§6Tags (za CraftCoiny)", "§7Zakup si tag před nick", "§7nebo si vytvoř vlastní!", "", "§eKlikni pro otevření menu");

@@ -9,6 +9,7 @@ import cz.craftmania.craftcore.spigot.inventory.builder.content.Pagination;
 import cz.craftmania.craftcore.spigot.inventory.builder.content.SlotIterator;
 import cz.craftmania.crafteconomy.api.CraftCoinsAPI;
 import cz.craftmania.crafteconomy.api.VoteTokensAPI;
+import cz.craftmania.crafteconomy.utils.VaultUtils;
 import cz.wake.manager.Main;
 import cz.wake.manager.shop.types.RewardType;
 import org.bukkit.Bukkit;
@@ -62,6 +63,16 @@ public class CshopVoteShop implements InventoryProvider {
                 }));
                 return;
             }
+
+            if (voteItem.getRewardType() == RewardType.MONEY) {
+                items.add(ClickableItem.of(new ItemBuilder(Material.PAPER).setName("§b" + voteItem.getName()).setLore("§7Cena: §f" + voteItem.getPrice() + " VT").hideAllFlags().build(), click -> {
+                    VoteTokensAPI.takeVoteTokens(player, voteItem.getPrice());
+                    VaultUtils vault = new VaultUtils();
+                    vault.depositPlayer(player, voteItem.getEconomyReward());
+                    player.closeInventory();
+                }));
+                return;
+            }
         });
 
 
@@ -81,7 +92,7 @@ public class CshopVoteShop implements InventoryProvider {
             }));
         }
 
-        contents.set(5, 4, ClickableItem.of(new ItemBuilder(Material.ENDER_EYE).setName("§aZpět do menu").build(), e -> {
+        contents.set(5, 4, ClickableItem.of(new ItemBuilder(Material.ARROW).setName("§aZpět do menu").build(), e -> {
             SmartInventory.builder().size(6, 9).title("[" + Main.getServerType().getFormatedname() + "] Coinshop").provider(new CshopMainMenu()).build().open(player);
         }));
 
