@@ -19,7 +19,7 @@ public class VillagerTradeList {
 
         if (randomNumber == 1) {
             tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.FIRE_RESISTANCE, false, true).getItemStack()).build(), e(2));
-            tradeList.addTrade(new ItemStack(Material.PUMPKIN_PIE), e(1));
+            tradeList.addTrade(new ItemStack(Material.PUMPKIN_PIE, 3), e(1));
             tradeList.addTrade(new ItemStack(Material.ACACIA_WOOD, 64), e(1));
             tradeList.addTrade(new ItemStack(Material.OAK_WOOD, 64), e(1));
             tradeList.addTrade(new ItemStack(Material.ORANGE_GLAZED_TERRACOTTA, 32), e(2));
@@ -35,7 +35,7 @@ public class VillagerTradeList {
             tradeList.addTrade(new ItemStack(Material.DARK_OAK_SAPLING, 64), new ItemStack(Material.DARK_OAK_SAPLING, 64), e(1));
         } else if (randomNumber == 2) {
             tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.INVISIBILITY, false, true).getItemStack()).build(), e(1));
-            tradeList.addTrade(new ItemStack(Material.CAKE, 2), e(1));
+            tradeList.addTrade(new ItemStack(Material.CAKE, 1), e(1));
             tradeList.addTrade(new ItemStack(Material.OAK_WOOD, 64), e(1));
             tradeList.addTrade(new ItemStack(Material.BIRCH_WOOD, 64), e(1));
             tradeList.addTrade(new ItemStack(Material.WHITE_GLAZED_TERRACOTTA, 32), e(2));
@@ -86,7 +86,7 @@ public class VillagerTradeList {
             tradeList.addTrade(new ItemStack(Material.FIRE_CHARGE, 28), e(3));
             tradeList.addTrade(new ItemStack(Material.SPIDER_EYE, 64), e(1));
             tradeList.addTrade(new ItemStack(Material.MAP, 42), e(1));
-            tradeList.addTrade(new ItemStack(Material.CAKE, 2), e(1));
+            tradeList.addTrade(new ItemStack(Material.CAKE, 1), e(1));
             tradeList.addTrade(new ItemStack(Material.JUNGLE_SAPLING, 64), new ItemStack(Material.JUNGLE_SAPLING, 64), e(1));
         } else if (randomNumber == 6) {
             tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.REGEN, true, false).getItemStack()).build(), e(1));
@@ -103,7 +103,7 @@ public class VillagerTradeList {
         } else if (randomNumber == 7) {
             tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.JUMP, true, false).getItemStack()).build(), e(1));
             tradeList.addTrade(new ItemStack(Material.GOLDEN_CARROT, 24), e(1));
-            tradeList.addTrade(new ItemStack(Material.CAKE, 2), e(1));
+            tradeList.addTrade(new ItemStack(Material.CAKE, 1), e(1));
             tradeList.addTrade(new ItemStack(Material.BIRCH_WOOD, 64), e(1));
             tradeList.addTrade(new ItemStack(Material.OAK_WOOD, 64), e(1));
             tradeList.addTrade(new ItemStack(Material.PURPLE_GLAZED_TERRACOTTA, 32), e(2));
