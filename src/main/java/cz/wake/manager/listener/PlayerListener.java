@@ -228,10 +228,9 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onShow(PlayerShowEvent e) {
         Player p = e.getPlayer();
-        ScoreboardManager sm;
-        if ((sm = Main.getInstance().getScoreboardManager()) != null) {
-            sm.removePlayer(p);
-            sm.setupPlayer(p);
+        if (Main.getInstance().getScoreboardManager() != null) {
+            Main.getInstance().getScoreboardManager().removePlayer(p);
+            Main.getInstance().getScoreboardManager().setupPlayer(p);
         }
     }
 
