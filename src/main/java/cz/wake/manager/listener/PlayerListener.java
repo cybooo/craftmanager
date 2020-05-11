@@ -4,6 +4,8 @@ import cz.wake.manager.Main;
 import cz.wake.manager.commads.staff.RestartManager_command;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.utils.ServerType;
+import cz.wake.manager.utils.scoreboard.ScoreboardManager;
+import de.myzelyam.api.vanish.PlayerShowEvent;
 import net.horkanos.craftchat.CraftChat;
 import org.bukkit.GameMode;
 import org.bukkit.entity.EntityType;
@@ -64,9 +66,9 @@ public class PlayerListener implements Listener {
         }
 
         //Disable chat
-        if(Main.getInstance().getMySQL().getSettings(p, "disabled_chat") == 1){
+        /* if(Main.getInstance().getMySQL().getSettings(p, "disabled_chat") == 1){
             CraftChat.disableChat(p, true);
-        }
+        } */
 
         //ScoreboardManager
         if (Main.getInstance().getScoreboardManager() != null) { // Null když je vypnutý
@@ -220,6 +222,16 @@ public class PlayerListener implements Listener {
                     Main.getInstance().at_afk.put(p, 0);
                 }
             }
+        }
+    }
+
+    @EventHandler
+    public void onShow(PlayerShowEvent e) {
+        Player p = e.getPlayer();
+        ScoreboardManager sm;
+        if ((sm = Main.getInstance().getScoreboardManager()) != null) {
+            sm.removePlayer(p);
+            sm.setupPlayer(p);
         }
     }
 

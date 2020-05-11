@@ -38,6 +38,7 @@ repositories {
     maven { url "https://repo.codemc.org/repository/maven-public/" } // HolographicDisplays
     maven { url "https://jitpack.io" }
     maven { url 'https://repo.extendedclip.com/content/repositories/placeholderapi/' }
+    maven { url 'https://mavenrepo.cubekrowd.net/artifactory/repo/' }
 }
 
 dependencies {
@@ -54,6 +55,11 @@ dependencies {
     compile group: 'commons-io', name: 'commons-io', version: '2.6'
     compileOnly group: 'com.gmail.filoghost.holographicdisplays', name: 'holographicdisplays-api', version: '2.3.3-SNAPSHOT'
     compileOnly "com.github.MilkBowl:VaultAPI:1.7"
+    compileOnly ("de.myzelyam:SuperVanish:6.1.0") {
+        exclude group: 'net.ess3'
+        exclude group: 'net.citizensnpcs'
+        exclude group: 'be.maximvdw'
+    }
 
     // CraftMania
     compileOnly name: 'CraftChat'
