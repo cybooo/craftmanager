@@ -26,7 +26,7 @@ public class BeaconCommand implements CommandExecutor, Listener {
             if ((Command.getName().equalsIgnoreCase("beacon"))) {
                 if (player.hasPermission("craftmanager.vip.beacon")) {
 
-                    if (Main.getServerType() == ServerType.VANILLA) {
+                    if (Main.getServerType() == ServerType.VANILLA || Main.getServerType() == ServerType.SKYCLOUD) {
                         player.sendMessage("§c§l[!] §cNa tomto serveru tato vyhoda neplati!");
                         return true;
                     }
