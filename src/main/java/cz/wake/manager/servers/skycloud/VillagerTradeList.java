@@ -48,6 +48,7 @@ public class VillagerTradeList {
             tradeList.addTrade(new ItemStack(Material.BIRCH_SAPLING, 64), new ItemStack(Material.BIRCH_SAPLING, 64), e(1));
         } else if (randomNumber == 3) {
             tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.TURTLE_MASTER, false, true).getItemStack()).build(), e(1));
+            tradeList.addTrade(new ItemStack(Material.CAKE, 1), e(1));
             tradeList.addTrade(new ItemStack(Material.ENCHANTED_GOLDEN_APPLE, 1), e(5));
             tradeList.addTrade(new ItemStack(Material.RABBIT_STEW, 1), e(1));
             tradeList.addTrade(new ItemStack(Material.BIRCH_WOOD, 64), e(1));
@@ -64,6 +65,7 @@ public class VillagerTradeList {
         } else if (randomNumber == 4) {
             tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.INSTANT_DAMAGE, true, false).getItemStack()).build(), e(1));
             tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.SLOW_FALLING, false, true).getItemStack()).build(), e(1));
+            tradeList.addTrade(new ItemStack(Material.CAKE, 1), e(1));
             tradeList.addTrade(new ItemStack(Material.POISONOUS_POTATO, 16), e(1));
             tradeList.addTrade(new ItemStack(Material.COMPASS, 32), e(3));
             tradeList.addTrade(new ItemStack(Material.DARK_OAK_WOOD, 64), e(1));
@@ -143,6 +145,7 @@ public class VillagerTradeList {
             tradeList.addTrade(new ItemStack(Material.COOKED_PORKCHOP, 32), e(1));
         } else if (randomNumber == 10) {
             tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.SLOW_FALLING, true, false).getItemStack()).build(), e(1));
+            tradeList.addTrade(new ItemStack(Material.CAKE, 1), e(1));
             tradeList.addTrade(new ItemStack(Material.GOLDEN_CARROT, 24), e(1));
             tradeList.addTrade(new ItemStack(Material.DARK_OAK_WOOD, 64), e(1));
             tradeList.addTrade(new ItemStack(Material.BIRCH_WOOD, 64), e(1));
@@ -173,6 +176,7 @@ public class VillagerTradeList {
             tradeList.addTrade(e(18), new ItemStack(Material.GUARDIAN_SPAWN_EGG, 1));
             tradeList.addTrade(e(32), new ItemStack(Material.NAUTILUS_SHELL, 2));
             tradeList.addTrade(e(16), new ItemStack(Material.KELP, 2));
+            tradeList.addTrade(e(10), new ItemStack(Material.FERN, 5));
         } else if (randomNumber == 2) {
             tradeList.addTrade(e(13), new ItemStack(Material.BRAIN_CORAL, 3));
             tradeList.addTrade(e(15), new ItemStack(Material.FIRE_CORAL_BLOCK, 3));
@@ -180,6 +184,7 @@ public class VillagerTradeList {
             tradeList.addTrade(e(13), new ItemStack(Material.DROWNED_SPAWN_EGG, 1));
             tradeList.addTrade(e(8), new ItemStack(Material.PRISMARINE_CRYSTALS, 8));
             tradeList.addTrade(e(13), new ItemStack(Material.SQUID_SPAWN_EGG, 1));
+            tradeList.addTrade(e(10), new ItemStack(Material.TROPICAL_FISH_BUCKET));
         } else if (randomNumber == 3) {
             tradeList.addTrade(e(13), new ItemStack(Material.BUBBLE_CORAL, 3));
             tradeList.addTrade(e(15), new ItemStack(Material.BRAIN_CORAL_BLOCK, 3));
@@ -187,26 +192,31 @@ public class VillagerTradeList {
             tradeList.addTrade(e(8), new ItemStack(Material.PRISMARINE_SHARD, 32));
             tradeList.addTrade(e(32), new ItemStack(Material.NAUTILUS_SHELL, 2));
             tradeList.addTrade(e(16), new ItemStack(Material.KELP, 2));
+            tradeList.addTrade(e(10), new ItemStack(Material.PUFFERFISH_BUCKET));
         } else if (randomNumber == 4) {
             tradeList.addTrade(e(13), new ItemStack(Material.FIRE_CORAL, 3));
             tradeList.addTrade(e(15), new ItemStack(Material.BUBBLE_CORAL_BLOCK, 3));
             tradeList.addTrade(e(64), e(16), new ItemStack(Material.DOLPHIN_SPAWN_EGG, 1));
             tradeList.addTrade(e(17), new ItemStack(Material.SEAGRASS, 4));
             tradeList.addTrade(e(13), new ItemStack(Material.SEA_PICKLE, 6));
+            tradeList.addTrade(e(10), new ItemStack(Material.FERN, 5));
         } else if (randomNumber == 5) {
             tradeList.addTrade(e(13), new ItemStack(Material.HORN_CORAL, 3));
             tradeList.addTrade(e(15), new ItemStack(Material.TUBE_CORAL_BLOCK, 3));
-            tradeList.addTrade(d(12), new ItemStack(Material.HEART_OF_THE_SEA, 1));
+            tradeList.addTrade(d(6), new ItemStack(Material.HEART_OF_THE_SEA, 1));
             tradeList.addTrade(e(4), new ItemStack(Material.LILY_PAD, 10));
             tradeList.addTrade(e(8), new ItemStack(Material.PRISMARINE_CRYSTALS, 8));
             tradeList.addTrade(e(16), new ItemStack(Material.KELP, 2));
+            tradeList.addTrade(e(10), new ItemStack(Material.PUFFERFISH_BUCKET));
         } else if (randomNumber == 6) {
             tradeList.addTrade(e(13), new ItemStack(Material.HORN_CORAL, 3));
             tradeList.addTrade(e(15), new ItemStack(Material.BUBBLE_CORAL_BLOCK, 3));
             tradeList.addTrade(e(64), e(16), new ItemStack(Material.DOLPHIN_SPAWN_EGG, 1));
             tradeList.addTrade(e(49), new ItemStack(Material.ELDER_GUARDIAN_SPAWN_EGG, 1));
-            tradeList.addTrade(d(12), new ItemStack(Material.HEART_OF_THE_SEA, 1));
+            tradeList.addTrade(d(6), new ItemStack(Material.HEART_OF_THE_SEA, 1));
             tradeList.addTrade(e(13), new ItemStack(Material.SQUID_SPAWN_EGG, 1));
+            tradeList.addTrade(e(10), new ItemStack(Material.FERN, 5));
+            tradeList.addTrade(e(10), new ItemStack(Material.TROPICAL_FISH_BUCKET));
         } else {
             Log.withPrefix("Zadany shop neexistuje!");
             return tradeList;
