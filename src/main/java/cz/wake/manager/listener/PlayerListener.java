@@ -6,7 +6,6 @@ import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.utils.ServerType;
 import cz.wake.manager.utils.scoreboard.ScoreboardManager;
 import de.myzelyam.api.vanish.PlayerShowEvent;
-import net.horkanos.craftchat.CraftChat;
 import org.bukkit.GameMode;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -64,11 +63,6 @@ public class PlayerListener implements Listener {
         if (Main.getInstance().getMySQL().getSettingsString(p, "mention_sound") == null && Main.getInstance().getMySQL().getSettingsString(p, "mention_sound").equals("")) {
             Main.getInstance().getMySQL().updateSettings(p, "mention_sound", "ENTITY_EXPERIENCE_ORB_PICKUP");
         }
-
-        //Disable chat
-        /* if(Main.getInstance().getMySQL().getSettings(p, "disabled_chat") == 1){
-            CraftChat.disableChat(p, true);
-        } */
 
         //ScoreboardManager
         if (Main.getInstance().getScoreboardManager() != null) { // Null když je vypnutý
