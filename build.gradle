@@ -23,7 +23,12 @@ shadowJar {
     baseName = 'craftmanager'
     classifier = null
     version = this.version
+
+    relocate 'co.aikar.commands', 'cz.craftmania.crafteconomy.acf'
+    relocate 'co.aikar.locales', 'cz.craftmania.crafteconomy.locales'
 }
+
+build.dependsOn shadowJar
 
 clean { delete "./build" }
 
@@ -39,6 +44,7 @@ repositories {
     maven { url "https://jitpack.io" }
     maven { url 'https://repo.extendedclip.com/content/repositories/placeholderapi/' }
     maven { url 'https://mavenrepo.cubekrowd.net/artifactory/repo/' }
+    maven { url "https://repo.aikar.co/content/groups/aikar/" }
 }
 
 dependencies {
@@ -60,6 +66,10 @@ dependencies {
         exclude group: 'net.citizensnpcs'
         exclude group: 'be.maximvdw'
     }
+
+    // Commands
+    compile 'co.aikar:acf-paper:0.5.0-SNAPSHOT'
+    compile 'io.github.jorelali:commandapi:2.3'
 
     // CraftMania
     compileOnly name: 'CraftChat'
