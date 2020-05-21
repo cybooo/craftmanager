@@ -69,7 +69,6 @@ dependencies {
 
     // Commands
     compile 'co.aikar:acf-paper:0.5.0-SNAPSHOT'
-    compile 'io.github.jorelali:commandapi:2.3'
 
     // CraftMania
     compileOnly name: 'CraftChat'
@@ -88,6 +87,5 @@ dependencies {
     compileOnly group: 'me.clip', name: 'placeholderapi', version: '2.10.4'
     compileOnly group: 'net.minecord', name: 'xoreboardutil', version: '1.14.4'
 
-    implementation 'io.github.jorelali:commandapi:2.2'
     compile 'com.github.cryptomorin:XSeries:5.3.1'
 }

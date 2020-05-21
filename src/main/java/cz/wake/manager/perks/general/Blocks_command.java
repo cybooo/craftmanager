@@ -1,28 +1,36 @@
 package cz.wake.manager.perks.general;
 
-import org.bukkit.ChatColor;
+import co.aikar.commands.BaseCommand;
+import co.aikar.commands.CommandHelp;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.Default;
+import co.aikar.commands.annotation.Description;
+import co.aikar.commands.annotation.HelpCommand;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.Dye;
 
-public class Blocks_command implements CommandExecutor {
+@CommandAlias("blocks")
+@Description("Precraftí ti itemy na bloky")
+public class Blocks_command extends BaseCommand {
 
-    @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
+    @HelpCommand
+    public void helpCommand(CommandSender sender, CommandHelp help) {
+        sender.sendMessage("§e§lBlocks commands:");
+        help.showHelp();
+    }
+
+    @Default
+    public boolean recraftItems(CommandSender Sender) {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("blocks"))) {
-                if (player.hasPermission("craftmanager.vip.blocks")) {
-                    craftBlocks(player);
-                } else {
-                    player.sendMessage("§c§l[!] §cK ziskani pristupu potrebujes aktivni minimalne Diamond VIP.");
-                }
-
+            if (player.hasPermission("craftmanager.vip.blocks")) {
+                craftBlocks(player);
+            } else {
+                player.sendMessage("§c§l[!] §cK ziskani pristupu potrebujes aktivni minimalne Diamond VIP.");
             }
         }
         return true;

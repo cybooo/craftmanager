@@ -1,22 +1,30 @@
 package cz.wake.manager.commads;
 
+import co.aikar.commands.BaseCommand;
+import co.aikar.commands.CommandHelp;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.Default;
+import co.aikar.commands.annotation.Description;
+import co.aikar.commands.annotation.HelpCommand;
 import org.bukkit.Sound;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Vote_command implements CommandExecutor {
+@CommandAlias("vote|hlasovani|hlasovat")
+@Description("Vypíše ti vote odkazy do chatu")
+public class Vote_command extends BaseCommand {
 
-    @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
+    @HelpCommand
+    public void helpCommand(CommandSender sender, CommandHelp help) {
+        sender.sendMessage("§e§lVote commands:");
+        help.showHelp();
+    }
+
+    @Default
+    public void printVoteLinks(CommandSender Sender) {
         if (Sender instanceof Player) {
-            Player p = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("vote"))) {
-                sendVoteLink(p);
-            }
+            sendVoteLink((Player) Sender);
         }
-        return true;
     }
 
     public static void sendVoteLink(final Player p) {

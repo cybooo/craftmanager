@@ -1,36 +1,46 @@
 package cz.wake.manager.commads;
 
+import co.aikar.commands.BaseCommand;
+import co.aikar.commands.CommandHelp;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.Default;
+import co.aikar.commands.annotation.Description;
+import co.aikar.commands.annotation.HelpCommand;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
 import cz.wake.manager.utils.ServerType;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-public class Help_command implements CommandExecutor {
+@CommandAlias("help|pomoc")
+@Description("Otevře ti menu s pomocí")
+public class Help_command extends BaseCommand {
 
-    @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
+    @HelpCommand
+    public void helpCommand(CommandSender sender, CommandHelp help) {
+        sender.sendMessage("§e§lHelp commands:");
+        help.showHelp();
+    }
+
+    @Default
+    public boolean openHelpMenu(CommandSender Sender) {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("help"))
-                    && (ArrayOfString.length == 0)) {
-                if (Main.getServerType() == ServerType.PRISON) {
-                    player.performCommand("tutorial");
-                } else {
-                    openHelpMenu(player);
-                }
+            if (Main.getServerType() == ServerType.PRISON) {
+                player.performCommand("tutorial");
+            } else {
+                openMenu(player);
             }
         }
         return true;
     }
 
-    private void openHelpMenu(Player p) {
+    private void openMenu(Player p) {
         if (Main.getServerType() == ServerType.SKYBLOCK) {
             Inventory inv = Bukkit.createInventory(null, 45, "Help pro Skyblock");
 

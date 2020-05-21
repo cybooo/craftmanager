@@ -1,28 +1,37 @@
 package cz.wake.manager.commads.servers;
 
+import co.aikar.commands.BaseCommand;
+import co.aikar.commands.CommandHelp;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.Default;
+import co.aikar.commands.annotation.Description;
+import co.aikar.commands.annotation.HelpCommand;
 import cz.wake.manager.Main;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Creative_command implements CommandExecutor {
+@CommandAlias("creative")
+@Description("Připojí tě na Creative")
+public class Creative_command extends BaseCommand {
 
-    @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
+    @HelpCommand
+    public void helpCommand(CommandSender sender, CommandHelp help) {
+        sender.sendMessage("§e§lCreative commands:");
+        help.showHelp();
+    }
+
+    @Default
+    public void connectToCreative(CommandSender Sender) {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("creative"))) {
-                try {
-                    player.sendMessage("§e§l[*] §eTeleportuji na server §fCreative");
-                    Main.getInstance().sendToServer(player, "creative");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    player.sendMessage("§cTeleport na server §fCreative §cse nezdaril!");
-                    Main.getInstance().sendSentryException(e);
-                }
+            try {
+                player.sendMessage("§e§l[*] §eTeleportuji na server §fCreative");
+                Main.getInstance().sendToServer(player, "creative");
+            } catch (Exception e) {
+                e.printStackTrace();
+                player.sendMessage("§cTeleport na server §fCreative §cse nezdaril!");
+                Main.getInstance().sendSentryException(e);
             }
         }
-        return true;
     }
 }
