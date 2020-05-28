@@ -1,23 +1,29 @@
 package cz.wake.manager.commads;
 
+import co.aikar.commands.BaseCommand;
+import co.aikar.commands.CommandHelp;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.Default;
+import co.aikar.commands.annotation.Description;
+import co.aikar.commands.annotation.HelpCommand;
 import cz.wake.manager.managers.MenuManager;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+@CommandAlias("navody")
+@Description("Návody pro hráče")
+public class Navody_command extends BaseCommand {
 
-public class Navody_command implements CommandExecutor {
+    @HelpCommand
+    public void helpCommand(CommandSender sender, CommandHelp help) {
+        sender.sendMessage("§e§lNavody commands:");
+        help.showHelp();
+    }
 
-    @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
+    @Default
+    public void openMenu(CommandSender Sender) {
         if (Sender instanceof Player) {
-            Player player = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("navody"))
-                    && (ArrayOfString.length == 0)) {
-                MenuManager.openNavody(player);
-            }
+            MenuManager.openNavody((Player) Sender);
         }
-        return true;
     }
 }

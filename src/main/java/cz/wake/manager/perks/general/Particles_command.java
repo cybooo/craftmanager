@@ -1,31 +1,37 @@
 package cz.wake.manager.perks.general;
 
+import co.aikar.commands.BaseCommand;
+import co.aikar.commands.CommandHelp;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.Default;
+import co.aikar.commands.annotation.Description;
+import co.aikar.commands.annotation.HelpCommand;
 import cz.craftmania.craftcore.spigot.inventory.builder.SmartInventory;
 import cz.wake.manager.Main;
 import cz.wake.manager.menu.ParticlesMainGUI;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Particles_command implements CommandExecutor {
+@CommandAlias("particles")
+@Description("Umožní ti upravovat si svoje particly")
+public class Particles_command extends BaseCommand {
 
-    @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
+    @HelpCommand
+    public void helpCommand(CommandSender sender, CommandHelp help) {
+        sender.sendMessage("§e§lParticles commands:");
+        help.showHelp();
+    }
+
+    @Default
+    public void openParticlesMenu(CommandSender Sender) {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("particles"))) {
-                try {
-                    if (ArrayOfString.length == 0) {
-                        SmartInventory.builder().provider(new ParticlesMainGUI()).title("Particles").size(5, 9).build().open(player);
-                        return true;
-                    }
-                    return true;
-                } catch (NullPointerException e) {
-                    e.printStackTrace();
-                }
+            try {
+                SmartInventory.builder().provider(new ParticlesMainGUI()).title("Particles").size(5, 9).build().open(player);
+            } catch (Exception e) {
+                e.printStackTrace();
+                Main.getInstance().sendSentryException(e);
             }
         }
-        return true;
     }
 }

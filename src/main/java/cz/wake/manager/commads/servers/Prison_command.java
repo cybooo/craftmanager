@@ -1,28 +1,37 @@
 package cz.wake.manager.commads.servers;
 
+import co.aikar.commands.BaseCommand;
+import co.aikar.commands.CommandHelp;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.Default;
+import co.aikar.commands.annotation.Description;
+import co.aikar.commands.annotation.HelpCommand;
 import cz.wake.manager.Main;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Prison_command implements CommandExecutor {
+@CommandAlias("prison")
+@Description("Připojí tě na Prison")
+public class Prison_command extends BaseCommand {
 
-    @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
+    @HelpCommand
+    public void helpCommand(CommandSender sender, CommandHelp help) {
+        sender.sendMessage("§e§lPrison commands:");
+        help.showHelp();
+    }
+
+    @Default
+    public void connectToPrison(CommandSender Sender) {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("prison"))) {
-                try {
-                    player.sendMessage("§eTeleportuji na server §fPrison");
-                    Main.getInstance().sendToServer(player, "prison");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    player.sendMessage("§cTeleport na server §fPrison §cse nezdaril!");
-                    Main.getInstance().sendSentryException(e);
-                }
+            try {
+                player.sendMessage("§eTeleportuji na server §fPrison");
+                Main.getInstance().sendToServer(player, "prison");
+            } catch (Exception e) {
+                e.printStackTrace();
+                player.sendMessage("§cTeleport na server §fPrison §cse nezdaril!");
+                Main.getInstance().sendSentryException(e);
             }
         }
-        return true;
     }
 }

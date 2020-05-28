@@ -1,30 +1,34 @@
 package cz.wake.manager.commads;
 
+import co.aikar.commands.BaseCommand;
+import co.aikar.commands.CommandHelp;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.Default;
+import co.aikar.commands.annotation.Description;
+import co.aikar.commands.annotation.HelpCommand;
 import cz.wake.manager.Main;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Menu_command implements CommandExecutor {
+@CommandAlias("menu")
+@Description("Otevře ti menu")
+public class Menu_command extends BaseCommand {
 
-    @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
+    @HelpCommand
+    public void helpCommand(CommandSender sender, CommandHelp help) {
+        sender.sendMessage("§e§lMenu commands:");
+        help.showHelp();
+    }
+
+    @Default
+    public void openMenu(CommandSender Sender) {
         if (Sender instanceof Player) {
-            Player player = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("menu"))) {
-                try {
-                    if (ArrayOfString.length == 0) {
-                        Main.getInstance().getMainGUI().openMainMenu(player);
-                        return true;
-                    }
-                    return true;
-                } catch (NullPointerException e) {
-                    e.printStackTrace();
-                    Main.getInstance().sendSentryException(e);
-                }
+            try {
+                Main.getInstance().getMainGUI().openMainMenu((Player) Sender);
+            } catch (Exception e) {
+                e.printStackTrace();
+                Main.getInstance().sendSentryException(e);
             }
         }
-        return true;
     }
 }

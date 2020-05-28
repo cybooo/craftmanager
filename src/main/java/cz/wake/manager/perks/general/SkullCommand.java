@@ -1,50 +1,57 @@
 package cz.wake.manager.perks.general;
 
+import co.aikar.commands.BaseCommand;
+import co.aikar.commands.CommandHelp;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.Default;
+import co.aikar.commands.annotation.Description;
+import co.aikar.commands.annotation.HelpCommand;
 import cz.wake.manager.Main;
-import cz.wake.manager.listener.ChatListener;
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
 
-public class SkullCommand implements CommandExecutor {
+@CommandAlias("skull|hlava")
+@Description("Dá ti tvojí hlavu")
+public class SkullCommand extends BaseCommand {
 
     private HashMap<Player, Double> _time = new HashMap<>();
     private HashMap<Player, BukkitRunnable> _cdRunnable = new HashMap<>();
 
-    @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] array) {
-        if (Sender instanceof Player) {
-            Player player = (Player) Sender;
-            if (Command.getName().equalsIgnoreCase("skull")) {
-                if (player.hasPermission("craftmanager.vip.skull")) {
-                    if (!this._time.containsKey(player)) {
-                        this._time.put(player, 600D + 0.1D);
-                        giveHead(player);
-                        this._cdRunnable.put(player, new BukkitRunnable() {
-                            @Override
-                            public void run() {
-                                _time.put(player, (_time.get(player)) - 0.1D);
-                                if ((_time.get(player)) < 0.01D) {
-                                    _time.remove(player);
-                                    _cdRunnable.remove(player);
-                                    cancel();
-                                }
+    @HelpCommand
+    public void helpCommand(CommandSender sender, CommandHelp help) {
+        sender.sendMessage("§e§lSkull commands:");
+        help.showHelp();
+    }
+
+    @Default
+    public void giveSkull(CommandSender sender) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            if (player.hasPermission("craftmanager.vip.skull")) {
+                if (!this._time.containsKey(player)) {
+                    this._time.put(player, 600D + 0.1D);
+                    giveHead(player);
+                    this._cdRunnable.put(player, new BukkitRunnable() {
+                        @Override
+                        public void run() {
+                            _time.put(player, (_time.get(player)) - 0.1D);
+                            if ((_time.get(player)) < 0.01D) {
+                                _time.remove(player);
+                                _cdRunnable.remove(player);
+                                cancel();
                             }
-                        });
-                        (this._cdRunnable.get(player)).runTaskTimer(Main.getInstance(), 2L, 2L);
-                    } else {
-                        player.sendMessage("§c§l[!] §cTento prikaz muzes provadet pouze kazdych 10 minut!");
-                    }
+                        }
+                    });
+                    (this._cdRunnable.get(player)).runTaskTimer(Main.getInstance(), 2L, 2L);
+                } else {
+                    player.sendMessage("§c§l[!] §cTento prikaz muzes provadet pouze kazdych 10 minut!");
                 }
-                return true;
             }
         }
-        return true;
     }
 
     private void giveHead(Player p) {

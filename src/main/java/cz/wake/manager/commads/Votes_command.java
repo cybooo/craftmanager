@@ -1,13 +1,17 @@
 package cz.wake.manager.commads;
 
+import co.aikar.commands.BaseCommand;
+import co.aikar.commands.CommandHelp;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.Default;
+import co.aikar.commands.annotation.Description;
+import co.aikar.commands.annotation.HelpCommand;
 import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
 import cz.wake.manager.utils.TimeUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -20,17 +24,22 @@ import org.bukkit.inventory.meta.SkullMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Votes_command implements CommandExecutor, Listener {
+@CommandAlias("votes|hlasy")
+@Description("Otevře ti menu s hlasama")
+public class Votes_command extends BaseCommand implements Listener {
 
-    @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
+    @HelpCommand
+    public void helpCommand(CommandSender sender, CommandHelp help) {
+        sender.sendMessage("§e§lVotes commands:");
+        help.showHelp();
+    }
+
+    @Default
+    public void openMenu(CommandSender Sender) {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("votes"))) {
-                openVotesMenu(player);
-            }
+            openVotesMenu(player);
         }
-        return true;
     }
 
     public void openVotesMenu(final Player player) {

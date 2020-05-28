@@ -1,26 +1,37 @@
 package cz.wake.manager.commads;
 
+import co.aikar.commands.BaseCommand;
+import co.aikar.commands.CommandHelp;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.Default;
+import co.aikar.commands.annotation.Description;
+import co.aikar.commands.annotation.HelpCommand;
 import cz.wake.manager.utils.Repair;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Repair_command implements CommandExecutor {
+@CommandAlias("repair")
+@Description("Opraví tvůj item v ruce")
+public class Repair_command extends BaseCommand {
 
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    @HelpCommand
+    public void helpCommand(CommandSender sender, CommandHelp help) {
+        sender.sendMessage("§e§lRepair commands:");
+        help.showHelp();
+    }
+
+    @Default
+    public void repair(CommandSender sender) {
         if (!(sender instanceof Player)) {
             sender.sendMessage("Console se zatim nenaucila opravovat věci.");
-            return true;
+            return;
         }
 
         if (!sender.hasPermission("craftmanager.repair")) {
             sender.sendMessage("§c§l[!] §cNemas dostatecne opravneni!");
-            return true;
+            return;
         }
 
         Repair.repair((Player) sender);
-        return true;
     }
 }
