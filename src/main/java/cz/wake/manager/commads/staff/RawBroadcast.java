@@ -1,34 +1,32 @@
 package cz.wake.manager.commads.staff;
 
+import co.aikar.commands.BaseCommand;
+import co.aikar.commands.CommandHelp;
+import co.aikar.commands.annotation.*;
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class RawBroadcast implements CommandExecutor {
+@CommandAlias("rawbroadcast|rb")
+@Description("Pošle raw zpávu všem hráčům")
+public class RawBroadcast extends BaseCommand {
 
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    @HelpCommand
+    public void helpCommand(CommandSender sender, CommandHelp help) {
+        sender.sendMessage("§e§lRawbroadcast commands:");
+        help.showHelp();
+    }
+
+    @Default
+    @CommandCompletion("@range:0-80")
+    public void sendRawMessage(CommandSender sender, String text) {
         if (sender.hasPermission("craftmanager.rawbroadcast")) {
-            if (args.length == 0) {
-                sender.sendMessage("§c§l[!] §cSpatne pouziti prikazu! Zkus /rawbroadcast [text]");
-            } else {
-                StringBuilder sb = new StringBuilder();
-                for (String arg : args) {
-                    sb.append(arg);
-                    sb.append(" ");
-                }
-                String text = sb.toString();
-                for(Player p : Bukkit.getOnlinePlayers()) {
-                    p.sendMessage("");
-                    p.sendMessage(text);
-                    p.sendMessage("");
-                }
-                sender.sendMessage("§e§l[*] §eText byl odeslan vsem online hracum!");
+            for(Player p : Bukkit.getOnlinePlayers()) {
+                p.sendMessage("");
+                p.sendMessage(text);
+                p.sendMessage("");
             }
-
+            sender.sendMessage("§e§l[*] §eText byl odeslan vsem online hracum!");
         }
-        return true;
     }
 }

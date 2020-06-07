@@ -1,5 +1,11 @@
 package cz.wake.manager.perks.general;
 
+import co.aikar.commands.BaseCommand;
+import co.aikar.commands.CommandHelp;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.Default;
+import co.aikar.commands.annotation.Description;
+import co.aikar.commands.annotation.HelpCommand;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
 import cz.wake.manager.utils.ServerType;
@@ -17,39 +23,43 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class BeaconCommand implements CommandExecutor, Listener {
+@CommandAlias("beacon")
+@Description("Otevře ti menu pro beacon")
+public class BeaconCommand extends BaseCommand implements Listener {
 
-    @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
+    @HelpCommand
+    public void helpCommand(CommandSender sender, CommandHelp help) {
+        sender.sendMessage("§e§lBeacon commands:");
+        help.showHelp();
+    }
+
+    @Default
+    public void onCommand(CommandSender Sender) {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("beacon"))) {
-                if (player.hasPermission("craftmanager.vip.beacon")) {
+            if (player.hasPermission("craftmanager.vip.beacon")) {
 
-                    if (Main.getServerType() == ServerType.VANILLA || Main.getServerType() == ServerType.SKYCLOUD) {
-                        player.sendMessage("§c§l[!] §cNa tomto serveru tato vyhoda neplati!");
-                        return true;
-                    }
-
-                    Inventory inv = Bukkit.createInventory(null, InventoryType.DISPENSER, "Zvol si efekt");
-
-                    inv.setItem(0, ItemFactory.create(Material.FEATHER, (byte)0, "§f§lSpeed"));
-                    inv.setItem(1, ItemFactory.create(Material.GOLDEN_PICKAXE, (byte)0, "§e§lHaste"));
-                    inv.setItem(2, ItemFactory.create(Material.IRON_BOOTS, (byte)0, "§a§lJump Boost"));
-                    inv.setItem(3, ItemFactory.create(Material.BLAZE_POWDER, (byte)0, "§6§lFire Resistance"));
-                    inv.setItem(4, ItemFactory.create(Material.ENDER_EYE, (byte)0, "§9§lNight Vision"));
-                    inv.setItem(5, ItemFactory.create(Material.PRISMARINE_CRYSTALS, (byte)0, "§3§lWater Breathing"));
-
-                    inv.setItem(7, ItemFactory.create(Material.BARRIER, (byte)0, "§c§lZrusit","§7Kliknutim deaktivujes."));
-
-                    player.openInventory(inv);
-                } else {
-                    player.sendMessage("§c§l[!] §cK ziskani pristupu potrebujes mit aktivni minimalne Gold VIP.");
+                if (Main.getServerType() == ServerType.VANILLA || Main.getServerType() == ServerType.SKYCLOUD) {
+                    player.sendMessage("§c§l[!] §cNa tomto serveru tato vyhoda neplati!");
+                    return;
                 }
 
+                Inventory inv = Bukkit.createInventory(null, InventoryType.DISPENSER, "Zvol si efekt");
+
+                inv.setItem(0, ItemFactory.create(Material.FEATHER, (byte)0, "§f§lSpeed"));
+                inv.setItem(1, ItemFactory.create(Material.GOLDEN_PICKAXE, (byte)0, "§e§lHaste"));
+                inv.setItem(2, ItemFactory.create(Material.IRON_BOOTS, (byte)0, "§a§lJump Boost"));
+                inv.setItem(3, ItemFactory.create(Material.BLAZE_POWDER, (byte)0, "§6§lFire Resistance"));
+                inv.setItem(4, ItemFactory.create(Material.ENDER_EYE, (byte)0, "§9§lNight Vision"));
+                inv.setItem(5, ItemFactory.create(Material.PRISMARINE_CRYSTALS, (byte)0, "§3§lWater Breathing"));
+
+                inv.setItem(7, ItemFactory.create(Material.BARRIER, (byte)0, "§c§lZrusit","§7Kliknutim deaktivujes."));
+
+                player.openInventory(inv);
+            } else {
+                player.sendMessage("§c§l[!] §cK ziskani pristupu potrebujes mit aktivni minimalne Gold VIP.");
             }
         }
-        return true;
     }
 
     @EventHandler

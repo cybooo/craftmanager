@@ -1,15 +1,16 @@
 package cz.wake.manager;
 
+import co.aikar.commands.PaperCommandManager;
 import cz.craftmania.craftlibs.sentry.CraftSentry;
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
+import cz.wake.manager.commads.staff.Fakevote_command;
 import cz.wake.manager.commads.staff.RawBroadcast;
 import cz.wake.manager.commads.staff.RestartManager_command;
 import cz.wake.manager.commads.staff.ServerSlots_command;
 import cz.wake.manager.listener.*;
 import cz.wake.manager.listener.suggestions.PlayerCommandSendListener;
 import cz.wake.manager.managers.CshopManager;
-import cz.wake.manager.menu.VIPMenu;
 import cz.wake.manager.perks.coloranvil.AnvilListener;
 import cz.wake.manager.perks.general.*;
 import cz.wake.manager.perks.particles.ParticlesAPI;
@@ -70,6 +71,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private static ScoreboardManager scoreboardManager = null;
     private static ScoreboardProvider scoreboardProvider = null;
 
+    // Commands manager
+    private PaperCommandManager manager;
+
     private static Main instance;
 
     private static ServerType serverType = ServerType.UNKNOWN;
@@ -110,6 +114,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Register eventu a prikazu
         loadListeners();
+
+        manager = new PaperCommandManager(this);
+        manager.enableUnstableAPI("help");
         loadCommands();
 
         // HikariCP
@@ -222,9 +229,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new PlayerCommandSendListener(this), this);
         pm.registerEvents(new CommandListener(), this);
         pm.registerEvents(new PlayerLoginListener(), this);
-        
-        // Refactored
-        pm.registerEvents(new VIPMenu(), this);
 
         // Skyblock PVP listener
         if (serverType == ServerType.SKYBLOCK) {
@@ -254,45 +258,37 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     }
 
     private void loadCommands() {
-
-        // CommandAPI 1.13+
-        if (Bukkit.getPluginManager().isPluginEnabled("CommandAPI")) {
-            Log.withPrefix("CommandsAPI detekovano, prikazy budou registrovany!");
-            ServerSlots_command.registerCommand();
-            VIPMenu.registerCommand();
-        }
-
-        //TODO: Kompletni rewrite na 1.13 CommandAPI
-        getCommand("menu").setExecutor(new Menu_command());
-        getCommand("coinshop").setExecutor(new Coinshop_command());
-        getCommand("particles").setExecutor(new Particles_command());
-        getCommand("glow").setExecutor(new Glow_command());
-        getCommand("help").setExecutor(new Help_command());
-        getCommand("survival").setExecutor(new Survival_command());
-        getCommand("survival2").setExecutor(new Survival2_command());
-        getCommand("skyblock").setExecutor(new Skyblock_command());
-        getCommand("creative").setExecutor(new Creative_command());
-        getCommand("prison").setExecutor(new Prison_command());
-        getCommand("vanilla").setExecutor(new Vanilla_command());
-        getCommand("skycloud").setExecutor(new Skycloud_command());
-        getCommand("disenchant").setExecutor(new Disenchant()); //TODO: Deep test needed
-        getCommand("vote").setExecutor(new Vote_command());
-        getCommand("skull").setExecutor(new SkullCommand());
-        getCommand("profil").setExecutor(new Profil_command());
-        getCommand("navody").setExecutor(new Navody_command());
-        getCommand("beacon").setExecutor(new BeaconCommand());
-        getCommand("restartmanager").setExecutor(new RestartManager_command()); //TODO: Nenačítat, pokud nebude CraftCore na serveru?
-        getCommand("cm").setExecutor(new Cm_command());
-        getCommand("glowitem").setExecutor(new GlowItemCommand());
-        getCommand("rawbroadcast").setExecutor(new RawBroadcast());
-        getCommand("blocks").setExecutor(new Blocks_command());
-        getCommand("repair").setExecutor(new Repair_command());
-        getCommand("votes").setExecutor(new Votes_command());
-        getCommand("vip").setExecutor(new VIP_command());
+        manager.registerCommand(new Profil_command());
+        manager.registerCommand(new SkullCommand());
+        manager.registerCommand(new Menu_command());
+        manager.registerCommand(new Coinshop_command());
+        manager.registerCommand(new Particles_command());
+        manager.registerCommand(new Glow_command());
+        manager.registerCommand(new Help_command());
+        manager.registerCommand(new Survival_command());
+        manager.registerCommand(new Survival2_command());
+        manager.registerCommand(new Skyblock_command());
+        manager.registerCommand(new Creative_command());
+        manager.registerCommand(new Prison_command());
+        manager.registerCommand(new Vanilla_command());
+        manager.registerCommand(new Skycloud_command());
+        manager.registerCommand(new Disenchant()); //TODO: Deep test needed
+        manager.registerCommand(new Vote_command());
+        manager.registerCommand(new Navody_command());
+        manager.registerCommand(new BeaconCommand());
+        manager.registerCommand(new Cm_command());
+        manager.registerCommand(new GlowItemCommand());
+        manager.registerCommand(new Blocks_command());
+        manager.registerCommand(new Repair_command());
+        manager.registerCommand(new Votes_command());
+        manager.registerCommand(new VIP_command()); //FIXME: /vip občas nejde, /vipmenu vždy jde...
+        manager.registerCommand(new RawBroadcast());
+        manager.registerCommand(new ServerSlots_command());
+        manager.registerCommand(new RestartManager_command()); //TODO: Nenačítat, pokud nebude CraftCore na serveru?
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {
-            //getCommand("fakevote").setExecutor(new Fakevote_command());
+            //manager.registerCommand(new Fakevote_command());
         }
     }
 
