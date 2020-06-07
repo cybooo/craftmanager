@@ -279,8 +279,8 @@ public class VillagerManager {
         Entity entity = Objects.requireNonNull(Bukkit.getWorld("vsbspawn")).spawnEntity(buyVilllagerLocaiton, EntityType.VILLAGER);
         Villager villager = (Villager)entity;
         villager.setAI(false);
-        villager.setProfession(Villager.Profession.CLERIC);
-        villager.setVillagerType(Villager.Type.SWAMP);
+        villager.setProfession(Villager.Profession.ARMORER);
+        villager.setVillagerType(Villager.Type.PLAINS);
         villager.setCanPickupItems(false);
         villager.setVillagerLevel(5);
         villager.setRemoveWhenFarAway(false);
