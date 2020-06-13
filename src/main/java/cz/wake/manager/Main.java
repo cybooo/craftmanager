@@ -15,6 +15,7 @@ import cz.wake.manager.perks.coloranvil.AnvilListener;
 import cz.wake.manager.perks.general.*;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.perks.twerking.TwerkEvent;
+import cz.wake.manager.servers.global.LeaveDecayListener;
 import cz.wake.manager.servers.skycloud.ItemDropListener;
 import cz.wake.manager.servers.skycloud.VillagerDamageListener;
 import cz.wake.manager.servers.skycloud.VillagerManager;
@@ -233,6 +234,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Skyblock PVP listener
         if (serverType == ServerType.SKYBLOCK) {
             pm.registerEvents(new SkyblockPVPListener(), this);
+            pm.registerEvents(new LeaveDecayListener(), this);
         }
 
         // Survival PVP listener
@@ -249,6 +251,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         if (serverType == ServerType.SKYCLOUD) {
             pm.registerEvents(new VillagerDamageListener(), this);
             pm.registerEvents(new ItemDropListener(), this);
+            pm.registerEvents(new LeaveDecayListener(), this);
         }
 
         if (serverType == ServerType.VANILLA) {
