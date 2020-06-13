@@ -62,7 +62,7 @@ public class CshopManager {
     }
 
     private void loadVoteShopItems() {
-        if (Main.getServerType() == ServerType.SURVIVAL) {
+        if (Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK) {
             voteShopItems.add(new VoteItem().setName("1x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(1).setCommandToExecute("crate give physical Vote 1 %player%"));
             voteShopItems.add(new VoteItem().setName("5x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(5).setCommandToExecute("crate give physical Vote 5 %player%"));
         }
@@ -73,7 +73,6 @@ public class CshopManager {
         voteShopItems.add(new VoteItem().setName("30 CraftCoins").setPrice(1).setEconomyReward(30, RewardType.CRAFTCOINS));
         voteShopItems.add(new VoteItem().setName("100 CraftCoins").setPrice(3).setEconomyReward(100, RewardType.CRAFTCOINS));
         voteShopItems.add(new VoteItem().setName("220 CraftCoins").setPrice(6).setEconomyReward(220, RewardType.CRAFTCOINS));
-
     }
 
     private void loadItemShopItems() {
@@ -85,7 +84,7 @@ public class CshopManager {
         eventShopItems.add(new VoteItem().setName("120x CraftCoins").setPrice(5).setEconomyReward(120, RewardType.CRAFTCOINS));
         eventShopItems.add(new VoteItem().setName("280x CraftCoins").setPrice(12).setEconomyReward(280, RewardType.CRAFTCOINS));
         eventShopItems.add(new VoteItem().setName("1x CraftToken").setPrice(125).setEconomyReward(1, RewardType.CRAFTTOKEN));
-        if (Main.getServerType() == ServerType.CREATIVE || Main.getServerType() == ServerType.SKYCLOUD || Main.getServerType() == ServerType.SURVIVAL) {
+        if (Main.getServerType() == ServerType.CREATIVE || Main.getServerType() == ServerType.SKYCLOUD || Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK) {
             eventShopItems.add(new VoteItem().setName("ArmorStandEditor (2h)").setPrice(10).setCommandToExecute("lp user %player% permission settemp asedit.* true 2h %server%"));
         }
     }
