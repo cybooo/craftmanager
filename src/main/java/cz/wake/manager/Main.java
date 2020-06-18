@@ -428,6 +428,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             return ServerType.VANILLA;
         } else if (type.equalsIgnoreCase("skycloud")) {
             return ServerType.SKYCLOUD;
+        } else if (type.equalsIgnoreCase("hardcore-vanilla")) {
+            return ServerType.HARDCORE_VANILLA;
         } else {
             return ServerType.UNKNOWN;
         }

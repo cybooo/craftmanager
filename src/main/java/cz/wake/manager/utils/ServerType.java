@@ -9,6 +9,7 @@ public enum ServerType {
     VANILLA("Vanilla"),
     SKYCLOUD("SkyCloud"),
     SKYGRID("SkyGrid"),
+    HARDCORE_VANILLA("Hardcore Vanilla"),
     UNKNOWN("Unknown");
 
     public final String name;
