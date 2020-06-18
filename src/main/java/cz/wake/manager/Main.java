@@ -1,6 +1,9 @@
 package cz.wake.manager;
 
 import co.aikar.commands.PaperCommandManager;
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.events.ListenerPriority;
 import cz.craftmania.craftlibs.sentry.CraftSentry;
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
@@ -16,6 +19,7 @@ import cz.wake.manager.perks.general.*;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.perks.twerking.TwerkEvent;
 import cz.wake.manager.servers.global.LeaveDecayListener;
+import cz.wake.manager.servers.hvanilla.HardcorePacketListener;
 import cz.wake.manager.servers.skycloud.ItemDropListener;
 import cz.wake.manager.servers.skycloud.VillagerDamageListener;
 import cz.wake.manager.servers.skycloud.VillagerManager;
@@ -258,6 +262,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             pm.registerEvents(new LecternBookTakeListener(), this);
         }
 
+        if (serverType == ServerType.HARDCORE_VANILLA) {
+            Log.withPrefix("Aktivace hardcore zobrazování HP.");
+            ProtocolLibrary.getProtocolManager().addPacketListener(new HardcorePacketListener(this, ListenerPriority.NORMAL, PacketType.Play.Server.LOGIN));
+        }
     }
 
     private void loadCommands() {

@@ -45,6 +45,7 @@ repositories {
     maven { url 'https://repo.extendedclip.com/content/repositories/placeholderapi/' }
     maven { url 'https://mavenrepo.cubekrowd.net/artifactory/repo/' }
     maven { url "https://repo.aikar.co/content/groups/aikar/" }
+    maven { url "https://repo.dmulloy2.net/nexus/repository/public/" }
 }
 
 dependencies {
@@ -66,6 +67,7 @@ dependencies {
         exclude group: 'net.citizensnpcs'
         exclude group: 'be.maximvdw'
     }
+    compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "4.5.0";
 
     // Commands
     compile 'co.aikar:acf-paper:0.5.0-SNAPSHOT'
