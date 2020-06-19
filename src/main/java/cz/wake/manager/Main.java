@@ -289,6 +289,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         manager.registerCommand(new RawBroadcast());
         manager.registerCommand(new ServerSlots_command());
         manager.registerCommand(new RestartManager_command()); //TODO: Nenačítat, pokud nebude CraftCore na serveru?
+        manager.registerCommand(new Discord_command());
+        manager.registerCommand(new Wiki_command());
 
         //Servers
         manager.registerCommand(new Survival_command());
