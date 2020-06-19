@@ -10,13 +10,13 @@ import cz.wake.manager.Main;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandAlias("survival2|survivalnew")
-@Description("Připojí tě na Survival 1.15")
+@CommandAlias("survival2")
+@Description("Připojí tě na Survival 1.12")
 public class Survival2_command extends BaseCommand {
 
     @HelpCommand
     public void helpCommand(CommandSender sender, CommandHelp help) {
-        sender.sendMessage("§e§lSurvival 1.15 commands:");
+        sender.sendMessage("§e§lSurvival 1.12 commands:");
         help.showHelp();
     }
 
@@ -25,11 +25,11 @@ public class Survival2_command extends BaseCommand {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
             try {
-                player.sendMessage("§eTeleportuji na server §fSurvival 1.15");
+                player.sendMessage("§eTeleportuji na server §fSurvival 1.12");
                 Main.getInstance().sendToServer(player, "survival2");
             } catch (Exception e) {
                 e.printStackTrace();
-                player.sendMessage("§cTeleport na server §fSurvival 1.15 §cse nezdaril!");
+                player.sendMessage("§cTeleport na server §fSurvival 1.12 §cse nezdaril!");
                 Main.getInstance().sendSentryException(e);
             }
         }

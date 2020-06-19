@@ -276,13 +276,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         manager.registerCommand(new Particles_command());
         manager.registerCommand(new Glow_command());
         manager.registerCommand(new Help_command());
-        manager.registerCommand(new Survival_command());
-        manager.registerCommand(new Survival2_command());
-        manager.registerCommand(new Skyblock_command());
-        manager.registerCommand(new Creative_command());
-        manager.registerCommand(new Prison_command());
-        manager.registerCommand(new Vanilla_command());
-        manager.registerCommand(new Skycloud_command());
         manager.registerCommand(new Disenchant()); //TODO: Deep test needed
         manager.registerCommand(new Vote_command());
         manager.registerCommand(new Navody_command());
@@ -296,6 +289,17 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         manager.registerCommand(new RawBroadcast());
         manager.registerCommand(new ServerSlots_command());
         manager.registerCommand(new RestartManager_command()); //TODO: Nenačítat, pokud nebude CraftCore na serveru?
+
+        //Servers
+        manager.registerCommand(new Survival_command());
+        manager.registerCommand(new Survival2_command());
+        manager.registerCommand(new Skyblock_command());
+        manager.registerCommand(new Skyblock2_command());
+        manager.registerCommand(new Creative_command());
+        manager.registerCommand(new Prison_command());
+        manager.registerCommand(new Vanilla_command());
+        manager.registerCommand(new Skycloud_command());
+
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {
