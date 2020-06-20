@@ -19,6 +19,7 @@ import cz.wake.manager.perks.general.*;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.perks.twerking.TwerkEvent;
 import cz.wake.manager.servers.global.LeaveDecayListener;
+import cz.wake.manager.servers.hvanilla.BanTimesListener;
 import cz.wake.manager.servers.hvanilla.HardcorePacketListener;
 import cz.wake.manager.servers.skycloud.ItemDropListener;
 import cz.wake.manager.servers.skycloud.VillagerDamageListener;
@@ -265,6 +266,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         if (serverType == ServerType.HARDCORE_VANILLA) {
             Log.withPrefix("Aktivace hardcore zobrazování HP.");
             ProtocolLibrary.getProtocolManager().addPacketListener(new HardcorePacketListener(this, ListenerPriority.NORMAL, PacketType.Play.Server.LOGIN));
+            Log.withPrefix("Aktivace banování hráčů za smrt.");
+            pm.registerEvents(new BanTimesListener(), this);
         }
     }
 
