@@ -9,6 +9,7 @@ import co.aikar.commands.annotation.HelpCommand;
 import cz.craftmania.craftcore.spigot.inventory.builder.SmartInventory;
 import cz.wake.manager.Main;
 import cz.wake.manager.menu.ParticlesMainGUI;
+import cz.wake.manager.utils.ServerType;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -26,6 +27,10 @@ public class Particles_command extends BaseCommand {
     public void openParticlesMenu(CommandSender Sender) {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
+            if (Main.getServerType() == ServerType.HARDCORE_VANILLA) {
+                player.sendMessage("§c§l[!] §cNa tomto serveru tato vyhoda neplati!");
+                return;
+            }
             try {
                 SmartInventory.builder().provider(new ParticlesMainGUI()).title("Particles").size(5, 9).build().open(player);
             } catch (Exception e) {

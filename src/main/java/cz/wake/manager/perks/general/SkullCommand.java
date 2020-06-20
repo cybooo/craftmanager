@@ -7,6 +7,7 @@ import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.HelpCommand;
 import cz.wake.manager.Main;
+import cz.wake.manager.utils.ServerType;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -31,6 +32,10 @@ public class SkullCommand extends BaseCommand {
     public void giveSkull(CommandSender sender) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
+            if (Main.getServerType() == ServerType.HARDCORE_VANILLA) {
+                player.sendMessage("§c§l[!] §cNa tomto serveru tato vyhoda neplati!");
+                return;
+            }
             if (player.hasPermission("craftmanager.vip.skull")) {
                 if (!this._time.containsKey(player)) {
                     this._time.put(player, 600D + 0.1D);
