@@ -306,6 +306,8 @@ public class SQLManager {
             name = "vanilla";
         } else if (Main.getServerType() == ServerType.SKYCLOUD) {
             name = "skycloud";
+        } else if (Main.getServerType() == ServerType.HARDCORE_VANILLA) {
+            name = "hardcore_vanilla";
         }
         return name;
     }
