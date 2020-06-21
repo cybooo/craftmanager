@@ -31,7 +31,7 @@ public class BanTimesListener implements Listener {
 
         Entity damager = e.getDamager();
 
-        System.out.println(damager);
+
         if (damager instanceof Spider) {
             performTimedBand(player, 3, "Spider");
         }
@@ -119,6 +119,9 @@ public class BanTimesListener implements Listener {
         if (damager instanceof ZombieVillager) {
             performTimedBand(player, 6, "Zombie Villager");
         }
+        if (damager instanceof Skeleton) {
+            performTimedBand(player, 4, "Skeleton");
+        }
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -185,6 +188,18 @@ public class BanTimesListener implements Listener {
             performTimedBand(player, 3, "Udušení ve zdi");
         }
         if (cause.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK) { // Player
+            EntityDamageByEntityEvent lastDamageCause = (EntityDamageByEntityEvent)e.getEntity().getLastDamageCause();
+            if (lastDamageCause.getDamager() instanceof Arrow) {
+                Arrow arrow = (Arrow)lastDamageCause.getDamager();
+                if (arrow.getShooter() instanceof Skeleton) { // Skeleton
+                    performTimedBand(player, 4, "Skeleton");
+                }
+                if (arrow.getShooter() instanceof Player) {
+                    Player playerKiller = e.getEntity().getKiller();
+                    int time = UtilMath.random(6,12);
+                    performTimedBand(player, time, "Smrt hráčem (" + playerKiller.getName() + ")");
+                }
+            }
             if (e.getEntity().getKiller() != null) {
                 Player playerKiller = e.getEntity().getKiller();
                 int time = UtilMath.random(6,12);
