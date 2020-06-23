@@ -9,7 +9,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
 public class BanTimesListener implements Listener {
@@ -30,7 +29,6 @@ public class BanTimesListener implements Listener {
         }
 
         Entity damager = e.getDamager();
-
 
         if (damager instanceof Spider) {
             performTimedBand(player, 3, "Spider");
@@ -125,11 +123,10 @@ public class BanTimesListener implements Listener {
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onDeath(EntityDeathEvent e) {
-        if (!(e.getEntity() instanceof Player)) return;
-        Player player = (Player) e.getEntity();
-        Entity killer = player.getKiller();
+    public void onDeath(PlayerDeathEvent e) {
+        Player player = e.getEntity().getPlayer();
         EntityDamageEvent cause = e.getEntity().getLastDamageCause();
+
         if (cause.getCause() == EntityDamageEvent.DamageCause.CONTACT) { // Cactus
             performTimedBand(player, 2, "Cactus Damage");
         }
