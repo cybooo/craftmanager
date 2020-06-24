@@ -24,7 +24,7 @@ public class BanTimesListener implements Listener {
         if (!(e.getEntity() instanceof Player)) return;
         Player player = (Player) e.getEntity();
 
-        if (!(e.getDamage() >= player.getHealth())) {
+        if (!(e.getFinalDamage() >= player.getHealth())) {
             return;
         }
 
