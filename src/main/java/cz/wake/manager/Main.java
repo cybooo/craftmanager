@@ -264,7 +264,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         if (serverType == ServerType.HARDCORE_VANILLA) {
             Log.withPrefix("Aktivace hardcore zobrazování HP.");
-            ProtocolLibrary.getProtocolManager().addPacketListener(new HardcorePacketListener(this, ListenerPriority.NORMAL, PacketType.Play.Server.LOGIN));
+            //ProtocolLibrary.getProtocolManager().addPacketListener(new HardcorePacketListener(this, ListenerPriority.NORMAL, PacketType.Play.Server.LOGIN));
             Log.withPrefix("Aktivace banování hráčů za smrt.");
             pm.registerEvents(new BanTimesListener(), this);
         }
