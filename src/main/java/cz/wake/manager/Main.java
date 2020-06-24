@@ -226,7 +226,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new TempShop(), this);
         pm.registerEvents(new DeathListener(), this); //TODO: Zkontrolovat damage, pry se pkazdy posle zprava
         pm.registerEvents(new TwerkEvent(), this);
-        pm.registerEvents(new SettingsListener(), this);
         pm.registerEvents(new BeaconCommand(), this);
         pm.registerEvents(new PlayerSwapListener(), this);
         pm.registerEvents(new SignClickListener(), this);

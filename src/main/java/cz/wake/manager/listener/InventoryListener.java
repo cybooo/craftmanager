@@ -15,8 +15,6 @@ import org.bukkit.inventory.Inventory;
 
 public class InventoryListener implements Listener {
 
-    private SettingsListener settings = new SettingsListener();
-
     @EventHandler
     public void onClick(InventoryClickEvent e) {
         final Player p = (Player) e.getWhoClicked();
@@ -204,21 +202,6 @@ public class InventoryListener implements Listener {
                 p.sendMessage("");
                 p.sendMessage("§b▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
                 p.closeInventory();
-            }
-        }
-        if (e.getView().getTitle().equals("Profil")) {
-            e.setCancelled(true);
-            if (e.getCurrentItem() == null) {
-                return;
-            }
-            if (e.getCurrentItem().getType() == Material.AIR) {
-                return;
-            }
-            /*if (e.getSlot() == 10) {
-                this.statistics.openMinigamesMenu(player);
-            }*/
-            if (e.getSlot() == 31) {
-                settings.openSettingsMenu(p, 1);
             }
         }
     }
