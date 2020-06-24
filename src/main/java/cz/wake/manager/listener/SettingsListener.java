@@ -2,7 +2,6 @@ package cz.wake.manager.listener;
 
 import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
 import cz.wake.manager.Main;
-import cz.wake.manager.commads.Profil_command;
 import cz.wake.manager.utils.ItemFactory;
 import net.horkanos.craftchat.CraftChat;
 import org.bukkit.Bukkit;
@@ -16,8 +15,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 public class SettingsListener implements Listener {
-
-    private Profil_command profil = new Profil_command();
 
     public void openSettingsMenu(final Player p, final int page) {
         ItemStack enabled = ItemFactory.create(Material.LIME_STAINED_GLASS_PANE, (byte) 5, "§a§lZapnuto");

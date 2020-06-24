@@ -1,7 +1,6 @@
 package cz.wake.manager.listener;
 
 import cz.wake.manager.Main;
-import cz.wake.manager.commads.Profil_command;
 import cz.wake.manager.managers.MenuManager;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -16,7 +15,6 @@ import org.bukkit.inventory.Inventory;
 
 public class InventoryListener implements Listener {
 
-    private Profil_command profil = new Profil_command();
     private SettingsListener settings = new SettingsListener();
 
     @EventHandler
