@@ -7,7 +7,6 @@ import com.comphenix.protocol.events.ListenerPriority;
 import cz.craftmania.craftlibs.sentry.CraftSentry;
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
-import cz.wake.manager.commads.staff.Fakevote_command;
 import cz.wake.manager.commads.staff.RawBroadcast;
 import cz.wake.manager.commads.staff.RestartManager_command;
 import cz.wake.manager.commads.staff.ServerSlots_command;
@@ -272,7 +271,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     }
 
     private void loadCommands() {
-        manager.registerCommand(new Profil_command());
         manager.registerCommand(new SkullCommand());
         manager.registerCommand(new Menu_command());
         manager.registerCommand(new Coinshop_command());

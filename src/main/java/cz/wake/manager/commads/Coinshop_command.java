@@ -9,8 +9,6 @@ import co.aikar.commands.annotation.HelpCommand;
 import cz.craftmania.craftcore.spigot.inventory.builder.SmartInventory;
 import cz.wake.manager.Main;
 import cz.wake.manager.shop.menu.CshopMainMenu;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 

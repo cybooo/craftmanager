@@ -11,7 +11,6 @@ import cz.wake.manager.utils.ItemFactory;
 import cz.wake.manager.utils.ServerType;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
