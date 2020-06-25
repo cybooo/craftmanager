@@ -40,14 +40,6 @@ public class PlayerListener implements Listener {
             Main.getInstance().addPlayer(p);
         }
 
-        //Oprava pro skonceni fly
-        if (!p.hasPermission("essentials.fly")) {
-            if ((!p.hasPermission("askyblock.islandfly")) && p.getAllowFlight()) {
-                p.setAllowFlight(false);
-                p.setFlying(false);
-            }
-        }
-
         //AT
         if (Main.getInstance().getMySQL().isAT(p)) {
             Main.getInstance().at_list.add(p);
