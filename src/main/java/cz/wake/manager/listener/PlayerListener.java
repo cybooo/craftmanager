@@ -208,12 +208,19 @@ public class PlayerListener implements Listener {
 
     @EventHandler
     public void onMove(PlayerMoveEvent e){
-        Player p = e.getPlayer();
+        Player player = e.getPlayer();
+
+        // Automatický port na spawn, když hráč padá do voidu
+        if (player.getWorld().getName().equalsIgnoreCase("spawn")) {
+            if (player.getLocation().getY() <= 0) {
+                player.performCommand("spawn");
+            }
+        }
 
         if (e.getFrom().getBlockX() != e.getTo().getBlockX() || e.getFrom().getBlockY() != e.getTo().getBlockY() || e.getFrom().getBlockZ() != e.getTo().getBlockZ()) {
-            if(Main.getInstance().at_afk.containsKey(p)) {
-                if(Main.getInstance().at_afk.get(p) != 0) {
-                    Main.getInstance().at_afk.put(p, 0);
+            if(Main.getInstance().at_afk.containsKey(player)) {
+                if(Main.getInstance().at_afk.get(player) != 0) {
+                    Main.getInstance().at_afk.put(player, 0);
                 }
             }
         }
