@@ -6,16 +6,6 @@ softdepend: [AdvancedEnchantments,HolographicDisplays,CommandAPI,PlaceholderAPI,
 api-version: "1.15"
 version: "1.5.0"
 
-commands:
-    chatcolor:
-      description: Zmena barvy
-    checkfly:
-      description: Kontrola zakoupeneho fly
-    recipe:
-      description: Recipe prikaz
-    dontdrop:
-      description: Prikaz na aktivaci a deaktivaci dropu ve svete pro VIP
-
 permissions:
     craftmanager.*:
       description: Kompletni pristup k pluginu
