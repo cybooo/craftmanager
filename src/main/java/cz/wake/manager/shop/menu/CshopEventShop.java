@@ -30,13 +30,13 @@ public class CshopEventShop implements InventoryProvider {
         final ArrayList<ClickableItem> items = new ArrayList<>();
 
         Main.getInstance().getCshopManager().getEventShopItems().forEach(voteItem -> {
-            if (voteItem.getPermision() != null) { // Blokace skrz práva
+            /*if (voteItem.getPermision() != null) { // Blokace skrz práva
                 if (!player.hasPermission(voteItem.getPermision())) {
                     items.add(ClickableItem.empty(new ItemBuilder(Material.BARRIER)
                             .setName("§c" + voteItem.getName()).setLore("§7Nemůžeš si zakoupit tuto výhodu!").build()));
                     return;
                 }
-            }
+            }*/
 
             if (!(EventPointsAPI.getEventPoints(player) >= voteItem.getPrice())) { // Kontrola zda má dostatek EP
                 items.add(ClickableItem.empty(new ItemBuilder(Material.RED_STAINED_GLASS_PANE)

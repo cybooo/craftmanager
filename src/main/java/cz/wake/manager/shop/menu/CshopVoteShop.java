@@ -31,12 +31,12 @@ public class CshopVoteShop implements InventoryProvider {
 
         Main.getInstance().getCshopManager().getVoteShopItems().forEach(voteItem -> {
 
-            if (voteItem.getPermision() != null) { // Blokace skrz práva
-                if (!player.hasPermission(voteItem.getPermision())) {
+            if (voteItem.getPermisions() != null) { // Blokace skrz práva
+                /*if (!player.hasPermission(voteItem.getPermisions())) {
                     items.add(ClickableItem.empty(new ItemBuilder(Material.BARRIER)
                             .setName("§c" + voteItem.getName()).setLore("§7Nemůžeš si zakoupit tuto výhodu!").build()));
                     return;
-                }
+                }*/
             }
 
             if (!(VoteTokensAPI.getVoteTokens(player) >= voteItem.getPrice())) { // Kontrola zda má dostatek VT
@@ -69,6 +69,18 @@ public class CshopVoteShop implements InventoryProvider {
                     VoteTokensAPI.takeVoteTokens(player, voteItem.getPrice());
                     VaultUtils vault = new VaultUtils();
                     vault.depositPlayer(player, voteItem.getEconomyReward());
+                    player.closeInventory();
+                }));
+                return;
+            }
+
+            if (voteItem.getRewardType() == RewardType.PERMISSION) {
+                items.add(ClickableItem.of(new ItemBuilder(voteItem.getItemStack()).setName("§b" + voteItem.getName()).setLore("§7Cena: §f" + voteItem.getPrice() + " VT").hideAllFlags().build(), click -> {
+                    VoteTokensAPI.takeVoteTokens(player, voteItem.getPrice());
+                    voteItem.getPermisions().forEach((permission) -> {
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission settemp " + permission + " true " + voteItem.getTimed() + "h " + Main.getServerType().name.toLowerCase());
+                    });
+                    player.sendMessage("§aZakoupi jsi si §f" + voteItem.getName());
                     player.closeInventory();
                 }));
                 return;

@@ -12,11 +12,12 @@ public class VoteItem {
     private String name = "§cError";
     private ArrayList<String> lore = new ArrayList<>();
     private int price = 0;
-    private String permision = null;
+    private ArrayList<String> permisions = new ArrayList<>();
     private ItemStack itemStack = new ItemBuilder(Material.MUSHROOM_STEM).setName("§cERROR").hideAllFlags().build();
     private RewardType rewardType = RewardType.CRAFTCOINS;
     private String commandToExecute = null;
     private int economyValue = 0; // CraftCoins, CraftTokens co hráč obdrží
+    private int timed = 0;
 
     public VoteItem() {
     }
@@ -48,12 +49,13 @@ public class VoteItem {
         return this;
     }
 
-    public String getPermision() {
-        return permision;
+    public ArrayList<String> getPermisions() {
+        return permisions;
     }
 
-    public VoteItem setPermision(String permision) {
-        this.permision = permision;
+    public VoteItem setPermisions(String... permisions) {
+        Collections.addAll(this.permisions, permisions);
+        this.rewardType = RewardType.PERMISSION;
         return this;
     }
 
@@ -92,6 +94,15 @@ public class VoteItem {
     public VoteItem setEconomyReward(int economyValue, RewardType rewardType) {
         this.economyValue = economyValue;
         this.rewardType = rewardType;
+        return this;
+    }
+
+    public int getTimed() {
+        return timed;
+    }
+
+    public VoteItem setTimed(int timed) {
+        this.timed = timed;
         return this;
     }
 }

@@ -70,6 +70,9 @@ public class CshopManager {
             voteShopItems.add(new VoteItem().setName("1x Emerald").setPrice(2).setEconomyReward(1, RewardType.MONEY));
             voteShopItems.add(new VoteItem().setName("4x Emerald").setPrice(7).setEconomyReward(7, RewardType.MONEY));
         }
+        if (Main.getServerType() == ServerType.CREATIVE) {
+            voteShopItems.add(new VoteItem().setItemStack(Material.WOODEN_AXE).setName("WorldEdit (2h)").setPrice(2).setTimed(2).setPermisions("worldedit.brush.*", "worldedit.clipboard.(copy|cut|flip|paste|rotate)", "worldedit.fill", "worldedit.wand", "worldedit.history.(redo|undo)", "worldedit.region.(center|set|walls|move|overlay)", "worldedit.selection.(pos|chunk)", "worldedit.navigation.up"));
+        }
         voteShopItems.add(new VoteItem().setName("30 CraftCoins").setPrice(1).setEconomyReward(30, RewardType.CRAFTCOINS));
         voteShopItems.add(new VoteItem().setName("100 CraftCoins").setPrice(3).setEconomyReward(100, RewardType.CRAFTCOINS));
         voteShopItems.add(new VoteItem().setName("220 CraftCoins").setPrice(6).setEconomyReward(220, RewardType.CRAFTCOINS));
