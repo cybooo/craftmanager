@@ -8,7 +8,10 @@ import cz.craftmania.craftcore.spigot.inventory.builder.content.InventoryProvide
 import cz.craftmania.craftcore.spigot.inventory.builder.content.Pagination;
 import cz.craftmania.craftcore.spigot.inventory.builder.content.SlotIterator;
 import cz.craftmania.crafteconomy.api.CraftCoinsAPI;
+import cz.craftmania.crafteconomy.api.LevelAPI;
 import cz.craftmania.crafteconomy.api.VoteTokensAPI;
+import cz.craftmania.crafteconomy.managers.BasicManager;
+import cz.craftmania.crafteconomy.objects.LevelType;
 import cz.craftmania.crafteconomy.utils.VaultUtils;
 import cz.wake.manager.Main;
 import cz.wake.manager.shop.types.RewardType;
@@ -19,6 +22,8 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 
 public class CshopVoteShop implements InventoryProvider {
+
+    private BasicManager basicManager = new BasicManager();
 
     @Override
     public void init(Player player, InventoryContents contents) {
@@ -37,6 +42,12 @@ public class CshopVoteShop implements InventoryProvider {
                             .setName("§c" + voteItem.getName()).setLore("§7Nemůžeš si zakoupit tuto výhodu!").build()));
                     return;
                 }*/
+            }
+
+            if (!(LevelAPI.getLevel(player, basicManager.getLevelByServer()) >= voteItem.getRequiredLevel())) { // Nemá dostatečný lvl
+                items.add(ClickableItem.empty(new ItemBuilder(Material.RED_STAINED_GLASS_PANE)
+                        .setName("§c" + voteItem.getName()).setLore("§7Nemáš požadovaný lvl: " + voteItem.getRequiredLevel()).build()));
+                return;
             }
 
             if (!(VoteTokensAPI.getVoteTokens(player) >= voteItem.getPrice())) { // Kontrola zda má dostatek VT

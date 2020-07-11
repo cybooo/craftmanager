@@ -17,6 +17,7 @@ public class VoteItem {
     private RewardType rewardType = RewardType.CRAFTCOINS;
     private String commandToExecute = null;
     private int economyValue = 0; // CraftCoins, CraftTokens co hráč obdrží
+    private int requiredLevel = 1;
     private int timed = 0;
 
     public VoteItem() {
@@ -103,6 +104,15 @@ public class VoteItem {
 
     public VoteItem setTimed(int timed) {
         this.timed = timed;
+        return this;
+    }
+
+    public int getRequiredLevel() {
+        return requiredLevel;
+    }
+
+    public VoteItem setRequiredLevel(int requiredLevel) {
+        this.requiredLevel = requiredLevel;
         return this;
     }
 }
