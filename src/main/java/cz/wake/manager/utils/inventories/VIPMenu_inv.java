@@ -130,14 +130,15 @@ public class VIPMenu_inv implements InventoryProvider {
     //VIP MENU HEADS
     private ItemStack getGlobalVipHead() {
         List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.GRAY + "VIP, které platí po celém serveru!");
+        lore.add("§7VIP, které platí po celém serveru!");
         lore.add("");
-        lore.add(ChatColor.GRAY + "Zahrnuje: ");
-        lore.add(ChatColor.YELLOW + "*" + ChatColor.WHITE + " Survival");
-        lore.add(ChatColor.YELLOW + "*" + ChatColor.WHITE + " Skyblock");
-        lore.add(ChatColor.YELLOW + "*" + ChatColor.WHITE + " Creative");
-        lore.add(ChatColor.YELLOW + "*" + ChatColor.WHITE + " Prison");
-        lore.add(ChatColor.YELLOW + "*" + ChatColor.WHITE + " MiniGames");
+        lore.add("§7Zahrnuje: ");
+        lore.add("§e*§f Survival");
+        lore.add("§e*§f Skyblock");
+        lore.add("§e*§f Creative");
+        lore.add("§e*§f SkyCloud");
+        //lore.add(ChatColor.YELLOW + "*" + ChatColor.WHITE + " Prison");
+        //lore.add(ChatColor.YELLOW + "*" + ChatColor.WHITE + " MiniGames");
         return createHeadFromData(globeBlockData, ChatColor.AQUA + "Global VIP", lore);
     }
     private ItemStack getServerVipHead() {
@@ -157,55 +158,61 @@ public class VIPMenu_inv implements InventoryProvider {
         List <String> GVIPvyhody = new ArrayList<>();
         GVIPvyhody.add("§7Toto VIP zahrnuje:");
         GVIPvyhody.add("§e· §fPrefix v chatu a tablistu");
-        GVIPvyhody.add("§e· §fPripojeni na plne servery");
+        GVIPvyhody.add("§e· §fPřipojení na plné servery");
         GVIPvyhody.add("§e· §fReplacementy v chatu -> :lenny:, :shrug: atd.");
         GVIPvyhody.add("§e· §fGlowing postavy §a/glow");
-        GVIPvyhody.add("§e· §fZiskani vlastni hlavy §a/skull");
-        GVIPvyhody.add("§e· §fNasazeni bloku na hlavu §a/hat");
+        GVIPvyhody.add("§e· §fZískání vlastní hlavy §a/skull");
+        GVIPvyhody.add("§e· §fNasazení bloku na hlavu §a/hat");
         GVIPvyhody.add("§e· §fEmotes §a/emote");
-        GVIPvyhody.add("§e· §fBarevne psani do chatu, kovadliny a cedulky");
-        GVIPvyhody.add("§e· §fNastaveni barvy psani §a/chatcolor");
-        GVIPvyhody.add("§e· §fArmorStandEditor - uprava armorstandu");
+        GVIPvyhody.add("§e· §fBarevné psaní do chatu, kovadliny a cedulky");
+        GVIPvyhody.add("§e· §fNastavení barvy psaní §a/chatcolor");
+        GVIPvyhody.add("§e· §fArmorStandEditor - úprava armorstandů");
         GVIPvyhody.add("§e· §fBannerMaker - crafting banneru §a/bm");
-        GVIPvyhody.add("§e· §fDisenchant na vanilla a custom enchanty");
         GVIPvyhody.add("§e· §fEnderchest §a/ec §f& Workbench §a/wb");
-        GVIPvyhody.add("§e· §fMoznost zobrazit zdrzeny item §a:item:");
-        GVIPvyhody.add("§e· §fKit VIP kazdych 7 dni §a/kit gvip");
+        GVIPvyhody.add("§e· §fMožnost zobrazit držený item v ruce §a:item:");
         GVIPvyhody.add("§e· §fVirtualni Beacon - s efekty §a/beacon");
-        GVIPvyhody.add("§e· §fOchrana proti dropum v normalnim svete. Neplati pro PVP!");
+        GVIPvyhody.add("§e· §fOchrana proti dropům v normálním světě. Neplatí pro PVP!");
+        GVIPvyhody.add("§e· §fPřístup k particles §a/particles");
+        GVIPvyhody.add("§e· §fVirtuální Beacon §a/beacon");
+        switch (getCurrentServer()) {
+            case "Creative": {
+                GVIPvyhody.add("§e· §fMaximální počet pozemků až 50 (normal 10)");
+                break;
+            }
+        }
         GVIPvyhody.add("");
-        GVIPvyhody.add("§cToto VIP plati pouze na " + getCurrentServer() + " serveru!");
+        GVIPvyhody.add("§cToto VIP platí pouze na " + getCurrentServer() + " serveru!");
         return GVIPvyhody;
     }
+
     List <String> getGVIPvyhodyGlobalList() {
         List <String> GVIPvyhody = new ArrayList<>();
         GVIPvyhody.add("§7Toto VIP zahrnuje:");
         GVIPvyhody.add("§e· §fPrefix v chatu a tablistu");
-        GVIPvyhody.add("§e· §fPripojeni na plne servery");
+        GVIPvyhody.add("§e· §fPřipojení na plné servery");
         GVIPvyhody.add("§e· §fReplacementy v chatu -> :lenny:, :shrug: atd.");
         GVIPvyhody.add("§e· §fGlowing postavy §a/glow");
-        GVIPvyhody.add("§e· §fZiskani vlastni hlavy §a/skull");
-        GVIPvyhody.add("§e· §fNasazeni bloku na hlavu §a/hat");
+        GVIPvyhody.add("§e· §fZískání vlastní hlavy §a/skull");
+        GVIPvyhody.add("§e· §fNasazení bloku na hlavu §a/hat");
         GVIPvyhody.add("§e· §fEmotes §a/emote");
-        GVIPvyhody.add("§e· §fBarevne psani do chatu, kovadliny a cedulky");
-        GVIPvyhody.add("§e· §fNastaveni barvy psani §a/chatcolor");
-        GVIPvyhody.add("§e· §fArmorStandEditor - uprava armorstandu");
+        GVIPvyhody.add("§e· §fBarevné psaní do chatu, kovadliny a cedulky");
+        GVIPvyhody.add("§e· §fNastavení barvy psaní §a/chatcolor");
+        GVIPvyhody.add("§e· §fArmorStandEditor - úprava armorstandů");
         GVIPvyhody.add("§e· §fBannerMaker - crafting banneru §a/bm");
-        GVIPvyhody.add("§e· §fDisenchant na vanilla a custom enchanty");
         GVIPvyhody.add("§e· §fEnderchest §a/ec §f& Workbench §a/wb");
-        GVIPvyhody.add("§e· §fMoznost zobrazit zdrzeny item §a:item:");
-        GVIPvyhody.add("§e· §fKit VIP kazdych 7 dni §a/kit gvip");
+        GVIPvyhody.add("§e· §fMožnost zobrazit držený item v ruce §a:item:");
         GVIPvyhody.add("§e· §fVirtualni Beacon - s efekty §a/beacon");
-        GVIPvyhody.add("§e· §fOchrana proti dropum v normalnim svete. Neplati pro PVP!");
+        GVIPvyhody.add("§e· §fOchrana proti dropům itemů. Neplatí pro PVP!");
+        GVIPvyhody.add("§e· §fPřístup k particles §a/particles");
+        GVIPvyhody.add("§e· §fVirtuální Beacon §a/beacon");
         GVIPvyhody.add("");
-        GVIPvyhody.add("§7Lobby extra server vyhody:");
-        GVIPvyhody.add("§e· §fParticles efekty na lobby pro VIP");
-        GVIPvyhody.add("§e· §fFly libovolne na lobby");
-        GVIPvyhody.add("§e· §fJoin zprava o pripojeni na lobby");
-        GVIPvyhody.add("§e· §fMesicni bonus §b2000 CraftCoins");
+        GVIPvyhody.add("§7Lobby extra server výhody:");
+        GVIPvyhody.add("§e· §fFly libovolně na lobby");
+        GVIPvyhody.add("§e· §fJoin zpráva o připojení na lobby");
+        GVIPvyhody.add("§e· §fMěsíční bonus §b2000 CraftCoins");
         GVIPvyhody.add("");
-        GVIPvyhody.add("§7Creative extra server_vyhody:");
-        GVIPvyhody.add("§e· §fMaximalni pocet pozemku (50)");
+        GVIPvyhody.add("§7Creative extra server výhody:");
+        GVIPvyhody.add("§e· §fMaximální počet pozemků (50)");
         return GVIPvyhody;
     }
     List <String> getGVIPnakupServerList() {
@@ -227,56 +234,47 @@ public class VIPMenu_inv implements InventoryProvider {
     List <String> getDVIPvyhodyServerList() {
         List <String> DVIPvyhody = new ArrayList<>();
         DVIPvyhody.add("§7Toto VIP zahrnuje:");
-        DVIPvyhody.add("§e· §6Vsechny vyhody z Golden " + getCurrentServer() + " VIP");
+        DVIPvyhody.add("§e· §6Všechny výhody z Golden " + getCurrentServer() + " VIP");
         DVIPvyhody.add("");
-        DVIPvyhody.add("§7Oproti Golden VIP ziskas navic:");
-        DVIPvyhody.add("§e· §fAutosort inventare a truhel §a/autosort");
-        DVIPvyhody.add("§e· §fArtMap - kresleni na mapy");
-        DVIPvyhody.add("§e· §fNEO - zobrazeni spawnratu mobu §a/ll");
-        DVIPvyhody.add("§e· §fDurabilityWarner - oznameni o niceni nastroju");
-        DVIPvyhody.add("§e· §fNastaveni vlastniho casu §a/ptime");
-        DVIPvyhody.add("§e· §fInspekce znicenych bloku §a/co inspect");
-        DVIPvyhody.add("§e· §fMoznost vypnout si zobrazovani verejneho chatu");
+        DVIPvyhody.add("§7Oproti Golden VIP získáš navíc:");
+        DVIPvyhody.add("§e· §fNEO - Zobrazení spawnratu mobu §a/ll");
+        DVIPvyhody.add("§e· §fPřístup k heads /heads");
+        DVIPvyhody.add("§e· §fNastavení vlastního času §a/ptime");
+        DVIPvyhody.add("§e· §fNastavení vlastního počasí §a/pweather");
+        DVIPvyhody.add("§e· §fInspekce zníčených bloků §a/co inspect");
+        DVIPvyhody.add("§e· §fMožnost vypnout si zobrazování veřejného chatu");
+        DVIPvyhody.add("§e· §fOchrana proti dropům expů (neplatí pro PvP)");
         switch (getCurrentServer()) {
-            case "Survival": {
-                DVIPvyhody.add("§e· §fMaximalni pocet residenci 6 (normal 4)");
-                break;
-            }
             case "Creative": {
-                DVIPvyhody.add("§e· §fMaximalni pocet pozemku az 100 (normal 10)");
+                DVIPvyhody.add("§e· §fMaximální počet pozemků až 100 (normal 10)");
                 break;
             }
         }
         DVIPvyhody.add("");
-        DVIPvyhody.add("§cToto VIP plati pouze na " + getCurrentServer() + " serveru!");
+        DVIPvyhody.add("§cToto VIP platí pouze na " + getCurrentServer() + " serveru!");
         return DVIPvyhody;
     }
     List <String> getDVIPvyhodyGlobalList() {
         List <String> DVIPvyhody = new ArrayList<>();
         DVIPvyhody.add("§7Toto VIP zahrnuje:");
-        DVIPvyhody.add("§e· §6Vsechny vyhody z Golden Global VIP");
+        DVIPvyhody.add("§e· §6Všechny výhody z Golden Global VIP");
         DVIPvyhody.add("");
-        DVIPvyhody.add("§7Oproti Golden VIP ziskas navic:");
-        DVIPvyhody.add("§e· §fAutosort inventare a truhel §a/autosort");
-        DVIPvyhody.add("§e· §fArtMap - kresleni na mapy");
-        DVIPvyhody.add("§e· §fNEO - zobrazeni spawnratu mobu §a/ll");
-        DVIPvyhody.add("§e· §fKit VIP kazdych 7 dni §a/kit dvip");
-        DVIPvyhody.add("§e· §fDurabilityWarner - oznameni o niceni nastroju");
-        DVIPvyhody.add("§e· §fNastaveni vlastniho casu §a/ptime");
-        DVIPvyhody.add("§e· §fInspekce znicenych bloku §a/co inspect");
-        DVIPvyhody.add("§e· §fMoznost vypnout si zobrazovani verejneho chatu");
+        DVIPvyhody.add("§7Oproti Golden VIP získáš navíc:");
+        DVIPvyhody.add("§e· §fNEO - Zobrazení spawnratu mobu §a/ll");
+        DVIPvyhody.add("§e· §fPřístup k heads /heads");
+        DVIPvyhody.add("§e· §fNastavení vlastního času §a/ptime");
+        DVIPvyhody.add("§e· §fNastavení vlastního počasí §a/pweather");
+        DVIPvyhody.add("§e· §fInspekce zníčených bloků §a/co inspect");
+        DVIPvyhody.add("§e· §fMožnost vypnout si zobrazování veřejného chatu");
+        DVIPvyhody.add("§e· §fOchrana proti dropům expů (neplatí pro PvP)");
         DVIPvyhody.add("");
-        DVIPvyhody.add("§7Lobby extra server vyhody:");
-        DVIPvyhody.add("§e· §fParticles efekty na lobby pro VIP");
-        DVIPvyhody.add("§e· §fFly libovolne na lobby");
-        DVIPvyhody.add("§e· §fJoin zprava o pripojeni na lobby");
-        DVIPvyhody.add("§e· §fMesicni bonus §b2000 CraftCoins");
+        DVIPvyhody.add("§7Lobby extra server výhody:");
+        DVIPvyhody.add("§e· §fFly libovolně na lobby");
+        DVIPvyhody.add("§e· §fJoin zpráva o připojení na lobby");
+        DVIPvyhody.add("§e· §fMěsíční bonus §b2000 CraftCoins");
         DVIPvyhody.add("");
-        DVIPvyhody.add("§7Creative extra server vyhody:");
-        DVIPvyhody.add("§e· §fMaximalni pocet pozemku (100)");
-        DVIPvyhody.add("");
-        DVIPvyhody.add("§7Survival extra vyhody:");
-        DVIPvyhody.add("§e· §fMaximalni pocet residenci 6 (normal 4)");
+        DVIPvyhody.add("§7Creative extra server výhody:");
+        DVIPvyhody.add("§e· §fMaximalní počet pozemků (100)");
         return DVIPvyhody;
     }
     List <String> getDVIPnakupServerList() {
@@ -298,58 +296,50 @@ public class VIPMenu_inv implements InventoryProvider {
     List <String> getEVIPvyhodyServerList() {
         List <String> EVIPvyhody = new ArrayList<>();
         EVIPvyhody.add("§7Toto VIP zahrnuje:");
-        EVIPvyhody.add("§e· §6Vsechny vyhody z Golden " + getCurrentServer() + " VIP");
-        EVIPvyhody.add("§e· §bVsechny vyhody z Diamond " + getCurrentServer() + " VIP");
+        EVIPvyhody.add("§e· §6Všechny výhody z Golden " + getCurrentServer() + " VIP");
+        EVIPvyhody.add("§e· §bVšechny výhody z Diamond " + getCurrentServer() + " VIP");
         EVIPvyhody.add("");
-        EVIPvyhody.add("§7Oproti Diamond VIP ziskas navic:");
+        EVIPvyhody.add("§7Oproti Diamond VIP získáš navíc:");
         EVIPvyhody.add("§e· §fGlowing Items - svitici itemy?! OK §a/gi");
-        EVIPvyhody.add("§e· §fKopani spawneru s Silktouchem!");
-        EVIPvyhody.add("§e· §fStickers - obrazek jako mapa §a/ps");
-        EVIPvyhody.add("§e· §fFireworkBuilder - vytvareni ohnostroju §a/fwc");
-        EVIPvyhody.add("§e· §fVlastni warpy - vytvor si vlastni warp pro sebe");
-        EVIPvyhody.add("§fnebo pro vsechny hrace na serveru! §a/warps");
+        EVIPvyhody.add("§e· §fFireworkBuilder - vytváření ohňostrojů §a/fwc");
+        EVIPvyhody.add("§e· §fVlastní warpy - vytvoř si warp pro sebe nebo server");
         switch (getCurrentServer()) {
             case "Survival": {
-                EVIPvyhody.add("§e· §fMaximalni pocet residenci 8 (normal 4)");
+                EVIPvyhody.add("§e· §fMaximální počet residencí 6 (normal 3)");
                 break;
             }
             case "Creative": {
-                EVIPvyhody.add("§e· §fMaximalni pocet pozemku (150)");
+                EVIPvyhody.add("§e· §fMaximální počet pozemků (150)");
                 EVIPvyhody.add("§e· §fPristup k WorldEditu");
                 break;
             }
         }
         EVIPvyhody.add("");
-        EVIPvyhody.add("§cToto VIP plati pouze na " + getCurrentServer() + " serveru!");
+        EVIPvyhody.add("§cToto VIP platí pouze na " + getCurrentServer() + " serveru!");
         return EVIPvyhody;
     }
     List <String> getEVIPvyhodyGlobalList() {
         List <String> EVIPvyhody = new ArrayList<>();
         EVIPvyhody.add("§7Toto VIP zahrnuje:");
-        EVIPvyhody.add("§e· §6Vsechny vyhody z Golden Global VIP");
-        EVIPvyhody.add("§e· §bVsechny vyhody z Diamond Global VIP");
+        EVIPvyhody.add("§e· §6Všechny výhody z Golden Global VIP");
+        EVIPvyhody.add("§e· §bVšechny výhody z Diamond Global VIP");
         EVIPvyhody.add("");
-        EVIPvyhody.add("§7Oproti Diamond VIP ziskas navic:");
+        EVIPvyhody.add("§7Oproti Diamond VIP získáš navíc:");
         EVIPvyhody.add("§e· §fGlowing Items - svitici itemy?! OK §a/gi");
-        EVIPvyhody.add("§e· §fStickers - obrazek jako mapa §a/ps");
-        EVIPvyhody.add("§e· §fKopani spawneru s Silktouchem!");
-        EVIPvyhody.add("§e· §fFireworkBuilder - vytvareni ohnostroju §a/fwc");
-        EVIPvyhody.add("§e· §fVlastni warpy - vytvor si vlastni warp pro sebe");
-        EVIPvyhody.add("§fnebo pro vsechny hrace na serveru! §a/warps");
-        EVIPvyhody.add("§e· §fClans - vytvor si celoserverovy clan pro kamose!");
+        EVIPvyhody.add("§e· §fFireworkBuilder - vytváření ohňostrojů §a/fwc");
+        EVIPvyhody.add("§e· §fVlastní warpy - vytvoř si warp pro sebe nebo server");
         EVIPvyhody.add("");
-        EVIPvyhody.add("§7Lobby extra server vyhody:");
-        EVIPvyhody.add("§e· §fParticles efekty na lobby pro VIP");
-        EVIPvyhody.add("§e· §fFly libovolne na lobby");
-        EVIPvyhody.add("§e· §fJoin zprava o pripojeni na lobby");
-        EVIPvyhody.add("§e· §fMesicni bonus §b3000 CraftCoins");
+        EVIPvyhody.add("§7Lobby extra server výhody:");
+        EVIPvyhody.add("§e· §fFly libovolně na lobby");
+        EVIPvyhody.add("§e· §fJoin zpáva o připojení na lobby");
+        EVIPvyhody.add("§e· §fMěsíční bonus §b3000 CraftCoins");
         EVIPvyhody.add("");
-        EVIPvyhody.add("§7Creative extra server vyhody:");
-        EVIPvyhody.add("§e· §fMaximalni pocet pozemku (150)");
-        EVIPvyhody.add("§e· §fPristup k WorldEditu");
+        EVIPvyhody.add("§7Creative extra server výhody:");
+        EVIPvyhody.add("§e· §fMaximální počet pozemků (150)");
+        EVIPvyhody.add("§e· §fPřístup k WorldEditu");
         EVIPvyhody.add("");
-        EVIPvyhody.add("§7Survival extra vyhody:");
-        EVIPvyhody.add("§e· §fMaximalni pocet residenci 8 (normal 4)");
+        EVIPvyhody.add("§7Survival extra výhody:");
+        EVIPvyhody.add("§e· §fMaximalni pocet residenci 6 (normal 3)");
         return EVIPvyhody;
     }
     List <String> getEVIPnakupServerList() {
@@ -371,50 +361,46 @@ public class VIPMenu_inv implements InventoryProvider {
     List <String> getOVIPvyhodyServerList() {
         List <String> OVIPvyhody = new ArrayList<>();
         OVIPvyhody.add("§7Toto VIP zahrnuje:");
-        OVIPvyhody.add("§e· §6Vsechny vyhody z Golden " + getCurrentServer() + " VIP");
-        OVIPvyhody.add("§e· §bVsechny vyhody z Diamond " + getCurrentServer() + " VIP");
-        OVIPvyhody.add("§e· §aVsechny vyhody z Emerald " + getCurrentServer() + " VIP");
+        OVIPvyhody.add("§e· §6Všechny výhody z Golden " + getCurrentServer() + " VIP");
+        OVIPvyhody.add("§e· §bVšechny výhody z Diamond " + getCurrentServer() + " VIP");
+        OVIPvyhody.add("§e· §aVšechny výhody z Emerald " + getCurrentServer() + " VIP");
         OVIPvyhody.add("");
-        OVIPvyhody.add("§7Oproti Emerald VIP ziskas navic:");
+        OVIPvyhody.add("§7Oproti Emerald VIP získáš navíc:");
+        OVIPvyhody.add("§e· §fArtMap - kreslení na mapu §a/artmap");
         switch (getCurrentServer()) {
             case "Survival": {
-                OVIPvyhody.add("§e· §fMaximalni pocet residenci 10 (normal 4)");
-                break;
-            }
-            case "Skyblock": {
-                OVIPvyhody.add("§e· §fMaximalni velikost ostrova az 300x300 bloku (normal 200x200)");
+                OVIPvyhody.add("§e· §fMaximální počet residencí 8 (normal 3)");
                 break;
             }
             case "Creative": {
-                OVIPvyhody.add("§e· §fMaximalni pocet pozemku (200)");
+                OVIPvyhody.add("§e· §fMaximální počet pozemků (200)");
                 break;
             }
         }
         OVIPvyhody.add("");
-        OVIPvyhody.add("§cToto VIP plati pouze na " + getCurrentServer() + " serveru!");
+        OVIPvyhody.add("§cToto VIP platí pouze na " + getCurrentServer() + " serveru!");
         return OVIPvyhody;
     }
     List <String> getOVIPvyhodyGlobalList() {
         List <String> OVIPvyhody = new ArrayList<>();
         OVIPvyhody.add("§7Toto VIP zahrnuje:");
-        OVIPvyhody.add("§e· §6Vsechny vyhody z Golden Global VIP");
-        OVIPvyhody.add("§e· §bVsechny vyhody z Diamond Global VIP");
-        OVIPvyhody.add("§e· §aVsechny vyhody z Emerald Global VIP");
+        OVIPvyhody.add("§e· §6Všechny výhody z Golden Global VIP");
+        OVIPvyhody.add("§e· §bVšechny výhody z Diamond Global VIP");
+        OVIPvyhody.add("§e· §aVšechny výhody z Emerald Global VIP");
         OVIPvyhody.add("");
-        OVIPvyhody.add("§7Lobby extra server vyhody:");
-        OVIPvyhody.add("§e· §fParticles efekty na lobby pro VIP");
-        OVIPvyhody.add("§e· §fFly libovolne na lobby");
-        OVIPvyhody.add("§e· §fJoin zprava o pripojeni na lobby");
-        OVIPvyhody.add("§e· §fMesicni bonus §b4000 CraftCoins");
+        OVIPvyhody.add("§7Oproti Emerald VIP získáš navíc:");
+        OVIPvyhody.add("§e· §fArtMap - kreslení na mapu §a/artmap");
         OVIPvyhody.add("");
-        OVIPvyhody.add("§7Creative extra server vyhody:");
-        OVIPvyhody.add("§e· §fMaximalni pocet pozemku (200)");
+        OVIPvyhody.add("§7Lobby extra server výhody:");
+        OVIPvyhody.add("§e· §fFly libovolně na lobby");
+        OVIPvyhody.add("§e· §fJoin zpráva po připojení na lobby");
+        OVIPvyhody.add("§e· §fMěsíční bonus §b4000 CraftCoins");
         OVIPvyhody.add("");
-        OVIPvyhody.add("§7Survival extra vyhody:");
-        OVIPvyhody.add("§e· §fMaximalni pocet residenci 10 (normal 4)");
+        OVIPvyhody.add("§7Creative extra server výhody:");
+        OVIPvyhody.add("§e· §fMaximální počet pozemků (200)");
         OVIPvyhody.add("");
-        OVIPvyhody.add("§7Skyblock extra vyhody:");
-        OVIPvyhody.add("§e· §fMaximalni velikost ostrova az 300x300 bloku (normal 200x200)");
+        OVIPvyhody.add("§7Survival extra výhody:");
+        OVIPvyhody.add("§e· §fMaximalni pocet residenci 8 (normal 3)");
         return OVIPvyhody;
     }
     List <String> getOVIPnakupServerList() {
@@ -445,23 +431,19 @@ public class VIPMenu_inv implements InventoryProvider {
         return createHeadFromData(goldBlockData, ChatColor.GOLD + "Golden VIP", lore);
     }
     private ItemStack getGVIPvyhodyServerItem() {
-        List <String> GVIPvyhody = new ArrayList<>();
-        GVIPvyhody = getGVIPvyhodyServerList();
+        List <String> GVIPvyhody = getGVIPvyhodyServerList();
         return createHeadFromData(goldBlockData, ChatColor.GOLD + "Golden " + getCurrentServer() + " VIP", GVIPvyhody);
     }
     private ItemStack getGVIPvyhodyGlobalItem() {
-        List <String> GVIPvyhody = new ArrayList<String>();
-        GVIPvyhody = getGVIPvyhodyGlobalList();
+        List <String> GVIPvyhody = getGVIPvyhodyGlobalList();
         return createHeadFromData(goldBlockData, ChatColor.GOLD + "Golden Global VIP", GVIPvyhody);
     }
     private ItemStack getGVIPnakupServerItem() {
-        List <String> GVIPnakup = new ArrayList<String>();
-        GVIPnakup = getGVIPnakupServerList();
+        List <String> GVIPnakup = getGVIPnakupServerList();
         return createList(ChatColor.GREEN + "Nákup server vip na 30 dní", GVIPnakup);
     }
     private ItemStack getGVIPnakupGlobalItem() {
-        List <String> GVIPnakup = new ArrayList<String>();
-        GVIPnakup = getGVIPnakupGlobalList();
+        List <String> GVIPnakup = getGVIPnakupGlobalList();
         return createList(ChatColor.GREEN + "Nákup global vip na 30 dní", GVIPnakup);
     }
     //GOLDEN VIP HEADS
@@ -476,23 +458,19 @@ public class VIPMenu_inv implements InventoryProvider {
         return createHeadFromData(diamondBlockData, ChatColor.AQUA + "Diamond VIP", lore);
     }
     private ItemStack getDVIPvyhodyServerItem() {
-        List <String> DVIPvyhody = new ArrayList<>();
-        DVIPvyhody = getDVIPvyhodyServerList();
+        List <String> DVIPvyhody = getDVIPvyhodyServerList();
         return createHeadFromData(diamondBlockData, ChatColor.AQUA + "Diamond " + getCurrentServer() + "VIP", DVIPvyhody);
     }
     private ItemStack getDVIPvyhodyGlobalItem() {
-        List <String> DVIPvyhody = new ArrayList<String>();
-        DVIPvyhody = getDVIPvyhodyGlobalList();
+        List <String> DVIPvyhody = getDVIPvyhodyGlobalList();
         return createHeadFromData(diamondBlockData, ChatColor.AQUA + "Diamond Global VIP", DVIPvyhody);
     }
     private ItemStack getDVIPnakupServerItem() {
-        List <String> DVIPnakup = new ArrayList<String>();
-        DVIPnakup = getDVIPnakupServerList();
+        List <String> DVIPnakup = getDVIPnakupServerList();
         return createList(ChatColor.GREEN + "Nákup server vip na 60 dní", DVIPnakup);
     }
     private ItemStack getDVIPnakupGlobalItem() {
-        List <String> DVIPnakup = new ArrayList<String>();
-        DVIPnakup = getDVIPnakupGlobalList();
+        List <String> DVIPnakup = getDVIPnakupGlobalList();
         return createList(ChatColor.GREEN + "Nákup global vip na 60 dní", DVIPnakup);
     }
     //DIAMOND VIP HEADS
@@ -507,13 +485,11 @@ public class VIPMenu_inv implements InventoryProvider {
         return createHeadFromData(emeraldBlockData, ChatColor.GREEN + "Emerald VIP", lore);
     }
     private ItemStack getEVIPvyhodyServerItem() {
-        List <String> EVIPvyhody = new ArrayList<String>();
-        EVIPvyhody = getEVIPvyhodyServerList();
+        List <String> EVIPvyhody = getEVIPvyhodyServerList();
         return createHeadFromData(emeraldBlockData, ChatColor.GREEN + "Emerald " + getCurrentServer() + " VIP", EVIPvyhody);
     }
     private ItemStack getEVIPvyhodyGlobalItem() {
-        List <String> EVIPvyhody = new ArrayList<String>();
-        EVIPvyhody = getEVIPvyhodyGlobalList();
+        List <String> EVIPvyhody = getEVIPvyhodyGlobalList();
         return createHeadFromData(emeraldBlockData, ChatColor.GREEN + "Emerald Global VIP", EVIPvyhody);
     }
     private ItemStack getEVIPnakupServerItem() {
@@ -522,8 +498,7 @@ public class VIPMenu_inv implements InventoryProvider {
         return createList(ChatColor.GREEN + "Nákup server vip na 90 dní", EVIPnakup);
     }
     private ItemStack getEVIPnakupGlobalItem() {
-        List <String> EVIPnakup = new ArrayList<String>();
-        EVIPnakup = getEVIPnakupGlobalList();
+        List <String> EVIPnakup = getEVIPnakupGlobalList();
         return createList(ChatColor.GREEN + "Nákup global vip na 90 dní", EVIPnakup);
     }
     //EMERALD VIP HEADS
@@ -539,23 +514,19 @@ public class VIPMenu_inv implements InventoryProvider {
         return createHeadFromData(obsidianBlockData, ChatColor.BLUE + "Obsidian VIP", lore);
     }
     private ItemStack getOVIPvyhodyServerItem() {
-        List <String> OVIPvyhody = new ArrayList<String>();
-        OVIPvyhody = getOVIPvyhodyServerList();
+        List <String> OVIPvyhody = getOVIPvyhodyServerList();
         return createHeadFromData(obsidianBlockData, ChatColor.BLUE + "Obsidian " + getCurrentServer() + " VIP", OVIPvyhody);
     }
     private ItemStack getOVIPvyhodyGlobalItem() {
-        List <String> OVIPvyhody = new ArrayList<String>();
-        OVIPvyhody = getOVIPvyhodyGlobalList();
+        List <String> OVIPvyhody = getOVIPvyhodyGlobalList();
         return createHeadFromData(obsidianBlockData, ChatColor.BLUE + "Obsidian Global VIP", OVIPvyhody);
     }
     private ItemStack getOVIPnakupServerItem() {
-        List <String> OVIPnakup = new ArrayList<String>();
-        OVIPnakup = getOVIPnakupServerList();
+        List <String> OVIPnakup = getOVIPnakupServerList();
         return createList(ChatColor.GREEN + "Nákup server vip NAVŽDY!", OVIPnakup);
     }
     private ItemStack getOVIPnakupGlobalItem() {
-        List <String> OVIPnakup = new ArrayList<String>();
-        OVIPnakup = getOVIPnakupGlobalList();
+        List <String> OVIPnakup = getOVIPnakupGlobalList();
         return createList(ChatColor.GREEN + "Nákup global vip NAVŽDY!", OVIPnakup);
     }
     //OBSIDIAN VIP HEADS
@@ -629,6 +600,8 @@ public class VIPMenu_inv implements InventoryProvider {
             server = "Skygrid";
         else if (currentServer == ServerType.VANILLA)
             server = "Vanilla";
+        else if (currentServer == ServerType.HARDCORE_VANILLA)
+            server = "Hardcore Vanilla";
         else if (currentServer == ServerType.UNKNOWN)
             server = "Unknown";
         return server;

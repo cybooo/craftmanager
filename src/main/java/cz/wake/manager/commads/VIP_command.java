@@ -29,7 +29,8 @@ public class VIP_command extends BaseCommand {
             Player player = (Player) sender;
             if (Main.getServerType() == ServerType.SURVIVAL
                     || Main.getServerType() == ServerType.SKYBLOCK
-                    || Main.getServerType() == ServerType.CREATIVE) {
+                    || Main.getServerType() == ServerType.CREATIVE
+                    || Main.getServerType() == ServerType.PRISON) {
                 SmartInventory.builder().size(5, 9).title("[VIP] Menu").provider(new VIPMenu_inv()).build().open(player);
             } else {
                 player.sendMessage("§c§l[!] §cNa tomto serveru nelze zobrazit VIP, jelikož zde zatím žádné není.");
