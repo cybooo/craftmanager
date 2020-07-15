@@ -400,7 +400,7 @@ public class VIPMenu_inv implements InventoryProvider {
         OVIPvyhody.add("§e· §fMaximální počet pozemků (200)");
         OVIPvyhody.add("");
         OVIPvyhody.add("§7Survival extra výhody:");
-        OVIPvyhody.add("§e· §fMaximalni pocet residenci 8 (normal 3)");
+        OVIPvyhody.add("§e· §fMaximální počet residencí 8 (normal 3)");
         return OVIPvyhody;
     }
     List <String> getOVIPnakupServerList() {
