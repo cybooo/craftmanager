@@ -7,8 +7,14 @@ import cz.craftmania.craftcore.spigot.inventory.builder.content.InventoryContent
 import cz.craftmania.craftcore.spigot.inventory.builder.content.InventoryProvider;
 import cz.craftmania.craftcore.spigot.inventory.builder.content.Pagination;
 import cz.craftmania.craftcore.spigot.inventory.builder.content.SlotIterator;
+import cz.craftmania.crafteconomy.api.CraftCoinsAPI;
+import cz.craftmania.crafteconomy.api.LevelAPI;
+import cz.craftmania.crafteconomy.api.VoteTokensAPI;
+import cz.craftmania.crafteconomy.managers.BasicManager;
 import cz.wake.manager.Main;
+import cz.wake.manager.shop.types.RewardType;
 import cz.wake.manager.utils.ServerType;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
@@ -17,6 +23,7 @@ import java.util.ArrayList;
 public class CshopItemShop implements InventoryProvider {
 
     private final ServerType serverType;
+    private BasicManager basicManager = new BasicManager();
 
     public CshopItemShop(ServerType serverType) {
         this.serverType = serverType;
@@ -30,6 +37,31 @@ public class CshopItemShop implements InventoryProvider {
 
         final Pagination pagination = contents.pagination();
         final ArrayList<ClickableItem> items = new ArrayList<>();
+
+        Main.getInstance().getCshopManager().getItemsShopItems().forEach(voteItem -> {
+
+            if (!(LevelAPI.getLevel(player, basicManager.getLevelByServer()) >= voteItem.getRequiredLevel())) { // Nemá dostatečný lvl
+                items.add(ClickableItem.empty(new ItemBuilder(Material.RED_STAINED_GLASS_PANE)
+                        .setName("§c" + voteItem.getName()).setLore("§7Nemáš požadovaný lvl: " + voteItem.getRequiredLevel()).build()));
+                return;
+            }
+
+            if (!(CraftCoinsAPI.getCoins(player) >= voteItem.getPrice())) { // Kontrola zda má dostatek VT
+                items.add(ClickableItem.empty(new ItemBuilder(Material.RED_STAINED_GLASS_PANE)
+                        .setName("§c" + voteItem.getName()).setLore("§7Nemáš dostatek CraftCoins: §f" + voteItem.getPrice() + " CT").build()));
+                return;
+            }
+
+            if (voteItem.getRewardType() == RewardType.COMMAND) {
+                items.add(ClickableItem.of(new ItemBuilder(voteItem.getItemStack()).setName("§a" + voteItem.getName()).setLore("§7Cena: §f" + voteItem.getPrice() + " VT").hideAllFlags().build(), click -> {
+                    CraftCoinsAPI.takeCoins(player, voteItem.getPrice());
+                    player.sendMessage("§aZakoupi jsi si " + voteItem.getName());
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), voteItem.getCommandToExecute().replace("%player%", player.getName()));
+                    player.closeInventory();
+                }));
+                return;
+            }
+        });
 
         ClickableItem[] c = new ClickableItem[items.size()];
         c = items.toArray(c);

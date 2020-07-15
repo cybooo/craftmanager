@@ -14,7 +14,7 @@ public class CshopManager {
 
     private static List<PermissionItem> permsShopItems = new ArrayList<>();
     private static List<VoteItem> voteShopItems = new ArrayList<>();
-    private static List<Object> itemsShopItems = new ArrayList<>(); // Nice jméno
+    private static List<VoteItem> itemsShopItems = new ArrayList<>(); // Nice jméno
     private static List<VoteItem> eventShopItems = new ArrayList<>();
 
     private Main plugin;
@@ -41,7 +41,7 @@ public class CshopManager {
         return voteShopItems;
     }
 
-    public List<Object> getItemsShopItems() {
+    public List<VoteItem> getItemsShopItems() {
         return itemsShopItems;
     }
 
@@ -79,7 +79,7 @@ public class CshopManager {
     }
 
     private void loadItemShopItems() {
-
+        itemsShopItems.add(new VoteItem().setName("Vlastní hlava").setItemStack(Material.PLAYER_HEAD).setPrice(750).setCommandToExecute("give %player% minecraft:player_head{\"SkullOwner\":\"%player%\"}"));
     }
 
     private void loadEventShopItems() {
