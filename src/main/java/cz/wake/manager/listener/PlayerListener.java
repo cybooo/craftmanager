@@ -63,7 +63,7 @@ public class PlayerListener implements Listener {
             }, 10L);
         }
 
-        /*if (Main.getServerType() == ServerType.SKYCLOUD) {
+        if (Main.getServerType() == ServerType.HARDCORE_VANILLA) {
             p.sendMessage("");
             p.sendMessage("§c§lUpozornění");
             p.sendMessage("§7Tento server je označený jako §b§lBETA");
@@ -71,7 +71,7 @@ public class PlayerListener implements Listener {
             p.sendMessage("§7Pokud nějaký najdeš, nahlaš nám ho na Discordu!");
             p.sendMessage("§eDiscord: §6https://discord.gg/craftmania -> #bugy_a_problemy");
             p.sendMessage("");
-        }*/
+        }
 
         if (Main.restartReason != null) {
             long min = Main.restartTime - System.currentTimeMillis();
