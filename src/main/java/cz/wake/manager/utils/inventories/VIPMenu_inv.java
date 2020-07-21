@@ -238,7 +238,6 @@ public class VIPMenu_inv implements InventoryProvider {
         DVIPvyhody.add("");
         DVIPvyhody.add("§7Oproti Golden VIP získáš navíc:");
         DVIPvyhody.add("§e· §fNEO - Zobrazení spawnratu mobu §a/ll");
-        DVIPvyhody.add("§e· §fPřístup k heads /heads");
         DVIPvyhody.add("§e· §fNastavení vlastního času §a/ptime");
         DVIPvyhody.add("§e· §fNastavení vlastního počasí §a/pweather");
         DVIPvyhody.add("§e· §fInspekce zníčených bloků §a/co inspect");
@@ -261,7 +260,6 @@ public class VIPMenu_inv implements InventoryProvider {
         DVIPvyhody.add("");
         DVIPvyhody.add("§7Oproti Golden VIP získáš navíc:");
         DVIPvyhody.add("§e· §fNEO - Zobrazení spawnratu mobu §a/ll");
-        DVIPvyhody.add("§e· §fPřístup k heads /heads");
         DVIPvyhody.add("§e· §fNastavení vlastního času §a/ptime");
         DVIPvyhody.add("§e· §fNastavení vlastního počasí §a/pweather");
         DVIPvyhody.add("§e· §fInspekce zníčených bloků §a/co inspect");
