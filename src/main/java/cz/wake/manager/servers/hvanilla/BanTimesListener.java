@@ -1,6 +1,7 @@
 package cz.wake.manager.servers.hvanilla;
 
 import cz.wake.manager.Main;
+import cz.wake.manager.utils.Log;
 import cz.wake.manager.utils.UtilMath;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.*;
@@ -29,6 +30,8 @@ public class BanTimesListener implements Listener {
         }
 
         Entity damager = e.getDamager();
+
+        Log.debug("[EDEE] Player: " + player.getName() + " -> Entity: " + damager.getType().name());
 
         if (damager instanceof Spider) {
             performTimedBand(player, 3, "Spider");
@@ -120,12 +123,25 @@ public class BanTimesListener implements Listener {
         if (damager instanceof Skeleton) {
             performTimedBand(player, 4, "Skeleton");
         }
+        if (damager instanceof Arrow) {
+            Arrow arrow = (Arrow)damager;
+            if (arrow.getShooter() instanceof Skeleton) { // Skeleton
+                performTimedBand(player, 4, "Skeleton");
+            }
+            if (arrow.getShooter() instanceof Player) {
+                int time = UtilMath.random(6,12);
+                Player killer = (Player) arrow.getShooter();
+                performTimedBand(player, time, "Smrt hráčem (" + killer.getName() + ")");
+            }
+        }
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onDeath(PlayerDeathEvent e) {
         Player player = e.getEntity().getPlayer();
         EntityDamageEvent cause = e.getEntity().getLastDamageCause();
+
+        Log.debug("[PDE] Player: " + player.getName() + " -> " + cause.getEntity().getLastDamageCause());
 
         if (cause.getCause() == EntityDamageEvent.DamageCause.CONTACT) { // Cactus
             performTimedBand(player, 2, "Cactus Damage");
