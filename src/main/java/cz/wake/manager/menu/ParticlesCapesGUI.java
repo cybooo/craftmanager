@@ -6,9 +6,7 @@ import cz.craftmania.craftcore.spigot.inventory.builder.content.InventoryContent
 import cz.craftmania.craftcore.spigot.inventory.builder.content.InventoryProvider;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.perks.particles.capes.ChristmasCape;
-import cz.wake.manager.perks.particles.capes.NewYearCape;
-import cz.wake.manager.perks.particles.special.SantaHat;
-import org.bukkit.Bukkit;
+import cz.wake.manager.perks.particles.capes.SummerSplash;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
@@ -16,7 +14,7 @@ public class ParticlesCapesGUI implements InventoryProvider {
 
     ChristmasCape christmasCape = new ChristmasCape();
     ParticlesAPI particlesAPI = new ParticlesAPI();
-    NewYearCape newYearCape = new NewYearCape();
+    SummerSplash summerSplash = new SummerSplash();
 
     @Override
     public void init(Player player, InventoryContents contents) {
@@ -25,6 +23,7 @@ public class ParticlesCapesGUI implements InventoryProvider {
 
         if (player.hasPermission("craftmanager.particles.cape.christmas")) {
             contents.set(2, 2, ClickableItem.of(new ItemBuilder(Material.REDSTONE_BLOCK).setName("§c§lChristmas Capes").setLore("§7Speciální vánoční cape!", "", "§aKlikni k aktivaci!").build(), e -> {
+                particlesAPI.deaktivateCapes(player);
                 christmasCape.activate(player);
                 player.closeInventory();
             }));
@@ -32,17 +31,19 @@ public class ParticlesCapesGUI implements InventoryProvider {
             contents.set(2, 2, ClickableItem.of(new ItemBuilder(Material.BARRIER).setName("§4§lChristmas Cape").setLore("§7Lze získat pomocí Vánoční Bundle 2019").build(), e -> { }));
         }
 
-        if (player.hasPermission("craftmanager.particles.cape.new_year_2020")) {
-            contents.set(2, 3, ClickableItem.of(new ItemBuilder(Material.NETHER_STAR).setName("§9§lNew Year Cape 2020").setLore("§7Speciální New Year cape!", "", "§aKlikni k aktivaci!").build(), e -> {
-                newYearCape.activate(player);
+        if (player.hasPermission("craftmanager.particles.cape.summer_splash")) {
+            contents.set(2, 3, ClickableItem.of(new ItemBuilder(Material.NETHER_STAR).setName("§6§lSummer§e§lSplash §fCape").setLore("§7Speciální letní Cape!", "", "§aKlikni k aktivaci!").build(), e -> {
+                particlesAPI.deaktivateCapes(player);
+                summerSplash.activate(player);
                 player.closeInventory();
             }));
         } else {
-            contents.set(2, 2, ClickableItem.of(new ItemBuilder(Material.BARRIER).setName("§4§lChristmas Cape").setLore("§7Lze získat pomocí Vánoční Bundle 2019").build(), e -> { }));
+            contents.set(2, 3, ClickableItem.of(new ItemBuilder(Material.BARRIER).setName("§c§lSummerSplash Cape").setLore("§7Lze získat pouze pomocí", "§7nákupu SummerSplash 2020 klíče.").build(), e -> { }));
         }
 
         contents.set(5, 4, ClickableItem.of(new ItemBuilder(Material.RED_DYE).setName("§c§lDeaktivovat").build(), e -> {
             particlesAPI.deactivateParticles(player);
+            particlesAPI.deaktivateCapes(player);
         }));
     }
 

@@ -31,6 +31,7 @@ public class ParticlesSpecialGUI implements InventoryProvider {
 
         contents.set(5, 4, ClickableItem.of(new ItemBuilder(Material.RED_DYE).setName("§c§lDeaktivovat").build(), e -> {
             particlesAPI.deactivateParticles(player);
+            particlesAPI.deaktivateCapes(player);
         }));
     }
 

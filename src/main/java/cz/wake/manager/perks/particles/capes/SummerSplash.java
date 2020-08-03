@@ -9,7 +9,7 @@ import org.bukkit.util.Vector;
 
 import java.util.HashMap;
 
-public class NewYearCape {
+public class SummerSplash {
 
     public static final HashMap<String, Integer> turnajCloaks = new HashMap();
     boolean x = true;
@@ -19,39 +19,27 @@ public class NewYearCape {
     @SuppressWarnings("deprecation")
     public void activate(Player p) {
         boolean[][] type = shapeTurnaj;
-        int borderRed = 0;
-        int borderGreen = 0;
+        int borderRed = 255;
+        int borderGreen = 165;
         int borderBlue = 0;
         int textRed = 112;
         int textGreen = 25;
         int textBlue = 25;
-        if (p.hasPermission("craftmanager.particles.cape.new_year_2020")) {
-            type = shapeTurnaj;
-            borderRed = 0;
-            borderGreen = 201;
-            borderBlue = 238;
-        }
+
         if (!turnajCloaks.containsKey(p.getName())) {
-            boolean[][] finalType = type;
-            int finalBorderRed = borderRed;
-            int finalBorderGreen = borderGreen;
-            int finalBorderBlue = borderBlue;
-            int finalTextRed = textRed;
-            int finalTextGreen = textGreen;
-            int finalTextBlue = textBlue;
             particles = Bukkit.getScheduler().runTaskTimer(Main.getInstance(), () -> {
                 if (turnajCloaks.containsKey(p.getName())) {
-                    drawParticles(p.getLocation(), p, finalType, finalBorderRed, finalBorderGreen, finalBorderBlue,
-                            finalTextRed, finalTextGreen, finalTextBlue);
+                    drawParticles(p.getLocation(), p, type, borderBlue, borderGreen, borderRed,
+                            textBlue, textGreen, textRed);
                 }
             }, 0L, 2L).getTaskId();
-            turnajCloaks.put(p.getName(), Integer.valueOf(particles));
+            turnajCloaks.put(p.getName(), particles);
             p.closeInventory();
         }
 
     }
 
-    private boolean[][] shapeTurnaj = {
+    private final boolean[][] shapeTurnaj = {
             {y, x, y, y, x,},
             {y, y, x, y, y,},
             {x, y, y, x, y,},

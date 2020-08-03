@@ -21,31 +21,18 @@ public class ChristmasCape {
         boolean[][] type = shapeTurnaj;
         int borderRed = 0;
         int borderGreen = 0;
-        int borderBlue = 0;
+        int borderBlue = 205;
         int textRed = 255;
         int textGreen = 255;
         int textBlue = 255;
-        if (p.hasPermission("craftmanager.particles.cape.christmas")) {
-            type = shapeTurnaj;
-            borderRed = 0;
-            borderGreen = 0;
-            borderBlue = 205;
-        }
         if (!turnajCloaks.containsKey(p.getName())) {
-            boolean[][] finalType = type;
-            int finalBorderRed = borderRed;
-            int finalBorderGreen = borderGreen;
-            int finalBorderBlue = borderBlue;
-            int finalTextRed = textRed;
-            int finalTextGreen = textGreen;
-            int finalTextBlue = textBlue;
             particles = Bukkit.getScheduler().runTaskTimer(Main.getInstance(), () -> {
                 if (turnajCloaks.containsKey(p.getName())) {
-                    drawParticles(p.getLocation(), p, finalType, finalBorderRed, finalBorderGreen, finalBorderBlue,
-                            finalTextRed, finalTextGreen, finalTextBlue);
+                    drawParticles(p.getLocation(), p, type, borderRed, borderGreen, borderBlue,
+                            textRed, textGreen, textBlue);
                 }
             }, 0L, 2L).getTaskId();
-            turnajCloaks.put(p.getName(), Integer.valueOf(particles));
+            turnajCloaks.put(p.getName(), particles);
             p.closeInventory();
         }
 
