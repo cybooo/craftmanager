@@ -1,7 +1,7 @@
 package cz.wake.manager.perks.particles.vip;
 
 import cz.wake.manager.Main;
-import cz.wake.manager.utils.ParticleEffect;
+import cz.craftmania.craftcore.spigot.utils.effects.ParticleEffect;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 

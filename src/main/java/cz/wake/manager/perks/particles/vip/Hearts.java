@@ -1,7 +1,7 @@
 package cz.wake.manager.perks.particles.vip;
 
 import cz.wake.manager.Main;
-import cz.wake.manager.utils.ParticleEffect;
+import cz.wake.manager.utils.Particles;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -16,7 +16,7 @@ public class Hearts {
         if (!e.containsKey(p.getName())) {
             task = Bukkit.getScheduler().runTaskTimer(Main.getInstance(), () -> {
                 if (e.containsKey(p.getName()) && p.isOnline()) {
-                    ParticleEffect.HEART.display(0.7f, 0.7f, 0.7f, 0.05f, 3, p.getLocation(), Main.getInstance().getPlayers());
+                    Particles.HEART.display(0.7f, 0.7f, 0.7f, 0.05f, 3, p.getLocation(), Main.getInstance().getPlayers());
                 }
             }, 0L, 5L).getTaskId();
             e.put(p.getName(), task);

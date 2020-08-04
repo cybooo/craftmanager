@@ -3,6 +3,7 @@ package cz.wake.manager.perks.particles;
 import cz.wake.manager.Main;
 import cz.wake.manager.perks.particles.capes.ChristmasCape;
 import cz.wake.manager.perks.particles.capes.SummerSplash;
+import cz.wake.manager.perks.particles.special.FireWalk;
 import cz.wake.manager.perks.particles.special.SantaHat;
 import cz.wake.manager.perks.particles.vip.*;
 import cz.wake.manager.perks.particles.vip.Void;
@@ -609,6 +610,11 @@ public class ParticlesAPI implements Listener {
         if (SantaHat.sh.containsKey(p.getName())) {
             Bukkit.getScheduler().cancelTask(SantaHat.sh.get(p.getName()));
             SantaHat.sh.remove(p.getName());
+            p.closeInventory();
+        }
+        if (FireWalk.e.containsKey(p.getName())) {
+            Bukkit.getScheduler().cancelTask(FireWalk.e.get(p.getName()));
+            FireWalk.e.remove(p.getName());
             p.closeInventory();
         }
     }

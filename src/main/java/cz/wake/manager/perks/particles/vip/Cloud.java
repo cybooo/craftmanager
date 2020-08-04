@@ -1,7 +1,7 @@
 package cz.wake.manager.perks.particles.vip;
 
 import cz.wake.manager.Main;
-import cz.wake.manager.utils.ParticleEffect;
+import cz.wake.manager.utils.Particles;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -16,7 +16,7 @@ public class Cloud {
         if (!e.containsKey(p.getName())) {
             task = Bukkit.getScheduler().runTaskTimer(Main.getInstance(), () -> {
                 if (e.containsKey(p.getName()) && p.isOnline()) {
-                    ParticleEffect.CLOUD.display(1.0f, 1.0f, 1.0f, 0.05f, 15, p.getLocation(), Main.getInstance().getPlayers());
+                    Particles.CLOUD.display(1.0f, 1.0f, 1.0f, 0.05f, 15, p.getLocation(), Main.getInstance().getPlayers());
                 }
             }, 0L, 5L).getTaskId();
             e.put(p.getName(), task);

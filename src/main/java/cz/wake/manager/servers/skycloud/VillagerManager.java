@@ -5,7 +5,7 @@ import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
 import cz.craftmania.craftcore.spigot.builders.villager.VillagerTradeBuilder;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.Log;
-import cz.wake.manager.utils.ParticleEffect;
+import cz.craftmania.craftcore.spigot.utils.effects.ParticleEffect;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
