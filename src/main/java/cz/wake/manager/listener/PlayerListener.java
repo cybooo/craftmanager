@@ -102,6 +102,7 @@ public class PlayerListener implements Listener {
         try {
             if (Main.getInstance().isVisibleForPlayer(p)) {
                 partAPI.deactivateParticles(p);
+                partAPI.deaktivateCapes(p);
                 Main.getInstance().removePlayer(p);
             }
 
@@ -139,6 +140,7 @@ public class PlayerListener implements Listener {
         try {
             if (Main.getInstance().isVisibleForPlayer(p)) {
                 partAPI.deactivateParticles(p);
+                partAPI.deaktivateCapes(p);
                 Main.getInstance().removePlayer(p);
             }
 
