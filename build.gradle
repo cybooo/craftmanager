@@ -88,6 +88,7 @@ dependencies {
     compileOnly (group: 'org.spigotmc', name: 'spigot', version: '1.15')
     compileOnly group: 'me.clip', name: 'placeholderapi', version: '2.10.4'
     compileOnly group: 'net.minecord', name: 'xoreboardutil', version: '1.14.4'
+    compileOnly group: 'me.libraryaddict.disguise', name: 'libsdisguise', version: '10.0.5'
 
     compile 'com.github.cryptomorin:XSeries:5.3.1'
 }
