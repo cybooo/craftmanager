@@ -176,11 +176,11 @@ public class VillagerManager {
 
         Bukkit.getScheduler().runTaskLater(Main.getInstance(), () -> {
 
-            if (Bukkit.getOnlinePlayers().size() < 2) { // Min jak x hráčů se nespawne
+            /*if (Bukkit.getOnlinePlayers().size() < 2) { // Min jak x hráčů se nespawne
                 Log.withPrefix(ChatColor.RED + "Nedostatek hracu na spawn Rare Villagera. Probehne znovu vygenerovani procesu!");
                 spawnRareVillager(false);
                 return;
-            }
+            }*/
 
             Entity entity = Objects.requireNonNull(Bukkit.getWorld("vsbspawn")).spawnEntity(rareVillagerLocation, EntityType.WANDERING_TRADER);
             WanderingTrader villager = (WanderingTrader)entity;
