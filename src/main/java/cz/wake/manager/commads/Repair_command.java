@@ -28,7 +28,7 @@ public class Repair_command extends BaseCommand {
         }
 
         if (!sender.hasPermission("craftmanager.repair")) {
-            sender.sendMessage("§c§l[!] §cNemas dostatecne opravneni!");
+            sender.sendMessage("§c§l[!] §cNemáš dostatečné oprávnení!");
             return;
         }
 

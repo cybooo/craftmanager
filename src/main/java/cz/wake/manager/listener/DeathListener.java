@@ -51,7 +51,7 @@ public class DeathListener implements Listener {
 
         Config config = Main.getInstance().getDeathMessFile();
 
-        if (e.getDamage() >= p.getHealth()) {
+        if (e.getFinalDamage() >= p.getHealth()) {
             for (Player pl : Main.getInstance().death_messages) {
                 pl.sendMessage(config.getStringList("d_msgs.mob").get(r.nextInt(config.getStringList("d_msgs.mob").size()))
                         .replace("%player%", p.getName())
