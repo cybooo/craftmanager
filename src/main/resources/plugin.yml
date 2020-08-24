@@ -4,7 +4,7 @@ authors: [MrWakeCZ,lilmayu]
 depend: [CraftCore,CraftEconomy]
 softdepend: [AdvancedEnchantments,HolographicDisplays,CommandAPI,PlaceholderAPI,ProtocolLibs]
 api-version: "1.15"
-version: "1.5.0"
+version: "1.6.0"
 
 permissions:
     craftmanager.*:
