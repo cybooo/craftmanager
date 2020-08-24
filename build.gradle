@@ -51,7 +51,7 @@ repositories {
 dependencies {
 
     // Spigot
-    compileOnly ('org.spigotmc:spigot-api:1.15-R0.1-SNAPSHOT') {
+    compileOnly ('org.spigotmc:spigot-api:1.16.1-R0.1-SNAPSHOT') {
         exclude group: 'net.md-5'
     }
 
@@ -79,13 +79,14 @@ dependencies {
         exclude group: 'io.github.jorelali'
     }
     compileOnly 'cz.craftmania.craftlibs:craftlibs:1.1.0'
+    compileOnly name: 'spigot-1.16.1'
 
     // Prometheus
     compile group: 'io.prometheus', name: 'simpleclient', version: '0.6.0'
     compile group: 'io.prometheus', name: 'simpleclient_httpserver', version: '0.6.0'
     compile group: 'io.prometheus', name: 'simpleclient_hotspot', version: '0.6.0'
 
-    compileOnly (group: 'org.spigotmc', name: 'spigot', version: '1.15')
+    compileOnly (group: 'org.spigotmc', name: 'spigot', version: '1.16.1')
     compileOnly group: 'me.clip', name: 'placeholderapi', version: '2.10.4'
     compileOnly group: 'net.minecord', name: 'xoreboardutil', version: '1.14.4'
     compileOnly group: 'me.libraryaddict.disguise', name: 'libsdisguise', version: '10.0.5'
