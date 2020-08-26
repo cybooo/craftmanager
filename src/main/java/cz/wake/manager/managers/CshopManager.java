@@ -80,6 +80,12 @@ public class CshopManager {
 
     private void loadItemShopItems() {
         itemsShopItems.add(new VoteItem().setName("Vlastní hlava").setItemStack(Material.PLAYER_HEAD).setPrice(750).setCommandToExecute("give %player% minecraft:player_head{\"SkullOwner\":\"%player%\"}"));
+        if (Main.getServerType() == ServerType.SKYBLOCK) {
+            itemsShopItems.add(new VoteItem().setName("Minion: Sheeps").setRequiredLevel(3).setItemStack(Material.WHITE_WOOL).setPrice(5000).setCommandToExecute("msetup give minion sheep %player% 1"));
+            itemsShopItems.add(new VoteItem().setName("Minion: Nether Wart").setRequiredLevel(5).setItemStack(Material.NETHER_WART).setPrice(6000).setCommandToExecute("msetup give minion netherwart %player% 1"));
+            itemsShopItems.add(new VoteItem().setName("Minion: Dark Oak").setRequiredLevel(2).setItemStack(Material.DARK_OAK_LOG).setPrice(2000).setCommandToExecute("msetup give minion darkoak %player% 1"));
+
+        }
     }
 
     private void loadEventShopItems() {
