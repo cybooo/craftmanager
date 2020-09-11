@@ -81,10 +81,15 @@ public class CshopManager {
     private void loadItemShopItems() {
         itemsShopItems.add(new VoteItem().setName("Vlastní hlava").setItemStack(Material.PLAYER_HEAD).setPrice(750).setCommandToExecute("give %player% minecraft:player_head{\"SkullOwner\":\"%player%\"}"));
         if (Main.getServerType() == ServerType.SKYBLOCK) {
-            itemsShopItems.add(new VoteItem().setName("Minion: Sheeps").setRequiredLevel(3).setItemStack(Material.WHITE_WOOL).setPrice(5000).setCommandToExecute("msetup give minion sheep %player% 1"));
-            itemsShopItems.add(new VoteItem().setName("Minion: Nether Wart").setRequiredLevel(5).setItemStack(Material.NETHER_WART).setPrice(6000).setCommandToExecute("msetup give minion netherwart %player% 1"));
-            itemsShopItems.add(new VoteItem().setName("Minion: Dark Oak").setRequiredLevel(2).setItemStack(Material.DARK_OAK_LOG).setPrice(2000).setCommandToExecute("msetup give minion darkoak %player% 1"));
-
+            itemsShopItems.add(new VoteItem().setName("Minion: Sheeps").setRequiredLevel(3).setItemStack(Material.WHITE_WOOL).setPrice(4000).setCommandToExecute("msetup give minion sheep %player% 1"));
+            itemsShopItems.add(new VoteItem().setName("Minion: Nether Wart").setRequiredLevel(5).setItemStack(Material.NETHER_WART).setPrice(5000).setCommandToExecute("msetup give minion netherwart %player% 1"));
+            itemsShopItems.add(new VoteItem().setName("Minion: Dark Oak").setRequiredLevel(2).setItemStack(Material.DARK_OAK_LOG).setPrice(1200).setCommandToExecute("msetup give minion darkoak %player% 1"));
+            itemsShopItems.add(new VoteItem().setName("Minion: Carrot Farmer").setRequiredLevel(5).setItemStack(Material.CARROT).setPrice(2500).setCommandToExecute("msetup give minion carrot %player% 1"));
+            itemsShopItems.add(new VoteItem().setName("Minion: Wheat Farmer").setRequiredLevel(5).setItemStack(Material.WHEAT).setPrice(2500).setCommandToExecute("msetup give minion wheat %player% 1"));
+            itemsShopItems.add(new VoteItem().setName("Minion: Fisherman").setRequiredLevel(3).setItemStack(Material.FISHING_ROD).setPrice(2200).setCommandToExecute("msetup give minion fisher %player% 1"));
+            itemsShopItems.add(new VoteItem().setName("Minion: Cactus").setRequiredLevel(5).setItemStack(Material.CACTUS).setPrice(2500).setCommandToExecute("msetup give minion cactus %player% 1"));
+            itemsShopItems.add(new VoteItem().setName("Minion: Birch").setRequiredLevel(2).setItemStack(Material.BIRCH_LOG).setPrice(1000).setCommandToExecute("msetup give minion birch %player% 1"));
+            //TODO: Lapis
         }
     }
 
