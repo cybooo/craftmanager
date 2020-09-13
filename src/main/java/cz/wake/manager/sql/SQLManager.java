@@ -2,7 +2,9 @@ package cz.wake.manager.sql;
 
 import com.zaxxer.hikari.HikariDataSource;
 import cz.wake.manager.Main;
+import cz.wake.manager.utils.Log;
 import cz.wake.manager.utils.ServerType;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -249,7 +251,7 @@ public class SQLManager {
 
     public final void updateAtPlayerTime(Player p) {
         String server = getServerName();
-        System.out.println("Update ATS pro: " + p.getName() + ", server: " + server) ;
+        Log.normalMessage(ChatColor.RED + "[ATS] " + ChatColor.WHITE + "Update ATS pro: " + p.getName() + ", server: " + server); ;
         new BukkitRunnable() {
             @Override
             public void run() {
