@@ -68,7 +68,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private static DataOutputStream out = new DataOutputStream(b);
     private SQLManager sql;
     private boolean testing = false;
-    private ItemDB itemdb;
     private static String mentionPrefix;
     private Economy econ;
     private ConfigAPI configAPI;
@@ -129,7 +128,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Nastaveni hodnot
         testing = getConfig().getBoolean("testing");
-        itemdb = new ItemDB(this);
 
         // Bungee channels
         Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
@@ -375,10 +373,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public ServerFactory getServerFactory() {
         return sf;
-    }
-
-    public ItemDB getItemdb() {
-        return itemdb;
     }
 
     public Economy getEconomy() {
