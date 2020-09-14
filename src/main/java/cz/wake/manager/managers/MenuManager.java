@@ -13,17 +13,17 @@ public class MenuManager {
     public static void openNavody(Player p){
         Inventory inv = Bukkit.createInventory(null, 36, "Seznam dostupnych navodu");
 
-        ItemStack pravidla = ItemFactory.create(Material.ENCHANTED_BOOK, (byte)0, "§e§lPravidla serveru", "§7Pravidla serveru jsou", "§7zaklad spravneho chovani!", "", "§fVhodne pro: §cVsude");
-        ItemStack mody = ItemFactory.create(Material.ENCHANTED_BOOK, (byte)0, "§e§lPovolene/zakazane mody", "§7Nevis jestli je tvuj mod", "§7povoleny nebo zakazany?", "", "§fVhodne pro: §cVsude");
+        ItemStack pravidla = ItemFactory.create(Material.ENCHANTED_BOOK, "§e§lPravidla serveru", "§7Pravidla serveru jsou", "§7zaklad spravneho chovani!", "", "§fVhodne pro: §cVsude");
+        ItemStack mody = ItemFactory.create(Material.ENCHANTED_BOOK, "§e§lPovolene/zakazane mody", "§7Nevis jestli je tvuj mod", "§7povoleny nebo zakazany?", "", "§fVhodne pro: §cVsude");
 
-        ItemStack residence = ItemFactory.create(Material.PAPER, (byte)0, "§e§lResidence", "§7Navod pro vsechny", "§7co chceji plnohodnotne", "§7ovladnout residence","","§fVhodne pro: §bSurvival");
-        ItemStack jobs = ItemFactory.create(Material.PAPER, (byte)0, "§e§lJobs", "§7Jak si vydelavat penize", "§7na nasich serverech?", "", "§fVhodne pro: §bSkyblock");
-        ItemStack shop = ItemFactory.create(Material.PAPER, (byte)0, "§e§lChestShop", "§7Jak vytvorit shop", "§7a jak vykupovat itemy.", "", "§fVhodnoce pro: §bSurv, Sky");
-        ItemStack pozemky = ItemFactory.create(Material.PAPER, (byte)0, "§e§lPozemky", "§7Navod jak ovladnout", "§7tvuj pozemek naplno!", "", "§fVhodne pro: §bCreative");
-        ItemStack lands = ItemFactory.create(Material.PAPER, (byte)0, "§e§lLands", "§7Vytvareni Lands, sprava lands", "§7a jine tipy a triky!", "", "§fVhodne pro: §bVanilla");
-        ItemStack repl = ItemFactory.create(Material.PAPER, (byte)0, "§e§lReplacementy", "§7Jak na Emoji v chatu", "", "§fVhodne pro: §bSurv, Sky, Crea");
+        ItemStack residence = ItemFactory.create(Material.PAPER, "§e§lResidence", "§7Navod pro vsechny", "§7co chceji plnohodnotne", "§7ovladnout residence","","§fVhodne pro: §bSurvival");
+        ItemStack jobs = ItemFactory.create(Material.PAPER, "§e§lJobs", "§7Jak si vydelavat penize", "§7na nasich serverech?", "", "§fVhodne pro: §bSkyblock");
+        ItemStack shop = ItemFactory.create(Material.PAPER, "§e§lChestShop", "§7Jak vytvorit shop", "§7a jak vykupovat itemy.", "", "§fVhodnoce pro: §bSurv, Sky");
+        ItemStack pozemky = ItemFactory.create(Material.PAPER, "§e§lPozemky", "§7Navod jak ovladnout", "§7tvuj pozemek naplno!", "", "§fVhodne pro: §bCreative");
+        ItemStack lands = ItemFactory.create(Material.PAPER, "§e§lLands", "§7Vytvareni Lands, sprava lands", "§7a jine tipy a triky!", "", "§fVhodne pro: §bVanilla");
+        ItemStack repl = ItemFactory.create(Material.PAPER, "§e§lReplacementy", "§7Jak na Emoji v chatu", "", "§fVhodne pro: §bSurv, Sky, Crea");
 
-        ItemStack zpet = ItemFactory.create(Material.ARROW, (byte)0, "§cZpet");
+        ItemStack zpet = ItemFactory.create(Material.ARROW, "§cZpet");
 
         inv.setItem(0, pravidla);
         inv.setItem(1, mody);

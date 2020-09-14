@@ -19,9 +19,9 @@ import java.util.logging.Level;
 
 public class ItemFactory {
 
-    public static ItemStack create(Material material, byte data, String displayName, String... lore) {
+    public static ItemStack create(Material material, String displayName, String... lore) {
         try {
-            ItemStack itemStack = new MaterialData(material, data).toItemStack(1);
+            ItemStack itemStack = new ItemStack(material);
             ItemMeta itemMeta = itemStack.getItemMeta();
             itemMeta.setDisplayName(displayName);
             if (lore != null) {
@@ -39,8 +39,8 @@ public class ItemFactory {
         return null;
     }
 
-    public static ItemStack create(Material material, byte data, String displayName) {
-        return create(material, data, displayName, (String[]) null);
+    public static ItemStack create(Material material, String displayName) {
+        return create(material, displayName, (String[]) null);
     }
 
     public static org.bukkit.inventory.ItemStack createHead(String name, String uuid, String textureData) {

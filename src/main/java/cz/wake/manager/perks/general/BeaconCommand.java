@@ -46,14 +46,14 @@ public class BeaconCommand extends BaseCommand implements Listener {
 
                 Inventory inv = Bukkit.createInventory(null, InventoryType.DISPENSER, "Zvol si efekt");
 
-                inv.setItem(0, ItemFactory.create(Material.FEATHER, (byte)0, "§f§lSpeed"));
-                inv.setItem(1, ItemFactory.create(Material.GOLDEN_PICKAXE, (byte)0, "§e§lHaste"));
-                inv.setItem(2, ItemFactory.create(Material.IRON_BOOTS, (byte)0, "§a§lJump Boost"));
-                inv.setItem(3, ItemFactory.create(Material.BLAZE_POWDER, (byte)0, "§6§lFire Resistance"));
-                inv.setItem(4, ItemFactory.create(Material.ENDER_EYE, (byte)0, "§9§lNight Vision"));
-                inv.setItem(5, ItemFactory.create(Material.PRISMARINE_CRYSTALS, (byte)0, "§3§lWater Breathing"));
+                inv.setItem(0, ItemFactory.create(Material.FEATHER, "§f§lSpeed"));
+                inv.setItem(1, ItemFactory.create(Material.GOLDEN_PICKAXE, "§e§lHaste"));
+                inv.setItem(2, ItemFactory.create(Material.IRON_BOOTS, "§a§lJump Boost"));
+                inv.setItem(3, ItemFactory.create(Material.BLAZE_POWDER, "§6§lFire Resistance"));
+                inv.setItem(4, ItemFactory.create(Material.ENDER_EYE, "§9§lNight Vision"));
+                inv.setItem(5, ItemFactory.create(Material.PRISMARINE_CRYSTALS, "§3§lWater Breathing"));
 
-                inv.setItem(7, ItemFactory.create(Material.BARRIER, (byte)0, "§c§lZrusit","§7Kliknutim deaktivujes."));
+                inv.setItem(7, ItemFactory.create(Material.BARRIER, "§c§lZrusit","§7Kliknutim deaktivujes."));
 
                 player.openInventory(inv);
             } else {
