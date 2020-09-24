@@ -227,7 +227,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new PlayerCommandSendListener(this), this);
         pm.registerEvents(new CommandListener(), this);
         pm.registerEvents(new PlayerLoginListener(), this);
-        pm.registerEvents(new OnEXPBottleThrownListener(), this);
+
+        if (serverType != ServerType.HARDCORE_VANILLA) {
+            pm.registerEvents(new OnEXPBottleThrownListener(), this);
+        }
 
         // Skyblock PVP listener
         if (serverType == ServerType.SKYBLOCK) {
@@ -287,7 +290,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         manager.registerCommand(new Discord_command());
         manager.registerCommand(new Wiki_command());
         manager.registerCommand(new MorphCommand());
-        manager.registerCommand(new GetXP_command());
+
+        if (serverType != ServerType.HARDCORE_VANILLA) {
+            manager.registerCommand(new GetXP_command());
+        }
 
         //Servers
         manager.registerCommand(new Survival_command());
