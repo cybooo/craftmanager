@@ -363,6 +363,7 @@ public class VIPMenu_inv implements InventoryProvider {
         OVIPvyhody.add("");
         OVIPvyhody.add("§7Oproti Emerald VIP získáš navíc:");
         OVIPvyhody.add("§e· §fArtMap - kreslení na mapu §a/artmap");
+        OVIPvyhody.add("§e· §fPets - vlastní mazlíček");
         switch (getCurrentServer()) {
             case "Survival": {
                 OVIPvyhody.add("§e· §fMaximální počet residencí 8 (normal 3)");
@@ -386,6 +387,7 @@ public class VIPMenu_inv implements InventoryProvider {
         OVIPvyhody.add("");
         OVIPvyhody.add("§7Oproti Emerald VIP získáš navíc:");
         OVIPvyhody.add("§e· §fArtMap - kreslení na mapu §a/artmap");
+        OVIPvyhody.add("§e· §fPets - vlastní mazlíček");
         OVIPvyhody.add("");
         OVIPvyhody.add("§7Lobby extra server výhody:");
         OVIPvyhody.add("§e· §fFly libovolně na lobby");
