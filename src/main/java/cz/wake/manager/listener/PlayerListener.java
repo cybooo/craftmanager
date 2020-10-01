@@ -58,9 +58,11 @@ public class PlayerListener implements Listener {
 
         //ScoreboardManager
         if (Main.getInstance().getScoreboardManager() != null) { // Null když je vypnutý
-            Main.getInstance().getServer().getScheduler().runTaskLater(Main.getInstance(), () -> {
-                Main.getInstance().getScoreboardManager().setupPlayer(p);
-            }, 10L);
+            if (Main.getInstance().getMySQL().getSettings(p, "show_scoreboard") == 1) {
+                Main.getInstance().getServer().getScheduler().runTaskLater(Main.getInstance(), () -> {
+                    Main.getInstance().getScoreboardManager().setupPlayer(p);
+                }, 10L);
+            }
         }
 
         if (Main.getServerType() == ServerType.HARDCORE_VANILLA) {
