@@ -1,9 +1,6 @@
 package cz.wake.manager;
 
 import co.aikar.commands.PaperCommandManager;
-import com.comphenix.protocol.PacketType;
-import com.comphenix.protocol.ProtocolLibrary;
-import com.comphenix.protocol.events.ListenerPriority;
 import cz.craftmania.craftlibs.sentry.CraftSentry;
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
@@ -19,7 +16,6 @@ import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.perks.twerking.TwerkEvent;
 import cz.wake.manager.servers.global.LeaveDecayListener;
 import cz.wake.manager.servers.hvanilla.BanTimesListener;
-import cz.wake.manager.servers.hvanilla.HardcorePacketListener;
 import cz.wake.manager.servers.skycloud.ItemDropListener;
 import cz.wake.manager.servers.skycloud.VillagerDamageListener;
 import cz.wake.manager.servers.skycloud.VillagerManager;
@@ -68,7 +64,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private static DataOutputStream out = new DataOutputStream(b);
     private SQLManager sql;
     private boolean testing = false;
-    private ItemDB itemdb;
     private static String mentionPrefix;
     private Economy econ;
     private ConfigAPI configAPI;
@@ -129,7 +124,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Nastaveni hodnot
         testing = getConfig().getBoolean("testing");
-        itemdb = new ItemDB(this);
 
         // Bungee channels
         Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
@@ -234,6 +228,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new CommandListener(), this);
         pm.registerEvents(new PlayerLoginListener(), this);
 
+        if (serverType != ServerType.HARDCORE_VANILLA) {
+            pm.registerEvents(new OnEXPBottleThrownListener(), this);
+        }
+
         // Skyblock PVP listener
         if (serverType == ServerType.SKYBLOCK) {
             pm.registerEvents(new SkyblockPVPListener(), this);
@@ -293,13 +291,15 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         manager.registerCommand(new Wiki_command());
         manager.registerCommand(new MorphCommand());
 
+        if (serverType != ServerType.HARDCORE_VANILLA) {
+            manager.registerCommand(new GetXP_command());
+        }
+
         //Servers
         manager.registerCommand(new Survival_command());
-        manager.registerCommand(new Survival2_command());
         manager.registerCommand(new Skyblock_command());
-        manager.registerCommand(new Skyblock2_command());
         manager.registerCommand(new Creative_command());
-        manager.registerCommand(new Prison_command());
+        //manager.registerCommand(new Prison_command());
         manager.registerCommand(new Vanilla_command());
         manager.registerCommand(new Skycloud_command());
 
@@ -377,10 +377,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public ServerFactory getServerFactory() {
         return sf;
-    }
-
-    public ItemDB getItemdb() {
-        return itemdb;
     }
 
     public Economy getEconomy() {

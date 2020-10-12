@@ -2,7 +2,6 @@ package cz.wake.manager.listener;
 
 import cz.wake.manager.Main;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
@@ -15,7 +14,7 @@ public class PlayerLoginListener implements Listener {
         int reservedSlots = Main.getInstance().getConfig().getInt("reservedSlots");
         int playerCount = Bukkit.getOnlinePlayers().size();
 
-        if (playerCount < totalSlots || e.getPlayer().getName().equals("MrWakeCZ")) { //Jestli momentálních hráčů je méně než slotů povolených, hráče to připojí
+        if (playerCount < totalSlots || e.getPlayer().hasPermission("craftmania.at")) { //Jestli momentálních hráčů je méně než slotů povolených, hráče to připojí
             return;
         } else {
             if (e.getPlayer().hasPermission("craftmanager.vip.login-bypass")) {

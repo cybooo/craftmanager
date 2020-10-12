@@ -28,7 +28,7 @@ public class CshopMainMenu implements InventoryProvider {
                 .setLore("§7CraftCoins: §f" + CraftCoinsAPI.getCoins(player) + " CC", "§7CraftTokens: §f" + CraftTokensAPI.getTokens(player) + " CT", "§7VoteTokens: §f" + VoteTokensAPI.getVoteTokens(player) + " VT", "§7EventPoints: §f" + EventPointsAPI.getEventPoints(player), "§7Karma: §f0").setSkullOwner(player.getName()).build();
         contents.set(0, 1, ClickableItem.of(playerHead, item -> {}));
 
-        ItemStack tags = ItemFactory.create(Material.NAME_TAG, (byte) 0, "§bTags (za CraftCoiny)", "§7Zakup si tag před nick", "§7nebo si vytvoř vlastní!", "", "§eKlikni pro otevření menu");
+        ItemStack tags = ItemFactory.create(Material.NAME_TAG, "§bTags (za CraftCoiny)", "§7Zakup si tag před nick", "§7nebo si vytvoř vlastní!", "", "§eKlikni pro otevření menu");
         contents.set(2, 1, ClickableItem.of(tags, item -> {
             player.performCommand("tags");
         }));

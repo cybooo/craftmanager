@@ -123,6 +123,15 @@ public class BanTimesListener implements Listener {
         if (damager instanceof Skeleton) {
             performTimedBand(player, 4, "Skeleton");
         }
+        if (damager instanceof Zoglin) {
+            performTimedBand(player, 4, "Zoglin");
+        }
+        if (damager instanceof Piglin) {
+            performTimedBand(player, 6, "Piglin");
+        }
+        if (damager instanceof Hoglin) {
+            performTimedBand(player, 3, "Hoglin");
+        }
         if (damager instanceof Arrow) {
             Arrow arrow = (Arrow)damager;
             if (arrow.getShooter() instanceof Skeleton) { // Skeleton

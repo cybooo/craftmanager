@@ -5,7 +5,7 @@ import cz.wake.manager.commads.staff.RestartManager_command;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.utils.ServerType;
 import cz.wake.manager.utils.scoreboard.ScoreboardManager;
-import de.myzelyam.api.vanish.PlayerShowEvent;
+//import de.myzelyam.api.vanish.PlayerShowEvent;
 import org.bukkit.GameMode;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -58,9 +58,11 @@ public class PlayerListener implements Listener {
 
         //ScoreboardManager
         if (Main.getInstance().getScoreboardManager() != null) { // Null když je vypnutý
-            Main.getInstance().getServer().getScheduler().runTaskLater(Main.getInstance(), () -> {
-                Main.getInstance().getScoreboardManager().setupPlayer(p);
-            }, 10L);
+            if (Main.getInstance().getMySQL().getSettings(p, "show_scoreboard") == 1) {
+                Main.getInstance().getServer().getScheduler().runTaskLater(Main.getInstance(), () -> {
+                    Main.getInstance().getScoreboardManager().setupPlayer(p);
+                }, 10L);
+            }
         }
 
         if (Main.getServerType() == ServerType.HARDCORE_VANILLA) {
@@ -220,13 +222,13 @@ public class PlayerListener implements Listener {
         }
     }
 
-    @EventHandler
+    /*@EventHandler
     public void onShow(PlayerShowEvent e) {
         Player p = e.getPlayer();
         if (Main.getInstance().getScoreboardManager() != null) {
             Main.getInstance().getScoreboardManager().removePlayer(p);
             Main.getInstance().getScoreboardManager().setupPlayer(p);
         }
-    }
+    }*/
 
 }

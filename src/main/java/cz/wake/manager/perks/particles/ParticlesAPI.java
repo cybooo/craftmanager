@@ -45,256 +45,256 @@ public class ParticlesAPI implements Listener {
 
         if (p.hasPermission("craftmanager.particles.hearts")) {
             if (Hearts.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.APPLE, (byte) 0, "§eHearts", "§7Kliknutim deaktivujes!");
+                ItemStack i = ItemFactory.create(Material.APPLE, "§eHearts", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(10, i);
             } else {
-                ItemStack i = ItemFactory.create(Material.APPLE, (byte) 0, "§eHearts", "§7Kliknutim aktivujes!");
+                ItemStack i = ItemFactory.create(Material.APPLE, "§eHearts", "§7Kliknutim aktivujes!");
                 inv.setItem(10, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cHearts", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, "§cHearts", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(10, i);
         }
         if (p.hasPermission("craftmanager.particles.angry")) {
             if (Angry.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.BLAZE_POWDER, (byte) 0, "§eAngry", "§7Kliknutim deaktivujes!");
+                ItemStack i = ItemFactory.create(Material.BLAZE_POWDER, "§eAngry", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(11, i);
             } else {
-                ItemStack i = ItemFactory.create(Material.BLAZE_POWDER, (byte) 0, "§eAngry", "§7Kliknutim aktivujes!");
+                ItemStack i = ItemFactory.create(Material.BLAZE_POWDER, "§eAngry", "§7Kliknutim aktivujes!");
                 inv.setItem(11, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cAngry", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, "§cAngry", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(11, i);
         }
         if (p.hasPermission("craftmanager.particles.whitemagic")) {
             if (WhiteMagic.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.BONE, (byte) 0, "§eWhite Magic", "§7Kliknutim deaktivujes!");
+                ItemStack i = ItemFactory.create(Material.BONE, "§eWhite Magic", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(12, i);
             } else {
-                ItemStack i = ItemFactory.create(Material.BONE, (byte) 0, "§eWhite Magic", "§7Kliknutim aktivujes!");
+                ItemStack i = ItemFactory.create(Material.BONE, "§eWhite Magic", "§7Kliknutim aktivujes!");
                 inv.setItem(12, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cWhite Magic", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, "§cWhite Magic", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(12, i);
         }
         if (p.hasPermission("craftmanager.particles.witchmagic")) {
             if (WitchMagic.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.FERMENTED_SPIDER_EYE, (byte) 0, "§eWitch Magic", "§7Kliknutim deaktivujes!");
+                ItemStack i = ItemFactory.create(Material.FERMENTED_SPIDER_EYE, "§eWitch Magic", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(13, i);
             } else {
-                ItemStack i = ItemFactory.create(Material.FERMENTED_SPIDER_EYE, (byte) 0, "§eWitch Magic", "§7Kliknutim aktivujes!");
+                ItemStack i = ItemFactory.create(Material.FERMENTED_SPIDER_EYE, "§eWitch Magic", "§7Kliknutim aktivujes!");
                 inv.setItem(13, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cWitch Magic", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, "§cWitch Magic", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(13, i);
         }
         if (p.hasPermission("craftmanager.particles.slime")) {
             if (Slime.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.SLIME_BALL, (byte) 0, "§eSlime", "§7Kliknutim deaktivujes!");
+                ItemStack i = ItemFactory.create(Material.SLIME_BALL, "§eSlime", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(14, i);
             } else {
-                ItemStack i = ItemFactory.create(Material.SLIME_BALL, (byte) 0, "§eSlime", "§7Kliknutim aktivujes!");
+                ItemStack i = ItemFactory.create(Material.SLIME_BALL, "§eSlime", "§7Kliknutim aktivujes!");
                 inv.setItem(14, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cSlime", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, "§cSlime", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(14, i);
         }
         if (p.hasPermission("craftmanager.particles.snowball")) {
             if (Snowball.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.SNOWBALL, (byte) 0, "§eSnow", "§7Kliknutim deaktivujes!");
+                ItemStack i = ItemFactory.create(Material.SNOWBALL, "§eSnow", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(15, i);
             } else {
-                ItemStack i = ItemFactory.create(Material.SNOWBALL, (byte) 0, "§eSnow", "§7Kliknutim aktivujes!");
+                ItemStack i = ItemFactory.create(Material.SNOWBALL, "§eSnow", "§7Kliknutim aktivujes!");
                 inv.setItem(15, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cSnow", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, "§cSnow", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(15, i);
         }
         if (p.hasPermission("craftmanager.particles.flame")) {
             if (Flame.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.BLAZE_POWDER, (byte) 0, "§eFlame", "§7Kliknutim deaktivujes!");
+                ItemStack i = ItemFactory.create(Material.BLAZE_POWDER, "§eFlame", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(16, i);
             } else {
-                ItemStack i = ItemFactory.create(Material.BLAZE_POWDER, (byte) 0, "§eFlame", "§7Kliknutim aktivujes!");
+                ItemStack i = ItemFactory.create(Material.BLAZE_POWDER, "§eFlame", "§7Kliknutim aktivujes!");
                 inv.setItem(16, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cFlame", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, "§cFlame", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(16, i);
         }
         if (p.hasPermission("craftmanager.particles.redstone")) {
             if (Redstone.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.REDSTONE, (byte) 0, "§eRedstone", "§7Kliknutim deaktivujes!");
+                ItemStack i = ItemFactory.create(Material.REDSTONE, "§eRedstone", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(19, i);
             } else {
-                ItemStack i = ItemFactory.create(Material.REDSTONE, (byte) 0, "§eRedstone", "§7Kliknutim aktivujes!");
+                ItemStack i = ItemFactory.create(Material.REDSTONE, "§eRedstone", "§7Kliknutim aktivujes!");
                 inv.setItem(19, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cRedstone", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, "§cRedstone", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(19, i);
         }
         if (p.hasPermission("craftmanager.particles.cloud")) {
             if (Cloud.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.QUARTZ, (byte) 0, "§eCloud", "§7Kliknutim deaktivujes!");
+                ItemStack i = ItemFactory.create(Material.QUARTZ, "§eCloud", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(20, i);
             } else {
-                ItemStack i = ItemFactory.create(Material.QUARTZ, (byte) 0, "§eCloud", "§7Kliknutim aktivujes!");
+                ItemStack i = ItemFactory.create(Material.QUARTZ, "§eCloud", "§7Kliknutim aktivujes!");
                 inv.setItem(20, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cCloud", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, "§cCloud", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(20, i);
         }
         if (p.hasPermission("craftmanager.particles.enchanted")) {
             if (Enchanted.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.BOOK, (byte) 0, "§eEnchanted", "§7Kliknutim deaktivujes!");
+                ItemStack i = ItemFactory.create(Material.BOOK, "§eEnchanted", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(21, i);
             } else {
-                ItemStack i = ItemFactory.create(Material.BOOK, (byte) 0, "§eEnchanted", "§7Kliknutim aktivujes!");
+                ItemStack i = ItemFactory.create(Material.BOOK, "§eEnchanted", "§7Kliknutim aktivujes!");
                 inv.setItem(21, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cEnchanted", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, "§cEnchanted", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(21, i);
         }
         if (p.hasPermission("craftmanager.particles.endrod")) {
             if (EndRod.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.END_ROD, (byte) 0, "§eEndRod", "§7Kliknutim deaktivujes!");
+                ItemStack i = ItemFactory.create(Material.END_ROD, "§eEndRod", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(22, i);
             } else {
-                ItemStack i = ItemFactory.create(Material.END_ROD, (byte) 0, "§eEndRod", "§7Kliknutim aktivujes!");
+                ItemStack i = ItemFactory.create(Material.END_ROD, "§eEndRod", "§7Kliknutim aktivujes!");
                 inv.setItem(22, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cEnd Rod", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, "§cEnd Rod", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(22, i);
         }
         if (p.hasPermission("craftmanager.particles.firework")) {
             if (Firework.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.FIREWORK_ROCKET, (byte) 0, "§eFirework", "§7Kliknutim deaktivujes!");
+                ItemStack i = ItemFactory.create(Material.FIREWORK_ROCKET, "§eFirework", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(23, i);
             } else {
-                ItemStack i = ItemFactory.create(Material.FIREWORK_ROCKET, (byte) 0, "§eFirework", "§7Kliknutim aktivujes!");
+                ItemStack i = ItemFactory.create(Material.FIREWORK_ROCKET, "§eFirework", "§7Kliknutim aktivujes!");
                 inv.setItem(23, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cFirework", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, "§cFirework", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(23, i);
         }
         if (p.hasPermission("craftmanager.particles.dragonbreath")) {
             if (DragonBreath.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.DRAGON_BREATH, (byte) 0, "§eDragonBreath", "§7Kliknutim deaktivujes!");
+                ItemStack i = ItemFactory.create(Material.DRAGON_BREATH, "§eDragonBreath", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(24, i);
             } else {
-                ItemStack i = ItemFactory.create(Material.DRAGON_BREATH, (byte) 0, "§eDragonBreath", "§7Kliknutim aktivujes!");
+                ItemStack i = ItemFactory.create(Material.DRAGON_BREATH, "§eDragonBreath", "§7Kliknutim aktivujes!");
                 inv.setItem(24, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cDragonBreath", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, "§cDragonBreath", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(24, i);
         }
         if (p.hasPermission("craftmanager.particles.portal")) {
             if (Portal.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.OBSIDIAN, (byte) 0, "§ePortal", "§7Kliknutim deaktivujes!");
+                ItemStack i = ItemFactory.create(Material.OBSIDIAN, "§ePortal", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(25, i);
             } else {
-                ItemStack i = ItemFactory.create(Material.OBSIDIAN, (byte) 0, "§ePortal", "§7Kliknutim aktivujes!");
+                ItemStack i = ItemFactory.create(Material.OBSIDIAN, "§ePortal", "§7Kliknutim aktivujes!");
                 inv.setItem(25, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cPortal", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, "§cPortal", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(25, i);
         }
         if (p.hasPermission("craftmanager.particles.lava")) {
             if (Lava.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.LAVA_BUCKET, (byte) 0, "§eLava", "§7Kliknutim deaktivujes!");
+                ItemStack i = ItemFactory.create(Material.LAVA_BUCKET, "§eLava", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(28, i);
             } else {
-                ItemStack i = ItemFactory.create(Material.LAVA_BUCKET, (byte) 0, "§eLava", "§7Kliknutim aktivujes!");
+                ItemStack i = ItemFactory.create(Material.LAVA_BUCKET, "§eLava", "§7Kliknutim aktivujes!");
                 inv.setItem(28, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cLava", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, "§cLava", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(28, i);
         }
         if (p.hasPermission("craftmanager.particles.smoke")) {
             if (Smoke.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.COAL, (byte) 0, "§eSmoke", "§7Kliknutim deaktivujes!");
+                ItemStack i = ItemFactory.create(Material.COAL, "§eSmoke", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(29, i);
             } else {
-                ItemStack i = ItemFactory.create(Material.COAL, (byte) 0, "§eSmoke", "§7Kliknutim aktivujes!");
+                ItemStack i = ItemFactory.create(Material.COAL, "§eSmoke", "§7Kliknutim aktivujes!");
                 inv.setItem(29, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cSmoke", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, "§cSmoke", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(29, i);
         }
         if (p.hasPermission("craftmanager.particles.happy")) {
             if (Happy.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.EMERALD, (byte) 0, "§eHappy", "§7Kliknutim deaktivujes!");
+                ItemStack i = ItemFactory.create(Material.EMERALD, "§eHappy", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(30, i);
             } else {
-                ItemStack i = ItemFactory.create(Material.EMERALD, (byte) 0, "§eHappy", "§7Kliknutim aktivujes!");
+                ItemStack i = ItemFactory.create(Material.EMERALD, "§eHappy", "§7Kliknutim aktivujes!");
                 inv.setItem(30, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cHappy", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, "§cHappy", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(30, i);
         }
         if (p.hasPermission("craftmanager.particles.blackhearts")) {
             if (BlackHearts.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.IRON_SWORD, (byte) 0, "§eBlackHearts", "§7Kliknutim deaktivujes!");
+                ItemStack i = ItemFactory.create(Material.IRON_SWORD, "§eBlackHearts", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(31, i);
             } else {
-                ItemStack i = ItemFactory.create(Material.IRON_SWORD, (byte) 0, "§eBlackHearts", "§7Kliknutim aktivujes!");
+                ItemStack i = ItemFactory.create(Material.IRON_SWORD, "§eBlackHearts", "§7Kliknutim aktivujes!");
                 inv.setItem(31, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cBlackHearts", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, "§cBlackHearts", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(31, i);
         }
         if (p.hasPermission("craftmanager.particles.void")) {
             if (cz.wake.manager.perks.particles.vip.Void.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.BEDROCK, (byte) 0, "§eVoid", "§7Kliknutim deaktivujes!");
+                ItemStack i = ItemFactory.create(Material.BEDROCK, "§eVoid", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
                 inv.setItem(32, i);
             } else {
-                ItemStack i = ItemFactory.create(Material.BEDROCK, (byte) 0, "§eVoid", "§7Kliknutim aktivujes!");
+                ItemStack i = ItemFactory.create(Material.BEDROCK, "§eVoid", "§7Kliknutim aktivujes!");
                 inv.setItem(32, i);
             }
         } else {
-            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, (byte) 8, "§cVoid", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
+            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, "§cVoid", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(32, i);
         }
 
-        ItemStack deaktivace = ItemFactory.create(Material.BARRIER, (byte) 0, "§c✖ Deaktivace ✖", "§7Kliknutim deaktivujes particles.");
+        ItemStack deaktivace = ItemFactory.create(Material.BARRIER, "§c✖ Deaktivace ✖", "§7Kliknutim deaktivujes particles.");
         inv.setItem(49, deaktivace);
 
-        ItemStack zpet = ItemFactory.create(Material.ARROW, (byte) 0, "§cZpet do menu");
+        ItemStack zpet = ItemFactory.create(Material.ARROW, "§cZpet do menu");
         inv.setItem(48, zpet);
 
         p.openInventory(inv);

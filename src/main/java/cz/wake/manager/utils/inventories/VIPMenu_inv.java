@@ -239,7 +239,6 @@ public class VIPMenu_inv implements InventoryProvider {
         DVIPvyhody.add("§7Oproti Golden VIP získáš navíc:");
         DVIPvyhody.add("§e· §fNEO - Zobrazení spawnratu mobu §a/ll");
         DVIPvyhody.add("§e· §fNastavení vlastního času §a/ptime");
-        DVIPvyhody.add("§e· §fNastavení vlastního počasí §a/pweather");
         DVIPvyhody.add("§e· §fInspekce zníčených bloků §a/co inspect");
         DVIPvyhody.add("§e· §fMožnost vypnout si zobrazování veřejného chatu");
         DVIPvyhody.add("§e· §fOchrana proti dropům expů (neplatí pro PvP)");
@@ -261,7 +260,6 @@ public class VIPMenu_inv implements InventoryProvider {
         DVIPvyhody.add("§7Oproti Golden VIP získáš navíc:");
         DVIPvyhody.add("§e· §fNEO - Zobrazení spawnratu mobu §a/ll");
         DVIPvyhody.add("§e· §fNastavení vlastního času §a/ptime");
-        DVIPvyhody.add("§e· §fNastavení vlastního počasí §a/pweather");
         DVIPvyhody.add("§e· §fInspekce zníčených bloků §a/co inspect");
         DVIPvyhody.add("§e· §fMožnost vypnout si zobrazování veřejného chatu");
         DVIPvyhody.add("§e· §fOchrana proti dropům expů (neplatí pro PvP)");
@@ -365,6 +363,7 @@ public class VIPMenu_inv implements InventoryProvider {
         OVIPvyhody.add("");
         OVIPvyhody.add("§7Oproti Emerald VIP získáš navíc:");
         OVIPvyhody.add("§e· §fArtMap - kreslení na mapu §a/artmap");
+        OVIPvyhody.add("§e· §fPets - vlastní mazlíček");
         switch (getCurrentServer()) {
             case "Survival": {
                 OVIPvyhody.add("§e· §fMaximální počet residencí 8 (normal 3)");
@@ -388,6 +387,7 @@ public class VIPMenu_inv implements InventoryProvider {
         OVIPvyhody.add("");
         OVIPvyhody.add("§7Oproti Emerald VIP získáš navíc:");
         OVIPvyhody.add("§e· §fArtMap - kreslení na mapu §a/artmap");
+        OVIPvyhody.add("§e· §fPets - vlastní mazlíček");
         OVIPvyhody.add("");
         OVIPvyhody.add("§7Lobby extra server výhody:");
         OVIPvyhody.add("§e· §fFly libovolně na lobby");

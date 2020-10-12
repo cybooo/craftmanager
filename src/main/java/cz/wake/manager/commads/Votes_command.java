@@ -104,7 +104,7 @@ public class Votes_command extends BaseCommand implements Listener {
         topAllMeta.setLore(topAllLore);
         topAll.setItemMeta(topAllMeta);
 
-        ItemStack hlasy = ItemFactory.create(Material.GOLD_INGOT, (byte) 0, "§e§lOdmeny za hlasovani",
+        ItemStack hlasy = ItemFactory.create(Material.GOLD_INGOT, "§e§lOdmeny za hlasovani",
                 "",
                 "§fKazdy hlas: §610 CC §f+ §aVoteToken",
                 "§f25% sance: §625 CC",
@@ -116,7 +116,7 @@ public class Votes_command extends BaseCommand implements Listener {
                 "§f40 hlasu: §6300 CC",
                 "§f60 hlasu: §6500 CC");
 
-        ItemStack odmeny = ItemFactory.create(Material.DIAMOND, (byte)0, "§b§lOdmeny pro TOP 5 hrace",
+        ItemStack odmeny = ItemFactory.create(Material.DIAMOND, "§b§lOdmeny pro TOP 5 hrace",
                 "",
                 "§7Kazdy mesic odmenujeme TOP 5",
                 "§7hracu v hlasovani kupony na Store!",
