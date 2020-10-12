@@ -400,7 +400,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public boolean isValidMaterial(Material material) {
         String name = String.valueOf(material);
-        return name.endsWith("_AXE") || name.endsWith("_PICKAXE") || name.endsWith("_SPADE") || name.endsWith("_SWORD")
+        return name.endsWith("_AXE") || name.endsWith("_PICKAXE") || name.endsWith("_SHOVEL") || name.endsWith("_SWORD") || name.endsWith("_HOE")
                 || name.endsWith("_HELMET") || name.endsWith("_CHESTPLATE") || name.endsWith("_LEGGINGS") || name.endsWith("_BOOTS")
                 || name.equalsIgnoreCase("FISHING_ROD") || name.equalsIgnoreCase("FLINT_AND_STEEL") || name.equalsIgnoreCase("BOW") || name.equalsIgnoreCase("CARROT_STICK")
                 || name.equalsIgnoreCase("SHIELD") || name.equalsIgnoreCase("SHEARS");
