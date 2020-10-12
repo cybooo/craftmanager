@@ -1,5 +1,6 @@
 package cz.wake.manager.utils;
 
+import cz.craftmania.craftlibs.utils.DefaultFontInfo;
 import org.bukkit.ChatColor;
 
 public class StringUtils {
