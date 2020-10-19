@@ -264,31 +264,18 @@ public class ParticlesAPI implements Listener {
             ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, "§cHappy", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
             inv.setItem(30, i);
         }
-        if (p.hasPermission("craftmanager.particles.blackhearts")) {
-            if (BlackHearts.e.containsKey(p.getName())) {
-                ItemStack i = ItemFactory.create(Material.IRON_SWORD, "§eBlackHearts", "§7Kliknutim deaktivujes!");
-                i = ItemFactory.addGlow(i);
-                inv.setItem(31, i);
-            } else {
-                ItemStack i = ItemFactory.create(Material.IRON_SWORD, "§eBlackHearts", "§7Kliknutim aktivujes!");
-                inv.setItem(31, i);
-            }
-        } else {
-            ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, "§cBlackHearts", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
-            inv.setItem(31, i);
-        }
         if (p.hasPermission("craftmanager.particles.void")) {
             if (cz.wake.manager.perks.particles.vip.Void.e.containsKey(p.getName())) {
                 ItemStack i = ItemFactory.create(Material.BEDROCK, "§eVoid", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
-                inv.setItem(32, i);
+                inv.setItem(31, i);
             } else {
                 ItemStack i = ItemFactory.create(Material.BEDROCK, "§eVoid", "§7Kliknutim aktivujes!");
-                inv.setItem(32, i);
+                inv.setItem(31, i);
             }
         } else {
             ItemStack i = ItemFactory.create(Material.LIGHT_GRAY_DYE, "§cVoid", "", "§7Tento efekt smi aktivovat pouze: §aVIP");
-            inv.setItem(32, i);
+            inv.setItem(31, i);
         }
 
         ItemStack deaktivace = ItemFactory.create(Material.BARRIER, "§c✖ Deaktivace ✖", "§7Kliknutim deaktivujes particles.");
@@ -488,16 +475,6 @@ public class ParticlesAPI implements Listener {
                 }
             }
             if (e.getSlot() == 31) {
-                if (p.hasPermission("craftmanager.particles.blackhearts")) {
-                    deactivateParticles(p);
-                    this.bh.activate(p);
-                    p.closeInventory();
-                } else {
-                    p.sendMessage("§cK aktivaci tohoto efektu musis mit VIP!");
-                    p.closeInventory();
-                }
-            }
-            if (e.getSlot() == 32) {
                 if (p.hasPermission("craftmanager.particles.void")) {
                     deactivateParticles(p);
                     this.vo.activate(p);
