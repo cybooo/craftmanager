@@ -37,6 +37,16 @@ public class DisguiseGUI implements InventoryProvider {
                 .setLore("§7Kliknutím se změníš na Blaze.")
                 .setDisguiseType(DisguiseType.BLAZE)
                 .setRequiredPermission("craftmanager.disguise.blaze"));
+        list.add(new DisguiseItem().setName("§cSkeleton")
+                .setItemStack(Material.BONE)
+                .setLore("§7Kliknutím se změníš na Skeletona.")
+                .setDisguiseType(DisguiseType.SKELETON)
+                .setRequiredPermission("craftmanager.disguise.skeleton"));
+        list.add(new DisguiseItem().setName("§eIron Golem")
+                .setItemStack(Material.IRON_INGOT)
+                .setLore("§7Kliknutím se změníš na Iron Golema.")
+                .setDisguiseType(DisguiseType.IRON_GOLEM)
+                .setRequiredPermission("craftmanager.disguise.iron_golem"));
 
         return list;
     }
