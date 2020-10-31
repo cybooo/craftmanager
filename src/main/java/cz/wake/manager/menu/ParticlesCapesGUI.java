@@ -6,6 +6,7 @@ import cz.craftmania.craftcore.spigot.inventory.builder.content.InventoryContent
 import cz.craftmania.craftcore.spigot.inventory.builder.content.InventoryProvider;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.perks.particles.capes.ChristmasCape;
+import cz.wake.manager.perks.particles.capes.SpookyCape;
 import cz.wake.manager.perks.particles.capes.SummerSplash;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -15,6 +16,7 @@ public class ParticlesCapesGUI implements InventoryProvider {
     ChristmasCape christmasCape = new ChristmasCape();
     ParticlesAPI particlesAPI = new ParticlesAPI();
     SummerSplash summerSplash = new SummerSplash();
+    SpookyCape spookyCape = new SpookyCape();
 
     @Override
     public void init(Player player, InventoryContents contents) {
@@ -39,6 +41,16 @@ public class ParticlesCapesGUI implements InventoryProvider {
             }));
         } else {
             contents.set(2, 3, ClickableItem.of(new ItemBuilder(Material.BARRIER).setName("§c§lSummerSplash Cape").setLore("§7Lze získat pouze pomocí", "§7nákupu SummerSplash 2020 klíče.").build(), e -> { }));
+        }
+
+        if (player.hasPermission("craftmanager.particles.cape.spooky_cape")) {
+            contents.set(2, 4, ClickableItem.of(new ItemBuilder(Material.BONE).setName("§8§lSpooky §f§lCape").setLore("§7Speciální Halloween Cape", "", "§aKlikni k aktivaci!").build(), e -> {
+                particlesAPI.deaktivateCapes(player);
+                spookyCape.activate(player);
+                player.closeInventory();
+            }));
+        } else {
+            contents.set(2, 4, ClickableItem.of(new ItemBuilder(Material.BARRIER).setName("§c§lSpooky Cape").setLore("§7Lze získat pouze pomocí", "§7nákupu Halloween 2020 klíče.").build(), e -> { }));
         }
 
         contents.set(5, 4, ClickableItem.of(new ItemBuilder(Material.RED_DYE).setName("§c§lDeaktivovat").build(), e -> {
