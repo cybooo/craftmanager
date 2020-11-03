@@ -21,6 +21,7 @@ public class ScoreboardProvider {
 
     public void updateCache() {
         Log.withPrefix("[Scoreboard] Caching...");
+        Main.getInstance().getConfigAPI().loadConfigs();
         Config configLines = Main.getInstance().getConfigAPI().getConfig("scoreboardConfig");
         if (configLines != null) {
             String lineEscape = "§d";
