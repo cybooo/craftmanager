@@ -155,6 +155,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             this.getServer().addRecipe(CustomCrafting.getSaddleRecipe());
             this.getServer().addRecipe(CustomCrafting.getCoarseDirtRecipe());
         }
+        this.getServer().addRecipe(CustomCrafting.getInvisibleItemFrame());
 
         // Nastaveni mention prefixu
         mentionPrefix = Main.getInstance().getConfig().getString("mentions.prefix");
@@ -227,6 +228,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new PlayerCommandSendListener(this), this);
         pm.registerEvents(new CommandListener(), this);
         pm.registerEvents(new PlayerLoginListener(), this);
+        pm.registerEvents(new InvisibleItemFrameListener(), this);
 
         if (serverType != ServerType.HARDCORE_VANILLA) {
             pm.registerEvents(new OnEXPBottleThrownListener(), this);
