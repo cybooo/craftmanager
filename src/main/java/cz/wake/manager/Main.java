@@ -31,7 +31,6 @@ import cz.wake.manager.utils.scoreboard.ScoreboardProvider;
 import cz.wake.manager.utils.tasks.ATAfkTask;
 import cz.wake.manager.utils.tasks.*;
 import cz.wake.manager.commads.VIP_command;
-import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.Material;
@@ -65,7 +64,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private SQLManager sql;
     private boolean testing = false;
     private static String mentionPrefix;
-    private Economy econ;
     private ConfigAPI configAPI;
     private CshopManager cshopManager;
     private static ScoreboardManager scoreboardManager = null;
@@ -389,10 +387,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public ServerFactory getServerFactory() {
         return sf;
-    }
-
-    public Economy getEconomy() {
-        return econ;
     }
 
     @Override
