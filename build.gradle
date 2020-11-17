@@ -78,7 +78,7 @@ dependencies {
         exclude group: 'io.github.jorelali'
     }
     compileOnly 'cz.craftmania.craftlibs:craftlibs:1.1.5'
-    compileOnly name: 'spigot-1.16.2'
+    compileOnly name: 'spigot-1.16.4'
 
     // Prometheus
     compile group: 'io.prometheus', name: 'simpleclient', version: '0.6.0'

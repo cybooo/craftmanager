@@ -1,11 +1,11 @@
 package cz.wake.manager.utils;
 
-import net.minecraft.server.v1_16_R2.NBTTagCompound;
-import net.minecraft.server.v1_16_R2.NBTTagList;
+import net.minecraft.server.v1_16_R3.NBTTagCompound;
+import net.minecraft.server.v1_16_R3.NBTTagList;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_16_R2.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_16_R3.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -44,7 +44,7 @@ public class ItemFactory {
     }
 
     public static org.bukkit.inventory.ItemStack createHead(String name, String uuid, String textureData) {
-        net.minecraft.server.v1_16_R2.ItemStack sHead = CraftItemStack.asNMSCopy(new org.bukkit.inventory.ItemStack(Material.LEGACY_SKULL_ITEM, 1, (short) 3));
+        net.minecraft.server.v1_16_R3.ItemStack sHead = CraftItemStack.asNMSCopy(new org.bukkit.inventory.ItemStack(Material.LEGACY_SKULL_ITEM, 1, (short) 3));
 
         NBTTagCompound tag = new NBTTagCompound();
         NBTTagCompound skullOwnerTag = new NBTTagCompound();
@@ -85,7 +85,7 @@ public class ItemFactory {
 
     public static ItemStack addGlow(ItemStack item) {
         try {
-            net.minecraft.server.v1_16_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(item);
+            net.minecraft.server.v1_16_R3.ItemStack nmsStack = CraftItemStack.asNMSCopy(item);
             NBTTagCompound tag = null;
             if (!nmsStack.hasTag()) {
                 tag = new NBTTagCompound();
@@ -104,7 +104,7 @@ public class ItemFactory {
 
     public static String convertItemStackToJsonRegular(ItemStack itemStack) {
         // First we convert the item stack into an NMS itemstack
-        net.minecraft.server.v1_16_R2.ItemStack nmsItemStack = CraftItemStack.asNMSCopy(itemStack);
+        net.minecraft.server.v1_16_R3.ItemStack nmsItemStack = CraftItemStack.asNMSCopy(itemStack);
         NBTTagCompound compound = new NBTTagCompound();
         compound = nmsItemStack.save(compound);
 
