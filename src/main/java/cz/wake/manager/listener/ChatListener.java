@@ -1,10 +1,7 @@
 package cz.wake.manager.listener;
 
-import cz.craftmania.craftcore.spigot.messages.Advancement;
-import cz.craftmania.craftcore.spigot.messages.handler.AdvancementManager;
 import cz.wake.manager.Main;
 import org.bukkit.Bukkit;
-import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -65,11 +62,6 @@ public class ChatListener implements Listener {
                     _toSend.clear();
                     if (msg.toLowerCase().contains(onlinePlayer.getName().toLowerCase())) {
                         pingPlayer(onlinePlayer, Main.getInstance().getMySQL().getSettingsString(onlinePlayer, "mention_sound"));
-                        Advancement.builder(new NamespacedKey(Main.getInstance(), "craftmanager"))
-                                .title("Byl jsi zminen v chatu hracem §b" + writingPlayer.getName()).description("_").icon("minecraft:experience_bottle")
-                                .announce(false).hidden(false).toast(true).frame(AdvancementManager.FrameType.GOAL).build()
-                                .show(Main.getInstance(), onlinePlayer);
-                        //msg = msg.replace(onlinePlayer.getName(), "§c" + onlinePlayer.getName() + "§r");
                         return;
                     }
                     // helper, builder, eventer, admin, staff
@@ -79,11 +71,6 @@ public class ChatListener implements Listener {
                                 .forEach(pl -> _toSend.add(pl));
                         _toSend.forEach(pl -> { //Posilani advancement
                             pingPlayer(pl, Main.getInstance().getMySQL().getSettingsString(pl, "mention_sound")); //posilani cinknuti
-                            Advancement.builder(new NamespacedKey(Main.getInstance(), "craftmanager"))
-                                    .title("Byl jsi zminen v chatu hracem §b" + writingPlayer.getName()).description("_")
-                                    .icon("minecraft:experience_bottle")
-                                    .announce(false).hidden(false).toast(true).frame(AdvancementManager.FrameType.GOAL).build()
-                                    .show(Main.getInstance(), pl);
                         });
                         //msg = msg.replace(prefix + "helper", "§c" + prefix + "helper" + "§r");
                     }
@@ -93,10 +80,6 @@ public class ChatListener implements Listener {
                                 .forEach(pl -> _toSend.add(pl));
                         _toSend.forEach(pl -> { //Posilani advancement
                             pingPlayer(pl, Main.getInstance().getMySQL().getSettingsString(pl, "mention_sound")); //posilani cinknuti
-                            Advancement.builder(new NamespacedKey(Main.getInstance(), "craftmanager"))
-                                    .title("Byl jsi zminen v chatu §b" + writingPlayer.getName()).description("_").icon("minecraft:experience_bottle")
-                                    .announce(false).hidden(false).toast(true).frame(AdvancementManager.FrameType.GOAL).build()
-                                    .show(Main.getInstance(), pl);
                         });
                         //msg = msg.replace(prefix + "admin", "§c" + prefix + "admin" + "§r");
                     }
@@ -106,10 +89,6 @@ public class ChatListener implements Listener {
                                 .forEach(pl -> _toSend.add(pl));
                         _toSend.forEach(pl -> { //Posilani advancement
                             pingPlayer(pl, Main.getInstance().getMySQL().getSettingsString(pl, "mention_sound")); //posilani cinknuti
-                            Advancement.builder(new NamespacedKey(Main.getInstance(), "craftmanager"))
-                                    .title("Byl jsi zminen v chatu §b" + writingPlayer.getName()).description("_").icon("minecraft:experience_bottle")
-                                    .announce(false).hidden(false).toast(true).frame(AdvancementManager.FrameType.GOAL).build()
-                                    .show(Main.getInstance(), pl);
                         });
                         //msg = msg.replace(prefix + "eventer", "§c" + prefix + "eventer" + "§r");
                     }
@@ -119,10 +98,6 @@ public class ChatListener implements Listener {
                                 .forEach(pl -> _toSend.add(pl));
                         _toSend.forEach(pl -> { //Posilani advancement
                             pingPlayer(pl, Main.getInstance().getMySQL().getSettingsString(pl, "mention_sound")); //posilani cinknuti
-                            Advancement.builder(new NamespacedKey(Main.getInstance(), "craftmanager"))
-                                    .title("Byl jsi zminen v chatu " + writingPlayer.getName()).description("_").icon("minecraft:experience_bottle")
-                                    .announce(false).hidden(false).toast(true).frame(AdvancementManager.FrameType.GOAL).build()
-                                    .show(Main.getInstance(), pl);
                         });
                         //msg = msg.replace(prefix + "builder", "§c" + prefix + "builder" + "§r");
                     }
@@ -132,10 +107,6 @@ public class ChatListener implements Listener {
                                 .forEach(pl -> _toSend.add(pl));
                         _toSend.forEach(pl -> { //Posilani advancement
                             pingPlayer(pl, Main.getInstance().getMySQL().getSettingsString(pl, "mention_sound")); //posilani cinknuti
-                            Advancement.builder(new NamespacedKey(Main.getInstance(), "craftmanager"))
-                                    .title("Byl jsi zminen v chatu §b" + writingPlayer.getName()).description("_").icon("minecraft:experience_bottle")
-                                    .announce(false).hidden(false).toast(true).frame(AdvancementManager.FrameType.GOAL).build()
-                                    .show(Main.getInstance(), pl);
                         });
                         //msg = msg.replace(prefix + "staff", "§c" + prefix + "staff" + "§r");
                     }
