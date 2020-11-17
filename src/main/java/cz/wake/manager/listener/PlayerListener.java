@@ -10,6 +10,7 @@ import org.bukkit.GameMode;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -21,8 +22,8 @@ public class PlayerListener implements Listener {
 
     private ParticlesAPI partAPI = new ParticlesAPI();
 
-    @EventHandler(ignoreCancelled = true)
-    public void onJoin(PlayerJoinEvent e) {
+    @EventHandler(priority = EventPriority.HIGH)
+    public void onJoin(final PlayerJoinEvent e) {
         final Player p = e.getPlayer();
 
         e.setJoinMessage(null);
@@ -96,7 +97,7 @@ public class PlayerListener implements Listener {
     }
 
     @EventHandler
-    public void onQuit(PlayerQuitEvent e) {
+    public void onQuit(final PlayerQuitEvent e) {
         final Player p = e.getPlayer();
 
         e.setQuitMessage(null);
@@ -136,7 +137,7 @@ public class PlayerListener implements Listener {
     }
 
     @EventHandler
-    public void onKick(PlayerKickEvent e) {
+    public void onKick(final PlayerKickEvent e) {
         final Player p = e.getPlayer();
 
         try {
@@ -221,14 +222,5 @@ public class PlayerListener implements Listener {
             }
         }
     }
-
-    /*@EventHandler
-    public void onShow(PlayerShowEvent e) {
-        Player p = e.getPlayer();
-        if (Main.getInstance().getScoreboardManager() != null) {
-            Main.getInstance().getScoreboardManager().removePlayer(p);
-            Main.getInstance().getScoreboardManager().setupPlayer(p);
-        }
-    }*/
 
 }

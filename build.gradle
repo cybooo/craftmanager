@@ -61,11 +61,11 @@ dependencies {
     compile group: 'commons-io', name: 'commons-io', version: '2.6'
     compileOnly group: 'com.gmail.filoghost.holographicdisplays', name: 'holographicdisplays-api', version: '2.3.3-SNAPSHOT'
     compileOnly "com.github.MilkBowl:VaultAPI:1.7"
-    /*compileOnly ("de.myzelyam:SuperVanish:6.1.0") {
+    compileOnly ("com.github.MyzelYam:SuperVanish:6.2.0") {
         exclude group: 'net.ess3'
         exclude group: 'net.citizensnpcs'
         exclude group: 'be.maximvdw'
-    }*/
+    }
     compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "4.5.0";
 
     // Commands

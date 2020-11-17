@@ -70,6 +70,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private CshopManager cshopManager;
     private static ScoreboardManager scoreboardManager = null;
     private static ScoreboardProvider scoreboardProvider = null;
+    private static boolean isPremiumVanishEnabled = false;
 
     // Commands manager
     private PaperCommandManager manager;
@@ -110,6 +111,11 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             sentry = new CraftSentry(dsn);
         } else {
             Log.normalMessage("Sentry integration neni aktivovana!");
+        }
+
+        // Premium Vanish
+        if (this.getServer().getPluginManager().isPluginEnabled("PremiumVanish")) {
+            isPremiumVanishEnabled = true;
         }
 
         // Register eventu a prikazu
@@ -266,6 +272,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             //ProtocolLibrary.getProtocolManager().addPacketListener(new HardcorePacketListener(this, ListenerPriority.NORMAL, PacketType.Play.Server.LOGIN));
             Log.withPrefix("Aktivace banování hráčů za smrt.");
             pm.registerEvents(new BanTimesListener(), this);
+        }
+
+        if (isPremiumVanishEnabled) {
+            pm.registerEvents(new PlayerVanishListener(), this);
         }
     }
 
@@ -458,6 +468,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public ScoreboardProvider getScoreboardProvider() {
         return scoreboardProvider;
+    }
+
+    public static boolean isIsPremiumVanishEnabled() {
+        return isPremiumVanishEnabled;
     }
 
     /**
