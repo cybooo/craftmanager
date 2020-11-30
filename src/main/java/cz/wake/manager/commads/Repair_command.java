@@ -10,7 +10,7 @@ import cz.wake.manager.utils.Repair;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandAlias("repair")
+@CommandAlias("repairitem|fixitem")
 @Description("Opraví tvůj item v ruce")
 public class Repair_command extends BaseCommand {
 
