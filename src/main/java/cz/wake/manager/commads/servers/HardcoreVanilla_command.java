@@ -10,13 +10,13 @@ import cz.wake.manager.Main;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandAlias("creative")
-@Description("Připojí tě na Creative")
-public class Creative_command extends BaseCommand {
+@CommandAlias("hardcore-vanilla")
+@Description("Připojí tě na Hardcore Vanillu")
+public class HardcoreVanilla_command extends BaseCommand {
 
     @HelpCommand
     public void helpCommand(CommandSender sender, CommandHelp help) {
-        sender.sendMessage("§e§lCreative commands:");
+        sender.sendMessage("§e§lHardcore Vanilla commands:");
         help.showHelp();
     }
 
@@ -25,11 +25,11 @@ public class Creative_command extends BaseCommand {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
             try {
-                player.sendMessage("§e§l[*] §eTeleportuji na server §fCreative");
+                player.sendMessage("§e§l[*] §eTeleportuji na server §fHardcore Vanilla");
                 Main.getInstance().sendToServer(player, "creative");
             } catch (Exception e) {
                 e.printStackTrace();
-                player.sendMessage("§cTeleport na server §fCreative §cse nezdařil!");
+                player.sendMessage("§cTeleport na server §fHardcore Vanilla §cse nezdařil!");
                 Main.getInstance().sendSentryException(e);
             }
         }

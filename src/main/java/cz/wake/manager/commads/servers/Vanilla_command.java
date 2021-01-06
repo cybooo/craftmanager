@@ -31,7 +31,7 @@ public class Vanilla_command extends BaseCommand {
                 Main.getInstance().sendToServer(player, "vanilla");
             } catch (Exception e) {
                 e.printStackTrace();
-                player.sendMessage("§cTeleport na server §fVanilla §cse nezdaril!");
+                player.sendMessage("§cTeleport na server §fVanilla §cse nezdařil!");
                 Main.getInstance().sendSentryException(e);
             }
         }

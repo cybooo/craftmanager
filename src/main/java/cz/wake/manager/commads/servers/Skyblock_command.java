@@ -11,12 +11,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandAlias("skyblock")
-@Description("Připojí tě na Skyblock 1.15")
+@Description("Připojí tě na Skyblock")
 public class Skyblock_command extends BaseCommand {
 
     @HelpCommand
     public void helpCommand(CommandSender sender, CommandHelp help) {
-        sender.sendMessage("§e§lSkyblock 1.15 commands:");
+        sender.sendMessage("§e§lSkyblock commands:");
         help.showHelp();
     }
 
@@ -25,11 +25,11 @@ public class Skyblock_command extends BaseCommand {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
             try {
-                player.sendMessage("§eTeleportuji na server §fSkyblock 1.15");
+                player.sendMessage("§eTeleportuji na server §fSkyblock");
                 Main.getInstance().sendToServer(player, "skyblock");
             } catch (Exception e) {
                 e.printStackTrace();
-                player.sendMessage("§cTeleport na server §fSkyblock 1.15 §cse nezdaril!");
+                player.sendMessage("§cTeleport na server §fSkyblock §cse nezdařil!");
                 Main.getInstance().sendSentryException(e);
             }
         }

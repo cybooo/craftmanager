@@ -29,7 +29,7 @@ public class Skycloud_command extends BaseCommand {
                 Main.getInstance().sendToServer(player, "skycloud");
             } catch (Exception e) {
                 e.printStackTrace();
-                player.sendMessage("§cTeleport na server §fSkyCloud §cse nezdaril!");
+                player.sendMessage("§cTeleport na server §fSkyCloud §cse nezdařil!");
                 Main.getInstance().sendSentryException(e);
             }
         }

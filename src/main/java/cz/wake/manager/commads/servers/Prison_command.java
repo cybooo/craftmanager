@@ -29,7 +29,7 @@ public class Prison_command extends BaseCommand {
                 Main.getInstance().sendToServer(player, "prison");
             } catch (Exception e) {
                 e.printStackTrace();
-                player.sendMessage("§cTeleport na server §fPrison §cse nezdaril!");
+                player.sendMessage("§cTeleport na server §fPrison §cse nezdařil!");
                 Main.getInstance().sendSentryException(e);
             }
         }
