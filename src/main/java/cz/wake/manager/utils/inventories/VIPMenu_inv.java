@@ -137,8 +137,7 @@ public class VIPMenu_inv implements InventoryProvider {
         lore.add("§e*§f Skyblock");
         lore.add("§e*§f Creative");
         lore.add("§e*§f SkyCloud");
-        //lore.add(ChatColor.YELLOW + "*" + ChatColor.WHITE + " Prison");
-        //lore.add(ChatColor.YELLOW + "*" + ChatColor.WHITE + " MiniGames");
+        lore.add("§e*§f Prison");
         return createHeadFromData(globeBlockData, ChatColor.AQUA + "Global VIP", lore);
     }
     private ItemStack getServerVipHead() {
