@@ -33,6 +33,16 @@ public class HatsGUI implements InventoryProvider {
                 .setLore("§7Čepice ve velikosti pravé koňské hlavy", "§7počkej až někoho třískneš kopítkem!", "", "§aZískáno: §fExtra připojení v Leden 2021", "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.horse"));
 
+        list.add(new CosmeticItem().setName("§dKlaun")
+                .setItemStack(Hats.CLOWN.getPureItemStack())
+                .setLore("§7Čepice ve stylu vrchního", "§7šaška serveru přímo pro tebe!", "", "§aZískáno: §f/cshop", "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.clown"));
+
+        list.add(new CosmeticItem().setName("§bLast Breath")
+                .setItemStack(Hats.LAST_BREATH.getPureItemStack())
+                .setLore("§7Speciální čepice, která ti připomene", "§7jak křehký je čas a sklo...", "", "§aZískáno: §fDokončení mapy od Command Builders (Limited)", "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.last_breath"));
+
         return list;
     }
 

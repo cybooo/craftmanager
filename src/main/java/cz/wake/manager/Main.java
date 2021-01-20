@@ -233,6 +233,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new CommandListener(), this);
         pm.registerEvents(new PlayerLoginListener(), this);
         pm.registerEvents(new InvisibleItemFrameListener(), this);
+        pm.registerEvents(new CustomItemsListener(), this);
 
         if (serverType != ServerType.HARDCORE_VANILLA) {
             pm.registerEvents(new OnEXPBottleThrownListener(), this);
