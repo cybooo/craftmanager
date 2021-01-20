@@ -52,6 +52,11 @@ public class CshopMainMenu implements InventoryProvider {
         contents.set(3, 2, ClickableItem.of(eventShop, item -> {
             SmartInventory.builder().size(6, 9).title("Event Shop").provider(new CshopEventShop()).build().open(player);
         }));
+
+        ItemStack cosmeticShop = new ItemBuilder(Material.CREEPER_HEAD).setName("§aNákup Cosmetics (CraftCoins)").setLore("§7Nudí tě jak vypadáš?", "§7Kup si nějakou čepici na hlavu", "§7a hned budeš vypadat lépe!", "", "§eKlikni pro zobrazení").build();
+        contents.set(3, 6, ClickableItem.of(cosmeticShop, item -> {
+            SmartInventory.builder().size(6, 9).title("Nákup Cosmetics").provider(new CshopCosmeticShop()).build().open(player);
+        }));
     }
 
     @Override

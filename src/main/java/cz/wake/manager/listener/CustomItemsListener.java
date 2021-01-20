@@ -3,11 +3,16 @@ package cz.wake.manager.listener;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.ItemStack;
+
+import java.util.Iterator;
+import java.util.List;
 
 public class CustomItemsListener implements Listener {
 
@@ -45,5 +50,11 @@ public class CustomItemsListener implements Listener {
         if (itemStack.getItemMeta().hasCustomModelData() && event.getItemDrop().getItemStack().getType() == Material.CARVED_PUMPKIN) {
             event.setCancelled(true);
         }
+    }
+
+    @EventHandler(priority = EventPriority.HIGH)
+    public void onDeath(final PlayerDeathEvent event) {
+        List<ItemStack> list = event.getDrops();
+        list.removeIf(item -> item.getItemMeta().hasCustomModelData() && item.getType() == Material.CARVED_PUMPKIN);
     }
 }

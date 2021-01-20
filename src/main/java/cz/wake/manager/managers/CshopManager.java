@@ -16,6 +16,7 @@ public class CshopManager {
     private static List<VoteItem> voteShopItems = new ArrayList<>();
     private static List<VoteItem> itemsShopItems = new ArrayList<>(); // Nice jméno
     private static List<VoteItem> eventShopItems = new ArrayList<>();
+    private static List<PermissionItem> cosmeticsShopItems = new ArrayList<>();
 
     private Main plugin;
 
@@ -31,6 +32,7 @@ public class CshopManager {
         loadVoteShopItems();
         loadItemShopItems();
         loadEventShopItems();
+        loadCosmeticShopItems();
     }
 
     public List<PermissionItem> getPermsShopItems() {
@@ -48,6 +50,8 @@ public class CshopManager {
     public List<VoteItem> getEventShopItems() {
         return eventShopItems;
     }
+
+    public List<PermissionItem> getCosmeticsShopItems() { return cosmeticsShopItems; }
 
     private void loadPermsShopItems() {
         if (Main.getServerType() == ServerType.SURVIVAL) {
@@ -98,13 +102,19 @@ public class CshopManager {
     }
 
     private void loadEventShopItems() {
-        eventShopItems.add(new VoteItem().setName("50x CraftCoins").setPrice(3).setEconomyReward(50, RewardType.CRAFTCOINS));
+        eventShopItems.add(new VoteItem().setName("50x CraftCoins").setPrice(2).setEconomyReward(50, RewardType.CRAFTCOINS));
         eventShopItems.add(new VoteItem().setName("120x CraftCoins").setPrice(5).setEconomyReward(120, RewardType.CRAFTCOINS));
         eventShopItems.add(new VoteItem().setName("280x CraftCoins").setPrice(12).setEconomyReward(280, RewardType.CRAFTCOINS));
         eventShopItems.add(new VoteItem().setName("1x CraftToken").setPrice(125).setEconomyReward(1, RewardType.CRAFTTOKEN));
         if (Main.getServerType() == ServerType.CREATIVE || Main.getServerType() == ServerType.SKYCLOUD || Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK) {
             eventShopItems.add(new VoteItem().setName("ArmorStandEditor (2h)").setPrice(10).setCommandToExecute("lp user %player% permission settemp asedit.* true 2h %server%"));
         }
+    }
+
+    private void loadCosmeticShopItems() {
+        cosmeticsShopItems.add(new PermissionItem().setName("§fKoala").setLore("§7Čepice koaly pro kamaráda pandy!").setItemStack(Material.BOOK).setPrice(350).setPermision("craftmanager.hats.koala"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§fPanda").setLore("§7Čepice pandy pro kamaráda koaly!").setItemStack(Material.BOOK).setPrice(350).setPermision("craftmanager.hats.panda"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§dKlaun").setLore("§7Chceš vypadat jako klaun? Nebo už jsi?!").setItemStack(Material.BOOK).setPrice(500).setPermision("craftmanager.hats.clown"));
     }
 
 }
