@@ -22,7 +22,7 @@ public class CustomItemsListener implements Listener {
         if (event.getItemInHand().getItemMeta() == null) {
             return;
         }
-        if (event.getItemInHand().getItemMeta().hasCustomModelData() && event.getItemInHand().getType() == Material.CARVED_PUMPKIN) {
+        if (event.getItemInHand().getItemMeta().hasCustomModelData() && event.getItemInHand().getType() == Material.PAPER) {
             event.setCancelled(true);
         }
     }
@@ -36,7 +36,7 @@ public class CustomItemsListener implements Listener {
         if (itemStack.getItemMeta() == null) {
             return;
         }
-        if (itemStack.getItemMeta().hasCustomModelData() && event.getCurrentItem().getType() == Material.CARVED_PUMPKIN) {
+        if (itemStack.getItemMeta().hasCustomModelData() && event.getCurrentItem().getType() == Material.PAPER) {
             event.setCancelled(true);
         }
     }
@@ -47,7 +47,7 @@ public class CustomItemsListener implements Listener {
         if (itemStack.getItemMeta() == null) {
             return;
         }
-        if (itemStack.getItemMeta().hasCustomModelData() && event.getItemDrop().getItemStack().getType() == Material.CARVED_PUMPKIN) {
+        if (itemStack.getItemMeta().hasCustomModelData() && event.getItemDrop().getItemStack().getType() == Material.PAPER) {
             event.setCancelled(true);
         }
     }
@@ -55,6 +55,6 @@ public class CustomItemsListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public void onDeath(final PlayerDeathEvent event) {
         List<ItemStack> list = event.getDrops();
-        list.removeIf(item -> item.getItemMeta().hasCustomModelData() && item.getType() == Material.CARVED_PUMPKIN);
+        list.removeIf(item -> item.getItemMeta().hasCustomModelData() && item.getType() == Material.PAPER);
     }
 }
