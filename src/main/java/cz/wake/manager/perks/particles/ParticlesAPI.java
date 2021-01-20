@@ -1,6 +1,8 @@
 package cz.wake.manager.perks.particles;
 
+import cz.craftmania.craftcore.spigot.inventory.builder.SmartInventory;
 import cz.wake.manager.Main;
+import cz.wake.manager.menu.CosmeticMainGUI;
 import cz.wake.manager.perks.particles.capes.ChristmasCape;
 import cz.wake.manager.perks.particles.capes.SpookyCape;
 import cz.wake.manager.perks.particles.capes.SummerSplash;
@@ -303,7 +305,7 @@ public class ParticlesAPI implements Listener {
                 deactivateParticles(p);
             }
             if (e.getSlot() == 48) {
-                Main.getInstance().getMainGUI().openMainMenu(p);
+                SmartInventory.builder().size(6, 9).title("Cosmetics Menu").provider(new CosmeticMainGUI()).build().open(p);
             }
             if (e.getSlot() == 10) {
                 if (p.hasPermission("craftmanager.particles.hearts")) {

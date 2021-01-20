@@ -2,7 +2,7 @@ name: CraftManager
 main: cz.wake.manager.Main
 authors: [MrWakeCZ,lilmayu]
 depend: [CraftCore,CraftEconomy]
-softdepend: [AdvancedEnchantments, HolographicDisplays, CommandAPI, PlaceholderAPI, ProtocolLibs, XoreboardUtil]
+softdepend: [HolographicDisplays, PlaceholderAPI, ProtocolLibs, XoreboardUtil, CraftPack]
 api-version: "1.15"
 version: "1.6.0"
 

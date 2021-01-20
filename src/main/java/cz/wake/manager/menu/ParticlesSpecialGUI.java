@@ -2,6 +2,7 @@ package cz.wake.manager.menu;
 
 import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
 import cz.craftmania.craftcore.spigot.inventory.builder.ClickableItem;
+import cz.craftmania.craftcore.spigot.inventory.builder.SmartInventory;
 import cz.craftmania.craftcore.spigot.inventory.builder.content.InventoryContents;
 import cz.craftmania.craftcore.spigot.inventory.builder.content.InventoryProvider;
 import cz.wake.manager.perks.particles.ParticlesAPI;
@@ -18,8 +19,8 @@ public class ParticlesSpecialGUI implements InventoryProvider {
 
     @Override
     public void init(Player player, InventoryContents contents) {
-        contents.fillRow(0, ClickableItem.of(new ItemBuilder(Material.GREEN_STAINED_GLASS_PANE).setName("§a ").build(), item -> {}));
-        contents.fillRow(5, ClickableItem.of(new ItemBuilder(Material.GREEN_STAINED_GLASS_PANE).setName("§a ").build(), item -> {}));
+        contents.fillRow(0, ClickableItem.of(new ItemBuilder(Material.PINK_STAINED_GLASS_PANE).setName("§a ").build(), item -> {}));
+        contents.fillRow(5, ClickableItem.of(new ItemBuilder(Material.PINK_STAINED_GLASS_PANE).setName("§a ").build(), item -> {}));
 
         if (player.hasPermission("craftmanager.particles.special.christmashat")) {
             contents.set(2, 2, ClickableItem.of(new ItemBuilder(Material.SNOWBALL).setName("§c§lChristmas Hat").setLore("§7Speciální vánoční čepice!", "", "§aKlikni k aktivaci!").build(), e -> {
@@ -39,7 +40,11 @@ public class ParticlesSpecialGUI implements InventoryProvider {
             contents.set(2, 3, ClickableItem.of(new ItemBuilder(Material.BARRIER).setName("§c§lFireWalk").setLore("§7Lze získat zakoupením SummerSplash klíče!").build(), e -> { }));
         }
 
-        contents.set(5, 4, ClickableItem.of(new ItemBuilder(Material.RED_DYE).setName("§c§lDeaktivovat").build(), e -> {
+        contents.set(5, 1,ClickableItem.of(new ItemBuilder(Material.SPECTRAL_ARROW).setName("§eZpět do menu").hideAllFlags().build(), item -> {
+            SmartInventory.builder().size(6, 9).title("Cosmetics Menu").provider(new CosmeticMainGUI()).build().open(player);
+        }));
+
+        contents.set(5, 4, ClickableItem.of(new ItemBuilder(Material.BARRIER).setName("§c§lDeaktivovat").build(), e -> {
             particlesAPI.deactivateParticles(player);
             particlesAPI.deaktivateCapes(player);
         }));

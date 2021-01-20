@@ -176,8 +176,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // SkyCloud nastaveni
         if (serverType == ServerType.SKYCLOUD) {
-            VillagerManager.loadChunksAndKill();
-            VillagerManager.spawnVillagers();
+            //VillagerManager.loadChunksAndKill();
+            //VillagerManager.spawnVillagers();
         }
 
         Bukkit.getWorlds().forEach(world -> {
@@ -281,7 +281,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         manager.registerCommand(new SkullCommand());
         manager.registerCommand(new Menu_command());
         manager.registerCommand(new Coinshop_command());
-        manager.registerCommand(new Particles_command());
         manager.registerCommand(new Glow_command());
         manager.registerCommand(new Help_command());
         manager.registerCommand(new Disenchant()); //TODO: Deep test needed
@@ -299,7 +298,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         manager.registerCommand(new RestartManager_command()); //TODO: Nenačítat, pokud nebude CraftCore na serveru?
         manager.registerCommand(new Discord_command());
         manager.registerCommand(new Wiki_command());
-        manager.registerCommand(new MorphCommand());
+        manager.registerCommand(new Cosmetics_command());
 
         if (serverType != ServerType.HARDCORE_VANILLA) {
             manager.registerCommand(new GetXP_command());
