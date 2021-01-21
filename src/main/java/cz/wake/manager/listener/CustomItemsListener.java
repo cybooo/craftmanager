@@ -38,6 +38,10 @@ public class CustomItemsListener implements Listener {
         }
         if (itemStack.getItemMeta().hasCustomModelData() && event.getCurrentItem().getType() == Material.PAPER) {
             event.setCancelled(true);
+            if (event.getSlot() != 39) {
+                event.setCurrentItem(new ItemStack(Material.AIR));
+                ((Player)event.getWhoClicked()).updateInventory();
+            }
         }
     }
 
