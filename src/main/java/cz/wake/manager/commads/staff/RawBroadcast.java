@@ -21,7 +21,7 @@ public class RawBroadcast extends BaseCommand {
     @CommandCompletion("@range:0-80")
     public void sendRawMessage(CommandSender sender, String text) {
         if (sender.hasPermission("craftmanager.rawbroadcast")) {
-            for(Player p : Bukkit.getOnlinePlayers()) {
+            for (Player p : Bukkit.getOnlinePlayers()) {
                 p.sendMessage("");
                 p.sendMessage(text);
                 p.sendMessage("");

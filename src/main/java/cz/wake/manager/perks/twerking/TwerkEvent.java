@@ -3,7 +3,10 @@ package cz.wake.manager.perks.twerking;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ExpUtil;
 import cz.wake.manager.utils.ServerType;
-import org.bukkit.*;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.TreeType;
+import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -38,8 +41,8 @@ public class TwerkEvent implements Listener {
         int radiusY = 0;
         int radiusZ = 1;
 
-        for (int n = -radiusX; n <= radiusX && !((Optional)empty).isPresent(); ++n) {
-            for (int n2 = -radiusY; n2 <= radiusY && !((Optional)empty).isPresent(); ++n2) {
+        for (int n = -radiusX; n <= radiusX && !((Optional) empty).isPresent(); ++n) {
+            for (int n2 = -radiusY; n2 <= radiusY && !((Optional) empty).isPresent(); ++n2) {
                 for (int i = -radiusZ; i <= radiusZ; ++i) {
                     final Optional<Block> ofNullable = Optional.ofNullable(world.getBlockAt(blockX + n, blockY + n2, blockZ + i));
                     if (ofNullable.isPresent()) {
@@ -51,10 +54,10 @@ public class TwerkEvent implements Listener {
                 }
             }
         }
-        if (!((Optional)empty).isPresent()) {
+        if (!((Optional) empty).isPresent()) {
             return;
         }
-        final Location location2 = ((Optional<Block>)empty).get().getLocation();
+        final Location location2 = ((Optional<Block>) empty).get().getLocation();
         //TODO: Effects
         //world.playEffect(location2.add(0.5, 0.5, 0.5), Effect.VILLAGER_PLANT_GROW, 0, 0, 0.25f, 0.25f, 0.25f, 1.0f, 16, 16);
 
@@ -66,13 +69,13 @@ public class TwerkEvent implements Listener {
         int level = ExpUtil.getTotalExperience(player);
         ExpUtil.setTotalExperience(player, level - 15);
 
-        int sance = randRange(1,8);
+        int sance = randRange(1, 8);
         if (sance != 1) {
             return;
         }
 
-        final byte data = ((Optional<Block>)empty).get().getData();
-        final Material type = ((Optional<Block>)empty).get().getType();
+        final byte data = ((Optional<Block>) empty).get().getData();
+        final Material type = ((Optional<Block>) empty).get().getType();
         TreeType treeType = null;
         switch (data) {
             case 0: {
@@ -108,7 +111,7 @@ public class TwerkEvent implements Listener {
                 return;
             }
         }
-        ((Optional<Block>)empty).get().setType(Material.AIR);
+        ((Optional<Block>) empty).get().setType(Material.AIR);
         if (!world.generateTree(location2, treeType)) {
             //TODO: world.getBlockAt(location2).setTypeIdAndData(type.getId(), data, false);
             ExpUtil.setTotalExperience(player, level);

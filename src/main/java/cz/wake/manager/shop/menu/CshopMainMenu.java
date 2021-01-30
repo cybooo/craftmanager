@@ -20,13 +20,16 @@ public class CshopMainMenu implements InventoryProvider {
     @Override
     public void init(Player player, InventoryContents contents) {
 
-        contents.fillRow(0, ClickableItem.of(new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName("§c").build(), item -> {}));
-        contents.fillRow(5, ClickableItem.of(new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName("§c").build(), item -> {}));
+        contents.fillRow(0, ClickableItem.of(new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName("§c").build(), item -> {
+        }));
+        contents.fillRow(5, ClickableItem.of(new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName("§c").build(), item -> {
+        }));
 
         ItemStack playerHead = new ItemBuilder(Material.PLAYER_HEAD)
                 .setName("§bTvůj profil")
                 .setLore("§7CraftCoins: §f" + CraftCoinsAPI.getCoins(player) + " CC", "§7CraftTokens: §f" + CraftTokensAPI.getTokens(player) + " CT", "§7VoteTokens: §f" + VoteTokensAPI.getVoteTokens(player) + " VT", "§7EventPoints: §f" + EventPointsAPI.getEventPoints(player), "§7Karma: §f0").setSkullOwner(player.getName()).build();
-        contents.set(0, 1, ClickableItem.of(playerHead, item -> {}));
+        contents.set(0, 1, ClickableItem.of(playerHead, item -> {
+        }));
 
         ItemStack tags = ItemFactory.create(Material.NAME_TAG, "§bTags (za CraftCoiny)", "§7Zakup si tag před nick", "§7nebo si vytvoř vlastní!", "", "§eKlikni pro otevření menu");
         contents.set(2, 1, ClickableItem.of(tags, item -> {

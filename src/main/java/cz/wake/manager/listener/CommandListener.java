@@ -17,7 +17,7 @@ public class CommandListener implements Listener {
     @EventHandler
     public void onCommand(PlayerCommandPreprocessEvent event) {
         String cmd = event.getMessage().contains(" ") ? event.getMessage().substring(1, event.getMessage().indexOf(" ")) : event.getMessage().substring(1);
-        if(!commandsExecutions.containsKey(cmd)) {
+        if (!commandsExecutions.containsKey(cmd)) {
             commandsExecutions.put(cmd, 1);
         } else {
             commandsExecutions.replace(cmd, commandsExecutions.get(cmd) + 1);

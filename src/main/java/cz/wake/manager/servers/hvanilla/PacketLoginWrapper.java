@@ -23,6 +23,7 @@ public class PacketLoginWrapper extends AbstractPacket {
 
     /**
      * Retrieve the player's Entity ID.
+     *
      * @return The current Entity ID
      */
     public int getEntityId() {
@@ -31,6 +32,7 @@ public class PacketLoginWrapper extends AbstractPacket {
 
     /**
      * Set the player's Entity ID.
+     *
      * @param value - new value.
      */
     public void setEntityId(int value) {
@@ -39,6 +41,7 @@ public class PacketLoginWrapper extends AbstractPacket {
 
     /**
      * Retrieve the player's entity object.
+     *
      * @param world - the word the player has joined.
      * @return The player's entity.
      */
@@ -48,6 +51,7 @@ public class PacketLoginWrapper extends AbstractPacket {
 
     /**
      * Retrieve the player's entity object.
+     *
      * @param event - the packet event.
      * @return The player's entity.
      */
@@ -57,6 +61,7 @@ public class PacketLoginWrapper extends AbstractPacket {
 
     /**
      * Retrieve the game mode of the initial world.
+     *
      * @return The current gamemode.
      */
     public EnumWrappers.NativeGameMode getGamemode() {
@@ -65,6 +70,7 @@ public class PacketLoginWrapper extends AbstractPacket {
 
     /**
      * Set the game mode of the initial world.
+     *
      * @param value - new value.
      */
     public void setGamemode(EnumWrappers.NativeGameMode value) {
@@ -73,6 +79,7 @@ public class PacketLoginWrapper extends AbstractPacket {
 
     /**
      * Retrieve whether or not this is a hardcore world.
+     *
      * @return TRUE if it is, FALSE otherwise.
      */
     public boolean isHardcore() {
@@ -81,6 +88,7 @@ public class PacketLoginWrapper extends AbstractPacket {
 
     /**
      * Set whether or not this is a hardcore world.
+     *
      * @param value - TRUE if it is, FALSE otherwise.
      */
     public void setHardcore(boolean value) {
@@ -89,6 +97,7 @@ public class PacketLoginWrapper extends AbstractPacket {
 
     /**
      * Retrieve -1: nether, 0: overworld, 1: end.
+     *
      * @return The current Dimension
      */
     public int getDimension() {
@@ -97,6 +106,7 @@ public class PacketLoginWrapper extends AbstractPacket {
 
     /**
      * Set -1: nether, 0: overworld, 1: end.
+     *
      * @param value - new value.
      */
     public void setDimension(int value) {
@@ -105,6 +115,7 @@ public class PacketLoginWrapper extends AbstractPacket {
 
     /**
      * Retrieve the difficulty of the initial world.
+     *
      * @return The current difficulty
      */
     public EnumWrappers.Difficulty getDifficulty() {
@@ -113,6 +124,7 @@ public class PacketLoginWrapper extends AbstractPacket {
 
     /**
      * Set the difficulty of the initial world.
+     *
      * @param difficulty - new difficulty.
      */
     public void setDifficulty(EnumWrappers.Difficulty difficulty) {
@@ -123,6 +135,7 @@ public class PacketLoginWrapper extends AbstractPacket {
      * Retrieve the maximum number of players.
      * <p>
      * This is used by the client to draw the player list.
+     *
      * @return The current max players.
      */
     public byte getMaxPlayers() {
@@ -131,6 +144,7 @@ public class PacketLoginWrapper extends AbstractPacket {
 
     /**
      * Set used by the client to draw the player list.
+     *
      * @param value - new value.
      */
     public void setMaxPlayers(byte value) {
@@ -141,6 +155,7 @@ public class PacketLoginWrapper extends AbstractPacket {
      * Retrieve the world type.
      * <p>
      * This is the level-type settign (default, flat, or largeBiomes) in server.properties.
+     *
      * @return The current world type.
      */
     public WorldType getLevelType() {
@@ -151,15 +166,12 @@ public class PacketLoginWrapper extends AbstractPacket {
      * Set the world type.
      * <p>
      * This is the level-type settign (default, flat, or largeBiomes) in server.properties.
+     *
      * @param type - new value.
      */
     public void setLevelType(WorldType type) {
         handle.getWorldTypeModifier().write(0, type);
     }
-
-
-
-
 
 
 }

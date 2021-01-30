@@ -29,8 +29,10 @@ public class CshopPermsShop implements InventoryProvider {
     @Override
     public void init(Player player, InventoryContents contents) {
 
-        contents.fillRow(0, ClickableItem.of(new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName("§c").build(), item -> {}));
-        contents.fillRow(5, ClickableItem.of(new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName("§c").build(), item -> {}));
+        contents.fillRow(0, ClickableItem.of(new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName("§c").build(), item -> {
+        }));
+        contents.fillRow(5, ClickableItem.of(new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName("§c").build(), item -> {
+        }));
 
         final Pagination pagination = contents.pagination();
         final ArrayList<ClickableItem> items = new ArrayList<>();
@@ -53,7 +55,7 @@ public class CshopPermsShop implements InventoryProvider {
 
             if (CraftCoinsAPI.getCoins(player) >= permissionItem.getPrice()) {
                 items.add(ClickableItem.of(new ItemBuilder(permissionItem.getItemStack()).hideAllFlags()
-                    .setName("§b" + permissionItem.getName()).setLore("§7Cena: §f" + permissionItem.getPrice() + " CC", "", "§eKliknutím zakoupíš!").build(),
+                                .setName("§b" + permissionItem.getName()).setLore("§7Cena: §f" + permissionItem.getPrice() + " CC", "", "§eKliknutím zakoupíš!").build(),
                         click -> {
                             CraftCoinsAPI.takeCoins(player, permissionItem.getPrice());
                             player.sendMessage("§aZakoupil jsi si " + permissionItem.getName() + "!");

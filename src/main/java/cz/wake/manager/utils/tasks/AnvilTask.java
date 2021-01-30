@@ -15,7 +15,7 @@ public class AnvilTask extends BukkitRunnable {
     private Player player;
 
     static {
-        AnvilTask.anvilTasks = new HashMap<AnvilInventory, AnvilTask>();
+        AnvilTask.anvilTasks = new HashMap<>();
     }
 
     public AnvilTask(final AnvilInventory inv, final Player player) {

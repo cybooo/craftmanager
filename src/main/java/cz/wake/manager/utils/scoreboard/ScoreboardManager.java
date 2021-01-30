@@ -8,7 +8,6 @@ import net.minecord.xoreboardutil.bukkit.XoreBoardUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ScoreboardManager {

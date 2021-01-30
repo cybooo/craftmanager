@@ -21,7 +21,7 @@ class Discord_command extends BaseCommand {
 
     @Default
     public void sendDiscordLink(CommandSender sender) {
-        if(sender instanceof Player) {
+        if (sender instanceof Player) {
             sender.sendMessage("§8▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
             sender.sendMessage("");
             sender.sendMessage("§9Odkaz na náš Discord server:");

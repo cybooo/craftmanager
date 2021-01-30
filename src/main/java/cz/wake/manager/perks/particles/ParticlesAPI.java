@@ -1,15 +1,14 @@
 package cz.wake.manager.perks.particles;
 
 import cz.craftmania.craftcore.spigot.inventory.builder.SmartInventory;
-import cz.wake.manager.Main;
 import cz.wake.manager.menu.CosmeticMainGUI;
 import cz.wake.manager.perks.particles.capes.ChristmasCape;
 import cz.wake.manager.perks.particles.capes.SpookyCape;
 import cz.wake.manager.perks.particles.capes.SummerSplash;
 import cz.wake.manager.perks.particles.special.FireWalk;
 import cz.wake.manager.perks.particles.special.SantaHat;
-import cz.wake.manager.perks.particles.vip.*;
 import cz.wake.manager.perks.particles.vip.Void;
+import cz.wake.manager.perks.particles.vip.*;
 import cz.wake.manager.utils.ItemFactory;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -22,25 +21,25 @@ import org.bukkit.inventory.ItemStack;
 
 public class ParticlesAPI implements Listener {
 
-    private Hearts h = new Hearts();
-    private Angry a = new Angry();
-    private WhiteMagic w = new WhiteMagic();
-    private WitchMagic m = new WitchMagic();
-    private Slime s = new Slime();
-    private Flame f = new Flame();
-    private Redstone r = new Redstone();
-    private Cloud l = new Cloud();
-    private Enchanted e = new Enchanted();
-    private EndRod er = new EndRod();
-    private Firework k = new Firework();
-    private DragonBreath db = new DragonBreath();
-    private Portal p = new Portal();
-    private Lava la = new Lava();
-    private Smoke sm = new Smoke();
-    private Happy ha = new Happy();
-    private Snowball sn = new Snowball();
-    private BlackHearts bh = new BlackHearts();
-    private cz.wake.manager.perks.particles.vip.Void vo = new cz.wake.manager.perks.particles.vip.Void();
+    private final Hearts h = new Hearts();
+    private final Angry a = new Angry();
+    private final WhiteMagic w = new WhiteMagic();
+    private final WitchMagic m = new WitchMagic();
+    private final Slime s = new Slime();
+    private final Flame f = new Flame();
+    private final Redstone r = new Redstone();
+    private final Cloud l = new Cloud();
+    private final Enchanted e = new Enchanted();
+    private final EndRod er = new EndRod();
+    private final Firework k = new Firework();
+    private final DragonBreath db = new DragonBreath();
+    private final Portal p = new Portal();
+    private final Lava la = new Lava();
+    private final Smoke sm = new Smoke();
+    private final Happy ha = new Happy();
+    private final Snowball sn = new Snowball();
+    private final BlackHearts bh = new BlackHearts();
+    private final cz.wake.manager.perks.particles.vip.Void vo = new cz.wake.manager.perks.particles.vip.Void();
 
     public void openParticlesMenu(final Player p) {
 
@@ -493,97 +492,97 @@ public class ParticlesAPI implements Listener {
 
     public void deactivateParticles(Player p) {
         if (Hearts.e.containsKey(p.getName())) {
-            Bukkit.getScheduler().cancelTask(((Integer) Hearts.e.get(p.getName())).intValue());
+            Bukkit.getScheduler().cancelTask(Hearts.e.get(p.getName()));
             Hearts.e.remove(p.getName());
             p.closeInventory();
         }
         if (Angry.e.containsKey(p.getName())) {
-            Bukkit.getScheduler().cancelTask(((Integer) Angry.e.get(p.getName())).intValue());
+            Bukkit.getScheduler().cancelTask(Angry.e.get(p.getName()));
             Angry.e.remove(p.getName());
             p.closeInventory();
         }
         if (WhiteMagic.e.containsKey(p.getName())) {
-            Bukkit.getScheduler().cancelTask(((Integer) WhiteMagic.e.get(p.getName())).intValue());
+            Bukkit.getScheduler().cancelTask(WhiteMagic.e.get(p.getName()));
             WhiteMagic.e.remove(p.getName());
             p.closeInventory();
         }
         if (WitchMagic.e.containsKey(p.getName())) {
-            Bukkit.getScheduler().cancelTask(((Integer) WitchMagic.e.get(p.getName())).intValue());
+            Bukkit.getScheduler().cancelTask(WitchMagic.e.get(p.getName()));
             WitchMagic.e.remove(p.getName());
             p.closeInventory();
         }
         if (Slime.e.containsKey(p.getName())) {
-            Bukkit.getScheduler().cancelTask(((Integer) Slime.e.get(p.getName())).intValue());
+            Bukkit.getScheduler().cancelTask(Slime.e.get(p.getName()));
             Slime.e.remove(p.getName());
             p.closeInventory();
         }
         if (Snowball.e.containsKey(p.getName())) {
-            Bukkit.getScheduler().cancelTask(((Integer) Snowball.e.get(p.getName())).intValue());
+            Bukkit.getScheduler().cancelTask(Snowball.e.get(p.getName()));
             Snowball.e.remove(p.getName());
             p.closeInventory();
         }
         if (Flame.e.containsKey(p.getName())) {
-            Bukkit.getScheduler().cancelTask(((Integer) Flame.e.get(p.getName())).intValue());
+            Bukkit.getScheduler().cancelTask(Flame.e.get(p.getName()));
             Flame.e.remove(p.getName());
             p.closeInventory();
         }
         if (Redstone.e.containsKey(p.getName())) {
-            Bukkit.getScheduler().cancelTask(((Integer) Redstone.e.get(p.getName())).intValue());
+            Bukkit.getScheduler().cancelTask(Redstone.e.get(p.getName()));
             Redstone.e.remove(p.getName());
             p.closeInventory();
         }
         if (Cloud.e.containsKey(p.getName())) {
-            Bukkit.getScheduler().cancelTask(((Integer) Cloud.e.get(p.getName())).intValue());
+            Bukkit.getScheduler().cancelTask(Cloud.e.get(p.getName()));
             Cloud.e.remove(p.getName());
             p.closeInventory();
         }
         if (Enchanted.e.containsKey(p.getName())) {
-            Bukkit.getScheduler().cancelTask(((Integer) Enchanted.e.get(p.getName())).intValue());
+            Bukkit.getScheduler().cancelTask(Enchanted.e.get(p.getName()));
             Enchanted.e.remove(p.getName());
             p.closeInventory();
         }
         if (EndRod.e.containsKey(p.getName())) {
-            Bukkit.getScheduler().cancelTask(((Integer) EndRod.e.get(p.getName())).intValue());
+            Bukkit.getScheduler().cancelTask(EndRod.e.get(p.getName()));
             EndRod.e.remove(p.getName());
             p.closeInventory();
         }
         if (Firework.e.containsKey(p.getName())) {
-            Bukkit.getScheduler().cancelTask(((Integer) Firework.e.get(p.getName())).intValue());
+            Bukkit.getScheduler().cancelTask(Firework.e.get(p.getName()));
             Firework.e.remove(p.getName());
             p.closeInventory();
         }
         if (DragonBreath.e.containsKey(p.getName())) {
-            Bukkit.getScheduler().cancelTask(((Integer) DragonBreath.e.get(p.getName())).intValue());
+            Bukkit.getScheduler().cancelTask(DragonBreath.e.get(p.getName()));
             DragonBreath.e.remove(p.getName());
             p.closeInventory();
         }
         if (Portal.e.containsKey(p.getName())) {
-            Bukkit.getScheduler().cancelTask(((Integer) Portal.e.get(p.getName())).intValue());
+            Bukkit.getScheduler().cancelTask(Portal.e.get(p.getName()));
             Portal.e.remove(p.getName());
             p.closeInventory();
         }
         if (Lava.e.containsKey(p.getName())) {
-            Bukkit.getScheduler().cancelTask(((Integer) Lava.e.get(p.getName())).intValue());
+            Bukkit.getScheduler().cancelTask(Lava.e.get(p.getName()));
             Lava.e.remove(p.getName());
             p.closeInventory();
         }
         if (Smoke.e.containsKey(p.getName())) {
-            Bukkit.getScheduler().cancelTask(((Integer) Smoke.e.get(p.getName())).intValue());
+            Bukkit.getScheduler().cancelTask(Smoke.e.get(p.getName()));
             Smoke.e.remove(p.getName());
             p.closeInventory();
         }
         if (Happy.e.containsKey(p.getName())) {
-            Bukkit.getScheduler().cancelTask(((Integer) Happy.e.get(p.getName())).intValue());
+            Bukkit.getScheduler().cancelTask(Happy.e.get(p.getName()));
             Happy.e.remove(p.getName());
             p.closeInventory();
         }
         if (BlackHearts.e.containsKey(p.getName())) {
-            Bukkit.getScheduler().cancelTask(((Integer) BlackHearts.e.get(p.getName())).intValue());
+            Bukkit.getScheduler().cancelTask(BlackHearts.e.get(p.getName()));
             BlackHearts.e.remove(p.getName());
             p.closeInventory();
         }
         if (Void.e.containsKey(p.getName())) {
-            Bukkit.getScheduler().cancelTask(((Integer) cz.wake.manager.perks.particles.vip.Void.e.get(p.getName())).intValue());
+            Bukkit.getScheduler().cancelTask(Void.e.get(p.getName()));
             Void.e.remove(p.getName());
             p.closeInventory();
         }

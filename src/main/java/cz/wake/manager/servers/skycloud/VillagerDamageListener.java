@@ -5,10 +5,8 @@ import cz.wake.manager.utils.Log;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
@@ -24,13 +22,13 @@ public class VillagerDamageListener implements Listener {
     @EventHandler(ignoreCancelled = true)
     public void onDamage(EntityDamageByEntityEvent event) {
         if (event.getEntity() instanceof AbstractVillager) {
-            AbstractVillager villager = (AbstractVillager)event.getEntity();
+            AbstractVillager villager = (AbstractVillager) event.getEntity();
             if (villager.hasMetadata(VillagerType.SEA_VILLAGER.name())
-                || villager.hasMetadata(VillagerType.RARE_VILLAGER.name())
-                || villager.hasMetadata(VillagerType.NETHER_VILLAGER.name())
-                || villager.hasMetadata(VillagerType.END_VILLAGER.name())
-                || villager.hasMetadata(VillagerType.BUY_VILLAGER.name())
-                || villager.hasMetadata(VillagerType.SELL_VILLAGER.name())) {
+                    || villager.hasMetadata(VillagerType.RARE_VILLAGER.name())
+                    || villager.hasMetadata(VillagerType.NETHER_VILLAGER.name())
+                    || villager.hasMetadata(VillagerType.END_VILLAGER.name())
+                    || villager.hasMetadata(VillagerType.BUY_VILLAGER.name())
+                    || villager.hasMetadata(VillagerType.SELL_VILLAGER.name())) {
                 event.setCancelled(true);
             }
         }
@@ -41,7 +39,7 @@ public class VillagerDamageListener implements Listener {
         Entity entity = event.getRightClicked();
         Player player = event.getPlayer();
         if (entity instanceof Villager) {
-            Villager villager = (Villager)entity;
+            Villager villager = (Villager) entity;
             if (villager.hasMetadata(VillagerType.SELL_VILLAGER.name())) { // Name protoze maji ID
                 event.setCancelled(true);
                 VillagerManager.openMerchantInventory(VillagerType.SELL_VILLAGER, player);
@@ -63,7 +61,7 @@ public class VillagerDamageListener implements Listener {
                 event.setCancelled(true);
             }
         } else if (entity instanceof WanderingTrader) {
-            WanderingTrader villager = (WanderingTrader)entity;
+            WanderingTrader villager = (WanderingTrader) entity;
             event.setCancelled(true);
             if (villager.hasMetadata(VillagerType.RARE_VILLAGER.name())) {
                 VillagerManager.openMerchantInventory(VillagerType.RARE_VILLAGER, player);

@@ -12,7 +12,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class SQLManager {
 
@@ -251,7 +250,8 @@ public class SQLManager {
 
     public final void updateAtPlayerTime(Player p) {
         String server = getServerName();
-        Log.normalMessage(ChatColor.RED + "[ATS] " + ChatColor.WHITE + "Update ATS pro: " + p.getName() + ", server: " + server); ;
+        Log.normalMessage(ChatColor.RED + "[ATS] " + ChatColor.WHITE + "Update ATS pro: " + p.getName() + ", server: " + server);
+
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -490,10 +490,6 @@ public class SQLManager {
             }
         }.runTaskAsynchronously(Main.getInstance());
     }
-
-
-
-
 
 
 }

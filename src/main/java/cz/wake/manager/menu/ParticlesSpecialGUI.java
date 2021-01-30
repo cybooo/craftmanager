@@ -19,8 +19,10 @@ public class ParticlesSpecialGUI implements InventoryProvider {
 
     @Override
     public void init(Player player, InventoryContents contents) {
-        contents.fillRow(0, ClickableItem.of(new ItemBuilder(Material.PINK_STAINED_GLASS_PANE).setName("§a ").build(), item -> {}));
-        contents.fillRow(5, ClickableItem.of(new ItemBuilder(Material.PINK_STAINED_GLASS_PANE).setName("§a ").build(), item -> {}));
+        contents.fillRow(0, ClickableItem.of(new ItemBuilder(Material.PINK_STAINED_GLASS_PANE).setName("§a ").build(), item -> {
+        }));
+        contents.fillRow(5, ClickableItem.of(new ItemBuilder(Material.PINK_STAINED_GLASS_PANE).setName("§a ").build(), item -> {
+        }));
 
         if (player.hasPermission("craftmanager.particles.special.christmashat")) {
             contents.set(2, 2, ClickableItem.of(new ItemBuilder(Material.SNOWBALL).setName("§c§lChristmas Hat").setLore("§7Speciální vánoční čepice!", "", "§aKlikni k aktivaci!").build(), e -> {
@@ -28,7 +30,8 @@ public class ParticlesSpecialGUI implements InventoryProvider {
                 player.closeInventory();
             }));
         } else {
-            contents.set(2, 2, ClickableItem.of(new ItemBuilder(Material.BARRIER).setName("§c§lChristmas Hat").setLore("§7Lze získat pomocí Vánoční Bundle 2019").build(), e -> { }));
+            contents.set(2, 2, ClickableItem.of(new ItemBuilder(Material.BARRIER).setName("§c§lChristmas Hat").setLore("§7Lze získat pomocí Vánoční Bundle 2019").build(), e -> {
+            }));
         }
 
         if (player.hasPermission("craftmanager.particles.special.fire_walk")) {
@@ -37,10 +40,11 @@ public class ParticlesSpecialGUI implements InventoryProvider {
                 player.closeInventory();
             }));
         } else {
-            contents.set(2, 3, ClickableItem.of(new ItemBuilder(Material.BARRIER).setName("§c§lFireWalk").setLore("§7Lze získat zakoupením SummerSplash klíče!").build(), e -> { }));
+            contents.set(2, 3, ClickableItem.of(new ItemBuilder(Material.BARRIER).setName("§c§lFireWalk").setLore("§7Lze získat zakoupením SummerSplash klíče!").build(), e -> {
+            }));
         }
 
-        contents.set(5, 1,ClickableItem.of(new ItemBuilder(Material.SPECTRAL_ARROW).setName("§eZpět do menu").hideAllFlags().build(), item -> {
+        contents.set(5, 1, ClickableItem.of(new ItemBuilder(Material.SPECTRAL_ARROW).setName("§eZpět do menu").hideAllFlags().build(), item -> {
             SmartInventory.builder().size(6, 9).title("Cosmetics Menu").provider(new CosmeticMainGUI()).build().open(player);
         }));
 

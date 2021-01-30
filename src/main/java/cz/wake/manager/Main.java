@@ -22,15 +22,19 @@ import cz.wake.manager.servers.skycloud.VillagerManager;
 import cz.wake.manager.servers.vanilla.LecternBookTakeListener;
 import cz.wake.manager.shop.TempShop;
 import cz.wake.manager.sql.SQLManager;
-import cz.wake.manager.utils.*;
+import cz.wake.manager.utils.CustomCrafting;
+import cz.wake.manager.utils.Log;
+import cz.wake.manager.utils.ServerFactory;
+import cz.wake.manager.utils.ServerType;
 import cz.wake.manager.utils.configs.Config;
 import cz.wake.manager.utils.configs.ConfigAPI;
 import cz.wake.manager.utils.prometheus.MetricsController;
 import cz.wake.manager.utils.scoreboard.ScoreboardManager;
 import cz.wake.manager.utils.scoreboard.ScoreboardProvider;
 import cz.wake.manager.utils.tasks.ATAfkTask;
-import cz.wake.manager.utils.tasks.*;
-import cz.wake.manager.commads.VIP_command;
+import cz.wake.manager.utils.tasks.ATCheckerTask;
+import cz.wake.manager.utils.tasks.UpdateServerTask;
+import cz.wake.manager.utils.tasks.VoteReminderTask;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.Material;
@@ -333,7 +337,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     }
 
     private void loadConfiguration() {
-        Config blockedTagsFile = new Config(this.configAPI,  "blockedTags");
+        Config blockedTagsFile = new Config(this.configAPI, "blockedTags");
         configAPI.registerConfig(blockedTagsFile);
 
         Config deathMessagesFile = new Config(this.configAPI, "deathMessages");
@@ -391,7 +395,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     }
 
     @Override
-    public void onPluginMessageReceived(String channel, Player player, byte[] message) {}
+    public void onPluginMessageReceived(String channel, Player player, byte[] message) {
+    }
 
     public void sendToServer(Player player, String target) {
         ByteArrayOutputStream b = new ByteArrayOutputStream();

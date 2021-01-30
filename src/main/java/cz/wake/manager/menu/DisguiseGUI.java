@@ -14,10 +14,8 @@ import me.libraryaddict.disguise.disguisetypes.MiscDisguise;
 import me.libraryaddict.disguise.disguisetypes.MobDisguise;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class DisguiseGUI implements InventoryProvider {
@@ -52,8 +50,10 @@ public class DisguiseGUI implements InventoryProvider {
     public void init(Player player, InventoryContents contents) {
         List<CosmeticItem> disguises = prepareList();
 
-        contents.fillRow(0, ClickableItem.of(new ItemBuilder(Material.LIME_STAINED_GLASS_PANE).setName("§c").build(), item -> {}));
-        contents.fillRow(5, ClickableItem.of(new ItemBuilder(Material.LIME_STAINED_GLASS_PANE).setName("§c").build(), item -> {}));
+        contents.fillRow(0, ClickableItem.of(new ItemBuilder(Material.LIME_STAINED_GLASS_PANE).setName("§c").build(), item -> {
+        }));
+        contents.fillRow(5, ClickableItem.of(new ItemBuilder(Material.LIME_STAINED_GLASS_PANE).setName("§c").build(), item -> {
+        }));
 
         final Pagination pagination = contents.pagination();
         final ArrayList<ClickableItem> items = new ArrayList<>();
@@ -106,7 +106,7 @@ public class DisguiseGUI implements InventoryProvider {
             }));
         }
 
-        contents.set(5, 1,ClickableItem.of(new ItemBuilder(Material.SPECTRAL_ARROW).setName("§eZpět do menu").hideAllFlags().build(), item -> {
+        contents.set(5, 1, ClickableItem.of(new ItemBuilder(Material.SPECTRAL_ARROW).setName("§eZpět do menu").hideAllFlags().build(), item -> {
             SmartInventory.builder().size(6, 9).title("Cosmetics Menu").provider(new CosmeticMainGUI()).build().open(player);
         }));
 

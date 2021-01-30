@@ -3,10 +3,8 @@ package cz.wake.manager.servers.skycloud;
 import com.cryptomorin.xseries.XEnchantment;
 import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
 import cz.craftmania.craftcore.spigot.builders.villager.VillagerTradeBuilder;
-import cz.wake.manager.utils.Log;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionType;
 
@@ -277,7 +275,9 @@ public class VillagerTradeList {
         return new ItemStack(Material.EMERALD_BLOCK, amount);
     }
 
-    private ItemStack db(int amount) { return new ItemStack(Material.DIAMOND_BLOCK, amount); }
+    private ItemStack db(int amount) {
+        return new ItemStack(Material.DIAMOND_BLOCK, amount);
+    }
 
     private ItemStack d(int amount) {
         return new ItemStack(Material.DIAMOND, amount);

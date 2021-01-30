@@ -25,7 +25,7 @@ public class Glow_command extends BaseCommand {
     public void changeGlowEffect(CommandSender Sender) {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
-            if (Main.getServerType() == ServerType.VANILLA  || Main.getServerType() == ServerType.HARDCORE_VANILLA) {
+            if (Main.getServerType() == ServerType.VANILLA || Main.getServerType() == ServerType.HARDCORE_VANILLA) {
                 player.sendMessage("§c§l[!] §cNa tomto serveru tato vyhoda neplati!");
                 return;
             }

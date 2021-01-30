@@ -6,12 +6,8 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.inventory.Inventory;
 
 public class InventoryListener implements Listener {
 
@@ -48,31 +44,31 @@ public class InventoryListener implements Listener {
         }
         if (e.getView().getTitle().equals("Seznam dostupnych navodu")) {
             e.setCancelled(true);
-            if(e.getSlot() == 0){
+            if (e.getSlot() == 0) {
                 MenuManager.prepareNavodLink(p, "Pravidla", "https://wiki.craftmania.cz/pravidla-serveru/");
             }
-            if (e.getSlot() == 1){
+            if (e.getSlot() == 1) {
                 MenuManager.prepareNavodLink(p, "Povolene/zakazane mody", "https://wiki.craftmania.cz/povolene-a-zakazane-mody/");
             }
-            if(e.getSlot() == 2){
+            if (e.getSlot() == 2) {
                 MenuManager.prepareNavodLink(p, "Residence", "https://wiki.craftmania.cz/residence/");
             }
-            if(e.getSlot() == 3){
+            if (e.getSlot() == 3) {
                 MenuManager.prepareNavodLink(p, "Jobs", "https://wiki.craftmania.cz/jobs/");
             }
-            if(e.getSlot() == 4){
+            if (e.getSlot() == 4) {
                 MenuManager.prepareNavodLink(p, "ChestShop", "https://wiki.craftmania.cz/chestshop/");
             }
-            if(e.getSlot() == 5){
-                MenuManager.prepareNavodLink(p ,"Pozemky", "https://wiki.craftmania.cz/pozemky/");
+            if (e.getSlot() == 5) {
+                MenuManager.prepareNavodLink(p, "Pozemky", "https://wiki.craftmania.cz/pozemky/");
             }
-            if(e.getSlot() == 6) {
-                MenuManager.prepareNavodLink(p ,"Lands", "https://wiki.craftmania.cz/lands/");
+            if (e.getSlot() == 6) {
+                MenuManager.prepareNavodLink(p, "Lands", "https://wiki.craftmania.cz/lands/");
             }
-            if(e.getSlot() == 7){
+            if (e.getSlot() == 7) {
                 MenuManager.prepareNavodLink(p, "Replacementy", "https://wiki.craftmania.cz/replacementy/");
             }
-            if(e.getSlot() == 31){
+            if (e.getSlot() == 31) {
                 Main.getInstance().getMainGUI().openMainMenu(p);
             }
 
@@ -98,7 +94,7 @@ public class InventoryListener implements Listener {
             if (e.getSlot() == 22) {
                 p.performCommand("rewards");
             }
-            if(e.getSlot() == 23){
+            if (e.getSlot() == 23) {
                 MenuManager.openNavody(p);
             }
             if (e.getSlot() == 24) {
@@ -130,7 +126,7 @@ public class InventoryListener implements Listener {
             if (e.getCurrentItem().getType() == Material.AIR) {
                 return;
             }
-            if(e.getSlot() == 30){
+            if (e.getSlot() == 30) {
                 MenuManager.openNavody(p);
             }
             if ((e.getSlot() == 12) || (e.getSlot() == 13) || (e.getSlot() == 14)) {
@@ -179,7 +175,7 @@ public class InventoryListener implements Listener {
             if (e.getSlot() == 32) {
                 p.performCommand("vip");
             }
-            if(e.getSlot() == 23){
+            if (e.getSlot() == 23) {
                 MenuManager.openNavody(p);
             }
             if (e.getSlot() == 24) {

@@ -9,7 +9,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 public class ServerCollector extends Collector {
 
@@ -20,7 +23,7 @@ public class ServerCollector extends Collector {
                 Collections.singletonList("command"));
         familySamples.add(commandsExecutions);
 
-        for(Map.Entry<String, Integer> command : CommandListener.getCommandsExecutions().entrySet()) {
+        for (Map.Entry<String, Integer> command : CommandListener.getCommandsExecutions().entrySet()) {
             commandsExecutions.addMetric(Collections.singletonList(command.getKey()), command.getValue());
         }
 

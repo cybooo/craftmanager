@@ -51,7 +51,9 @@ public class CshopManager {
         return eventShopItems;
     }
 
-    public List<PermissionItem> getCosmeticsShopItems() { return cosmeticsShopItems; }
+    public List<PermissionItem> getCosmeticsShopItems() {
+        return cosmeticsShopItems;
+    }
 
     private void loadPermsShopItems() {
         if (Main.getServerType() == ServerType.SURVIVAL) {

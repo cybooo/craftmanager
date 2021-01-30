@@ -10,13 +10,13 @@ import org.bukkit.inventory.ItemStack;
 
 public class MenuManager {
 
-    public static void openNavody(Player p){
+    public static void openNavody(Player p) {
         Inventory inv = Bukkit.createInventory(null, 36, "Seznam dostupnych navodu");
 
         ItemStack pravidla = ItemFactory.create(Material.ENCHANTED_BOOK, "§e§lPravidla serveru", "§7Pravidla serveru jsou", "§7zaklad spravneho chovani!", "", "§fVhodne pro: §cVsude");
         ItemStack mody = ItemFactory.create(Material.ENCHANTED_BOOK, "§e§lPovolene/zakazane mody", "§7Nevis jestli je tvuj mod", "§7povoleny nebo zakazany?", "", "§fVhodne pro: §cVsude");
 
-        ItemStack residence = ItemFactory.create(Material.PAPER, "§e§lResidence", "§7Navod pro vsechny", "§7co chceji plnohodnotne", "§7ovladnout residence","","§fVhodne pro: §bSurvival");
+        ItemStack residence = ItemFactory.create(Material.PAPER, "§e§lResidence", "§7Navod pro vsechny", "§7co chceji plnohodnotne", "§7ovladnout residence", "", "§fVhodne pro: §bSurvival");
         ItemStack jobs = ItemFactory.create(Material.PAPER, "§e§lJobs", "§7Jak si vydelavat penize", "§7na nasich serverech?", "", "§fVhodne pro: §bSkyblock");
         ItemStack shop = ItemFactory.create(Material.PAPER, "§e§lChestShop", "§7Jak vytvorit shop", "§7a jak vykupovat itemy.", "", "§fVhodnoce pro: §bSurv, Sky");
         ItemStack pozemky = ItemFactory.create(Material.PAPER, "§e§lPozemky", "§7Navod jak ovladnout", "§7tvuj pozemek naplno!", "", "§fVhodne pro: §bCreative");
@@ -38,7 +38,7 @@ public class MenuManager {
         p.openInventory(inv);
     }
 
-    public static void prepareNavodLink(Player p, String name, String url){
+    public static void prepareNavodLink(Player p, String name, String url) {
         p.sendMessage("");
         p.sendMessage("§a§l" + name);
         p.sendMessage("§e" + url);

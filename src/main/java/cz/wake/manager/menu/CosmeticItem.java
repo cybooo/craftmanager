@@ -17,7 +17,8 @@ class CosmeticItem {
     private String requiredPermission = null;
     private DisguiseType disguiseType = null;
 
-    public CosmeticItem() {};
+    public CosmeticItem() {
+    }
 
     public String getName() {
         return name;

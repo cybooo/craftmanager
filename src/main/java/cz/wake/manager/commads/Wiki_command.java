@@ -21,7 +21,7 @@ class Wiki_command extends BaseCommand {
 
     @Default
     public void sendWikiLink(CommandSender sender) {
-        if(sender instanceof Player) {
+        if (sender instanceof Player) {
             sender.sendMessage("§d▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
             sender.sendMessage("");
             sender.sendMessage("§eOdkaz na naši Wiki:");

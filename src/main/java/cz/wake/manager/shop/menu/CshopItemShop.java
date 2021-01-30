@@ -9,7 +9,6 @@ import cz.craftmania.craftcore.spigot.inventory.builder.content.Pagination;
 import cz.craftmania.craftcore.spigot.inventory.builder.content.SlotIterator;
 import cz.craftmania.crafteconomy.api.CraftCoinsAPI;
 import cz.craftmania.crafteconomy.api.LevelAPI;
-import cz.craftmania.crafteconomy.api.VoteTokensAPI;
 import cz.craftmania.crafteconomy.managers.BasicManager;
 import cz.wake.manager.Main;
 import cz.wake.manager.shop.types.RewardType;
@@ -32,8 +31,10 @@ public class CshopItemShop implements InventoryProvider {
     @Override
     public void init(Player player, InventoryContents contents) {
 
-        contents.fillRow(0, ClickableItem.of(new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName("§c").build(), item -> {}));
-        contents.fillRow(5, ClickableItem.of(new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName("§c").build(), item -> {}));
+        contents.fillRow(0, ClickableItem.of(new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName("§c").build(), item -> {
+        }));
+        contents.fillRow(5, ClickableItem.of(new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName("§c").build(), item -> {
+        }));
 
         final Pagination pagination = contents.pagination();
         final ArrayList<ClickableItem> items = new ArrayList<>();

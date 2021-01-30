@@ -9,8 +9,6 @@ import co.aikar.commands.annotation.HelpCommand;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ServerType;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;

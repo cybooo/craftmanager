@@ -3,7 +3,6 @@ package cz.wake.manager.utils.tasks;
 import org.apache.commons.io.IOUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,7 +22,7 @@ public class VoteReminderTask implements Runnable {
     @Override
     public void run() {
         long currentTime = System.currentTimeMillis();
-        for(Player player : Bukkit.getOnlinePlayers()){
+        for (Player player : Bukkit.getOnlinePlayers()) {
             try {
                 JSONObject mainObject = readJsonFromUrl("https://api.craftmania.cz/player/" + player.getName());
                 JSONObject dataObject = mainObject.getJSONObject("data");

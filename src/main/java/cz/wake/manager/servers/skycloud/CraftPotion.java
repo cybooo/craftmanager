@@ -31,7 +31,7 @@ public class CraftPotion {
         return potion;
     }
 
-    public ItemStack getItemStack(int amount){
+    public ItemStack getItemStack(int amount) {
         potion.setAmount(amount);
         return potion;
     }

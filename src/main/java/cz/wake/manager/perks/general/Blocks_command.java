@@ -29,7 +29,7 @@ public class Blocks_command extends BaseCommand {
     public boolean recraftItems(CommandSender Sender) {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
-            if (Main.getServerType() == ServerType.VANILLA  || Main.getServerType() == ServerType.HARDCORE_VANILLA) {
+            if (Main.getServerType() == ServerType.VANILLA || Main.getServerType() == ServerType.HARDCORE_VANILLA) {
                 player.sendMessage("§c§l[!] §cNa tomto serveru tato vyhoda neplati!");
             }
             if (player.hasPermission("craftmanager.vip.blocks")) {
@@ -78,7 +78,8 @@ public class Blocks_command extends BaseCommand {
                     redstone += is.getAmount();
                     player.getInventory().remove(is);
                 }
-                if (is.getType() != Material.LEGACY_INK_SACK || ((Dye) is.getData()).getColor() != DyeColor.BLUE) continue;
+                if (is.getType() != Material.LEGACY_INK_SACK || ((Dye) is.getData()).getColor() != DyeColor.BLUE)
+                    continue;
                 player.getInventory().remove(is);
                 lapis += is.getAmount();
             }
@@ -98,14 +99,14 @@ public class Blocks_command extends BaseCommand {
             int lO = lapis % 9;
             int cT = coal / 9;
             int cO = coal % 9;
-            player.getInventory().addItem(new ItemStack[]{new ItemStack(diamondsToTransform > 0 ? Material.DIAMOND_BLOCK : Material.AIR, diamondsToTransform), new ItemStack(emeraldsToTransform > 0 ? Material.EMERALD_BLOCK : Material.AIR, emeraldsToTransform), new ItemStack(diamondOverflow > 0 ? Material.DIAMOND : Material.AIR, diamondOverflow), new ItemStack(emeraldsOverflow > 0 ? Material.EMERALD : Material.AIR, emeraldsOverflow), new ItemStack(ironToTransform > 0 ? Material.IRON_BLOCK : Material.AIR, ironToTransform), new ItemStack(goldToTransform > 0 ? Material.GOLD_BLOCK : Material.AIR, goldToTransform), new ItemStack(ironOverflow > 0 ? Material.IRON_INGOT : Material.AIR, ironOverflow), new ItemStack(goldOverflow > 0 ? Material.GOLD_INGOT : Material.AIR, goldOverflow)});
-            player.getInventory().addItem(new ItemStack[]{new ItemStack(rT > 0 ? Material.REDSTONE_BLOCK : Material.AIR, rT)});
-            player.getInventory().addItem(new ItemStack[]{new ItemStack(lT > 0 ? Material.LAPIS_BLOCK : Material.AIR, lT)});
-            player.getInventory().addItem(new ItemStack[]{new ItemStack(cT > 0 ? Material.COAL_BLOCK : Material.AIR, cT)});
-            player.getInventory().addItem(new ItemStack[]{new ItemStack(rO > 0 ? Material.REDSTONE : Material.AIR, rO)});
-            player.getInventory().addItem(new ItemStack[]{new ItemStack(lO > 0 ? Material.LEGACY_INK_SACK : Material.AIR, lO, (byte) 4)});
-            player.getInventory().addItem(new ItemStack[]{new ItemStack(cO > 0 ? Material.COAL : Material.AIR, cO)});
-            player.sendMessage("§e§l[*] §ePremenil si §f§l" + String.valueOf(itemsChanged) + " itemu §ena §f§l" + (itemsChanged -= diamondOverflow + emeraldsOverflow + ironOverflow + goldOverflow + rO + cO + lO) / 9 + "§e blocku.");
+            player.getInventory().addItem(new ItemStack(diamondsToTransform > 0 ? Material.DIAMOND_BLOCK : Material.AIR, diamondsToTransform), new ItemStack(emeraldsToTransform > 0 ? Material.EMERALD_BLOCK : Material.AIR, emeraldsToTransform), new ItemStack(diamondOverflow > 0 ? Material.DIAMOND : Material.AIR, diamondOverflow), new ItemStack(emeraldsOverflow > 0 ? Material.EMERALD : Material.AIR, emeraldsOverflow), new ItemStack(ironToTransform > 0 ? Material.IRON_BLOCK : Material.AIR, ironToTransform), new ItemStack(goldToTransform > 0 ? Material.GOLD_BLOCK : Material.AIR, goldToTransform), new ItemStack(ironOverflow > 0 ? Material.IRON_INGOT : Material.AIR, ironOverflow), new ItemStack(goldOverflow > 0 ? Material.GOLD_INGOT : Material.AIR, goldOverflow));
+            player.getInventory().addItem(new ItemStack(rT > 0 ? Material.REDSTONE_BLOCK : Material.AIR, rT));
+            player.getInventory().addItem(new ItemStack(lT > 0 ? Material.LAPIS_BLOCK : Material.AIR, lT));
+            player.getInventory().addItem(new ItemStack(cT > 0 ? Material.COAL_BLOCK : Material.AIR, cT));
+            player.getInventory().addItem(new ItemStack(rO > 0 ? Material.REDSTONE : Material.AIR, rO));
+            player.getInventory().addItem(new ItemStack(lO > 0 ? Material.LEGACY_INK_SACK : Material.AIR, lO, (byte) 4));
+            player.getInventory().addItem(new ItemStack(cO > 0 ? Material.COAL : Material.AIR, cO));
+            player.sendMessage("§e§l[*] §ePremenil si §f§l" + itemsChanged + " itemu §ena §f§l" + (itemsChanged -= diamondOverflow + emeraldsOverflow + ironOverflow + goldOverflow + rO + cO + lO) / 9 + "§e blocku.");
             player.updateInventory();
         } catch (Exception e) {
             e.printStackTrace();

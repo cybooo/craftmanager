@@ -133,12 +133,12 @@ public class BanTimesListener implements Listener {
             performTimedBand(player, 3, "Hoglin");
         }
         if (damager instanceof Arrow) {
-            Arrow arrow = (Arrow)damager;
+            Arrow arrow = (Arrow) damager;
             if (arrow.getShooter() instanceof Skeleton) { // Skeleton
                 performTimedBand(player, 4, "Skeleton");
             }
             if (arrow.getShooter() instanceof Player) {
-                int time = UtilMath.random(6,12);
+                int time = UtilMath.random(6, 12);
                 Player killer = (Player) arrow.getShooter();
                 performTimedBand(player, time, "Smrt hráčem (" + killer.getName() + ")");
             }
@@ -210,21 +210,21 @@ public class BanTimesListener implements Listener {
             performTimedBand(player, 3, "Udušení ve zdi");
         }
         if (cause.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK) { // Player
-            EntityDamageByEntityEvent lastDamageCause = (EntityDamageByEntityEvent)e.getEntity().getLastDamageCause();
+            EntityDamageByEntityEvent lastDamageCause = (EntityDamageByEntityEvent) e.getEntity().getLastDamageCause();
             if (lastDamageCause.getDamager() instanceof Arrow) {
-                Arrow arrow = (Arrow)lastDamageCause.getDamager();
+                Arrow arrow = (Arrow) lastDamageCause.getDamager();
                 if (arrow.getShooter() instanceof Skeleton) { // Skeleton
                     performTimedBand(player, 4, "Skeleton");
                 }
                 if (arrow.getShooter() instanceof Player) {
                     Player playerKiller = e.getEntity().getKiller();
-                    int time = UtilMath.random(6,12);
+                    int time = UtilMath.random(6, 12);
                     performTimedBand(player, time, "Smrt hráčem (" + playerKiller.getName() + ")");
                 }
             }
             if (e.getEntity().getKiller() != null) {
                 Player playerKiller = e.getEntity().getKiller();
-                int time = UtilMath.random(6,12);
+                int time = UtilMath.random(6, 12);
                 performTimedBand(player, time, "Smrt hráčem (" + playerKiller.getName() + ")");
             }
         }

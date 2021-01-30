@@ -165,7 +165,7 @@ public class Votes_command extends BaseCommand implements Listener {
             return "§aNyni";
         } else {
             long calculateMeWaka = (7200000 + 900000) - (System.currentTimeMillis() - time);
-            return "§c" + TimeUtils.formatTime("%hh %mm", calculateMeWaka/1000/60, false);
+            return "§c" + TimeUtils.formatTime("%hh %mm", calculateMeWaka / 1000 / 60, false);
         }
     }
 

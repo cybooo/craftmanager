@@ -32,7 +32,7 @@ public class GlowItemCommand extends BaseCommand {
                 player.sendMessage("§c§l[!] §cNedostatecna prava, na toto musis mit VIP. §f/vip");
                 return;
             }
-            if (Main.getServerType() == ServerType.VANILLA  || Main.getServerType() == ServerType.HARDCORE_VANILLA) {
+            if (Main.getServerType() == ServerType.VANILLA || Main.getServerType() == ServerType.HARDCORE_VANILLA) {
                 player.sendMessage("§c§l[!] §cNa tomto serveru tato vyhoda neplati!");
                 return;
             }

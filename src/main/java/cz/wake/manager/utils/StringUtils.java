@@ -43,7 +43,7 @@ public class StringUtils {
         }
     }
 
-    public static String getCenteredMessage(String message){
+    public static String getCenteredMessage(String message) {
         if (message == null || message.equals("")) return null;
         message = net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', message);
         int CENTER_PX = 154;

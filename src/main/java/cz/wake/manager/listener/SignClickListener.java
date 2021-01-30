@@ -27,8 +27,7 @@ public class SignClickListener implements Listener {
                 if (line2.contains("[repair]")) {
                     if (p.hasPermission("craftmanager.repair")) {
                         Repair.repair(p);
-                    }
-                    else {
+                    } else {
                         p.sendMessage("§c§l[!] §cNemas dostatecne opravneni!");
                     }
                 }

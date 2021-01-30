@@ -39,15 +39,16 @@ public class ScoreboardProvider {
     public HashMap<String, Integer> getCachedLines(Player p) {
         ArrayList<String> linesRaw = new ArrayList<>(cachedLinesRaw);
         HashMap<String, Integer> linesProcessed = new HashMap<>();
-        for (int x=0; x<linesRaw.size(); x++) {
+        for (int x = 0; x < linesRaw.size(); x++) {
             linesRaw.set(x, PlaceholderAPI.setPlaceholders(p, linesRaw.get(x)));
         }
         try {
-            for (int x=linesRaw.size()-1, y=0; x>=0; x--) {
+            for (int x = linesRaw.size() - 1, y = 0; x >= 0; x--) {
                 linesProcessed.put(linesRaw.get(x), y);
                 y++;
             }
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
         return linesProcessed;
     }
 

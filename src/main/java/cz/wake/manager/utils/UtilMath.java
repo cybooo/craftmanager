@@ -61,7 +61,7 @@ public class UtilMath {
             format = format + "#";
         }
         DecimalFormat twoDForm = new DecimalFormat(format);
-        return Double.valueOf(twoDForm.format(d)).doubleValue();
+        return Double.parseDouble(twoDForm.format(d));
     }
 
     public static Random random = new Random();
@@ -73,62 +73,61 @@ public class UtilMath {
     /**
      * Returns the sine in radians from a lookup table.
      */
-    static public final float sin(float radians) {
+    static public float sin(float radians) {
         return Sin.table[(int) (radians * radToIndex) & SIN_MASK];
     }
 
     /**
      * Returns the cosine in radians from a lookup table.
      */
-    static public final float cos(float radians) {
+    static public float cos(float radians) {
         return Sin.table[(int) ((radians + PI / 2) * radToIndex) & SIN_MASK];
     }
 
     public static int randRange(int min, int max) {
         Random rand = new Random();
-        int randomNum = rand.nextInt(max - min + 1) + min;
-        return randomNum;
+        return rand.nextInt(max - min + 1) + min;
     }
 
     /**
      * Returns a random number between start (inclusive) and end (inclusive).
      */
-    static public final int random(int start, int end) {
+    static public int random(int start, int end) {
         return start + random.nextInt(end - start + 1);
     }
 
     /**
      * Returns true if a random value between 0 and 1 is less than the specified value.
      */
-    static public final boolean randomBoolean(float chance) {
+    static public boolean randomBoolean(float chance) {
         return UtilMath.random() < chance;
     }
 
     /**
      * Returns random number between 0.0 (inclusive) and 1.0 (exclusive).
      */
-    static public final float random() {
+    static public float random() {
         return random.nextFloat();
     }
 
     /**
      * Returns a random number between 0 (inclusive) and the specified value (exclusive).
      */
-    static public final float random(float range) {
+    static public float random(float range) {
         return random.nextFloat() * range;
     }
 
     /**
      * Returns a random number between start (inclusive) and end (exclusive).
      */
-    static public final float random(float start, float end) {
+    static public float random(float start, float end) {
         return start + random.nextFloat() * (end - start);
     }
 
     /**
      * Returns a random number between 0 (inclusive) and the specified value (inclusive).
      */
-    static public final int random(int range) {
+    static public int random(int range) {
         return random.nextInt(range + 1);
     }
 
@@ -188,7 +187,7 @@ public class UtilMath {
         return random.nextDouble() * 2.0D * 3.141592653589793D;
     }
 
-    public static final Vector rotateAroundAxisX(Vector v, double angle) {
+    public static Vector rotateAroundAxisX(Vector v, double angle) {
         double y, z, cos, sin;
         cos = Math.cos(angle);
         sin = Math.sin(angle);
@@ -197,7 +196,7 @@ public class UtilMath {
         return v.setY(y).setZ(z);
     }
 
-    public static final Vector rotateAroundAxisY(Vector v, double angle) {
+    public static Vector rotateAroundAxisY(Vector v, double angle) {
         double x, z, cos, sin;
         cos = Math.cos(angle);
         sin = Math.sin(angle);
@@ -206,7 +205,7 @@ public class UtilMath {
         return v.setX(x).setZ(z);
     }
 
-    public static final Vector rotateAroundAxisZ(Vector v, double angle) {
+    public static Vector rotateAroundAxisZ(Vector v, double angle) {
         double x, y, cos, sin;
         cos = Math.cos(angle);
         sin = Math.sin(angle);
@@ -215,14 +214,14 @@ public class UtilMath {
         return v.setX(x).setY(y);
     }
 
-    public static final Vector rotateVector(Vector v, double angleX, double angleY, double angleZ) {
+    public static Vector rotateVector(Vector v, double angleX, double angleY, double angleZ) {
         rotateAroundAxisX(v, angleX);
         rotateAroundAxisY(v, angleY);
         rotateAroundAxisZ(v, angleZ);
         return v;
     }
 
-    public static final double angleToXAxis(Vector vector) {
+    public static double angleToXAxis(Vector vector) {
         return Math.atan2(vector.getX(), vector.getY());
     }
 
@@ -239,18 +238,16 @@ public class UtilMath {
         return (int) (Math.random() < 0.5 ? ((1 - Math.random()) * (max - min) + min) : (Math.random() * (max - min) + min));
     }
 
-    public static Vector getVector(Boolean light) {
+    public static Vector getVector(boolean light) {
         int length = 5;
-        if (light.booleanValue()) {
+        if (light) {
             length = 1 + random.nextInt(3);
         } else {
             length = 1 + random.nextInt(12);
         }
         float flt = (random.nextInt(2 * length) - length) / 10.0F;
 
-        Vector velocity = new Vector(flt, 1.0F + Math.abs(flt), flt);
-
-        return velocity;
+        return new Vector(flt, 1.0F + Math.abs(flt), flt);
     }
 
     public static float get(int length) {

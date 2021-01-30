@@ -35,11 +35,11 @@ public class AnvilListener implements Listener {
             }
 
             if (event.getRawSlot() == 2) {
-                if(inv.getItem(2) == null){
+                if (inv.getItem(2) == null) {
                     return;
                 }
                 final ItemStack translatedItem = ColorHandler.getTranslatedItem(player, inv, task);
-                if(translatedItem.getType() == Material.CHEST || translatedItem.getType() == Material.TRAPPED_CHEST){
+                if (translatedItem.getType() == Material.CHEST || translatedItem.getType() == Material.TRAPPED_CHEST) {
                     event.setCurrentItem(new ItemStack(Material.POISONOUS_POTATO));
                 }
                 event.setCurrentItem(translatedItem);

@@ -4,8 +4,6 @@ import cz.wake.manager.Main;
 import cz.wake.manager.commads.staff.RestartManager_command;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.utils.ServerType;
-import cz.wake.manager.utils.scoreboard.ScoreboardManager;
-//import de.myzelyam.api.vanish.PlayerShowEvent;
 import org.bukkit.GameMode;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -204,7 +202,7 @@ public class PlayerListener implements Listener {
     }
 
     @EventHandler
-    public void onMove(PlayerMoveEvent e){
+    public void onMove(PlayerMoveEvent e) {
         Player player = e.getPlayer();
 
         // Automatický port na spawn, když hráč padá do voidu
@@ -215,8 +213,8 @@ public class PlayerListener implements Listener {
         }
 
         if (e.getFrom().getBlockX() != e.getTo().getBlockX() || e.getFrom().getBlockY() != e.getTo().getBlockY() || e.getFrom().getBlockZ() != e.getTo().getBlockZ()) {
-            if(Main.getInstance().at_afk.containsKey(player)) {
-                if(Main.getInstance().at_afk.get(player) != 0) {
+            if (Main.getInstance().at_afk.containsKey(player)) {
+                if (Main.getInstance().at_afk.get(player) != 0) {
                     Main.getInstance().at_afk.put(player, 0);
                 }
             }

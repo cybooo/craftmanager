@@ -16,7 +16,8 @@ public class PermissionItem {
     private String permision = null;
     private ItemStack itemStack = new ItemBuilder(Material.MUSHROOM_STEM).setName("§cERROR").hideAllFlags().build();
 
-    public PermissionItem() {}
+    public PermissionItem() {
+    }
 
     public String getName() {
         return name;

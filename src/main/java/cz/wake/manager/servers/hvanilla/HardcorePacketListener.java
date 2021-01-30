@@ -16,7 +16,7 @@ public class HardcorePacketListener extends PacketAdapter {
 
     @Override
     public void onPacketSending(PacketEvent event) {
-        if(event.getPacketType() == PacketType.Play.Server.LOGIN && event.getPlayer().getHealth() > 0) {
+        if (event.getPacketType() == PacketType.Play.Server.LOGIN && event.getPlayer().getHealth() > 0) {
             Player player = event.getPlayer();
             PacketContainer packet = event.getPacket();
             PacketLoginWrapper playServerLogin = new PacketLoginWrapper(packet);

@@ -11,7 +11,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class CustomItemsListener implements Listener {
@@ -40,7 +39,7 @@ public class CustomItemsListener implements Listener {
             event.setCancelled(true);
             if (event.getSlot() != 39) {
                 event.setCurrentItem(new ItemStack(Material.AIR));
-                ((Player)event.getWhoClicked()).updateInventory();
+                ((Player) event.getWhoClicked()).updateInventory();
             }
         }
     }

@@ -38,22 +38,22 @@ public class TempShop implements Listener {
         Inventory inv;
         ItemStack nakup;
 
-        if(types == MoneyType.VOTETOKEN) {
-            if(!(VoteTokensAPI.getVoteTokens(p) >= coins)) {
+        if (types == MoneyType.VOTETOKEN) {
+            if (!(VoteTokensAPI.getVoteTokens(p) >= coins)) {
                 p.sendMessage("§cNedostatek tokenu k nakupu: §f" + coins + " VT");
                 return;
             }
             inv = Bukkit.createInventory(null, 45, "[S] Nakup za VoteTokeny");
             nakup = ItemFactory.create(Material.LIME_STAINED_GLASS_PANE, "§a§lZakoupit", "§7Zakoupis za §e" + coin + " VT.");
         } else if (types == MoneyType.CRAFTTOKEN) {
-            if(!(CraftTokensAPI.getTokens(p) >= coins)) {
+            if (!(CraftTokensAPI.getTokens(p) >= coins)) {
                 p.sendMessage("§cNedostatek tokenu k nakupu: §f" + coins + " CT");
                 return;
             }
             inv = Bukkit.createInventory(null, 45, "[S] Nakup za CraftTokeny");
             nakup = ItemFactory.create(Material.LIME_STAINED_GLASS_PANE, "§a§lZakoupit", "§7Zakoupis za §e" + coin + " CT.");
         } else {
-            if(!(CraftCoinsAPI.getCoins(p) >= coins)){
+            if (!(CraftCoinsAPI.getCoins(p) >= coins)) {
                 p.sendMessage("§cNedostatek coinu k nakupu: §f" + coins + " CC");
                 return;
             }
@@ -87,7 +87,7 @@ public class TempShop implements Listener {
             }
             if (e.getSlot() == 30) {
                 ServerType serverType = Main.getServerType();
-                if(type == MoneyType.CRAFTCOIN) {
+                if (type == MoneyType.CRAFTCOIN) {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission settemp " + permission + " true " + time + " " + serverType.name().toLowerCase());
                     CraftCoinsAPI.takeCoins(p, coin);
                     p.sendMessage("§e§l[*] §eZakoupil jsi si §a" + name + " §eza §6" + coin + " CC.");

@@ -73,8 +73,7 @@ public class ChatListener implements Listener {
                             pingPlayer(pl, Main.getInstance().getMySQL().getSettingsString(pl, "mention_sound")); //posilani cinknuti
                         });
                         //msg = msg.replace(prefix + "helper", "§c" + prefix + "helper" + "§r");
-                    }
-                    else if (msg.startsWith(prefix + "admin")) {
+                    } else if (msg.startsWith(prefix + "admin")) {
                         Bukkit.getServer().getOnlinePlayers().stream() //pridavani do listu
                                 .filter(pl -> ((Player) pl).hasPermission("craftmania.group.admin"))
                                 .forEach(pl -> _toSend.add(pl));
@@ -82,8 +81,7 @@ public class ChatListener implements Listener {
                             pingPlayer(pl, Main.getInstance().getMySQL().getSettingsString(pl, "mention_sound")); //posilani cinknuti
                         });
                         //msg = msg.replace(prefix + "admin", "§c" + prefix + "admin" + "§r");
-                    }
-                    else if (msg.startsWith(prefix + "eventer")) {
+                    } else if (msg.startsWith(prefix + "eventer")) {
                         Bukkit.getServer().getOnlinePlayers().stream() //pridavani do listu
                                 .filter(pl -> ((Player) pl).hasPermission("craftmania.group.eventer"))
                                 .forEach(pl -> _toSend.add(pl));
@@ -91,8 +89,7 @@ public class ChatListener implements Listener {
                             pingPlayer(pl, Main.getInstance().getMySQL().getSettingsString(pl, "mention_sound")); //posilani cinknuti
                         });
                         //msg = msg.replace(prefix + "eventer", "§c" + prefix + "eventer" + "§r");
-                    }
-                    else if (msg.startsWith(prefix + "builder")) {
+                    } else if (msg.startsWith(prefix + "builder")) {
                         Bukkit.getServer().getOnlinePlayers().stream() //pridavani do listu
                                 .filter(pl -> ((Player) pl).hasPermission("craftmania.group.builder"))
                                 .forEach(pl -> _toSend.add(pl));
@@ -100,8 +97,7 @@ public class ChatListener implements Listener {
                             pingPlayer(pl, Main.getInstance().getMySQL().getSettingsString(pl, "mention_sound")); //posilani cinknuti
                         });
                         //msg = msg.replace(prefix + "builder", "§c" + prefix + "builder" + "§r");
-                    }
-                    else if (msg.startsWith(prefix + "staff")) { //hladmin, developer
+                    } else if (msg.startsWith(prefix + "staff")) { //hladmin, developer
                         Bukkit.getServer().getOnlinePlayers().stream() //pridavani do listu
                                 .filter(pl -> ((Player) pl).hasPermission("craftmania.group.hladmin") && ((Player) pl).hasPermission("craftmania.group.developer"))
                                 .forEach(pl -> _toSend.add(pl));
@@ -116,7 +112,7 @@ public class ChatListener implements Listener {
     }
 
     @EventHandler(ignoreCancelled = true)
-    public void chatEvent(final PlayerCommandPreprocessEvent e) throws IOException {
+    public void chatEvent(final PlayerCommandPreprocessEvent e) {
         if (!Main.getInstance().getConfig().getBoolean("ats-commands.enabled")) {
             return;
         }

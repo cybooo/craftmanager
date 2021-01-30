@@ -14,8 +14,10 @@ public class CosmeticMainGUI implements InventoryProvider {
     @Override
     public void init(Player player, InventoryContents contents) {
 
-        contents.fillRow(0, ClickableItem.of(new ItemBuilder(Material.BLUE_STAINED_GLASS_PANE).setName("§c").build(), item -> {}));
-        contents.fillRow(5, ClickableItem.of(new ItemBuilder(Material.BLUE_STAINED_GLASS_PANE).setName("§c").build(), item -> {}));
+        contents.fillRow(0, ClickableItem.of(new ItemBuilder(Material.BLUE_STAINED_GLASS_PANE).setName("§c").build(), item -> {
+        }));
+        contents.fillRow(5, ClickableItem.of(new ItemBuilder(Material.BLUE_STAINED_GLASS_PANE).setName("§c").build(), item -> {
+        }));
 
         contents.set(2, 1,
                 ClickableItem.of(new ItemBuilder(Material.DIAMOND_HELMET).setName("§bHats").setLore("§7Seznam všech čepic nebo klobouků,", "§7které vlasníš a můžeš si nasadit", "§7na hlavu a mít tak flex!", "", "§eKlikni pro zobrazení").hideAllFlags().build(), click -> {

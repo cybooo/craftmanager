@@ -3,17 +3,14 @@ package cz.wake.manager.servers.skycloud;
 import com.gmail.filoghost.holographicdisplays.api.Hologram;
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
 import cz.craftmania.craftcore.spigot.builders.villager.VillagerTradeBuilder;
+import cz.craftmania.craftcore.spigot.utils.effects.ParticleEffect;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.Log;
-import cz.craftmania.craftcore.spigot.utils.effects.ParticleEffect;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.entity.*;
-import org.bukkit.inventory.*;
+import org.bukkit.inventory.Merchant;
 import org.bukkit.metadata.FixedMetadataValue;
-import org.bukkit.potion.PotionType;
 
 import java.util.*;
 
@@ -115,7 +112,7 @@ public class VillagerManager {
 
     private static void spawnSellVillager() {
         Entity entity = Objects.requireNonNull(Bukkit.getWorld("vsbspawn")).spawnEntity(sellVillagerLocation, EntityType.VILLAGER);
-        Villager villager = (Villager)entity;
+        Villager villager = (Villager) entity;
         villager.setAI(false);
         villager.setProfession(Villager.Profession.LIBRARIAN);
         villager.setVillagerType(Villager.Type.JUNGLE);
@@ -136,7 +133,7 @@ public class VillagerManager {
 
     private static void spawnSeaVillager() {
         Entity entity = Objects.requireNonNull(Bukkit.getWorld("vsbspawn")).spawnEntity(seaVillagerLocation, EntityType.VILLAGER);
-        Villager villager = (Villager)entity;
+        Villager villager = (Villager) entity;
         villager.setAI(false);
         villager.setProfession(Villager.Profession.BUTCHER);
         villager.setVillagerType(Villager.Type.DESERT);
@@ -183,7 +180,7 @@ public class VillagerManager {
             }*/
 
             Entity entity = Objects.requireNonNull(Bukkit.getWorld("vsbspawn")).spawnEntity(rareVillagerLocation, EntityType.WANDERING_TRADER);
-            WanderingTrader villager = (WanderingTrader)entity;
+            WanderingTrader villager = (WanderingTrader) entity;
             villager.setAI(false);
             villager.setCanPickupItems(false);
             villager.setRemoveWhenFarAway(false);
@@ -216,7 +213,7 @@ public class VillagerManager {
 
                 Bukkit.getOnlinePlayers().forEach(player -> {
                     if (player.getOpenInventory().getTitle().equalsIgnoreCase("Wandering Trader")
-                        || player.getOpenInventory().getTitle().equalsIgnoreCase("Rare Villager")) {
+                            || player.getOpenInventory().getTitle().equalsIgnoreCase("Rare Villager")) {
                         player.closeInventory();
                     }
                 });
@@ -233,7 +230,7 @@ public class VillagerManager {
 
     private static void spawnNetherVillager() {
         Entity entity = Objects.requireNonNull(Bukkit.getWorld("vsbspawn")).spawnEntity(netherVillagerLocation, EntityType.VILLAGER);
-        Villager villager = (Villager)entity;
+        Villager villager = (Villager) entity;
         villager.setAI(false);
         villager.setProfession(Villager.Profession.CARTOGRAPHER);
         villager.setVillagerType(Villager.Type.SAVANNA);
@@ -256,7 +253,7 @@ public class VillagerManager {
 
     private static void spawnEndVillager() {
         Entity entity = Objects.requireNonNull(Bukkit.getWorld("vsbspawn")).spawnEntity(endVillagerLocation, EntityType.VILLAGER);
-        Villager villager = (Villager)entity;
+        Villager villager = (Villager) entity;
         villager.setAI(false);
         villager.setProfession(Villager.Profession.FISHERMAN);
         villager.setVillagerType(Villager.Type.SNOW);
@@ -277,7 +274,7 @@ public class VillagerManager {
 
     private static void spawnBuyVillager() {
         Entity entity = Objects.requireNonNull(Bukkit.getWorld("vsbspawn")).spawnEntity(buyVilllagerLocaiton, EntityType.VILLAGER);
-        Villager villager = (Villager)entity;
+        Villager villager = (Villager) entity;
         villager.setAI(false);
         villager.setProfession(Villager.Profession.ARMORER);
         villager.setVillagerType(Villager.Type.PLAINS);
@@ -288,7 +285,7 @@ public class VillagerManager {
 
         setMetadata(villager, VillagerType.BUY_VILLAGER, VillagerType.BUY_VILLAGER, Main.getInstance());
 
-        buyVilllagerLocaiton.add(0, 3,0);
+        buyVilllagerLocaiton.add(0, 3, 0);
         Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), buyVilllagerLocaiton);
         hologram.appendTextLine("§d§lBuy Villager");
         hologram.appendTextLine("§7Nakup levně ZDE!");
@@ -307,7 +304,7 @@ public class VillagerManager {
     public enum PotionBase {NORMAL, ARROW, LINGERING, SPLASH,}
 
     /*public static ItemStack getEnchantmentBook(Enchantment enchant, int level, int amount) {
-        final LinkedHashMap<Enchantment, Integer> e = new LinkedHashMap<>();
+        final LinkedHashMap<Enchantment, int> e = new LinkedHashMap<>();
         e.put(enchant, level);
         return getEnchantmentBook(e, amount);
     }
@@ -351,7 +348,7 @@ public class VillagerManager {
         }
     }
 
-    private static void broadcast(String message){
+    private static void broadcast(String message) {
         Bukkit.getOnlinePlayers().forEach(player -> player.sendMessage(message));
     }
 

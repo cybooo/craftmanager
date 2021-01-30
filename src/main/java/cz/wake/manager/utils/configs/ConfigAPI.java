@@ -52,7 +52,7 @@ public class ConfigAPI {
             for (Config config : configs.values()) {
                 config.reloadAuto();
             }
-        }, 1200, intervalInMin * 60 * 20);
+        }, 1200, (long) intervalInMin * 60 * 20);
     }
 
     public void registerConfig(Config config) {
